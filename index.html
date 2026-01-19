@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linley Bignoux Portfolio | Email Developer -Email Marketing Development</title>
+    <title>Linley Bignoux Portfolio | Email Developer - Email Marketing Development</title>
     <style>
         * {
             margin: 0;
@@ -12,31 +12,36 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --text: #1f2937;
-            --text-light: #6b7280;
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --accent: #8b5cf6;
+            --text: #0f172a;
+            --text-light: #64748b;
             --bg: #ffffff;
-            --bg-alt: #f9fafb;
-            --border: #e5e7eb;
+            --bg-alt: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
             color: var(--text);
-            background: var(--bg);
+            background: var(--bg-alt);
         }
 
         .container {
             max-width: 1080px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Header & Navigation */
         header {
-            background: var(--bg);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -47,228 +52,346 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 0;
+            padding: 1.25rem 0;
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.125rem;
             font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
             color: var(--primary);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text);
+            color: var(--text-light);
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--primary);
         }
 
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         /* Hero Section */
         .hero {
-            padding: 5rem 0;
+            padding: 8rem 0 6rem;
             text-align: center;
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.25rem;
             color: var(--text);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-light);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .cta-button {
             display: inline-block;
-            padding: 0.875rem 2rem;
+            padding: 1rem 2.5rem;
             background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: background 0.3s;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgb(59 130 246 / 0.3);
         }
 
         .cta-button:hover {
-            background: var(--secondary);
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgb(59 130 246 / 0.4);
         }
 
         /* Section Styles */
         section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
             text-align: center;
             color: var(--text);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* About Section */
         .about-content {
-            max-width: 800px;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            max-width: 900px;
             margin: 0 auto;
-            text-align: center;
-         }
+        }
 
-        .about-content p {
+        .about-image {
+            flex-shrink: 0;
+        }
+
+        .about-image img {
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .about-text p {
             font-size: 1.125rem;
             color: var(--text-light);
             margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
         /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .service-card {
-            padding: 2rem;
-            background: var(--bg-alt);
-            border-radius: 8px;
+            padding: 2.5rem;
+            background: var(--bg-card);
+            border-radius: 12px;
             border: 1px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.375rem;
             margin-bottom: 1rem;
-            color: var(--primary);
+            color: var(--text);
+            font-weight: 700;
         }
 
         .service-card p {
             color: var(--text-light);
+            line-height: 1.7;
         }
 
         /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
         }
 
         .portfolio-item {
-            background: var(--bg-alt);
-            border-radius: 8px;
+            background: var(--bg-card);
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
         }
 
         .portfolio-image {
             width: 100%;
-            height: 240px;
+            height: 260px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 3rem;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
         }
 
         .portfolio-content {
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
 
         .portfolio-content h3 {
             font-size: 1.25rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             color: var(--text);
+            font-weight: 700;
         }
 
         .portfolio-content p {
             color: var(--text-light);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         /* Blog Grid */
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
             gap: 2rem;
         }
 
         .blog-card {
-            background: var(--bg-alt);
-            border-radius: 8px;
+            background: var(--bg-card);
+            border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--border);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            display: block;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
 
         .blog-date {
-            padding: 1.5rem 1.5rem 0;
-            color: var(--text-light);
+            padding: 1.75rem 1.75rem 0;
+            color: var(--primary);
             font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .blog-content {
-            padding: 0 1.5rem 1.5rem;
+            padding: 0.5rem 1.75rem 1.75rem;
         }
 
         .blog-content h3 {
-            font-size: 1.25rem;
+            font-size: 1.375rem;
             margin-bottom: 0.75rem;
             color: var(--text);
+            font-weight: 700;
         }
 
         .blog-content p {
             color: var(--text-light);
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
         .read-more {
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .read-more:hover {
-            text-decoration: underline;
+            gap: 0.75rem;
         }
 
         /* Footer */
         footer {
-            background: var(--bg-alt);
+            background: var(--bg-card);
             border-top: 1px solid var(--border);
-            padding: 3rem 0;
-            text-align: center;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 2rem;
         }
 
         .social-links a {
             color: var(--text-light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            font-size: 0.95rem;
         }
 
         .social-links a:hover {
             color: var(--primary);
+            transform: translateY(-2px);
         }
 
         footer p {
             color: var(--text-light);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
 
         /* Mobile Menu Toggle */
@@ -284,7 +407,7 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
             .hero p {
@@ -299,21 +422,41 @@
                 display: block;
             }
 
+            .logo {
+                font-size: 1rem;
+            }
+
             .nav-links {
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--bg);
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
                 flex-direction: column;
-                padding: 1rem;
+                padding: 1.5rem;
                 gap: 1rem;
                 border-bottom: 1px solid var(--border);
                 display: none;
+                box-shadow: var(--shadow-lg);
             }
 
             .nav-links.active {
                 display: flex;
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
             }
 
             .portfolio-grid,
@@ -325,25 +468,23 @@
 
         @media (max-width: 480px) {
             .hero {
-                padding: 3rem 0;
+                padding: 5rem 0 4rem;
             }
 
             .hero h1 {
-                font-size: 1.75rem;
+                font-size: 1.875rem;
             }
 
             section {
-                padding: 3rem 0;
+                padding: 3.5rem 0;
             }
-
-
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Linley Bignoux - Email Developer | Email Marketing Development </div>
+            <div class="logo">Linley <span>Bignoux</span></div>
             <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
@@ -356,50 +497,49 @@
     </header>
 
     <main>
-        <section id="home" class="hero container">
-            <h1>Linley Bignoux| Email Developer</h1>
-            <p>Developing from scratch and building minimalistic, responsive email designs with simple UI that get delivered,simplilcity and praticality.</p>
-            <a href="#portfolio" class="cta-button">View My Work</a>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Linley Bignoux | Email Developer</h1>
+                <p>Developing from scratch and building minimalistic, responsive email designs with simple UI that get delivered, simplicity and practicality.</p>
+                <a href="#portfolio" class="cta-button">View My Work</a>
+            </div>
         </section>
 
-   <section id="about">
-  <div class="container">
-    <h2 class="section-title">About Me</h2>
-
-    <div class="about-content">
-      <div class="about-image">
-        <img width="200" height="200" src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML" border="0" alt="Linley Bignoux – Email Developer">
-      </div>
-
-      <div class="about-text">
-        <p>
-          Hey and G'day. My name is Linley and I am an Email Developer with a focus on creating clean,
-          minimalistic, professional layouts that work seamlessly across all devices. My designs and
-          development prioritize a simple user experience while maintaining email deliverability and accessibility.
-        </p>
-
-        <p>
-          Coding and designing then developing with responsive design and email development best practices, I ensure every pixel
-          serves a purpose and every interaction delights users. I believe in thoughtful
-          email development to transform digital experiences in email marketing development for campaigns.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://i.ibb.co/TD8P4tx/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux – Email Developer">
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            Hey and G'day. My name is Linley and I am an Email Developer with a focus on creating clean,
+                            minimalistic, professional layouts that work seamlessly across all devices. My designs and
+                            development prioritize a simple user experience while maintaining email deliverability and accessibility.
+                        </p>
+                        <p>
+                            Coding and designing then developing with responsive design and email development best practices, I ensure every pixel
+                            serves a purpose and every interaction delights users. I believe in thoughtful
+                            email development to transform digital experiences in email marketing development for campaigns.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section id="services">
             <div class="container">
                 <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">Comprehensive email development solutions for modern marketing campaigns</p>
                 <div class="services-grid">
                     <div class="service-card">
                         <h3>📧 Email Development</h3>
                         <p>Custom email templates that render perfectly across all email clients. Responsive, accessible, and optimized for conversions.</p>
                     </div>
                     <div class="service-card">
-                        <h3>🎨 Email Testing </h3>
-                        <p>All emails are tested throughly across all major emial clients and OS systems and browserS ,this is done by rendering tests and JSON  </p>
+                        <h3>🎨 Email Testing</h3>
+                        <p>All emails are tested thoroughly across all major email clients and OS systems and browsers, this is done by rendering tests and JSON</p>
                     </div>
                     <div class="service-card">
                         <h3>📱 Responsive Design</h3>
@@ -416,6 +556,7 @@
         <section id="portfolio">
             <div class="container">
                 <h2 class="section-title">Portfolio</h2>
+                <p class="section-subtitle">Selected works showcasing email development excellence</p>
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
                         <div class="portfolio-image">📧</div>
@@ -459,6 +600,27 @@
                             <p>High-impact promotional emails with interactive elements and dynamic content.</p>
                         </div>
                     </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">💌</div>
+                        <div class="portfolio-content">
+                            <h3>Drip Campaign Series</h3>
+                            <p>Automated email sequence with personalized content for improved customer retention.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">🔔</div>
+                        <div class="portfolio-content">
+                            <h3>Notification Templates</h3>
+                            <p>Real-time notification emails optimized for quick delivery and mobile readability.</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <div class="portfolio-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">📊</div>
+                        <div class="portfolio-content">
+                            <h3>Analytics Report Email</h3>
+                            <p>Data-driven email templates featuring charts and performance metrics.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -466,31 +628,32 @@
         <section id="blog">
             <div class="container">
                 <h2 class="section-title">Blog</h2>
+                <p class="section-subtitle">Insights and best practices in email development</p>
                 <div class="blog-grid">
-                    <article class="blog-card">
+                    <a href="blog/email-accessibility.html" class="blog-card">
                         <div class="blog-date">January 15, 2026</div>
                         <div class="blog-content">
                             <h3>Best Practices for Email Accessibility</h3>
                             <p>Learn how to create emails that everyone can read and interact with, regardless of their abilities or assistive technologies.</p>
-                            <a href="#" class="read-more">Read More →</a>
+                            <span class="read-more">Read More →</span>
                         </div>
-                    </article>
-                    <article class="blog-card">
+                    </a>
+                    <a href="blog/responsive-email-2026.html" class="blog-card">
                         <div class="blog-date">January 8, 2026</div>
                         <div class="blog-content">
                             <h3>Responsive Email Design in 2026</h3>
                             <p>Exploring the latest techniques for creating emails that look perfect on every device and email client.</p>
-                            <a href="#" class="read-more">Read More →</a>
+                            <span class="read-more">Read More →</span>
                         </div>
-                    </article>
-                    <article class="blog-card">
+                    </a>
+                    <a href="blog/ui-design-trends.html" class="blog-card">
                         <div class="blog-date">December 28, 2025</div>
                         <div class="blog-content">
                             <h3>UI Design Trends to Watch</h3>
                             <p>A look at emerging UX design trends that will shape digital experiences in the coming year.</p>
-                            <a href="#" class="read-more">Read More →</a>
+                            <span class="read-more">Read More →</span>
                         </div>
-                    </article>
+                    </a>
                 </div>
             </div>
         </section>
@@ -498,10 +661,13 @@
 
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
-                <a href="#">Instagram</a>
+            <div class="footer-content">
+                <div class="logo">Linley <span>Bignoux</span></div>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">Instagram</a>
+                </div>
             </div>
             <p>&copy; 2026 Linley Bignoux Email Developer Portfolio. All rights reserved.</p>
         </div>
@@ -513,14 +679,12 @@
             navLinks.classList.toggle('active');
         }
 
-        // Close mobile menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -535,19 +699,4 @@
         });
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
