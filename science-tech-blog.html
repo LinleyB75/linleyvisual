@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="English communication strategies for IT professionals, engineers, and data scientists.">
+    <title>English for Science & Tech | Linley B</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+    <style>
+        /* --- SHARED CSS (Matches Homepage) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #0047AB; --accent: #FFD700; --text: #1f2937;
+            --text-light: #4b5563; --bg: #ffffff; --bg-alt: #fafbfc;
+            --border: #e5e7eb; --section-highlight: #f0f4f8;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6;    
+                --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #1e293b;  
+                --border: #334155; --section-highlight: #1e293b;
+            }
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); overflow-x: hidden; }
+        
+        /* HEADER */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 80px; display: flex; align-items: center; width: 100%; }
+        .container { max-width: 900px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
+        
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 5px 15px; border-radius: 50px; }
+        .logo-b { color: var(--text); }
+
+        .back-btn { text-decoration: none; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
+        .back-btn:hover { color: var(--primary); }
+
+        /* BLOG CONTENT */
+        .blog-header { padding: 4rem 0 2rem; text-align: center; }
+        .blog-date { font-size: 0.9rem; color: #0047AB; font-weight: 700; background: var(--accent); padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
+        h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--primary); }
+        
+        .blog-body { font-size: 1.15rem; color: var(--text); }
+        .blog-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--primary); font-size: 1.8rem; }
+        .blog-body p { margin-bottom: 1.5rem; }
+        .blog-body ul { margin-bottom: 1.5rem; padding-left: 20px; }
+        .blog-body li { margin-bottom: 0.8rem; }
+        
+        .highlight-box { background: var(--bg-alt); border-left: 5px solid var(--accent); padding: 2rem; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
+
+        /* CTA AREA */
+        .blog-cta { background: var(--section-highlight); padding: 3rem; text-align: center; border-radius: 15px; margin-top: 4rem; border: 2px solid var(--primary); }
+        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 1rem; transition: 0.3s; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* FOOTER */
+        footer { padding: 3rem 0; text-align: center; margin-top: 4rem; border-top: 1px solid var(--border); font-size: 0.9rem; opacity: 0.8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-wrap">
+                <div class="logo-main">Linley<span class="logo-b">B</span></div>
+            </a>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article>
+            <div class="blog-header">
+                <span class="blog-date">22 JAN 2026</span>
+                <h1>English for Science & Tech Professionals</h1>
+            </div>
+
+            <div class="blog-body">
+                <p><b>Your code works perfectly. Your data is accurate. So why did the stakeholders look confused?</b></p>
+                <p>This is the struggle for many of my students who work in IT, Engineering, and Data Science. You have deep technical knowledge, but translating that "machine logic" into human communication is difficult—especially in a second language.</p>
+
+                <h2>The "Black Box" Problem</h2>
+                <p>When engineers explain a problem, they often want to explain <i>how</i> they fixed it. They talk about the code, the bugs, and the process.</p>
+                <p>But managers and clients usually only care about the <b>Input</b> and the <b>Output</b>.</p>
+                <p>They view your work as a "Black Box." They don't want to know what happens inside the box; they just want to know that the problem is solved.</p>
+
+                <div class="highlight-box">
+                    <h3>Strategy: The "Bottom Line Up Front"</h3>
+                    <p>Instead of starting with the technical details, start with the impact.</p>
+                    <p><b>Don't say:</b> "We had a server latency issue because the SQL query was unoptimized, so I re-indexed the database..."</p>
+                    <p><b>Do say:</b> "The website is running fast again. I optimized the database to prevent this from happening next week."</p>
+                </div>
+
+                <h2>Technical Vocabulary vs. Jargon</h2>
+                <p>There is a difference between necessary technical terms and confusing jargon. If you are speaking to other engineers, use technical terms. If you are speaking to Marketing or Sales, you must use <b>analogies</b>.</p>
+                <ul>
+                    <li>Don't say "Bandwidth bottleneck."</li>
+                    <li>Say "It's like traffic on a highway."</li>
+                </ul>
+
+                <h2>Confidence in Q&A</h2>
+                <p>The scariest part of a tech presentation is often the Q&A. You worry you won't understand the question. In my classes, we practice specific phrases to verify questions before you answer, giving you time to think and ensuring you don't answer the wrong thing.</p>
+            </div>
+
+            <div class="blog-cta">
+                <h3>Are you an Engineer or Developer?</h3>
+                <p>Learn to explain your complex ideas simply so you can get approval faster.</p>
+                <a href="https://www.classgap.com/en/tutor/linley" class="cta-button">Book a Free Trial Class</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LinleyB | English Teacher for Workplace & Business English</p>
+    </footer>
+
+</body>
+</html>
