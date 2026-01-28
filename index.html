@@ -9,135 +9,233 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
+        /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* =========================================
+           1. STANDARD (LIGHT) MODE - DEFAULT
+           ========================================= */
         :root {
-            --primary: #0047AB; --accent: #FFD700; --text: #1f2937;
-            --text-light: #4b5563; --bg: #ffffff; --bg-alt: #fafbfc;
-            --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --primary: #0047AB; 
+            --accent: #FFD700; 
+            --text: #1f2937;
+            --text-light: #4b5563; 
+            --bg: #ffffff; 
+            --bg-alt: #fafbfc;
+            --border: #e5e7eb; 
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
             --section-highlight: #f0f4f8;
-            --cert-bg-dark: #1e293b; 
+            --cert-bg-dark: #1e293b;
+            --card-bg: #ffffff;
+            --input-bg: #f8fafc;
+            --quote-bg: #f8fafc;
         }
-        html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; }
+
+        /* =========================================
+           2. DARK MODE OVERRIDES (Conditional)
+           ========================================= */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #4fa3ff; 
+                --accent: #FFD700; 
+                --text: #f3f4f6;    
+                --text-light: #9ca3af; 
+                --bg: #0f172a;      
+                --bg-alt: #1e293b;  
+                --border: #334155; 
+                --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
+                --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+                --section-highlight: #1e293b;
+                --cert-bg-dark: #020617;
+                --card-bg: #1e293b;
+                --input-bg: #334155;
+                --quote-bg: #1e293b;
+            }
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; transition: background 0.3s, color 0.3s; }
         
+        /* HEADER & NAVIGATION */
         header { 
             background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; 
-            top: 0; z-index: 100; height: 115px; display: flex; align-items: center; width: 100%; padding: 0 15px;
+            top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%;
+            transition: background 0.3s;
         }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
-        .container { max-width: 1350px; margin: 0 auto; width: 100%; }
-        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         
-        .logo-wrap { display: flex; align-items: center; gap: 18px; text-decoration: none; flex-shrink: 0; }
-        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); }
-        .logo-main { font-size: 1.85rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: #f0f4f8; padding: 8px 22px; border-radius: 50px; display: inline-flex; align-items: center; }
-        .logo-b { color: #000000; }
-        .logo-tagline { font-size: 1.15rem; color: var(--primary); font-weight: 700; border-left: 2px solid #000; padding-left: 15px; letter-spacing: -0.01em; line-height: 1.2; white-space: nowrap; }
-        .pipe-sep { color: var(--accent); margin: 0 5px; font-weight: 800; }
+        /* Text Group Wrapper for Mobile Stacking */
+        .logo-text-group { display: flex; align-items: center; }
 
-        .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; margin-left: auto; position: relative; padding-left: 40px; padding-right: 60px; } 
-        .nav-links::before { content: ""; position: absolute; left: 0; height: 35px; width: 2px; background-color: #e5e7eb; top: 50%; transform: translateY(50%); }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 2px solid transparent; padding-bottom: 4px; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
+        .logo-b { color: var(--text); }
         
+        /* LOGO TAGLINE */
+        .logo-tagline { 
+            font-size: 1rem; 
+            color: var(--primary); 
+            font-weight: 700; 
+            border-left: 2px solid var(--text); 
+            padding-left: 15px; 
+            margin-left: 15px; /* Added spacing next to LinleyB */
+            line-height: 1.2; 
+            white-space: nowrap; 
+        }
+
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        
+        /* NAV LINKS HOVER */
+        .nav-links a { 
+            text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; 
+            transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; 
+        }
+        .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
+        
+        /* 'WHAT I FIX' BUTTON */
         .nav-fix-btn { 
-            background-color: #ffffff; color: var(--primary) !important; padding: 10px 18px !important; 
-            border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent);
-            display: inline-block;
+            background-color: var(--bg); color: var(--primary) !important; padding: 10px 18px !important; 
+            border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease;
         }
+        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
 
-        .nav-for-you { background-color: var(--primary); color: white !important; height: 46px; padding: 0 28px; border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; gap: 10px; margin-left: 5px; border: none !important; line-height: 1; box-shadow: var(--shadow); white-space: nowrap; font-weight: 800; position: relative; }
-        .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 28px; right: 28px; height: 3px; background-color: var(--accent); border-radius: 2px; }
+        /* 'FOR YOU' BUTTON */
+        .nav-for-you { 
+            background-color: var(--primary); color: white !important; height: 46px; padding: 0 25px; 
+            border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; 
+            gap: 10px; border: none !important; font-weight: 800; position: relative; box-shadow: var(--shadow); white-space: nowrap;
+        }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
 
-        .menu-toggle { display: none; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: var(--primary); }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); }
 
+        /* GENERAL STYLES */
+        .consult-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 2rem; }
         .cta-button { 
-            display: inline-block; padding: 1.3rem 3.5rem; background: var(--accent); color: var(--primary); 
+            display: inline-block; padding: 1.2rem 2.5rem; background: var(--accent); color: #0047AB; 
             text-decoration: none; border-radius: 10px; font-weight: 800; cursor: pointer; border: none; 
-            font-size: 1.35rem; transition: 0.3s; text-align: center; 
+            font-size: clamp(1.1rem, 2vw, 1.35rem); transition: 0.3s; text-align: center; max-width: 100%;
         }
-        .cta-button:hover { background: #e6c200; transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
 
-        .hero { background: linear-gradient(135deg, var(--primary) 0%, #003580 100%); color: white; padding: 7rem 0; text-align: center; }
-        .hero h1 { font-size: 3.2rem; margin-bottom: 2rem; font-weight: 900; line-height: 1.2; }
-        .hero .subtitle { font-size: 1.4rem; margin: 0 auto 3rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; max-width: 1100px; line-height: 2.2; }
+        .hero { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: clamp(4rem, 10vh, 7rem) 0; text-align: center; }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 1.5rem; font-weight: 900; line-height: 1.2; }
+        .hero .subtitle { font-size: clamp(1rem, 2vw, 1.4rem); margin-bottom: 2.5rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.6; }
         .hero .subtitle span.line { display: block; }
         .hero .subtitle em { color: white; margin: 0 12px; font-weight: 300; font-style: normal; }
-        .hero .hero-intro-text { font-size: 1.45rem; max-width: 950px; margin: 0 auto; line-height: 1.8; font-weight: 400; opacity: 0.95; }
-        .hero .cta-button { margin-top: 4rem; }
+        .hero .hero-intro-text { font-size: clamp(1.1rem, 2vw, 1.45rem); max-width: 900px; margin: 0 auto; line-height: 1.7; font-weight: 400; opacity: 0.95; }
 
-        section { padding: 6rem 0; }
-        .section-title { font-size: 2.8rem; margin-bottom: 3.5rem; text-align: center; color: var(--primary); font-weight: 800; }
-        .section-title i { color: var(--accent); margin-right: 15px; }
+        section { padding: clamp(3.5rem, 8vh, 6rem) 0; }
+        .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 3.5rem; text-align: center; color: var(--primary); font-weight: 800; }
         
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; margin-top: 3rem; justify-content: center; }
-        
-        /* GENERAL CARD (SERVICE/FIX) */
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem; justify-content: center; }
         .card { 
-            background: var(--bg); padding: 3rem 2.5rem; border: 1px solid var(--border); 
+            background: var(--card-bg); padding: 2.5rem 1.5rem; border: 1px solid var(--border); 
             border-top: 4px solid var(--accent); border-radius: 10px; transition: 0.3s; 
-            box-shadow: var(--shadow); height: 100%; display: flex; flex-direction: column; 
-            text-align: center; 
+            box-shadow: var(--shadow); height: 100%; display: flex; flex-direction: column; text-align: center; 
         }
-        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 2rem; display: block; width: 100%; }
+        .card i { font-size: 2.8rem; color: var(--primary); margin-bottom: 1.5rem; display: block; width: 100%; text-align: center; }
+        .card h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1.4rem; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); border-top-color: var(--primary); box-shadow: var(--shadow-lg); }
 
-        /* BLOG SPECIFIC CARDS (LEFT ALIGNED) */
-        .blog-card-wrap .card { text-align: left; }
-        .blog-card-wrap .card h3 { margin: 15px 0; font-size: 1.5rem; color: var(--primary); }
-        .blog-date { font-size: 0.85rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 12px; border-radius: 5px; }
+        .student-name { font-weight: 800; color: var(--primary); font-size: 1.2rem; display: block; margin-top: auto; padding-top: 15px; }
+        .student-role { font-size: 0.85rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; }
+        .student-quote { font-style: italic; color: var(--text); margin-bottom: 10px; font-weight: 500; }
 
-        .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; margin-top: 0; }
+        .blog-card-wrap .card { text-align: left; }
+        .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
+        .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; }
         .centered-card-wrapper .card { max-width: 380px; width: 100%; }
 
-        .about-content { display: flex; gap: 5rem; align-items: center; max-width: 1200px; margin: 0 auto; }
-        .about-image { flex-shrink: 0; }
-        .about-image img { width: 320px; height: 320px; border-radius: 15px; object-fit: cover; border: 6px solid var(--primary); box-shadow: var(--shadow-lg); }
+        .about-content { display: flex; gap: clamp(2rem, 5vw, 5rem); align-items: flex-start; max-width: 1200px; margin: 0 auto; }
+        .about-image img { width: 350px; height: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; object-fit: cover; border: 6px solid var(--primary); box-shadow: var(--shadow-lg); }
         .about-text { flex: 1; text-align: left; }
-        .about-text h3 { color: var(--primary); margin: 2rem 0 1rem; font-size: 1.6rem; font-weight: 800; border-left: 5px solid var(--accent); padding-left: 20px; }
+        .about-text h3 { color: var(--primary); margin: 1.5rem 0 0.8rem; font-size: 1.5rem; font-weight: 800; border-left: 5px solid var(--accent); padding-left: 15px; }
         
-        .statement-section { background: white; padding: 4rem 0; text-align: center; }
-        .statement-text { color: var(--primary); font-size: 2.2rem; font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .statement-section { background: var(--bg); padding: 4rem 0; text-align: center; }
+        .statement-text { color: var(--primary); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; }
 
-        .consult-btn-wrapper { margin-top: 3.5rem; text-align: center; width: 100%; }
+        .fit-box { background: var(--card-bg); padding: clamp(1.5rem, 5%, 3.5rem); border-radius: 12px; border-left: 8px solid var(--accent); box-shadow: var(--shadow); max-width: 1000px; margin: 2rem auto; }
+        .fit-box li { padding: 0.8rem 0 0.8rem 2.5rem; position: relative; list-style: none; color: var(--text-light); border-bottom: 1px solid var(--border); font-size: 1.15rem; text-align: left; }
+        .fit-box li:before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0; color: var(--accent); }
 
-        .fit-box { background: var(--bg); padding: 3.5rem; border-radius: 12px; border-left: 10px solid var(--accent); box-shadow: var(--shadow); max-width: 1000px; margin: 0 auto; }
-        .fit-box li { padding: 1rem 0 1rem 3.5rem; position: relative; list-style: none; color: var(--text-light); border-bottom: 1px solid #f0f0f0; font-size: 1.25rem; text-align: left; }
-        .fit-box li:before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; left: 0.5rem; color: var(--accent); }
+        .hear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .hear-quote { background: var(--quote-bg); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--primary); font-style: italic; position: relative; text-align: left; color: var(--text-light); font-weight: 600; }
+        .hear-quote::after { content: "\f10e"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; bottom: 10px; right: 10px; color: var(--border); font-size: 1.2rem; }
 
-        .hear-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 3rem; }
-        .hear-quote { background: #f8fafc; padding: 1.5rem; border-radius: 15px; border: 1px solid var(--border); border-left: 5px solid var(--primary); font-style: italic; font-weight: 600; color: var(--text-light); position: relative; text-align: left; }
-        .hear-quote::after { content: "\f10e"; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; bottom: 10px; right: 15px; color: #e2e8f0; font-size: 1.5rem; }
+        .cert-container-box { border: 3px solid var(--primary); border-radius: 15px; padding: 3rem 1.5rem; background-color: var(--cert-bg-dark); }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; justify-content: center; }
+        .cert-item img { width: 100%; height: auto; border-radius: 8px; border: 3px solid var(--accent); cursor: zoom-in; }
 
-        .cert-container-box { border: 3px solid var(--primary); border-radius: 15px; padding: 4rem 2rem; background-color: var(--cert-bg-dark); box-shadow: var(--shadow-lg); }
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 2rem; justify-content: center; }
-        .cert-item img { width: 100%; height: auto; border: 4px solid var(--accent); border-radius: 10px; cursor: zoom-in; transition: 0.3s; background: white; }
+        .contact-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: clamp(1.5rem, 5%, 3.5rem); border-radius: 20px; box-shadow: var(--shadow-lg); border-bottom: 8px solid var(--accent); }
+        .contact-intro-text { text-align: center; max-width: 800px; margin: -1rem auto 3rem; font-size: 1.25rem; color: var(--text-light); font-weight: 500; line-height: 1.6; padding: 0 20px; }
+        .form-group label { display: block; margin-bottom: 0.8rem; font-weight: 700; color: var(--primary); }
+        .form-group input, .form-group textarea { width: 100%; padding: 1.1rem; border: 2px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 1rem; background-color: var(--input-bg); color: var(--text); margin-bottom: 1.2rem; }
+        .form-btn-wrap { display: flex; justify-content: center; width: 100%; margin-top: 1.5rem; }
 
-        .contact-container { max-width: 750px; margin: 0 auto; background: white; padding: 4rem; border-radius: 20px; text-align: left; box-shadow: var(--shadow-lg); border: 1px solid var(--border); border-bottom: 8px solid var(--accent); }
-        .contact-intro-text { text-align: center; max-width: 800px; margin: -1.5rem auto 3.5rem; font-size: 1.25rem; color: var(--text-light); font-weight: 500; line-height: 1.6; padding: 0 20px; }
-        .form-group label { display: block; margin-bottom: 0.8rem; font-weight: 700; color: var(--primary); font-size: 1.1rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1.3rem; border: 2px solid #edf2f7; border-radius: 10px; font-family: inherit; font-size: 1.1rem; transition: 0.3s; background-color: #f8fafc; margin-bottom: 1.5rem; }
-        .form-btn-wrap { text-align: center; width: 100%; margin-top: 1rem; }
-        
-        .final-cta { background: linear-gradient(135deg, #003580 0%, var(--primary) 100%); color: white; padding: 8rem 0; text-align: center; position: relative; }
-        .final-cta::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px; background: var(--accent); }
-        .cta-profile-img { width: 125px; height: 125px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 2rem; box-shadow: var(--shadow-lg); object-fit: cover; }
+        .final-cta { background: linear-gradient(135deg, #003580 0%, #0047AB 100%); color: white; padding: 6rem 0; text-align: center; }
+        .cta-profile-img { width: 125px; height: 125px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 2rem; object-fit: cover; }
 
-        footer { padding: 5rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
+        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .social-icon { font-size: 1.5rem; color: var(--primary); background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.5s ease-in-out; font-weight: 800; }
-        .social-icon:hover { background: var(--primary); color: white; transform: rotate(360deg); }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
+        .social-icon:hover { transform: scale(1.1); background: var(--primary); color: white; }
 
         #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
         #lightbox img { max-width: 90%; max-height: 90%; border: 4px solid white; }
 
-        @media (max-width: 1250px) { .logo-tagline { display: none; } .nav-links::before { display: none; } .nav-links { padding-left: 0; } .statement-text { font-size: 1.6rem; } }
-        @media (max-width: 992px) { .about-content { flex-direction: column; align-items: center; text-align: center; gap: 3rem; } .about-text { text-align: center; } }
-        @media (max-width: 768px) {
-            header { height: auto; padding: 15px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: white; flex-direction: column; padding: 2rem; border-bottom: 3px solid var(--accent); gap: 1.5rem; }
+        /* MEDIA QUERIES */
+        @media (max-width: 1250px) { 
+            .logo-tagline { display: none; } 
+        }
+
+        @media (max-width: 1024px) { 
+            .about-content { gap: 2rem; padding: 0 20px; } .hero { padding: 5rem 0; } 
+        }
+
+        @media (max-width: 767px) {
+            header { min-height: 80px; }
+            .container { padding: 0 20px; }
+            
+            /* MOBILE NAVIGATION MENU */
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
+            
+            /* MOBILE LOGO TEXT FIX */
+            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
+            .logo-tagline { 
+                display: block !important; 
+                border-left: none; 
+                padding-left: 0; 
+                margin-left: 5px; /* Reduced spacing for mobile */
+                font-size: 0.7rem; 
+                white-space: normal; 
+                line-height: 1.1;
+                max-width: 180px; 
+            }
+
+            /* MOBILE BUTTON AND TEXT FIXES */
+            .cta-button {
+                padding: 1rem 1.5rem; /* Smaller padding for mobile */
+                font-size: 1rem; /* Smaller font for mobile */
+                width: auto;
+                max-width: 90%;
+            }
+            .hero h1 { font-size: 2rem; } /* Fixed smaller size for Hero */
+            .hero .hero-intro-text { font-size: 1rem; }
+
+            .about-content { flex-direction: column; text-align: center; align-items: center; }
+            .about-text { text-align: center; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .nav-for-you::after { left: 40%; right: 40%; }
+            .centered-card-wrapper .card { max-width: 100%; }
         }
     </style>
 </head>
@@ -149,9 +247,9 @@
         <nav class="container">
             <a href="#home" class="logo-wrap">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley B" class="header-photo">
-                <div class="logo-main">Linley<span class="logo-b">B</span></div>
-                <div class="logo-tagline">
-                    English Teacher <span class="pipe-sep">|</span> <span class="tagline-black">Business English & Workplace <span class="pipe-sep">|</span></span>
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
                 </div>
             </a>
             <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
@@ -180,7 +278,9 @@
                     <p>If you use <b>English at work</b> but feel unsure in meetings or want to improve your <b>communication skills</b> to explain ideas clearly, I can help.</p>
                     <p style="margin-top: 1.5rem;">I provide <b>friendly and relaxed classes</b> tailored to your professional needs. I am a <b>native English Teacher from Australia</b> with over <b>24 years of experience</b>.</p>
                 </div>
-                <a href="https://www.classgap.com/en/tutor/linley" target="_blank" class="cta-button">Start Your Free Trial Class</a>
+                <div class="consult-btn-wrapper">
+                    <a href="https://www.classgap.com/en/tutor/linley" target="_blank" class="cta-button">Start Your Free Trial Class Now</a>
+                </div>
             </div>
         </section>
 
@@ -219,6 +319,76 @@
                     <div class="card"><i class="fas fa-leaf"></i><h3>Speaking Naturally</h3><p>Improve your intonation and rhythm to sound more natural and persuasive.</p></div>
                     <div class="centered-card-wrapper">
                         <div class="card"><i class="fas fa-globe-americas"></i><h3>Cultural Intelligence</h3><p>Understand the nuances and expectations of international business communication.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="who-for">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> Who This Is For</h2>
+                <div class="fit-box" style="margin-bottom: 4rem;">
+                    <ul>
+                        <li><b>Use English at work</b> every single day (or will be soon).</li>
+                        <li>Need English for specific tasks: <b>Meetings, Emails, Presentations, Negotiations, and Interviews.</b></li>
+                        <li>Need to communicate clearly when <b>Reporting problems</b> or <b>Explaining decisions.</b></li>
+                        <li>Want to expand your <b>business vocabulary</b> to add more variety.</li>
+                        <li><b>Need to master Small Talk</b> to build better relationships and network with confidence.</li>
+                        <li>Want help with <b>grammar</b> and how to use it correctly in workplace speaking.</li>
+                        <li>Want <b>structured lessons</b> based on real workplace conversations.</li>
+                        <li><b>Know grammar but feel hesitant</b> when speaking in high-pressure professional settings.</li>
+                        <li>Want <b>practical conversation practice</b> to improve your fluency and sound more natural.</li>
+                    </ul>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Role-Specific Training Examples</h2>
+                <div class="fit-box" style="margin-bottom: 4rem;">
+                    <ul>
+                        <li><b>Coders, Programmers & Software Developers:</b> Sprint updates and collaborative problem-solving.</li>
+                        <li><b>Data Scientists & Financial Analysts:</b> Explaining complex data and insights to stakeholders.</li>
+                        <li><b>Accountants:</b> Clear reporting, client advising, and explaining financial discrepancies.</li>
+                        <li><b>Engineers:</b> Technical documentation, project reporting, and onsite communication.</li>
+                        <li><b>Logistics & Inventory Management:</b> Supply chain communication and vendor coordination.</li>
+                        <li><b>Small Business Owners & Digital Marketers:</b> Networking, pitches, and relationship building.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="way-we-learn" style="background-color: var(--section-highlight);">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> The Way We Learn</h2>
+                <div class="fit-box">
+                    <p style="margin-bottom: 1.5rem; font-size: 1.3rem;">I focus on <b>mainly conversation and communication practice</b> combined with interactive materials and professional ebooks.</p>
+                    <p style="margin-bottom: 2rem; font-size: 1.3rem;">My classes are <b>friendly and relaxed</b>, creating a supportive environment where you can practice without stress.</p>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800;">Training that Transfers Directly to Work</h3>
+                    <ul>
+                        <li><b>Real Scenarios:</b> situations and tasks from your actual current job.</li>
+                        <li><b>Real Conversation & Communication:</b> practical speaking focus for workplace tasks.</li>
+                        <li><b>Real Vocab & Expressions:</b> high-impact language specific to professional contexts.</li>
+                        <li><b>Live Correction & Rephrasing:</b> Immediate feedback while you speak.</li>
+                        <li><b>Practical Summaries:</b> Actionable notes and sentence frameworks delivered after every class.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <div class="container">
+                <div class="cert-container-box">
+                    <h2 class="section-title" style="color: white;"><i class="fas fa-medal"></i> Certifications</h2>
+                    <div class="cert-grid">
+                        <div class="cert-item"><img src="https://i.ibb.co/pjx5n8Z3/Screenshot-2024-12-04-162651.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/MkcYZ0Zr/Screenshot-2024-04-24-150313.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/fzStTY8S/Screenshot-2024-04-20-161251.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/4RBWMn7R/Screenshot-2024-12-04-162437.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/XZjStHy2/Business-English-Cert-2020-01-30-Linley-Bignoux-page-0001.jpg" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/nq1Zk80z/Screenshot-2024-05-07-203655.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/HfgBtDzw/Screenshot-2024-05-07-204447.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/BV0LnHhQ/Screenshot-2024-05-07-204401.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/HfMbk4km/Screenshot-2025-10-25-102441.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/qYbJm0f1/Screenshot-2025-10-25-102516.png" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/QFpjtdSF/UC-23e1b46e-6416-4ca0-a1ec-9bcd8db61d7c.jpg" onclick="zoom(this)"></div>
                     </div>
                 </div>
             </div>
@@ -274,75 +444,10 @@
                     <div class="hear-quote">"My emails are fine, but I'm terrified of the Q&A after a presentation."</div>
                     <div class="hear-quote">"I worry that I sound rude or aggressive when I try to be direct."</div>
                     <div class="hear-quote">"I stay quiet in meetings even when I have a great idea because of my grammar."</div>
+                    <div class="hear-quote">"I dread the first few minutes of the call because I don't know how to make small talk."</div>
                 </div>
                 <div class="consult-btn-wrapper">
                     <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" class="cta-button" style="background: var(--primary); color: white;">Book Your Free Consultation</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="who-for">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-bullseye"></i> Who This Is For</h2>
-                <div class="fit-box" style="margin-bottom: 4rem;">
-                    <ul>
-                        <li><b>Use English at work</b> every single day (or will be soon).</li>
-                        <li>Need English for specific tasks: <b>Meetings, Emails, Presentations, Negotiations, and Interviews.</b></li>
-                        <li>Need to communicate clearly when <b>Reporting problems</b> or <b>Explaining decisions.</b></li>
-                        <li>Want to expand your <b>business vocabulary</b> to add more variety.</li>
-                        <li><b>Need to master Small Talk</b> to build better relationships and network with confidence.</li>
-                        <li>Want help with <b>grammar</b> and how to use it correctly in workplace speaking.</li>
-                        <li>Want <b>structured lessons</b> based on real workplace conversations.</li>
-                        <li><b>Know grammar but feel hesitant</b> when speaking in high-pressure professional settings.</li>
-                        <li>Want <b>practical conversation practice</b> to improve your fluency and sound more natural.</li>
-                    </ul>
-                </div>
-
-                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Role-Specific Training Examples</h2>
-                <div class="fit-box" style="margin-bottom: 4rem;">
-                    <ul>
-                        <li><b>Coders, Programmers & Software Developers:</b> Sprint updates and collaborative problem-solving.</li>
-                        <li><b>Data Scientists & Financial Analysts:</b> Explaining complex data and insights to stakeholders.</li>
-                        <li><b>Accountants:</b> Clear reporting, client advising, and explaining financial discrepancies.</li>
-                        <li><b>Engineers:</b> Technical documentation, project reporting, and onsite communication.</li>
-                        <li><b>Logistics & Inventory Management:</b> Supply chain communication and vendor coordination.</li>
-                        <li><b>Small Business Owners & Digital Marketers:</b> Networking, pitches, and relationship building.</li>
-                    </ul>
-                </div>
-
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> The Way We Learn</h2>
-                <div class="fit-box">
-                    <p style="margin-bottom: 1.5rem; font-size: 1.3rem;">I focus on <b>mainly conversation and communication practice</b> combined with interactive materials and professional ebooks.</p>
-                    <p style="margin-bottom: 2rem; font-size: 1.3rem;">My classes are <b>friendly and relaxed</b>, creating a supportive environment where you can practice without stress.</p>
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800;">Training that Transfers Directly to Work</h3>
-                    <ul>
-                        <li><b>Real Scenarios:</b> situations and tasks from your actual current job.</li>
-                        <li><b>Real Conversation & Communication:</b> practical speaking focus for workplace tasks.</li>
-                        <li><b>Real Vocab & Expressions:</b> high-impact language specific to professional contexts.</li>
-                        <li><b>Live Correction & Rephrasing:</b> Immediate feedback while you speak.</li>
-                        <li><b>Practical Summaries:</b> Actionable notes and sentence frameworks delivered after every class.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications">
-            <div class="container">
-                <div class="cert-container-box">
-                    <h2 class="section-title" style="color: white;"><i class="fas fa-medal"></i> Certifications</h2>
-                    <div class="cert-grid">
-                        <div class="cert-item"><img src="https://i.ibb.co/pjx5n8Z3/Screenshot-2024-12-04-162651.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/MkcYZ0Zr/Screenshot-2024-04-24-150313.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/fzStTY8S/Screenshot-2024-04-20-161251.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/4RBWMn7R/Screenshot-2024-12-04-162437.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/XZjStHy2/Business-English-Cert-2020-01-30-Linley-Bignoux-page-0001.jpg" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/nq1Zk80z/Screenshot-2024-05-07-203655.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/HfgBtDzw/Screenshot-2024-05-07-204447.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/BV0LnHhQ/Screenshot-2024-05-07-204401.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/HfMbk4km/Screenshot-2025-10-25-102441.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/qYbJm0f1/Screenshot-2025-10-25-102516.png" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/QFpjtdSF/UC-23e1b46e-6416-4ca0-a1ec-9bcd8db61d7c.jpg" onclick="zoom(this)"></div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -351,7 +456,7 @@
             <div class="container blog-card-wrap">
                 <h2 class="section-title"><i class="fas fa-lightbulb"></i> Insights & Tips</h2>
                 <div class="grid-cards">
-                    <a href="workplace-communication-vs-business-english.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="beyond-grammar.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">27 JAN 2026</span>
                             <h3>Beyond Grammar: Why Communication is the Real Business Language</h3>
@@ -365,7 +470,7 @@
                             <p>Practical strategies for engineers and IT experts to improve communication fast.</p>
                         </div>
                     </a>
-                    <a href="workplace-basics-blog.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="workplace-english-technical-to-talk.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">19 JAN 2026</span>
                             <h3>Workplace English: Technical to Talk</h3>
@@ -416,7 +521,9 @@
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley B" class="cta-profile-img">
                 <h2>Ready to communicate for job performance?</h2>
                 <p style="margin-bottom: 2.5rem; font-size: 1.4rem; opacity: 0.9;">Fewer misunderstandings. Better decisions. Smoother collaboration.</p>
-                <a href="https://www.classgap.com/en/tutor/linley" target="_blank" class="cta-button">Claim Your Free Trial Class Now</a>
+                <div class="consult-btn-wrapper">
+                    <a href="https://www.classgap.com/en/tutor/linley" target="_blank" class="cta-button">Claim Your Free Trial Class Now</a>
+                </div>
             </div>
         </section>
     </main>
@@ -433,8 +540,23 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-        function zoom(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').style.display = 'flex'; }
+        // Toggle mobile menu
+        function toggleMenu() { 
+            document.getElementById('navLinks').classList.toggle('active'); 
+        }
+
+        // Close mobile menu AUTOMATICALLY when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Lightbox image zoom
+        function zoom(img) { 
+            document.getElementById('lightbox-img').src = img.src; 
+            document.getElementById('lightbox').style.display = 'flex'; 
+        }
     </script>
 </body>
 </html>
