@@ -250,17 +250,14 @@
         }
         .ml-form-embedSubmit button:hover { background-color: #e6c200 !important; transform: translateY(-2px); }
         
-        /* Hide the Checkbox row and Recaptcha errors if they look messy */
         .ml-form-checkboxRow { text-align: left; margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
         .ml-form-checkboxRow input { width: auto !important; margin-right: 10px; }
         
-        /* Recaptcha Centering */
         .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
 
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
         
-        /* SOCIAL ICON SPIN FIX */
         .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
 
@@ -279,36 +276,15 @@
         @media (max-width: 767px) {
             header { min-height: 80px; }
             .container { padding: 0 20px; }
-            
-            /* MOBILE NAVIGATION MENU */
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
-            
-            /* MOBILE LOGO TEXT FIX */
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { 
-                display: block !important; 
-                border-left: none; 
-                padding-left: 0; 
-                margin-left: 5px; 
-                font-size: 0.7rem; 
-                white-space: normal; 
-                line-height: 1.1;
-                max-width: 180px; 
-            }
-
-            /* MOBILE BUTTON AND TEXT FIXES */
-            .cta-button {
-                padding: 1rem 1.5rem; /* Smaller padding for mobile */
-                font-size: 1rem; /* Smaller font for mobile */
-                width: auto;
-                max-width: 90%;
-            }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .cta-button { padding: 1rem 1.5rem; font-size: 1rem; width: auto; max-width: 90%; }
             .hero h1 { font-size: 2rem; } 
             .hero .hero-intro-text { font-size: 1rem; }
-
             .about-content { flex-direction: column; text-align: center; align-items: center; }
             .about-text { text-align: center; }
             .grid-cards { grid-template-columns: 1fr; }
@@ -588,12 +564,9 @@
                 <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
                 <p class="contact-intro-text">If you have any questions or would like to talk about what you need help with or your specific requirements, please feel free to contact me below.</p>
                 <div class="contact-container">
-                    
                     <form action="https://formsubmit.co/blanyves@optusnet.com.au" method="POST">
                         <input type="hidden" name="_captcha" value="false">
-                        
                         <input type="hidden" name="_next" value="https://linleyb.com/thanks.html">
-
                         <div class="form-group">
                             <label>Full Name</label>
                             <input type="text" name="name" required placeholder="Your name">
@@ -610,7 +583,6 @@
                             <button type="submit" class="cta-button">Send Secure Message</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </section>
@@ -631,9 +603,6 @@
                 <div id="mlb2-36646566" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-36646566">
                     <div class="ml-form-align-center">
                         <div class="ml-form-embedWrapper embedForm">
-                            <div class="ml-form-embedHeader">
-                                <img src="https://storage.mlcdn.com/account_image/1750605/9XGy2uBiPnuAA5BODOZ6XIvr6D2L2jWodpA44Ex3.png" alt="Linley Bignoux Newsletter" border="0" style="display: block;">
-                            </div>
                             <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                                 <div class="ml-form-embedContent">
                                     <h4>Newsletter</h4>
@@ -680,7 +649,6 @@
                         </div>
                     </div>
                 </div>
-                
                 <script>
                     function ml_webform_success_36646566() {
                         var $ = ml_jQuery || jQuery;
@@ -709,23 +677,11 @@
     </footer>
 
     <script>
-        // Toggle mobile menu
-        function toggleMenu() { 
-            document.getElementById('navLinks').classList.toggle('active'); 
-        }
-
-        // Close mobile menu AUTOMATICALLY when a link is clicked
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-            });
+            link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); });
         });
-
-        // Lightbox image zoom
-        function zoom(img) { 
-            document.getElementById('lightbox-img').src = img.src; 
-            document.getElementById('lightbox').style.display = 'flex'; 
-        }
+        function zoom(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').style.display = 'flex'; }
     </script>
 </body>
 </html>
