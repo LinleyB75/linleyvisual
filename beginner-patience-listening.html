@@ -3,75 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A guide for A1 (Beginner) and A2 (Elementary) English learners on how to improve listening and motivation.">
-    <title>Patience and Listening | Linley B</title>
-    
+    <title>Patience & Listening for Beginners | Linley B</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <meta name="google-site-verification" content="psUf9L9vQpweUrvTikNOYh2rmWYmKcQfyXXhUGQ3EDY" />
 
     <style>
-        /* --- SHARED CSS (Matches Homepage Master Code) --- */
+        /* HEADER CSS MATCHING HOMEPAGE */
+        :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --bg: #ffffff; --bg-alt: #fafbfc; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); }
         
-        :root {
-            --primary: #0047AB; 
-            --accent: #FFD700; 
-            --text: #1f2937;
-            --text-light: #4b5563; 
-            --bg: #ffffff; 
-            --bg-alt: #fafbfc;
-            --border: #e5e7eb; 
-            --section-highlight: #f0f4f8;
-        }
-
-        /* DARK MODE SUPPORT */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --primary: #4fa3ff; 
-                --accent: #FFD700; 
-                --text: #f3f4f6;    
-                --text-light: #9ca3af; 
-                --bg: #0f172a;      
-                --bg-alt: #1e293b;  
-                --border: #334155; 
-                --section-highlight: #1e293b;
-            }
-        }
-
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); overflow-x: hidden; }
-        
-        /* HEADER */
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 80px; display: flex; align-items: center; width: 100%; }
-        .container { max-width: 900px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
-        
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
-        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 5px 15px; border-radius: 50px; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
+        .logo-text-group { display: flex; align-items: center; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: #f0f4f8; padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-b { color: var(--text); }
-
-        .back-btn { text-decoration: none; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .back-btn:hover { color: var(--primary); }
-
-        /* BLOG CONTENT */
-        .blog-header { padding: 4rem 0 2rem; text-align: center; }
-        .blog-date { font-size: 0.9rem; color: #0047AB; font-weight: 700; background: var(--accent); padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
-        h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); line-height: 1.3; margin-bottom: 1.5rem; color: var(--primary); }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
+        .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
         
-        .blog-body { font-size: 1.15rem; color: var(--text); }
-        .blog-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--primary); font-size: 1.6rem; }
-        .blog-body p { margin-bottom: 1.5rem; }
-        .blog-body ul { margin-bottom: 1.5rem; padding-left: 20px; }
-        .blog-body li { margin-bottom: 0.8rem; }
+        /* CONTENT CSS */
+        .blog-container { max-width: 800px; margin: 4rem auto; padding: 0 20px; }
+        .blog-header { text-align: center; margin-bottom: 3rem; }
+        .blog-date { background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 2.5rem; color: var(--primary); margin-top: 1.5rem; line-height: 1.2; font-weight: 900; }
+        .content { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); }
+        .content p { margin-bottom: 1.5rem; font-size: 1.15rem; color: #374151; }
+        .content h2 { color: var(--primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+        .content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .content li { margin-bottom: 0.8rem; font-size: 1.1rem; }
         
-        .highlight-box { background: var(--bg-alt); border-left: 5px solid var(--accent); padding: 2rem; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
-
-        /* CTA AREA */
-        .blog-cta { background: var(--section-highlight); padding: 3rem; text-align: center; border-radius: 15px; margin-top: 4rem; border: 2px solid var(--primary); }
-        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 1rem; transition: 0.3s; }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        /* FOOTER */
-        footer { padding: 3rem 0; text-align: center; margin-top: 4rem; border-top: 1px solid var(--border); font-size: 0.9rem; opacity: 0.8; }
+        footer { padding: 3rem 0; text-align: center; border-top: 3px solid var(--primary); margin-top: 4rem; background: white; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
+        
+        @media (max-width: 768px) { .logo-tagline, .nav-links { display: none; } h1 { font-size: 1.8rem; } .content { padding: 1.5rem; } }
     </style>
 </head>
 <body>
@@ -79,118 +49,49 @@
     <header>
         <nav class="container">
             <a href="index.html" class="logo-wrap">
-                <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                </div>
             </a>
-            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#fix">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <main class="container">
-        <article>
-            <div class="blog-header">
-                <span class="blog-date">28 JAN 2026</span>
-                <h1>Patience and Listening: How Beginner to Low Level English Learners Can Improve</h1>
+    <div class="blog-container">
+        <div class="blog-header">
+            <span class="blog-date">28 JAN 2026</span>
+            <h1>Patience & Listening for Beginners</h1>
+        </div>
+
+        <div class="content">
+            <p>If you are a beginner (A1-A2) or returning to English after many years, you might feel frustrated. You want to speak fluently <i>now</i>, but the words come out slowly.</p>
+            <p>This is normal. Learning a language is not a sprint; it is a marathon.</p>
+
+            <h2>The Power of Listening</h2>
+            <p>Before you can speak well, you must listen well. Many beginners try to force speaking before they have heard enough English.</p>
+            <ul>
+                <li><b>Action:</b> Listen to simple English podcasts for 10 minutes every day.</li>
+                <li><b>Action:</b> Watch YouTube videos with subtitles.</li>
+                <li><b>Action:</b> Be patient with yourself. Small steps every day add up to big results.</li>
+            </ul>
+
+            <p>In our beginner classes, we focus heavily on listening and repeating. We build your confidence slowly, so you feel safe to make mistakes and learn.</p>
+
+            <div style="text-align: center;">
+                <a href="index.html#contact" class="btn">Start Your English Journey</a>
             </div>
-
-            <div class="blog-body">
-                <p>Learning English as a beginner can feel challenging, but with patience and the right practice, anyone can improve. This guide is for <b>A1 (Beginner)</b> and <b>A2 (Elementary)</b> English learners, based on the CEFR standards.</p>
-
-                <h2>Why Learning English Can Be Hard at the Beginner Level</h2>
-                <p>There are some common reasons why beginner learners may struggle:</p>
-                <ul>
-                    <li><b>Languages don’t come naturally to everyone:</b> some people need more time to absorb new words or grammar.</li>
-                    <li><b>Learning difficulties:</b> conditions like dyslexia or attention disorders can make language learning slower.</li>
-                    <li><b>Fear of making mistakes:</b> beginners often feel shy and worry about speaking incorrectly.</li>
-                </ul>
-                <p>These challenges are normal, and teachers and learners can work around them with patience, practice, and the right mindset.</p>
-
-                <h2>1. Patience Is Key</h2>
-                <p>For lower-level learners, learning happens slowly. Small steps are better than trying to learn everything at once.</p>
-                <ul>
-                    <li>Take your time. Don’t rush answers.</li>
-                    <li>Teachers should use simple sentences and easy words.</li>
-                    <li>Positive feedback is more effective than correcting every mistake.</li>
-                </ul>
-                <div class="highlight-box">
-                    <p><b>Tip for learners:</b> Practice speaking in small sentences. Even one sentence a day is progress.</p>
-                </div>
-
-                <h2>2. Motivation Helps You Learn</h2>
-                <p>Staying motivated is very important for beginner learners. You can:</p>
-                <ul>
-                    <li><b>Set small goals:</b> e.g., learn 5 new words a day.</li>
-                    <li><b>Remember why you are learning:</b> better jobs, travel, or connecting with people.</li>
-                    <li><b>Celebrate success:</b> even small achievements matter.</li>
-                    <li><b>Believe in yourself:</b> your ability to learn is already there.</li>
-                </ul>
-                <p>Motivation + patience = confidence + progress.</p>
-
-                <h2>3. Listening Is Your First Skill</h2>
-                <p>Listening is the foundation of learning English. When you listen, you can hear how words are pronounced, learn common sentences, and understand different accents.</p>
-                <p><b>How to Improve Listening as a Beginner:</b></p>
-                <ul>
-                    <li>Listen to English audio with text (podcasts, recordings, or apps with subtitles).</li>
-                    <li>Repeat words and short sentences out loud to mimic pronunciation.</li>
-                    <li>Listen to English in different settings: news, radio, simple stories, and songs.</li>
-                    <li>Focus on clear examples first, then move to more complex sentences.</li>
-                </ul>
-                <div class="highlight-box">
-                    <p><b>Tip for learners:</b> Listen for 5–10 minutes every day. Even short practice builds your brain for English.</p>
-                </div>
-
-                <h2>4. Practice Makes English Easier</h2>
-                <p>Practice is important, but it should be comfortable and encouraging:</p>
-                <ul>
-                    <li>Speak slowly and clearly.</li>
-                    <li>Practice with friends, teachers, or online partners.</li>
-                    <li>Don’t worry about mistakes — everyone makes them.</li>
-                    <li>Try reading aloud after listening to a sentence. This links your listening and speaking skills.</li>
-                </ul>
-                <p>Remember: The more you hear English, the more your brain learns naturally.</p>
-
-                <h2>5. Create a Comfortable Learning Environment</h2>
-                <p>Beginner learners learn best when they feel safe and supported:</p>
-                <ul>
-                    <li>Teachers should be patient and encouraging.</li>
-                    <li>Avoid correcting every mistake — focus on understanding and communication.</li>
-                    <li>Independent study can help: listen to short audios, read simple texts, and repeat what you hear.</li>
-                </ul>
-                <p>Confidence grows when you know your effort is noticed.</p>
-
-                <h2>6. Small Steps Lead to Big Progress</h2>
-                <p>Even small daily practices can make a huge difference:</p>
-                <ul>
-                    <li><b>Listening:</b> 5–10 minutes per day</li>
-                    <li><b>Reading:</b> simple texts or news for 5 minutes</li>
-                    <li><b>Speaking:</b> try a few sentences about your day</li>
-                    <li><b>Writing:</b> short sentences or words you learn</li>
-                </ul>
-                <p>Over time, you’ll notice you understand more English and can speak with more confidence.</p>
-
-                <h2>7. Summary</h2>
-                <div class="highlight-box">
-                    <p>Focus on three things:</p>
-                    <ol>
-                        <li><b>Patience:</b> learning takes time, and mistakes are part of the process.</li>
-                        <li><b>Motivation:</b> set goals, celebrate small wins, and remember why you are learning.</li>
-                        <li><b>Listening:</b> practice hearing English every day to improve your understanding and pronunciation.</li>
-                    </ol>
-                    <p style="margin-top: 15px;"><b>Tip for learners:</b> Start today. Even 5 minutes a day of listening, reading, or speaking will help you improve over time.</p>
-                </div>
-                
-                <p>Cheers,<br><b>Linley</b></p>
-            </div>
-
-            <div class="blog-cta">
-                <h3>Start your English journey today</h3>
-                <p>I specialize in creating a patient, encouraging environment for beginners.</p>
-                <a href="https://www.classgap.com/en/tutor/linley" class="cta-button">Book a Free Trial Class</a>
-            </div>
-        </article>
-    </main>
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2026 LinleyB | English Teacher for Workplace & Business English</p>
+        <p>&copy; 2026 <b>LinleyB</b> | <a href="index.html" style="color: inherit; text-decoration: none;">Back to Homepage</a></p>
     </footer>
 
 </body>
