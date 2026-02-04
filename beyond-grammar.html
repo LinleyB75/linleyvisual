@@ -3,58 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Why perfect grammar isn't enough for business success. Learn why communication skills matter more for career growth.">
-    <title>Beyond Grammar | Linley B</title>
+    <title>Beyond Grammar: Why Communication is the Real Business Language | Linley B</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <meta name="google-site-verification" content="psUf9L9vQpweUrvTikNOYh2rmWYmKcQfyXXhUGQ3EDY" />
+
     <style>
+        /* --- GLOBAL STYLES & HEADER CSS (MATCHING INDEX.HTML) --- */
+        :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --bg: #ffffff; --bg-alt: #fafbfc; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --section-highlight: #f0f4f8; }
-        @media (prefers-color-scheme: dark) { :root { --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; } }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); overflow-x: hidden; }
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 80px; display: flex; align-items: center; width: 100%; }
-        .container { max-width: 900px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); }
+        
+        /* HEADER */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
-        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 5px 15px; border-radius: 50px; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
+        .logo-text-group { display: flex; align-items: center; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: #f0f4f8; padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-b { color: var(--text); }
-        .back-btn { text-decoration: none; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 8px; transition: 0.3s; }
-        .back-btn:hover { color: var(--primary); }
-        .blog-header { padding: 4rem 0 2rem; text-align: center; }
-        .blog-date { font-size: 0.9rem; color: #0047AB; font-weight: 700; background: var(--accent); padding: 4px 12px; border-radius: 4px; display: inline-block; margin-bottom: 1rem; }
-        h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 1.5rem; color: var(--primary); }
-        .blog-body { font-size: 1.15rem; color: var(--text); }
-        .blog-body h2 { margin-top: 2.5rem; margin-bottom: 1rem; color: var(--primary); font-size: 1.8rem; }
-        .blog-body p { margin-bottom: 1.5rem; }
-        .blog-body ul, .blog-body ol { margin-bottom: 1.5rem; padding-left: 20px; }
-        .blog-body li { margin-bottom: 0.8rem; }
-        .highlight-box { background: var(--bg-alt); border-left: 5px solid var(--accent); padding: 2rem; margin: 2rem 0; border-radius: 8px; border: 1px solid var(--border); }
-        .blog-cta { background: var(--section-highlight); padding: 3rem; text-align: center; border-radius: 15px; margin-top: 4rem; border: 2px solid var(--primary); }
-        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 1rem; transition: 0.3s; }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        footer { padding: 3rem 0; text-align: center; margin-top: 4rem; border-top: 1px solid var(--border); font-size: 0.9rem; opacity: 0.8; }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
+        
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
+        .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
+        
+        /* BLOG CONTENT STYLES */
+        .blog-container { max-width: 800px; margin: 4rem auto; padding: 0 20px; }
+        .blog-header { text-align: center; margin-bottom: 3rem; }
+        .blog-date { background: var(--primary); color: white; padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        h1 { font-size: 2.5rem; color: var(--primary); margin-top: 1.5rem; line-height: 1.2; font-weight: 900; }
+        .content { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--accent); }
+        .content p { margin-bottom: 1.5rem; font-size: 1.15rem; color: #374151; }
+        .content h2 { color: var(--primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
+        .content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+        .content li { margin-bottom: 0.8rem; font-size: 1.1rem; }
+        .highlight-box { background: #f0f9ff; border-left: 5px solid var(--primary); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; font-style: italic; color: #1e3a8a; }
+        
+        /* FOOTER */
+        footer { padding: 3rem 0; text-align: center; border-top: 3px solid var(--primary); margin-top: 4rem; background: white; }
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .logo-tagline { display: none; }
+            .nav-links { display: none; } /* Simplified mobile view */
+            .content { padding: 1.5rem; }
+            h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
-    <header><nav class="container"><a href="index.html" class="logo-wrap"><div class="logo-main">Linley<span class="logo-b">B</span></div></a><a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a></nav></header>
-    <main class="container">
-        <article>
-            <div class="blog-header"><span class="blog-date">27 JAN 2026</span><h1>Beyond Grammar: Why Communication is the Real Business Language</h1></div>
-            <div class="blog-body">
-                <p><b>"Is my grammar correct?"</b></p>
-                <p>This is the most common question new students ask me. It makes sense. In school, we were graded on grammar. A mistake meant failure.</p>
-                <p>But the workplace is not a classroom.</p>
-                <p>In my 24 years working in global corporations, I noticed something important: <b>The people who got promoted weren't always the ones with perfect English grammar.</b> They were the ones who could communicate outcomes clearly.</p>
-                <h2>The "Perfect English" Trap</h2>
-                <p>Many professionals stay silent in meetings because they are mentally checking their verb tenses. By the time they construct the "perfect" sentence, the conversation has moved on.</p>
-                <div class="highlight-box"><h3>Communication vs. Grammar</h3><ul><li><b>Grammar</b> is about following rules.</li><li><b>Communication</b> is about getting results.</li></ul><p>If you make three small grammar mistakes but explain the solution in 30 seconds, you have succeeded.</p></div>
-                <h2>What Actually Matters at Work?</h2>
-                <p>Stakeholders care about three things:</p>
-                <ol><li><b>Clarity:</b> Do I understand what you need?</li><li><b>Confidence:</b> Do you sound sure of your data?</li><li><b>Conciseness:</b> Are you respecting my time?</li></ol>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-wrap">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#fix">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <span class="blog-date">27 JAN 2026</span>
+            <h1>Beyond Grammar: Why Communication is the Real Business Language</h1>
+        </div>
+
+        <div class="content">
+            <p>Most professionals believe that to improve their English at work, they need to study more grammar rules. They buy books on advanced tenses, memorize irregular verbs, and worry about prepositions.</p>
+            <p>But in my 24 years of experience, I have noticed something important: <b>Perfect grammar does not equal effective communication.</b></p>
+            
+            <div class="highlight-box">
+                "Your boss doesn't care if you used the Present Perfect Continuous correctly. They care if you explained the project delay clearly."
             </div>
-            <div class="blog-cta"><h3>Ready to improve your workplace communication?</h3><p>Let's stop focusing on textbooks and start focusing on your real-world meetings.</p><a href="https://www.classgap.com/en/tutor/linley" class="cta-button">Book a Free Trial Class</a></div>
-        </article>
-    </main>
-    <footer><p>&copy; 2026 LinleyB | English Teacher for Workplace & Business English</p></footer>
+
+            <h2>The "Correctness" Trap</h2>
+            <p>When you focus 100% on being "correct," you often become:
+            <ul>
+                <li><b>Slow:</b> You pause too often to search for the "perfect" word.</li>
+                <li><b>Robotic:</b> You lose your natural personality.</li>
+                <li><b>Anxious:</b> You stay quiet in meetings because you are afraid of making a mistake.</li>
+            </ul>
+            </p>
+
+            <h2>Shift Your Focus to "Clarity"</h2>
+            <p>Business English is about <b>getting the job done</b>. Instead of asking yourself, "Is this sentence grammatically perfect?", start asking:</p>
+            <ul>
+                <li>"Did they understand my main point?"</li>
+                <li>"Was I polite and professional?"</li>
+                <li>"Did I answer the question directly?"</li>
+            </ul>
+
+            <p>This is what we focus on in my classes. We don't just do grammar exercises; we practice <b>real scenarios</b>—explaining data, disagreeing politely, and giving updates.</p>
+
+            <div style="text-align: center;">
+                <a href="index.html#contact" class="btn">Book a Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 <b>LinleyB</b> | <a href="index.html" style="color: inherit; text-decoration: none;">Back to Homepage</a></p>
+    </footer>
+
 </body>
 </html>
