@@ -31,7 +31,6 @@
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
-        /* LOGO & TAGLINE FIX */
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         .logo-text-group { display: flex; align-items: center; }
@@ -42,33 +41,26 @@
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
         .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
         
-        /* --- CONTENT CSS --- */
+        /* CONTENT */
         .blog-container { max-width: 800px; margin: 4rem auto; padding: 0 20px; }
         .blog-header { text-align: center; margin-bottom: 3rem; }
         .blog-date { background: var(--primary); color: var(--bg); padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         h1 { font-size: 2.5rem; color: var(--primary); margin-top: 1.5rem; line-height: 1.2; font-weight: 900; }
-        
         .content { background: var(--card-bg); padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--accent); border: 1px solid var(--border); margin-bottom: 4rem; }
         .content p { margin-bottom: 1.5rem; font-size: 1.15rem; color: var(--text); }
         .content h2 { color: var(--primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
         .content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         .content li { margin-bottom: 0.8rem; font-size: 1.1rem; }
         
-        /* --- NEWSLETTER STYLES --- */
-        #newsletter { background: #0f172a; border-radius: 15px; padding: 3rem 2rem; text-align: center; color: white; margin-bottom: 3rem; border: 1px solid #334155; }
-        .newsletter-container { max-width: 100%; }
-        .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
+        /* FIXED NEWSLETTER STYLES */
+        #newsletter { background: #0f172a; padding: 3rem 2rem; border-radius: 15px; text-align: center; color: white; margin-bottom: 3rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .ml-form-embedWrapper { background-color: transparent !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
-        .ml-form-embedContent h4 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 1.8rem !important; margin-bottom: 10px !important; }
-        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1rem !important; margin-bottom: 20px !important; }
-        
-        /* Success Message Styling */
-        .ml-form-successContent h4 { margin-top: 20px !important; color: #FFD700 !important; }
-        .ml-form-successContent p { font-size: 1.2rem !important; }
-
-        /* Input Styling */
-        .ml-form-fieldRow input { width: 100% !important; border-radius: 10px !important; padding: 12px !important; border: 2px solid transparent !important; font-size: 1rem !important; margin-bottom: 1rem !important; background: #ffffff !important; color: #000000 !important; box-sizing: border-box !important; }
-        .ml-form-embedSubmit button { background-color: var(--accent) !important; color: #0047AB !important; font-weight: 800 !important; border-radius: 10px !important; padding: 12px !important; font-size: 1.1rem !important; transition: 0.3s !important; width: 100% !important; border: none !important; cursor: pointer !important; }
+        .ml-form-embedContent h4 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; margin-bottom: 10px !important; }
+        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; margin-bottom: 20px !important; }
+        .ml-form-fieldRow { width: 100% !important; }
+        .ml-form-fieldRow input { width: 100% !important; box-sizing: border-box !important; border-radius: 10px !important; padding: 15px !important; border: 2px solid transparent !important; font-size: 1rem !important; margin-bottom: 1rem !important; background: #ffffff !important; color: #000000 !important; }
+        .ml-form-embedSubmit button { width: 100% !important; background-color: var(--accent) !important; color: #0047AB !important; font-weight: 800 !important; border-radius: 10px !important; padding: 15px !important; font-size: 1.1rem !important; transition: 0.3s !important; border: none !important; cursor: pointer !important; }
         .ml-form-embedSubmit button:hover { background-color: #e6c200 !important; transform: translateY(-2px); }
         .ml-form-checkboxRow { text-align: left; margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
         .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
@@ -77,7 +69,7 @@
         .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
         
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
-        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 1.8rem; } .content { padding: 1.5rem; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .content { padding: 1.5rem; } h1 { font-size: 1.8rem; } }
     </style>
 </head>
 <body>
@@ -168,7 +160,7 @@
                             </div>
                             <div class="ml-form-successBody row-success" style="display: none">
                                 <div class="ml-form-successContent">
-                                    <img src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing - Linley B Business English Teacher" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                                    <img src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
                                     <h4>Welcome Aboard!</h4>
                                     <p>Please check your inbox to confirm your subscription.</p>
                                 </div>
