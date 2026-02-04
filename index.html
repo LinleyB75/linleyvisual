@@ -28,11 +28,11 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
     <script>
-        fetch("https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/takel")
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1750605');
     </script>
-
     <style>
         /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -209,29 +209,48 @@
         /* --- NEWSLETTER SPECIFIC CSS --- */
         #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
         .newsletter-container { max-width: 600px; margin: 0 auto; }
-        /* Override MailerLite Styles to match Site */
-        .ml-form-embedWrapper { background-color: transparent !important; border: none !important; }
+        
+        /* Forces MailerLite to Use Your Theme Colors */
+        .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
         .ml-form-embedContent h4 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; }
-        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; }
-        .ml-field-group input { 
+        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; margin-bottom: 20px !important; }
+        
+        /* Input Styling */
+        .ml-form-fieldRow input { 
+            width: 100% !important;
             border-radius: 10px !important; 
-            padding: 1.2rem !important; 
+            padding: 15px !important; 
             border: 2px solid transparent !important; 
             font-size: 1rem !important;
             margin-bottom: 1rem !important;
+            background: #ffffff !important;
+            color: #000000 !important;
+            box-sizing: border-box !important;
         }
+
+        /* Button Styling */
         .ml-form-embedSubmit button { 
             background-color: var(--accent) !important; 
             color: #0047AB !important; 
             font-weight: 800 !important; 
             border-radius: 10px !important; 
-            padding: 1.2rem !important;
+            padding: 15px !important;
             font-size: 1.1rem !important;
             transition: 0.3s !important;
+            width: 100% !important;
+            border: none !important;
+            cursor: pointer !important;
         }
         .ml-form-embedSubmit button:hover { background-color: #e6c200 !important; transform: translateY(-2px); }
-        .ml-form-embedHeader img { max-width: 150px !important; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 15px; }
+        .ml-form-embedHeader img { max-width: 150px !important; border-radius: 50%; border: 3px solid var(--accent); margin-bottom: 15px; margin-left: auto; margin-right: auto; }
+
+        /* Hide the Checkbox row and Recaptcha errors if they look messy */
+        .ml-form-checkboxRow { text-align: left; margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+        .ml-form-checkboxRow input { width: auto !important; margin-right: 10px; }
+        
+        /* Recaptcha Centering */
+        .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
 
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
@@ -655,6 +674,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <script>
                     function ml_webform_success_36646566() {
                         var $ = ml_jQuery || jQuery;
@@ -662,7 +682,11 @@
                         $('.ml-subscribe-form-36646566 .row-form').hide();
                     }
                 </script>
-                </div>
+                <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+                <script>
+                    fetch("https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/takel")
+                </script>
+            </div>
         </section>
 
     </main>
