@@ -8,6 +8,12 @@
     
     <meta name="google-site-verification" content="psUf9L9vQpweUrvTikNOYh2rmWYmKcQfyXXhUGQ3EDY" />
 
+    <script>
+        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+        ml('account', '1750605');
+    </script>
+
     <style>
         /* --- 1. LIGHT MODE VARIABLES --- */
         :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --bg: #ffffff; --bg-alt: #fafbfc; --card-bg: #ffffff; --border: #e5e7eb; }
@@ -24,6 +30,8 @@
         header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
+        
+        /* LOGO & TAGLINE FIX */
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         .logo-text-group { display: flex; align-items: center; }
@@ -40,16 +48,36 @@
         .blog-date { background: var(--primary); color: var(--bg); padding: 5px 15px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
         h1 { font-size: 2.5rem; color: var(--primary); margin-top: 1.5rem; line-height: 1.2; font-weight: 900; }
         
-        .content { background: var(--card-bg); padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--accent); border: 1px solid var(--border); }
+        .content { background: var(--card-bg); padding: 3rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-top: 5px solid var(--accent); border: 1px solid var(--border); margin-bottom: 4rem; }
         .content p { margin-bottom: 1.5rem; font-size: 1.15rem; color: var(--text); }
         .content h2 { color: var(--primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
         .content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         .content li { margin-bottom: 0.8rem; font-size: 1.1rem; }
         
+        /* --- NEWSLETTER STYLES --- */
+        #newsletter { background: #0f172a; border-radius: 15px; padding: 3rem 2rem; text-align: center; color: white; margin-bottom: 3rem; border: 1px solid #334155; }
+        .newsletter-container { max-width: 100%; }
+        .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
+        .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
+        .ml-form-embedContent h4 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 1.8rem !important; margin-bottom: 10px !important; }
+        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1rem !important; margin-bottom: 20px !important; }
+        
+        /* Success Message Styling */
+        .ml-form-successContent h4 { margin-top: 20px !important; color: #FFD700 !important; }
+        .ml-form-successContent p { font-size: 1.2rem !important; }
+
+        /* Input Styling */
+        .ml-form-fieldRow input { width: 100% !important; border-radius: 10px !important; padding: 12px !important; border: 2px solid transparent !important; font-size: 1rem !important; margin-bottom: 1rem !important; background: #ffffff !important; color: #000000 !important; box-sizing: border-box !important; }
+        .ml-form-embedSubmit button { background-color: var(--accent) !important; color: #0047AB !important; font-weight: 800 !important; border-radius: 10px !important; padding: 12px !important; font-size: 1.1rem !important; transition: 0.3s !important; width: 100% !important; border: none !important; cursor: pointer !important; }
+        .ml-form-embedSubmit button:hover { background-color: #e6c200 !important; transform: translateY(-2px); }
+        .ml-form-checkboxRow { text-align: left; margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
+        .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
+
         footer { padding: 3rem 0; text-align: center; border-top: 3px solid var(--primary); margin-top: 4rem; background: var(--bg); }
         .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
         
-        @media (max-width: 768px) { .logo-tagline, .nav-links { display: none; } h1 { font-size: 1.8rem; } .content { padding: 1.5rem; } }
+        @media (max-width: 1250px) { .logo-tagline { display: none; } }
+        @media (max-width: 768px) { .nav-links { display: none; } h1 { font-size: 1.8rem; } .content { padding: 1.5rem; } }
     </style>
 </head>
 <body>
@@ -96,6 +124,70 @@
                 <a href="index.html#contact" class="btn">Start Your English Journey</a>
             </div>
         </div>
+
+        <section id="newsletter">
+            <div class="newsletter-container">
+                <div id="mlb2-36646566" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-36646566">
+                    <div class="ml-form-align-center">
+                        <div class="ml-form-embedWrapper embedForm">
+                            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                                <div class="ml-form-embedContent">
+                                    <h4>Newsletter</h4>
+                                    <p>Get practical tips to improve your English skills.</p>
+                                </div>
+                                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
+                                    <div class="ml-form-formContent">
+                                        <div class="ml-form-fieldRow ml-last-item">
+                                            <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ml-form-checkboxRow ml-validate-required">
+                                        <label class="checkbox">
+                                            <input type="checkbox">
+                                            <div class="label-description">
+                                                <p>Opt in to receive news.</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="ml-form-recaptcha ml-validate-required">
+                                        <script src="https://www.google.com/recaptcha/api.js"></script>
+                                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                                    </div>
+                                    <input type="hidden" name="ml-submit" value="1">
+                                    <div class="ml-form-embedSubmit">
+                                        <button type="submit" class="primary">Subscribe</button>
+                                        <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                            <div class="ml-form-embedSubmitLoad"></div>
+                                            <span class="sr-only">Loading...</span>
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="anticsrf" value="true">
+                                </form>
+                            </div>
+                            <div class="ml-form-successBody row-success" style="display: none">
+                                <div class="ml-form-successContent">
+                                    <img src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing - Linley B Business English Teacher" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                                    <h4>Welcome Aboard!</h4>
+                                    <p>Please check your inbox to confirm your subscription.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function ml_webform_success_36646566() {
+                        var $ = ml_jQuery || jQuery;
+                        $('.ml-subscribe-form-36646566 .row-success').show();
+                        $('.ml-subscribe-form-36646566 .row-form').hide();
+                    }
+                </script>
+                <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+                <script>fetch("https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/takel")</script>
+            </div>
+        </section>
+
     </div>
 
     <footer>
