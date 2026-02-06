@@ -15,7 +15,8 @@
     <meta property="og:url" content="https://linleyb.com/science-tech-blog.html">
     <meta property="og:type" content="article">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
     <link rel="canonical" href="https://linleyb.com/science-tech-blog.html" />
     
@@ -42,8 +43,8 @@
 
     <style>
         /* --- VARIABLES --- */
-        :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --bg: #ffffff; --bg-alt: #fafbfc; --card-bg: #ffffff; --border: #e5e7eb; }
-        @media (prefers-color-scheme: dark) { :root { --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; } }
+        :root { --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --bg: #ffffff; --bg-alt: #fafbfc; --card-bg: #ffffff; --border: #e5e7eb; --highlight-bg: #f0f9ff; --highlight-text: #1e3a8a; }
+        @media (prefers-color-scheme: dark) { :root { --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --highlight-bg: #334155; --highlight-text: #e0f2fe; } }
 
         /* --- GLOBAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -55,6 +56,7 @@
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        /* FIX 2: Dimensions */
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         .logo-text-group { display: flex; align-items: center; }
         .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--bg-alt); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; border: 1px solid var(--border); }
@@ -64,6 +66,8 @@
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
         .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
         
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); }
+
         /* CONTENT */
         .blog-container { max-width: 800px; margin: 4rem auto; padding: 0 20px; }
         .blog-header { text-align: center; margin-bottom: 3rem; }
@@ -74,6 +78,7 @@
         .content h2 { color: var(--primary); margin: 2.5rem 0 1rem; font-size: 1.8rem; }
         .content ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
         .content li { margin-bottom: 0.8rem; font-size: 1.1rem; }
+        .highlight-box { background: var(--highlight-bg); border-left: 5px solid var(--primary); padding: 1.5rem; margin: 2rem 0; border-radius: 8px; font-style: italic; color: var(--highlight-text); }
         .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 8px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
@@ -83,7 +88,9 @@
         
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
-        .ml-form-embedContent h4 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; margin-bottom: 10px !important; }
+        
+        /* FIX 3: h3 styling */
+        .ml-form-embedContent h3 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; margin-bottom: 10px !important; }
         .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; margin-bottom: 20px !important; }
         
         .ml-form-fieldRow input { 
@@ -113,12 +120,13 @@
     <header>
         <nav class="container">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
                 </div>
             </a>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#fix">What I Fix</a></li>
@@ -137,6 +145,10 @@
         <div class="content">
             <p>Engineers, developers, and scientists often have a unique problem: <b>Your technical vocabulary is excellent, but your "connective" language is tricky.</b></p>
             <p>You know the specific terms for your field (algorithms, throughput, thermodynamics), but explaining <i>why</i> those things matter to a non-technical manager can be frustrating.</p>
+
+            <div class="highlight-box">
+                "The goal is not to dumb it down. The goal is to translate it into value."
+            </div>
 
             <h2>The Gap Between Tech and Business</h2>
             <p>The goal of English in a technical role is usually <b>simplification</b>. You need to take complex ideas and make them accessible.</p>
@@ -162,7 +174,7 @@
                     <div class="ml-form-embedWrapper embedForm">
                         <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                             <div class="ml-form-embedContent">
-                                <h4>Newsletter</h4>
+                                <h3>Newsletter</h3>
                                 <p>Get practical tips to improve your English skills.</p>
                             </div>
                             <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
@@ -182,7 +194,7 @@
                                     </label>
                                 </div>
                                 <div class="ml-form-recaptcha ml-validate-required">
-                                    <script src="https://www.google.com/recaptcha/api.js"></script>
+                                    <script src="https://www.google.com/recaptcha/api.js" defer></script>
                                     <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
                                 </div>
                                 <input type="hidden" name="ml-submit" value="1">
@@ -219,8 +231,13 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 <b>LinleyB</b> | <a href="index.html" style="color: inherit; text-decoration: none;">Back to Homepage</a></p>
+        <div class="container">
+            <p>&copy; 2026 <b>LinleyB</b> | <a href="index.html" style="color: inherit; text-decoration: none;">Back to Homepage</a> | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+        </div>
     </footer>
 
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+    </script>
 </body>
 </html>
