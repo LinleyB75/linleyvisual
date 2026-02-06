@@ -48,9 +48,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         /* =========================================
-           1. STANDARD (LIGHT) MODE - DEFAULT
+           THEME VARIABLES (Handle Light/Dark)
            ========================================= */
         :root {
+            /* Default Light Mode */
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937;
@@ -67,11 +68,27 @@
             --quote-bg: #f8fafc;
         }
 
-        /* =========================================
-           2. DARK MODE OVERRIDES (Conditional)
-           ========================================= */
+        /* Dark Mode Overrides (Applied via JS or System Pref) */
+        [data-theme="dark"] {
+            --primary: #4fa3ff; 
+            --accent: #FFD700; 
+            --text: #f3f4f6;    
+            --text-light: #9ca3af; 
+            --bg: #0f172a;      
+            --bg-alt: #1e293b;  
+            --border: #334155; 
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+            --section-highlight: #1e293b;
+            --cert-bg-dark: #020617;
+            --card-bg: #1e293b;
+            --input-bg: #334155;
+            --quote-bg: #1e293b;
+        }
+
+        /* Initial System Preference Support (Before JS loads) */
         @media (prefers-color-scheme: dark) {
-            :root {
+            :root:not([data-theme="light"]) {
                 --primary: #4fa3ff; 
                 --accent: #FFD700; 
                 --text: #f3f4f6;    
@@ -147,7 +164,16 @@
         .nav-links .nav-for-you:hover { border-bottom: none !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
 
-        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); }
+        /* THEME TOGGLE BUTTON */
+        .theme-toggle {
+            background: none; border: 2px solid var(--border); color: var(--text);
+            cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%;
+            margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+        }
+        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: 10px; }
 
         /* GENERAL STYLES */
         .consult-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 2rem; }
@@ -205,7 +231,7 @@
 
         .cert-container-box { border: 3px solid var(--primary); border-radius: 15px; padding: 3rem 1.5rem; background-color: var(--cert-bg-dark); }
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; justify-content: center; }
-        /* FIX: Images have dimensions to prevent Layout Shift */
+        /* FIX 3 (CSS): Ensure images are responsive even with width/height attributes */
         .cert-item img { width: 100%; height: auto; border-radius: 8px; border: 3px solid var(--accent); cursor: zoom-in; }
 
         .contact-container { max-width: 750px; margin: 0 auto; background: var(--card-bg); padding: clamp(1.5rem, 5%, 3.5rem); border-radius: 20px; box-shadow: var(--shadow-lg); border-bottom: 8px solid var(--accent); }
@@ -225,7 +251,7 @@
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
         
-        /* ACCESSIBILITY FIX: Changed selector to h3 */
+        /* ACCESSIBILITY FIX: Changed selector to match h3 (previously h4) */
         .ml-form-embedContent h3 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; margin-bottom: 10px !important; }
         .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; margin-bottom: 20px !important; }
         
@@ -317,7 +343,13 @@
                     <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
                 </div>
             </a>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
+            
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#fix" class="nav-fix-btn">What I Fix</a></li>
@@ -699,6 +731,41 @@
             link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); });
         });
         function zoom(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').style.display = 'flex'; }
+
+        // THEME TOGGLE LOGIC
+        const themeBtn = document.getElementById('themeToggle');
+        const icon = themeBtn.querySelector('i');
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            updateIcon(storedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            // If no attribute is set, check system preference
+            if (!currentTheme) {
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                targetTheme = systemDark ? 'light' : 'dark';
+            }
+
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateIcon(targetTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
     </script>
 </body>
 </html>
