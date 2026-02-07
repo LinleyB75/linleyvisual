@@ -267,7 +267,6 @@
                                     </label>
                                 </div>
                                 <div class="ml-form-recaptcha ml-validate-required">
-                                    <script src="https://www.google.com/recaptcha/api.js" defer></script>
                                     <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
                                 </div>
                                 <input type="hidden" name="ml-submit" value="1">
@@ -283,7 +282,7 @@
                         </div>
                         <div class="ml-form-successBody row-success" style="display: none">
                             <div class="ml-form-successContent">
-                                <img src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing - Linley B Business English Teacher" style="max-width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                                <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
                                 <h4>Welcome Aboard!</h4>
                                 <p>Please check your inbox to confirm your subscription.</p>
                             </div>
@@ -294,6 +293,11 @@
             <script>
                 function ml_webform_success_36646566() {
                     var $ = ml_jQuery || jQuery;
+                    
+                    // SWAP IMAGE SOURCE
+                    var img = document.getElementById('success-img');
+                    if(img) img.src = img.dataset.src;
+
                     $('.ml-subscribe-form-36646566 .row-success').show();
                     $('.ml-subscribe-form-36646566 .row-form').hide();
                 }
@@ -326,7 +330,6 @@
             let currentTheme = document.documentElement.getAttribute('data-theme');
             let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
-            // If no attribute is set, check system preference
             if (!currentTheme) {
                 const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 targetTheme = systemDark ? 'light' : 'dark';
@@ -346,6 +349,24 @@
                 icon.classList.add('fa-moon');
             }
         }
+
+        // LAZY LOAD RECAPTCHA
+        let recaptchaLoaded = false;
+        function loadRecaptcha() {
+            if (recaptchaLoaded) return;
+            recaptchaLoaded = true;
+            const script = document.createElement('script');
+            script.src = "https://www.google.com/recaptcha/api.js";
+            script.defer = true;
+            document.body.appendChild(script);
+        }
+
+        // Trigger on interaction
+        ['mousemove', 'scroll', 'touchstart', 'keydown'].forEach(event => {
+            window.addEventListener(event, () => {
+                setTimeout(loadRecaptcha, 1000); 
+            }, { once: true });
+        });
     </script>
 </body>
 </html>
