@@ -27,7 +27,7 @@
       "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
       "author": { "@type": "Person", "name": "Linley Bignoux", "url": "https://linleyb.com" },
       "publisher": { "@type": "Organization", "name": "Linley B", "logo": { "@type": "ImageObject", "url": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" } },
-      "datePublished": "2026-02-12",
+      "datePublished": "2026-02-07",
       "description": "Learn the art of polite disagreement. 5 essential phrases for engineers and tech professionals."
     }
     </script>
@@ -50,6 +50,7 @@
             --border: #e5e7eb; 
             --highlight-bg: #f0f9ff; 
             --highlight-text: #1e3a8a;
+            --section-highlight: #f0f4f8;
         }
 
         [data-theme="dark"] {
@@ -62,11 +63,12 @@
             --border: #334155; 
             --highlight-bg: #334155; 
             --highlight-text: #e0f2fe;
+            --section-highlight: #1e293b;
         }
 
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --highlight-bg: #334155; --highlight-text: #e0f2fe;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --highlight-bg: #334155; --highlight-text: #e0f2fe; --section-highlight: #1e293b;
             }
         }
 
@@ -80,8 +82,9 @@
         
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
+        
         .logo-text-group { display: flex; align-items: center; }
-        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--bg-alt); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; border: 1px solid var(--border); }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; border: 1px solid var(--border); }
         .logo-b { color: var(--text); }
         .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
         
@@ -133,7 +136,7 @@
         @media (max-width: 768px) { 
             header { min-height: 80px; }
             .container { padding: 0 20px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
             .nav-links.active { display: flex; }
             .menu-toggle { display: block; }
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
@@ -173,7 +176,7 @@
 
     <div class="blog-container">
         <div class="blog-header">
-            <span class="blog-date">12 FEB 2026</span>
+            <span class="blog-date">07 FEB 2026</span>
             <h1>How to Disagree Politely in English Meetings</h1>
         </div>
 
