@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Linley B</title>
-    <meta name="description" content="Privacy Policy for Linley B - English Teacher. Learn how your data is protected.">
+    <meta name="robots" content="noindex, follow">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
-    <meta name="robots" content="noindex, follow">
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -15,7 +14,6 @@
     <style>
         /* --- THEME VARIABLES --- */
         :root {
-            /* Light Mode */
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937; 
@@ -23,9 +21,9 @@
             --bg-alt: #fafbfc; 
             --card-bg: #ffffff; 
             --border: #e5e7eb; 
+            --section-highlight: #f0f4f8;
         }
 
-        /* Dark Mode */
         [data-theme="dark"] {
             --primary: #4fa3ff; 
             --accent: #FFD700; 
@@ -34,31 +32,45 @@
             --bg-alt: #020617; 
             --card-bg: #1e293b; 
             --border: #334155; 
+            --section-highlight: #1e293b;
         }
 
-        /* System Preference Support */
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b;
             }
         }
 
         /* --- GLOBAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; padding-bottom: 4rem; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
         
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: background 0.3s; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
+        /* HEADER STYLES */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; min-height: 100px; display: flex; align-items: center; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; width: 100%; }
         .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-        .logo-main { font-size: 1.5rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         
-        .content { background: var(--card-bg); padding: 3rem; margin-top: 3rem; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        h1 { color: var(--primary); font-size: 2rem; margin-bottom: 1.5rem; }
-        h2 { color: var(--text); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
-        p, ul { margin-bottom: 1rem; font-size: 1.05rem; }
-        ul { padding-left: 1.5rem; }
+        .logo-text-group { display: flex; align-items: center; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
+        .logo-b { color: var(--text); }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
+
+        /* CONTENT */
+        .content-wrapper { flex: 1; padding: 4rem 20px; }
+        .card { background: var(--card-bg); padding: 3rem; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto; }
         
+        h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        h2 { color: var(--text); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; color: var(--text); opacity: 0.9; }
+        ul { margin-bottom: 1rem; padding-left: 20px; }
+        li { margin-bottom: 0.5rem; }
+
+        .btn { display: inline-block; padding: 0.8rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 50px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
         /* THEME TOGGLE */
         .theme-toggle {
             background: none; border: 2px solid var(--border); color: var(--text);
@@ -68,55 +80,78 @@
         }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
 
-        .back-link { display: inline-block; margin-top: 2rem; color: var(--primary); font-weight: 700; text-decoration: none; }
-        .back-link:hover { text-decoration: underline; }
+        footer { padding: 2rem 0; text-align: center; background: var(--bg); border-top: 1px solid var(--border); margin-top: auto; }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1250px) { .logo-tagline { display: none; } }
+        
+        @media (max-width: 767px) {
+            header { min-height: 80px; }
+            .container { padding: 0 20px; }
+            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .card { padding: 1.5rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="container nav-flex">
-            <a href="index.html" class="logo-main">LinleyB</a>
+            <a href="index.html" class="logo-wrap">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                </div>
+            </a>
+            
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
         </div>
     </header>
 
-    <div class="container">
-        <div class="content">
+    <div class="content-wrapper">
+        <div class="card">
             <h1>Privacy Policy</h1>
-            <p>Last Updated: February 2026</p>
+            <p>Last updated: February 2026</p>
+            
+            <h2>1. Introduction</h2>
+            <p>Welcome to Linley B. I respect your privacy and am committed to protecting your personal data. This privacy policy will inform you as to how I look after your personal data when you visit my website and tell you about your privacy rights.</p>
 
-            <p>Your privacy is important to me. This policy explains how I collect, use, and protect your information when you visit linleyb.com.</p>
-
-            <h2>1. Information Collection</h2>
-            <p>I only collect information that you voluntarily provide via:</p>
+            <h2>2. The Data I Collect</h2>
+            <p>I may collect, use, store and transfer different kinds of personal data about you which I have grouped together follows:</p>
             <ul>
-                <li>The contact form (Name, Email, Message).</li>
-                <li>The newsletter subscription form (Email).</li>
+                <li><b>Identity Data:</b> includes first name, last name, or similar identifier.</li>
+                <li><b>Contact Data:</b> includes email address and telephone numbers.</li>
+                <li><b>Technical Data:</b> includes internet protocol (IP) address, browser type and version, time zone setting and location, and operating system and platform.</li>
             </ul>
 
-            <h2>2. Use of Information</h2>
-            <p>Your information is used solely to:</p>
+            <h2>3. How I Use Your Personal Data</h2>
+            <p>I will only use your personal data when the law allows me to. Most commonly, I will use your personal data in the following circumstances:</p>
             <ul>
-                <li>Respond to your inquiries.</li>
-                <li>Send you the newsletter (if you opted in).</li>
+                <li>To respond to your inquiries sent via the contact form.</li>
+                <li>To send you the newsletter (if you have explicitly subscribed).</li>
+                <li>To improve the website experience via anonymous analytics.</li>
             </ul>
-            <p>I do not sell, trade, or rent your personal identification information to others.</p>
 
-            <h2>3. Third-Party Services</h2>
-            <p>This site uses <b>MailerLite</b> for newsletter management and <b>FormSubmit</b> for contact form delivery. By using these forms, you acknowledge that the information you provide will be transferred to these services for processing in accordance with their Privacy Policies.</p>
+            <h2>4. Data Security</h2>
+            <p>I have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way.</p>
 
-            <h2>4. Cookies</h2>
-            <p>This site generally does not use tracking cookies. However, embedded services (like Google ReCaptcha) may use cookies to function correctly and protect against spam.</p>
+            <h2>5. Contact Details</h2>
+            <p>If you have any questions about this privacy policy, please contact me via the email provided on the homepage.</p>
 
-            <h2>5. Contact</h2>
-            <p>If you have questions about this policy, please contact me at: <a href="mailto:blanyves@optusnet.com.au" style="color:var(--primary);">blanyves@optusnet.com.au</a></p>
-
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="index.html" class="btn">Back to Homepage</a>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 LinleyB. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // THEME TOGGLE LOGIC
@@ -133,7 +168,6 @@
             let currentTheme = document.documentElement.getAttribute('data-theme');
             let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
             
-            // Check system preference if no custom theme is set
             if (!currentTheme) {
                 const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 targetTheme = systemDark ? 'light' : 'dark';
