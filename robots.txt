@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+# Do not crawl these pages (keep them private/functional)
+Disallow: /thanks.html
+Disallow: /404.html
+
+# Tell Google where your map is
 Sitemap: https://linleyb.com/sitemap.xml
