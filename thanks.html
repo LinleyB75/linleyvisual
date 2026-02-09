@@ -88,6 +88,13 @@
         }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
 
+        footer { padding: 2rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
+        
+        /* SOCIAL ICONS CSS */
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
+        .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+
         /* MEDIA QUERIES FOR LOGO */
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
         
@@ -126,6 +133,18 @@
             <a href="index.html" class="btn">Return to Homepage</a>
         </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.classgap.com/en/tutor/linley" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Classgap Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2026 LinleyB. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // THEME TOGGLE LOGIC
