@@ -6,13 +6,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-E37T8FJ661');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Linley B</title>
+    <title>Privacy Policy | LinleyB Email Development</title>
+    <meta name="description" content="Privacy Policy for LinleyB.com. Learn how your data is collected, used, and protected.">
     <meta name="robots" content="noindex, follow">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
@@ -26,75 +26,82 @@
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937; 
+            --text-light: #4b5563;
             --bg: #ffffff; 
             --bg-alt: #fafbfc; 
             --card-bg: #ffffff; 
             --border: #e5e7eb; 
             --section-highlight: #f0f4f8;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         [data-theme="dark"] {
             --primary: #4fa3ff; 
             --accent: #FFD700; 
             --text: #f3f4f6; 
+            --text-light: #9ca3af;
             --bg: #0f172a; 
-            --bg-alt: #020617; 
+            --bg-alt: #1e293b; 
             --card-bg: #1e293b; 
             --border: #334155; 
             --section-highlight: #1e293b;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
         }
 
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #1e293b; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
             }
         }
 
         /* --- GLOBAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden;}
         
         /* HEADER STYLES */
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; min-height: 100px; display: flex; align-items: center; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 5%; width: 100%; }
-        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
-
-        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
+        
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         
         .logo-text-group { display: flex; align-items: center; }
-        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-b { color: var(--text); }
         .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
 
-        /* CONTENT */
-        .content-wrapper { flex: 1; padding: 4rem 20px; }
-        .card { background: var(--card-bg); padding: 3rem; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto; }
-        
-        h1 { color: var(--primary); font-size: 2.2rem; margin-bottom: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
-        h2 { color: var(--text); font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; }
-        p { margin-bottom: 1rem; color: var(--text); opacity: 0.9; }
-        ul { margin-bottom: 1rem; padding-left: 20px; }
-        li { margin-bottom: 0.5rem; }
-
-        .btn { display: inline-block; padding: 0.8rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 50px; font-weight: 800; margin-top: 2rem; transition: 0.3s; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-
-        /* THEME TOGGLE */
-        .theme-toggle {
-            background: none; border: 2px solid var(--border); color: var(--text);
-            cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%;
-            transition: 0.3s; display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
-        }
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
 
-        footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
+        /* CONTENT */
+        .content-wrapper { flex: 1; padding: 4rem 20px; }
+        .card { background: var(--card-bg); padding: clamp(2rem, 5vw, 4rem); border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); max-width: 900px; margin: 0 auto; }
         
-        /* SOCIAL ICONS CSS */
-        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
+        h1 { color: var(--primary); font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; font-weight: 900; }
+        h2 { color: var(--primary); font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+        p { margin-bottom: 1.5rem; color: var(--text); font-size: 1.1rem; }
+        ul { margin-bottom: 1.5rem; padding-left: 20px; font-size: 1.1rem; }
+        li { margin-bottom: 0.8rem; }
+        a { color: var(--primary); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 2px; transition: 0.3s; }
+        a:hover { background-color: var(--accent); color: #000; text-decoration: none; }
+
+        .btn { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none !important; border-radius: 10px; font-weight: 800; margin-top: 2rem; transition: 0.3s; font-size: 1.1rem; text-align: center; border: none; }
+        .btn:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        
+        /* SOCIAL ICONS CSS FIX */
+        .social-icon { 
+            font-size: 1.5rem; color: #0047AB; background: var(--accent); 
+            width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; 
+            border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; 
+        }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+        .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
+        .footer-copyright { font-size: 1rem; color: var(--text); }
 
         /* MEDIA QUERIES */
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
@@ -104,72 +111,89 @@
             .container { padding: 0 20px; }
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
-            .card { padding: 1.5rem; }
+            .logo-tagline { display: none; }
+            .card { padding: 2rem 1.5rem; }
+            .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-flex">
+        <nav class="container">
             <a href="index.html" class="logo-wrap">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
-                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                    <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
             
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
-        </div>
+        </nav>
     </header>
 
-    <div class="content-wrapper">
-        <div class="card">
+    <main class="content-wrapper">
+        <article class="card">
             <h1>Privacy Policy</h1>
-            <p>Last updated: February 2026</p>
+            <p style="font-weight: 700; color: var(--text-light); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Last updated: February 16, 2026</p>
             
-            <h2>1. Introduction</h2>
-            <p>Welcome to Linley B. I respect your privacy and am committed to protecting your personal data. This privacy policy will inform you as to how I look after your personal data when you visit my website and tell you about your privacy rights.</p>
+            <p>At <strong>LinleyB.com</strong>, operated by Linley Bignoux, the privacy of our visitors and clients is of extreme importance. This Privacy Policy outlines the types of personal data collected by this website and how it is protected.</p>
 
-            <h2>2. The Data I Collect</h2>
-            <p>I may collect, use, store and transfer different kinds of personal data about you which I have grouped together follows:</p>
+            <h2>1. Information We Collect</h2>
+            <p>We only collect personal information that you voluntarily provide. This occurs when you:</p>
             <ul>
-                <li><b>Identity Data:</b> includes first name, last name, or similar identifier.</li>
-                <li><b>Contact Data:</b> includes email address and telephone numbers.</li>
-                <li><b>Technical Data:</b> includes internet protocol (IP) address, browser type and version, time zone setting and location, and operating system and platform.</li>
+                <li>Submit a project inquiry through the contact form (Name, Email Address, and Project Details).</li>
+                <li>Subscribe to the "Email Dev Insights" newsletter (Email Address).</li>
             </ul>
 
-            <h2>3. How I Use Your Personal Data</h2>
-            <p>I will only use your personal data when the law allows me to. Most commonly, I will use your personal data in the following circumstances:</p>
+            <h2>2. How We Use Your Personal Data</h2>
+            <p>The information collected is used in the following circumstances:</p>
             <ul>
-                <li>To respond to your inquiries sent via the contact form.</li>
-                <li>To send you the newsletter (if you have explicitly subscribed).</li>
-                <li>To improve the website experience via anonymous analytics.</li>
+                <li>To respond to your direct inquiries, provide development quotes, and facilitate client communication.</li>
+                <li>To send periodic newsletters containing technical tips and updates (only if you have explicitly opted in).</li>
+                <li>To analyze overall website traffic and improve user experience via anonymous analytics.</li>
             </ul>
 
-            <h2>4. Data Security</h2>
-            <p>I have put in place appropriate security measures to prevent your personal data from being accidentally lost, used or accessed in an unauthorized way.</p>
+            <h2>3. Third-Party Services</h2>
+            <p>We utilize trusted third-party platforms to ensure the secure and smooth operation of this website. These services act as data processors and have their own strict privacy policies:</p>
+            <ul>
+                <li><strong>FormSubmit:</strong> Our contact form is powered by FormSubmit. When you send a message, the data is securely routed through their servers directly to my private inbox.</li>
+                <li><strong>MailerLite:</strong> We use MailerLite to manage our email newsletter subscriber list and send campaigns. If you subscribe, your email address is securely stored within the MailerLite platform.</li>
+                <li><strong>Google Analytics:</strong> We use Google Analytics to monitor website traffic. Google Analytics collects anonymized data (such as browser types and pages visited) using cookies.</li>
+            </ul>
 
-            <h2>5. Contact Details</h2>
-            <p>If you have any questions about this privacy policy, please contact me via the email provided on the homepage.</p>
+            <h2>4. Cookies</h2>
+            <p>This website uses cookies (small text files placed on your device) to store information about visitors' preferences, such as your Light/Dark mode setting, and to track anonymous website usage via Google Analytics. You can choose to disable cookies in your browser settings.</p>
 
-            <a href="index.html" class="btn">Back to Homepage</a>
-        </div>
-    </div>
+            <h2>5. Data Security</h2>
+            <p>We take the security of your personal data seriously. We implement reasonable administrative and technical security measures to protect against the unauthorized access or destruction of your information.</p>
+
+            <h2>6. Your Rights (Opt-Out & Deletion)</h2>
+            <p>If you have subscribed to the newsletter, you may opt-out at any time by clicking the "Unsubscribe" link located at the bottom of any email you receive from us. If you would like to request the deletion of your contact form data, please email me directly.</p>
+
+            <h2>7. Contact Details</h2>
+            <p>If you require any more information or have any questions about our privacy policy, please feel free to contact me directly by email at: <a href="mailto:blanyves@optusnet.com.au">blanyves@optusnet.com.au</a>.</p>
+
+            <div style="text-align: center;">
+                <a href="index.html" class="btn">Return to Homepage</a>
+            </div>
+        </article>
+    </main>
 
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.classgap.com/en/tutor/linley" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Classgap Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
-            <p>&copy; 2026 LinleyB. All rights reserved.</p>
+            <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
+            <p class="footer-copyright">&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Mauritius</p>
         </div>
     </footer>
 
