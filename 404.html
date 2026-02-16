@@ -6,13 +6,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-E37T8FJ661');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | Linley B</title>
+    <title>404 Page Not Found | LinleyB Email Development</title>
+    <meta name="description" content="404 Page Not Found. LinleyB - Freelance Email Developer.">
     <meta name="robots" content="noindex, follow">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
@@ -26,39 +26,45 @@
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937; 
+            --text-light: #4b5563;
             --bg: #ffffff; 
             --bg-alt: #fafbfc; 
             --card-bg: #ffffff; 
             --border: #e5e7eb; 
             --section-highlight: #f0f4f8;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
         [data-theme="dark"] {
             --primary: #4fa3ff; 
             --accent: #FFD700; 
             --text: #f3f4f6; 
+            --text-light: #9ca3af;
             --bg: #0f172a; 
             --bg-alt: #020617; 
             --card-bg: #1e293b; 
             --border: #334155; 
             --section-highlight: #1e293b;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
         }
 
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
             }
         }
 
         /* --- GLOBAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; height: 100vh; display: flex; flex-direction: column; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
         
+        .container { max-width: 1350px; margin: 0 auto; padding: 0 5%; width: 100%; }
+
         /* HEADER STYLES */
         header { background: var(--bg); border-bottom: 3px solid var(--primary); padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; min-height: 100px; display: flex; align-items: center; }
-        .container { max-width: 1350px; margin: 0 auto; padding: 0 5%; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
 
-        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         
         .logo-text-group { display: flex; align-items: center; }
@@ -66,26 +72,35 @@
         .logo-b { color: var(--text); }
         .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
 
-        .content-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
-        .card { background: var(--card-bg); padding: 3rem; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
-        
-        h1 { color: var(--primary); font-size: 4rem; margin-bottom: 0; line-height: 1; font-weight: 900; }
-        h2 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text); }
-        p { margin-bottom: 2rem; font-size: 1.1rem; color: var(--text); opacity: 0.8; }
-        
-        .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 50px; font-weight: 800; transition: 0.3s; font-size: 1.1rem; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        
-        .icon-404 { font-size: 3rem; color: var(--accent); margin-bottom: 1rem; }
-
         /* THEME TOGGLE */
         .theme-toggle {
             background: none; border: 2px solid var(--border); color: var(--text);
             cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%;
             transition: 0.3s; display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
+            width: 40px; height: 40px; margin-left: auto;
         }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+
+        /* CONTENT STYLES */
+        .content-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4rem 20px; }
+        .card { background: var(--card-bg); padding: 4rem 3rem; border-radius: 15px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); max-width: 600px; width: 100%; margin: 0 auto; }
+        
+        h1 { color: var(--primary); font-size: 4rem; margin-bottom: 0; line-height: 1; font-weight: 900; }
+        h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--text); font-weight: 800; }
+        p { margin-bottom: 2.5rem; font-size: 1.15rem; color: var(--text); opacity: 0.9; }
+        
+        .btn { display: inline-block; padding: 1rem 2.5rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; transition: 0.3s; font-size: 1.1rem; border: none; }
+        .btn:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+        
+        .icon-404 { font-size: 4rem; color: var(--accent); margin-bottom: 1.5rem; }
+
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap;}
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
+        .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+        .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
+        .footer-copyright { font-size: 1rem; color: var(--text); }
 
         /* MEDIA QUERIES */
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
@@ -95,7 +110,9 @@
             .container { padding: 0 20px; }
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .logo-tagline { display: none; }
+            .card { padding: 3rem 1.5rem; }
+            .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
         }
     </style>
 </head>
@@ -107,7 +124,7 @@
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
-                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                    <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
             
@@ -117,7 +134,7 @@
         </div>
     </header>
 
-    <div class="content-wrapper">
+    <main class="content-wrapper">
         <div class="card">
             <i class="fas fa-compass icon-404"></i>
             <h1>404</h1>
@@ -125,7 +142,21 @@
             <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
             <a href="index.html" class="btn">Return to Homepage</a>
         </div>
-    </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
+            <p class="footer-copyright">&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Mauritius | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+        </div>
+    </footer>
 
     <script>
         // THEME TOGGLE LOGIC
