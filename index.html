@@ -124,7 +124,7 @@
             }
         }
 
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100vw;}
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100vw; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; }
         
         header { 
@@ -185,7 +185,7 @@
         .nav-links .nav-for-you:hover { border-bottom: none !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
 
-        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: 10px; flex-shrink: 0;}
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: 10px; flex-shrink: 0; }
 
         .consult-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 2rem; }
         .cta-button { 
@@ -220,7 +220,7 @@
         .student-quote { font-style: italic; color: var(--text); margin-bottom: 10px; font-weight: 500; }
 
         .blog-card-wrap .card { text-align: left; }
-        .blog-card-wrap .card h3 { color: var(--primary); }
+        /* ADDED DARK MODE BLOG TEXT FIX */
         [data-theme="dark"] .blog-card-wrap .card p { color: #f3f4f6 !important; }
 
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
@@ -233,7 +233,7 @@
         .about-text h3 { color: var(--primary); margin: 1.5rem 0 0.8rem; font-size: 1.5rem; font-weight: 800; border-left: 5px solid var(--accent); padding-left: 15px; }
         
         .statement-section { background: var(--bg); padding: 4rem 0; text-align: center; }
-        .statement-text { color: var(--primary); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 20px;}
+        .statement-text { color: var(--primary); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         .fit-box { background: var(--card-bg); padding: clamp(1.5rem, 5%, 3.5rem); border-radius: 12px; border-left: 8px solid var(--accent); box-shadow: var(--shadow); max-width: 1000px; margin: 2rem auto; }
         .fit-box li { padding: 0.8rem 0 0.8rem 2.5rem; position: relative; list-style: none; color: var(--text-light); border-bottom: 1px solid var(--border); font-size: 1.15rem; text-align: left; }
@@ -259,7 +259,7 @@
         /* --- NEWSLETTER SPECIFIC CSS --- */
         #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
         
-        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; padding: 0 20px;}
+        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; }
         .newsletter-container { max-width: 600px; width: 100%; margin: 0 auto; }
         
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
@@ -303,9 +303,9 @@
         .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
 
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
+        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
         
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none; transition: 0.4s; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
 
         .footer-credit { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
@@ -330,6 +330,7 @@
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
             .nav-links.active { display: flex; }
             
+            /* ADDED PADDING TO HAMBURGER MENU */
             .menu-toggle { display: block; padding-right: 15px; } 
 
             /* LOGO FIX */
@@ -451,7 +452,7 @@
         <section id="portfolio" style="background-color: var(--section-highlight);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
-                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px;">
+                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem;">
                     A selection of responsive, Outlook-tested emails coded from flat designs. Click any image to view the full design in a new tab.
                 </p>
                 <div class="grid-cards">
