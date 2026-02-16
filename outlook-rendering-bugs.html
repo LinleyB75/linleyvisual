@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Why Custom Emails Break in Outlook (And How to Fix Them) | LinleyB</title>
+    <meta name="description" content="Learn why Microsoft Outlook breaks HTML email layouts and how to fix them using Ghost Tables, Conditional Comments, and VML. A guide by LinleyB, Email Developer.">
+    
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Why Custom Emails Break in Outlook (And How to Fix Them)">
+    <meta property="og:description" content="Learn why Microsoft Outlook breaks HTML email layouts and how to fix them using Ghost Tables, Conditional Comments, and VML.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/outlook-rendering-bugs.html">
+    <meta property="og:type" content="article">
+    
+    <link rel="canonical" href="https://linleyb.com/outlook-rendering-bugs.html" />
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <style>
+        /* BASE & RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
+            --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
+            --card-bg: #ffffff; --input-bg: #f8fafc;
+        }
+        [data-theme="dark"] {
+            --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+            --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b;
+            --card-bg: #1e293b; --input-bg: #334155;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+                --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; --card-bg: #1e293b;
+            }
+        }
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); transition: 0.3s; overflow-x: hidden; }
+        
+        /* HEADER */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; margin-right: auto; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; }
+        .logo-b { color: var(--text); }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; }
+        
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; transition: 0.3s; border-bottom: 3px solid transparent; }
+        .nav-links a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+        .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); }
+        .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; }
+
+        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; cursor: pointer; border: none; font-size: 1.1rem; transition: 0.3s; text-align: center; }
+        .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+        /* BLOG ARTICLE STYLES */
+        .blog-header { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: 5rem 0; text-align: center; }
+        .blog-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 900; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+        .blog-meta { font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 2rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .article-content { max-width: 850px; margin: 4rem auto; padding: 0 5%; font-size: 1.15rem; line-height: 1.8; color: var(--text); }
+        .article-content h2 { color: var(--primary); font-size: 2rem; margin: 3rem 0 1.5rem; font-weight: 800; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .article-content h3 { color: var(--text); font-size: 1.5rem; margin: 2rem 0 1rem; font-weight: 700; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 2rem; }
+        .article-content li { margin-bottom: 0.8rem; }
+        .article-content strong { color: var(--primary); }
+        
+        .code-block { background: #0f172a; color: #f8fafc; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: Consolas, Monaco, "Andale Mono", monospace; font-size: 0.95rem; margin: 2rem 0; border-left: 5px solid var(--accent); }
+        .article-content a { color: var(--primary); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 2px; transition: 0.3s; }
+        .article-content a:hover { background-color: var(--accent); color: #000; text-decoration: none; }
+
+        .author-box { background: var(--section-highlight); padding: 2.5rem; border-radius: 12px; margin-top: 4rem; display: flex; align-items: center; gap: 2rem; border: 1px solid var(--border); border-top: 5px solid var(--primary); }
+        .author-box img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
+        .author-box h4 { font-size: 1.4rem; color: var(--primary); margin-bottom: 5px; }
+        .author-box p { font-size: 1rem; margin-bottom: 15px; }
+
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .social-icon { font-size: 1.2rem; color: #0047AB; background: var(--accent); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.4s; text-decoration: none; }
+        .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+
+        /* RESPONSIVE */
+        @media (max-width: 767px) {
+            .logo-tagline { display: none; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .author-box { flex-direction: column; text-align: center; }
+            .theme-toggle { margin-right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-wrap">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">Email Developer | HTML | CSS | MJML</div>
+                </div>
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#fix">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-header">
+            <div class="container">
+                <span class="blog-meta">February 07, 2026 • Email Development Insights</span>
+                <h1>Why Custom Emails Break in Outlook (And How to Fix Them)</h1>
+            </div>
+        </section>
+
+        <article class="article-content">
+            <p>It is the quintessential nightmare of every modern marketing team. You spend hours meticulously crafting a gorgeous, highly-converting email design in Figma. Your design team loves it. The client signs off on it. You code it up, send a test to your Gmail and Apple Mail accounts, and it looks flawless. </p>
+            <p>Then, the marketing director forwards you a screenshot from their corporate desktop PC running Microsoft Outlook 2016. </p>
+            <p>The margins have collapsed. The beautiful rounded CTA button is now a flat, grey rectangle. Background images have vanished completely into thin air, and a two-column grid has violently stacked into a broken mess. Sound familiar?</p>
+            <p>If you are a web developer transitioning into email development—or a marketing agency trying to figure out why your templates keep failing—you have undoubtedly hit the Outlook wall. In this article, I am going to explain exactly <strong>why custom HTML emails break in Outlook</strong>, and more importantly, the technical methodologies professional email developers use to force Outlook to respect our layouts.</p>
+
+            <h2>The Root of the Problem: Microsoft Word</h2>
+            <p>To understand why Outlook behaves so badly, we have to look back at history. Prior to 2007, Microsoft Outlook used Internet Explorer to render HTML emails. While not perfect, it generally behaved like a standard web browser.</p>
+            <p>However, starting with Outlook 2007, Microsoft made a drastic change. To unify their Office suite and tighten security, they replaced the Internet Explorer rendering engine with the <strong>Microsoft Word rendering engine</strong>. Yes, you read that correctly. When you send an HTML email to a modern desktop version of Outlook (2010, 2013, 2016, 2019, and even Office 365 desktop), it is literally using a word processor to draw your code on the screen.</p>
+            <p>Because Microsoft Word was built for formatting printed documents, not modern web rendering, it lacks support for the vast majority of CSS properties web developers take for granted today. </p>
+            <ul>
+                <li><strong>No Flexbox or CSS Grid.</strong></li>
+                <li><strong>Terrible padding and margin support.</strong></li>
+                <li><strong>No native background-image support on block elements.</strong></li>
+                <li><strong>Max-width and Min-width properties are largely ignored.</strong></li>
+            </ul>
+            <p>This is why taking standard website code and pasting it into an email sender will result in an absolute disaster. To fix this, we have to write code specifically tailored to trick Microsoft Word into doing what we want.</p>
+
+            <h2>The Ultimate Fix: Ghost Tables (Conditional Comments)</h2>
+            <p>Because Outlook ignores properties like `max-width` on standard `&lt;div&gt;` elements, a fluid 600px container will stretch infinitely across an Outlook user's screen. To contain our designs, we have to use HTML tables. But we don't want those rigid tables ruining the responsive experience for mobile users on iOS and Android.</p>
+            <p>The solution is a technique known as <strong>Ghost Tables</strong>. </p>
+            <p>Ghost Tables utilize Outlook-specific conditional comments. These are special HTML comments that every other email client (Gmail, Yahoo, Apple Mail) sees as a standard, invisible comment and ignores. But Outlook reads them as literal, executable code.</p>
+            <p>Here is an example of what a Ghost Table looks like in raw code:</p>
+            
+            <div class="code-block">
+&lt;!--[if mso | IE]&gt;
+  &lt;table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" align="center" style="width:600px;"&gt;
+    &lt;tr&gt;
+      &lt;td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"&gt;
+&lt;![endif]--&gt;
+
+  &lt;div style="margin:0px auto;max-width:600px;"&gt;
+    &lt;!-- Your standard responsive email content goes here --&gt;
+  &lt;/div&gt;
+
+&lt;!--[if mso | IE]&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;![endif]--&gt;
+            </div>
+
+            <p><strong>How this works:</strong> Modern clients like Gmail completely ignore the `&lt;!--[if mso]&gt;` tags. They only see the standard `&lt;div&gt;` with a `max-width: 600px`, which allows them to cleanly shrink the design down for mobile phones.</p>
+            <p>Outlook, however, activates the code inside the brackets. It creates a rigid, 600-pixel wide HTML table, places the content inside of it, and locks the layout in place. By wrapping our columns and sections in these Ghost Tables, we give Outlook the strict, rigid structure it desperately needs without sacrificing mobile responsiveness for the rest of our audience.</p>
+
+            <h2>Fixing Buttons and Backgrounds with VML</h2>
+            <p>Another major issue with the Microsoft Word rendering engine is how it handles buttons and background imagery. Outlook does not support the CSS `border-radius` property on links, nor does it reliably support CSS background images.</p>
+            <p>To create a rounded button or place text over a background image in Outlook, we have to utilize <strong>VML (Vector Markup Language)</strong>. VML is a highly outdated XML language created by Microsoft in the late 1990s. It was essentially abandoned by the web development community decades ago, but it still lives deep inside the DNA of Microsoft Office.</p>
+            <p>If you want a bulletproof button that looks identical in Apple Mail and Outlook, you have to write standard CSS for Apple, and wrap it in a VML `<v:roundrect>` tag specifically for Outlook.</p>
+
+            <div class="code-block">
+&lt;!--[if mso]&gt;
+  &lt;v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://yourlink.com" style="height:40px;v-text-anchor:middle;width:200px;" arcsize="10%" stroke="f" fillcolor="#0047AB"&gt;
+    &lt;w:anchorlock/&gt;
+    &lt;center style="color:#ffffff;font-family:sans-serif;font-size:16px;font-weight:bold;"&gt;
+      Click Here
+    &lt;/center&gt;
+  &lt;/v:roundrect&gt;
+&lt;![endif]--&gt;
+            </div>
+            
+            <p>This VML block tells the Microsoft Word engine to literally draw a vector rectangle with rounded corners, fill it with a blue color, and lock the text anchor to the center. It is a highly manual, tedious process, but it is the absolute only way to guarantee design parity across B2B desktop environments.</p>
+
+            <h2>CSS Quirks You Must Remember</h2>
+            <p>Beyond Ghost Tables and VML, there are several CSS quirks you must memorize when developing for Outlook:</p>
+            <ul>
+                <li><strong>No CSS Shorthand:</strong> Outlook struggles with shorthand. Never write `margin: 10px 0 20px 0;`. You must explicitly declare `margin-top: 10px; margin-bottom: 20px;`.</li>
+                <li><strong>The 1px Line Height Bug:</strong> If you have an empty table cell used for spacing, Outlook will force it to be at least the height of the default text font (usually 15px). To create a 5px spacer, you must apply `line-height: 5px; font-size: 5px; mso-line-height-rule: exactly;` to the table cell.</li>
+                <li><strong>Web Fonts Fallbacks:</strong> Outlook famously chokes on Google Fonts. If you import a web font, Outlook will frequently ignore your fallback font (like Arial) and revert entirely to Times New Roman. You must use specific `mso-font-alt` CSS declarations to prevent this.</li>
+            </ul>
+
+            <h2>The MJML Framework Solution</h2>
+            <p>Writing raw HTML tables and VML by hand for an entire newsletter takes hours of highly specialized labor. This is why modern professional email developers rely heavily on <strong>MJML (Mailjet Markup Language)</strong>.</p>
+            <p>MJML is a semantic syntax that you compile into HTML. You write clean, tag-based code (like `&lt;mj-button&gt;`), and the MJML engine automatically generates the hundreds of lines of Ghost Tables and VML code required to make it work in Outlook.</p>
+            <p>However, an email developer must still understand the underlying raw HTML. When a layout breaks, or a custom ESP requires dynamic logic injected into the middle of a Ghost Table, you have to be able to open the raw compiled HTML and manually adjust the conditional comments without breaking the table structure.</p>
+
+            <h2>Conclusion: Stop Guessing, Start Testing</h2>
+            <p>Building custom emails is an entirely different discipline than standard web development. It requires an intimate understanding of legacy systems, rendering engines, and rigorous quality assurance testing.</p>
+            <p>You cannot rely on sending a test email to your personal Gmail account and assuming it looks good everywhere. Professional developers run their code through platforms like Litmus or Email on Acid to generate live screenshots across 50+ real devices and email clients before the code is ever handed over to a client.</p>
+
+            <div class="author-box">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux">
+                <div>
+                    <h4>Need your designs translated into bulletproof code?</h4>
+                    <p>Stop fighting with Outlook bugs and dragged-out QA processes. As a freelance technical email developer, I convert flat designs into pixel-perfect, fully responsive HTML/MJML that survives the toughest inboxes.</p>
+                    <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 1rem;">Book a Scoping Call</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div style="margin-bottom:10px; font-weight:700; color:var(--primary);">Site designed and developed by Linley Bignoux</div>
+            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        
+        const themeBtn = document.getElementById('themeToggle');
+        const icon = themeBtn.querySelector('i');
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            updateIcon(storedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            if (!currentTheme) {
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                targetTheme = systemDark ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateIcon(targetTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
