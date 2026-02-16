@@ -220,6 +220,9 @@
         .student-quote { font-style: italic; color: var(--text); margin-bottom: 10px; font-weight: 500; }
 
         .blog-card-wrap .card { text-align: left; }
+        /* ADDED DARK MODE BLOG TEXT FIX */
+        [data-theme="dark"] .blog-card-wrap .card p { color: #f3f4f6 !important; }
+
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
         .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; }
         .centered-card-wrapper .card { max-width: 380px; width: 100%; }
@@ -255,7 +258,10 @@
 
         /* --- NEWSLETTER SPECIFIC CSS --- */
         #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
-        .newsletter-container { max-width: 600px; margin: 0 auto; }
+        
+        /* ADDED WRAPPER FOR CENTERING */
+        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; }
+        .newsletter-container { max-width: 600px; width: 100%; margin: 0 auto; }
         
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
@@ -300,8 +306,12 @@
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
         
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
+        /* ADDED ROUNDING FIX FOR MOBILE ICONS */
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none; transition: 0.4s; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+
+        /* ADDED FOOTER CREDIT CLASS */
+        .footer-credit { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
 
         /* --- LIGHTBOX CSS --- */
         #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; text-align: center; padding: 20px; }
@@ -322,7 +332,10 @@
             .container { padding: 0 20px; }
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
             .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
+            
+            /* ADDED PADDING TO HAMBURGER MENU */
+            .menu-toggle { display: block; padding-right: 15px; } 
+
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
             .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
@@ -337,6 +350,10 @@
             .grid-cards { grid-template-columns: 1fr; }
             .nav-for-you::after { left: 40%; right: 40%; }
             .centered-card-wrapper .card { max-width: 100%; }
+
+            /* SHRINK FOOTER TEXT ON MOBILE */
+            .footer-credit { font-size: 0.85rem; padding: 0 10px; }
+
             #lightbox { padding: 10px; }
             #lightbox img { max-width: 100%; }
         }
@@ -695,7 +712,7 @@
             <div class="container blog-card-wrap">
                 <h2 class="section-title"><i class="fas fa-lightbulb"></i> Development Insights</h2>
                 <div class="grid-cards">
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="outlook-rendering-bugs.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">07 FEB 2026</span>
                             <h3>Why Custom Emails Break in Outlook</h3>
@@ -703,39 +720,39 @@
                         </div>
                     </a>
 
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="design-to-mjml-workflow.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">05 FEB 2026</span>
                             <h3>Design to MJML: The Fastest Workflow</h3>
                             <p>How teams use the MJML framework to scale up their email production without losing quality.</p>
                         </div>
                     </a>
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="dark-mode-email-design.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">27 JAN 2026</span>
                             <h3>Designing for Dark Mode Email</h3>
                             <p>Stop iOS from automatically inverting your brand colors. Use targeted CSS to control the dark mode experience.</p>
                         </div>
                     </a>
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="drag-and-drop-vs-custom-code.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">22 JAN 2026</span>
                             <h3>Drag & Drop Builders vs. Custom Code</h3>
                             <p>Why relying on ESP builders often results in bloated HTML and broken mobile views.</p>
                         </div>
                     </a>
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="gmail-102kb-clipping-limit.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">19 JAN 2026</span>
                             <h3>The 102KB Limit: Preventing Gmail Clipping</h3>
                             <p>A technical guide to minifying your code to ensure your entire message (and tracking pixel) is delivered.</p>
                         </div>
                     </a>
-                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="email-accessibility-best-practices.html" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
-                            <span class="blog-date">28 JAN 2026</span>
-                            <h3>Handling Complex ESP Dynamic Tags</h3>
-                            <p>How to correctly use conditional logic to dynamically generate personalized content sections.</p>
+                            <span class="blog-date">11 FEB 2026</span>
+                            <h3>Email Accessibility Best Practices</h3>
+                            <p>Learn how to use semantic HTML and ARIA roles to make your email campaigns fully accessible.</p>
                         </div>
                     </a>
                 </div>
@@ -780,7 +797,7 @@
                             <label>ESP (Optional)</label>
                             <input type="text" name="esp" placeholder="e.g., Mailchimp, MailerLite, Mailjet, Custom...">
                         </div>
-                        <div class="form-btn-wrap">
+                        <div class="form-btn-wrap" style="display: flex; justify-content: center; width: 100%;">
                             <button type="submit" class="cta-button">Send Secure Message</button>
                         </div>
                     </form>
@@ -801,49 +818,51 @@
 
         <section id="newsletter">
             <div class="container newsletter-container">
-                <div id="mlb2-36646566" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-36646566">
-                    <div class="ml-form-align-center">
-                        <div class="ml-form-embedWrapper embedForm">
-                            <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                                <div class="ml-form-embedContent">
-                                    <h3>Email Dev Insights</h3>
-                                    <p>Sign up to receive advanced MJML tips, HTML workarounds, and reliable email development strategies.</p>
-                                </div>
-                                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
-                                    <div class="ml-form-formContent">
-                                        <div class="ml-form-fieldRow ml-last-item">
-                                            <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                                                <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                <div class="newsletter-wrapper">
+                    <div id="mlb2-36646566" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-36646566" style="width: 100%;">
+                        <div class="ml-form-align-center">
+                            <div class="ml-form-embedWrapper embedForm">
+                                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+                                    <div class="ml-form-embedContent">
+                                        <h3>Email Dev Insights</h3>
+                                        <p>Sign up to receive advanced MJML tips, HTML workarounds, and reliable email development strategies.</p>
+                                    </div>
+                                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
+                                        <div class="ml-form-formContent">
+                                            <div class="ml-form-fieldRow ml-last-item">
+                                                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                                                    <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="ml-form-checkboxRow ml-validate-required">
+                                            <label class="checkbox">
+                                                <input type="checkbox">
+                                                <div class="label-description">
+                                                    <p>Opt in to receive technical updates.</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="ml-form-recaptcha ml-validate-required">
+                                            <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
+                                        </div>
+                                        <input type="hidden" name="ml-submit" value="1">
+                                        <div class="ml-form-embedSubmit">
+                                            <button type="submit" class="primary">Subscribe</button>
+                                            <button disabled="disabled" style="display: none;" type="button" class="loading">
+                                                <div class="ml-form-embedSubmitLoad"></div>
+                                                <span class="sr-only">Loading...</span>
+                                            </button>
+                                        </div>
+                                        <input type="hidden" name="anticsrf" value="true">
+                                    </form>
+                                </div>
+                                <div class="ml-form-successBody row-success" style="display: none">
+                                    <div class="ml-form-successContent">
+                                        <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
+                                        <h4>Welcome Aboard!</h4>
+                                        <p>Please check your inbox to confirm your subscription.</p>
                                     </div>
-                                    <div class="ml-form-checkboxRow ml-validate-required">
-                                        <label class="checkbox">
-                                            <input type="checkbox">
-                                            <div class="label-description">
-                                                <p>Opt in to receive technical updates.</p>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="ml-form-recaptcha ml-validate-required">
-                                        <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-                                    </div>
-                                    <input type="hidden" name="ml-submit" value="1">
-                                    <div class="ml-form-embedSubmit">
-                                        <button type="submit" class="primary">Subscribe</button>
-                                        <button disabled="disabled" style="display: none;" type="button" class="loading">
-                                            <div class="ml-form-embedSubmitLoad"></div>
-                                            <span class="sr-only">Loading...</span>
-                                        </button>
-                                    </div>
-                                    <input type="hidden" name="anticsrf" value="true">
-                                </form>
-                            </div>
-                            <div class="ml-form-successBody row-success" style="display: none">
-                                <div class="ml-form-successContent">
-                                    <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
-                                    <h4>Welcome Aboard!</h4>
-                                    <p>Please check your inbox to confirm your subscription.</p>
                                 </div>
                             </div>
                         </div>
@@ -879,7 +898,7 @@
                 <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
-            <div style="margin-bottom: 10px; font-weight: 700; color: var(--primary);">Site designed and developed by Linley Bignoux</div>
+            <div class="footer-credit">Site designed and developed by Linley Bignoux</div>
             <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
