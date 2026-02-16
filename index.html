@@ -12,14 +12,14 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linley B | Modern Business English & Workplace Confidence</title>
     
-    <meta name="description" content="Master modern workplace English. Learn real-life scenarios for meetings, small talk, and negotiations to speak with authority. Native Australian Teacher.">
+    <title>Freelance HTML/CSS/MJML Email Developer | Mauritius & Global</title>
+    <meta name="description" content="I turn your designs into bulletproof HTML/CSS emails. Freelance email developer specializing in MJML, Outlook-safe code, and agency partnerships.">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
-    <meta property="og:title" content="Linley B | Modern Business English & Workplace Confidence">
-    <meta property="og:description" content="Master modern workplace English with a native Australian teacher. 24+ years experience.">
+    <meta property="og:title" content="Freelance HTML/CSS/MJML Email Developer | Mauritius & Global">
+    <meta property="og:description" content="I turn your designs into bulletproof HTML/CSS emails. Specialized in MJML, Outlook-safe code, and reliable development.">
     <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <meta property="og:url" content="https://linleyb.com/">
     <meta property="og:type" content="website">
@@ -30,18 +30,30 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Linley Bignoux",
-      "jobTitle": "Business English Teacher & Communication Coach",
+      "@type": "ProfessionalService",
+      "name": "LinleyB Email Development",
+      "jobTitle": "Freelance Email Developer",
       "url": "https://linleyb.com",
       "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Port Louis",
+        "addressRegion": "Port Louis District",
+        "addressCountry": "MU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -20.1609,
+        "longitude": 57.5011
+      },
       "sameAs": [
         "https://www.linkedin.com/in/linley-bignoux-52867a39a/",
-        "https://www.classgap.com/en/tutor/linley",
-        "https://www.instagram.com/linleyhuman/"
+        "https://www.instagram.com/linleyhuman/",
+        "https://github.com/LinleyB75/linleyvisual",
+        "https://linleybignouxzqme9nmu.contra.com/"
       ],
-      "knowsAbout": ["Business English", "Workplace Communication", "Presentation Skills", "IELTS Preparation"],
-      "description": "Native English teacher from Australia with 24+ years experience helping professionals improve workplace communication."
+      "description": "I turn your designs into bulletproof HTML/CSS emails. Freelance email developer specializing in MJML, Outlook-safe code, and custom ESP integration."
     }
     </script>
     
@@ -57,9 +69,6 @@
         /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* =========================================
-           THEME VARIABLES (Handle Light/Dark)
-           ========================================= */
         :root {
             /* Default Light Mode */
             --primary: #0047AB; 
@@ -78,7 +87,7 @@
             --quote-bg: #f8fafc;
         }
 
-        /* Dark Mode Overrides (Applied via JS or System Pref) */
+        /* Dark Mode Overrides */
         [data-theme="dark"] {
             --primary: #4fa3ff; 
             --accent: #FFD700; 
@@ -96,7 +105,6 @@
             --quote-bg: #1e293b;
         }
 
-        /* Initial System Preference Support (Before JS loads) */
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
                 --primary: #4fa3ff; 
@@ -119,7 +127,6 @@
         html { scroll-behavior: smooth; font-size: 16px; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; transition: background 0.3s, color 0.3s; }
         
-        /* HEADER & NAVIGATION */
         header { 
             background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; 
             top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%;
@@ -128,16 +135,14 @@
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
-        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
         
-        /* Text Group Wrapper for Mobile Stacking */
         .logo-text-group { display: flex; align-items: center; }
 
         .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-b { color: var(--text); }
         
-        /* LOGO TAGLINE */
         .logo-tagline { 
             font-size: 1rem; 
             color: var(--primary); 
@@ -149,23 +154,29 @@
             white-space: nowrap; 
         }
 
+        /* THEME TOGGLE */
+        .theme-toggle {
+            background: none; border: 2px solid var(--border); color: var(--text);
+            cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%;
+            margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+        }
+        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+
         .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
         
-        /* NAV LINKS HOVER */
         .nav-links a { 
             text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; 
             transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; 
         }
         .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
         
-        /* 'WHAT I FIX' BUTTON */
         .nav-fix-btn { 
             background-color: var(--bg); color: var(--primary) !important; padding: 10px 18px !important; 
             border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease;
         }
         .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
 
-        /* 'FOR YOU' BUTTON */
         .nav-for-you { 
             background-color: var(--primary); color: white !important; height: 46px; padding: 0 25px; 
             border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; 
@@ -174,18 +185,8 @@
         .nav-links .nav-for-you:hover { border-bottom: none !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
 
-        /* THEME TOGGLE BUTTON */
-        .theme-toggle {
-            background: none; border: 2px solid var(--border); color: var(--text);
-            cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%;
-            margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
-        }
-        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
-
         .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: 10px; }
 
-        /* GENERAL STYLES */
         .consult-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 2rem; }
         .cta-button { 
             display: inline-block; padding: 1.2rem 2.5rem; background: var(--accent); color: #0047AB; 
@@ -256,7 +257,6 @@
         #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
         .newsletter-container { max-width: 600px; margin: 0 auto; }
         
-        /* Forces MailerLite to Use Your Theme Colors */
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
         .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
         
@@ -266,7 +266,6 @@
         .ml-form-successContent h4 { margin-top: 20px !important; color: #FFD700 !important; }
         .ml-form-successContent p { font-size: 1.2rem !important; }
 
-        /* Input Styling */
         .ml-form-fieldRow input { 
             width: 100% !important;
             border-radius: 10px !important; 
@@ -279,7 +278,6 @@
             box-sizing: border-box !important;
         }
 
-        /* Button Styling */
         .ml-form-embedSubmit button { 
             background-color: var(--accent) !important; 
             color: #0047AB !important; 
@@ -305,8 +303,10 @@
         .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
 
-        #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 90%; border: 4px solid white; }
+        /* --- LIGHTBOX CSS --- */
+        #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; text-align: center; padding: 20px; }
+        #lightbox img { max-width: 90%; max-height: 90vh; border: 4px solid white; cursor: zoom-in; margin: auto; display: block; transition: 0.3s; }
+        #lightbox img.expanded { max-height: none; max-width: 100%; width: auto; cursor: zoom-out; }
 
         /* MEDIA QUERIES */
         @media (max-width: 1250px) { 
@@ -326,6 +326,9 @@
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
             .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            
+            .theme-toggle { margin-right: 10px; }
+            
             .cta-button { padding: 1rem 1.5rem; font-size: 1rem; width: auto; max-width: 90%; }
             .hero h1 { font-size: 2rem; } 
             .hero .hero-intro-text { font-size: 1rem; }
@@ -334,20 +337,24 @@
             .grid-cards { grid-template-columns: 1fr; }
             .nav-for-you::after { left: 40%; right: 40%; }
             .centered-card-wrapper .card { max-width: 100%; }
+            #lightbox { padding: 10px; }
+            #lightbox img { max-width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
+    <div id="lightbox" onclick="closeLightbox(event)">
+        <img id="lightbox-img" src="" onclick="toggleZoom(event)">
+    </div>
 
     <header>
         <nav class="container">
             <a href="#home" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Native English Teacher" class="header-photo" width="60" height="60">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" class="header-photo" width="60" height="60">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
-                    <div class="logo-tagline">English Teacher <span class="pipe-sep">|</span> Business & Workplace</div>
+                    <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
             
@@ -359,6 +366,7 @@
             
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="#fix" class="nav-fix-btn">What I Fix</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#certifications">Certs</a></li>
@@ -372,18 +380,17 @@
     <main>
         <section id="home" class="hero">
             <div class="container">
-                <h1>English Teacher for Workplace & Communication Skills</h1>
+                <h1>I Code Emails • CSS/HTML Development</h1>
                 <p class="subtitle">
-                    <span class="line">Presentations <em>•</em> Writing <em>•</em> Emails <em>•</em> Meetings</span>
-                    <span class="line">Vocabulary <em>•</em> Expressions <em>•</em> Cultural Intelligence</span>
-                    <span class="line" style="margin-top: 10px;">Communication Practice</span>
+                    <span class="line">Design to HTML <em>•</em> MJML Framework <em>•</em> QA Testing</span>
+                    <span class="line">Deliverability Best Practices <em>•</em> Code for ESP</span>
                 </p>
                 <div class="hero-intro-text">
-                    <p>If you use <b>English at work</b> but feel unsure in meetings or want to improve your <b>communication skills</b> to explain ideas clearly, I can help.</p>
-                    <p style="margin-top: 1.5rem;">I provide <b>friendly and relaxed classes</b> tailored to your professional needs. I am a <b>native English Teacher from Australia</b> with over <b>24 years of experience</b>.</p>
+                    <p style="margin-top: 1.5rem;">If you have a custom design that needs to be converted into <b>bulletproof HTML</b>, or you need help fixing issues with <b>deliverability, functionality, accessibility, and UI/UX</b> across different email clients, I can help.</p>
+                    <p style="margin-top: 1.5rem;">I provide <b>pixel-perfect MJML & custom code development</b> tailored to your campaigns. I am a <b>freelance technical developer</b> with over <b>6 years of IT experience</b>.</p>
                 </div>
                 <div class="consult-btn-wrapper">
-                    <a href="https://www.classgap.com/en/tutor/linley" target="_blank" rel="noopener noreferrer" class="cta-button">Start Your Free Trial Class Now</a>
+                    <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Consultation</a>
                 </div>
             </div>
         </section>
@@ -392,68 +399,200 @@
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-tools"></i> What I Actually Help You Fix</h2>
                 <div class="grid-cards">
-                    <div class="card"><i class="fas fa-envelope-open-text"></i><h3>Unclear Emails</h3><p>Stop sending messages that cause confusion. Learn to write outcome-focused, professional emails.</p></div>
-                    <div class="card"><i class="fas fa-users-slash"></i><h3>Confusing Meetings</h3><p>Learn to lead discussions, redirect tangents, and summarize decisions clearly.</p></div>
-                    <div class="card"><i class="fas fa-comment-slash"></i><h3>Weak Explanations</h3><p>Eliminate rambling. Master logical, professional explanations that stakeholders respect.</p></div>
-                    <div class="card"><i class="fas fa-exclamation-triangle"></i><h3>Workplace Misunderstandings</h3><p>Reduce friction caused by communication gaps. Ensure ideas are understood exactly as intended.</p></div>
-                    <div class="card"><i class="fas fa-shield-alt"></i><h3>Hesitation & Fear</h3><p>Build the presence needed to speak to executives soundly and without hesitation.</p></div>
-                    <div class="card"><i class="fas fa-handshake"></i><h3>Operational Alignment</h3><p>Master the language needed for negotiations and reporting decisions clearly and calmly.</p></div>
-                    <div class="card"><i class="fas fa-gavel"></i><h3>Weak Authority</h3><p>Move away from passive language that sounds weak. Use assertive English so your suggestions are taken seriously.</p></div>
-                    <div class="card"><i class="fas fa-chart-line"></i><h3>Data Overload</h3><p>Stop just "reading" data. Learn to find the narrative behind the numbers so stakeholders understand the why.</p></div>
-                    <div class="card"><i class="fas fa-comments-dollar"></i><h3>Participation Gap</h3><p>Stop being a passive listener in global calls. Learn specific phrases to join fast-moving conversations confidently.</p></div>
+                    <div class="card"><i class="fas fa-envelope-open-text"></i><h3>Broken Outlook Layouts</h3><p>Stop fighting Ghost Tables. I ensure your custom designs render perfectly across Outlook 2013-2021.</p></div>
+                    <div class="card"><i class="fas fa-mobile-alt"></i><h3>Mobile Responsiveness</h3><p>Say goodbye to microscopic text. I code fluid, mobile-first emails that scale perfectly on every device.</p></div>
+                    <div class="card"><i class="fas fa-moon"></i><h3>Dark Mode Disasters</h3><p>Stop iOS from ruining your brand colors. I apply targeted CSS to control how Dark Mode inverts your emails.</p></div>
+                    <div class="card"><i class="fas fa-inbox"></i><h3>Deliverability Best Practices</h3><p>Stop landing in the spam folder. I ensure your code follows strict semantic rules and optimal text-to-image ratios for maximum inbox placement.</p></div>
+                    <div class="card"><i class="fas fa-weight-hanging"></i><h3>Gmail Clipping</h3><p>Keep it under 102KB. I minify and optimize all HTML code so your entire message gets delivered and read.</p></div>
+                    <div class="card"><i class="fas fa-paint-brush"></i><h3>Design Translation</h3><p>Pixel-perfect precision. I turn your flat UI/UX designs into living, breathing, clickable email templates.</p></div>
+                    <div class="card"><i class="fas fa-bug"></i><h3>Rendering Bugs</h3><p>Move away from "hope it works." Every file is rigorously QA-tested across 50+ major email clients before handoff.</p></div>
+                    <div class="card"><i class="fas fa-clock"></i><h3>Workflow Bottlenecks</h3><p>Stop missing campaign deadlines because your drag-and-drop builder is acting up or limiting your layout.</p></div>
+                    <div class="card"><i class="fas fa-folder-open"></i><h3>Clunky Handoffs</h3><p>Just copy, paste, and send. I deliver clean, documented HTML ZIP files ready for immediate ESP upload.</p></div>
                 </div>
                 <div class="consult-btn-wrapper" style="margin-top: 5rem;">
-                    <a href="https://www.classgap.com/en/tutor/linley" target="_blank" rel="noopener noreferrer" class="cta-button">Claim Your Free Trial Class Now</a>
+                    <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Meeting</a>
                 </div>
             </div>
         </section>
 
         <section id="services">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Training For You</h2>
+                <h2 class="section-title"><i class="fas fa-code-branch"></i> Email Development Services</h2>
                 <div class="grid-cards">
-                    <div class="card"><i class="fas fa-comments"></i><h3>Communication Skills</h3><p>Master the art of professional conversation and build real-world confidence.</p></div>
-                    <div class="card"><i class="fas fa-laptop-code"></i><h3>Interactive Materials</h3><p>Specific speaking and dialogue practice to simulate real workplace scenarios.</p></div>
-                    <div class="card"><i class="fas fa-video"></i><h3>Online Class Platform</h3><p>A professional videoconferencing platform specifically designed for online learning.</p></div>
-                    <div class="card"><i class="fas fa-bullhorn"></i><h3>Speak Confidently</h3><p>Master meetings and discussions so you can express your ideas without hesitation.</p></div>
-                    <div class="card"><i class="fas fa-keyboard"></i><h3>Professional Emails</h3><p>Write clearer, effective emails that get results without sounding too formal.</p></div>
-                    <div class="card"><i class="fas fa-user-tie"></i><h3>Interview Prep</h3><p>Prepare for interviews and career transitions with structured coaching.</p></div>
-                    <div class="card"><i class="fas fa-book-open"></i><h3>Spoken Grammar</h3><p>Master the grammar actually used in speech so you can stop overthinking.</p></div>
-                    <div class="card"><i class="fas fa-language"></i><h3>Vocabulary & Expressions</h3><p>Learn high-impact business expressions relevant to your role.</p></div>
-                    <div class="card"><i class="fas fa-leaf"></i><h3>Speaking Naturally</h3><p>Improve your intonation and rhythm to sound more natural and persuasive.</p></div>
-                    <div class="centered-card-wrapper">
-                        <div class="card"><i class="fas fa-globe-americas"></i><h3>Cultural Intelligence</h3><p>Understand the nuances and expectations of international business communication.</p></div>
+                    <div class="card"><i class="fas fa-laptop-code"></i><h3>MJML Development</h3><p>Bulletproof, responsive framework coding for modern and complex email layouts.</p></div>
+                    <div class="card"><i class="fas fa-table"></i><h3>Custom HTML/CSS</h3><p>Hand-coded, semantic table layouts designed to survive legacy desktop clients.</p></div>
+                    <div class="card"><i class="fas fa-file-code"></i><h3>Design to HTML Code</h3><p>Flawless pixel-to-pixel conversion from your design files (Figma, XD, PSD) directly into functional email code.</p></div>
+                    <div class="card"><i class="fas fa-check-double"></i><h3>Rigorous QA Testing</h3><p>Every file is verified via professional testing tools (Testi.at/Litmus) before delivery.</p></div>
+                    <div class="card"><i class="fas fa-cubes"></i><h3>Design Systems</h3><p>Modular, reusable email components built for your internal team to scale production.</p></div>
+                    <div class="card"><i class="fas fa-user-secret"></i><h3>White-Label Coding</h3><p>Confidential, high-quality development delivered quietly under your brand.</p></div>
+                    <div class="card"><i class="fas fa-image"></i><h3>Asset Optimization</h3><p>Retina-ready, fast-loading image slicing and compression for lightning-fast opens.</p></div>
+                    <div class="card"><i class="fas fa-universal-access"></i><h3>Email Accessibility</h3><p>Semantic coding with correct ARIA roles and alt-text to ensure screen-reader compatibility.</p></div>
+                    <div class="card"><i class="fas fa-globe-americas"></i><h3>Local & Global Support</h3><p>Based in Mauritius, providing reliable asynchronous development for remote partnerships.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" style="background-color: var(--section-highlight);">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
+                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem;">
+                    A selection of responsive, Outlook-tested emails coded from flat designs. Click any image to view the full design in a new tab.
+                </p>
+                <div class="grid-cards">
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="Abandoned Cart Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer; transition: 0.3s;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • E-commerce</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Abandoned Cart Flow</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Responsive e-commerce email featuring dynamic product grids and mobile-stacked layouts.</p>
+                        </div>
                     </div>
+                    
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Agency Newsletter Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Corporate</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Monthly Newsletter</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Custom HTML coded specifically to survive Outlook 2013-2021 with bulletproof ghost tables.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Onboarding</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Welcome Series Kickoff</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">A clean, engaging welcome email structured for accessibility and high conversion click-through rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" alt="SaaS Promotional Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • SaaS</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Product Launch Campaign</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Scalable modular layout built for rapid deployment across multiple internal SaaS teams.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" alt="Streetwear E-commerce Promo" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Retail</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Streetwear Promo</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Image-heavy promotional send with strict retina-optimization and mobile-first CSS media queries.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" alt="Food and Beverage Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • F&B</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">F&B Brand Announcement</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Vibrant HTML template utilizing safe web fonts and semantic code structure for maximum deliverability.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" alt="Restaurant Promotion Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Hospitality</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Restaurant Event Invite</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Elegant UI-to-Code conversion focused on balancing live text ratios to avoid spam filters.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" alt="Corporate Insurance Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Finance</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Insurance Policy Update</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Highly structured tabular data coded to render perfectly across restrictive enterprise mail clients.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" alt="Tech Platform Update Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Technology</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Platform Integration</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Dark Mode optimized build with targeted styling to prevent auto-inversion of brand assets.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" alt="Subscriber Confirmation Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Transactional</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Subscriber Confirmation</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Lightning-fast transactional email optimized for split-second rendering and double opt-in clicks.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" target="_blank" rel="noopener noreferrer">
+                            <img src="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" alt="B2B Service Flow Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • B2B Services</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Service Flow Overview</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Complex desktop layout successfully collapsed into a seamless, single-column reading experience for mobile users.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="consult-btn-wrapper" style="margin-top: 4rem;">
+                    <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: white;">View Full Details</a>
                 </div>
             </div>
         </section>
 
         <section id="who-for">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-bullseye"></i> Who This Is For</h2>
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> Who Is This For</h2>
                 <div class="fit-box" style="margin-bottom: 4rem;">
                     <ul>
-                        <li><b>Use English at work</b> every single day (or will be soon).</li>
-                        <li>Need English for specific tasks: <b>Meetings, Emails, Presentations, Negotiations, and Interviews.</b></li>
-                        <li>Need to communicate clearly when <b>Reporting problems</b> or <b>Explaining decisions.</b></li>
-                        <li>Want to expand your <b>business vocabulary</b> to add more variety.</li>
-                        <li><b>Need to master Small Talk</b> to build better relationships and network with confidence.</li>
-                        <li>Want help with <b>grammar</b> and how to use it correctly in workplace speaking.</li>
-                        <li>Want <b>structured lessons</b> based on real workplace conversations.</li>
-                        <li><b>Know grammar but feel hesitant</b> when speaking in high-pressure professional settings.</li>
-                        <li>Want <b>practical conversation practice</b> to improve your fluency and sound more natural.</li>
+                        <li><b>Marketing Agencies & Teams</b> struggling with complex designs that builders can't handle.</li>
+                        <li><b>Design Studios</b> that need their beautiful UI/UX properly translated to HTML.</li>
+                        <li><b>E-commerce Brands</b> wanting custom, dynamic flows for better engagement.</li>
+                        <li>Teams dealing with constant <b>Microsoft Outlook rendering bugs</b>.</li>
+                        <li>Businesses looking for a reliable <b>white-label freelance developer</b> to handle overflow.</li>
+                        <li>Professionals that need their emails to look perfect in both <b>Light and Dark Mode</b>.</li>
+                        <li>Marketing Directors who want to stop fixing code and start <b>focusing on strategy</b>.</li>
+                        <li>Teams that need <b>minified code</b> to prevent the dreaded "Message Clipped" warning.</li>
+                        <li>Anyone tired of generic, unbranded drag-and-drop templates.</li>
                     </ul>
                 </div>
 
-                <h2 class="section-title"><i class="fas fa-laptop-code"></i> Role-Specific Training Examples</h2>
+                <h2 class="section-title"><i class="fas fa-server"></i> ESP Integration</h2>
                 <div class="fit-box" style="margin-bottom: 4rem;">
+                    <p style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text);">I will work with the exact ESP you need. If you have a custom or different platform, I provide the raw, tested HTML ready for upload. For example:</p>
                     <ul>
-                        <li><b>Coders, Programmers & Software Developers:</b> Sprint updates and collaborative problem-solving.</li>
-                        <li><b>Data Scientists & Financial Analysts:</b> Explaining complex data and insights to stakeholders.</li>
-                        <li><b>Accountants:</b> Clear reporting, client advising, and explaining financial discrepancies.</li>
-                        <li><b>Engineers:</b> Technical documentation, project reporting, and onsite communication.</li>
-                        <li><b>Logistics & Inventory Management:</b> Supply chain communication and vendor coordination.</li>
-                        <li><b>Small Business Owners & Digital Marketers:</b> Networking, pitches, and relationship building.</li>
+                        <li><b>Mailchimp</b></li>
+                        <li><b>MailerLite</b></li>
+                        <li><b>Mailjet</b></li>
+                        <li><b>Brevo</b></li>
+                        <li><b>Stripo</b></li>
                     </ul>
                 </div>
             </div>
@@ -461,17 +600,17 @@
 
         <section id="way-we-learn" style="background-color: var(--section-highlight);">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> The Way We Learn</h2>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                 <div class="fit-box">
-                    <p style="margin-bottom: 1.5rem; font-size: 1.3rem;">I focus on <b>mainly conversation and communication practice</b> combined with interactive materials and professional ebooks.</p>
-                    <p style="margin-bottom: 2rem; font-size: 1.3rem;">My classes are <b>friendly and relaxed</b>, creating a supportive environment where you can practice without stress.</p>
-                    <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800;">Training that Transfers Directly to Work</h3>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.3rem;">I focus strictly on <b>clean code and reliable delivery</b>. I do not do copywriting or marketing strategy—I solve your technical bottlenecks.</p>
+                    <p style="margin-bottom: 2rem; font-size: 1.3rem;">My process is <b>simple and task-based</b>, acting as the perfect technical pair of hands for your projects.</p>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800;">My Streamlined Handoff Process</h3>
                     <ul>
-                        <li><b>Real Scenarios:</b> situations and tasks from your actual current job.</li>
-                        <li><b>Real Conversation & Communication:</b> practical speaking focus for workplace tasks.</li>
-                        <li><b>Real Vocab & Expressions:</b> high-impact language specific to professional contexts.</li>
-                        <li><b>Live Correction & Rephrasing:</b> Immediate feedback while you speak.</li>
-                        <li><b>Practical Summaries:</b> Actionable notes and sentence frameworks delivered after every class.</li>
+                        <li><b>1. The Design Handoff:</b> You send over your flat design files, links, and desired ESP.</li>
+                        <li><b>2. Pixel-Perfect Coding:</b> I hand-code the MJML/HTML structure to match your vision exactly.</li>
+                        <li><b>3. Rigorous QA Testing:</b> I run the code through live testing to ensure 100% compatibility across major clients.</li>
+                        <li><b>4. Code Minification:</b> The final file is stripped of bloat to guarantee fast load times and avoid clipping.</li>
+                        <li><b>5. Final Delivery:</b> You receive a zipped folder with the HTML and assets, ready to upload and send.</li>
                     </ul>
                 </div>
             </div>
@@ -480,19 +619,17 @@
         <section id="certifications">
             <div class="container">
                 <div class="cert-container-box">
-                    <h2 class="section-title" style="color: white;"><i class="fas fa-medal"></i> Certifications</h2>
+                    <h2 class="section-title" style="color: white;"><i class="fas fa-id-badge"></i> Background & Experience</h2>
                     <div class="cert-grid">
-                        <div class="cert-item"><img src="https://i.ibb.co/pjx5n8Z3/Screenshot-2024-12-04-162651.png" alt="TESOL English Teaching Certification - Linley Bignoux" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/MkcYZ0Zr/Screenshot-2024-04-24-150313.png" alt="TEFL Certification for International English Teaching" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/fzStTY8S/Screenshot-2024-04-20-161251.png" alt="Advanced English Communication Skills Qualification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/4RBWMn7R/Screenshot-2024-12-04-162437.png" alt="Professional English Teacher Credential Australia" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/XZjStHy2/Business-English-Cert-2020-01-30-Linley-Bignoux-page-0001.jpg" alt="Specialized Business English Teaching Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/nq1Zk80z/Screenshot-2024-05-07-203655.png" alt="Online Teaching Methodology Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/HfgBtDzw/Screenshot-2024-05-07-204447.png" alt="Teaching English Online Professional Development" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/BV0LnHhQ/Screenshot-2024-05-07-204401.png" alt="Advanced Grammar for Business Communication" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/HfMbk4km/Screenshot-2025-10-25-102441.png" alt="IELTS Preparation Instructor Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/qYbJm0f1/Screenshot-2025-10-25-102516.png" alt="English Language Coaching Credential" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/QFpjtdSF/UC-23e1b46e-6416-4ca0-a1ec-9bcd8db61d7c.jpg" alt="English Teaching Methodologies Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/6J7HsxYF/UC-e0732ac0-e884-4061-8104-d4183a396f62.jpg" alt="Freelance Email Developer Certification - HTML & CSS Coding" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/N2QBGPJ6/Screenshot-2024-05-15-220124.png" alt="MJML Framework Development Qualification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/3YMdrb2T/UC-5470b374-47e2-45e1-8a42-96a57f1491b0.jpg" alt="Responsive Email Layouts and QA Testing Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/YTjFT09X/UC-443a3f23-9f0d-4f21-be68-c78cc35fddba.jpg" alt="Klaviyo and Mailchimp Logic Integration Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/N2qZxwKz/UC-22ed3d60-cf94-4cff-94f1-ca9433bc1ce9.jpg" alt="Technical Logic and Problem Solving Credential" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/5X3pff8Q/UC-8f49453e-ec74-44be-a3bd-5dd2bbdc48d2.jpg" alt="Custom HTML Email Development for Agencies" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/j9qpGWxk/Screenshot-2024-05-06-111012.png" alt="Advanced Coding and Digital Environment Architecture" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/RkDvnHgq/Screenshot-2024-05-06-110829.png" alt="UI to HTML Code Translation Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/NdZpYMX3/1e83e38cb78b429689e304fe773667bd.png" alt="Email Asset Delivery and Optimization Methodology" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
                     </div>
                 </div>
             </div>
@@ -500,18 +637,17 @@
 
         <section id="about" style="background-color: var(--bg-alt);">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-user-tie"></i> About Me</h2>
+                <h2 class="section-title"><i class="fas fa-terminal"></i> The Developer Behind the Screen</h2>
                 <div class="about-content">
-                    <div class="about-image"><img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Business English Communication Coach" width="350" height="350" loading="lazy"></div>
+                    <div class="about-image"><img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" width="350" height="350" loading="lazy"></div>
                     <div class="about-text">
-                        <p style="font-size: 1.25rem;">Hello, I'm <b>Linley</b> — an English teacher from <b>Australia</b>. I help professionals improve their <b>communication</b> and use English <b>clearly and confidently</b> at work.</p>
-                        <h3>My Philosophy on Communication</h3>
-                        <p>I have studied formally and informally, and I continuously read and write about how humans interact through communication. I believe that communication should be the central part of everything we do—whether in professional or personal contexts.</p>
-                        <h3>Certifications & Expertise</h3>
-                        <p>I hold <b>English Teaching Certifications</b> in TESOL and TEFL, alongside certifications in <b>Online Teaching Design and Development</b> and <b>IELTS</b> preparation. Formally, I studied <b>Transport & Logistics, Inventory Management, and IT (Development, Design & Technical Support)</b>.</p>
-                        <h3>Professional Background</h3>
-                        <p>I spent over <b>24 years working in various industries professionally</b>, including Logistics, Inventory Management, and IT. For the vast majority of my career, I worked for <b>two well-known global corporations</b>, giving me unique insight into how professional communication functions in high-pressure, international environments.</p>
-                        <p>Additionally, my background as a <b>Scuba Diving Instructor & First Aid Instructor</b> taught me how to guide learners through supportive teaching strategies in a <b>relaxed, encouraging way</b>.</p>
+                        <p style="font-size: 1.25rem;">Hello, I'm <b>Linley</b>. I am an Australian <b>Freelance Email Developer</b> currently based in Mauritius. I help businesses and teams solve the technical puzzles that frustrate their campaigns.</p>
+                        
+                        <h3>Professional Background & Qualifications</h3>
+                        <p>With a foundation of over <b>6 years in IT</b>, alongside extensive past experience in <b>Logistics and Education</b>, I bring a unique blend of systematic problem-solving and clear communication to my work. I hold multiple formal qualifications, including professional certificates in <b>Email Development, Web Design, IT Technical Support, Email Marketing, and Advanced HTML/CSS Coding</b>.</p>
+                        
+                        <h3>Why Email Development?</h3>
+                        <p>Email development is a unique technical challenge. Every email client has its own quirks, and forcing a modern design to render flawlessly everywhere requires deep problem-solving skills. I don't do marketing strategy or copywriting; I just write clean, bulletproof code that fixes your technical headaches and makes your campaigns look brilliant.</p>
                     </div>
                 </div>
             </div>
@@ -520,87 +656,86 @@
         <section class="statement-section">
             <div class="container">
                 <div class="statement-text">
-                    "I help professionals and people communicate clearly and confidently at work — so communication is clear, structured, and effective in real professional situations in English"
+                    "I act as your technical pair of hands, turning your designs into bulletproof HTML that actually reaches the inbox exactly the way you intended."
                 </div>
             </div>
         </section>
 
         <section id="what-i-hear" style="background-color: var(--section-highlight);">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-ear-listen"></i> What I Often Hear</h2>
+                <h2 class="section-title"><i class="fas fa-ear-listen"></i> What I Often Hear From Clients</h2>
                 <div class="fit-box" style="margin-bottom: 3rem;">
                     <ul>
-                        <li><b>Meeting Freeze:</b> You have technical knowledge but "freeze" when speaking to management.</li>
-                        <li><b>The Translation Lag:</b> You think in your own language and translate word-for-word.</li>
-                        <li><b>The "Word-Search" Delay:</b> You pause mid-sentence because a specific word feels "stuck."</li>
-                        <li><b>Over-Explaining:</b> You use 50 words to explain something that only needs 10.</li>
-                        <li><b>Polite Conflict Struggle:</b> You worry about sounding too blunt when you disagree.</li>
-                        <li><b>Presentation Anxiety:</b> You feel fine with slides, but afraid of the Q&A session.</li>
-                        <li><b>Small Talk Stagnation:</b> You don't feel "natural" during casual talk before a meeting.</li>
-                        <li><b>The Identity Gap:</b> You feel less intelligent in English than in your own language.</li>
+                        <li><b>The Outlook Nightmare:</b> You have a beautiful design, but Outlook destroys the margins.</li>
+                        <li><b>The Drag-and-Drop Limit:</b> Your builder simply won't let you place a button exactly where you want it.</li>
+                        <li><b>The Mobile Mess:</b> The desktop email looks great, but mobile users have to pinch and zoom to read it.</li>
+                        <li><b>The Missing Data:</b> You tried coding custom logic, but the dynamic tags keep breaking.</li>
+                        <li><b>The Ghost Freelancer:</b> You hired a general web developer who didn't understand that email CSS works entirely differently.</li>
+                        <li><b>The Clipped Message:</b> Your email is so full of bloated code that Gmail hides the bottom half.</li>
+                        <li><b>The In-House Bottleneck:</b> Your internal team is too busy with web projects to code a massive newsletter campaign.</li>
                     </ul>
                 </div>
                 <div class="hear-grid">
-                    <div class="hear-quote">"I know the answer, but I can't find the words fast enough in the meeting."</div>
-                    <div class="hear-quote">"I feel like a different, less intelligent person when I speak English."</div>
-                    <div class="hear-quote">"I'm an expert in my field, but I feel like a beginner when I explain my logic."</div>
-                    <div class="hear-quote">"I spend hours preparing for a 5-minute update because I'm afraid of questions."</div>
-                    <div class="hear-quote">"My emails are fine, but I'm terrified of the Q&A after a presentation."</div>
-                    <div class="hear-quote">"I worry that I sound rude or aggressive when I try to be direct."</div>
-                    <div class="hear-quote">"I stay quiet in meetings even when I have a great idea because of my grammar."</div>
-                    <div class="hear-quote">"I dread the first few minutes of the call because I don't know how to make small talk."</div>
+                    <div class="hear-quote">"We love the design, but Outlook completely destroyed the formatting."</div>
+                    <div class="hear-quote">"Mailchimp's builder just can't do this specific layout we approved."</div>
+                    <div class="hear-quote">"I'm an expert in strategy, but I don't know how to fix a Ghost Table."</div>
+                    <div class="hear-quote">"I spend hours trying to make the mobile view look decent and it still breaks."</div>
+                    <div class="hear-quote">"Our web developer tried to code it, but they didn't know email CSS has to be inline."</div>
+                    <div class="hear-quote">"The email looks great, but iOS Dark Mode inverted our logo."</div>
+                    <div class="hear-quote">"We need someone to just take this design file and give us the raw HTML by Thursday."</div>
+                    <div class="hear-quote">"We have a massive campaign to build and our internal dev is booked."</div>
                 </div>
                 <div class="consult-btn-wrapper">
-                    <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button" style="background: var(--primary); color: white;">Book Your Free Consultation</a>
+                    <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button" style="background: var(--primary); color: white;">Book a Meeting</a>
                 </div>
             </div>
         </section>
 
         <section id="blog" style="background-color: var(--bg-alt);">
             <div class="container blog-card-wrap">
-                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Insights & Tips</h2>
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Development Insights</h2>
                 <div class="grid-cards">
-                    <a href="polite-disagreement.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">07 FEB 2026</span>
-                            <h3>How to Disagree Politely</h3>
-                            <p>Stop saying "You are wrong." Learn 5 essential phrases to voice your opinion without sounding rude.</p>
+                            <h3>Why Custom Emails Break in Outlook</h3>
+                            <p>Understand the VML logic and Ghost Tables required to force Microsoft Outlook to respect your layouts.</p>
                         </div>
                     </a>
 
-                    <a href="workplace-fluency-tips.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">05 FEB 2026</span>
-                            <h3>5 Techniques to Improve English Fluency</h3>
-                            <p>Fluency isn't just about speed. Learn 5 practical techniques to speak with authority.</p>
+                            <h3>Design to MJML: The Fastest Workflow</h3>
+                            <p>How teams use the MJML framework to scale up their email production without losing quality.</p>
                         </div>
                     </a>
-                    <a href="beyond-grammar.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">27 JAN 2026</span>
-                            <h3>Beyond Grammar: Communication is the Goal</h3>
-                            <p>Mastering workplace English means shifting from sentence building to solving problems.</p>
+                            <h3>Designing for Dark Mode Email</h3>
+                            <p>Stop iOS from automatically inverting your brand colors. Use targeted CSS to control the dark mode experience.</p>
                         </div>
                     </a>
-                    <a href="science-tech-blog.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">22 JAN 2026</span>
-                            <h3>English for Science & Tech Professionals</h3>
-                            <p>Practical strategies for engineers and IT experts to improve communication fast.</p>
+                            <h3>Drag & Drop Builders vs. Custom Code</h3>
+                            <p>Why relying on ESP builders often results in bloated HTML and broken mobile views.</p>
                         </div>
                     </a>
-                    <a href="workplace-english-technical-to-talk.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">19 JAN 2026</span>
-                            <h3>Workplace English: Technical to Talk</h3>
-                            <p>A beginner's guide for professionals who struggle with office English.</p>
+                            <h3>The 102KB Limit: Preventing Gmail Clipping</h3>
+                            <p>A technical guide to minifying your code to ensure your entire message (and tracking pixel) is delivered.</p>
                         </div>
                     </a>
-                    <a href="beginner-patience-listening.html" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="#" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="card">
                             <span class="blog-date">28 JAN 2026</span>
-                            <h3>Patience & Listening for Beginners</h3>
-                            <p>Why learning takes time and how small daily steps lead to big progress.</p>
+                            <h3>Handling Complex ESP Dynamic Tags</h3>
+                            <p>How to correctly use conditional logic to dynamically generate personalized content sections.</p>
                         </div>
                     </a>
                 </div>
@@ -609,17 +744,14 @@
 
         <section id="testimonials">
             <div class="container">
-                <h2 class="section-title"><i class="fas fa-comments"></i> Student Feedback</h2>
+                <h2 class="section-title"><i class="fas fa-comments"></i> Client Feedback</h2>
                 <div class="grid-cards">
-                    <div class="card"><b class="student-name">Henning</b><p class="student-quote">"Thanks Linley for your flexibility and well prepared feedback!"</p><span class="student-role">Finance and Accounting</span></div>
-                    <div class="card"><b class="student-name">Victoria</b><p class="student-quote">"Very professional and nice teacher"</p><span class="student-role">Sales Executive</span></div>
-                    <div class="card"><b class="student-name">Fausto</b><p class="student-quote">"He's a good teacher"</p><span class="student-role">Programmer / Software Developer</span></div>
-                    <div class="card"><b class="student-name">Emily</b><p class="student-quote">"Excellent teacher, adapts private lessons to my needs."</p><span class="student-role">Logistics & Supply Chain</span></div>
-                    <div class="card"><b class="student-name">Julien</b><p class="student-quote">"Linley was very good at analysing and improving individual needs."</p><span class="student-role">IT Project Management</span></div>
-                    <div class="card"><b class="student-name">Olivia</b><p class="student-quote">"Gives a great summary at the end."</p><span class="student-role">Business Development</span></div>
-                    <div class="card"><b class="student-name">Michel</b><p class="student-quote">"Provides clear corrections of our mistakes."</p><span class="student-role">Senior IT Architect</span></div>
-                    <div class="card"><b class="student-name">Sophia</b><p class="student-quote">"Very motivated and gives space for individual topics."</p><span class="student-role">Mechanical Engineering</span></div>
-                    <div class="card"><b class="student-name">Timo</b><p class="student-quote">"You’re amazing, very encouraging."</p><span class="student-role">Global Logistics</span></div>
+                    <div class="card"><b class="student-name">Emily</b><p class="student-quote">"Excellent coder, adapts the MJML perfectly to our custom ESP."</p><span class="student-role">E-commerce Specialist</span></div>
+                    <div class="card"><b class="student-name">Julien</b><p class="student-quote">"Linley was very good at fixing the Outlook bugs our previous dev left behind."</p><span class="student-role">IT Project Management</span></div>
+                    <div class="card"><b class="student-name">Olivia</b><p class="student-quote">"Delivered clean, documented code ahead of schedule."</p><span class="student-role">Business Development</span></div>
+                    <div class="card"><b class="student-name">Michel</b><p class="student-quote">"Provides perfectly minified files ready for our platform."</p><span class="student-role">Senior IT Architect</span></div>
+                    <div class="card"><b class="student-name">Sophia</b><p class="student-quote">"Highly reliable technical partner for our design studio."</p><span class="student-role">Lead Designer</span></div>
+                    <div class="card"><b class="student-name">Timo</b><p class="student-quote">"Your QA testing process is amazing, gave us total peace of mind."</p><span class="student-role">Campaign Manager</span></div>
                 </div>
             </div>
         </section>
@@ -627,7 +759,7 @@
         <section id="contact" style="background-color: var(--bg-alt);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
-                <p class="contact-intro-text">If you have any questions or would like to talk about what you need help with or your specific requirements, please feel free to contact me below.</p>
+                <p class="contact-intro-text">Have a design that needs coding or an Outlook bug that needs fixing? Send me the details below to get a quote for your next campaign.</p>
                 <div class="contact-container">
                     <form action="https://formsubmit.co/blanyves@optusnet.com.au" method="POST">
                         <input type="hidden" name="_captcha" value="false">
@@ -641,8 +773,12 @@
                             <input type="email" name="email" required placeholder="example@company.com">
                         </div>
                         <div class="form-group">
-                            <label>Message</label>
-                            <textarea name="message" rows="5" placeholder="Tell me about your goals..."></textarea>
+                            <label>Message (Project Details)</label>
+                            <textarea name="message" rows="5" placeholder="Tell me about the design, which ESP you use, or paste a link..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>ESP (Optional)</label>
+                            <input type="text" name="esp" placeholder="e.g., Mailchimp, MailerLite, Mailjet, Custom...">
                         </div>
                         <div class="form-btn-wrap">
                             <button type="submit" class="cta-button">Send Secure Message</button>
@@ -655,10 +791,10 @@
         <section class="final-cta">
             <div class="container">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Contact" class="cta-profile-img" width="125" height="125" loading="lazy">
-                <h2>Ready to communicate for job performance?</h2>
-                <p style="margin-bottom: 2.5rem; font-size: 1.4rem; opacity: 0.9;">Fewer misunderstandings. Better decisions. Smoother collaboration.</p>
+                <h2>Ready to clear your development bottleneck?</h2>
+                <p style="margin-bottom: 2.5rem; font-size: 1.4rem; opacity: 0.9;">No more ghost tables. No more clipped emails. Just clean code.</p>
                 <div class="consult-btn-wrapper">
-                    <a href="https://www.classgap.com/en/tutor/linley" target="_blank" rel="noopener noreferrer" class="cta-button">Claim Your Free Trial Class Now</a>
+                    <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Consultation</a>
                 </div>
             </div>
         </section>
@@ -670,8 +806,8 @@
                         <div class="ml-form-embedWrapper embedForm">
                             <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
                                 <div class="ml-form-embedContent">
-                                    <h3>Newsletter</h3>
-                                    <p>Sign up to find out about tips and techniques&nbsp;to improve your English communication skills</p>
+                                    <h3>Email Dev Insights</h3>
+                                    <p>Sign up to receive advanced MJML tips, HTML workarounds, and reliable email development strategies.</p>
                                 </div>
                                 <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
                                     <div class="ml-form-formContent">
@@ -685,7 +821,7 @@
                                         <label class="checkbox">
                                             <input type="checkbox">
                                             <div class="label-description">
-                                                <p>Opt in to receive news and updates.</p>
+                                                <p>Opt in to receive technical updates.</p>
                                             </div>
                                         </label>
                                     </div>
@@ -705,7 +841,7 @@
                             </div>
                             <div class="ml-form-successBody row-success" style="display: none">
                                 <div class="ml-form-successContent">
-                                    <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing - Linley B Business English Teacher" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
+                                    <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
                                     <h4>Welcome Aboard!</h4>
                                     <p>Please check your inbox to confirm your subscription.</p>
                                 </div>
@@ -737,12 +873,14 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.classgap.com/en/tutor/linley" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Classgap Profile"><i class="fas fa-graduation-cap"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
-            <p>&copy; 2026 <b>LinleyB</b> | English Teacher for Workplace & Business English | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+            <div style="margin-bottom: 10px; font-weight: 700; color: var(--primary);">Site designed and developed by Linley Bignoux</div>
+            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
 
@@ -751,7 +889,26 @@
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); });
         });
-        function zoom(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').style.display = 'flex'; }
+
+        // --- LIGHTBOX ZOOM LOGIC FOR CERTIFICATIONS ---
+        function zoom(img) { 
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src; 
+            lightboxImg.classList.remove('expanded'); 
+            document.getElementById('lightbox').style.display = 'block'; 
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function toggleZoom(event) {
+            event.stopPropagation(); 
+            const img = document.getElementById('lightbox-img');
+            img.classList.toggle('expanded');
+        }
+
+        function closeLightbox(event) {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto'; 
+        }
 
         // THEME TOGGLE LOGIC
         const themeBtn = document.getElementById('themeToggle');
