@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Design to MJML: The Fastest Workflow for Email Production | LinleyB</title>
+    <meta name="description" content="Learn how marketing agencies use the MJML framework to scale up Figma to HTML email production without losing quality or breaking responsive layouts.">
+    
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Design to MJML: The Fastest Workflow for Email Production">
+    <meta property="og:description" content="Learn how marketing agencies use the MJML framework to scale up Figma to HTML email production without losing quality.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/design-to-mjml-workflow.html">
+    <meta property="og:type" content="article">
+    
+    <link rel="canonical" href="https://linleyb.com/design-to-mjml-workflow.html" />
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <style>
+        /* BASE & RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
+            --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
+            --card-bg: #ffffff; --input-bg: #f8fafc;
+        }
+        [data-theme="dark"] {
+            --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+            --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b;
+            --card-bg: #1e293b; --input-bg: #334155;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+                --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; --card-bg: #1e293b;
+            }
+        }
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); transition: 0.3s; overflow-x: hidden; }
+        
+        /* HEADER */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; }
+        .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; margin-right: auto; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; }
+        .logo-b { color: var(--text); }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; }
+        
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; transition: 0.3s; border-bottom: 3px solid transparent; }
+        .nav-links a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+        .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); }
+        .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; }
+
+        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; cursor: pointer; border: none; font-size: 1.1rem; transition: 0.3s; text-align: center; }
+        .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+        /* BLOG ARTICLE STYLES */
+        .blog-header { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: 5rem 0; text-align: center; }
+        .blog-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 900; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+        .blog-meta { font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 2rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .article-content { max-width: 850px; margin: 4rem auto; padding: 0 5%; font-size: 1.15rem; line-height: 1.8; color: var(--text); }
+        .article-content h2 { color: var(--primary); font-size: 2rem; margin: 3rem 0 1.5rem; font-weight: 800; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .article-content h3 { color: var(--text); font-size: 1.5rem; margin: 2rem 0 1rem; font-weight: 700; }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content ul, .article-content ol { margin-bottom: 1.5rem; padding-left: 2rem; }
+        .article-content li { margin-bottom: 0.8rem; }
+        .article-content strong { color: var(--primary); }
+        
+        .code-block { background: #0f172a; color: #f8fafc; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: Consolas, Monaco, "Andale Mono", monospace; font-size: 0.95rem; margin: 2rem 0; border-left: 5px solid var(--accent); }
+        .article-content a { color: var(--primary); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 2px; transition: 0.3s; }
+        .article-content a:hover { background-color: var(--accent); color: #000; text-decoration: none; }
+
+        .author-box { background: var(--section-highlight); padding: 2.5rem; border-radius: 12px; margin-top: 4rem; display: flex; align-items: center; gap: 2rem; border: 1px solid var(--border); border-top: 5px solid var(--primary); }
+        .author-box img { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--accent); object-fit: cover; }
+        .author-box h4 { font-size: 1.4rem; color: var(--primary); margin-bottom: 5px; }
+        .author-box p { font-size: 1rem; margin-bottom: 15px; }
+
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .social-icon { font-size: 1.2rem; color: #0047AB; background: var(--accent); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: 0.4s; text-decoration: none; }
+        .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+
+        /* RESPONSIVE */
+        @media (max-width: 767px) {
+            .logo-tagline { display: none; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .author-box { flex-direction: column; text-align: center; }
+            .theme-toggle { margin-right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo-wrap">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley<span class="logo-b">B</span></div>
+                    <div class="logo-tagline">Email Developer | HTML | CSS | MJML</div>
+                </div>
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#fix">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="blog-header">
+            <div class="container">
+                <span class="blog-meta">February 05, 2026 • Workflow & Efficiency</span>
+                <h1>Design to MJML: The Fastest Workflow for Scaling Email Production</h1>
+            </div>
+        </section>
+
+        <article class="article-content">
+            <p>If you run a marketing agency or a design studio, you already know the ultimate bottleneck in your campaign pipeline. You have a brilliant UI/UX designer who creates a visually stunning, high-converting email layout in Figma or Adobe XD. The client approves it instantly. High fives all around.</p>
+            <p>And then, the design is handed off to development. Suddenly, the momentum grinds to a halt. Translating a beautiful, flat Figma file into a living, breathing HTML email that works across Apple Mail, Gmail, and Microsoft Outlook is a notoriously tedious process. If your team is still writing raw HTML tables from scratch, a complex newsletter can take a developer anywhere from 4 to 8 hours to code, test, fix, and finalize.</p>
+            <p>When you are trying to scale your agency's output, spending a full workday hand-coding a single email campaign is financially unsustainable. This is exactly where the <strong>MJML framework</strong> completely changes the game for production speed and code reliability.</p>
+
+            <h2>What Exactly is MJML?</h2>
+            <p><strong>MJML (Mailjet Markup Language)</strong> is an open-source markup language created specifically to make responsive email coding fast, semantic, and painless. It acts as an abstraction layer over standard HTML.</p>
+            <p>Instead of writing dozens of nested <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, and <code>&lt;td&gt;</code> tags just to create a simple two-column layout, you write semantic tags like <code>&lt;mj-section&gt;</code> and <code>&lt;mj-column&gt;</code>. Once your clean, readable code is written, the MJML engine compiles it into standard, production-ready, bulletproof HTML.</p>
+            <p>Think of MJML as a master translator. You speak to it in a clean, modern syntax, and it seamlessly translates your instructions into the chaotic, archaic table-based HTML and Vector Markup Language (VML) that legacy email clients (like Microsoft Outlook) demand in order to render correctly.</p>
+
+            <h2>Why Traditional Hand-Coding Fails at Scale</h2>
+            <p>To understand why MJML is so incredibly powerful, you first have to understand the pain it eliminates.</p>
+            <p>Let's say your Figma design features a simple "Shop Now" button. In modern web development, creating a button takes three lines of CSS (background color, border radius, padding). In email development, because Microsoft Outlook utilizes the Word rendering engine, a single button requires a complex mix of HTML tables and Microsoft-specific VML code just to ensure the corners stay rounded and the background color doesn't vanish.</p>
+            <p>Writing this by hand is not only painstakingly slow; it is highly prone to human error. If a developer misses a single closing <code>&lt;/td&gt;</code> tag, or forgets a conditional <code>&lt;!--[if mso]&gt;</code> comment, the entire layout will shatter when it hits the recipient's inbox. Scaling an agency's email production requires <strong>consistency and speed</strong>. Hand-coding raw HTML offers neither.</p>
+
+            <h2>The Optimized Figma to MJML Pipeline</h2>
+            <p>By integrating MJML into your agency's pipeline, you can drastically reduce development time while simultaneously increasing the quality, accessibility, and stability of your deliverables. Here is what a highly optimized workflow looks like:</p>
+
+            <h3>1. The Design Phase (Figma/Adobe XD)</h3>
+            <p>The designer creates the email layout. Because MJML relies on a strict grid system (sections containing columns), designers should ideally structure their Figma files using Auto-Layout. This makes it incredibly easy for the email developer to visually understand how elements should stack when transitioning from a wide desktop view to a narrow mobile screen.</p>
+
+            <h3>2. Asset Export and Compression</h3>
+            <p>The developer slices the design, exporting images, custom icons, and background assets. A crucial step here is running all visual assets through strict compression tools (like TinyPNG or ImageOptim). This ensures the final HTML file stays well under Gmail's notorious 102KB clipping limit, prioritizing lightning-fast load times.</p>
+
+            <h3>3. Coding the MJML Structure</h3>
+            <p>The developer writes the MJML code. Because the syntax is strictly semantic, building the core grid is incredibly fast. Here is a comparison of how much raw typing is saved:</p>
+            
+            <p><strong>To create a simple, responsive two-column layout in MJML:</strong></p>
+            <div class="code-block">
+&lt;mj-section&gt;
+  &lt;mj-column&gt;
+    &lt;mj-image src="product-left.jpg" alt="Blue Sneakers" /&gt;
+    &lt;mj-text&gt;Product 1&lt;/mj-text&gt;
+  &lt;/mj-column&gt;
+  
+  &lt;mj-column&gt;
+    &lt;mj-image src="product-right.jpg" alt="Red Sneakers" /&gt;
+    &lt;mj-text&gt;Product 2&lt;/mj-text&gt;
+  &lt;/mj-column&gt;
+&lt;/mj-section&gt;
+            </div>
+            
+            <p>When compiled by the engine, those 10 lines of MJML generate roughly <strong>85 lines of dense, table-based HTML</strong>, complete with Outlook conditional Ghost Tables and mobile CSS media queries. The developer saves hours of typing, nesting, and debugging.</p>
+
+            <h3>4. Default Mobile Responsiveness</h3>
+            <p>One of the biggest headaches in email development is writing custom media queries to handle mobile views. MJML handles this natively. The <code>&lt;mj-column&gt;</code> tags automatically recognize when screen real estate drops below a certain width (defaulting to 480px) and will cleanly stack the columns on top of each other. No custom CSS hacking required.</p>
+
+            <h2>Component-Driven Email Architecture</h2>
+            <p>For agencies handling recurring campaigns (like weekly newsletters, transactional emails, or automated e-commerce flows), MJML allows for component-driven architecture using the <code>&lt;mj-include&gt;</code> tag.</p>
+            <p>A smart developer can code the global header, the footer, and standard product blocks as separate, standalone files. When building a new campaign for that client, the developer simply "includes" these pre-tested components into the master file.</p>
+            <p>This means you are never rewriting code you have already QA-tested. You assemble emails like Lego blocks, further accelerating your production timeline and ensuring brand consistency across hundreds of campaigns.</p>
+
+            <h2>Overcoming Outlook Quirks Automatically</h2>
+            <p>We already know Outlook is the bane of email development. What MJML does beautifully is abstract the Outlook fixes. When you use an <code>&lt;mj-button&gt;</code>, the MJML compiler automatically injects the exact VML vector code needed to make that button render perfectly in Outlook 2016.</p>
+            <p>When you define a background image on an <code>&lt;mj-section&gt;</code>, MJML automatically generates the VML wrapper required to display background images on Windows desktop clients. It takes the guesswork entirely out of legacy client support.</p>
+
+            <h2>ESP Integration: The Final Step</h2>
+            <p>It is incredibly important to note that compiling MJML into HTML is not the final step of the journey. A beautiful HTML file is useless if it cannot be sent correctly through your client's chosen Email Service Provider (ESP), whether that is Mailchimp, Klaviyo, MailerLite, or a custom internal system.</p>
+            <p>Once the MJML is compiled into a raw HTML file, a technical developer must inject the specific dynamic logic required by the ESP. This includes inserting proprietary merge tags (like <code>*|FNAME|*</code> or <code>{{ person.first_name }}</code>), configuring unsubscribe links, and wrapping HTML blocks in looping logic (IF/ELSE statements) for dynamic product recommendations.</p>
+
+            <h2>Conclusion: Stop Writing Tables by Hand</h2>
+            <p>MJML is an incredible tool, but it is not a magic wand. It requires a technical developer who understands how to set up the local Node.js development environment, how to manipulate the compiled code for specific ESP integrations, and how to troubleshoot the rare instances where an MJML component behaves unexpectedly in a specific environment.</p>
+            <p>By transitioning from raw HTML to an MJML workflow, marketing teams can cut their development time in half, completely eliminate basic rendering bugs, and finally scale their email marketing services profitably.</p>
+
+            <div class="author-box">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux">
+                <div>
+                    <h4>Ready to speed up your agency's email workflow?</h4>
+                    <p>I specialize in taking complex design files and turning them into pixel-perfect, ESP-ready MJML code. If your team is stuck writing tables by hand or fighting builder limitations, let me handle the technical heavy lifting.</p>
+                    <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 1rem;">Book a Scoping Call</a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div style="margin-bottom:10px; font-weight:700; color:var(--primary);">Site designed and developed by Linley Bignoux</div>
+            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        
+        const themeBtn = document.getElementById('themeToggle');
+        const icon = themeBtn.querySelector('i');
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            updateIcon(storedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            if (!currentTheme) {
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                targetTheme = systemDark ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateIcon(targetTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
