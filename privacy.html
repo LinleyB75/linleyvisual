@@ -56,7 +56,11 @@
 
         /* --- GLOBAL --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden;}
+        
+        /* IPHONE 7 HORIZONTAL SCROLL FIX */
+        html, body { overflow-x: hidden; max-width: 100vw; }
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh;}
         
         /* HEADER STYLES */
         header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
@@ -71,7 +75,7 @@
         .logo-b { color: var(--text); }
         .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
 
-        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; }
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
 
         /* CONTENT */
@@ -80,9 +84,9 @@
         
         h1 { color: var(--primary); font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; font-weight: 900; }
         h2 { color: var(--primary); font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-        p { margin-bottom: 1.5rem; color: var(--text); font-size: 1.1rem; }
+        p { margin-bottom: 1.5rem; color: var(--text); font-size: 1.1rem; overflow-wrap: break-word; word-wrap: break-word; }
         ul { margin-bottom: 1.5rem; padding-left: 20px; font-size: 1.1rem; }
-        li { margin-bottom: 0.8rem; }
+        li { margin-bottom: 0.8rem; overflow-wrap: break-word; }
         a { color: var(--primary); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 2px; transition: 0.3s; }
         a:hover { background-color: var(--accent); color: #000; text-decoration: none; }
 
@@ -91,7 +95,7 @@
 
         /* FOOTER */
         footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%; }
         
         /* SOCIAL ICONS CSS FIX */
         .social-icon { 
@@ -109,11 +113,18 @@
         @media (max-width: 767px) {
             header { min-height: 80px; }
             .container { padding: 0 20px; }
+            
+            /* LOGO FIX */
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: none; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            
             .card { padding: 2rem 1.5rem; }
             .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
+            
+            /* SOCIAL ICON SCALING FOR IPHONE 7 */
+            .social-links { gap: 10px; }
+            .social-icon { width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
