@@ -13,6 +13,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    
     <title>Freelance HTML/CSS/MJML Email Developer | Mauritius & Global</title>
     <meta name="description" content="I turn your designs into bulletproof HTML/CSS emails. Freelance email developer specializing in MJML, Outlook-safe code, and agency partnerships.">
     
@@ -71,6 +75,7 @@
         
         :root {
             /* Default Light Mode */
+            color-scheme: light dark;
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937;
@@ -124,7 +129,7 @@
             }
         }
 
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100vw; }
+        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100vw;}
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; }
         
         header { 
@@ -185,7 +190,7 @@
         .nav-links .nav-for-you:hover { border-bottom: none !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
 
-        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: 10px; flex-shrink: 0; }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: auto; flex-shrink: 0;}
 
         .consult-btn-wrapper { width: 100%; display: flex; justify-content: center; margin-top: 2rem; }
         .cta-button { 
@@ -233,7 +238,7 @@
         .about-text h3 { color: var(--primary); margin: 1.5rem 0 0.8rem; font-size: 1.5rem; font-weight: 800; border-left: 5px solid var(--accent); padding-left: 15px; }
         
         .statement-section { background: var(--bg); padding: 4rem 0; text-align: center; }
-        .statement-text { color: var(--primary); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .statement-text { color: var(--primary); font-size: clamp(1.4rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.4; max-width: 1100px; margin: 0 auto; padding: 0 20px;}
 
         .fit-box { background: var(--card-bg); padding: clamp(1.5rem, 5%, 3.5rem); border-radius: 12px; border-left: 8px solid var(--accent); box-shadow: var(--shadow); max-width: 1000px; margin: 2rem auto; }
         .fit-box li { padding: 0.8rem 0 0.8rem 2.5rem; position: relative; list-style: none; color: var(--text-light); border-bottom: 1px solid var(--border); font-size: 1.15rem; text-align: left; }
@@ -259,7 +264,7 @@
         /* --- NEWSLETTER SPECIFIC CSS --- */
         #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
         
-        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; }
+        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; padding: 0 20px;}
         .newsletter-container { max-width: 600px; width: 100%; margin: 0 auto; }
         
         .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
@@ -303,9 +308,9 @@
         .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
 
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
-        .social-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
         
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none; transition: 0.4s; flex-shrink: 0; }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
 
         .footer-credit { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
@@ -330,15 +335,14 @@
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
             .nav-links.active { display: flex; }
             
-            /* ADDED PADDING TO HAMBURGER MENU */
-            .menu-toggle { display: block; padding-right: 15px; } 
-
-            /* LOGO FIX */
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            /* LOGO & MENU MOBILE FIXES */
+            .logo-wrap { max-width: 65%; } /* Prevents logo from pushing menu off screen */
+            .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.65rem; white-space: normal; line-height: 1.1; max-width: 120px; }
             
-            .theme-toggle { margin-right: 10px; }
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
+            .theme-toggle { margin-right: 5px; margin-left: auto;}
             
             .cta-button { padding: 1rem 1.5rem; font-size: 1rem; width: auto; max-width: 90%; }
             .hero h1 { font-size: 2rem; } 
@@ -365,10 +369,10 @@
         <img id="lightbox-img" src="" onclick="toggleZoom(event)">
     </div>
 
-    <header>
-        <nav class="container">
+    <header role="banner">
+        <nav class="container" role="navigation">
             <a href="#home" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" class="header-photo" width="60" height="60">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" class="header-photo" width="60" height="60" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
@@ -394,7 +398,7 @@
         </nav>
     </header>
 
-    <main>
+    <main role="main">
         <section id="home" class="hero">
             <div class="container">
                 <h1>I Code Emails • CSS/HTML Development</h1>
@@ -404,7 +408,7 @@
                 </p>
                 <div class="hero-intro-text">
                     <p style="margin-top: 1.5rem;">If you have a custom design that needs to be converted into <b>bulletproof HTML</b>, or you need help fixing issues with <b>deliverability, functionality, accessibility, and UI/UX</b> across different email clients, I can help.</p>
-                    <p style="margin-top: 1.5rem;">I provide <b>pixel-perfect MJML & custom code development</b> tailored to your campaigns. I am a <b>freelance technical developer</b> with over <b>6 years of IT experience</b>.</p>
+                    <p style="margin-top: 1.5rem;">I provide <b>pixel-perfect MJML & custom code development</b> tailored to your campaigns. I am a <b>freelance email developer</b> with over <b>6 years of IT experience</b>.</p>
                 </div>
                 <div class="consult-btn-wrapper">
                     <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Consultation</a>
@@ -452,7 +456,7 @@
         <section id="portfolio" style="background-color: var(--section-highlight);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
-                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem;">
+                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px;">
                     A selection of responsive, Outlook-tested emails coded from flat designs. Click any image to view the full design in a new tab.
                 </p>
                 <div class="grid-cards">
@@ -579,7 +583,7 @@
                 </div>
                 
                 <div class="consult-btn-wrapper" style="margin-top: 4rem;">
-                    <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: white;">View Full Details</a>
+                    <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: white;">View Full Portfolio</a>
                 </div>
             </div>
         </section>
@@ -889,7 +893,7 @@
 
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
