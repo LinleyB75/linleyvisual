@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    
     <title>Drag & Drop Builders vs. Custom Code in Email Design | LinleyB</title>
     <meta name="description" content="Discover why drag-and-drop email builders cause bloated code, Gmail clipping, and broken mobile views—and why custom HTML/MJML is the solution.">
     
@@ -64,6 +68,7 @@
         html, body { overflow-x: hidden; max-width: 100vw; }
         
         :root {
+            color-scheme: light dark;
             --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
             --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
@@ -107,7 +112,7 @@
 
         /* BLOG ARTICLE STYLES */
         .blog-header { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: 5rem 0; text-align: center; }
-        .blog-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 900; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+        .blog-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 900; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.2; }
         .blog-meta { font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 2rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
         
         .article-content { max-width: 850px; margin: 4rem auto; padding: 0 5%; font-size: 1.15rem; line-height: 1.8; color: var(--text); overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; }
@@ -132,7 +137,7 @@
         /* FOOTER */
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; width: 100%; }
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; transition: 0.4s; text-decoration: none !important; flex-shrink: 0; }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; transition: 0.4s; text-decoration: none; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
         .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
 
@@ -143,15 +148,17 @@
             .container { padding: 0 20px; }
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
             .nav-links.active { display: flex; }
-            .menu-toggle { display: block; padding-right: 15px; }
             
-            /* LOGO FIX */
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            /* LOGO & MENU MOBILE FIXES */
+            .logo-wrap { max-width: 65%; } 
+            .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.65rem; white-space: normal; line-height: 1.1; max-width: 120px; }
+            
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
+            .theme-toggle { margin-right: 5px; margin-left: auto;}
             
             .author-box { flex-direction: column; text-align: center; }
-            .theme-toggle { margin-right: 10px; }
             .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
             
             /* SOCIAL ICON SCALING FOR IPHONE 7 */
@@ -162,17 +169,17 @@
 </head>
 <body>
 
-    <header>
-        <nav class="container">
+    <header role="banner">
+        <nav class="container" role="navigation">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-            <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
@@ -183,7 +190,7 @@
         </nav>
     </header>
 
-    <main>
+    <main role="main">
         <section class="blog-header">
             <div class="container">
                 <span class="blog-meta">January 22, 2026 • Email Architecture</span>
@@ -277,7 +284,7 @@
             <p>However, if you are a <strong>design agency</strong> trying to deliver premium brand experiences, an <strong>e-commerce brand</strong> dealing with Gmail clipping, or a team tired of apologizing for broken Outlook layouts, it is time to abandon the WYSIWYG editor. Relying on an automated builder for complex email architecture is like using MS Paint to design a vector logo—it is simply the wrong tool for the job.</p>
 
             <div class="author-box">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" fetchpriority="high">
                 <div>
                     <h4>Are Drag-and-Drop builders limiting your agency?</h4>
                     <p>Stop compromising your designs because the ESP builder won't cooperate. As a specialized email developer, I write lightweight, custom HTML and MJML that bypasses builder restrictions, prevents Gmail clipping, and looks pixel-perfect in every inbox.</p>
@@ -287,14 +294,14 @@
         </article>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
-                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-invoice"></i></a>
-                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                <a href="mailto:blanyves@optusnet.com.au" class="social-icon"><i class="fas fa-envelope"></i></a>
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
             <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
