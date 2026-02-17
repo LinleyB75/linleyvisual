@@ -11,6 +11,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
     <title>Privacy Policy | LinleyB Email Development</title>
     <meta name="description" content="Privacy Policy for LinleyB.com. Learn how your data is collected, used, and protected.">
     <meta name="robots" content="noindex, follow">
@@ -23,6 +28,7 @@
     <style>
         /* --- THEME VARIABLES --- */
         :root {
+            color-scheme: light dark;
             --primary: #0047AB; 
             --accent: #FFD700; 
             --text: #1f2937; 
@@ -115,10 +121,13 @@
             .container { padding: 0 20px; }
             
             /* LOGO FIX */
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            .logo-wrap { max-width: 65%; } 
+            .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
             .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
             
+            .theme-toggle { margin-right: 5px; margin-left: auto;}
+
             .card { padding: 2rem 1.5rem; }
             .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
             
@@ -130,10 +139,10 @@
 </head>
 <body>
 
-    <header>
-        <nav class="container">
+    <header role="banner">
+        <nav class="container" role="navigation">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
@@ -146,10 +155,10 @@
         </nav>
     </header>
 
-    <main class="content-wrapper">
+    <main class="content-wrapper" role="main">
         <article class="card">
             <h1>Privacy Policy</h1>
-            <p style="font-weight: 700; color: var(--text-light); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Last updated: February 16, 2026</p>
+            <p style="font-weight: 700; color: var(--text-light); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Last updated: February 17, 2026</p>
             
             <p>At <strong>LinleyB.com</strong>, operated by Linley Bignoux, the privacy of our visitors and clients is of extreme importance. This Privacy Policy outlines the types of personal data collected by this website and how it is protected.</p>
 
@@ -194,7 +203,7 @@
         </article>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
