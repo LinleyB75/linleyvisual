@@ -336,10 +336,11 @@
             .nav-links.active { display: flex; }
             
             /* LOGO & MENU MOBILE FIXES */
-            .logo-wrap { max-width: 65%; } /* Prevents logo from pushing menu off screen */
+            .logo-wrap { max-width: 65%; } 
             .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
             .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.65rem; white-space: normal; line-height: 1.1; max-width: 120px; }
+            .hide-mobile { display: none; } /* Hides extra text on mobile */
             
             .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
             .theme-toggle { margin-right: 5px; margin-left: auto;}
@@ -375,7 +376,7 @@
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" class="header-photo" width="60" height="60" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
-                    <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
+                    <div class="logo-tagline">Email Developer <span class="hide-mobile"><span class="pipe-sep">|</span> HTML | CSS | MJML</span></div>
                 </div>
             </a>
             
@@ -583,7 +584,7 @@
                 </div>
                 
                 <div class="consult-btn-wrapper" style="margin-top: 4rem;">
-                    <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: white;">View Full Portfolio</a>
+                    <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: white;">View Full Details</a>
                 </div>
             </div>
         </section>
