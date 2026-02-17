@@ -12,6 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    
     <title>Why Custom Emails Break in Outlook (And How to Fix Them) | LinleyB</title>
     <meta name="description" content="Learn why Microsoft Outlook breaks HTML email layouts and how to fix them using Ghost Tables, Conditional Comments, and VML. A guide by LinleyB, Email Developer.">
     
@@ -64,6 +68,7 @@
         html, body { overflow-x: hidden; max-width: 100vw; }
         
         :root {
+            color-scheme: light dark;
             --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
             --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
@@ -100,7 +105,7 @@
         .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); }
         .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); }
-        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: auto; flex-shrink: 0; }
 
         .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; cursor: pointer; border: none; font-size: 1.1rem; transition: 0.3s; text-align: center; }
         .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
@@ -143,15 +148,17 @@
             .container { padding: 0 20px; }
             .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
             .nav-links.active { display: flex; }
-            .menu-toggle { display: block; }
             
-            /* LOGO FIX */
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            /* LOGO & MENU MOBILE FIXES */
+            .logo-wrap { max-width: 65%; } 
+            .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.65rem; white-space: normal; line-height: 1.1; max-width: 120px; }
+            
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
+            .theme-toggle { margin-right: 5px; margin-left: auto;}
             
             .author-box { flex-direction: column; text-align: center; }
-            .theme-toggle { margin-right: 10px; }
             .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
             
             /* SOCIAL ICON SCALING FOR IPHONE 7 */
@@ -162,17 +169,17 @@
 </head>
 <body>
 
-    <header>
-        <nav class="container">
+    <header role="banner">
+        <nav class="container" role="navigation">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-            <button class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
@@ -183,7 +190,7 @@
         </nav>
     </header>
 
-    <main>
+    <main role="main">
         <section class="blog-header">
             <div class="container">
                 <span class="blog-meta">February 07, 2026 • Email Development Insights</span>
@@ -272,7 +279,7 @@
             <p>You cannot rely on sending a test email to your personal Gmail account and assuming it looks good everywhere. Professional developers run their code through platforms like Litmus or Email on Acid to generate live screenshots across 50+ real devices and email clients before the code is ever handed over to a client.</p>
 
             <div class="author-box">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" fetchpriority="high">
                 <div>
                     <h4>Need your designs translated into bulletproof code?</h4>
                     <p>Stop fighting with Outlook bugs and dragged-out QA processes. As a freelance technical email developer, I convert flat designs into pixel-perfect, fully responsive HTML/MJML that survives the toughest inboxes.</p>
@@ -282,7 +289,7 @@
         </article>
     </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
