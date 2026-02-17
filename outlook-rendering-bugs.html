@@ -53,7 +53,7 @@
         }
       },
       "datePublished": "2026-02-07",
-      "dateModified": "2026-02-16"
+      "dateModified": "2026-02-17"
     }
     </script>
 
@@ -64,28 +64,36 @@
         /* BASE & RESET */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* IPHONE 7 HORIZONTAL SCROLL FIX */
-        html, body { overflow-x: hidden; max-width: 100vw; }
-        
         :root {
             color-scheme: light dark;
+            forced-color-adjust: none; /* STOPS CHROME FROM HIJACKING COLORS */
+            -webkit-print-color-adjust: exact;
+            
             --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
             --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
             --card-bg: #ffffff; --input-bg: #f8fafc;
         }
         [data-theme="dark"] {
+            color-scheme: dark;
+            forced-color-adjust: none; /* STOPS CHROME FROM HIJACKING COLORS */
+            
             --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
             --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b;
             --card-bg: #1e293b; --input-bg: #334155;
         }
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                forced-color-adjust: none;
+                
                 --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
-                --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; --card-bg: #1e293b;
+                --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; --card-bg: #1e293b; --input-bg: #334155;
             }
         }
-        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); transition: 0.3s; }
+        
+        html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100vw; background-color: var(--bg); }
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; }
         
         /* HEADER */
         header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; }
@@ -299,7 +307,7 @@
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
-            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Port Louis, Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
+            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
         </div>
     </footer>
 
