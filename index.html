@@ -271,6 +271,19 @@
             transform: translateY(-4px);
         }
 
+        /* CUSTOM IMAGE ICON CSS FOR HANDLEBARS */
+        .tech-img {
+            height: clamp(1.8rem, 3vw, 2.5rem); /* perfectly matches the other icons */
+            width: auto;
+            transition: all 0.3s ease;
+            /* Makes the image transparent white to match text */
+            filter: brightness(0) invert(1) opacity(0.85); 
+        }
+        .tech-item:hover .tech-img {
+            /* Makes the image #FFD700 (yellow) on hover */
+            filter: brightness(0) saturate(100%) invert(89%) sepia(18%) saturate(3015%) hue-rotate(353deg) brightness(104%) contrast(104%);
+        }
+
         section { padding: clamp(3.5rem, 8vh, 6rem) 0; }
         .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 3.5rem; text-align: center; color: var(--primary); font-weight: 800; padding: 0 20px;}
         
@@ -515,10 +528,7 @@
                     </div>
                     
                     <div class="tech-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M2 14 C4 20 10 20 12 14 C14 20 20 20 22 14 C20 17 14 17 12 12 C10 17 4 17 2 14 Z"></path>
-                        </svg>
-                        <span>Handlebars</span>
+                        <img src="https://i.ibb.co/S4J66Rwd/download.png" alt="Handlebars dynamic email templating logo" class="tech-img">
                     </div>
                     
                     <div class="tech-item">
