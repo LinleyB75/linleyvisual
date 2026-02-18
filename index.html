@@ -211,10 +211,64 @@
 
         .hero { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: clamp(4rem, 10vh, 7rem) 0; text-align: center; }
         .hero h1 { font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 1.5rem; font-weight: 900; line-height: 1.2; }
-        .hero .subtitle { font-size: clamp(1rem, 2vw, 1.4rem); margin-bottom: 2.5rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.6; }
-        .hero .subtitle span.line { display: block; }
-        .hero .subtitle em { color: white; margin: 0 12px; font-weight: 300; font-style: normal; }
+        
+        /* SUBTITLE CSS FOR FLEX WRAP */
+        .hero .subtitle-list { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 10px 20px; 
+            list-style: none; 
+            margin: 0 auto 2.5rem; 
+            padding: 0; 
+            font-size: clamp(1rem, 2vw, 1.4rem); 
+            color: var(--accent); 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            max-width: 900px;
+        }
+        .hero .subtitle-list li {
+            display: flex;
+            align-items: center;
+        }
+        .hero .subtitle-list li:not(:last-child)::after {
+            content: '•';
+            color: white;
+            font-weight: 300;
+            margin-left: 20px;
+        }
+
         .hero .hero-intro-text { font-size: clamp(1.1rem, 2vw, 1.45rem); max-width: 900px; margin: 0 auto; line-height: 1.7; font-weight: 400; opacity: 0.95; padding: 0 20px;}
+
+        /* TECH STACK ICONS CSS */
+        .tech-stack-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(1.5rem, 4vw, 3rem);
+            margin-top: 3.5rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: clamp(1.15rem, 2vw, 1.35rem);
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .tech-item i, .tech-item svg {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            width: 1em;
+            height: 1em;
+        }
+        .tech-item:hover {
+            color: var(--accent);
+            transform: translateY(-4px);
+        }
 
         section { padding: clamp(3.5rem, 8vh, 6rem) 0; }
         .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 3.5rem; text-align: center; color: var(--primary); font-weight: 800; padding: 0 20px;}
@@ -234,7 +288,6 @@
         .student-quote { font-style: italic; color: var(--text); margin-bottom: 10px; font-weight: 500; }
 
         .blog-card-wrap .card { text-align: left; }
-        /* ADDED DARK MODE BLOG TEXT FIX */
         [data-theme="dark"] .blog-card-wrap .card p { color: #f3f4f6 !important; }
 
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
@@ -355,6 +408,14 @@
             
             .cta-button { padding: 1rem 1.5rem; font-size: 1rem; width: auto; max-width: 90%; }
             .hero h1 { font-size: 2rem; } 
+            
+            /* FLEX SUBTITLE MOBILE FIX */
+            .hero .subtitle-list { font-size: 0.9rem; gap: 8px 12px; }
+            .hero .subtitle-list li:not(:last-child)::after { margin-left: 12px; }
+            
+            .tech-item { flex-direction: column; gap: 5px; font-size: 1rem; }
+            .tech-stack-icons { margin-top: 2.5rem; gap: 2rem; }
+
             .hero .hero-intro-text { font-size: 1rem; }
             .about-content { flex-direction: column; text-align: center; align-items: center; }
             .about-text { text-align: center; }
@@ -411,10 +472,16 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>I Code Emails • CSS/HTML/MJML Email Development</h1>
-                <p class="subtitle">
-                    <span class="line">Design to HTML <em>•</em> Code for ESP <em>•</em> QA Testing</span>
-                    <span class="line">Deliverability Best Practices <em>•</em> Custom Email Development</span>
-                </p>
+                
+                <ul class="subtitle-list">
+                    <li>Design to HTML</li>
+                    <li>Code for ESP</li>
+                    <li>QA Testing</li>
+                    <li>Rendering Tests</li>
+                    <li>Deliverability Best Practices</li>
+                    <li>Custom Email Development</li>
+                </ul>
+
                 <div class="hero-intro-text">
                     <p style="margin-top: 1.5rem;">If you have a custom design that needs to be converted into <b>bulletproof HTML</b>, or you need help fixing issues with <b>deliverability, functionality, accessibility, and UI/UX</b> across different email clients, I can help.</p>
                     <p style="margin-top: 1.5rem;">I provide <b>pixel-perfect MJML & custom code development</b> tailored to your campaigns. I am a <b>freelance email developer</b> with over <b>6 years of email development experience</b>.</p>
@@ -422,6 +489,29 @@
                 <div class="consult-btn-wrapper">
                     <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Consultation</a>
                 </div>
+
+                <div class="tech-stack-icons">
+                    <div class="tech-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="2" y="4" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="6" r="2" />
+                            <circle cx="4" cy="12" r="2" />
+                            <rect x="10" y="10" width="12" height="4" rx="2" />
+                            <rect x="2" y="16" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="18" r="2" />
+                        </svg>
+                        <span>MJML</span>
+                    </div>
+                </div>
+
             </div>
         </section>
 
