@@ -295,6 +295,10 @@
 
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
         
+        /* Updated wrapper to center BOTH single and double cards perfectly (used in Blog section) */
+        .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; gap: 2rem; flex-wrap: wrap; }
+        .centered-card-wrapper .card { max-width: 380px; width: 100%; }
+
         .about-content { display: flex; gap: clamp(2rem, 5vw, 5rem); align-items: flex-start; max-width: 1200px; margin: 0 auto; }
         .about-image img { width: 350px; height: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; object-fit: cover; border: 6px solid var(--primary); box-shadow: var(--shadow-lg); }
         .about-text { flex: 1; text-align: left; }
@@ -445,6 +449,10 @@
             
             .grid-cards { grid-template-columns: 1fr; }
             
+            /* FIXED MOBILE CARDS - STACKS PERFECTLY AND DOES NOT STRETCH/OVERFLOW */
+            .centered-card-wrapper { flex-direction: column; gap: 2rem; }
+            .centered-card-wrapper .card { max-width: 100%; height: auto; }
+            
             .nav-for-you::after { left: 40%; right: 40%; }
 
             /* SHRINK FOOTER TEXT & ICONS ON MOBILE */
@@ -559,6 +567,8 @@
                     <div class="card"><i class="fas fa-clock"></i><h3>Workflow Bottlenecks</h3><p>Stop missing campaign deadlines because your drag-and-drop builder is acting up or limiting your layout.</p></div>
                     <div class="card"><i class="fas fa-folder-open"></i><h3>Clunky Handoffs</h3><p>Just copy, paste, and send. I deliver clean, documented HTML ZIP files ready for immediate ESP upload.</p></div>
                     <div class="card"><i class="fas fa-cog"></i><h3>Functionality</h3><p>Ensure interactive elements, anchor links, and complex structural components work flawlessly across all major email clients.</p></div>
+                    <div class="card"><i class="fas fa-server"></i><h3>ESP Integration Issues</h3><p>Stop wrestling with platform-specific HTML editors. I ensure your code imports cleanly into Klaviyo, Mailchimp, and other ESPs without breaking.</p></div>
+                    <div class="card"><i class="fas fa-code-branch"></i><h3>Dynamic Data Errors</h3><p>Merge tags pulling the wrong data? I debug and safely implement your merge tags so your dynamic content renders flawlessly.</p></div>
                 </div>
                 <div class="consult-btn-wrapper" style="margin-top: 5rem;">
                     <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Meeting</a>
