@@ -449,10 +449,6 @@
             
             .grid-cards { grid-template-columns: 1fr; }
             
-            /* FIXED MOBILE CARDS - STACKS PERFECTLY AND DOES NOT STRETCH/OVERFLOW */
-            .centered-card-wrapper { flex-direction: column; gap: 2rem; }
-            .centered-card-wrapper .card { max-width: 100%; height: auto; }
-            
             .nav-for-you::after { left: 40%; right: 40%; }
 
             /* SHRINK FOOTER TEXT & ICONS ON MOBILE */
@@ -944,16 +940,16 @@
             </div>
         </section>
 
-        <section id="testimonials">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-comments"></i> Client Feedback</h2>
-                <div class="grid-cards">
-                    <div class="card"><b class="student-name">Emily</b><p class="student-quote">"Excellent coder, adapts the MJML perfectly to our custom ESP."</p><span class="student-role">E-commerce Specialist</span></div>
-                    <div class="card"><b class="student-name">Julien</b><p class="student-quote">"Linley was very good at fixing the Outlook bugs our previous dev left behind."</p><span class="student-role">IT Project Management</span></div>
-                    <div class="card"><b class="student-name">Olivia</b><p class="student-quote">"Delivered clean, documented code ahead of schedule."</p><span class="student-role">Business Development</span></div>
-                    <div class="card"><b class="student-name">Michel</b><p class="student-quote">"Provides perfectly minified files ready for our platform."</p><span class="student-role">Senior IT Architect</span></div>
-                    <div class="card"><b class="student-name">Sophia</b><p class="student-quote">"Highly reliable technical partner for our design studio."</p><span class="student-role">Lead Designer</span></div>
-                    <div class="card"><b class="student-name">Timo</b><p class="student-quote">"Your QA testing process is amazing, gave us total peace of mind."</p><span class="student-role">Campaign Manager</span></div>
+        <section id="github-portfolio">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title"><i class="fab fa-github"></i> Inspect My Code</h2>
+                <div class="contact-container" style="border-bottom: 8px solid var(--primary);">
+                    <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem;">
+                        Transparency is key in development. Every email mockup in my portfolio is hand-coded from scratch. You don't have to take my word for it—visit my GitHub to inspect my raw MJML, HTML, and CSS files, view my Handlebars templating logic, and see my clean coding practices for yourself.
+                    </p>
+                    <div class="consult-btn-wrapper" style="margin-top: 0;">
+                        <a href="https://github.com/LinleyB75/linleyvisual" target="_blank" rel="noopener noreferrer" class="cta-button" style="background: var(--primary); color: white;"><i class="fab fa-github"></i> View GitHub Profile</a>
+                    </div>
                 </div>
             </div>
         </section>
