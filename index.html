@@ -295,10 +295,6 @@
 
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
         
-        /* Updated wrapper to center BOTH single and double cards perfectly */
-        .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; gap: 2rem; flex-wrap: wrap; }
-        .centered-card-wrapper .card { max-width: 380px; width: 100%; }
-
         .about-content { display: flex; gap: clamp(2rem, 5vw, 5rem); align-items: flex-start; max-width: 1200px; margin: 0 auto; }
         .about-image img { width: 350px; height: auto; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 15px; object-fit: cover; border: 6px solid var(--primary); box-shadow: var(--shadow-lg); }
         .about-text { flex: 1; text-align: left; }
@@ -449,10 +445,6 @@
             
             .grid-cards { grid-template-columns: 1fr; }
             
-            /* FIXED MOBILE CARDS - STACKS PERFECTLY AND DOES NOT STRETCH/OVERFLOW */
-            .centered-card-wrapper { flex-direction: column; gap: 2rem; }
-            .centered-card-wrapper .card { max-width: 100%; height: auto; }
-            
             .nav-for-you::after { left: 40%; right: 40%; }
 
             /* SHRINK FOOTER TEXT & ICONS ON MOBILE */
@@ -548,20 +540,6 @@
                     <div class="tech-item">
                         <span>Handlebars</span>
                     </div>
-                    
-                    <div class="tech-item">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M14 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-5-5z" />
-                            <path d="M14 2v5h5" />
-                            <path d="M3 16h18" />
-                            <path d="M9 6 C8 6 7.5 6.5 7.5 7.5 V8.5 C7.5 9.5 6.5 10 6.5 10 C7.5 10 7.5 10.5 7.5 11.5 V12.5 C7.5 13.5 8 14 9 14" />
-                            <path d="M15 6 C16 6 16.5 6.5 16.5 7.5 V8.5 C16.5 9.5 17.5 10 17.5 10 C16.5 10 16.5 10.5 16.5 11.5 V12.5 C16.5 13.5 16 14 15 14" />
-                            <circle cx="12" cy="7.5" r="0.75" fill="currentColor" stroke="none" />
-                            <path d="M12 10v2.5" />
-                            <text x="12" y="21.5" font-family="sans-serif" font-size="4.5" font-weight="bold" text-anchor="middle" fill="currentColor" stroke="none">JSON</text>
-                        </svg>
-                        <span>JSON</span>
-                    </div>
                 </div>
 
             </div>
@@ -580,10 +558,7 @@
                     <div class="card"><i class="fas fa-bug"></i><h3>Rendering Bugs</h3><p>Move away from "hope it works." Every file is rigorously QA-tested across 50+ major email clients before handoff.</p></div>
                     <div class="card"><i class="fas fa-clock"></i><h3>Workflow Bottlenecks</h3><p>Stop missing campaign deadlines because your drag-and-drop builder is acting up or limiting your layout.</p></div>
                     <div class="card"><i class="fas fa-folder-open"></i><h3>Clunky Handoffs</h3><p>Just copy, paste, and send. I deliver clean, documented HTML ZIP files ready for immediate ESP upload.</p></div>
-                    
-                    <div class="centered-card-wrapper">
-                        <div class="card"><i class="fas fa-cog"></i><h3>Functionality</h3><p>Ensure interactive elements, anchor links, and complex structural components work flawlessly across all major email clients.</p></div>
-                    </div>
+                    <div class="card"><i class="fas fa-cog"></i><h3>Functionality</h3><p>Ensure interactive elements, anchor links, and complex structural components work flawlessly across all major email clients.</p></div>
                 </div>
                 <div class="consult-btn-wrapper" style="margin-top: 5rem;">
                     <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Meeting</a>
@@ -604,21 +579,9 @@
                     <div class="card"><i class="fas fa-image"></i><h3>Asset Optimization</h3><p>Retina-ready, fast-loading image slicing and compression for lightning-fast opens.</p></div>
                     <div class="card"><i class="fas fa-universal-access"></i><h3>Email Accessibility</h3><p>Semantic coding with correct ARIA roles and alt-text to ensure screen-reader compatibility.</p></div>
                     <div class="card"><i class="fas fa-globe-americas"></i><h3>Local & Global Support</h3><p>Based in Mauritius, providing reliable asynchronous development for remote partnerships.</p></div>
-                    
-                    <div class="centered-card-wrapper">
-                        
-                        <div class="card">
-                            <i class="fas fa-database"></i>
-                            <h3>JSON Data Testing</h3>
-                            <p>I test dynamic email templates using structured data (JSON) - Javascript Object Notation to simulate real customer scenarios, ensuring personalization and automated content render correctly across all devices and email clients.</p>
-                        </div>
-                        
-                        <div class="card">
-                            <i class="fas fa-code"></i>
-                            <h3>Handlebars Templating</h3>
-                            <p>I can use templating for dynamic emails — enabling personalized and data-driven content to render accurately for every recipient.</p>
-                        </div>
-                    </div>
+                    <div class="card"><i class="fas fa-server"></i><h3>ESP Code Integration</h3><p>Direct upload and strict testing of coded templates inside your specific Email Service Provider to guarantee logic and layout compatibility.</p></div>
+                    <div class="card"><i class="fas fa-code"></i><h3>Handlebars Templating</h3><p>I can use templating for dynamic emails — enabling personalized and data-driven content to render accurately for every recipient.</p></div>
+                    <div class="card"><i class="fas fa-mouse-pointer"></i><h3>Interactive Elements</h3><p>Coding safe CSS hover effects, image carousels, and responsive accordions to boost engagement where supported.</p></div>
                 </div>
             </div>
         </section>
@@ -821,7 +784,8 @@
                         <li><b>2. Pixel-Perfect Coding:</b> I hand-code the MJML/HTML structure to match your vision exactly.</li>
                         <li><b>3. Rigorous QA Testing:</b> I run the code through live testing to ensure 100% compatibility across major clients.</li>
                         <li><b>4. Code Minification:</b> The final file is stripped of bloat to guarantee fast load times and avoid clipping.</li>
-                        <li><b>5. Final Delivery:</b> You receive a zipped folder with the HTML and assets, ready to upload and send.</li>
+                        <li><b>5. ESP Code Integration:</b> The final HTML is loaded directly into your Email Service Provider to ensure variable logic and layouts are fully compatible.</li>
+                        <li><b>6. Final Delivery:</b> You receive a zipped folder with the HTML and assets, ready to schedule and send.</li>
                     </ul>
                 </div>
             </div>
