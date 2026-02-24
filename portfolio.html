@@ -82,10 +82,11 @@
         }
         
         html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100vw; background-color: var(--bg); }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; }
+        /* ADDED PADDING-TOP FOR FIXED HEADER */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; padding-top: 115px; }
         
-        /* HEADER */
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
+        /* HEADER - CHANGED TO FIXED */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; top: 0; left: 0; right: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
@@ -100,9 +101,18 @@
         .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
         
+        /* FULL NAV LINKS TO MATCH INDEX.HTML */
         .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
         .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
+        
+        .nav-fix-btn { background-color: var(--bg); color: var(--primary) !important; padding: 10px 18px !important; border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease; }
+        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
+
+        .nav-for-you { background-color: var(--primary); color: white !important; height: 46px; padding: 0 25px; border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; gap: 10px; border: none !important; font-weight: 800; position: relative; box-shadow: var(--shadow); white-space: nowrap; }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background-color: var(--accent); border-radius: 2px; }
+
         .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: auto; flex-shrink: 0; }
 
         /* PORTFOLIO STYLES */
@@ -143,9 +153,12 @@
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
         
         @media (max-width: 767px) {
+            /* MOBILE FIXED HEADER ADJUSTMENTS */
+            body { padding-top: 80px; }
             header { min-height: 80px; }
             .container { padding: 0 20px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
+            
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
             .nav-links.active { display: flex; }
             
             /* LOGO & MENU MOBILE FIXES */
@@ -186,9 +199,12 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="portfolio.html" style="color: var(--primary); border-bottom: 3px solid var(--accent);">Portfolio</a></li>
-                <li><a href="index.html#fix">What I Fix</a></li>
+                <li><a href="index.html#fix" class="nav-fix-btn">What I Fix</a></li>
                 <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#certifications">Certs</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
             </ul>
         </nav>
     </header>
@@ -386,7 +402,7 @@
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
                 <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
