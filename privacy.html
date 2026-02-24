@@ -73,12 +73,13 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         /* IPHONE 7 HORIZONTAL SCROLL FIX */
-        html { overflow-x: hidden; max-width: 100vw; background-color: var(--bg-alt); }
+        html { overflow-x: hidden; max-width: 100vw; background-color: var(--bg-alt); scroll-behavior: smooth; }
         
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh;}
+        /* ADDED PADDING-TOP FOR FIXED HEADER */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; display: flex; flex-direction: column; min-height: 100vh; padding-top: 115px; }
         
-        /* HEADER STYLES */
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
+        /* HEADER STYLES - CHANGED TO FIXED */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; left: 0; right: 0; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
@@ -90,8 +91,22 @@
         .logo-b { color: var(--text); }
         .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
 
-        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+
+        /* FULL NAV LINKS UPDATED FOR CONSISTENCY */
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
+        .nav-links a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+        
+        .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); display: inline-block; }
+        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
+        
+        .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); border-radius: 2px; }
+        
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
 
         /* CONTENT */
         .content-wrapper { flex: 1; padding: 4rem 20px; }
@@ -126,8 +141,13 @@
         @media (max-width: 1250px) { .logo-tagline { display: none; } }
         
         @media (max-width: 767px) {
+            /* MOBILE FIXED HEADER ADJUSTMENTS */
+            body { padding-top: 80px; }
             header { min-height: 80px; }
             .container { padding: 0 20px; }
+            
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
+            .nav-links.active { display: flex; }
             
             /* LOGO FIX */
             .logo-wrap { max-width: 65%; } 
@@ -135,6 +155,7 @@
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
             .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
             
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
             .theme-toggle { margin-right: 5px; margin-left: auto;}
 
             .card { padding: 2rem 1.5rem; }
@@ -151,7 +172,7 @@
     <header role="banner">
         <nav class="container" role="navigation">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60" fetchpriority="high">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
@@ -161,6 +182,19 @@
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
                 <i class="fas fa-moon"></i>
             </button>
+            
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#fix" class="nav-fix-btn">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#certifications">Certs</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
+            </ul>
         </nav>
     </header>
 
@@ -227,6 +261,9 @@
     </footer>
 
     <script>
+        // TOGGLE MOBILE MENU
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        
         // THEME TOGGLE LOGIC
         const themeBtn = document.getElementById('themeToggle');
         const icon = themeBtn.querySelector('i');
