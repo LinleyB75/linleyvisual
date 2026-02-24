@@ -54,7 +54,7 @@
         "longitude": 57.5011
       },
       "sameAs": [
-        "https://www.linkedin.com/in/linley-bignoux-52867a39a/",
+        "https://www.linkedin.com/in/linley-bignoux-52867a39a",
         "https://www.instagram.com/linleyhuman/",
         "https://github.com/LinleyB75/linleyvisual",
         "https://linleybignouxzqme9nmu.contra.com/"
@@ -141,12 +141,14 @@
         }
 
         html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; max-width: 100vw; background-color: var(--bg); }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; }
+        /* ADDED PADDING-TOP TO BODY TO ACCOUNT FOR FIXED HEADER */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; max-width: 100vw; transition: background 0.3s, color 0.3s; padding-top: 115px; }
         
+        /* CHANGED POSITION TO FIXED */
         header { 
-            background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; 
+            background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; 
             top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%;
-            transition: background 0.3s;
+            transition: background 0.3s; left: 0; right: 0;
         }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
         nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
@@ -419,9 +421,13 @@
         }
 
         @media (max-width: 767px) {
+            /* ADJUSTED FOR MOBILE FIXED HEADER */
+            body { padding-top: 80px; }
             header { min-height: 80px; }
             .container { padding: 0 20px; }
-            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); }
+            
+            /* FIXED MOBILE MENU TO DROPDOWN CORRECTLY UNDER FIXED HEADER */
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); z-index: 99; }
             .nav-links.active { display: flex; }
             
             /* LOGO & MENU MOBILE FIXES */
@@ -568,7 +574,7 @@
                     <div class="card"><i class="fas fa-folder-open"></i><h3>Clunky Handoffs</h3><p>Just copy, paste, and send. I deliver clean, documented HTML ZIP files ready for immediate ESP upload.</p></div>
                     <div class="card"><i class="fas fa-cog"></i><h3>Functionality</h3><p>Ensure interactive elements, anchor links, and complex structural components work flawlessly across all major email clients.</p></div>
                     <div class="card"><i class="fas fa-server"></i><h3>ESP Integration Issues</h3><p>Stop wrestling with platform-specific HTML editors. I ensure your code imports cleanly into Klaviyo, Mailchimp, and other ESPs without breaking.</p></div>
-                    <div class="card"><i class="fas fa-code-branch"></i><h3>Dynamic Data Errors</h3><p>Merge tags pulling the wrong data? I debug and safely implement your merge tags so your dynamic content renders flawlessly.</p></div>
+                    <div class="card"><i class="fas fa-code-branch"></i><h3>Dynamic Personalization</h3><p>I code and safely integrate dynamic merge tags to personalize your campaigns, ensuring specific customer data renders flawlessly every time.</p></div>
                 </div>
                 <div class="consult-btn-wrapper" style="margin-top: 5rem;">
                     <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Meeting</a>
@@ -1080,7 +1086,7 @@
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
                 <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
