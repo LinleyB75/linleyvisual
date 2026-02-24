@@ -23,118 +23,136 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
     <style>
-        /* RESET & BASE */
+        /* BASE & RESET */
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* IPHONE 7 HORIZONTAL SCROLL FIX */
+        html, body { overflow-x: hidden; max-width: 100vw; }
         
         :root {
             color-scheme: light dark;
-            forced-color-adjust: none;
+            forced-color-adjust: none; /* STOPS CHROME FROM HIJACKING COLORS */
             -webkit-print-color-adjust: exact;
             
-            --primary: #0047AB; 
-            --accent: #FFD700; 
-            --text: #1f2937;
-            --text-light: #4b5563; 
-            --bg: #ffffff; 
-            --bg-alt: #fafbfc;
-            --border: #e5e7eb; 
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --section-highlight: #f0f4f8;
+            --primary: #0047AB; --accent: #FFD700; --text: #1f2937; --text-light: #4b5563; 
+            --bg: #ffffff; --bg-alt: #fafbfc; --border: #e5e7eb; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); --section-highlight: #f0f4f8;
+            --card-bg: #ffffff; --input-bg: #f8fafc;
         }
-
         [data-theme="dark"] {
             color-scheme: dark;
-            forced-color-adjust: none;
-            --primary: #4fa3ff; 
-            --accent: #FFD700; 
-            --text: #f3f4f6;   
-            --text-light: #9ca3af; 
-            --bg: #0f172a;      
-            --bg-alt: #1e293b;  
-            --border: #334155; 
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-            --section-highlight: #1e293b;
+            forced-color-adjust: none; /* STOPS CHROME FROM HIJACKING COLORS */
+            
+            --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+            --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b;
+            --card-bg: #1e293b; --input-bg: #334155;
         }
-
         @media (prefers-color-scheme: dark) {
             :root:not([data-theme="light"]) {
                 color-scheme: dark;
                 forced-color-adjust: none;
-                --primary: #4fa3ff; 
-                --accent: #FFD700; 
-                --text: #f3f4f6;   
-                --text-light: #9ca3af; 
-                --bg: #0f172a;      
-                --bg-alt: #1e293b;  
-                --border: #334155; 
-                --section-highlight: #1e293b;
+                
+                --primary: #4fa3ff; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a;      
+                --bg-alt: #1e293b; --border: #334155; --section-highlight: #1e293b; --card-bg: #1e293b; --input-bg: #334155;
             }
         }
-
-        html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; background-color: var(--bg); }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); transition: background 0.3s, color 0.3s; }
+        html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100vw; background-color: var(--bg); }
         
-        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
+        /* ADDED PADDING-TOP FOR FIXED HEADER */
+        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg); transition: 0.3s; padding-top: 115px; }
+        
+        /* HEADER - CHANGED TO FIXED */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; left: 0; right: 0; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
-        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
-        
-        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
-        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
-        .logo-text-group { display: flex; align-items: center; }
-        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; margin-right: auto; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; border: 3px solid var(--primary); object-fit: cover; flex-shrink: 0; }
+        .logo-main { font-size: 1.8rem; font-weight: 800; color: var(--primary); background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; white-space: nowrap; }
         .logo-b { color: var(--text); }
-        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; line-height: 1.2; white-space: nowrap; }
+        .logo-tagline { font-size: 1rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--text); padding-left: 15px; margin-left: 15px; white-space: nowrap; }
         
-        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
-
+        
+        /* FULL NAV LINKS UPDATED FOR BLOG PAGES */
         .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; padding-bottom: 5px; }
-        .nav-links a:hover { color: var(--primary); border-bottom: 3px solid var(--accent); }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
+        .nav-links a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+        
+        .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); display: inline-block; }
+        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
+        
+        .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); border-radius: 2px; }
+        
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
 
-        /* BLOG POST SPECIFIC STYLES */
-        .blog-header-banner { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); padding: 3rem 0; text-align: center; color: white; }
+        .cta-button { display: inline-block; padding: 1rem 2rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; cursor: pointer; border: none; font-size: 1.1rem; transition: 0.3s; text-align: center; }
+        .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
+
+        /* BACK TO ARTICLES BUTTON STYLING */
+        .back-to-blog { display: inline-block; background-color: var(--accent); color: #0047AB; font-weight: 800; padding: 8px 16px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; margin-bottom: 2rem; transition: 0.3s; }
+        .back-to-blog:hover { background-color: #e6c200; transform: translateX(-5px); }
+
+        /* BLOG ARTICLE STYLES */
+        .blog-header { background: linear-gradient(135deg, #0047AB 0%, #003580 100%); color: white; padding: 5rem 0; text-align: center; }
+        .blog-header h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; font-weight: 900; max-width: 1000px; margin-left: auto; margin-right: auto; line-height: 1.2; }
+        .blog-meta { font-size: 1.1rem; color: var(--accent); font-weight: 700; margin-bottom: 2rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
         
-        .blog-container { max-width: 850px; margin: 4rem auto; padding: 0 20px; }
-        .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 700; text-decoration: none; margin-bottom: 2rem; transition: 0.3s; font-size: 1.1rem; }
-        .back-link:hover { color: var(--accent); transform: translateX(-5px); }
+        .article-content { max-width: 850px; margin: 4rem auto; padding: 0 5%; font-size: 1.15rem; line-height: 1.8; color: var(--text); overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; }
+        .article-content h2 { color: var(--primary); font-size: 2rem; margin: 3rem 0 1.5rem; font-weight: 800; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+        .article-content h3 { color: var(--text); font-size: 1.5rem; margin: 2rem 0 1rem; font-weight: 700; }
+        .article-content p { margin-bottom: 1.5rem; }
         
-        .blog-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.2; color: var(--primary); margin-bottom: 1rem; }
-        .blog-date { display: inline-block; background: var(--section-highlight); padding: 6px 15px; border-radius: 5px; color: var(--primary); font-weight: 800; font-size: 0.9rem; margin-bottom: 2.5rem; border-left: 4px solid var(--accent); }
+        /* UPDATED LIST STYLING FOR THIS SPECIFIC POST */
+        .article-content ul, .article-content ol { margin-bottom: 2.5rem; padding-left: 0; list-style: none; }
+        .article-content li { margin-bottom: 1rem; background: var(--bg-alt); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--primary); box-shadow: var(--shadow); }
+        .article-content b { color: var(--primary); font-weight: 800; font-size: 1.2rem; display: block; margin-bottom: 5px; }
         
-        .blog-content p { font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text); }
-        .blog-content h2 { font-size: 1.6rem; font-weight: 800; color: var(--primary); margin: 3.5rem 0 1.2rem 0; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
-        .blog-content ul { margin-bottom: 2.5rem; padding-left: 0; list-style: none; }
-        .blog-content li { font-size: 1.15rem; line-height: 1.8; margin-bottom: 1rem; color: var(--text); background: var(--bg-alt); padding: 1.5rem; border-radius: 10px; border-left: 5px solid var(--primary); box-shadow: var(--shadow); }
-        .blog-content b { color: var(--primary); font-weight: 800; font-size: 1.2rem; display: block; margin-bottom: 5px;}
-        .blog-content code { background: var(--section-highlight); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: var(--primary); font-weight: bold;}
+        /* CODE BLOCK OVERFLOW FIX */
+        .code-block { background: #0f172a; color: #f8fafc; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-family: Consolas, Monaco, "Andale Mono", monospace; font-size: 0.95rem; margin: 2rem 0; border-left: 5px solid var(--accent); max-width: 100%; box-sizing: border-box; }
+        .article-content code:not(.code-block code) { background: var(--section-highlight); padding: 2px 6px; border-radius: 4px; font-family: monospace; font-size: 1rem; color: var(--primary); font-weight: bold;}
+        
+        .article-content a { color: var(--primary); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 2px; transition: 0.3s; }
+        .article-content a:hover { background-color: var(--accent); color: #000; text-decoration: none; }
 
         .cta-box { background: var(--card-bg); padding: 3rem; border-radius: 12px; border-top: 6px solid var(--accent); margin-top: 4rem; text-align: center; box-shadow: var(--shadow-lg); border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); border-right: 1px solid var(--border);}
         .cta-box h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.8rem; font-weight: 800;}
-        .cta-button { display: inline-block; padding: 1.2rem 2.5rem; background: var(--accent); color: #0047AB; text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 1.2rem; margin-top: 1.5rem; transition: 0.3s; }
-        .cta-button:hover { background: #e6c200; transform: translateY(-3px); box-shadow: 0 8px 15px rgba(0,0,0,0.2); }
 
-        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); margin-top: 5rem;}
-        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: 0.4s; }
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; width: 100%; }
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; transition: 0.4s; text-decoration: none !important; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
-        .footer-credit { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
+        .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
 
-        @media (max-width: 1024px) {
-            .logo-tagline { display: none; }
-        }
-
+        /* RESPONSIVE IPHONE FIXES */
+        @media (max-width: 1250px) { .logo-tagline { display: none; } }
         @media (max-width: 767px) {
+            /* MOBILE FIXED HEADER ADJUSTMENTS */
+            body { padding-top: 80px; }
             header { min-height: 80px; }
-            .nav-links { display: none; }
-            .logo-wrap { max-width: 75%; } 
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            .container { padding: 0 20px; }
+            
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); }
+            .nav-links.active { display: flex; }
+            
+            /* LOGO & MENU MOBILE FIXES */
+            .logo-wrap { max-width: 65%; } 
+            .logo-text-group { flex-shrink: 1; overflow: hidden; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.65rem; white-space: normal; line-height: 1.1; max-width: 120px; }
+            
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
             .theme-toggle { margin-right: 5px; margin-left: auto;}
+            
             .cta-box { padding: 2rem 1.5rem; }
+            .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
+            
+            /* SOCIAL ICON SCALING FOR IPHONE 7 */
+            .social-links { gap: 10px; }
+            .social-icon { width: 45px; height: 45px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -143,36 +161,39 @@
     <header role="banner">
         <nav class="container" role="navigation">
             <a href="index.html" class="logo-wrap">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="60" height="60">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley<span class="logo-b">B</span></div>
                     <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
                 </div>
             </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
             
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            
-            <ul class="nav-links">
-                <li><a href="index.html">Back to Home</a></li>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#fix" class="nav-fix-btn">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#certifications">Certs</a></li>
+                <li><a href="index.html#blog" style="color: var(--primary); border-bottom: 3px solid var(--accent);">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="blog-header-banner">
-        <div class="container">
-            <h1 style="font-size: clamp(1.5rem, 3vw, 2.2rem); margin: 0; font-weight: 800;">Development Insights</h1>
-        </div>
-    </div>
+    <main role="main">
+        <section class="blog-header">
+            <div class="container">
+                <a href="index.html#blog" class="back-to-blog">&larr; Back to Articles</a>
+                
+                <span class="blog-meta" style="display: block;">February 18, 2026 • Development & Strategy</span>
+                <h1>The Technical Side of Email: How Code Quality Impacts Campaign Performance</h1>
+            </div>
+        </section>
 
-    <main class="blog-container">
-        <a href="index.html#blog" class="back-link"><i class="fas fa-arrow-left"></i> Back to Articles</a>
-        
-        <h1 class="blog-title">The Technical Side of Email: How Code Quality Impacts Campaign Performance</h1>
-        <span class="blog-date">Category: Development & Strategy</span>
-
-        <article class="blog-content">
+        <article class="article-content">
             <p>Marketing teams put a lot of time and budget into strategy, copy, and visual design. But from a developer's perspective, the return on that investment depends entirely on one thing: the underlying HTML structure.</p>
             
             <p>Unlike modern web development, where browsers follow the same HTML5 and CSS3 rules, email development is still highly fragmented. Dozens of different email clients use completely different rendering engines to read code. If your email isn't built to handle these hostile environments, the user experience breaks down. When a campaign underperforms, it isn't always the marketing strategy—often, a technical bottleneck is quietly costing you clicks and revenue. Here is a practical look at how professional email development solves these structural issues to protect your campaign's bottom line.</p>
@@ -209,31 +230,32 @@
 
             <h2>Summary</h2>
             <p>Ultimately, solid email development isn't just about making things look nice on a screen—it's about protecting the investment you've already made in the campaign. By taking a static design file and translating it into clean, tested HTML, my goal as a developer is simply to make sure your campaigns reach the inbox safely, render flawlessly, and actually drive the business results they were designed to achieve.</p>
-        </article>
 
-        <div class="cta-box">
-            <h3>Ready to clear your development bottleneck?</h3>
-            <p style="color: var(--text-light); font-size: 1.2rem; margin-bottom: 10px;">Stop fighting with drag-and-drop builders and Outlook rendering bugs.</p>
-            <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Meeting</a>
-        </div>
+            <div class="cta-box">
+                <h3>Ready to clear your development bottleneck?</h3>
+                <p style="color: var(--text-light); font-size: 1.2rem; margin-bottom: 10px;">Stop fighting with drag-and-drop builders and Outlook rendering bugs.</p>
+                <a href="https://calendar.app.google/JjCrK9AzcorQ6m4n7" target="_blank" rel="noopener noreferrer" class="cta-button" style="padding: 0.8rem 1.5rem; font-size: 1rem;">Book a Meeting</a>
+            </div>
+        </article>
     </main>
 
     <footer role="contentinfo">
         <div class="container">
             <div class="social-links">
-                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
-                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/linleyvisual" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
-            <div class="footer-credit">Site designed and developed by Linley Bignoux</div>
-            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Mauritius</p>
+            <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
+            <p>&copy; 2026 <b>LinleyB</b> | Freelance Email Developer | Mauritius | <a href="privacy.html" style="color:inherit; text-decoration:none;">Privacy Policy</a></p>
         </div>
     </footer>
 
     <script>
-        // THEME TOGGLE LOGIC
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        
         const themeBtn = document.getElementById('themeToggle');
         const icon = themeBtn.querySelector('i');
         const storedTheme = localStorage.getItem('theme');
@@ -246,12 +268,10 @@
         themeBtn.addEventListener('click', () => {
             let currentTheme = document.documentElement.getAttribute('data-theme');
             let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
             if (!currentTheme) {
                 const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 targetTheme = systemDark ? 'light' : 'dark';
             }
-
             document.documentElement.setAttribute('data-theme', targetTheme);
             localStorage.setItem('theme', targetTheme);
             updateIcon(targetTheme);
