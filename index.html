@@ -169,6 +169,15 @@
             margin-left: 15px; 
             line-height: 1.2; 
             white-space: nowrap; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .logo-handlebars {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 3px;
+            font-weight: 600;
         }
 
         /* THEME TOGGLE */
@@ -433,7 +442,10 @@
             .logo-wrap { max-width: 75%; } 
             .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
             .logo-main { font-size: 1.4rem; padding: 5px 15px; margin-bottom: 2px; }
-            .logo-tagline { display: block !important; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.1; max-width: 180px; }
+            
+            /* MAKE TAGLINE AND HANDLEBARS FLEX COLUMN ON MOBILE */
+            .logo-tagline { display: flex !important; flex-direction: column; border-left: none; padding-left: 0; margin-left: 5px; font-size: 0.7rem; white-space: normal; line-height: 1.2; max-width: 180px; }
+            .logo-handlebars { font-size: 0.65rem; margin-top: 1px; }
             
             .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
             .theme-toggle { margin-right: 5px; margin-left: auto;}
@@ -484,7 +496,10 @@
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Freelance Email Developer" class="header-photo" width="60" height="60" fetchpriority="high">
                 <div class="logo-text-group">
                     <div class="logo-main">Linley</div>
-                    <div class="logo-tagline">Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</div>
+                    <div class="logo-tagline">
+                        <span>Email Developer <span class="pipe-sep">|</span> HTML | CSS | MJML</span>
+                        <span class="logo-handlebars">Handlebars</span>
+                    </div>
                 </div>
             </a>
             
