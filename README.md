@@ -1,10 +1,8 @@
-# linleyvisual
-FrontEndEmailDev
-# LinleyB | Freelance Email Developer Portfolio
+# LinleyB | Email Developer Portfolio
 
 Welcome to the source code for my professional portfolio website: [linleyb.com](https://linleyb.com). 
 
-I am a Freelance Email Developer based in Mauritius, specializing in translating complex UI/UX designs into bulletproof, responsive HTML, CSS, and MJML emails. I actively share this repository to provide complete transparency into my coding practices, architecture, and attention to detail.
+I am an Email Developer based in Mauritius, specializing in translating complex UI/UX designs into bulletproof, responsive HTML, CSS, and MJML emails. I actively share this repository to provide complete transparency into my coding practices, architecture, and attention to detail.
 
 ## 🛠️ The Tech Stack
 
