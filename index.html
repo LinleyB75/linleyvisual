@@ -6,7 +6,6 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-E37T8FJ661');
     </script>
 
@@ -66,11 +65,6 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-    <script>
-        (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
-        (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
-        ml('account', '1750605');
-    </script>
     <style>
         /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -296,16 +290,8 @@
         .card h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1.4rem; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); border-top-color: var(--primary); box-shadow: var(--shadow-lg); }
 
-        .student-name { font-weight: 800; color: var(--primary); font-size: 1.2rem; display: block; margin-top: auto; padding-top: 15px; }
-        .student-role { font-size: 0.85rem; color: var(--text-light); font-weight: 600; text-transform: uppercase; }
-        .student-quote { font-style: italic; color: var(--text); margin-bottom: 10px; font-weight: 500; }
-
-        .blog-card-wrap .card { text-align: left; }
-        [data-theme="dark"] .blog-card-wrap .card p { color: #f3f4f6 !important; }
-
         .blog-date { font-size: 0.8rem; color: var(--accent); font-weight: 800; background: var(--primary); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; color: #0047AB; }
         
-        /* Updated wrapper to center BOTH single and double cards perfectly (used in Blog section) */
         .centered-card-wrapper { display: flex; justify-content: center; width: 100%; grid-column: 1 / -1; gap: 2rem; flex-wrap: wrap; }
         .centered-card-wrapper .card { max-width: 380px; width: 100%; }
 
@@ -341,52 +327,6 @@
 
         .final-cta { background: linear-gradient(135deg, #003580 0%, #0047AB 100%); color: white; padding: 6rem 0; text-align: center; }
         .cta-profile-img { width: 125px; height: 125px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 2rem; object-fit: cover; }
-
-        /* --- NEWSLETTER SPECIFIC CSS --- */
-        #newsletter { background: #0f172a; border-top: 1px solid #334155; padding: 5rem 0; text-align: center; color: white; }
-        
-        .newsletter-wrapper { display: flex; justify-content: center; width: 100%; padding: 0 20px;}
-        .newsletter-container { max-width: 600px; width: 100%; margin: 0 auto; }
-        
-        .ml-form-embedWrapper { background-color: #0f172a !important; border: none !important; width: 100% !important; max-width: 100% !important; }
-        .ml-form-embedBody, .ml-form-successBody { padding: 0 !important; }
-        
-        .ml-form-embedContent h3 { color: #ffffff !important; font-family: inherit !important; font-weight: 800 !important; font-size: 2rem !important; margin-bottom: 10px !important; }
-        .ml-form-embedContent p { color: #cbd5e1 !important; font-family: inherit !important; font-size: 1.1rem !important; margin-bottom: 20px !important; }
-        
-        .ml-form-successContent h4 { margin-top: 20px !important; color: #FFD700 !important; }
-        .ml-form-successContent p { font-size: 1.2rem !important; }
-
-        .ml-form-fieldRow input { 
-            width: 100% !important;
-            border-radius: 10px !important; 
-            padding: 15px !important; 
-            border: 2px solid transparent !important; 
-            font-size: 1rem !important;
-            margin-bottom: 1rem !important;
-            background: #ffffff !important;
-            color: #000000 !important;
-            box-sizing: border-box !important;
-        }
-
-        .ml-form-embedSubmit button { 
-            background-color: var(--accent) !important; 
-            color: #0047AB !important; 
-            font-weight: 800 !important; 
-            border-radius: 10px !important; 
-            padding: 15px !important;
-            font-size: 1.1rem !important;
-            transition: 0.3s !important;
-            width: 100% !important;
-            border: none !important;
-            cursor: pointer !important;
-        }
-        .ml-form-embedSubmit button:hover { background-color: #e6c200 !important; transform: translateY(-2px); }
-        
-        .ml-form-checkboxRow { text-align: left; margin-bottom: 1rem; color: #cbd5e1; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; }
-        .ml-form-checkboxRow input { width: auto !important; margin-right: 10px; }
-        
-        .ml-form-recaptcha { display: flex; justify-content: center; margin-bottom: 15px; }
 
         footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
         .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
@@ -515,7 +455,6 @@
                 <li><a href="#fix" class="nav-fix-btn">What I Fix</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#certifications">Certs</a></li>
-                <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
             </ul>
@@ -809,72 +748,6 @@
             </div>
         </section>
 
-        <section id="blog" style="background-color: var(--bg-alt);">
-            <div class="container blog-card-wrap">
-                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Development Insights</h2>
-                <div class="grid-cards">
-                    <a href="outlook-rendering-bugs.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">07 FEB 2026</span>
-                            <h3>Why Custom Emails Break in Outlook</h3>
-                            <p>Understand the VML logic and Ghost Tables required to force Microsoft Outlook to respect your layouts.</p>
-                        </div>
-                    </a>
-
-                    <a href="design-to-mjml-workflow.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">05 FEB 2026</span>
-                            <h3>Design to MJML: The Fastest Workflow</h3>
-                            <p>How teams use the MJML framework to scale up their email production without losing quality.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="dark-mode-email-design.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">27 JAN 2026</span>
-                            <h3>Designing for Dark Mode Email</h3>
-                            <p>Stop iOS from automatically inverting your brand colors. Use targeted CSS to control the dark mode experience.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="drag-and-drop-vs-custom-code.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">22 JAN 2026</span>
-                            <h3>Drag & Drop Builders vs. Custom Code</h3>
-                            <p>Why relying on ESP builders often results in bloated HTML and broken mobile views.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="gmail-102kb-clipping-limit.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">19 JAN 2026</span>
-                            <h3>The 102KB Limit: Preventing Gmail Clipping</h3>
-                            <p>A technical guide to minifying your code to ensure your entire message (and tracking pixel) is delivered.</p>
-                        </div>
-                    </a>
-                    
-                    <a href="email-accessibility-best-practices.html" class="blog-card" style="text-decoration: none; color: inherit;">
-                        <div class="card">
-                            <span class="blog-date">11 FEB 2026</span>
-                            <h3>Email Accessibility Best Practices</h3>
-                            <p>Learn how to use semantic HTML and ARIA roles to make your email campaigns fully accessible.</p>
-                        </div>
-                    </a>
-
-                    <div class="centered-card-wrapper">
-                        <a href="code-quality-impact.html" class="blog-card" style="text-decoration: none; color: inherit; display: block; width: 100%; max-width: 380px;">
-                            <div class="card" style="max-width: 100%;">
-                                <span class="blog-date">18 FEB 2026</span>
-                                <h3>Code Quality & Campaign Performance</h3>
-                                <p>Discover why the underlying HTML structure dictates mobile responsiveness, ROI, and your overall deliverability.</p>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
         <section id="github-portfolio">
             <div class="container" style="text-align: center;">
                 <h2 class="section-title"><i class="fab fa-github"></i> Inspect My Code</h2>
@@ -930,77 +803,6 @@
                 <div class="consult-btn-wrapper">
                     <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Book a Consultation</a>
                 </div>
-            </div>
-        </section>
-
-        <section id="newsletter">
-            <div class="container newsletter-container">
-                <div class="newsletter-wrapper">
-                    <div id="mlb2-36646566" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-36646566" style="width: 100%;">
-                        <div class="ml-form-align-center">
-                            <div class="ml-form-embedWrapper embedForm">
-                                <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                                    <div class="ml-form-embedContent">
-                                        <h3>Email Dev Insights</h3>
-                                        <p>Sign up to receive reliable email development strategies and technical solutions to ensure your email marketing campaigns render perfectly in every inbox.</p>
-                                    </div>
-                                    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/subscribe" data-code="" method="post" target="_blank">
-                                        <div class="ml-form-formContent">
-                                            <div class="ml-form-fieldRow ml-last-item">
-                                                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                                                    <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Email" autocomplete="email">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="ml-form-checkboxRow ml-validate-required">
-                                            <label class="checkbox">
-                                                <input type="checkbox">
-                                                <div class="label-description">
-                                                    <p>Opt in to receive technical updates.</p>
-                                                </div>
-                                            </label>
-                                        </div>
-                                        <div class="ml-form-recaptcha ml-validate-required">
-                                            <div class="g-recaptcha" data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"></div>
-                                        </div>
-                                        <input type="hidden" name="ml-submit" value="1">
-                                        <div class="ml-form-embedSubmit">
-                                            <button type="submit" class="primary">Subscribe</button>
-                                            <button disabled="disabled" style="display: none;" type="button" class="loading">
-                                                <div class="ml-form-embedSubmitLoad"></div>
-                                                <span class="sr-only">Loading...</span>
-                                            </button>
-                                        </div>
-                                        <input type="hidden" name="anticsrf" value="true">
-                                    </form>
-                                </div>
-                                <div class="ml-form-successBody row-success" style="display: none">
-                                    <div class="ml-form-successContent">
-                                        <img data-src="https://i.ibb.co/JwXB7W0G/Gemini-Generated-Image-rfx1iirfx1iirfx1.png" alt="Thank You for Subscribing" id="success-img" width="600" height="400" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 20px;">
-                                        <h4>Welcome Aboard!</h4>
-                                        <p>Please check your inbox to confirm your subscription.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    function ml_webform_success_36646566() {
-                        var $ = ml_jQuery || jQuery;
-                        
-                        // LAZY LOAD IMAGE SWAP
-                        var img = document.getElementById('success-img');
-                        if(img) img.src = img.dataset.src;
-
-                        $('.ml-subscribe-form-36646566 .row-success').show();
-                        $('.ml-subscribe-form-36646566 .row-form').hide();
-                    }
-                </script>
-                <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
-                <script>
-                    fetch("https://assets.mailerlite.com/jsonp/1750605/forms/178409926023972757/takel")
-                </script>
             </div>
         </section>
 
