@@ -102,7 +102,14 @@
                 color-scheme: dark;
                 forced-color-adjust: none;
                 
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #1e293b; --border: #334155; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5); --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5); --section-highlight: #1e293b; --cert-bg-dark: #020617; --card-bg: #1e293b; --input-bg: #334155; --quote-bg: #1e293b;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #1e293b; --border: #334155; --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5); --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); /* Typo fix in shadow? using 0.5 for consistency */
+            }
+        }
+        
+        /* Apply shadow consistently in preferences media query */
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
             }
         }
 
@@ -191,7 +198,7 @@
         .final-cta { background: linear-gradient(135deg, #003580 0%, #0047AB 100%); color: white; padding: 6rem 0; text-align: center; }
         .cta-profile-img { width: 125px; height: 125px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 2rem; object-fit: cover; }
 
-        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); }
+        footer { padding: 4rem 0; text-align: center; background: var(--bg-alt); border-top: 3px solid var(--primary); margin-top: auto; }
         .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
         .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
@@ -335,17 +342,16 @@
                 <div class="cert-container-box">
                     <h2 class="section-title" style="color: white;"><i class="fas fa-certificate"></i> Teaching Qualifications</h2>
                     <div class="cert-grid">
-                        <div class="cert-item"><img src="https://i.ibb.co/6J7HsxYF/UC-e0732ac0-e884-4061-8104-d4183a396f62.jpg" alt="English Teaching Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/N2QBGPJ6/Screenshot-2024-05-15-220124.png" alt="TESOL / TEFL Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/3YMdrb2T/UC-5470b374-47e2-45e1-8a42-96a57f1491b0.jpg" alt="Business English Coaching Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/YTjFT09X/UC-443a3f23-9f0d-4f21-be68-c78cc35fddba.jpg" alt="Conversational English Credential" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/N2qZxwKz/UC-22ed3d60-cf94-4cff-94f1-ca9433bc1ce9.jpg" alt="English Grammar and Syntax Qualification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/5X3pff8Q/UC-8f49453e-ec74-44be-a3bd-5dd2bbdc48d2.jpg" alt="Professional English Instruction Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/j9qpGWxk/Screenshot-2024-05-06-111012.png" alt="Language Educator Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/RkDvnHgq/Screenshot-2024-05-06-110829.png" alt="Online English Teaching Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/NdZpYMX3/1e83e38cb78b429689e304fe773667bd.png" alt="Advanced ESL Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/rKWkyjcy/Screenshot-2026-02-19-161324.png" alt="English Pronunciation and Accent Training" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/WNtjzJp9/Screenshot-2026-02-19-235754.png" alt="Professional Communication Coach Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/MkcYZ0Zr/Screenshot-2024-04-24-150313.png" alt="English Language Teaching Qualification Certificate." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/fzStTY8S/Screenshot-2024-04-20-161251.png" alt="TEFL / TESOL Certification for Teaching English as a Foreign Language." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/BV0LnHhQ/Screenshot-2024-05-07-204401.png" alt="Advanced English Language Proficiency Certification." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/XZjStHy2/Business-English-Cert-2020-01-30-Linley-Bignoux-page-0001.jpg" alt="Linley Bignoux Business English Certification dated January 30, 2020." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/nq1Zk80z/Screenshot-2024-05-07-203655.png" alt="English for Academic Purposes Teaching Qualification." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/qYbJm0f1/Screenshot-2025-10-25-102516.png" alt="Digital Educator Training and Online Teaching Methodology Certificate." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/HfMbk4km/Screenshot-2025-10-25-102441.png" alt="Certificate in English Grammar Instruction Best Practices." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/HfgBtDzw/Screenshot-2024-05-07-204447.png" alt="Advanced Conversational English and Pronunciation Coaching Qualification." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/pjx5n8Z3/Screenshot-2024-12-04-162651.png" alt="Professional Development Certificate in Language Education." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
+                        <div class="cert-item"><img src="https://i.ibb.co/QFpjtdSF/UC-23e1b46e-6416-4ca0-a1ec-9bcd8db61d7c.jpg" alt="Udemy Professional Certificate for specialized English Teaching course." width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
                     </div>
                 </div>
             </div>
