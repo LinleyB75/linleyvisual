@@ -108,13 +108,13 @@
         
         .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
 
-        /* PORTFOLIO STYLES */
+        /* PORTFOLIO STYLES - FLEXBOX ALIGNED */
         .portfolio-header { text-align: center; padding: 4rem 20px 2rem; }
         .portfolio-header h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
         .portfolio-header p { font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto; }
 
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; padding: 2rem 0 6rem; }
-        .portfolio-card { background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; padding: 2rem 0 6rem; }
+        .portfolio-card { width: 100%; flex: 1 1 320px; max-width: 380px; background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform 0.3s; display: flex; flex-direction: column; }
         .portfolio-card:hover { transform: translateY(-10px); border-color: var(--primary); }
         
         .portfolio-img-wrap { width: 100%; height: 300px; overflow: hidden; border-bottom: 4px solid var(--accent); position: relative; display: block; }
@@ -149,7 +149,6 @@
             header { min-height: 80px; }
             .container { padding: 0 15px; }
             
-            /* FORCE SPACING AND PREVENT OVERLAP */
             nav { gap: 8px; } 
             .logo-wrap { flex: 1; max-width: calc(100% - 90px); gap: 10px; } 
             .header-photo { width: 45px; height: 45px; } 
@@ -176,8 +175,10 @@
             .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); z-index: 99;}
             .nav-links.active { display: flex; }
             
-            .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .portfolio-grid { gap: 2rem; }
+            .portfolio-card { max-width: 100%; } 
             .portfolio-img-wrap { height: 250px; }
+            
             .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
             .social-links { gap: 10px; }
             .social-icon { width: 45px; height: 45px; font-size: 1.2rem; }
@@ -217,7 +218,7 @@
         <section class="portfolio-header">
             <div class="container">
                 <h1>Email Development Portfolio</h1>
-                <p>A collection of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.</p>
+                <p>A complete showcase of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.</p>
             </div>
         </section>
 
@@ -226,7 +227,7 @@
                 
                 <div class="portfolio-card">
                     <a href="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="Abandoned Cart Email Build" loading="lazy">
+                        <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="E-commerce abandoned cart email layout showcasing dynamic product grids." loading="lazy">
                         <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
                     </a>
                     <div class="portfolio-content">
@@ -241,7 +242,7 @@
 
                 <div class="portfolio-card">
                     <a href="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Corporate Newsletter Build" loading="lazy">
+                        <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Corporate monthly newsletter email built with responsive HTML." loading="lazy">
                         <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
                     </a>
                     <div class="portfolio-content">
@@ -256,13 +257,148 @@
 
                 <div class="portfolio-card">
                     <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email" loading="lazy">
+                        <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="SaaS onboarding welcome series email with clean typography." loading="lazy">
                         <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
                     </a>
                     <div class="portfolio-content">
                         <span class="portfolio-tech">MJML • Onboarding</span>
                         <h2 class="portfolio-title">Welcome Series Kickoff</h2>
                         <p class="portfolio-desc">A clean, engaging welcome email structured for accessibility, fast load times, and high conversion click-through rates.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" alt="Promotional email template for a beverage brand featuring bright colors and responsive image grid." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • Promotional</span>
+                        <h2 class="portfolio-title">Beverage Promo Campaign</h2>
+                        <p class="portfolio-desc">Vibrant, image-heavy promotional email coded in MJML, ensuring flawless mobile rendering and image optimization.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" alt="E-commerce email template for a food brand with product highlights." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML/CSS • E-commerce</span>
+                        <h2 class="portfolio-title">Food Brand Newsletter</h2>
+                        <p class="portfolio-desc">Custom semantic HTML layout featuring complex grid structures, web-safe typography, and strict fallback fonts.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" alt="Corporate insurance newsletter email with a clean, professional layout." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML/CSS • Corporate</span>
+                        <h2 class="portfolio-title">Insurance Policy Update</h2>
+                        <p class="portfolio-desc">A highly readable, text-optimized corporate communication built with bulletproof Outlook compatibility and clear margins.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" alt="Software launch email template with a dark modern theme." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • SaaS</span>
+                        <h2 class="portfolio-title">Software Event Launch</h2>
+                        <p class="portfolio-desc">Sleek, dark-mode optimized announcement email featuring distinct hero imagery and a highly structured CTA hierarchy.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" alt="Double opt-in subscriber confirmation transactional email." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML • Transactional</span>
+                        <h2 class="portfolio-title">Double Opt-in Flow</h2>
+                        <p class="portfolio-desc">A clean, ultra-lightweight transactional email designed specifically for instant rendering and maximum click conversions.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" alt="Retail or product showcase email template with stacked lifestyle images." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • Retail</span>
+                        <h2 class="portfolio-title">Product Showcase</h2>
+                        <p class="portfolio-desc">Responsive product showcase featuring alternating image-text blocks that transition cleanly into stacked mobile views.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/JFkw6nB6/127-0-0-1-5500-Meaty-Australia-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/JFkw6nB6/127-0-0-1-5500-Meaty-Australia-html.png" alt="Newsletter template for an Australian food retailer with warm branding." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML/CSS • B2C</span>
+                        <h2 class="portfolio-title">Retail Promo Newsletter</h2>
+                        <p class="portfolio-desc">Brand-focused B2C newsletter utilizing carefully coded semantic margins and padding for cross-client consistency.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" alt="Modern financial or tech services promotional email template." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • FinTech</span>
+                        <h2 class="portfolio-title">FinTech Promo Campaign</h2>
+                        <p class="portfolio-desc">Crisp, professional layout utilizing specific MJML spacer and divider components to create a clean, modern UI aesthetic.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" alt="Apparel e-commerce email template featuring streetwear clothing collections." loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • Apparel</span>
+                        <h2 class="portfolio-title">Apparel Collection Drop</h2>
+                        <p class="portfolio-desc">Image-rich e-commerce campaign highlighting the latest clothing drops using fluid, responsive multi-column product grids.</p>
                         <div class="portfolio-links">
                             <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
                         </div>
