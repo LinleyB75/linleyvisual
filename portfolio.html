@@ -1,1 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
+    <title>Email Development Portfolio | Linley Bignoux</title>
+    <meta name="description" content="View my latest custom HTML, CSS, and MJML email development projects. Pixel-perfect, Outlook-safe, and fully responsive.">
+    
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Email Development Portfolio | Linley Bignoux">
+    <meta property="og:description" content="View my latest custom HTML, CSS, and MJML email development projects.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/portfolio.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="https://linleyb.com/portfolio.html" />
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+    <style>
+        :root {
+            color-scheme: light dark;
+            forced-color-adjust: none;
+            -webkit-print-color-adjust: exact;
+            
+            --primary: #0047AB; 
+            --accent: #FFD700; 
+            --text: #1f2937; 
+            --text-light: #4b5563;
+            --bg: #ffffff; 
+            --bg-alt: #fafbfc; 
+            --card-bg: #ffffff; 
+            --border: #e5e7eb; 
+            --section-highlight: #f0f4f8;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        [data-theme="dark"] {
+            color-scheme: dark;
+            forced-color-adjust: none;
+            
+            --primary: #4fa3ff; 
+            --accent: #FFD700; 
+            --text: #f3f4f6; 
+            --text-light: #9ca3af;
+            --bg: #0f172a; 
+            --bg-alt: #020617; 
+            --card-bg: #1e293b; 
+            --border: #334155; 
+            --section-highlight: #1e293b;
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                color-scheme: dark;
+                forced-color-adjust: none;
+                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { overflow-x: hidden; max-width: 100vw; background-color: var(--bg-alt); scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: var(--text); background: var(--bg-alt); transition: background 0.3s, color 0.3s; min-height: 100vh; display: flex; flex-direction: column; padding-top: 115px; }
+        
+        .container { max-width: 1350px; margin: 0 auto; padding: 0 5%; width: 100%; }
+
+        /* HEADER STYLES */
+        header { background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; left: 0; right: 0; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
+
+        .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
+        .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
+        
+        .logo-text-group { display: flex; align-items: center; }
+        .logo-main { font-size: 1.6rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 22px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
+        .logo-main .pipe { margin: 0 10px; font-weight: 300; opacity: 0.3; color: var(--text); }
+        .logo-main .job-title { color: var(--text); font-size: 1.15rem; margin-top: 2px; }
+
+        .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
+        .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
+
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
+        .nav-links a:hover { color: var(--primary); border-bottom-color: var(--accent); }
+        
+        .nav-fix-btn { background: var(--bg); color: var(--primary)!important; padding: 10px 18px!important; border-radius: 50px; border: 2px solid var(--primary)!important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease; }
+        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
+        
+        .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); border-radius: 2px; }
+        
+        .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
+
+        /* PORTFOLIO STYLES */
+        .portfolio-header { text-align: center; padding: 4rem 20px 2rem; }
+        .portfolio-header h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
+        .portfolio-header p { font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto; }
+
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; padding: 2rem 0 6rem; }
+        .portfolio-card { background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform 0.3s; display: flex; flex-direction: column; }
+        .portfolio-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+        
+        .portfolio-img-wrap { width: 100%; height: 300px; overflow: hidden; border-bottom: 4px solid var(--accent); position: relative; display: block; }
+        .portfolio-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s ease; }
+        .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.05); }
+        .view-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 71, 171, 0.8); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 800; opacity: 0; transition: opacity 0.3s; }
+        .portfolio-img-wrap:hover .view-overlay { opacity: 1; }
+
+        .portfolio-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .portfolio-tech { font-size: 0.85rem; color: #0047AB; font-weight: 800; background: var(--accent); padding: 5px 12px; border-radius: 4px; display: inline-block; margin-bottom: 15px; align-self: flex-start; }
+        .portfolio-title { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 800; }
+        .portfolio-desc { color: var(--text); font-size: 1rem; margin-bottom: 20px; flex-grow: 1; }
+        
+        .portfolio-links { display: flex; gap: 15px; margin-top: auto; }
+        .btn-outline { flex: 1; text-align: center; padding: 10px; border: 2px solid var(--primary); border-radius: 8px; color: var(--primary); font-weight: 700; text-decoration: none; transition: 0.3s; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        /* FOOTER */
+        footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
+        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
+        .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
+        .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
+        .footer-copyright { font-size: 1rem; color: var(--text); }
+
+        /* MEDIA QUERIES */
+        @media (max-width: 1250px) { .logo-tagline { display: none; } }
+        @media (max-width: 767px) {
+            body { padding-top: 80px; }
+            header { min-height: 80px; }
+            .container { padding: 0 20px; }
+            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); z-index: 99;}
+            .nav-links.active { display: flex; }
+            
+            .logo-wrap { max-width: 75%; } 
+            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
+            
+            /* SCALES LOGO FOR MOBILE */
+            .logo-main { font-size: 1.1rem; padding: 6px 15px; margin-bottom: 2px; }
+            .logo-main .job-title { font-size: 0.9rem; }
+            .logo-main .pipe { margin: 0 6px; }
+            
+            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
+            .theme-toggle { margin-right: 5px; margin-left: auto;}
+            
+            .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .portfolio-img-wrap { height: 250px; }
+            .footer-credit-text { font-size: 0.85rem; padding: 0 10px; }
+            .social-links { gap: 10px; }
+            .social-icon { width: 45px; height: 45px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header role="banner">
+        <nav class="container" role="navigation">
+            <a href="index.html" class="logo-wrap">
+                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Email Developer" class="header-photo" width="60" height="60" fetchpriority="high">
+                <div class="logo-text-group">
+                    <div class="logo-main">Linley Bignoux <span class="pipe">|</span> <span class="job-title">Email Developer</span></div>
+                </div>
+            </a>
+            
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open Navigation Menu"><i class="fas fa-bars"></i></button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="portfolio.html" style="color: var(--primary); border-bottom: 3px solid var(--accent);">Portfolio</a></li>
+                <li><a href="index.html#fix" class="nav-fix-btn">What I Fix</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#certifications">Certs</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main role="main">
+        <section class="portfolio-header">
+            <div class="container">
+                <h1>Email Development Portfolio</h1>
+                <p>A collection of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="portfolio-grid">
+                
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="Abandoned Cart Email Build" loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • E-commerce</span>
+                        <h2 class="portfolio-title">Abandoned Cart Flow</h2>
+                        <p class="portfolio-desc">A highly responsive e-commerce email featuring dynamic product grids, mobile-stacked layouts, and clear conversion CTA buttons.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Corporate Newsletter Build" loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML/CSS • Corporate</span>
+                        <h2 class="portfolio-title">Monthly Newsletter</h2>
+                        <p class="portfolio-desc">Custom HTML/CSS coded specifically to survive legacy Outlook clients (2013-2021) using bulletproof ghost tables and VML.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email" loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">MJML • Onboarding</span>
+                        <h2 class="portfolio-title">Welcome Series Kickoff</h2>
+                        <p class="portfolio-desc">A clean, engaging welcome email structured for accessibility, fast load times, and high conversion click-through rates.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-card">
+                    <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap" style="background: var(--section-highlight); display: flex; align-items: center; justify-content: center;">
+                        <i class="fab fa-github" style="font-size: 5rem; color: var(--primary);"></i>
+                        <div class="view-overlay"><i class="fab fa-github"></i> GitHub Repository</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">HTML • Handlebars</span>
+                        <h2 class="portfolio-title">Dynamic Templates</h2>
+                        <p class="portfolio-desc">Visit my GitHub repository to inspect the raw code, templating logic, and inline CSS practices across multiple different ESP formats.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline" style="background: var(--primary); color: white;"><i class="fab fa-github"></i> Browse Repository</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+                <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-credit-text">Site designed and developed by Linley Bignoux</div>
+            <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        
+        const themeBtn = document.getElementById('themeToggle');
+        const icon = themeBtn.querySelector('i');
+        const storedTheme = localStorage.getItem('theme');
+
+        if (storedTheme) {
+            document.documentElement.setAttribute('data-theme', storedTheme);
+            updateIcon(storedTheme);
+        }
+
+        themeBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            if (!currentTheme) {
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                targetTheme = systemDark ? 'light' : 'dark';
+            }
+
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateIcon(targetTheme);
+        });
+
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+    </script>
+</body>
+</html>
