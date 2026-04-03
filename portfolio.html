@@ -104,7 +104,7 @@
         
         .nav-for-you { background: var(--primary); color: white!important; height: 46px; padding: 0 25px; border-radius: 50px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; position: relative; }
         .nav-links .nav-for-you:hover { border-bottom: none !important; }
-        .nav-for-you::after { content: ""; position: absolute; bottom: 8px; left: 25px; right: 25px; height: 3px; background: var(--accent); border-radius: 2px; }
+        .nav-for-you::after { content: ""; position: absolute; bottom: 10px; left: 25px; right: 25px; height: 3px; background: var(--accent); border-radius: 2px; }
         
         .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; color: var(--primary); cursor: pointer; margin-left: 10px; padding-right: 15px; flex-shrink: 0; }
 
@@ -140,25 +140,41 @@
         .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
         .footer-copyright { font-size: 1rem; color: var(--text); }
 
-        /* MEDIA QUERIES */
-        @media (max-width: 1250px) { .logo-tagline { display: none; } }
+        /* MOBILE FIXES */
+        @media (max-width: 1024px) {
+            body { padding-top: 115px; }
+        }
         @media (max-width: 767px) {
             body { padding-top: 80px; }
             header { min-height: 80px; }
-            .container { padding: 0 20px; }
+            .container { padding: 0 15px; }
+            
+            /* FORCE SPACING AND PREVENT OVERLAP */
+            nav { gap: 8px; } 
+            .logo-wrap { flex: 1; max-width: calc(100% - 90px); gap: 10px; } 
+            .header-photo { width: 45px; height: 45px; } 
+            
+            .logo-text-group { flex: 1; min-width: 0; }
+            .logo-main { 
+                font-size: 1.05rem; 
+                padding: 6px 12px; 
+                margin-bottom: 0; 
+                white-space: normal; 
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 12px;
+                line-height: 1.2;
+                width: 100%;
+            }
+            .logo-main .pipe { display: none; } 
+            .logo-main .job-title { font-size: 0.8rem; margin-top: 2px; opacity: 0.9; }
+
+            .theme-toggle { margin: 0; margin-left: auto; width: 38px; height: 38px; font-size: 1.1rem; flex-shrink: 0; }
+            .menu-toggle { display: block; margin: 0; padding: 0; width: 35px; text-align: right; flex-shrink: 0; font-size: 1.6rem;} 
+
             .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; box-shadow: var(--shadow-lg); border-bottom: 4px solid var(--accent); z-index: 99;}
             .nav-links.active { display: flex; }
-            
-            .logo-wrap { max-width: 75%; } 
-            .logo-text-group { flex-direction: column; align-items: flex-start; margin-left: 10px; }
-            
-            /* SCALES LOGO FOR MOBILE */
-            .logo-main { font-size: 1.1rem; padding: 6px 15px; margin-bottom: 2px; }
-            .logo-main .job-title { font-size: 0.9rem; }
-            .logo-main .pipe { margin: 0 6px; }
-            
-            .menu-toggle { display: block; margin-right: 0; padding: 0; width: 35px; text-align: right;} 
-            .theme-toggle { margin-right: 5px; margin-left: auto;}
             
             .portfolio-grid { grid-template-columns: 1fr; gap: 2rem; }
             .portfolio-img-wrap { height: 250px; }
@@ -277,7 +293,7 @@
             <div class="social-links">
                 <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
                 <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/linley-bignoux-52867a39a" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://www.instagram.com/linleyhuman/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Instagram Profile"><i class="fab fa-instagram"></i></a>
                 <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
             </div>
