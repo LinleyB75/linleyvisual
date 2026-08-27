@@ -14,7 +14,7 @@
     
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
     <title>Email Development Portfolio | Linley Bignoux</title>
     <meta name="description" content="View my latest custom HTML, CSS, and MJML email development projects. Pixel-perfect, Outlook-safe, and fully responsive.">
@@ -38,15 +38,15 @@
             forced-color-adjust: none;
             -webkit-print-color-adjust: exact;
             
-            --primary: #0047AB; 
-            --accent: #FFD700; 
-            --text: #1f2937; 
-            --text-light: #4b5563;
+            --primary: #0a0a0a; 
+            --accent: #E10600; 
+            --text: #1a1a1a; 
+            --text-light: #55555a;
             --bg: #ffffff; 
-            --bg-alt: #fafbfc; 
+            --bg-alt: #f2f2f2; 
             --card-bg: #ffffff; 
-            --border: #e5e7eb; 
-            --section-highlight: #f0f4f8;
+            --border: #e0e0e0; 
+            --section-highlight: #f2f2f2;
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
 
@@ -54,15 +54,15 @@
             color-scheme: dark;
             forced-color-adjust: none;
             
-            --primary: #4fa3ff; 
-            --accent: #FFD700; 
-            --text: #f3f4f6; 
-            --text-light: #9ca3af;
-            --bg: #0f172a; 
-            --bg-alt: #020617; 
-            --card-bg: #1e293b; 
-            --border: #334155; 
-            --section-highlight: #1e293b;
+            --primary: #f5f5f5; 
+            --accent: #FF1A1A; 
+            --text: #f2f2f2; 
+            --text-light: #b0b0b0;
+            --bg: #0a0a0a; 
+            --bg-alt: #000000; 
+            --card-bg: #141414; 
+            --border: #2a2a2a; 
+            --section-highlight: #141414;
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
         }
 
@@ -70,7 +70,7 @@
             :root:not([data-theme="light"]) {
                 color-scheme: dark;
                 forced-color-adjust: none;
-                --primary: #4fa3ff; --accent: #FFD700; --text: #f3f4f6; --text-light: #9ca3af; --bg: #0f172a; --bg-alt: #020617; --card-bg: #1e293b; --border: #334155; --section-highlight: #1e293b; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+                --primary: #f5f5f5; --accent: #FF1A1A; --text: #f2f2f2; --text-light: #b0b0b0; --bg: #0a0a0a; --bg-alt: #000000; --card-bg: #141414; --border: #2a2a2a; --section-highlight: #141414; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
             }
         }
 
@@ -120,11 +120,11 @@
         .portfolio-img-wrap { width: 100%; height: 300px; overflow: hidden; border-bottom: 4px solid var(--accent); position: relative; display: block; }
         .portfolio-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s ease; }
         .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.05); }
-        .view-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 71, 171, 0.8); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 800; opacity: 0; transition: opacity 0.3s; }
+        .view-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(225, 6, 0, 0.85); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 800; opacity: 0; transition: opacity 0.3s; }
         .portfolio-img-wrap:hover .view-overlay { opacity: 1; }
 
         .portfolio-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-        .portfolio-tech { font-size: 0.85rem; color: #0047AB; font-weight: 800; background: var(--accent); padding: 5px 12px; border-radius: 4px; display: inline-block; margin-bottom: 15px; align-self: flex-start; }
+        .portfolio-tech { font-size: 0.85rem; color: #ffffff; font-weight: 800; background: var(--accent); padding: 5px 12px; border-radius: 4px; display: inline-block; margin-bottom: 15px; align-self: flex-start; }
         .portfolio-title { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 800; }
         .portfolio-desc { color: var(--text); font-size: 1rem; margin-bottom: 20px; flex-grow: 1; }
         
@@ -135,7 +135,7 @@
         /* FOOTER */
         footer { padding: 4rem 0; text-align: center; background: var(--bg); border-top: 3px solid var(--primary); margin-top: auto; }
         .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; width: 100%;}
-        .social-icon { font-size: 1.5rem; color: #0047AB; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
+        .social-icon { font-size: 1.5rem; color: #ffffff; background: var(--accent); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50% !important; text-decoration: none !important; transition: 0.4s; flex-shrink: 0; }
         .social-icon:hover { transform: scale(1.1) rotate(360deg); background: var(--primary); color: white; }
         .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
         .footer-copyright { font-size: 1rem; color: var(--text); }
