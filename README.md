@@ -32,9 +32,8 @@ Beyond this website, my core daily technical stack includes:
 Looking for a reliable technical pair of hands to clear your email development bottleneck? Let's talk.
 
 * **Email:** blanyves@optusnet.com.au
-* **LinkedIn:** [in/linley-bignoux](https://www.linkedin.com/in/linley-bignoux-52867a39a)
 * **Contra:** [Linley Bignoux](https://linleybignouxzqme9nmu.contra.com/)
-* **Instagram:** [@linleyhuman](https://www.instagram.com/linleyhuman/)
+
 
 ---
 *&copy; 2026 Linley Bignoux. All rights reserved.*
