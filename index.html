@@ -111,7 +111,7 @@
         
         header { background: var(--bg); border-bottom: 3px solid var(--primary); position: fixed; top: 0; z-index: 100; min-height: 115px; display: flex; align-items: center; width: 100%; transition: background 0.3s; left: 0; right: 0; }
         .container { max-width: 1350px; margin: 0 auto; width: 100%; padding: 0 5%; }
-        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
+        nav { display: flex; flex-wrap: wrap; row-gap: 10px; justify-content: space-between; align-items: center; width: 100%; padding: 10px 0; }
         
         .logo-wrap { display: flex; align-items: center; gap: 15px; text-decoration: none; flex-shrink: 0; margin-right: auto; }
         .header-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary); flex-shrink: 0; }
@@ -124,7 +124,7 @@
         .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 10px; margin-right: 25px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
 
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; } 
+        .nav-links { display: flex; gap: 1rem; list-style: none; align-items: center; flex-wrap: wrap; } 
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
         .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
         
@@ -279,7 +279,7 @@
             <a href="#home" class="logo-wrap">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Email Developer" class="header-photo" width="60" height="60" fetchpriority="high">
                 <div class="logo-text-group">
-                    <div class="logo-main">Linley Bignoux <span class="pipe">|</span> <span class="job-title">Email Coder (Developer) / Web Developer</span></div>
+                    <div class="logo-main">Linley Bignoux <span class="pipe">|</span> <span class="job-title">Email Developer/Web Developer</span></div>
                 </div>
             </a>
             
@@ -294,7 +294,7 @@
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="#fix" class="nav-fix-btn">What I Fix</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#certifications">Certs</a></li>
+                <li><a href="certifications.html">Certs</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
             </ul>
@@ -331,10 +331,6 @@
                     <div class="tech-item">
                         <i class="fab fa-css3-alt"></i>
                         <span>CSS</span>
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-js"></i>
-                        <span>JavaScript</span>
                     </div>
                     <div class="tech-item">
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -503,27 +499,6 @@
                         <li><b>5. ESP Code Integration:</b> The final HTML is loaded directly into your Email Service Provider to ensure variable logic and layouts are fully compatible.</li>
                         <li><b>6. Final Delivery:</b> You receive a zipped folder with the HTML and assets, ready to schedule and send.</li>
                     </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="certifications">
-            <div class="container">
-                <div class="cert-container-box">
-                    <h2 class="section-title" style="color: white;"><i class="fas fa-id-badge"></i> Background & Experience</h2>
-                    <div class="cert-grid">
-                        <div class="cert-item"><img src="https://i.ibb.co/6J7HsxYF/UC-e0732ac0-e884-4061-8104-d4183a396f62.jpg" alt="Email Developer Certification - HTML & CSS Coding" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/N2QBGPJ6/Screenshot-2024-05-15-220124.png" alt="MJML Framework Development Qualification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/3YMdrb2T/UC-5470b374-47e2-45e1-8a42-96a57f1491b0.jpg" alt="Responsive Email Layouts and QA Testing Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/YTjFT09X/UC-443a3f23-9f0d-4f21-be68-c78cc35fddba.jpg" alt="Klaviyo and Mailchimp Logic Integration Certificate" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/N2qZxwKz/UC-22ed3d60-cf94-4cff-94f1-ca9433bc1ce9.jpg" alt="Technical Logic and Problem Solving Credential" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/5X3pff8Q/UC-8f49453e-ec74-44be-a3bd-5dd2bbdc48d2.jpg" alt="Custom HTML Email Development for Agencies" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/j9qpGWxk/Screenshot-2024-05-06-111012.png" alt="Advanced Coding and Digital Environment Architecture" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/RkDvnHgq/Screenshot-2024-05-06-110829.png" alt="UI to HTML Code Translation Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/NdZpYMX3/1e83e38cb78b429689e304fe773667bd.png" alt="Email Asset Delivery and Optimization Methodology" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/rKWkyjcy/Screenshot-2026-02-19-161324.png" alt="Technical Email Development and Professional Certification" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                        <div class="cert-item"><img src="https://i.ibb.co/WNtjzJp9/Screenshot-2026-02-19-235754.png" alt="Professional Technical Certification for Email Development and Marketing Automation" width="300" height="200" loading="lazy" onclick="zoom(this)"></div>
-                    </div>
                 </div>
             </div>
         </section>
