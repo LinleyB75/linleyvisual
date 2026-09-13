@@ -1,4 +1,4 @@
-# Linley Bignoux | Email Developer Portfolio
+# Linley Bignoux | Email Developer/Web Developer Portfolio
 
 **Live Site:** [linleyb.com](https://linleyb.com/)
 
