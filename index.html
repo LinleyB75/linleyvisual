@@ -306,20 +306,19 @@
         <section id="home" class="hero">
 <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 0 1rem; box-sizing: border-box;">
     
-    <h1 style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; width: 100%; text-align: center; margin: 0 auto;">
-        
-        <!-- Email Development: Side-by-side on mobile & desktop -->
-        <span style="display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
-            <i class="fa-solid fa-envelope-open-text" style="color: #ff0000; flex-shrink: 0;"></i>
+    <h1 style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 2.5rem auto; width: 100%;">
+        <!-- Grid container ensures icons and text align flush top-to-bottom -->
+        <div style="display: inline-grid; grid-template-columns: auto 1fr; row-gap: 1rem; column-gap: 0.75rem; align-items: center; text-align: left; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
+            
+            <!-- Email Development Row -->
+            <i class="fa-solid fa-envelope-open-text" style="color: #ff0000; justify-self: center;"></i>
             <span style="white-space: nowrap;">Email Development</span>
-        </span>
-        
-        <!-- Web Development: Side-by-side on mobile & desktop -->
-        <span style="display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; width: 100%; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
-            <i class="fa-solid fa-laptop-code" style="color: #ff0000; flex-shrink: 0;"></i>
+            
+            <!-- Web Development Row -->
+            <i class="fa-solid fa-laptop-code" style="color: #ff0000; justify-self: center;"></i>
             <span style="white-space: nowrap;">Web Development</span>
-        </span>
 
+        </div>
     </h1>
                 
                 <ul class="subtitle-list">
