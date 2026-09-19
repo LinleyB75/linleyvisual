@@ -45,7 +45,7 @@
         "https://github.com/LinleyB75/Email-Dev",
         "https://linleybignouxzqme9nmu.contra.com/"
       ],
-      "description": "I turn your designs into bulletproof HTML/CSS emails. Email developer specializing in MJML, Outlook-safe code, and custom ESP integration."
+      "description": "I turn your designs into bulletproof HTML/CSS emails. Email developer specializing in MJML and Outlook-safe code."
     }
     </script>
     
@@ -132,7 +132,6 @@
         .nav-fix-btn { background-color: var(--bg); color: var(--primary) !important; padding: 8px 14px !important; border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease; }
         .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
 
-        /* FIXED: For You button now automatically uses the opposite color of its background in both themes */
         .nav-for-you { background-color: var(--primary); color: var(--bg) !important; height: 40px; padding: 0 18px; border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; gap: 10px; border: none !important; font-weight: 800; position: relative; box-shadow: var(--shadow); white-space: nowrap; }
         .nav-links .nav-for-you:hover { border-bottom: none !important; background-color: var(--primary) !important; color: var(--bg) !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 3px; left: 18px; right: 18px; height: 3px; background-color: var(--accent); border-radius: 2px; }
@@ -221,7 +220,6 @@
             header { min-height: 80px; }
             .container { padding: 0 15px; }
             
-            /* FORCE SPACING AND PREVENT OVERLAP */
             nav { gap: 8px; } 
             .logo-wrap { flex: 1; max-width: calc(100% - 90px); gap: 10px; } 
             .header-photo { width: 45px; height: 45px; } 
@@ -280,7 +278,7 @@
             <a href="#home" class="logo-wrap">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Email Developer" class="header-photo" width="100" height="100" fetchpriority="high">
                 <div class="logo-text-group">
-                    <div class="logo-main">Linley Bignoux <span class="pipe">|</span> <span color="red"class="job-title">Email Developer</span></div>
+                    <div class="logo-main">Linley Bignoux <span class="pipe">|</span> <span color="red" class="job-title">Email Developer</span></div>
                 </div>
             </a>
             
@@ -292,8 +290,7 @@
             
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="#fix" class="nav-fix-btn">What I Fix</a></li>
+                <li><a href="#portfolio" class="nav-fix-btn">Portfolio</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="certifications.html">Certs</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -304,28 +301,20 @@
 
     <main role="main">
         <section id="home" class="hero">
-<div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 0 1rem; box-sizing: border-box;">
-    
-    <h1 style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 2.5rem auto; width: 100%;">
-        <!-- Grid container ensures icons and text align flush top-to-bottom -->
-        <div style="display: inline-grid; grid-template-columns: auto 1fr; row-gap: 1rem; column-gap: 0.75rem; align-items: center; text-align: left; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
-            
-            <!-- Email Development Row -->
-            <i class="fa-solid fa-envelope-open-text" style="color: #ff0000; justify-self: center;"></i>
-            <span style="white-space: nowrap;">Email Development</span>
-            
-           
-
-        </div>
-    </h1>
+            <div class="container" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; padding: 0 1rem; box-sizing: border-box;">
+                
+                <h1 style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 2.5rem auto; width: 100%;">
+                    <div style="display: inline-grid; grid-template-columns: auto 1fr; row-gap: 1rem; column-gap: 0.75rem; align-items: center; text-align: left; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
+                        <i class="fa-solid fa-envelope-open-text" style="color: #ff0000; justify-self: center;"></i>
+                        <span style="white-space: nowrap;">Email Development</span>
+                    </div>
+                </h1>
                 
                 <ul class="subtitle-list">
                     <li>Design to HTML</li>
                     <li>Code for ESP</li>
                     <li>Cross-Client Rendering QA</li>
                     <li>Deliverability Best Practices</li>
-              
-                
                 </ul>
 
                 <div class="hero-intro-text">
@@ -361,50 +350,22 @@
                         <span>MJML</span>
                     </div>
 
-                  <div class="tech-item">
-                  <span>Handlebars.js</span>
-                  </div>
-
-
-
-            </div>
-        </section>
-
-        <section id="fix" style="background-color: var(--bg-alt);">
-            <div class="container">
-                <h2 class="section-title"><i class="fas fa-tools"></i> What I Actually Help You Fix</h2>
-                <div class="grid-cards">
-                    <div class="card"><i class="fas fa-envelope-open-text"></i><h3>Broken Outlook Layouts</h3><p>Stop fighting Ghost Tables. I ensure your custom designs render perfectly across Outlook 2013-2021.</p></div>
-                    <div class="card"><i class="fas fa-mobile-alt"></i><h3>Mobile Responsiveness</h3><p>Say goodbye to microscopic text. I code fluid, mobile-first emails that scale perfectly on every device.</p></div>
-                    <div class="card"><i class="fas fa-moon"></i><h3>Dark Mode Disasters</h3><p>Stop iOS from ruining your brand colors. I apply targeted CSS to control how Dark Mode inverts your emails.</p></div>
-                    <div class="card"><i class="fas fa-inbox"></i><h3>Deliverability Best Practices</h3><p>Stop landing in the spam folder. I ensure your code follows strict semantic rules and optimal text-to-image ratios for maximum inbox placement.</p></div>
-                    <div class="card"><i class="fas fa-weight-hanging"></i><h3>Gmail Clipping</h3><p>Keep it under 102KB. I minify and optimize all HTML code so your entire message gets delivered and read.</p></div>
-                    <div class="card"><i class="fas fa-paint-brush"></i><h3>Design Translation</h3><p>Pixel-perfect precision. I turn your flat UI/UX designs into living, breathing, clickable email templates.</p></div>
-                    <div class="card"><i class="fas fa-bug"></i><h3>Rendering Bugs</h3><p>Move away from "hope it works." Every file is rigorously QA-tested across 50+ major email clients before handoff.</p></div>
-                    <div class="card"><i class="fas fa-clock"></i><h3>Workflow Bottlenecks</h3><p>Stop missing campaign deadlines because your drag-and-drop builder is acting up or limiting your layout.</p></div>
-                    <div class="card"><i class="fas fa-folder-open"></i><h3>Clunky Handoffs</h3><p>Just copy, paste, and send. I deliver clean, documented HTML ZIP files ready for immediate ESP upload.</p></div>
-                    <div class="card"><i class="fas fa-cog"></i><h3>Functionality</h3><p>Ensure interactive elements, anchor links, and complex structural components work flawlessly across all major email clients.</p></div>
-                    <div class="card"><i class="fas fa-server"></i><h3>ESP Integration Issues</h3><p>Stop wrestling with platform-specific HTML editors. I ensure your code imports cleanly into Klaviyo, Mailchimp, and other ESPs without breaking.</p></div>
-                    <div class="card"><i class="fas fa-code-branch"></i><h3>Dynamic Personalization</h3><p>I code and safely integrate dynamic merge tags to personalize your campaigns, ensuring specific customer data renders flawlessly every time.</p></div>
-                    <div class="card"><i class="fas fa-bug"></i><h3>Email Troubleshooting</h3><p>Dealing with the complexity of coding and troubleshooting issues that campaigns face.</p></div>
-                    <div class="card"><i class="fas fa-layer-group"></i><h3>Beyond Drag-and-Drop</h3><p>Dealing with the limitations of drag-and-drop builders, coding complex layouts, and features like dark mode and accessibility.</p></div>
-                    <div class="card"><i class="fas fa-puzzle-piece"></i><h3>Layout & Design Issues</h3><p>Understanding why layouts break, their limitations, causes, and fixes to keep campaigns on-brand and ready for delivery.</p></div>
-                </div>
-
-                                
-                <div class="consult-btn-wrapper" style="margin-top: 5rem;">
-                    <a href="mailto:blanyves@optusnet.com.au" class="cta-button">Contact me</a>
+                    <div class="tech-item">
+                        <span>Handlebars.js</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-<section id="portfolio" style="background-color: var(--section-highlight);">
+        <!-- PUSHED UP RECENT EMAIL BUILDS SECTION -->
+        <section id="portfolio" style="background-color: var(--bg-alt);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
                 <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px;">
                     A selection of responsive, Outlook-tested emails coded from flat designs. Click any image to view the full design in a new tab.
                 </p>
                 <div class="grid-cards">
+                    <!-- CARD 1 -->
                     <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
                         <a href="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" target="_blank" rel="noopener noreferrer">
                             <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="Abandoned Cart Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer; transition: 0.3s;">
@@ -416,6 +377,7 @@
                         </div>
                     </div>
                     
+                    <!-- CARD 2 -->
                     <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
                         <a href="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" target="_blank" rel="noopener noreferrer">
                             <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Agency Newsletter Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
@@ -427,6 +389,7 @@
                         </div>
                     </div>
 
+                    <!-- CARD 3 -->
                     <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
                         <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer">
                             <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
@@ -437,6 +400,78 @@
                             <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">A clean, engaging welcome email structured for accessibility and high conversion click-through rates.</p>
                         </div>
                     </div>
+
+                    <!-- NEW CARD 4 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+4" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+4" alt="Promotional Launch Campaign" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Promotional</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Product Launch Promo</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">High-impact promo campaign built with dynamic product callouts and custom mobile layouts.</p>
+                        </div>
+                    </div>
+
+                    <!-- NEW CARD 5 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+5" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+5" alt="Win-Back Campaign Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Re-engagement</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Customer Win-Back Flow</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Re-engagement email designed with bold call-to-action blocks and dark mode overrides.</p>
+                        </div>
+                    </div>
+
+                    <!-- NEW CARD 6 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+6" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+6" alt="Order Confirmation Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Transactional</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Order Confirmation</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Clean transactional template optimized for dynamic order details and cross-client reliability.</p>
+                        </div>
+                    </div>
+
+                    <!-- NEW CARD 7 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+7" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+7" alt="Seasonal Event Email" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Seasonal</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Seasonal Sale Campaign</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Festive promotional email coded with fallback fonts and Outlook-safe background graphics.</p>
+                        </div>
+                    </div>
+
+                    <!-- NEW CARD 8 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+8" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+8" alt="Weekly Digest Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">MJML • Digest</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">Weekly Content Digest</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Multi-column content digest structured for easy scanning and mobile readability.</p>
+                        </div>
+                    </div>
+
+                    <!-- NEW CARD 9 -->
+                    <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
+                        <a href="https://placehold.co/600x800/1e1e1e/ffffff?text=Email+Build+9" target="_blank" rel="noopener noreferrer">
+                            <img src="https://placehold.co/600x400/1e1e1e/ffffff?text=Email+Build+Placeholder+9" alt="Event RSVP Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        </a>
+                        <div style="padding: 1.5rem;">
+                            <span class="blog-date">HTML/CSS • Events</span>
+                            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary);">VIP Event Invitation</h3>
+                            <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text);">Elegant event invitation email with responsive hero sections and add-to-calendar links.</p>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="consult-btn-wrapper" style="margin-top: 4rem;">
@@ -445,12 +480,7 @@
             </div>
         </section>
 
-
-
-
-
-        
-         <section id="campaign-types" style="background-color: var(--bg-alt);">
+        <section id="campaign-types" style="background-color: var(--section-highlight);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-layer-group"></i> Email Campaigns I Develop</h2>
                 <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px;">
@@ -482,18 +512,12 @@
                     <div class="card"><i class="fas fa-image"></i><h3>Asset Optimization</h3><p>Retina-ready, fast-loading image slicing and compression for lightning-fast opens.</p></div>
                     <div class="card"><i class="fas fa-universal-access"></i><h3>Email Accessibility</h3><p>Semantic coding with correct ARIA roles and alt-text to ensure screen-reader compatibility.</p></div>
                     <div class="card"><i class="fas fa-globe-americas"></i><h3>Global Support</h3><p>Providing reliable asynchronous development for remote partnerships worldwide.</p></div>
-                    <div class="card"><i class="fas fa-server"></i><h3>ESP Code Integration</h3><p>Direct upload and strict testing of coded templates inside your specific Email Service Provider to guarantee logic and layout compatibility.</p></div>
                     <div class="card"><i class="fas fa-inbox"></i><h3>Email Deliverability</h3><p>Building email code with deliverability in mind, from clean HTML and authentication to avoiding issues that can affect inbox placement.</p></div>
                     <div class="card"><i class="fas fa-check-double"></i><h3>Email Development Best Practices</h3><p>Using proven coding practices creates reliable, accessible, responsive emails that render consistently across clients, devices, and inbox environments.</p></div>
                     <div class="card"><i class="fas fa-code"></i><h3>Handlebars Templating</h3><p>I can use templating for dynamic emails — enabling personalized and data-driven content to render accurately for every recipient.</p></div>
                 </div>
             </div>
         </section>
-
-       
-
-        
-
 
         <section id="way-we-learn" style="background-color: var(--section-highlight);">
             <div class="container">
@@ -503,12 +527,11 @@
                     <p style="margin-bottom: 2rem; font-size: 1.3rem;">My process is <b>simple and task-based</b>, acting as the perfect technical pair of hands for your projects.</p>
                     <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800;">My Streamlined Handoff Process</h3>
                     <ul>
-                        <li><b>1. The Design Handoff:</b> You send over your flat design files, links, and desired ESP.</li>
+                        <li><b>1. The Design Handoff:</b> You send over your flat design files and assets.</li>
                         <li><b>2. Pixel-Perfect Coding:</b> I hand-code the MJML/HTML structure to match your vision exactly.</li>
                         <li><b>3. Rigorous QA Testing:</b> I run the code through live testing to ensure 100% compatibility across major clients.</li>
                         <li><b>4. Code Minification:</b> The final file is stripped of bloat to guarantee fast load times and avoid clipping.</li>
-                        <li><b>5. ESP Code Integration:</b> The final HTML is loaded directly into your Email Service Provider to ensure variable logic and layouts are fully compatible.</li>
-                        <li><b>6. Final Delivery:</b> You receive a zipped folder with the HTML and assets, ready to schedule and send.</li>
+                        <li><b>5. Final Delivery:</b> You receive a zipped folder with clean HTML and assets, ready to upload and send.</li>
                     </ul>
                 </div>
             </div>
@@ -523,7 +546,7 @@
                         <p style="font-size: 1.25rem;">Hello, I'm <b>Linley Bignoux</b>. I am an <b>Email Developer / Web Developer</b>. I help businesses and teams solve the technical puzzles that frustrate their campaigns.</p>
                         
                         <h3>Professional Background & Qualifications</h3>
-                        <p>I am from Melbourne, Australia.With a foundation of over <b>7 years in specializing in email development</b>, I like  problem-solving and clear communication.I hold multiple qualifications, including professional certificates in <b>Email Development, Web Development, IT Technical Support, and Email Marketing</b>.</p>
+                        <p>I am from Melbourne, Australia. With a foundation of over <b>7 years specializing in email development</b>, I like problem-solving and clear communication. I hold multiple qualifications, including professional certificates in <b>Email Development, Web Development, IT Technical Support, and Email Marketing</b>.</p>
                         
                         <h3>Why Email Development?</h3>
                         <p>Email development is a unique technical challenge. Every email client has its own quirks, and forcing a modern design to render flawlessly everywhere requires deep problem-solving skills. I don't do marketing strategy or copywriting; I just write clean, bulletproof code that fixes your technical headaches and makes your campaigns look brilliant.</p>
@@ -534,8 +557,7 @@
 
         <section id="what-i-hear" style="background-color: var(--section-highlight);">
             <div class="container">
-          
-                <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary); font-weight: 800; font-size: 1.6rem;">Web Development Services</h3>
+                <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary); font-weight: 800; font-size: 1.6rem;">Web Development Services</h2>
                 <div class="grid-cards" style="margin-bottom: 3rem;">
                     <div class="card"><i class="fas fa-globe"></i><h3>Web Site</h3><p>Clean, fast-loading websites built from scratch with semantic HTML and modern responsive CSS.</p></div>
                     <div class="card"><i class="fas fa-rocket"></i><h3>Landing Pages</h3><p>High-converting, mobile-first landing pages designed and coded to support your campaigns.</p></div>
@@ -580,11 +602,7 @@
                         </div>
                         <div class="form-group">
                             <label>Message (Project Details)</label>
-                            <textarea name="message" rows="5" placeholder="Tell me about the design, which ESP you use, or paste a link..."></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>ESP (Optional)</label>
-                            <input type="text" name="esp" placeholder="e.g., Mailchimp, MailerLite, Mailjet, Custom...">
+                            <textarea name="message" rows="5" placeholder="Tell me about the design, or paste a link..."></textarea>
                         </div>
                         <div class="form-btn-wrap" style="display: flex; justify-content: center; width: 100%;">
                             <button type="submit" class="cta-button">Send Secure Message</button>
@@ -623,9 +641,10 @@
                         <span>MJML</span>
                     </div>
 
-                  <div class="tech-item">
-                  <span>Handlebars.js</span>
-                  </div>
+                    <div class="tech-item">
+                        <span>Handlebars.js</span>
+                    </div>
+            </div>
         </section>
 
     </main>
