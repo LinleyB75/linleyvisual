@@ -120,7 +120,7 @@
         .logo-text-group { display: flex; align-items: center; }
         .logo-main { font-size: 1.7rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 8px 20px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-main .pipe { margin: 0 10px; font-weight: 300; opacity: 0.3; color: var(--text); }
-        .logo-main .job-title { color: var(--text); font-size: 1.15rem; margin-top: 2px; }
+        .logo-main .job-title { color: var(--accent); font-size: 1.7rem; font-weight: 800; margin-top: 2px; }
 
         .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 8px; margin-right: 15px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
@@ -213,6 +213,18 @@
         .close-lightbox { position: fixed; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2005; transition: 0.3s; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         .close-lightbox:hover { color: var(--accent); transform: scale(1.1); }
 
+        /* WHAT I DO SECTION (plain text, no cards) */
+        .whatido-content { max-width: 900px; margin: 0 auto; text-align: left; }
+        .whatido-intro { font-size: 1.2rem; color: var(--text); margin-bottom: 2.5rem; line-height: 1.8; }
+        .whatido-block { margin-bottom: 2.2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--border); }
+        .whatido-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .whatido-block h3 { color: var(--primary); font-size: 1.35rem; font-weight: 800; margin-bottom: 0.7rem; border-left: 5px solid var(--accent); padding-left: 15px; }
+        .whatido-block p { color: var(--text-light); font-size: 1.08rem; line-height: 1.8; }
+        .whatido-process { margin-top: 3rem; text-align: center; }
+        .whatido-process h3 { color: var(--primary); font-size: 1.4rem; font-weight: 800; margin-bottom: 1rem; }
+        .whatido-process .process-flow { font-size: 1.15rem; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin-bottom: 1.5rem; }
+        .whatido-process p { color: var(--text-light); font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto; }
+
         /* MOBILE FIXES */
         @media (max-width: 1024px) { .about-content { gap: 2rem; padding: 0 20px; } .hero { padding: 5rem 0; } }
         @media (max-width: 767px) {
@@ -238,7 +250,7 @@
                 width: 100%;
             }
             .logo-main .pipe { display: none; } 
-            .logo-main .job-title { font-size: 0.8rem; margin-top: 2px; opacity: 0.9; }
+            .logo-main .job-title { font-size: 1.05rem; margin-top: 2px; opacity: 1; }
 
             .theme-toggle { margin: 0; margin-left: auto; width: 38px; height: 38px; font-size: 1.1rem; flex-shrink: 0; }
             .menu-toggle { display: block; margin: 0; padding: 0; width: 35px; text-align: right; flex-shrink: 0; font-size: 1.6rem;} 
@@ -294,7 +306,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="certifications.html">Certs</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
+                <li><a href="#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
             </ul>
         </nav>
     </header>
@@ -493,6 +505,57 @@
                 
                 <div class="consult-btn-wrapper" style="margin-top: 4rem;">
                     <a href="portfolio.html" class="cta-button" style="background: var(--primary); color: var(--bg);">View Full Portfolio & Code &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHAT I DO SECTION -->
+        <section id="what-i-do">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-code-branch"></i> Email Development — Services &amp; Capabilities</h2>
+                <div class="whatido-content">
+                    <p class="whatido-intro">I develop responsive, production-ready emails from design through development, testing and optimisation. My work combines HTML/CSS, MJML and Maizzle with practical cross-client testing to create emails that work reliably across different devices and email clients.</p>
+
+                    <div class="whatido-block">
+                        <h3>Design-to-Code</h3>
+                        <p>I convert supplied designs, layouts or concepts into responsive HTML email, maintaining the intended structure, spacing, typography and visual presentation while adapting the design to the technical limitations of email clients.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>Email Development &amp; Template Systems</h3>
+                        <p>I build HTML/CSS, MJML and Maizzle emails, including reusable and modular templates that can be adapted across multiple campaigns. Templates can be structured for use within email service providers and support dynamic or personalised content where required.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>ESP-Compatible Development</h3>
+                        <p>I develop email code with email service provider requirements in mind, helping ensure templates can be implemented, edited and maintained within the client's chosen platform.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>Cross-Client QA &amp; Troubleshooting</h3>
+                        <p>I test email rendering across major clients and devices, including Outlook, Gmail, Apple Mail and mobile environments. I check responsive behaviour, dark mode, images, links, buttons and layout consistency, then diagnose rendering problems, apply appropriate fixes and retest.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>Accessibility</h3>
+                        <p>I apply practical email accessibility principles, including meaningful structure, alternative text, accessible links and buttons, appropriate contrast and content that is easier to navigate with assistive technologies.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>Deliverability Best Practices</h3>
+                        <p>I follow email development best practices that support reliable campaigns, including clean and efficient code, appropriate image handling, accessible content and awareness of email authentication and deliverability requirements such as SPF, DKIM and DMARC.</p>
+                    </div>
+
+                    <div class="whatido-block">
+                        <h3>Ongoing Email Production</h3>
+                        <p>For clients who need regular support, I can provide ongoing email development from supplied designs or content, including coding, testing, revisions and preparation for ESP implementation.</p>
+                    </div>
+
+                    <div class="whatido-process">
+                        <h3>My Development Process</h3>
+                        <p class="process-flow">Design &rarr; Build &rarr; Test &rarr; Diagnose &rarr; Fix &rarr; Retest</p>
+                        <p>The goal isn't simply to produce HTML that looks correct in one environment. It's to build email that is practical, responsive, accessible and tested against the real-world limitations of email clients.</p>
+                    </div>
                 </div>
             </div>
         </section>
