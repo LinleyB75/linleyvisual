@@ -90,7 +90,7 @@
         .logo-text-group { display: flex; align-items: center; }
         .logo-main { font-size: 1.4rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; background: var(--section-highlight); padding: 6px 16px; border-radius: 50px; display: inline-flex; align-items: center; white-space: nowrap; }
         .logo-main .pipe { margin: 0 10px; font-weight: 300; opacity: 0.3; color: var(--text); }
-        .logo-main .job-title { color: var(--text); font-size: 1rem; margin-top: 2px; }
+        .logo-main .job-title { color: var(--accent); font-size: 1.4rem; font-weight: 800; margin-top: 2px; }
 
         .theme-toggle { background: none; border: 2px solid var(--border); color: var(--text); cursor: pointer; font-size: 1.2rem; padding: 8px; border-radius: 50%; margin-left: 8px; margin-right: 15px; transition: 0.3s; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; }
         .theme-toggle:hover { background: var(--bg-alt); color: var(--primary); border-color: var(--primary); }
@@ -112,6 +112,11 @@
         .portfolio-header { text-align: center; padding: 4rem 20px 2rem; }
         .portfolio-header h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
         .portfolio-header p { font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto; }
+
+        .tech-stack-icons { display: flex; justify-content: center; align-items: center; gap: clamp(1.5rem, 4vw, 3rem); margin-top: 2.5rem; color: var(--primary); flex-wrap: wrap; }
+        .tech-item { display: flex; align-items: center; gap: 12px; font-size: clamp(1.05rem, 2vw, 1.25rem); font-weight: 700; letter-spacing: 1px; transition: all 0.3s ease; cursor: default; }
+        .tech-item i, .tech-item svg { font-size: clamp(1.5rem, 3vw, 2rem); width: 1em; height: 1em; }
+        .tech-item:hover { color: var(--accent); transform: translateY(-4px); }
 
         .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; padding: 2rem 0 6rem; }
         .portfolio-card { width: 100%; flex: 1 1 320px; max-width: 380px; background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform 0.3s; display: flex; flex-direction: column; }
@@ -167,7 +172,10 @@
                 width: 100%;
             }
             .logo-main .pipe { display: none; } 
-            .logo-main .job-title { font-size: 0.8rem; margin-top: 2px; opacity: 0.9; }
+            .logo-main .job-title { font-size: 1.05rem; margin-top: 2px; opacity: 1; }
+
+            .tech-item { flex-direction: column; gap: 5px; font-size: 0.9rem; }
+            .tech-stack-icons { margin-top: 2rem; gap: 1.75rem; }
 
             .theme-toggle { margin: 0; margin-left: auto; width: 38px; height: 38px; font-size: 1.1rem; flex-shrink: 0; }
             .menu-toggle { display: block; margin: 0; padding: 0; width: 35px; text-align: right; flex-shrink: 0; font-size: 1.6rem;} 
@@ -205,11 +213,11 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="index.html#home">Home</a></li>
                 <li><a href="portfolio.html" style="color: var(--primary); border-bottom: 3px solid var(--accent);">Portfolio</a></li>
-                <li><a href="index.html#fix" class="nav-fix-btn">What I Fix</a></li>
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="certifications.html">Certs</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="index.html#services" class="nav-for-you"><i class="fas fa-user-check"></i> For You</a></li>
+                <li><a href="index.html#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+                <li><a href="index.html#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
             </ul>
         </nav>
     </header>
@@ -219,6 +227,50 @@
             <div class="container">
                 <h1>Email Development Portfolio</h1>
                 <p>A complete showcase of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.</p>
+
+                <div class="tech-stack-icons">
+                    <div class="tech-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML</span>
+                    </div>
+                    <div class="tech-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <span>CSS</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="15 25 170 110" width="1em" height="1em" style="vertical-align: -0.125em; margin-right: 8px;">
+                            <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 35,115 L 85,45" /><path d="M 65,115 L 115,45" /><path d="M 85,115 L 135,45" /><path d="M 115,115 L 165,45" />
+                                <path d="M 115,45 L 115,115" /><path d="M 165,45 L 165,115" />
+                                <path d="M 35,115 A 15,15 0 0,0 65,115" /><path d="M 85,45 A 15,15 0 0,1 115,45" />
+                                <path d="M 85,115 A 15,15 0 0,0 115,115" /><path d="M 135,45 A 15,15 0 0,1 165,45" />
+                                <path d="M 135,115 A 15,15 0 0,0 165,115" />
+                            </g>
+                        </svg>
+                        <span>Maizzle</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="2" y="4" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="6" r="2" />
+                            <circle cx="4" cy="12" r="2" />
+                            <rect x="10" y="10" width="12" height="4" rx="2" />
+                            <rect x="2" y="16" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="18" r="2" />
+                        </svg>
+                        <span>MJML</span>
+                    </div>
+                    <div class="tech-item">
+                        <span>Handlebars.js</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <rect x="1" y="1" width="30" height="30" rx="6" fill="currentColor"/>
+                            <text x="16" y="16.5" text-anchor="middle" dominant-baseline="central" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="13" fill="var(--bg-alt)" letter-spacing="0.5">JS</text>
+                        </svg>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
             </div>
         </section>
 
