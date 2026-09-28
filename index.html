@@ -169,6 +169,12 @@
         .card h3 { margin-bottom: 1rem; color: var(--primary); font-size: 1.4rem; }
         .card:hover { transform: translateY(-8px); border-color: var(--primary); border-top-color: var(--primary); box-shadow: var(--shadow-lg); }
 
+        /* PORTRAIT SHOWCASE GRID STYLES */
+        .portrait-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .portrait-card { background: var(--card-bg); border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 10px; overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; text-align: left; }
+        .portrait-card img { width: 100%; height: 420px; object-fit: cover; object-position: top; border-bottom: 3px solid var(--border); }
+        .portrait-card .content { padding: 1.5rem; }
+
         .blog-date { font-size: 0.8rem; color: #ffffff; font-weight: 800; background: var(--accent); padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
         
         .about-content { display: flex; gap: clamp(2rem, 5vw, 5rem); align-items: flex-start; max-width: 1200px; margin: 0 auto; }
@@ -269,6 +275,7 @@
             .about-content { flex-direction: column; text-align: center; align-items: center; }
             .about-text { text-align: center; }
             .grid-cards { grid-template-columns: 1fr; }
+            .portrait-grid { grid-template-columns: 1fr; }
             .footer-credit { font-size: 0.85rem; padding: 0 10px; }
             .social-links { gap: 10px; }
             .social-icon { width: 45px; height: 45px; font-size: 1.2rem; }
@@ -502,7 +509,7 @@
             </div>
         </section>
 
-        <!-- WHAT I DO SECTION (UPDATED WITH 9 FIXED IMAGES & ACCESSIBLE ALTS) -->
+        <!-- WHAT I DO SECTION -->
         <section id="what-i-do">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-code-branch"></i><span style="color: red;">&nbsp;Email Developer (Coder)</span></h2>
@@ -623,7 +630,6 @@
                     <div class="card"><i class="fas fa-file-code"></i><h3>Design to HTML Code</h3><p>Flawless pixel-to-pixel conversion from your design files (Figma, XD, PSD) directly into functional email code.</p></div>
                     <div class="card"><i class="fas fa-check-double"></i><h3>Rigorous QA Testing</h3><p>Every file is verified via professional testing tools (Testi.at/Litmus) before delivery.</p></div>
                     
-                    
                     <div class="card"><i class="fas fa-universal-access"></i><h3>Email Accessibility</h3><p>Semantic coding with correct ARIA roles and alt-text to ensure screen-reader compatibility.</p></div>
                     
                     <div class="card"><i class="fas fa-inbox"></i><h3>Email Deliverability</h3><p>Building email code with deliverability in mind, from clean HTML and authentication to avoiding issues that can affect inbox placement.</p></div>
@@ -634,7 +640,126 @@
             </div>
         </section>
 
-        <section id="way-we-learn" style="background-color: var(--section-highlight);">
+        <!-- FULL EMAIL LAYOUT PREVIEWS (NEW SIDE-BY-SIDE FIXED SECTION) -->
+        <section id="email-showcase" style="background-color: var(--bg-alt);">
+            <div class="container">
+                <h2 class="section-title"><i class="fas fa-images"></i> Full Email Layout Previews</h2>
+                <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px;">
+                    A side-by-side showcase of full-length email template builds rendered across client environments.
+                </p>
+                <div class="portrait-grid">
+                    <!-- PORTRAIT 1 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/hJMsPX9h/127-0-0-1-5500-Cafe-Naples1-Recafe3-html.png" alt="Cafe Naples promotional email layout preview">
+                        <div class="content">
+                            <span class="blog-date">Cafe Naples • Promo</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Coffee Shop Campaign</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 2 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/nSgSWJz/127-0-0-1-5500-Cafe-Naples1-Recafe4-html.png" alt="Cafe Naples second variant layout preview">
+                        <div class="content">
+                            <span class="blog-date">Cafe Naples • Variant</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Coffee Promo Variant</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 3 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/5W7VPWvv/127-0-0-1-5500-Welcomelinleyvisual2-html.png" alt="Welcome series onboarding email design preview">
+                        <div class="content">
+                            <span class="blog-date">Onboarding • Welcome</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Welcome Series Visual</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 4 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/JjQSPQ3R/127-0-0-1-21592-Simplify-English-Payment-Notification1-html.png" alt="Simplify English payment notification receipt preview">
+                        <div class="content">
+                            <span class="blog-date">Transactional • Payment</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Payment Notification</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 5 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/mCV7jdW0/127-0-0-1-26509-Tripy-Cream-html.png" alt="Tripy cream promotional email template preview">
+                        <div class="content">
+                            <span class="blog-date">Tripy • Promo</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Tripy Cream Campaign</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 6 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/qYhZVRwy/127-0-0-1-51561-Delivery-Notification-Frameler-A-html.png" alt="Framler delivery notification transactional email preview">
+                        <div class="content">
+                            <span class="blog-date">Transactional • Delivery</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Framler Delivery Notice</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 7 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/cSdwymX8/127-0-0-1-51561-Mood2-html.png" alt="Mood promotional campaign email layout preview">
+                        <div class="content">
+                            <span class="blog-date">Mood • Campaign</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Mood Promotional Build</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 8 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/rKqdhgWb/127-0-0-1-51561-pixel-pulse-Darkmode-Ignite-3-html.png" alt="Pixel pulse dark mode Ignite promotional email preview">
+                        <div class="content">
+                            <span class="blog-date">Pixel Pulse • Dark Mode</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Ignite Dark Mode Promo</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 9 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/WpsQPs66/127-0-0-1-51561-pixel-pulse-Kickoff1-html-1.png" alt="Pixel pulse light mode receipt layout preview">
+                        <div class="content">
+                            <span class="blog-date">Pixel Pulse • Light Mode</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Kickoff Light Mode Receipt</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 10 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/gMCRLqqM/127-0-0-1-51561-pixel-pulse-Kickoff1-html.png" alt="Pixel pulse dark mode receipt layout preview">
+                        <div class="content">
+                            <span class="blog-date">Pixel Pulse • Dark Mode</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Kickoff Dark Mode Receipt</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 11 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/S42KXJsC/127-0-0-1-51561-Republica2-FARevised5-html.png" alt="Republica clothing promotional newsletter layout preview">
+                        <div class="content">
+                            <span class="blog-date">Republica • Newsletter</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Republica Clothing Promo</h3>
+                        </div>
+                    </div>
+
+                    <!-- PORTRAIT 12 -->
+                    <div class="portrait-card">
+                        <img src="https://i.ibb.co/HR1M49V/batch-localhost-51561-Email-Dev-Ebook2-html-phcode-Live-Preview-true.png" alt="Email development e-book promotional layout preview">
+                        <div class="content">
+                            <span class="blog-date">E-Book • Promo</span>
+                            <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary);">Email Dev E-Book Promo</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="way-we-learn" style="background-color: var(--bg);">
             <div class="container">
                 <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                 <div class="fit-box">
