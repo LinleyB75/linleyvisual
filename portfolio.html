@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+        })();
+    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,12 +27,12 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
     <title>Email Development / Web Development Portfolio | Linley Bignoux</title>
-    <meta name="description" content="View my latest custom HTML, CSS, and MJML email development projects. Pixel-perfect, Outlook-safe, and fully responsive.">
+    <meta name="description" content="View my latest custom HTML, CSS, and MJML email development projects. Pixel-perfect, Outlook-safe, and fully responsive.[cite: 3]">
     
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
-    <meta property="og:title" content="Email Development Portfolio | Linley Bignoux">
-    <meta property="og:description" content="View my latest custom HTML, CSS, and MJML email development projects.">
+    <meta property="og:title" content="Email Development Portfolio | Linley Bignoux[cite: 3]">
+    <meta property="og:description" content="View my latest custom HTML, CSS, and MJML email development projects.[cite: 3]">
     <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <meta property="og:url" content="https://linleyb.com/portfolio.html">
     <meta property="og:type" content="website">
@@ -145,7 +155,7 @@
         .footer-credit-text { margin-bottom: 10px; font-weight: 700; color: var(--primary); }
         .footer-copyright { font-size: 1rem; color: var(--text); }
 
-        /* FINAL CTA / BOTTOM ICON STRIP (matches index.html) */
+        /* FINAL CTA / BOTTOM ICON STRIP */
         .final-cta { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); padding: 4rem 0; text-align: center; }
         .cta-profile-img { width: 110px; height: 110px; border-radius: 50%; border: 4px solid var(--accent); margin-bottom: 1.5rem; object-fit: cover; }
         .final-cta .tech-stack-icons { color: rgba(255, 255, 255, 0.85); margin-top: 0; }
@@ -230,8 +240,8 @@
     <main role="main">
         <section class="portfolio-header">
             <div class="container">
-                <h1>Email Development Portfolio</h1>
-                <p>A complete showcase of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.</p>
+                <h1>Email Development Portfolio[cite: 3]</h1>
+                <p>A complete showcase of responsive, custom-coded HTML and MJML email templates. Click any image to view the full desktop and mobile rendering.[cite: 3]</p>
 
                 <div class="tech-stack-icons">
                     <div class="tech-item">
@@ -477,20 +487,20 @@
                     </div>
                 </div>
 
-          <div class="portfolio-card">
-    <a href="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-        <img src="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" alt="Mood brand promotional email preview showing clean layout and responsive design" loading="lazy">
-        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-    </a>
-    <div class="portfolio-content">
-        <span class="portfolio-tech">Newsletter • Brand Promo</span>
-        <h2 class="portfolio-title">Mood Brand Newsletter</h2>
-        <p class="portfolio-desc">A moody brand newsletter and promotional email featuring clean responsive layouts, custom typography, and reliable email client rendering.</p>
-        <div class="portfolio-links">
-            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-        </div>
-    </div>
- </div>
+                <div class="portfolio-card">
+                    <a href="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
+                        <img src="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" alt="Mood brand promotional email preview showing clean layout and responsive design" loading="lazy">
+                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
+                    </a>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tech">Newsletter • Brand Promo</span>
+                        <h2 class="portfolio-title">Mood Brand Newsletter</h2>
+                        <p class="portfolio-desc">A moody brand newsletter and promotional email featuring clean responsive layouts, custom typography, and reliable email client rendering.</p>
+                        <div class="portfolio-links">
+                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="portfolio-card">
                     <div class="portfolio-img-wrap" style="background: var(--section-highlight); display: flex; align-items: center; justify-content: center;">
@@ -685,30 +695,35 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+        const navLinks = document.getElementById('navLinks');
+        
+        function toggleMenu() { 
+            navLinks.classList.toggle('active'); 
+        }
+
+        // Close mobile menu when clicking any nav link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu on click outside or Escape key
+        document.addEventListener('click', (e) => {
+            const header = document.querySelector('header');
+            if (!header.contains(e.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
         
         const themeBtn = document.getElementById('themeToggle');
         const icon = themeBtn.querySelector('i');
-        const storedTheme = localStorage.getItem('theme');
-
-        if (storedTheme) {
-            document.documentElement.setAttribute('data-theme', storedTheme);
-            updateIcon(storedTheme);
-        }
-
-        themeBtn.addEventListener('click', () => {
-            let currentTheme = document.documentElement.getAttribute('data-theme');
-            let targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            if (!currentTheme) {
-                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                targetTheme = systemDark ? 'light' : 'dark';
-            }
-
-            document.documentElement.setAttribute('data-theme', targetTheme);
-            localStorage.setItem('theme', targetTheme);
-            updateIcon(targetTheme);
-        });
 
         function updateIcon(theme) {
             if (theme === 'dark') {
@@ -719,6 +734,22 @@
                 icon.classList.add('fa-moon');
             }
         }
+
+        // Initialize icon state correctly on load
+        const initialTheme = document.documentElement.getAttribute('data-theme') || 
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        updateIcon(initialTheme);
+
+        themeBtn.addEventListener('click', () => {
+            let currentTheme = document.documentElement.getAttribute('data-theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            let current = currentTheme ? currentTheme : (systemDark ? 'dark' : 'light');
+            let targetTheme = current === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', targetTheme);
+            localStorage.setItem('theme', targetTheme);
+            updateIcon(targetTheme);
+        });
     </script>
 </body>
 </html>
