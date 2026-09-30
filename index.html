@@ -235,35 +235,7 @@
         /* MOBILE FIXES */
         @media (max-width: 1024px) { .about-content { gap: 2rem; padding: 0 20px; } .hero { padding: 5rem 0; } }
         @media (max-width: 767px) {
-            body { padding-top: 80px; }
-            header { min-height: 80px; }
             .container { padding: 0 15px; }
-            
-            nav { gap: 8px; } 
-            .logo-wrap { flex: 1; max-width: calc(100% - 90px); gap: 10px; } 
-            .header-photo { width: 45px; height: 45px; } 
-            
-            .logo-text-group { flex: 1; min-width: 0; font-size: 1rem !important; white-space: normal !important; }
-            .logo-main { 
-                font-size: 1.05rem; 
-                padding: 6px 12px; 
-                margin-bottom: 0; 
-                white-space: normal; 
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                border-radius: 12px;
-                line-height: 1.2;
-                width: 100%;
-            }
-            .logo-main .pipe { display: none; } 
-            .logo-main .job-title { font-size: 1.05rem; margin-top: 2px; opacity: 1; }
-
-            .theme-toggle { margin: 0; margin-left: auto; width: 38px; height: 38px; font-size: 1.1rem; flex-shrink: 0; }
-            .menu-toggle { display: block; margin: 0; padding: 0; width: 35px; text-align: right; flex-shrink: 0; font-size: 1.6rem;} 
-
-            .nav-links { display: none; position: fixed; top: 80px; left: 0; width: 100%; background: var(--bg); flex-direction: column; padding: 2rem 0; border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); z-index: 99; }
-            .nav-links.active { display: flex; }
             
             .cta-button { padding: 1rem 1.5rem; font-size: 1rem; width: auto; max-width: 90%; }
             .hero-badge { font-size: 0.75rem; padding: 6px 15px; }
@@ -284,6 +256,50 @@
             #lightbox img { max-width: 100%; }
             .close-lightbox { top: 10px; right: 20px; }
         }
+
+        /* ===== HEADER (desktop) ===== */
+        header.site-header { position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100; background: var(--bg); border-bottom: 3px solid var(--primary); min-height: 135px; display: flex; align-items: center; padding: 0.8rem 0; }
+        .site-header nav { position: relative; display: flex; align-items: center; justify-content: space-between; flex-wrap: nowrap; width: 100%; padding: 0 1.5rem; }
+        .site-header .logo-wrap { display: flex; align-items: center; gap: 12px; flex-shrink: 0; min-width: 0; max-width: none; }
+        .site-header .header-photo { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; }
+        .site-header .logo-text-group { display: flex; align-items: center; gap: 6px; font-size: 1.35rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+        .site-header .pipe { color: #888; margin: 0 6px; }
+        .site-header .job-title { color: var(--accent); }
+        .site-header .theme-wrap { position: absolute; left: 50%; transform: translateX(-50%); }
+        .site-header .theme-toggle { margin: 0; width: 44px; height: 44px; background: rgba(128,128,128,0.15); border: none; font-size: 1.25rem; }
+        .site-header .nav-right { display: flex; align-items: center; flex-shrink: 0; }
+        .site-header .nav-links { gap: 1.2rem; flex-wrap: nowrap; white-space: nowrap; }
+        .site-header .nav-links a { font-size: 1.05rem; font-weight: 500; }
+        .site-header .menu-toggle { display: none; }
+
+        /* ===== HEADER (tablet + mobile: hamburger) ===== */
+        @media (max-width: 1100px) {
+          body { padding-top: 76px; }
+          header.site-header { min-height: 76px; padding: 0; }
+          .site-header nav { padding: 8px 14px; gap: 10px; }
+
+          .site-header .logo-wrap { flex: 1; min-width: 0; gap: 10px; }
+          .site-header .header-photo { width: 48px; height: 48px; }
+          .site-header .logo-text-group { flex-direction: column; align-items: flex-start; gap: 0; white-space: normal; font-size: 1rem; line-height: 1.2; min-width: 0; }
+          .site-header .pipe { display: none; }
+          .site-header .job-title { font-size: 0.78rem; font-weight: 600; }
+
+          /* toggle sits in the flow, between the logo and hamburger */
+          .site-header .theme-wrap { position: static; transform: none; flex-shrink: 0; }
+          .site-header .theme-toggle { width: 40px; height: 40px; font-size: 1.1rem; }
+
+          .site-header .menu-toggle { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; margin: 0 0 0 4px; padding: 0; background: none; border: 2px solid var(--border); border-radius: 10px; color: var(--primary); font-size: 1.4rem; cursor: pointer; }
+
+          /* dropdown drawer */
+          .site-header .nav-links { display: none; position: fixed; top: 76px; left: 0; right: 0; max-height: calc(100vh - 76px); overflow-y: auto; flex-direction: column; align-items: stretch; gap: 0; padding: 0.5rem 1.25rem 1.25rem; background: var(--bg); border-bottom: 4px solid var(--accent); box-shadow: var(--shadow-lg); white-space: normal; z-index: 99; }
+          .site-header .nav-links.active { display: flex; }
+          .site-header .nav-links li { width: 100%; border-bottom: 1px solid var(--border); }
+          .site-header .nav-links li:last-child { border-bottom: none; }
+          .site-header .nav-links a { display: block; padding: 14px 6px; font-size: 1.1rem; border-bottom: none; text-align: left; }
+          .site-header .nav-links a.nav-fix-btn { box-shadow: none; border: none !important; border-radius: 0; padding: 14px 6px !important; }
+          .site-header .nav-links a.nav-for-you { display: flex !important; justify-content: center; width: 100%; height: 46px; margin-top: 12px; }
+          .site-header .nav-for-you::after { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -293,39 +309,42 @@
         <img id="lightbox-img" src="" onclick="toggleZoom(event)">
     </div>
 
-<header role="banner" style="width: 100%; background: var(--bg); border-bottom: 1px solid rgba(128,128,128,0.2); padding: 0.8rem 0;">
-        <nav style="position: relative; display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 1.5rem; flex-wrap: nowrap;" role="navigation">
-            
-            <!-- Left: Logo & Larger Adaptive Text Size -->
-            <a href="#home" class="logo-wrap" style="display: flex; align-items: center; text-decoration: none; gap: 12px; flex-shrink: 0;">
-                <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Email Developer & Web Developer" class="header-photo" width="40" height="40" fetchpriority="high" style="border-radius: 50%; object-fit: cover;">
-                <div class="logo-text-group" style="font-size: 1.35rem; font-weight: 700; color: var(--text, #fff); white-space: nowrap;">
-                    <span>Linley Bignoux</span> <span class="pipe" style="color: #888; margin: 0 6px;">|</span> <span style="color: red;" class="job-title">Email Developer &amp; Web Developer</span>
-                </div>
-            </a>
-            
-            <!-- Center: Larger Centered Dark/Light Mode Toggle (Adaptive) -->
-            <div style="position: absolute; left: 50%; transform: translateX(-50%);">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="background: rgba(128,128,128,0.15); border: none; color: var(--text, #fff); cursor: pointer; font-size: 1.25rem; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
 
-            <!-- Right: Maximized Nav Links on One Line (Adaptive) -->
-            <div style="display: flex; align-items: center; flex-shrink: 0;">
-                <ul class="nav-links" id="navLinks" style="list-style: none; gap: 1.2rem; margin: 0; padding: 0; align-items: center; white-space: nowrap;">
-                    <li><a href="#home" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Home</a></li>
-                    <li><a href="#portfolio" class="nav-fix-btn" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Portfolio</a></li>
-                    <li><a href="#about" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">About</a></li>
-                    <li><a href="certifications.html" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Certs</a></li>
-                    <li><a href="#contact" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Contact</a></li>
-                    <li><a href="#what-i-fix" class="nav-fix-btn" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">What I Fix</a></li>
-                    <li><a href="#what-i-do" class="nav-for-you" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;"><i class="fas fa-user-check"></i> What I do</a></li>
-                </ul>
-                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu" onclick="toggleMenu()" style="background: none; border: none; cursor: pointer; color: var(--text, #fff); font-size: 1.6rem; margin-left: 15px; display: none;"><i class="fas fa-bars"></i></button>
-            </div>
-        </nav>
-    </header>
+    <a href="#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg"
+           alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span>
+        <span class="pipe">|</span>
+        <span class="job-title">Email Developer &amp; Web Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="certifications.html">Certs</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+  </nav>
+</header>
 
     <main role="main">
         <section id="home" class="hero">
@@ -334,7 +353,7 @@
                 <h1 style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0 auto 2.5rem auto; width: 100%;">
                     <div style="display: inline-grid; grid-template-columns: auto 1fr; row-gap: 1rem; column-gap: 0.75rem; align-items: center; text-align: left; font-size: clamp(1.35rem, 5vw, 2.5rem); line-height: 1.2;">
                         <i class="fa-solid fa-envelope-open-text" style="color: #ff0000; justify-self: center;"></i>
-                        <span style="white-space: nowrap;">Email Development / Web Development</span>
+                        <span style="white-space: normal;">Email Development / Web Development</span>
                     </div>
                 </h1>
                 
@@ -429,7 +448,7 @@
 
                     <!-- CARD 3 -->
                     <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
-                        <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
+                        <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer">
                             <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
                         </a>
                         <div style="padding: 1.5rem;">
@@ -920,9 +939,20 @@
     </footer>
 
     <script>
-        function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => { document.getElementById('navLinks').classList.remove('active'); });
+        // --- MOBILE MENU ---
+        const menuBtn = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        function setMenu(open) {
+            navLinks.classList.toggle('active', open);
+            menuBtn.setAttribute('aria-expanded', open);
+            menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+            menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+        }
+        menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.site-header')) setMenu(false);
         });
 
         // --- LIGHTBOX ZOOM LOGIC FOR CERTIFICATIONS ---
