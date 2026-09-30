@@ -127,14 +127,15 @@
 
         .nav-links { display: flex; gap: 0.6rem; list-style: none; align-items: center; flex-wrap: wrap; } 
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.95rem; transition: 0.3s; border-bottom: 3px solid transparent; padding-bottom: 5px; }
-        .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--primary); }
+        .nav-links a:hover { border-bottom: 3px solid var(--accent); color: var(--accent); }
         
         .nav-fix-btn { background-color: var(--bg); color: var(--primary) !important; padding: 8px 14px !important; border-radius: 50px; border: 2px solid var(--primary) !important; box-shadow: 0 4px 0 var(--accent); display: inline-block; transition: 0.3s all ease; }
-        .nav-links .nav-fix-btn:hover { background-color: var(--primary) !important; color: #ffffff !important; border-bottom: 2px solid var(--primary) !important; }
+        .nav-links .nav-fix-btn:hover { background-color: var(--accent) !important; color: #ffffff !important; border-color: var(--accent) !important; border-bottom: 2px solid var(--accent) !important; }
 
         .nav-for-you { background-color: var(--primary); color: var(--bg) !important; height: 40px; padding: 0 18px; border-radius: 50px; display: inline-flex !important; align-items: center; justify-content: center; gap: 10px; border: none !important; font-weight: 800; position: relative; box-shadow: var(--shadow); white-space: nowrap; }
-        .nav-links .nav-for-you:hover { border-bottom: none !important; background-color: var(--primary) !important; color: var(--bg) !important; }
+        .nav-links .nav-for-you:hover { border-bottom: none !important; background-color: var(--accent) !important; color: #ffffff !important; }
         .nav-for-you::after { content: ""; position: absolute; bottom: 3px; left: 18px; right: 18px; height: 3px; background-color: var(--accent); border-radius: 2px; }
+        .nav-for-you:hover::after { background-color: #ffffff !important; }
 
         .menu-toggle { display: none; font-size: 1.8rem; background: none; border: none; cursor: pointer; color: var(--primary); margin-left: auto; flex-shrink: 0;}
 
@@ -428,7 +429,7 @@
 
                     <!-- CARD 3 -->
                     <div class="card" style="padding: 0; overflow: hidden; text-align: left;">
-                        <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer">
+                        <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
                             <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="Welcome Series Email Build" style="width: 100%; height: 220px; object-fit: cover; object-position: top; border-bottom: 4px solid var(--accent); cursor: pointer;">
                         </a>
                         <div style="padding: 1.5rem;">
