@@ -292,34 +292,34 @@
         <img id="lightbox-img" src="" onclick="toggleZoom(event)">
     </div>
 
-<header role="banner" style="width: 100%; background: var(--bg, #111); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.8rem 0;">
+<header role="banner" style="width: 100%; background: var(--bg); border-bottom: 1px solid rgba(128,128,128,0.2); padding: 0.8rem 0;">
         <nav style="position: relative; display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 1.5rem; flex-wrap: nowrap;" role="navigation">
             
-            <!-- Left: Logo & Larger Text Size -->
+            <!-- Left: Logo & Larger Adaptive Text Size -->
             <a href="#home" class="logo-wrap" style="display: flex; align-items: center; text-decoration: none; gap: 12px; flex-shrink: 0;">
                 <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux - Email Developer & Web Developer" class="header-photo" width="40" height="40" fetchpriority="high" style="border-radius: 50%; object-fit: cover;">
-                <div class="logo-text-group" style="font-size: 1.15rem; font-weight: 700; color: #fff; white-space: nowrap;">
-                    <span>Linley Bignoux</span> <span class="pipe" style="color: #666; margin: 0 6px;">|</span> <span style="color: red;" class="job-title">Email Developer &amp; Web Developer</span>
+                <div class="logo-text-group" style="font-size: 1.35rem; font-weight: 700; color: var(--text, #fff); white-space: nowrap;">
+                    <span>Linley Bignoux</span> <span class="pipe" style="color: #888; margin: 0 6px;">|</span> <span style="color: red;" class="job-title">Email Developer &amp; Web Developer</span>
                 </div>
             </a>
             
-            <!-- Center: Larger Centered Dark Mode Toggle -->
+            <!-- Center: Larger Centered Dark/Light Mode Toggle (Adaptive) -->
             <div style="position: absolute; left: 50%; transform: translateX(-50%);">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="background: rgba(255,255,255,0.1); border: none; color: #fff; cursor: pointer; font-size: 1.25rem; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode" style="background: rgba(128,128,128,0.15); border: none; color: var(--text, #fff); cursor: pointer; font-size: 1.25rem; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s;">
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
 
-            <!-- Right: Maximized Nav Links on One Line -->
+            <!-- Right: Maximized Nav Links on One Line (Adaptive) -->
             <div style="display: flex; align-items: center; flex-shrink: 0;">
                 <ul class="nav-links" id="navLinks" style="display: flex; list-style: none; gap: 1.2rem; margin: 0; padding: 0; align-items: center; white-space: nowrap;">
-                    <li><a href="#home" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">Home</a></li>
-                    <li><a href="#portfolio" class="nav-fix-btn" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">Portfolio</a></li>
-                    <li><a href="#about" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">About</a></li>
-                    <li><a href="certifications.html" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">Certs</a></li>
-                    <li><a href="#contact" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">Contact</a></li>
-                    <li><a href="#what-i-fix" class="nav-fix-btn" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;">What I Fix</a></li>
-                    <li><a href="#what-i-do" class="nav-for-you" style="color: #fff; text-decoration: none; font-size: 1.02rem; font-weight: 500;"><i class="fas fa-user-check"></i> What I do</a></li>
+                    <li><a href="#home" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Home</a></li>
+                    <li><a href="#portfolio" class="nav-fix-btn" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Portfolio</a></li>
+                    <li><a href="#about" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">About</a></li>
+                    <li><a href="certifications.html" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Certs</a></li>
+                    <li><a href="#contact" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">Contact</a></li>
+                    <li><a href="#what-i-fix" class="nav-fix-btn" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;">What I Fix</a></li>
+                    <li><a href="#what-i-do" class="nav-for-you" style="color: var(--text, #fff); text-decoration: none; font-size: 1.05rem; font-weight: 500;"><i class="fas fa-user-check"></i> What I do</a></li>
                 </ul>
             </div>
         </nav>
