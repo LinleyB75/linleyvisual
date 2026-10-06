@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Building a Dark Promo Email: Dark Mode, Outlook, Apple, and Email Fundamentals | Email Dev Notes</title>
+    <meta name="description" content="A dark promo email in MJML: forcing backgrounds, the button in Outlook, social icons, Apple blue text, mobile stacking, and the email fundamentals to watch for.">
+    <link rel="canonical" href="https://linleyb.com/blog/dark-promo-email-fundamentals.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Building a Dark Promo Email: What Broke and What to Watch For">
+    <meta property="og:description" content="Dark mode, Outlook, Apple data detectors, and mobile stacking in a promo email built in MJML.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/blog/dark-promo-email-fundamentals.html">
+    <meta property="og:type" content="article">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span>
+        <span class="pipe">|</span>
+        <span class="job-title">Email Developer &amp; Web Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">Dark mode • Fundamentals</span>
+    <h1>Building a dark promo email: what broke, what fixed it, and what to watch for</h1>
+    <p class="post-meta">Published 6 October 2026</p>
+    <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">outlook</span><span class="tag">vml</span><span class="tag">apple-data-detectors</span><span class="tag">mjml</span><span class="tag">fundamentals</span></div>
+
+    <div class="post-content">
+
+      <h2>The email</h2>
+      <p>This is a promotional email for Linx Systems noise-cancelling headphones, built in MJML. It has a black background, yellow accents, a hero image, a two-column brand block, a pill-shaped "SHOP NOW" button, social icons, and a legal footer. It is a dark-only design, so the email does not offer a light version.</p>
+      <div class="status-box">
+        <p><b>What this post covers:</b> the final code and the problems I met while building it.</p>
+        <p><b>Clients I retested most:</b> Outlook 2024 (dark) (Win 11), Outlook 2024 (120 DPI), and Outlook 2021 (150 DPI), many times for each fix.</p>
+        <p><b>Result:</b> in the end, all 130 clients I tested worked across desktop, tablet, and mobile. Test in the clients your audience uses before relying on any of it.</p>
+      </div>
+
+      <h2>1. Keeping the background dark</h2>
+      <p>The head of the email tells clients that it supports dark only, and switches off Apple's data detectors (more on those below):</p>
+<pre><code>&lt;meta name="color-scheme" content="dark"&gt;
+&lt;meta name="supported-color-schemes" content="dark"&gt;
+&lt;meta name="format-detection" content="telephone=no"&gt;
+&lt;meta name="format-detection" content="date=no"&gt;
+&lt;meta name="format-detection" content="address=no"&gt;
+&lt;meta name="format-detection" content="email=no"&gt;</code></pre>
+      <p>The background is then forced three ways, so each kind of client gets the same black. I add a <code>force-dark</code> class to the body and to every section, and the CSS targets the class, the tables, and the cells:</p>
+<pre><code>&lt;mj-body background-color="#000" css-class="force-dark"&gt;
+  &lt;mj-section background-color="#000000" padding="20px 0" css-class="force-dark"&gt;</code></pre><pre><code>/* base */
+body, .force-dark, .force-dark table, .force-dark td { background-color: #000000 !important; }
+
+/* clients that use prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  body, .force-dark, .force-dark table, .force-dark td { background-color: #000000 !important; }
+}
+
+/* Outlook attribute selectors */
+[data-ogsc] body,
+[data-ogsc] .force-dark,
+[data-ogsc] .force-dark table,
+[data-ogsc] .force-dark td { background-color: #000000 !important; }</code></pre>
+      <p>These rules only change the background of tables and cells. They don't touch the pixels of the images, so the product photos stay as they are while the colour around them is held steady.</p>
+
+      <h2>2. The button: colours changing, and square corners in Outlook</h2>
+      <p><b>Problem:</b> the button's colours changed in dark mode, in Outlook.com and the Outlook app, and in Outlook for Windows. Separately, classic Outlook draws every button as a plain rectangle, because its Word-based engine ignores <code>border-radius</code>. The only way to get a rounded shape there is VML.</p>
+      <p>So the button is built twice. Classic Outlook gets a VML rounded rectangle, and every other client gets the normal MJML button. Each conditional comment sits inside an <code>mj-raw</code> tag so MJML passes it through untouched:</p>
+<pre><code>&lt;!--[if mso]&gt;
+&lt;div align="center"&gt;
+&lt;v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
+  href="https://example.com" style="height:62px;v-text-anchor:middle;width:250px;"
+  arcsize="50%" strokecolor="yellow" strokeweight="6px" fillcolor="#808080"&gt;
+&lt;w:anchorlock/&gt;
+&lt;center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;"&gt;SHOP NOW&lt;/center&gt;
+&lt;/v:roundrect&gt;
+&lt;/div&gt;
+&lt;![endif]--&gt;</code></pre><pre><code>&lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;mj-button css-class="button" align="center" href="https://example.com" width="250px"
+  inner-padding="20px" background-color="#808080" font-size="18px" font-weight="bold"
+  color="white" border="solid yellow 6px" border-radius="45px" padding="45px"&gt;
+  SHOP NOW
+&lt;/mj-button&gt;
+&lt;!--&lt;![endif]--&gt;</code></pre>
+      <p>The two versions share the same fill (<code>#808080</code>), yellow 6px border, and white text, so the button looks the same wherever it renders. <code>arcsize="50%"</code> gives the VML button a full pill shape, matching what <code>border-radius="45px"</code> produces in other clients.</p>
+      <p><b>Why the button is grey.</b> In the original design mock the button was yellow. In dark mode the colour inversion of the yellow button didn't work well, so I changed the fill to grey. I wanted to stay on brand, so the yellow is still there as the 6px border and in the headings. That was a trade-off: the button no longer matches the mock exactly, and you could call it graceful degradation. A button that holds up in every client is better than the exact colour breaking in some of them.</p>
+      <p><b>The grey fill caused its own problem.</b> The grey fill went wrong in the conversion between dark and light mode. As I remember it, fallbacks resolved this, with the VML version for classic Outlook being the main one. I'm not certain which fallback did the most.</p>
+      <p><b>Outlook at 120 DPI.</b> The button also had a problem in Outlook 2024 at 120 DPI. As I remember it, that was fixed with the VML button together with <code>!important</code> in the CSS. I haven't re-checked exactly which rules were needed.</p>
+      <p>I still haven't recorded what each client did to the button's colours before these fixes, so I can't describe the original symptom more precisely than that.</p>
+
+      <h2>3. The social icons</h2>
+      <p>The built-in <code>mj-social</code> icons come with their colours baked into the icon images. I had problems with them in dark mode, so I changed approach: I supply my own icon images through the <code>src</code> attribute on each element, and set the element background myself:</p>
+<pre><code>&lt;mj-social font-size="18px" icon-size="26px" mode="horizontal" padding-top="0" padding-bottom="0"&gt;
+  &lt;mj-social-element name="facebook" href="https://facebook.com"
+    src="https://i.ibb.co/SDkQY5BN/filled-facebook-flat-1.png"
+    background-color="#000000" padding="0px 10px" /&gt;
+  &lt;mj-social-element name="instagram" href="https://instagram.com"
+    src="https://i.ibb.co/Wp74NVDy/filled-instagram-flat-2.png"
+    background-color="#000000" padding="0px 10px" /&gt;
+  ...
+&lt;/mj-social&gt;</code></pre>
+      <p>The lesson is the same as in my <a href="/blog/dark-mode-inversion-fixes.html">earlier dark mode post</a>: anything with colours baked into an image or a component is outside your CSS, so replace it with something you control.</p>
+
+      <h2>4. Blue text in the footer (Apple data detectors)</h2>
+      <p><b>Problem:</b> the footer address and phone number showed up as blue text. Apple's mail apps scan text for things that look like phone numbers, addresses, dates, and email addresses, and turn them into blue links. A footer is the most likely place to trigger it. This is the type of text it affects, with placeholder details:</p>
+<pre><code>&lt;mj-text align="center" color="white" font-family="Arial, sans-serif" font-size="14px" padding="18px" line-height="1.5"&gt;
+  &lt;strong&gt;&amp;copy; Example Co.&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;
+  1 Example Street, Example Town&lt;br /&gt;
+  Tel: +000 0000 0000
+&lt;/mj-text&gt;</code></pre>
+      <p><b>Fix:</b> the four <code>format-detection</code> meta tags in the head (shown in section 1) tell Apple to stop. This email uses the tags only. In my Re-cafe newsletter I pair them with a CSS rule, in case a link still gets through, that makes any detected link inherit the surrounding colour:</p>
+<pre><code>a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}</code></pre>
+
+      <h2>5. Outlook 2021 (150 DPI) typography</h2>
+      <p>In Outlook 2021 at 150 DPI I hit a rendering issue that I traced to Word's "advanced typography" setting in the reading pane. I didn't record the exact symptom, but Outlook 2021 (150 DPI) was one of the clients I retested most. The fix is a small block that switches the setting off for classic Outlook:</p>
+<pre><code>&lt;!--[if mso]&gt;&lt;xml&gt;&lt;w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word"&gt;&lt;w:DontUseAdvancedTypographyReadingMail/&gt;&lt;/w:WordDocument&gt;&lt;/xml&gt;&lt;![endif]--&gt;</code></pre>
+
+      <h2>6. Columns not stacking or centring on mobile</h2>
+      <p><b>Problem:</b> the two-column brand block (30% logo, 70% text) wasn't stacking on mobile, and the text wasn't centring once it did. I found three causes:</p>
+      <ul>
+        <li><b>Media queries in an inlined style block were dropped.</b> MJML's inliner silently discarded my <code>@media</code> rules from the <code>inline="inline"</code> block. They have to live in a normal <code>mj-style</code> block.</li>
+        <li><b>The <code>mj-column</code> tag never appears in the compiled output.</b> A selector on <code>mj-column</code> matches nothing. I give the columns a <code>css-class</code> instead and target that.</li>
+        <li><b>An inline style blocks inheritance.</b> <code>mj-text</code> writes <code>text-align</code> directly onto its inner div, so centring the column isn't enough. The rule has to target <code>.stack-col div</code>.</li>
+      </ul>
+<pre><code>&lt;mj-column width="30%" css-class="stack-col"&gt; ...logo... &lt;/mj-column&gt;
+&lt;mj-column width="70%" css-class="stack-col"&gt; ...brand copy... &lt;/mj-column&gt;</code></pre><pre><code>@media screen and (max-width:480px) {
+  .stack-col { width: 100% !important; }
+  .stack-col div { text-align: center !important; }
+}
+@media screen and (max-width:720px) {
+  .stack-col { width: 50% !important; }
+}
+@media screen and (max-width:768px) {
+  .stack-col { width: 100% !important; }
+  .stack-col div { text-align: center !important; }
+}</code></pre>
+      <p>One thing I noticed when writing this up: at 720px and below, both the 720px and 768px rules match, and the 768px rule comes last, so it wins and the columns go to 100%. That means the 720px two-column rule has no effect while the 768px rule follows it. Remove one or reorder them, depending on the layout you want.</p>
+
+      <h2>Email fundamentals, and what to watch for</h2>
+      <p>None of the problems above are unusual. They come from how email works, and a few habits would have caught most of them sooner:</p>
+      <ul>
+        <li><b>Email is tables, not the modern web.</b> MJML writes the tables for you, but always read the compiled HTML, because that is what clients interpret (see <a href="/blog/mj-group-padding.html">the padding post</a>).</li>
+        <li><b>Clients edit your code.</b> Some drop media queries, strip style blocks, or rewrite colours. Keep critical styles inline and don't depend on one feature working everywhere.</li>
+        <li><b>Classic Outlook uses Word to render.</b> No rounded corners, limited CSS, and different spacing. Use conditional comments and VML where the design needs it.</li>
+        <li><b>Dark mode is not one behaviour.</b> Declare your colour scheme, handle <code>prefers-color-scheme</code>, and handle Outlook's attribute selectors. Then test, because each client behaves differently.</li>
+        <li><b>Anything baked into an image or a component is outside your CSS.</b> Social icons are the classic case. Give images alt text and set their sizes explicitly.</li>
+        <li><b>Turn off data detectors</b> for addresses, phone numbers, and dates you don't want turned into blue links.</li>
+        <li><b>Plan for mobile.</b> Use real breakpoints, give columns a class you can target, and make buttons easy to tap. In this email the button goes full width on small screens.</li>
+        <li><b>Mind the size.</b> Gmail clips long messages at about 102KB of HTML, and the footer, with the unsubscribe link, is the first thing to disappear.</li>
+        <li><b>Keep the legal footer.</b> Include a physical address and an unsubscribe link, as required by laws like CAN-SPAM.</li>
+        <li><b>Accept trade-offs.</b> If the exact brand colour can't survive dark mode inversion, choose one that does and keep the brand elsewhere. Here the button fill is grey, and the yellow stays in the border and the headings.</li>
+        <li><b>Test in many clients and log what you find.</b> A short log of symptom, cause, fix, and where you retested saves you from repeating the work.</li>
+      </ul>
+
+      <h2>What I retested</h2>
+      <ul>
+        <li>Outlook 2024 (dark) (Win 11), Outlook 2024 (120 DPI), and Outlook 2021 (150 DPI): retested many times after each fix.</li>
+        <li>All 130 clients I tested worked in the end, on desktop, tablet, and mobile.</li>
+      </ul>
+      <p>I haven't listed all 130 here, so test your own audience's clients before relying on any of this.</p>
+
+      <h2>What I'd check next</h2>
+      <p>In Outlook.com's dark mode, text colours use the <code>data-ogsc</code> attribute and backgrounds use <code>data-ogsb</code>. My background rule uses <code>data-ogsc</code>, so I'd test whether <code>data-ogsb</code> is the one that actually matters there. Next time I'd also record which clients I retested for each fix separately, not just the main three overall.</p>
+
+      <h2>Related</h2>
+      <p>More dark mode problems from a different newsletter: <a href="/blog/dark-mode-inversion-fixes.html">What dark mode inversion did to my newsletter, and the fixes</a> and <a href="/blog/footer-text-macos-dark-mode.html">Footer text turning black in macOS dark mode</a>.</p>
+
+      <h2>Takeaway</h2>
+      <p>Hold your colours with CSS you control, build a separate version for classic Outlook, and replace anything with colours baked in. Then test it in the clients that matter.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need this kind of problem fixed in your emails? I code, test, and fix email templates across clients.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+            <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-credit">Site developed by Linley Bignoux</div>
+        <p>&copy; 2026 <b>Linley Bignoux</b> | Email Developer / Web Developer | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+</script>
+</body>
+</html>
