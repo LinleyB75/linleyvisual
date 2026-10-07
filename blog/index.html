@@ -31,7 +31,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
-    <script type="application/ld+json">
+  <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@graph": [
@@ -44,13 +44,21 @@
             "publisher": { "@id": "https://linleyb.com/#person" }
         },
         {
+            "@type": "CollectionPage",
+            "@id": "https://linleyb.com/blog/#webpage",
+            "url": "https://linleyb.com/blog/",
+            "name": "Email Development Blog | Linley Bignoux",
+            "description": "Articles, tips, and insights on MJML, Maizzle, HTML email coding, and rigorous cross-client testing by Linley Bignoux.",
+            "isPartOf": { "@id": "https://linleyb.com/#website" },
+            "about": { "@id": "https://linleyb.com/#service" }
+        },
+        {
             "@type": "Person",
             "@id": "https://linleyb.com/#person",
             "name": "Linley Bignoux",
             "jobTitle": "Email Developer",
             "url": "https://linleyb.com/",
             "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "nationality": { "@type": "Country", "name": "Australia" },
             "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
             "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
             "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
@@ -60,7 +68,7 @@
             "@id": "https://linleyb.com/#service",
             "name": "Linley Bignoux Email Development",
             "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DIRU2-BML.jpg",
             "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
             "provider": { "@id": "https://linleyb.com/#person" },
             "areaServed": [
