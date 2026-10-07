@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>What Dark Mode Inversion Did to My Newsletter, and the Fixes | Email Dev Notes</title>
+    <meta name="description" content="Dark mode recoloured my newsletter button, footer, and social icons. Here is what broke in Outlook and macOS clients and what fixed it.">
+    <link rel="canonical" href="https://linleyb.com/blog/dark-mode-inversion-fixes.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="What Dark Mode Inversion Did to My Newsletter, and the Fixes">
+    <meta property="og:description" content="Button, footer, and social icon fixes for dark mode inversion in Outlook and macOS clients.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/blog/dark-mode-inversion-fixes.html">
+    <meta property="og:type" content="article">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css">
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span>
+        <span class="pipe">|</span>
+        <span class="job-title">Email Developer &amp; Web Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">Dark mode • Newsletter</span>
+    <h1>What dark mode inversion did to my newsletter, and the fixes</h1>
+    <p class="post-meta">Published 4 October 2026</p>
+    <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">outlook-com</span><span class="tag">macos</span><span class="tag">buttons</span><span class="tag">footer</span><span class="tag">mjml</span></div>
+
+    <div class="post-content">
+
+      <h2>The newsletter</h2>
+      <p>This is a Re-cafe coffee newsletter built in MJML on a near-black background, with red brand text and a white call-to-action button. After the dark mode fixes it rendered well in 130 clients. Three problems came up along the way, all caused by clients inverting or recolouring parts of the design. This post covers each one.</p>
+
+      <h2>1. The button's colours (Outlook.com and Outlook)</h2>
+      <p><b>Problem:</b> the button is meant to be white with red text and a grey border. In Outlook.com's dark mode the client recoloured it. In one Outlook client, which I believe was Outlook 2024 (120 DPI), the button text turned blue after inversion.</p>
+      <div class="status-box">
+        <p><b>Fix:</b> Confirmed.</p>
+        <p><b>Rules that were needed:</b> the Outlook.com attribute rules, and the text fill colour with a span wrapper on the link text.</p>
+        <p><b>Rules that weren't needed in my testing:</b> a <code>prefers-color-scheme: dark</code> block, and a <code>bgcolor</code> and gradient background.</p>
+      </div>
+      <p>Outlook.com's dark mode marks the colours it rewrites with attributes: <code>data-ogsc</code> for text and <code>data-ogsb</code> for backgrounds. CSS can target them. The button is a small hand-built table inside an <code>mj-text</code> block, so every colour is under my control:</p>
+<pre><code>&lt;table role="presentation" class="cta-btn" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 0 auto; border-collapse: separate;"&gt;
+  &lt;tr&gt;
+    &lt;td class="cta-btn-cell" align="center" valign="middle" bgcolor="#ffffff" style="width: 240px; padding: 20px 33px; background-color: #ffffff; border: 4px solid #898989; border-radius: 25px;"&gt;
+      &lt;a class="cta-btn-link" href="https://example.com/" target="_blank" style="display: inline-block; font-family: Arial, sans-serif; font-size: 22px; line-height: 22px; font-weight: normal; text-decoration: none; white-space: nowrap; color: #FF0000;"&gt;
+        &lt;span style="color: #FF0000; -webkit-text-fill-color: #FF0000;"&gt;Learn More&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      <p>The email has global resets that remove table and cell borders, which would have stripped the button's border and rounded corners, so the button is exempted:</p>
+<pre><code>/* global resets in the email */
+table { mso-table-lspace: 0pt !important; mso-table-rspace: 0pt !important; border-collapse: collapse !important; border: 0 !important; }
+td { border: 0 !important; mso-line-height-rule: exactly !important; }
+
+/* the button is exempted from them */
+table.cta-btn { border-collapse: separate !important; }
+td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
+      <p>The colour locks that did the work:</p>
+<pre><code>a.cta-btn-link, a.cta-btn-link:visited, a.cta-btn-link:hover, a.cta-btn-link:active, a.cta-btn-link span {
+  color: #FF0000 !important;
+  -webkit-text-fill-color: #FF0000 !important;
+  text-decoration: none !important;
+}
+
+/* Outlook.com dark mode: background and text attributes */
+[data-ogsb] td.cta-btn-cell { background-color: #ffffff !important; }
+[data-ogsc] a.cta-btn-link, [data-ogsc] a.cta-btn-link span { color: #FF0000 !important; }</code></pre>
+      <p>The Outlook 2024 (120 DPI) blue text was fixed by these same button rules. I didn't separate out which one fixed that client specifically.</p>
+
+      <h2>2. The footer colour and the social icons</h2>
+      <p><b>Problem:</b> colour inversion in dark mode changed the footer's original design too much, and the brand colour in particular would have been compromised. The social media icons were also affected by the inversion.</p>
+      <p><b>Fix:</b> I changed the footer background colour, and changed the social icons. The footer and social sections now use a dark grey, <code>#3D3D3D</code>, and the icon elements use the same grey for both background and colour:</p>
+<pre><code>&lt;mj-section background-color="#3D3D3D" padding-top="8px"&gt;
+  &lt;mj-column background-color="#3D3D3D"&gt;
+    &lt;mj-text align="center" color="#FFF"&gt;Follow us on:&lt;/mj-text&gt;
+    &lt;mj-social font-size="16px" icon-size="34px" mode="horizontal" align="center" color="#fff"&gt;
+      &lt;mj-social-element name="facebook" href="https://www.facebook.com/" background-color="#3D3D3D" color="#3D3D3D"&gt;&lt;/mj-social-element&gt;
+      &lt;mj-social-element name="instagram" href="https://www.instagram.com/" background-color="#3D3D3D" color="#3D3D3D"&gt;&lt;/mj-social-element&gt;
+      &lt;mj-social-element name="twitter" href="https://twitter.com/" background-color="#3D3D3D" color="#3D3D3D"&gt;&lt;/mj-social-element&gt;
+      &lt;mj-social-element name="linkedin" href="https://www.linkedin.com/" background-color="#3D3D3D" color="#3D3D3D"&gt;&lt;/mj-social-element&gt;
+    &lt;/mj-social&gt;
+  &lt;/mj-column&gt;
+&lt;/mj-section&gt;</code></pre>
+      <p>The footer was a different colour before, though I didn't record which one. I also didn't record which clients inverted the footer and icons, so I won't name any. The fix held across the 130 clients I tested.</p>
+
+      <h2>3. Footer text black instead of white (macOS dark mode)</h2>
+      <p><b>Problem:</b> in dark mode in macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta), the footer text rendered black instead of white on the grey background.</p>
+      <div class="status-box">
+        <p><b>Fix:</b> Confirmed in both macOS clients.</p>
+        <p><b>What I changed:</b> Apple data detector handling, and explicit backgrounds on the footer blocks. I used both together and didn't test them separately.</p>
+      </div>
+      <p>Apple's mail apps can turn text they recognise, such as a street address, into a link and restyle it. The footer has an address, so I switched the detectors off with four meta tags and added a rule that makes any detected link inherit its colour from the text around it. I didn't confirm this as the exact cause, so treat it as my best explanation:</p>
+<pre><code>&lt;meta name="format-detection" content="telephone=no"&gt;
+&lt;meta name="format-detection" content="date=no"&gt;
+&lt;meta name="format-detection" content="address=no"&gt;
+&lt;meta name="format-detection" content="email=no"&gt;</code></pre><pre><code>a[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+  font-size: inherit !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+}</code></pre>
+      <p>I also set the background colour explicitly on every footer block, so no client has to guess it. The viewing options block, for example, sets the same grey on the section, the column, and the text container:</p>
+<pre><code>&lt;mj-section background-color="#898989" padding="10px 0px 18px 0px"&gt;
+  &lt;mj-column width="100%" background-color="#898989"&gt;
+    &lt;mj-text container-background-color="#898989" ...&gt;</code></pre>
+      <p>The social and footer sections do the same with <code>#3D3D3D</code>, as in the code above.</p>
+
+      <h2>What I retested</h2>
+      <ul>
+        <li>Outlook.com dark mode and the Outlook client with the blue button text: fixed.</li>
+        <li>macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta): footer text white on grey.</li>
+        <li>Overall: the newsletter rendered well in 130 clients.</li>
+      </ul>
+      <p>I haven't listed all 130 here, so test your own audience's clients before relying on any of this.</p>
+
+      <h2>Files in the repo</h2>
+      <p>The log entries and trimmed examples are on GitHub so you can compile them yourself:</p>
+      <ul>
+        <li><a href="https://github.com/LinleyB75/Email-Dev/blob/main/issues/ISSUE-002-outlook-dark-mode-button.md" target="_blank" rel="noopener noreferrer">ISSUE-002: button colours</a> and its <a href="https://github.com/LinleyB75/Email-Dev/blob/main/examples/issue-002-cta-button.mjml" target="_blank" rel="noopener noreferrer">MJML example</a></li>
+        <li><a href="https://github.com/LinleyB75/Email-Dev/blob/main/issues/ISSUE-003-footer-social-inversion.md" target="_blank" rel="noopener noreferrer">ISSUE-003: footer and social icons</a> and its <a href="https://github.com/LinleyB75/Email-Dev/blob/main/examples/issue-003-footer-social.mjml" target="_blank" rel="noopener noreferrer">MJML example</a></li>
+        <li><a href="https://github.com/LinleyB75/Email-Dev/blob/main/issues/ISSUE-004-footer-text-macos-dark.md" target="_blank" rel="noopener noreferrer">ISSUE-004: footer text in macOS dark mode</a> and its <a href="https://github.com/LinleyB75/Email-Dev/blob/main/examples/issue-004-footer-apple.mjml" target="_blank" rel="noopener noreferrer">MJML example</a></li>
+      </ul>
+
+      <h2>Takeaway</h2>
+      <p>Dark mode is not one behaviour. The same email gets recoloured differently in each client, and the button, footer, and icons are the first places to look. Test them in many clients, and lock the colours that carry your brand.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need this kind of problem fixed in your emails? I code, test, and fix email templates across clients.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
+            <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+</script>
+</body>
+</html>
