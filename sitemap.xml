@@ -57,18 +57,4 @@
     <priority>0.60</priority>
   </url>
 
-  <url>
-    <loc>https://linleyb.com/privacy.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.30</priority>
-  </url>
-
-  <url>
-    <loc>https://linleyb.com/thanks.html</loc>
-    <lastmod>2026-10-07</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.20</priority>
-  </url>
-
 </urlset>
