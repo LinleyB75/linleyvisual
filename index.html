@@ -896,7 +896,8 @@
                 }
             }
         </style>
-     ```html
+  
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -957,7 +958,13 @@
       "provider": {
         "@id": "https://linleyb.com/#person"
       },
-      "areaServed": "Worldwide",
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Mauritius"
+        },
+        "Worldwide"
+      ],
       "serviceType": [
         "HTML Email Development",
         "MJML Development",
@@ -969,7 +976,6 @@
   ]
 }
 </script>
-```
 
     </head>
     <body>
