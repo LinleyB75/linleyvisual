@@ -894,7 +894,91 @@
                 .site-header .nav-for-you::after {
                     display: none;
                 }
-            }
+            <style id="hero-split-css">
+/* Hero: text on the left, photo on the right */
+.hero .hero-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 1200px;
+    text-align: center;
+}
+.hero .hs-photo {
+    order: -1; /* photo above text on mobile */
+    justify-self: center;
+    position: relative;
+    width: min(62vw, 260px);
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    border-radius: 999px 999px 28px 28px;
+    box-shadow: 14px 14px 0 rgba(255, 255, 255, 0.08);
+    background: #1a1a1a;
+}
+.hero .hs-photo img {
+    position: absolute;
+    display: block;
+    width: 114.29%;
+    max-width: none;
+    height: auto;
+    left: -10.71%;
+    top: -27.14%; /* crops the car roof, keeps the face in frame */
+}
+.hero .hs-heading {
+    display: flex;
+    flex-wrap: nowrap; /* logo stays beside the headline */
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.hero .hs-heading h1 {
+    margin: 0;
+}
+.hero .hs-logo {
+    display: block;
+    flex-shrink: 0;
+    height: 2.4rem;
+    width: auto;
+}
+.hero .hero-split .subtitle-list {
+    flex-direction: column; /* one item per line, no stray bullet */
+    align-items: center;
+    gap: 6px;
+}
+.hero .hero-split .subtitle-list li:not(:last-child)::after {
+    display: none;
+}
+@media (min-width: 1025px) {
+    .hero .hs-heading {
+        justify-content: flex-start;
+    }
+    .hero .hero-split {
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        text-align: left;
+    }
+    .hero .hs-photo {
+        order: 0;
+        justify-self: end;
+        width: min(100%, 380px);
+    }
+    .hero .hero-split .subtitle-list {
+        align-items: flex-start;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .hero .hero-split .hero-intro-text {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .hero .hero-split .consult-btn-wrapper {
+        justify-content: flex-start;
+    }
+}
+
         </style>
         <script type="application/ld+json">
 {
@@ -984,111 +1068,47 @@
             </nav>
         </header>
                 <main role="main">
-            <section id="home" class="hero">
-                <div
-                    class="container"
-                    style="
-                        text-align: center;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        width: 100%;
-                        padding: 0 1rem;
-                        box-sizing: border-box;
-                    "
-                >
-                    <h1
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            justify-content: center;
-                            margin: 0 auto 2.5rem auto;
-                            width: 100%;
-                        "
-                    >
-                        <span
-                            style="
-                                display: inline-grid;
-                                grid-template-columns: auto 1fr auto;
-                                row-gap: 1rem;
-                                column-gap: 0.75rem;
-                                align-items: center;
-                                text-align: left;
-                                font-size: clamp(1.35rem, 5vw, 2.5rem);
-                                line-height: 1.2;
-                            "
-                        >
-                            <i class="fa-solid fa-envelope-open-text" aria-hidden="true" style="color: #ff0000; justify-self: center"></i>
-                            <span style="white-space: normal"> Email Development</span>
-                            <img
-                                src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-                                alt="Linley Bignoux logo"
-                                style="height: 4.4em; width: auto; max-width: 100%; display: block"
-                            />
-                        </span>
-                    </h1>
+                      <section id="home" class="hero">
+                <div class="container hero-split">
 
-                    <ul class="subtitle-list">
-                        <li>Build → Test → Diagnose → Fix</li>
-                        <li>HTML | CSS | MJML | Maizzle | Handlebars</li>
-                    </ul>
+                    <!-- Left: text -->
+                    <div class="hs-text">
+                        <div class="hs-heading">
+                            <h1>Email Development</h1>
+                            <img class="hs-logo" src="https://i.ibb.co/dwfK1J87/Lin-1.png" alt="Linley Bignoux logo" />
+                        </div>
 
-                    <div class="hero-intro-text">
-                        <p style="margin-top: 1.5rem">
-                            Hi, I'm <b>Linley</b>. I build responsive emails with a focus on
-                            cross-client compatibility, reliable rendering, and rigorous testing.
-                        </p>
+                        <ul class="subtitle-list">
+                            <li>Build → Test → Diagnose → Fix</li>
+                            <li>HTML | CSS | MJML | Maizzle | Handlebars</li>
+                        </ul>
 
-                        <p style="margin-top: 1.5rem">
-                            Responsive Email · Outlook · Dark Mode · Cross-Client QA ·
-                            Rigorous Testing · Accessibility
-                        </p>
+                        <div class="hero-intro-text">
+                            <p style="margin-top: 1.5rem">
+                                Hi, I'm <b>Linley</b>. I build responsive emails with a focus on
+                                cross-client compatibility, reliable rendering, and rigorous testing.
+                            </p>
+
+                            <p style="margin-top: 1.5rem">
+                                Responsive Email · Outlook · Dark Mode · Cross-Client QA ·
+                                Rigorous Testing · Accessibility
+                            </p>
+                        </div>
+
+                        <div class="consult-btn-wrapper"><a href="#contact" class="cta-button">Contact me</a></div>
                     </div>
 
-                    <div class="consult-btn-wrapper"><a href="#contact" class="cta-button">Contact me</a></div>
-                    <div class="tech-stack-icons">
-                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-                        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-                        <div class="tech-item">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="15 25 170 110"
-                                width="1em"
-                                height="1em"
-                                style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
-                                aria-hidden="true"
-                            >
-                                <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M 35,115 L 85,45" />
-                                    <path d="M 65,115 L 115,45" />
-                                    <path d="M 85,115 L 135,45" />
-                                    <path d="M 115,115 L 165,45" />
-                                    <path d="M 115,45 L 115,115" />
-                                    <path d="M 165,45 L 165,115" />
-                                    <path d="M 35,115 A 15,15 0 0,0 65,115" />
-                                    <path d="M 85,45 A 15,15 0 0,1 115,45" />
-                                    <path d="M 85,115 A 15,15 0 0,0 115,115" />
-                                    <path d="M 135,45 A 15,15 0 0,1 165,45" />
-                                    <path d="M 135,115 A 15,15 0 0,0 165,115" />
-                                </g>
-                            </svg>
-                            <span>Maizzle</span>
-                        </div>
-                        <div class="tech-item">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <rect x="2" y="4" width="12" height="4" rx="2" />
-                                <circle cx="20" cy="6" r="2" />
-                                <circle cx="4" cy="12" r="2" />
-                                <rect x="10" y="10" width="12" height="4" rx="2" />
-                                <rect x="2" y="16" width="12" height="4" rx="2" />
-                                <circle cx="20" cy="18" r="2" />
-                            </svg>
-                            <span>MJML</span>
-                        </div>
-                        <div class="tech-item"><span>Handlebars.js</span></div>
+                    <!-- Right: photo -->
+                    <div class="hs-photo">
+                        <img
+                            src="https://i.ibb.co/GQdvRppq/10151048684492701.webp"
+                            alt="Linley Bignoux, freelance email developer"
+                            width="640"
+                            height="960"
+                            fetchpriority="high"
+                        />
                     </div>
+
                 </div>
             </section>
             <section id="portfolio" style="background-color: var(--bg-alt)">
