@@ -894,135 +894,7 @@
                 .site-header .nav-for-you::after {
                     display: none;
                 }
-        /* ===== Hero split + gaze cue ===== */
-.hero .hero-split {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    align-items: center;
-    max-width: 1200px;
-    text-align: center;
-}
-.hero .hs-photo {
-    order: -1; /* photo above text on mobile */
-    justify-self: center;
-    position: relative;
-    width: min(62vw, 260px);
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    border-radius: 999px 999px 28px 28px;
-    box-shadow: 14px 14px 0 rgba(255, 255, 255, 0.08);
-    background: #1a1a1a;
-}
-.hero .hs-photo img {
-    position: absolute;
-    display: block;
-    width: 114.29%;
-    max-width: none;
-    height: auto;
-    left: -10.71%;
-    top: -27.14%; /* crops the car roof, keeps face in the upper-middle */
-}
-.hero .hs-title {
-    font-size: clamp(2.6rem, 7vw, 4.6rem);
-    font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
-    margin: 0 0 1.25rem;
-}
-.hero .hs-title span {
-    display: block;
-}
-.hero .hs-process {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 700;
-    margin: 0 0 1.5rem;
-}
-.hero .hs-lede {
-    font-size: clamp(1.05rem, 2vw, 1.3rem);
-    line-height: 1.7;
-    max-width: 36rem;
-    margin: 0 auto 1rem;
-    opacity: 0.95;
-}
-.hero .hs-skills {
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 36rem;
-    margin: 0 auto 2rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-.hero .hs-cta {
-    margin: 0 0 2rem;
-}
-.hero .hs-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    justify-content: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-.hero .hs-chips li {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 999px;
-    padding: 0.3rem 0.9rem;
-    font-size: 0.95rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-.hero .hs-gaze {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-    pointer-events: none;
-    display: none;
-}
-.hero .hs-gaze path {
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-}
-.hero .hs-gaze circle {
-    fill: var(--accent);
-    opacity: 0;
-    transition: opacity 0.3s ease 0.8s;
-}
-.hero .hs-gaze.on circle {
-    opacity: 1;
-}
-@media (min-width: 1025px) {
-    .hero .hero-split {
-        grid-template-columns: 1.15fr 0.85fr;
-        gap: 4rem;
-        text-align: left;
-    }
-    .hero .hs-photo {
-        order: 0; /* photo on the right, looking toward the text */
-        justify-self: end;
-        width: min(100%, 380px);
-    }
-    .hero .hs-lede,
-    .hero .hs-skills {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    .hero .hs-chips {
-        justify-content: flex-start;
-    }
-    .hero .hs-gaze {
-        display: block;
-    }
-}
-@media (prefers-reduced-motion: reduce) {
-    .hero .hs-gaze circle {
-        transition: none;
-    }
-}
+            }
         </style>
         <script type="application/ld+json">
 {
@@ -1111,93 +983,114 @@
                 </div>
             </nav>
         </header>
-                        <main role="main">
+                <main role="main">
             <section id="home" class="hero">
-                <div class="container hero-split">
+                <div
+                    class="container"
+                    style="
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        padding: 0 1rem;
+                        box-sizing: border-box;
+                    "
+                >
+                    <h1
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            justify-content: center;
+                            margin: 0 auto 2.5rem auto;
+                            width: 100%;
+                        "
+                    >
+                        <span
+                            style="
+                                display: inline-grid;
+                                grid-template-columns: auto 1fr auto;
+                                row-gap: 1rem;
+                                column-gap: 0.75rem;
+                                align-items: center;
+                                text-align: left;
+                                font-size: clamp(1.35rem, 5vw, 2.5rem);
+                                line-height: 1.2;
+                            "
+                        >
+                            <i class="fa-solid fa-envelope-open-text" aria-hidden="true" style="color: #ff0000; justify-self: center"></i>
+                            <span style="white-space: normal">Freelance Email Developer</span>
+                            <img
+                                src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                                alt="Linley Bignoux logo"
+                                style="height: 4.4em; width: auto; max-width: 100%; display: block"
+                            />
+                        </span>
+                    </h1>
 
-                    <!-- Text column -->
-                    <div class="hs-text">
-                        <h1 class="hs-title"><span>Freelance</span> <span>Email Developer</span></h1>
-                        <p class="hs-process">Build → Test → Diagnose → Fix</p>
-                        <p class="hs-lede">
+                    <ul class="subtitle-list">
+                        <li>Build → Test → Diagnose → Fix</li>
+                        <li>HTML | CSS | MJML | Maizzle | Handlebars</li>
+                    </ul>
+
+                    <div class="hero-intro-text">
+                        <p style="margin-top: 1.5rem">
                             Hi, I'm <b>Linley</b>. I build responsive emails with a focus on
                             cross-client compatibility, reliable rendering, and rigorous testing.
                         </p>
-                        <p class="hs-skills">
-                            Responsive email, Outlook, dark mode, cross-client QA, rigorous testing, accessibility.
+
+                        <p style="margin-top: 1.5rem">
+                            Responsive Email · Outlook · Dark Mode · Cross-Client QA ·
+                            Rigorous Testing · Accessibility
                         </p>
-                        <div class="hs-cta"><a href="#contact" class="cta-button" id="hsCta">Contact me</a></div>
-                        <ul class="hs-chips" aria-label="Tech stack">
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>MJML</li>
-                            <li>Maizzle</li>
-                            <li>Handlebars.js</li>
-                        </ul>
                     </div>
 
-                    <!-- Photo column -->
-                    <div class="hs-photo" id="hsPhoto">
-                        <img
-                            src="https://i.ibb.co/GQdvRppq/10151048684492701.webp"
-                            alt="Linley Bignoux, freelance email developer"
-                            width="640"
-                            height="960"
-                            fetchpriority="high"
-                        />
+                    <div class="consult-btn-wrapper"><a href="#contact" class="cta-button">Contact me</a></div>
+                    <div class="tech-stack-icons">
+                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                        <div class="tech-item">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="15 25 170 110"
+                                width="1em"
+                                height="1em"
+                                style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
+                                aria-hidden="true"
+                            >
+                                <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M 35,115 L 85,45" />
+                                    <path d="M 65,115 L 115,45" />
+                                    <path d="M 85,115 L 135,45" />
+                                    <path d="M 115,115 L 165,45" />
+                                    <path d="M 115,45 L 115,115" />
+                                    <path d="M 165,45 L 165,115" />
+                                    <path d="M 35,115 A 15,15 0 0,0 65,115" />
+                                    <path d="M 85,45 A 15,15 0 0,1 115,45" />
+                                    <path d="M 85,115 A 15,15 0 0,0 115,115" />
+                                    <path d="M 135,45 A 15,15 0 0,1 165,45" />
+                                    <path d="M 135,115 A 15,15 0 0,0 165,115" />
+                                </g>
+                            </svg>
+                            <span>Maizzle</span>
+                        </div>
+                        <div class="tech-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <rect x="2" y="4" width="12" height="4" rx="2" />
+                                <circle cx="20" cy="6" r="2" />
+                                <circle cx="4" cy="12" r="2" />
+                                <rect x="10" y="10" width="12" height="4" rx="2" />
+                                <rect x="2" y="16" width="12" height="4" rx="2" />
+                                <circle cx="20" cy="18" r="2" />
+                            </svg>
+                            <span>MJML</span>
+                        </div>
+                        <div class="tech-item"><span>Handlebars.js</span></div>
                     </div>
-
-                    <!-- Gaze line (desktop only) -->
-                    <svg class="hs-gaze" id="hsGaze" aria-hidden="true">
-                        <path id="hsPath" />
-                        <circle id="hsC1" r="6" />
-                        <circle id="hsC2" r="6" />
-                    </svg>
-
                 </div>
             </section>
-            <script>
-                (function () {
-                    var grid = document.querySelector(".hero-split"),
-                        svg = document.getElementById("hsGaze"),
-                        path = document.getElementById("hsPath"),
-                        c1 = document.getElementById("hsC1"),
-                        c2 = document.getElementById("hsC2"),
-                        photo = document.getElementById("hsPhoto"),
-                        cta = document.getElementById("hsCta"),
-                        still = window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-                        played = false;
-                    function draw() {
-                        if (window.innerWidth < 1025) { svg.classList.remove("on"); played = false; return; }
-                        var h = grid.getBoundingClientRect(),
-                            p = photo.getBoundingClientRect(),
-                            c = cta.getBoundingClientRect(),
-                            sx = p.left + p.width * 0.375 - h.left,
-                            sy = p.top + p.height * 0.364 - h.top,
-                            ex = c.right + 10 - h.left,
-                            ey = c.top + c.height / 2 - h.top;
-                        path.setAttribute("d", "M" + sx + " " + sy + " Q" + sx + " " + ey + " " + ex + " " + ey);
-                        c1.setAttribute("cx", sx); c1.setAttribute("cy", sy);
-                        c2.setAttribute("cx", ex); c2.setAttribute("cy", ey);
-                        var L = path.getTotalLength();
-                        path.style.transition = "none";
-                        path.style.strokeDasharray = L;
-                        if (!played && !still) {
-                            path.style.strokeDashoffset = L;
-                            path.getBoundingClientRect();
-                            path.style.transition = "stroke-dashoffset 0.8s ease";
-                            path.style.strokeDashoffset = 0;
-                        } else {
-                            path.style.strokeDashoffset = 0;
-                        }
-                        played = true;
-                        svg.classList.add("on");
-                    }
-                    window.addEventListener("load", draw);
-                    window.addEventListener("resize", draw);
-                    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(draw); }
-                })();
-            </script>
             <section id="portfolio" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
