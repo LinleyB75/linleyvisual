@@ -1755,6 +1755,78 @@
                     </div>
                 </div>
             </section>
+                    <section id="where-emails-break" style="background-color: var(--bg-alt)">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-bug"></i> Where Emails Break</h2>
+                    <div class="fit-box">
+                        <p style="margin-bottom: 1.5rem; font-size: 1.3rem">
+                            A design can look perfect on screen and still fall apart in the inbox. These are the gaps I run into most
+                            often, and what I do about them.
+                        </p>
+                        <ul>
+                            <li>
+                                <b>Design to Code:</b> Layouts designed for a screen don't always survive email clients, which only
+                                support part of modern CSS. I rebuild the layout with email-safe structure so it matches the design as
+                                closely as each client allows.
+                            </li>
+                            <li>
+                                <b>Drag-and-Drop Builders:</b> Builders often output heavy, nested code and limit what you can fix, so
+                                emails come out bloated, inconsistent or hard to edit. I replace it with clean, hand-coded HTML that
+                                you can import and maintain.
+                            </li>
+                            <li>
+                                <b>Outlook Rendering:</b> Desktop Outlook ignores spacing, background images and buttons that work
+                                everywhere else. I use hand-coded fallbacks and test, so Outlook gets a clean version of the same email.
+                            </li>
+                            <li>
+                                <b>Spacing &amp; Padding:</b> Padding and margins that disappear or change between clients, so text sits
+                                tight against images or columns collapse. I build spacing that holds across clients. See my fix for
+                                <a href="/blog/mj-group-padding.html" style="color: var(--accent); font-weight: 700"
+                                    >mj-group padding</a
+                                >.
+                            </li>
+                            <li>
+                                <b>Images That Don't Shrink:</b> Images that stay full size on phones, get clipped or get re-scaled in
+                                Outlook. I set widths, fluid sizing and fallbacks so images scale down properly on every screen.
+                            </li>
+                            <li>
+                                <b>Blocked Images:</b> Some clients block images by default, leaving only alt text. I write meaningful
+                                alt text and set background colours so the email still reads without its images.
+                            </li>
+                            <li>
+                                <b>Dark Mode:</b> Colours, logos, buttons and footer text can invert badly when an email client
+                                switches to dark mode. I code and test for it. See how I
+                                <a href="/blog/dark-mode-inversion-fixes.html" style="color: var(--accent); font-weight: 700"
+                                    >fix dark mode inversion</a
+                                >
+                                and
+                                <a href="/blog/footer-text-macos-dark-mode.html" style="color: var(--accent); font-weight: 700"
+                                    >footer text in macOS dark mode</a
+                                >.
+                            </li>
+                            <li>
+                                <b>Mobile Layout:</b> Columns that don't stack, buttons that are hard to tap and text that shrinks too
+                                small on phones. I build mobile-first and check the result across device sizes before delivery.
+                            </li>
+                            <li>
+                                <b>Gmail Clipping:</b> Large emails get cut off in Gmail, hiding the footer and the unsubscribe link.
+                                Clean, minified code keeps the file size down so the whole email is shown.
+                            </li>
+                            <li>
+                                <b>ESP Code Handling:</b> Some email platforms rewrite links, reformat code or handle merge tags and
+                                footers differently, so a template that tests clean can change after upload. I build with each
+                                platform's handling in mind, then check the email again after it's uploaded.
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
+                        Seeing one of these in your emails? Send me the details and get a quote.
+                    </p>
+                    <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
+                        <a href="#contact" class="cta-button">Contact me</a>
+                    </div>
+                </div>
+            </section>
                   <section id="web-development" style="border-top: 1px solid var(--border)">
     <div class="container">
         <h2 class="section-title"><i class="fas fa-arrow-pointer"></i> After the Click: Landing Pages</h2>
