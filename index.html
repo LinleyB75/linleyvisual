@@ -1126,7 +1126,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                                 </svg>
                                 <span>MJML</span>
                             </div>
-                         <div class="tech-item"><i class="fas fa-code" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
+                           <div class="tech-item"><i class="fas fa-code" style="margin-right: 6px"></i><span>Email Testing & QA</span></div>
                           <div class="tech-item"><i class="fas fa-plug"></i><span>ESP Integration</span></div>
 
 </div> <!-- Closes .tech-stack-icons -->
@@ -1818,7 +1818,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 </div>
                 
             </section>
-                  <section id="esp-platforms" style="background-color: var(--bg-alt)">
+               <section id="esp-platforms" style="background-color: var(--bg-alt)">
     <div class="container">
         <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
         <p
@@ -1831,77 +1831,77 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 padding: 0 20px;
             "
         >
-            Clean, tested HTML that imports into your platform, then checked inside your account before handoff.
+            Clean, tested emails built for the platform you already use, from simple newsletters to more polished campaigns. You don't need every bell and whistle, just an email that looks right and is ready to send.
         </p>
+
+        <h3 style="text-align: center; color: var(--text); margin-bottom: 1rem">Main platforms</h3>
         <div class="tech-stack-icons" style="color: var(--text); margin-top: 0">
             <div class="tech-item"><span>MailerLite</span></div>
             <div class="tech-item"><span>Mailchimp</span></div>
-            <div class="tech-item"><span>HubSpot</span></div>
             <div class="tech-item"><span>Brevo</span></div>
             <div class="tech-item"><span>Campaign Monitor</span></div>
-            <div class="tech-item"><span>Mailjet</span></div>
-            <div class="tech-item"><span>MailerSend</span></div>
+            <div class="tech-item"><span>HubSpot</span></div>
+            <div class="tech-item"><span>Constant Contact</span></div>
+            <div class="tech-item"><span>Kit</span></div>
+            <div class="tech-item"><span>ActiveCampaign</span></div>
         </div>
 
-        <!-- ESP Syntax Reference Table -->
+        <!-- Personalisation tag reference -->
         <div style="max-width: 900px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left;">
                 <thead>
                     <tr style="border-bottom: 2px solid var(--text-light); color: var(--text);">
-                        <th style="padding: 10px; font-weight: bold;">ESP / Platform</th>
-                        <th style="padding: 10px; font-weight: bold;">Template Engine / Language</th>
-                        <th style="padding: 10px; font-weight: bold;">Syntax Style &amp; Delimiters</th>
-                        <th style="padding: 10px; font-weight: bold;">Conditional &amp; Loop Example</th>
+                        <th style="padding: 10px; font-weight: bold;">Platform</th>
+                        <th style="padding: 10px; font-weight: bold;">Tag language</th>
+                        <th style="padding: 10px; font-weight: bold;">First-name tag</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
                         <td style="padding: 10px; font-weight: bold;">MailerLite</td>
-                        <td style="padding: 10px;">Custom Variable Tags</td>
-                        <td style="padding: 10px;">Simple brackets with dollar signs: <code>{$name}</code>, <code>{$email}</code></td>
-                        <td style="padding: 10px;"><code>{$unsubscribe}</code> for footer compliance</td>
+                        <td style="padding: 10px;">Variable tags</td>
+                        <td style="padding: 10px;"><code>{$name}</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
                         <td style="padding: 10px; font-weight: bold;">Mailchimp</td>
-                        <td style="padding: 10px;">Mailchimp Merge Language</td>
-                        <td style="padding: 10px;">Custom pipe &amp; asterisk delimiters: <code>*|FNAME|*</code></td>
-                        <td style="padding: 10px;"><code>*|IF:FNAME|* Hi *|FNAME|* *|END:IF|*</code></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                        <td style="padding: 10px; font-weight: bold;">HubSpot</td>
-                        <td style="padding: 10px;">HubL (HubSpot Markup Language)</td>
-                        <td style="padding: 10px;">Jinja / Jinjava syntax: <code>{{ contact.firstname }}</code></td>
-                        <td style="padding: 10px;"><code>{% if contact.firstname %} ... {% endif %}</code></td>
+                        <td style="padding: 10px;">Mailchimp merge tags</td>
+                        <td style="padding: 10px;"><code>*|FNAME|*</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
                         <td style="padding: 10px; font-weight: bold;">Brevo</td>
-                        <td style="padding: 10px;">Brevo Template Language</td>
-                        <td style="padding: 10px;">Django / Jinja2 syntax: <code>{{ contact.FIRSTNAME }}</code></td>
-                        <td style="padding: 10px;"><code>{% for item in params.items %} ... {% endfor %}</code></td>
+                        <td style="padding: 10px;">Brevo template language</td>
+                        <td style="padding: 10px;"><code>{{ contact.FIRSTNAME }}</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
                         <td style="padding: 10px; font-weight: bold;">Campaign Monitor</td>
-                        <td style="padding: 10px;">Campaign Monitor Template Tags</td>
-                        <td style="padding: 10px;">Custom square brackets: <code>[firstname]</code>, <code>[unsubscribe]</code></td>
-                        <td style="padding: 10px;"><code>&lt;repeater&gt;</code> and <code>&lt;layout&gt;</code> custom tags</td>
+                        <td style="padding: 10px;">Square-bracket tags</td>
+                        <td style="padding: 10px;"><code>[firstname]</code></td>
                     </tr>
                     <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                        <td style="padding: 10px; font-weight: bold;">Mailjet</td>
-                        <td style="padding: 10px;">Passport / MJML Syntax</td>
-                        <td style="padding: 10px;">Jinja-style micro-syntax: <code>{{ var:firstname }}</code></td>
-                        <td style="padding: 10px;"><code>{% if var:firstname %} ... {% endif %}</code></td>
+                        <td style="padding: 10px; font-weight: bold;">HubSpot</td>
+                        <td style="padding: 10px;">HubL personalisation tokens</td>
+                        <td style="padding: 10px;"><code>{{ contact.firstname }}</code></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                        <td style="padding: 10px; font-weight: bold;">Kit</td>
+                        <td style="padding: 10px;">Liquid</td>
+                        <td style="padding: 10px;"><code>{{ subscriber.first_name }}</code></td>
                     </tr>
                     <tr>
-                        <td style="padding: 10px; font-weight: bold;">MailerSend</td>
-                        <td style="padding: 10px;">MailerSend Template Engine</td>
-                        <td style="padding: 10px;">Go template syntax: <code>{$recipient.name}</code> or <code>{{ name }}</code></td>
-                        <td style="padding: 10px;"><code>{{ #each items }}</code> or <code>{$items}</code> iteration</td>
+                        <td style="padding: 10px; font-weight: bold;">ActiveCampaign</td>
+                        <td style="padding: 10px;">Percent-sign tags</td>
+                        <td style="padding: 10px;"><code>%FIRSTNAME%</code></td>
                     </tr>
+                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <td style="padding: 10px; font-weight: bold;">Constant Contact</td>
+                    <td style="padding: 10px;">Personalization tags</td>
+                    <td style="padding: 10px;"><code>[[FIRSTNAME]]</code></td>
+                   </tr>
                 </tbody>
             </table>
         </div>
 
-        <div
+         <div
             style="
                 max-width: 800px;
                 margin: 2.5rem auto 0;
@@ -1916,22 +1916,25 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 Don't see your platform? I'll work in it.
             </span>
             <p style="text-align: center; margin: 0 0 1rem; font-weight: bold;">
-                Every Email Service Provider (ESP) operates on its own distinct architecture and syntax rules:
+                Every email platform has its own rules and tag format, so I build to yours:
             </p>
             <ul style="margin: 0; padding-left: 1.5rem; list-style-type: disc;">
                 <li style="margin-bottom: 0.5rem;">
-                    <strong>Universal Compatibility:</strong> Hand-coded, responsive HTML/CSS engineered for consistent rendering across Outlook, Gmail, Apple Mail, and mobile devices.
+                    <strong>Universal Compatibility:</strong> Hand-coded, responsive HTML and CSS tested across Outlook, Gmail, Apple Mail and mobile, including dark mode.
                 </li>
                 <li style="margin-bottom: 0.5rem;">
-                    <strong>Platform Compliance:</strong> Properly structured preheaders, dynamic merge tags, footers, and CAN-SPAM/GDPR unsubscribe links for your specific ESP.
+                    <strong>Everyday Personalisation:</strong> Names and other simple fields written in your platform's own tag format, with a fallback such as "Hi there" so a missing name never breaks the greeting.
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Platform Compliance:</strong> Preheaders, footers and unsubscribe links set up correctly for your platform.
                 </li>
                 <li style="margin-bottom: 0;">
-                    <strong>ESP Integration:</strong> Built and verified directly in your platform (or a test environment) with full cross-client testing prior to final delivery.
+                    <strong>Built and Checked in Your Account:</strong> Uploaded to your platform (or a test account) and tested before final delivery.
                 </li>
             </ul>
         </div>
     </div>
-</section>
+</section> 
                     <section id="where-emails-break" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-bug"></i> Where Emails Break</h2>
@@ -2390,7 +2393,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
             </svg>
             <span>MJML</span>
         </div>
-        <div class="tech-item"><i class="fas fa-code" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
+      <div class="tech-item"><i class="fas fa-code" style="margin-right: 6px"></i><span>Email Testing & QA</span></div>
         <div class="tech-item"><i class="fas fa-plug"></i><span>ESP Integration</span></div>
     
     </div>
