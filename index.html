@@ -1955,7 +1955,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 </div>
                 
             </section>
-               <section id="esp-platforms" style="background-color: var(--bg-alt)">
+             <section id="esp-platforms" style="background-color: var(--bg-alt)">
     <div class="container">
         <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
         <p
@@ -1968,7 +1968,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 padding: 0 20px;
             "
         >
-            Clean, tested emails built for the platform you already use, from simple newsletters to more polished campaigns. You don't need every bell and whistle, just an email that looks right and is ready to send.
+            Clean, tested emails built for the platform you already use, from simple newsletters to transactional and lifecycle emails. Names with fallbacks, content that changes for different readers, and an email that looks right before it goes out.
         </p>
 
         <h3 style="text-align: center; color: var(--text); margin-bottom: 1rem">Main platforms</h3>
@@ -1983,62 +1983,71 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
             <div class="tech-item"><span>ActiveCampaign</span></div>
         </div>
 
-        <!-- Personalisation tag reference -->
-        <div style="max-width: 900px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto;">
+        <!-- Tag and conditional content reference -->
+        <div style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left;">
                 <thead>
-                    <tr style="border-bottom: 2px solid var(--text-light); color: var(--text);">
+                    <tr style="border-bottom: 2px solid var(--text-light);">
                         <th style="padding: 10px; font-weight: bold;">Platform</th>
                         <th style="padding: 10px; font-weight: bold;">Tag language</th>
                         <th style="padding: 10px; font-weight: bold;">First-name tag</th>
+                        <th style="padding: 10px; font-weight: bold;">Conditional content</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">MailerLite</td>
                         <td style="padding: 10px;">Variable tags</td>
                         <td style="padding: 10px;"><code>{$name}</code></td>
+                        <td style="padding: 10px;">Merge tags only</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">Mailchimp</td>
                         <td style="padding: 10px;">Mailchimp merge tags</td>
                         <td style="padding: 10px;"><code>*|FNAME|*</code></td>
+                        <td style="padding: 10px;"><code>*|IF:|*</code> / <code>*|ELSE:|*</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">Brevo</td>
                         <td style="padding: 10px;">Brevo template language</td>
                         <td style="padding: 10px;"><code>{{ contact.FIRSTNAME }}</code></td>
+                        <td style="padding: 10px;"><code>{% if %}</code> / <code>{% elif %}</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">Campaign Monitor</td>
                         <td style="padding: 10px;">Square-bracket tags</td>
                         <td style="padding: 10px;"><code>[firstname]</code></td>
+                        <td style="padding: 10px;"><code>[if:]</code> / <code>[else]</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">HubSpot</td>
                         <td style="padding: 10px;">HubL personalisation tokens</td>
                         <td style="padding: 10px;"><code>{{ contact.firstname }}</code></td>
+                        <td style="padding: 10px;">HubL if / else in coded templates</td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
+                    <tr style="border-bottom: 1px solid var(--border);">
+                        <td style="padding: 10px; font-weight: bold;">Constant Contact</td>
+                        <td style="padding: 10px;">Personalization tags</td>
+                        <td style="padding: 10px;"><code>[[FirstName]]</code></td>
+                        <td style="padding: 10px;">If / else conditional statements</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--border);">
                         <td style="padding: 10px; font-weight: bold;">Kit</td>
                         <td style="padding: 10px;">Liquid</td>
                         <td style="padding: 10px;"><code>{{ subscriber.first_name }}</code></td>
+                        <td style="padding: 10px;">Liquid if / else</td>
                     </tr>
                     <tr>
                         <td style="padding: 10px; font-weight: bold;">ActiveCampaign</td>
                         <td style="padding: 10px;">Percent-sign tags</td>
                         <td style="padding: 10px;"><code>%FIRSTNAME%</code></td>
+                        <td style="padding: 10px;"><code>%IF%</code> / <code>%ELSE%</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(0,0,0,0.1);">
-                    <td style="padding: 10px; font-weight: bold;">Constant Contact</td>
-                    <td style="padding: 10px;">Personalization tags</td>
-                    <td style="padding: 10px;"><code>[[FIRSTNAME]]</code></td>
-                   </tr>
                 </tbody>
             </table>
         </div>
 
-         <div
+        <div
             style="
                 max-width: 800px;
                 margin: 2.5rem auto 0;
@@ -2060,53 +2069,72 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                     <strong>Universal Compatibility:</strong> Hand-coded, responsive HTML and CSS tested across Outlook, Gmail, Apple Mail and mobile, including dark mode.
                 </li>
                 <li style="margin-bottom: 0.5rem;">
-                    <strong>Everyday Personalisation:</strong> Names and other simple fields written in your platform's own tag format, with a fallback such as "Hi there" so a missing name never breaks the greeting.
+                    <strong>Personalisation:</strong> Names and other fields written in your platform's own tag format, with a fallback such as "Hi there" so a missing name never breaks the greeting.
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Conditional Content:</strong> One email, different content for different readers, such as new or returning customers, location, plan or purchase. I add it to your existing template, or code it from your design file first, then test it with fields filled in, empty and missing.
+                </li>
+                <li style="margin-bottom: 0.5rem;">
+                    <strong>Transactional &amp; Lifecycle Emails:</strong> Receipts, security emails, welcome and follow-up emails built as templates with placeholders. I give your developer a variable list, so the right data fills each placeholder.
                 </li>
                 <li style="margin-bottom: 0.5rem;">
                     <strong>Platform Compliance:</strong> Preheaders, footers and unsubscribe links set up correctly for your platform.
                 </li>
                 <li style="margin-bottom: 0;">
-                    <strong>Built and Checked in Your Account:</strong> Uploaded to your platform (or a test account) and tested before final delivery.
+                    <strong>Built and Checked in Your Account:</strong> Uploaded to your platform (or a test account), then live test sends to confirm the layout, tag population and authentication pass status before launch.
                 </li>
             </ul>
-           <!-- For Agencies Section -->
-<span style="font-weight: bold; display: block; text-align: center; margin-bottom: 0.5rem; color: var(--text);">
-    For Marketing & Web Agencies
-</span>
-<ul style="margin: 0 0 1.5rem 0; padding-left: 1.5rem; list-style-type: disc;">
-    <li style="margin-bottom: 0.5rem;">
-        <strong>White-Label Email Coding:</strong> Clean, responsive HTML/CSS built from your Figma, XD, Photoshop, Canva, Sketch, or any design file you use.
-    </li>
-    <li style="margin-bottom: 0.5rem;">
-        <strong>Cross-Client & Dark Mode QA:</strong> Bulletproof rendering tests across Outlook, Gmail, Apple Mail, and mobile devices.
-    </li>
-    <li style="margin-bottom: 0.5rem;">
-        <strong>Flexible Development Support:</strong> Fast, reliable turnarounds on email template builds whenever your team needs extra technical support.
-    </li>
-</ul>
+        </div>
 
-<!-- For Business Owners Section -->
-<span style="font-weight: bold; display: block; text-align: center; margin-bottom: 0.5rem; color: var(--text);">
-    For Business Owners & Brands
-</span>
-<ul style="margin: 0; padding-left: 1.5rem; list-style-type: disc;">
-    <li style="margin-bottom: 0.5rem;">
-        <strong>Custom Design & HTML Coding:</strong> Tailored, brand-aligned email designs coded directly into responsive HTML/CSS with correctly integrated personalisation tokens and merge tags (e.g., subscriber names, custom fields).
-    </li>
-    <li style="margin-bottom: 0.5rem;">
-        <strong>Domain Authentication:</strong> Setup and verification of SPF, DKIM, and DMARC records on Cloudflare, GoDaddy, Namecheap, Bluehost, IONOS, Hostinger, etc.
-    </li>
-    <li style="margin-bottom: 0.5rem;">
-        <strong>ESP Initial Setup & Integration:</strong> Initial configuration of your MailerLite, Mailchimp, Brevo, Kit, HubSpot, etc. sending infrastructure to prep your account for test sends.
-    </li>
-    <li style="margin-bottom: 0.5rem;">
-        <strong>Verified Sending Tests:</strong> Live test sends to confirm authentication pass status, merge tag population, and perfect layout rendering before launch.
-    </li>
-</ul>
+        <div class="grid-cards" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 20px">
+            <div class="card" style="text-align: left">
+                <h3 style="text-align: left">For Marketing &amp; Web Agencies</h3>
+                <ul style="margin: 0; padding-left: 1.2rem; list-style-type: disc; color: var(--text-light); line-height: 1.6">
+                    <li style="margin-bottom: 0.5rem">
+                        <strong>White-Label Email Coding:</strong> Clean, responsive HTML and CSS built from your Figma, XD, Photoshop, Canva, Sketch or any design file you use.
+                    </li>
+                    <li>
+                        <strong>Flexible Development Support:</strong> Fast, reliable turnarounds on email template builds whenever your team needs extra technical support.
+                    </li>
+                </ul>
+            </div>
+            <div class="card" style="text-align: left">
+                <h3 style="text-align: left">For Business Owners &amp; Brands</h3>
+                <ul style="margin: 0; padding-left: 1.2rem; list-style-type: disc; color: var(--text-light); line-height: 1.6">
+                    <li style="margin-bottom: 0.5rem">
+                        <strong>Custom Design &amp; HTML Coding:</strong> Tailored, brand-aligned email designs coded directly into responsive HTML and CSS.
+                    </li>
+                    <li style="margin-bottom: 0.5rem">
+                        <strong>Domain Authentication:</strong> Setup and verification of SPF, DKIM and DMARC records on Cloudflare, GoDaddy, Namecheap, Bluehost, IONOS, Hostinger and others.
+                    </li>
+                    <li>
+                        <strong>ESP Initial Setup:</strong> Initial configuration of your MailerLite, Mailchimp, Brevo, Kit, HubSpot and other sending accounts to prepare them for test sends.
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+        <p
+            style="
+                text-align: center;
+                max-width: 800px;
+                margin: 2.5rem auto 0;
+                color: var(--text-light);
+                font-size: 1.05rem;
+                padding: 0 20px;
+            "
+        >
+            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform, or build automation flows. I work with the fields already in your platform. If your emails need data from your site, I write the template and your developer connects the data.
+        </p>
+
+        <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
+            Have an email that should change for different readers? Send it over and tell me about it.
+        </p>
+        <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
+            <a href="#contact" class="cta-button">Contact me</a>
         </div>
     </div>
-</section> 
+</section>
                     <section id="where-emails-break" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-bug"></i> Where Emails Break</h2>
