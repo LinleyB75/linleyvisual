@@ -460,6 +460,88 @@
                     max-width: 100%;
                 }
             }
+            #email-automation .grid-cards {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            #email-automation .grid-cards .card {
+                flex: 0 0 calc((100% - 6rem) / 4);
+                max-width: calc((100% - 6rem) / 4);
+            }
+            @media (max-width: 1024px) {
+                #email-automation .grid-cards .card {
+                    flex-basis: calc((100% - 2rem) / 2);
+                    max-width: calc((100% - 2rem) / 2);
+                }
+            }
+            @media (max-width: 767px) {
+                #email-automation .grid-cards .card {
+                    flex-basis: 100%;
+                    max-width: 100%;
+                }
+            }
+            .final-cta .tech-stack-icons {
+                display: grid;
+                grid-template-columns: repeat(5, max-content);
+                justify-content: center;
+                justify-items: center;
+                gap: 2rem clamp(2rem, 5vw, 4rem);
+                padding: 0 20px;
+            }
+            @media (max-width: 1100px) {
+                .final-cta .tech-stack-icons {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    max-width: 560px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    gap: 2rem 1.5rem;
+                }
+            }
+            @media (max-width: 767px) {
+                .final-cta .tech-item {
+                    text-align: center;
+                }
+                .final-cta .tech-item i,
+                .final-cta .tech-item svg {
+                    margin-right: 0 !important;
+                }
+            }
+            .location-section {
+                padding: clamp(2rem, 5vh, 3rem) 0;
+            }
+            .location-card {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: clamp(1.5rem, 4vw, 2.5rem);
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-top: 4px solid var(--accent);
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+            .location-card h2 {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+                font-size: clamp(1.4rem, 3vw, 2rem);
+                font-weight: 800;
+                line-height: 1.25;
+                color: var(--primary);
+            }
+            .location-card h2 i {
+                color: var(--accent);
+            }
+            .location-card p {
+                max-width: 760px;
+                margin: 0 auto;
+                font-size: 1.1rem;
+                color: var(--text-light);
+            }
             .portrait-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -977,7 +1059,10 @@
         "MJML",
         "Maizzle",
         "Handlebars",
+        "Liquid",
+        "Django and Jinja-like Templating Syntax",
         "Email Testing and Quality Assurance",
+        "Email Automation",
         "Campaign Landing Pages",
         "Transactional Email Templates",
         "Dynamic Email Content",
@@ -990,9 +1075,9 @@
       "@id": "https://linleyb.com/#service",
       "name": "Email Development Services",
       "url": "https://linleyb.com/",
-      "description": "I code, develop, and test responsive emails for marketing campaigns, plus the landing pages they link to, using HTML, CSS, MJML, Maizzle, and Handlebars, with a focus on cross-client compatibility, reliable rendering, and rigorous testing.",
+      "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, plus the landing pages they link to, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing.",
       "provider": {
-      "@id": "https://linleyb.com/#person"
+        "@id": "https://linleyb.com/#person"
       },
       "areaServed": [
         {
@@ -1007,6 +1092,9 @@
         "MJML Development",
         "Maizzle Development",
         "Handlebars Email Templating",
+        "Liquid Email Templating",
+        "Django and Jinja-like Email Templating",
+        "Email Automation",
         "Email Testing and Quality Assurance",
         "Campaign Landing Pages",
         "Dynamic Email Content",
@@ -1157,7 +1245,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                             </div>
          <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px;"></i><span>Email Testing & QA</span></div>
 <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px;"></i><span>ESP Integration</span></div>
-<div class="tech-item"><i class="fas fa-code" style="margin-right: 8px;"></i><i class="fas fa-sliders-h" style="margin-right: 6px;"></i><span>Dynamic Content</span></div>
+<div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px;"></i><span>Dynamic Content</span></div>
 
 </div> <!-- Closes .tech-stack-icons -->
 </div> <!-- Closes Left Column -->
@@ -1459,401 +1547,22 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                     </div>
                 </div>
             </section>
-            <section id="what-i-do">
-                <div class="container">
-                    <h2 class="section-title">
-                        <i class="fas fa-code-branch"></i><span style="color: red">&nbsp;Email Developer (Coder)</span>
-                    </h2>
-                    <p
-                        style="
-                            text-align: center;
-                            max-width: 800px;
-                            margin: -2rem auto 3rem;
-                            color: var(--text-light);
-                            font-size: 1.15rem;
-                            padding: 0 20px;
-                        "
-                    >
-                        Transforming design concepts into robust, accessible, and high-converting code.
-                    </p>
-                    <div class="grid-cards">
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/TMYfhw65/Screenshot-2026-09-26-161933.webp"
-                                alt="Responsive promotional email template design preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Promotional Campaign Design</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Coded for flawless responsiveness across all major mail clients.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/PGXcmWrK/Screenshot-2026-09-26-161007.webp"
-                                alt="Clean newsletter email layout preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Clean Newsletter Layout</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Semantic table architecture built for reliable inbox delivery.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/hFTmZkSw/Screenshot-2026-09-26-161246.webp"
-                                alt="E-commerce product grid email design preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">E-Commerce Product Grid</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Optimised product layouts structured to maximise reader engagement.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/ymwj8wh5/batch-300-7210.webp"
-                                alt="Dark mode transactional receipt email preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Transactional Dark Mode Receipt</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Tailored dark mode colour styling for modern client apps.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/FkcvNgc0/batch-300-7204.webp"
-                                alt="Welcome series onboarding email template preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Welcome Series Onboarding</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Clear visual hierarchy designed to guide new subscribers.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/d0pk1W0y/batch-300-7203.webp"
-                                alt="Special offer discount campaign email preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Special Offer Discount Campaign</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Dynamic promotional elements optimised for high conversion rates.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/N6FbcQpk/batch-300-7199.webp"
-                                alt="Corporate announcement newsletter email preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Corporate Announcement Newsletter</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Polished, professional layout crafted for corporate communications.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/qYng1v18/batch-300-7186.webp"
-                                alt="Event invitation responsive email design preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Event Invitation Template</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Engaging layout engineered with prominent call-to-action buttons.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/qL4jCbXX/batch-300-7188.webp"
-                                alt="Subscriber re-engagement email campaign preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Subscriber Re-engagement Flow</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Targeted layout optimised to win back inactive subscribers.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/tptp5MdG/Screenshot-2026-10-14-113519.webp"
-            alt="Screenshot 2026 10 14 113519"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-            "
-        />
-        <div style="padding: 1.5rem">
-            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletter Layout</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                Semantic table architecture built for reliable inbox delivery.
-            </p>
-        </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/pvr0427N/Screenshot-2026-10-06-161953.webp"
-            alt="Screenshot 2026 10 06 161953"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-            "
-        />
-        <div style="padding: 1.5rem">
-            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletter Layout</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                Semantic table architecture built for reliable inbox delivery.
-            </p>
-        </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/NcHGw1s/Screenshot-2026-10-02-132615.webp"
-            alt="Screenshot 2026 10 02 132615"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-            "
-        />
-        <div style="padding: 1.5rem">
-            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletter Layout</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                Semantic table architecture built for reliable inbox delivery.
-            </p>
-        </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/SD6kFCyX/Screenshot-2026-10-02-103310.webp"
-            alt="Screenshot 2026 10 02 103310"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-            "
-        />
-        <div style="padding: 1.5rem">
-            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletter Layout</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                Semantic table architecture built for reliable inbox delivery.
-            </p>
-        </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/XrKWxM1P/Screenshot-2026-10-01-154121.webp"
-            alt="Screenshot 2026 10 01 154121"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-            "
-        />
-        <div style="padding: 1.5rem">
-            <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletter Layout</h3>
-            <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                Semantic table architecture built for reliable inbox delivery.
-            </p>
-        </div>
-    </div>
-                      <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-    <a href="https://ibb.co/rfy80hrj">
-        <img
-            loading="lazy"
-            decoding="async"
-            src="https://i.ibb.co/bRdwmV90/Screenshot-2026-10-16-001314.webp"
-            alt="Screenshot 2026 10 16 001314"
-            style="
-                width: 100%;
-                height: 220px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 4px solid var(--accent);
-                display: block;
-            "
-        />
-    </a>
-    <div style="padding: 1.5rem">
-        <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Clean Newsletter Layout</h3>
-        <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-            Semantic table architecture built for reliable inbox delivery.
-        </p>
-    </div>
-</div>  
-                    </div>
-                </div>
-            </section>
  
-            <section id="campaign-types" style="background-color: var(--section-highlight)">
+            <section id="what-i-do" style="padding-bottom: 0">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-layer-group"></i> Email Campaigns I Develop</h2>
                     <p
                         style="
                             text-align: center;
                             max-width: 800px;
-                            margin: -2rem auto 3rem;
+                            margin: -2rem auto 0;
                             color: var(--text-light);
                             font-size: 1.15rem;
                             padding: 0 20px;
                         "
                     >
-                        I specialise in coding and rigorously testing responsive HTML/CSS email templates for all types of marketing and
-                        transactional flows.
+                        I specialise in coding and rigorously testing responsive email templates in HTML/CSS, MJML and Maizzle, with dynamic templating in Handlebars, Liquid and Django/Jinja-like syntax, for newsletters, promotions, transactional and seasonal emails, plus automated flows (see Email Automation below).
                     </p>
-                    <div class="fit-box">
-                        <ul>
-                            <li>
-                                <b>Newsletters:</b> Engaging, content-rich layouts to keep your subscribers informed and connected to your
-                                brand.
-                            </li>
-                            <li>
-                                <b>Promotional Campaigns:</b> High-converting designs to drive sales, highlight discounts, and showcase
-                                exclusive offers.
-                            </li>
-                            <li>
-                                <b>Abandoned Cart Emails:</b> Automated, revenue-recovering templates sent to users who left items at
-                                checkout.
-                            </li>
-                            <li>
-                                <b>Transactional Emails:</b> Bulletproof layouts for order confirmations, shipping updates, and password
-                                resets.
-                            </li>
-                            <li>
-                                <b>Lead Nurturing Series:</b> Drip campaign templates designed to guide potential customers through the
-                                buying journey seamlessly.
-                            </li>
-                            <li>
-                                <b>Re-engagement Campaigns:</b> Targeted, interactive designs aimed at winning back inactive subscribers.
-                            </li>
-                            <li>
-                                <b>Seasonal &amp; Holiday Promos:</b> Themed, high-impact campaigns tailored for Black Friday, Cyber Monday,
-                                or special events.
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </section>
             <section id="what-i-fix">
@@ -1862,20 +1571,42 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                     <div class="grid-cards">
                         <div class="card">
                             <i class="fas fa-laptop-code"></i>
-                            <h3>MJML Development</h3>
-                            <p>Bulletproof, responsive framework coding for modern and complex email layouts.</p>
+                            <h3>HTML, MJML &amp; Maizzle Coding</h3>
+                            <p>
+                                Hand-coded, responsive emails in HTML/CSS, MJML or Maizzle with Tailwind CSS, built to survive legacy
+                                desktop clients.
+                            </p>
                         </div>
                         <div class="card">
-                            <i class="fas fa-table"></i>
-                            <h3>Custom HTML/CSS</h3>
-                            <p>Hand-coded, semantic table layouts designed to survive legacy desktop clients.</p>
+                            <i class="fas fa-code"></i>
+                            <h3>Dynamic Content Templating</h3>
+                            <p>
+                                Dynamic templating in Handlebars, Liquid and Django/Jinja-like syntax, so personalised, data-driven
+                                content renders accurately for every recipient.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-gears"></i>
+                            <h3>Email Automation</h3>
+                            <p>
+                                I set up automated flows in your platform, from the trigger and timing to the emails themselves, and
+                                test them before they go live.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-plug"></i>
+                            <h3>ESP Integration &amp; Setup</h3>
+                            <p>
+                                I prepare your sending account, upload coded templates and run live test sends, so layout and merge
+                                tags still work after upload.
+                            </p>
                         </div>
                         <div class="card">
                             <i class="fas fa-check-double"></i>
                             <h3>Rigorous QA Testing</h3>
                             <p>
-                                Every file is verified in professional testing tools (Testi.at/Litmus) across 100+ email clients and
-                                devices, from desktop Outlook and Gmail to Apple Mail on iPhone, before delivery.
+                                Every file is verified in professional testing tools (Testi.at/Litmus) across major email clients and
+                                devices before delivery.
                             </p>
                         </div>
                         <div class="card">
@@ -1887,70 +1618,32 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                             <i class="fas fa-inbox"></i>
                             <h3>Email Deliverability</h3>
                             <p>
-                                Building email code with deliverability in mind, from clean HTML and authentication to avoiding issues that
-                                can affect inbox placement.
+                                Clean HTML plus SPF, DKIM and DMARC setup on your domain (Cloudflare, GoDaddy, Namecheap and more), to
+                                avoid issues that can affect inbox placement.
                             </p>
                         </div>
-             <div class="card">
-    <i class="fas fa-plug"></i>
-    <h3>ESP Code Integration</h3>
-    <p>
-        I upload coded templates into your Email Service Provider and run live test sends there, so you can see the
-        layout and merge tags still work after upload.
-    </p>
-</div>
                         <div class="card">
-                            <i class="fas fa-code"></i>
-                            <h3>Dynamic Content Templating</h3>
+                            <i class="fas fa-link"></i>
+                            <h3>UTM Link Tagging</h3>
                             <p>
-                                I can use templating for dynamic emails — enabling personalised and data-driven content to render accurately
-                                for every recipient.
+                                I add your UTM tracking tags to every link, so your analytics shows which email and which button drove
+                                each visit.
                             </p>
                         </div>
-<div class="card">
-    <i class="fas fa-file-code"></i>
- <h3>Design &amp; Design to Code</h3>
-    <p>
-Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, your brand guidelines, brand requirements, image assets and specifications. I'll lay out the template, then build, test and deliver it as clean email code. <b>OR</b> I can design your template completely from scratch, crafted to your requirements, visual preferences,  brand identity and specs.
-    </p>
-    <a
-        href="https://linleyb.com/portfolio.html"
-        style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-        >See my designed &amp; coded emails &rarr;</a
-    >
-    </div>
-<div class="card">
-    <i class="fas fa-magnifying-glass"></i>
-    <h3>Email Audits &amp; Bug Fixes</h3>
-    <p>
-     Already have a template that breaks in Outlook, dark mode, Gmail responsive views, or other stubborn client quirks after ESP upload? I pinpoint the exact cause, clean up the code, and thoroughly test it across all major inboxes.
-    </p>
-    <a
-        href="https://linleyb.com/blog/mj-group-padding.html"
-        style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-        >See an example fix &rarr;</a
-    >
-</div>
-        <div class="card">
-    <i class="fas fa-wind"></i>
-    <h3>Maizzle Development</h3>
-    <p>
-        Emails built with the Maizzle framework, with Tailwind CSS styling and CSS inlining and minification
-        handled at build time, so the final HTML is clean and ready to send.
-    </p>
-</div>
-<div class="card">
-    <i class="fas fa-link"></i>
-    <h3>UTM Link Tagging</h3>
-    <p>
-        I add your UTM tracking tags to every link, so your analytics shows which email and which button drove
-        each visit.
-    </p>
-</div>                
-                        
+                        <div class="card">
+                            <i class="fas fa-file-code"></i>
+                            <h3>Design &amp; Design to Code</h3>
+                            <p>
+                                Send me your design files (Figma, Sketch, XD, PSD) and brand assets and I'll build, test and deliver clean email code. Or I can design your template from scratch to your brand and specs.
+                            </p>
+                            <a
+                                href="https://linleyb.com/portfolio.html"
+                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
+                                >See my designed &amp; coded emails &rarr;</a
+                            >
+                        </div>
                     </div>
                 </div>
-                
             </section>
              <section id="esp-platforms" style="background-color: var(--bg-alt)">
     <div class="container">
@@ -1968,17 +1661,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
             Clean, tested emails built for the platform you already use, from simple newsletters to transactional and lifecycle emails. Names with fallbacks, content that changes for different readers, and an email that looks right before it goes out.
         </p>
 
-        <h3 style="text-align: center; color: var(--text); margin-bottom: 1rem">Main platforms</h3>
-        <div class="tech-stack-icons" style="color: var(--text); margin-top: 0">
-            <div class="tech-item"><span>MailerLite</span></div>
-            <div class="tech-item"><span>Mailchimp</span></div>
-            <div class="tech-item"><span>Brevo</span></div>
-            <div class="tech-item"><span>Campaign Monitor</span></div>
-            <div class="tech-item"><span>HubSpot</span></div>
-            <div class="tech-item"><span>Constant Contact</span></div>
-            <div class="tech-item"><span>Kit</span></div>
-            <div class="tech-item"><span>ActiveCampaign</span></div>
-        </div>
+        
 
         <!-- Tag and conditional content reference -->
         <div style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto;">
@@ -2044,66 +1727,19 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
             </table>
         </div>
 
-        <div
+        <p
             style="
+                text-align: center;
                 max-width: 800px;
                 margin: 2.5rem auto 0;
                 color: var(--text-light);
                 font-size: 1.15rem;
                 padding: 0 20px;
-                text-align: left;
                 line-height: 1.6;
             "
         >
-            <span style="font-weight: bold; display: block; text-align: center; margin-bottom: 0.5rem; color: var(--text);">
-                Don't see your platform? I'll work in it.
-            </span>
-            <p style="text-align: center; margin: 0 0 1rem; font-weight: bold;">
-                Every email platform has its own rules and tag format, so I build to yours:
-            </p>
-            <ul style="margin: 0; padding-left: 1.5rem; list-style-type: disc;">
-                <li style="margin-bottom: 0.5rem;">
-                    <strong>Personalisation:</strong> Names and other fields written in your platform's own tag format, with a fallback such as "Hi there" so a missing name never breaks the greeting.
-                </li>
-                <li style="margin-bottom: 0.5rem;">
-                    <strong>Conditional Content:</strong> One email, different content for different readers, such as new or returning customers, location, plan or purchase. I add it to your existing template, or code it from your design file first, then test it with fields filled in, empty and missing.
-                </li>
-                <li style="margin-bottom: 0.5rem;">
-                    <strong>Transactional &amp; Lifecycle Emails:</strong> Receipts, security emails, welcome and follow-up emails built as templates with placeholders. I give your developer a variable list, so the right data fills each placeholder.
-                </li>
-                <li style="margin-bottom: 0;">
-                    <strong>Platform Compliance:</strong> Preheaders, footers and unsubscribe links set up correctly for your platform.
-                </li>
-            </ul>
-        </div>
-
-        <div class="grid-cards" style="max-width: 1000px; margin: 3rem auto 0; padding: 0 20px">
-            <div class="card" style="text-align: left">
-                <h3 style="text-align: left">For Marketing &amp; Web Agencies</h3>
-                <ul style="margin: 0; padding-left: 1.2rem; list-style-type: disc; color: var(--text-light); line-height: 1.6">
-                    <li style="margin-bottom: 0.5rem">
-                        <strong>White-Label Email Coding:</strong> Clean, responsive HTML and CSS built from your Figma, XD, Photoshop, Canva, Sketch or any design file you use.
-                    </li>
-                    <li>
-                        <strong>Flexible Development Support:</strong> Fast, reliable turnarounds on email template builds whenever your team needs extra technical support.
-                    </li>
-                </ul>
-            </div>
-            <div class="card" style="text-align: left">
-                <h3 style="text-align: left">For Business Owners &amp; Brands</h3>
-                <ul style="margin: 0; padding-left: 1.2rem; list-style-type: disc; color: var(--text-light); line-height: 1.6">
-                    <li style="margin-bottom: 0.5rem">
-                        <strong>Custom Design &amp; HTML Coding:</strong> Tailored, brand-aligned email designs coded directly into responsive HTML and CSS.
-                    </li>
-                    <li style="margin-bottom: 0.5rem">
-                        <strong>Domain Authentication:</strong> Setup and verification of SPF, DKIM and DMARC records on Cloudflare, GoDaddy, Namecheap, Bluehost, IONOS, Hostinger and others.
-                    </li>
-                    <li>
-                        <strong>ESP Initial Setup:</strong> Initial configuration of your MailerLite, Mailchimp, Brevo, Kit, HubSpot and other sending accounts to prepare them for test sends.
-                    </li>
-                </ul>
-            </div>
-        </div>
+            <strong style="color: var(--text)">Don't see your platform? I'll work in it.</strong> Every email platform has its own rules and tag format, so I build to yours.
+        </p>
 
         <p
             style="
@@ -2115,15 +1751,12 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 padding: 0 20px;
             "
         >
-            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform, or build automation flows. I work with the fields already in your platform. If your emails need data from your site, I write the template and your developer connects the data.
+            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. I work with the fields already in your platform. If your emails need data from your site, I write the template and your developer connects the data.
         </p>
 
         <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
             Have an email that should change for different readers? Send it over and tell me about it.
         </p>
-        <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
-            <a href="#contact" class="cta-button">Contact me</a>
-        </div>
     </div>
 </section>
                     <section id="where-emails-break">
@@ -2136,53 +1769,31 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                         </p>
                         <ul>
                             <li>
-                                <b>Design to Code:</b> Layouts designed for a screen don't always survive email clients, which only
-                                support part of modern CSS. I rebuild the layout with email-safe structure so it matches the design as
-                                closely as each client allows.
+                                <b>Design to Code:</b> Layouts designed for screens don't always survive email clients. I rebuild them with email-safe structure so they match the design as closely as each client allows.
                             </li>
                             <li>
-                                <b>Drag-and-Drop Builders:</b> Builders often output heavy, nested code and limit what you can fix, so
-                                emails come out bloated, inconsistent or hard to edit. I replace it with clean, hand-coded HTML that
-                                you can import and maintain.
+                                <b>Drag-and-Drop Builders:</b> Builders output heavy, nested code that's hard to fix or edit. I replace it with clean, hand-coded HTML you can import and maintain.
                             </li>
                             <li>
-                                <b>Outlook Rendering:</b> Desktop Outlook ignores spacing, background images and buttons that work
-                                everywhere else. I use hand-coded fallbacks and test, so Outlook gets a clean version of the same email.
+                                <b>Outlook Rendering:</b> Desktop Outlook ignores spacing, background images and buttons that work elsewhere. I add hand-coded fallbacks and test them.
                             </li>
                             <li>
-                                <b>Spacing &amp; Padding:</b> Padding and margins that disappear or change between clients, so text sits
-                                tight against images or columns collapse. I build spacing that holds across clients. See my fix for
-                                <a href="/blog/mj-group-padding.html" style="color: var(--accent); font-weight: 700"
-                                    >mj-group padding</a
-                                >.
+                                <b>Spacing &amp; Padding:</b> Padding and margins that disappear or change between clients. I build spacing that holds. See my fix for <a href="/blog/mj-group-padding.html" style="color: var(--accent); font-weight: 700">mj-group padding</a>.
                             </li>
                             <li>
-                                <b>Images That Don't Shrink:</b> Images that stay full size on phones, get clipped or get re-scaled in
-                                Outlook. I set widths, fluid sizing and fallbacks so images scale down properly on every screen.
+                                <b>Images That Don't Shrink:</b> Images that stay full size on phones or get re-scaled in Outlook. I set widths, fluid sizing and fallbacks so they scale properly.
                             </li>
                             <li>
-                                <b>Blocked Images:</b> Some clients block images by default, leaving only alt text. I write meaningful
-                                alt text and set background colours so the email still reads without its images.
+                                <b>Blocked Images:</b> Some clients block images by default. I write meaningful alt text and set background colours so the email still reads.
                             </li>
                             <li>
-                                <b>Dark Mode:</b> Colours, logos, buttons and footer text can invert badly when an email client
-                                switches to dark mode. I code and test for it with custom CSS overrides and dual-engine coding,
-                                so your brand holds up in Apple Mail, Outlook, Gmail and Windows Mail. See how I
-                                <a href="/blog/dark-mode-inversion-fixes.html" style="color: var(--accent); font-weight: 700"
-                                    >fix dark mode inversion</a
-                                >
-                                and
-                                <a href="/blog/footer-text-macos-dark-mode.html" style="color: var(--accent); font-weight: 700"
-                                    >footer text in macOS dark mode</a
-                                >.
+                                <b>Dark Mode:</b> Colours, logos, buttons and footer text can invert badly in dark mode. I code and test with custom CSS overrides and dual-engine coding so your brand holds up in Apple Mail, Outlook, Gmail and Windows Mail. See how I <a href="/blog/dark-mode-inversion-fixes.html" style="color: var(--accent); font-weight: 700">fix dark mode inversion</a> and <a href="/blog/footer-text-macos-dark-mode.html" style="color: var(--accent); font-weight: 700">footer text in macOS dark mode</a>.
                             </li>
                             <li>
-                                <b>Mobile Layout:</b> Columns that don't stack, buttons that are hard to tap and text that shrinks too
-                                small on phones. I build mobile-first and check the result across device sizes before delivery.
+                                <b>Mobile Layout:</b> Columns that don't stack, hard-to-tap buttons and tiny text. I build mobile-first and check across device sizes.
                             </li>
                             <li>
-                                <b>Gmail Clipping:</b> Large emails get cut off in Gmail, hiding the footer and the unsubscribe link.
-                                Clean, minified code keeps the file size down so the whole email is shown.
+                                <b>Gmail Clipping:</b> Large emails get cut off in Gmail, hiding the footer and unsubscribe link. Clean, minified code keeps the file size down.
                             </li>
                         </ul>
                     </div>
@@ -2195,9 +1806,10 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                 </div>
             </section>
          
-            <section id="email-showcase" style="background-color: var(--bg-alt)">
+ 
+                        <section id="email-automation" style="background-color: var(--bg-alt)">
                 <div class="container">
-                    <h2 class="section-title"><i class="fas fa-images"></i> Full Email Layout Previews</h2>
+                    <h2 class="section-title"><i class="fas fa-bolt"></i> Email Automation</h2>
                     <p
                         style="
                             text-align: center;
@@ -2208,158 +1820,66 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                             padding: 0 20px;
                         "
                     >
-                        A side-by-side showcase of full-length email template builds rendered across client environments.
+                        Emails that send themselves at the right moment. I plan, build and test automated flows in your email platform, from the trigger to the final email.
                     </p>
-                    <div class="portrait-grid">
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/hJMsPX9h/127-0-0-1-5500-Cafe-Naples1-Recafe3-html.png"
-                                alt="Cafe Naples promotional email layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Cafe Naples • Promo</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Coffee Shop Campaign</h3>
-                            </div>
+                    <div class="grid-cards">
+                        <div class="card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Triggers</h3>
+                            <p>The event that starts a flow, such as a signup, purchase, abandoned cart, link click, tag or date.</p>
                         </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/nSgSWJz/127-0-0-1-5500-Cafe-Naples1-Recafe4-html.png"
-                                alt="Cafe Naples second variant layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Cafe Naples • Variant</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Coffee Promo Variant</h3>
-                            </div>
+                        <div class="card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Delays</h3>
+                            <p>How long the flow waits between emails, such as 1 hour after a cart is left or 3 days after signup.</p>
                         </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/5W7VPWvv/127-0-0-1-5500-Welcomelinleyvisual2-html.png"
-                                alt="Welcome series onboarding email design preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Onboarding • Welcome</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Welcome Series Visual</h3>
-                            </div>
+                        <div class="card">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Conditions</h3>
+                            <p>Splits the flow by what a subscriber did or who they are, such as opened or not, new or returning.</p>
                         </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/JjQSPQ3R/127-0-0-1-21592-Simplify-English-Payment-Notification1-html.png"
-                                alt="Simplify English payment notification receipt preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Transactional • Payment</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Payment Notification</h3>
-                            </div>
+                        <div class="card">
+                            <i class="fas fa-flag-checkered"></i>
+                            <h3>Exit Rules</h3>
+                            <p>What ends the flow, so people stop getting emails once they buy, reply or unsubscribe.</p>
                         </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/mCV7jdW0/127-0-0-1-26509-Tripy-Cream-html.png"
-                                alt="Tripy cream promotional email template preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Tripy • Promo</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Tripy Cream Campaign</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/qYhZVRwy/127-0-0-1-51561-Delivery-Notification-Frameler-A-html.png"
-                                alt="Framler delivery notification transactional email preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Transactional • Delivery</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Framler Delivery Notice</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/cSdwymX8/127-0-0-1-51561-Mood2-html.png"
-                                alt="Mood promotional campaign email layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Mood • Campaign</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Mood Promotional Build</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/rKqdhgWb/127-0-0-1-51561-pixel-pulse-Darkmode-Ignite-3-html.png"
-                                alt="Pixel pulse dark mode Ignite promotional email preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Pixel Pulse • Dark Mode</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Ignite Dark Mode Promo</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/WpsQPs66/127-0-0-1-51561-pixel-pulse-Kickoff1-html-1.png"
-                                alt="Pixel pulse light mode receipt layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Pixel Pulse • Light Mode</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Kickoff Light Mode Receipt</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/8LpZDDHZ/127-0-0-1-51561-pixel-pulse-Kickoff1-html.webp"
-                                alt="Pixel pulse dark mode receipt layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Pixel Pulse • Dark Mode</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Kickoff Dark Mode Receipt</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/S42KXJsC/127-0-0-1-51561-Republica2-FARevised5-html.png"
-                                alt="Republica clothing promotional newsletter layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">Republica • Newsletter</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Republica Clothing Promo</h3>
-                            </div>
-                        </div>
-                        <div class="portrait-card">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/HR1M49V/batch-localhost-51561-Email-Dev-Ebook2-html-phcode-Live-Preview-true.png"
-                                alt="Email development e-book promotional layout preview"
-                            />
-                            <div class="content">
-                                <span class="blog-date">E-Book • Promo</span>
-                                <h3 style="font-size: 1.2rem; margin: 8px 0; color: var(--primary)">Email Dev E-Book Promo</h3>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="fit-box">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">Automations I Set Up</h3>
+                        <ul>
+                            <li>
+                                <b>Welcome Series:</b> Trigger: a new signup. A short sequence that introduces your brand and guides new
+                                subscribers.
+                            </li>
+                            <li>
+                                <b>Abandoned Cart:</b> Trigger: items left in a cart. Timed reminders that bring shoppers back to checkout.
+                            </li>
+                            <li>
+                                <b>Post-Purchase:</b> Trigger: an order is placed. Confirmation, shipping update, review request and
+                                follow-up.
+                            </li>
+                            <li>
+                                <b>Re-engagement:</b> Trigger: no opens or clicks for a set period. Win-back emails, then stop sending to
+                                inactive contacts.
+                            </li>
+                            <li>
+                                <b>Lead Nurturing:</b> Trigger: a form, tag or link click. Drip emails that guide leads towards a decision.
+                            </li>
+                            <li>
+                                <b>Birthday &amp; Date-Based:</b> Trigger: a date field such as a birthday or renewal. Personalised emails
+                                sent on the day.
+                            </li>
+                        </ul>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
+                        Available triggers and conditions differ between platforms, so I build each flow to what yours supports. Tell me what should trigger your flow and what should happen next.
+                    </p>
+                    <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
+                        <a href="#contact" class="cta-button">Contact me</a>
                     </div>
                 </div>
             </section>
- 
-                        <section id="way-we-learn" style="background-color: var(--bg)">
+            <section id="way-we-learn" style="background-color: var(--bg)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
@@ -2372,30 +1892,32 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Streamlined Handoff Process</h3>
                         <ul>
-                          <li>
-    <b>1. Discuss &amp; Handoff:</b> We talk through your project, goals and brand needs. You send your design files and assets and I build to your specifications, or I lay out the template myself from your brand guidelines and requirements.
-</li>
                             <li>
-                                <b>2. Hand-Coded Build:</b> I hand-code the email in MJML, HTML/CSS or Maizzle, adding Handlebars templating where it needs dynamic, personalised content, to match the design as closely as each
-                                email client allows.
+                                <b>1. Discuss &amp; Handoff:</b> We talk through your project, goals and brand needs. You send your design files and assets and I build to your specifications, or I lay out the template myself from your brand guidelines and requirements.
                             </li>
                             <li>
-                                <b>3. Rigorous QA Testing:</b> I test the code across major email clients and devices, including Outlook
-                                and dark mode, and fix what breaks.
+                                <b>2. Hand-Coded Build:</b> I hand-code the email in HTML/CSS, MJML or Maizzle, adding dynamic templating in Handlebars, Liquid or Django/Jinja-like syntax where it needs personalised content, to match the design as closely as each email client allows.
                             </li>
                             <li>
-                                <b>4. Code Minification:</b> The final file is stripped of bloat to keep file size down and avoid
-                                clipping.
+                                <b>3. Test &amp; Minify:</b> I test the code across major email clients and devices, fix what breaks, then minify the final file to keep the size down and avoid Gmail clipping.
                             </li>
-                        <li>
-    <b>5. Review &amp; Approval:</b> You review the tested email, request any agreed changes, and approve the
-    final version.
-</li>
-<li>
-    <b>6. Final Delivery:</b> Once approved, you receive a zipped folder with clean HTML and assets, ready to
-    upload and send, or integrated into your ESP. 
-</li>
+                            <li>
+                                <b>4. Review &amp; Delivery:</b> You review the tested email, request any agreed changes and approve it. You then receive a zipped folder with clean HTML and assets, ready to upload and send, or set up in your ESP, including as an automated flow.
+                            </li>
                         </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="location" class="location-section" aria-labelledby="location-heading">
+                <div class="container">
+                    <div class="location-card">
+                        <h2 id="location-heading">
+                            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                            Email Developer in Mauritius, Serving Global Clients
+                        </h2>
+                        <p>
+                            I'm an email developer based in Mauritius, building and testing responsive, dark-mode-ready email templates for businesses in Mauritius and around the world. I work remotely with global brands and agencies across time zones.
+                        </p>
                     </div>
                 </div>
             </section>
@@ -2426,12 +1948,6 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                                 professional certificates in
                                 <b>Email Development, Web Development, IT Technical Support, and Email Marketing</b>.
                             </p>
-                            <h3>Why Email Development?</h3>
-                            <p>
-                                Email development is a unique technical challenge. Every email client has its own quirks, and forcing a
-                                modern design to render flawlessly everywhere requires deep problem-solving skills and rigorous testing and debugging. I write clean code that fixes your technical headaches and makes
-                                your campaigns get delivered.
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -2460,8 +1976,7 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is hand-coded from scratch. Visit my GitHub to inspect the raw HTML, CSS, MJML, and
-                            templating logic, and review my coding practices firsthand.
+                            Every email in my portfolio is hand-coded from scratch. Visit my GitHub to inspect the raw HTML, CSS, MJML, Maizzle and Handlebars, Liquid or Django/Jinja-like templating logic, and review my coding practices firsthand.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -2519,9 +2034,6 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
         <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
             Need a full website? I also build hand-coded static sites.
         </p>
-        <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
-            <a href="#contact" class="cta-button">Contact me</a>
-        </div>
     </div>
 </section>
  
@@ -2616,9 +2128,29 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
             </svg>
             <span>MJML</span>
         </div>
-      <div class="tech-item"><i class="fas fa-code" style="margin-right: 6px"></i><span>Email Testing & QA</span></div>
-        <div class="tech-item"><i class="fas fa-plug"></i><span>ESP Integration</span></div>
-    
+        <div class="tech-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 3C6.5 3 6.5 5.5 6.5 8C6.5 10 5.5 11.5 3.5 12C5.5 12.5 6.5 14 6.5 16C6.5 18.5 6.5 21 9 21" />
+                <path d="M15 3C17.5 3 17.5 5.5 17.5 8C17.5 10 18.5 11.5 20.5 12C18.5 12.5 17.5 14 17.5 16C17.5 18.5 17.5 21 15 21" />
+            </svg>
+            <span>Handlebars</span>
+        </div>
+        <div class="tech-item">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.5C12 2.5 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5Z" />
+            </svg>
+            <span>Liquid</span>
+        </div>
+        <div class="tech-item">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="2" />
+                <text x="12" y="16.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="800" fill="currentColor">dj</text>
+            </svg>
+            <span>Django</span>
+        </div>
+        <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
+        <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
+        <div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
     </div>
 </section>
         </main>
