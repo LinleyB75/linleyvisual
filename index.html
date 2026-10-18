@@ -2733,6 +2733,32 @@ Send me your design files (Figma, Sketch, XD, PSD) or any file format you wish, 
                     icon.classList.add("fa-moon");
                 }
             }
+
+            // EQUAL CARD HEIGHTS (What I Fix)
+            (function () {
+                const cards = document.querySelectorAll("#what-i-fix .grid-cards .card");
+                if (!cards.length) return;
+                function equaliseCards() {
+                    cards.forEach((c) => (c.style.height = ""));
+                    let tallest = 0;
+                    cards.forEach((c) => {
+                        tallest = Math.max(tallest, c.getBoundingClientRect().height);
+                    });
+                    if (tallest > 0) {
+                        cards.forEach((c) => (c.style.height = Math.ceil(tallest) + "px"));
+                    }
+                }
+                let resizeTimer;
+                window.addEventListener("resize", () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(equaliseCards, 120);
+                });
+                window.addEventListener("load", equaliseCards);
+                if (document.fonts && document.fonts.ready) {
+                    document.fonts.ready.then(equaliseCards);
+                }
+                equaliseCards();
+            })();
         </script>
     </body>
 </html>
