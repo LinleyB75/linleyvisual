@@ -71,7 +71,7 @@
                 color-scheme: light dark;
                 -webkit-print-color-adjust: exact;
                 --primary: #0a0a0a;
-                --accent: #e10600;
+                --accent: #d10500;
                 --text: #1a1a1a;
                 --text-light: #55555a;
                 --bg: #ffffff;
@@ -780,6 +780,38 @@
                 background: var(--primary);
                 color: #fff;
             }
+            .social-icon.social-contra {
+                background: #e51937;
+            }
+            .social-icon.social-github {
+                background: #24292f;
+                box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
+            }
+            .social-icon.social-upwork {
+                background: #14a800;
+            }
+            .social-icon.social-fiverr {
+                background: #1dbf73;
+            }
+            .social-icon.social-contra:hover {
+                background: #e51937;
+                filter: brightness(1.12);
+            }
+            .social-icon.social-github:hover {
+                background: #24292f;
+                filter: brightness(1.3);
+            }
+            .social-icon.social-upwork:hover {
+                background: #14a800;
+                filter: brightness(1.12);
+            }
+            .social-icon.social-fiverr:hover {
+                background: #1dbf73;
+                filter: brightness(1.08);
+            }
+            .social-icon.social-email:hover {
+                background: #b30000;
+            }
             .footer-credit {
                 margin-bottom: 10px;
                 font-weight: 700;
@@ -1212,7 +1244,7 @@
                     <!-- LEFT: text, logo, button, tech icons -->
                     <div style="flex: 1 1 440px; min-width: 0; text-align: left">
   <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; text-align: left; margin-bottom: 1.5rem;">
-    <h1 style="flex: 1 1 100%; min-width: 372px; font-size: clamp(2rem, 4vw, 54px); line-height: 1.2;">Email Developer <span style="color: #e53e3e;">Mauritius</span></h1>
+    <h1 style="flex: 1 1 100%; min-width: 372px; font-size: clamp(2rem, 4vw, 54px); line-height: 1.2;">Email Developer <span style="color: var(--accent);">Mauritius</span></h1>
     <img
         src="https://i.ibb.co/dwfK1J87/Lin-1.png"
         alt="Email Developer Mauritius logo"
@@ -1617,7 +1649,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                         <div class="location-text">
                             <h2 id="location-heading">Email Developer in Mauritius, Serving Global Clients</h2>
                             <p>
-                                I'm an email developer based in Mauritius, building, coding, testing and integrating responsive, dark-mode-ready email templates and automated flows for businesses in Mauritius and around the world. I work remotely with global brands and agencies across time zones.
+                                I'm an email developer based in Mauritius, building, coding, testing and integrating responsive, dark-mode-ready email templates and automated flows (newsletters, promotions, transactional and seasonal emails) for businesses in Mauritius and around the world. I work remotely with global brands and agencies across time zones.
                             </p>
                             <p class="location-stack">
                                 HTML &amp; CSS &middot; MJML &amp; Maizzle &middot; Handlebars, Liquid &amp; Django &middot; ESP Integration &middot; Email Automation &middot; Testing &amp; QA
@@ -1627,21 +1659,9 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                     </div>
                 </div>
             </section>
-            <section id="what-i-do" style="padding-bottom: 0">
+            <section id="what-i-do" style="background-color: var(--bg-alt)">
                 <div class="container">
-                    <h2 class="section-title"><i class="fas fa-layer-group"></i> Email Campaigns I Develop</h2>
-                    <p
-                        style="
-                            text-align: center;
-                            max-width: 800px;
-                            margin: -2rem auto 0;
-                            color: var(--text-light);
-                            font-size: 1.15rem;
-                            padding: 0 20px;
-                        "
-                    >
-                        I specialise in coding and rigorously testing responsive email templates in HTML/CSS, MJML and Maizzle, with dynamic templating in Handlebars, Liquid and Django/Jinja-like syntax, for newsletters, promotions, transactional and seasonal emails, plus automated flows (see Email Automation below).
-                    </p>
+                    <h2 class="section-title"><i class="fas fa-layer-group"></i> What I Do</h2>
                     <div class="grid-cards">
                         <div class="card">
                             <i class="fas fa-chart-line"></i>
@@ -1698,11 +1718,15 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                         </div>
                         <div class="card">
                             <i class="fas fa-check-double"></i>
-                            <h3>Rigorous QA Testing</h3>
+                            <h3>QA Testing &amp; Bug Fixes</h3>
                             <p>
-                                Every file is verified in professional testing tools (Testi.at/Litmus) across major email clients and
-                                devices before delivery.
+                                Every file is verified in professional testing tools (Testi.at/Litmus) across major email clients and devices. I diagnose and fix what breaks, from Outlook to dark mode and Gmail clipping.
                             </p>
+                            <a
+                                href="/blog/"
+                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
+                                >See example fixes &rarr;</a
+                            >
                         </div>
                         <div class="card">
                             <i class="fas fa-universal-access"></i>
@@ -1753,7 +1777,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                 padding: 0 20px;
             "
         >
-            Clean, tested emails built for the platform you already use, from simple newsletters to transactional and lifecycle emails. Names with fallbacks, content that changes for different readers, and an email that looks right before it goes out.
+            Clean, tested emails built for the platform you already use, with names, fallbacks and content that changes for different readers.
         </p>
 
         
@@ -1833,7 +1857,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                 line-height: 1.6;
             "
         >
-            <strong style="color: var(--text)">Don't see your platform? I'll work in it.</strong> Every email platform has its own rules and tag format, so I build to yours.
+            <strong style="color: var(--text)">Don't see your platform? I'll work in it.</strong> Every platform has its own tag format, so I build to yours.
         </p>
 
         <p
@@ -1846,63 +1870,13 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                 padding: 0 20px;
             "
         >
-            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. I work with the fields already in your platform. If your emails need data from your site, I write the template and your developer connects the data.
-        </p>
-
-        <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
-            Have an email that should change for different readers? Send it over and tell me about it.
+            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. If your emails need data from your site, I write the template and your developer connects it.
         </p>
     </div>
 </section>
-                    <section id="where-emails-break">
-                <div class="container">
-                    <h2 class="section-title"><i class="fas fa-bug"></i> Where Emails Break</h2>
-                    <div class="fit-box">
-                        <p style="margin-bottom: 1.5rem; font-size: 1.3rem">
-                            A design can look perfect on screen and still fall apart in the inbox. These are the gaps I run into most
-                            often, and what I do about them.
-                        </p>
-                        <ul>
-                            <li>
-                                <b>Design to Code:</b> Layouts designed for screens don't always survive email clients. I rebuild them with email-safe structure so they match the design as closely as each client allows.
-                            </li>
-                            <li>
-                                <b>Drag-and-Drop Builders:</b> Builders output heavy, nested code that's hard to fix or edit. I replace it with clean, hand-coded HTML you can import and maintain.
-                            </li>
-                            <li>
-                                <b>Outlook Rendering:</b> Desktop Outlook ignores spacing, background images and buttons that work elsewhere. I add hand-coded fallbacks and test them.
-                            </li>
-                            <li>
-                                <b>Spacing &amp; Padding:</b> Padding and margins that disappear or change between clients. I build spacing that holds. See my fix for <a href="/blog/mj-group-padding.html" style="color: var(--accent); font-weight: 700">mj-group padding</a>.
-                            </li>
-                            <li>
-                                <b>Images That Don't Shrink:</b> Images that stay full size on phones or get re-scaled in Outlook. I set widths, fluid sizing and fallbacks so they scale properly.
-                            </li>
-                            <li>
-                                <b>Blocked Images:</b> Some clients block images by default. I write meaningful alt text and set background colours so the email still reads.
-                            </li>
-                            <li>
-                                <b>Dark Mode:</b> Colours, logos, buttons and footer text can invert badly in dark mode. I code and test with custom CSS overrides and dual-engine coding so your brand holds up in Apple Mail, Outlook, Gmail and Windows Mail. See how I <a href="/blog/dark-mode-inversion-fixes.html" style="color: var(--accent); font-weight: 700">fix dark mode inversion</a> and <a href="/blog/footer-text-macos-dark-mode.html" style="color: var(--accent); font-weight: 700">footer text in macOS dark mode</a>.
-                            </li>
-                            <li>
-                                <b>Mobile Layout:</b> Columns that don't stack, hard-to-tap buttons and tiny text. I build mobile-first and check across device sizes.
-                            </li>
-                            <li>
-                                <b>Gmail Clipping:</b> Large emails get cut off in Gmail, hiding the footer and unsubscribe link. Clean, minified code keeps the file size down.
-                            </li>
-                        </ul>
-                    </div>
-                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
-                        Seeing one of these in your emails? Send me the details and get a quote.
-                    </p>
-                    <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
-                        <a href="#contact" class="cta-button">Contact me</a>
-                    </div>
-                </div>
-            </section>
          
  
-                        <section id="email-automation" style="background-color: var(--bg-alt)">
+                        <section id="email-automation">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-bolt"></i> Email Automation</h2>
                     <p
@@ -1939,33 +1913,6 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                             <p>What ends the flow, so people stop getting emails once they buy, reply or unsubscribe.</p>
                         </div>
                     </div>
-                    <div class="fit-box">
-                        <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">Automations I Set Up</h3>
-                        <ul>
-                            <li>
-                                <b>Welcome Series:</b> Trigger: a new signup. A short sequence that introduces your brand and guides new
-                                subscribers.
-                            </li>
-                            <li>
-                                <b>Abandoned Cart:</b> Trigger: items left in a cart. Timed reminders that bring shoppers back to checkout.
-                            </li>
-                            <li>
-                                <b>Post-Purchase:</b> Trigger: an order is placed. Confirmation, shipping update, review request and
-                                follow-up.
-                            </li>
-                            <li>
-                                <b>Re-engagement:</b> Trigger: no opens or clicks for a set period. Win-back emails, then stop sending to
-                                inactive contacts.
-                            </li>
-                            <li>
-                                <b>Lead Nurturing:</b> Trigger: a form, tag or link click. Drip emails that guide leads towards a decision.
-                            </li>
-                            <li>
-                                <b>Birthday &amp; Date-Based:</b> Trigger: a date field such as a birthday or renewal. Personalised emails
-                                sent on the day.
-                            </li>
-                        </ul>
-                    </div>
                     <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
                         Available triggers and conditions differ between platforms, so I build each flow to what yours supports. Tell me what should trigger your flow and what should happen next.
                     </p>
@@ -1974,7 +1921,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                     </div>
                 </div>
             </section>
-            <section id="way-we-learn" style="background-color: var(--bg)">
+            <section id="way-we-learn" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
@@ -2003,7 +1950,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                     </div>
                 </div>
             </section>
-            <section id="about" style="background-color: var(--bg-alt)">
+            <section id="about">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-terminal"></i> About Me</h2>
                     <div class="about-content">
@@ -2035,7 +1982,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                 </div>
             </section>
  
-            <section id="github-portfolio">
+            <section id="github-portfolio" style="background-color: var(--bg-alt)">
                 <div class="container" style="text-align: center">
                     <h2 class="section-title"><i class="fab fa-github"></i> Inspect My Code</h2>
                     <div
@@ -2044,7 +1991,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                             border: 2px solid var(--primary);
                             border-bottom: 8px solid var(--primary);
                             background-color: var(--card-bg);
-                            background-image: linear-gradient(135deg, rgba(225, 6, 0, 0.08) 0%, transparent 100%);
+                            background-image: linear-gradient(135deg, rgba(209, 5, 0, 0.08) 0%, transparent 100%);
                         "
                     >
                         <img
@@ -2242,7 +2189,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
                 <div class="social-links">
               <a
     href="https://linleybignouxzqme9nmu.contra.com/"
-    class="social-icon"
+    class="social-icon social-contra"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Visit my Contra Profile"
@@ -2259,13 +2206,13 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
 </a>
                        <a
                     href="https://github.com/LinleyB75/Email-Dev"
-                        class="social-icon"
+                        class="social-icon social-github"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Visit my GitHub Profile"
                         ><i class="fab fa-github"></i
                     ></a>
-                    <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"
+                    <a href="mailto:blanyves@optusnet.com.au" class="social-icon social-email" aria-label="Send me an email"
                         ><i class="fas fa-envelope"></i
                     ></a>
             
@@ -2275,7 +2222,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
            target="_blank" 
            rel="noopener noreferrer" 
            aria-label="Upwork Profile" 
-           class="social-icon">
+           class="social-icon social-upwork">
           <i class="fa-brands fa-upwork"></i>
     </a>
             <!-- Fiverr Profile Icon Link -->
@@ -2283,7 +2230,7 @@ Hi, I'm <b>Linley</b>. I build and test email campaigns, focusing on cross-clien
    target="_blank" 
    rel="noopener noreferrer" 
    aria-label="Fiverr Profile" 
-   class="social-icon">
+   class="social-icon social-fiverr">
   <i class="fa-solid fa-f"></i>
 </a>        
   </div>
