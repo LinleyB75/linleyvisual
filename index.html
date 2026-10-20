@@ -508,6 +508,30 @@
                     margin-right: 0 !important;
                 }
             }
+            .single-card {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: clamp(1.5rem, 4vw, 2.5rem);
+                background: var(--card-bg);
+                border: 1px solid var(--border);
+                border-top: 4px solid var(--accent);
+                border-radius: 10px;
+                box-shadow: var(--shadow);
+                text-align: center;
+            }
+            .single-card h2 {
+                margin-bottom: 1rem;
+                font-size: clamp(1.5rem, 3vw, 2rem);
+                font-weight: 800;
+                line-height: 1.25;
+                color: var(--primary);
+            }
+            .single-card p {
+                max-width: 720px;
+                margin: 0 auto;
+                font-size: 1.1rem;
+                color: var(--text-light);
+            }
             .blog-date {
                 font-size: 0.8rem;
                 color: #fff;
@@ -1098,7 +1122,9 @@
         "MailerLite Email Development",
         "Brevo Email Development",
         "Klaviyo Email Development",
-        "Kit Email Development"
+        "Kit Email Development",
+        "Email Debugging and Troubleshooting",
+        "Email Template Audits and Code Cleanup"
       ]
     }
   ]
@@ -1136,7 +1162,7 @@
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
                         <li>
-                            <a href="#what-i-fix" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a>
+                            <a href="#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a>
                         </li>
                     </ul>
                     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -1276,6 +1302,141 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
 </div>
                 </div>
             </section>
+
+            <section id="what-i-do">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-user-check"></i> What I Do</h2>
+                    <p
+                        style="
+                            text-align: center;
+                            max-width: 800px;
+                            margin: -2rem auto 3rem;
+                            color: var(--text-light);
+                            font-size: 1.15rem;
+                            padding: 0 20px;
+                        "
+                    >
+                        Responsive, tested emails for every stage of the customer journey.
+                    </p>
+                    <div class="grid-cards">
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/TMYfhw65/Screenshot-2026-09-26-161933.webp"
+                                alt="Responsive promotional email template design preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Promotional Campaigns</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Responsive promotional emails coded for every major email client.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/PGXcmWrK/Screenshot-2026-09-26-161007.webp"
+                                alt="Clean newsletter email layout preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletters</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Table-based layouts built for reliable inbox delivery.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/hFTmZkSw/Screenshot-2026-09-26-161246.webp"
+                                alt="E-commerce product grid email design preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">E-commerce Emails</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Product grids and abandoned cart emails that stay clear on mobile.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/ymwj8wh5/batch-300-7210.webp"
+                                alt="Dark mode transactional receipt email preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Transactional Emails</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Receipts and notifications with tailored dark mode styling.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/FkcvNgc0/batch-300-7204.webp"
+                                alt="Welcome series onboarding email template preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Welcome &amp; Onboarding</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Clear visual hierarchy that guides new subscribers.</p>
+                            </div>
+                        </div>
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/d0pk1W0y/batch-300-7203.webp"
+                                alt="Special offer discount campaign email preview"
+                                style="
+                                    width: 100%;
+                                    height: 220px;
+                                    object-fit: cover;
+                                    object-position: top;
+                                    border-bottom: 4px solid var(--accent);
+                                "
+                            />
+                            <div style="padding: 1.5rem">
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Offers &amp; Discounts</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">Promotional elements built to convert, from sales to win-back campaigns.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section id="portfolio" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-laptop-code"></i> Recent Email Builds</h2>
@@ -1585,10 +1746,20 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
                         </div>
                         <div class="card">
                             <i class="fas fa-check-double"></i>
-                            <h3>QA Testing &amp; Bug Fixes</h3>
+                            <h3>QA Testing</h3>
+                            <p>Every email is tested across major email clients and devices, with accessibility checks, before delivery.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-inbox"></i>
+                            <h3>Email Deliverability</h3>
+                            <p>Clean HTML plus SPF, DKIM and DMARC setup on your domain, to avoid issues that affect inbox placement.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-bug"></i>
+                            <h3>Debugging &amp; Fixing</h3>
                             <p>
-                                Tested across major email clients and devices, with accessibility checks. I diagnose and fix what breaks,
-                                from Outlook to dark mode and Gmail clipping.
+                                I find and fix Outlook rendering bugs, dark mode inversion, Gmail clipping, broken spacing and images, and
+                                merge tags that break after upload.
                             </p>
                             <a
                                 href="/blog/"
@@ -1597,9 +1768,20 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
                             >
                         </div>
                         <div class="card">
-                            <i class="fas fa-inbox"></i>
-                            <h3>Email Deliverability</h3>
-                            <p>Clean HTML plus SPF, DKIM and DMARC setup on your domain, to avoid issues that affect inbox placement.</p>
+                            <i class="fas fa-screwdriver-wrench"></i>
+                            <h3>Troubleshooting</h3>
+                            <p>
+                                I trace problems to their cause: empty merge tags, links that don't track, blocked images, and templates
+                                that change after ESP upload.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-magnifying-glass"></i>
+                            <h3>Audits &amp; Code Cleanup</h3>
+                            <p>
+                                Already have a template? I audit it for bloated code, rendering bugs, dark mode and accessibility issues,
+                                then clean it up.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -1682,7 +1864,51 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
                     </p>
                 </div>
             </section>
-           
+            <section id="email-automation">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-bolt"></i> Email Automation</h2>
+                    <p
+                        style="
+                            text-align: center;
+                            max-width: 800px;
+                            margin: -2rem auto 3rem;
+                            color: var(--text-light);
+                            font-size: 1.15rem;
+                            padding: 0 20px;
+                        "
+                    >
+                        Emails that send themselves at the right moment. I plan, build and test automated flows in your email platform, from trigger to final email.
+                    </p>
+                    <div class="grid-cards">
+                        <div class="card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Triggers</h3>
+                            <p>What starts a flow: a signup, purchase, abandoned cart, link click, tag or date.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-clock"></i>
+                            <h3>Delays</h3>
+                            <p>How long the flow waits between emails, such as 1 hour after a cart is left.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-code-branch"></i>
+                            <h3>Conditions</h3>
+                            <p>Splits the flow by what a subscriber did or who they are, such as opened or not.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-flag-checkered"></i>
+                            <h3>Exit Rules</h3>
+                            <p>What ends the flow, so people stop getting emails once they buy or unsubscribe.</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
+                        Triggers and conditions vary by platform, so I build each flow to what yours supports.
+                    </p>
+                    <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
+                        <a href="#contact" class="cta-button">Contact me</a>
+                    </div>
+                </div>
+            </section>
             <section id="way-we-learn" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
@@ -1761,7 +1987,7 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                        Inspect the raw HTML, CSS, MJML, Maizzle and templating logic - Handlebars, Liquid, etc on my GitHub.
+                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML, Maizzle and Handlebars, Liquid or Django/Jinja-like templating logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -1776,47 +2002,19 @@ Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally 
                     </div>
                 </div>
             </section>
-            <section id="web-development" style="border-top: 1px solid var(--border)">
+            <section id="web-development" style="border-top: 1px solid var(--border); padding: clamp(2.5rem, 6vh, 4rem) 0">
                 <div class="container">
-                    <h2 class="section-title"><i class="fas fa-arrow-pointer"></i> After the Click: Landing Pages</h2>
-                    <p
-                        style="
-                            text-align: center;
-                            max-width: 800px;
-                            margin: -2rem auto 3rem;
-                            color: var(--text-light);
-                            font-size: 1.15rem;
-                            padding: 0 20px;
-                        "
-                    >
-                        I also build the landing pages your emails link to, coded in HTML, CSS and JavaScript to match the campaign.
-                    </p>
-
-                    <div class="tech-stack-icons" style="margin: -1rem 0 3rem; color: var(--text)">
-                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-                        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-                        <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-                    </div>
-
-                    <div class="grid-cards">
-                        <div class="card">
-                            <i class="fas fa-bullseye"></i>
-                            <h3>Campaign Landing Pages</h3>
-                            <p>One focused page per campaign, matched to the email so the click feels seamless.</p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-envelope-circle-check"></i>
-                            <h3>Forms &amp; Thank-You Pages</h3>
-                            <p>HTML signup forms with JavaScript validation, connected to your email tools, with UTM-tagged links.</p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-universal-access"></i>
-                            <h3>Responsive &amp; Accessible</h3>
-                            <p>Mobile-first layouts that load quickly, because most email clicks happen on phones.</p>
+                    <div class="single-card">
+                        <h2><i class="fas fa-arrow-pointer"></i> After the Click: Landing Pages</h2>
+                        <p>
+                            I also build the landing pages your emails link to, coded in HTML, CSS and JavaScript to match the campaign: focused campaign pages, signup forms with validation and thank-you pages, all mobile-first and accessible.
+                        </p>
+                        <div class="tech-stack-icons" style="margin: 2rem 0 0; color: var(--text)">
+                            <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                            <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                            <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
                         </div>
                     </div>
-
-               
                 </div>
             </section>
 
