@@ -317,13 +317,6 @@
     padding: clamp(4rem, 10vh, 7rem) 0;
     text-align: center;
 }
-            }
-            .hero h1 {
-                font-size: clamp(1.8rem, 5vw, 3.2rem);
-                margin-bottom: 1.5rem;
-                font-weight: 900;
-                line-height: 1.2;
-            }
             .hero .subtitle-list {
                 display: flex;
                 flex-wrap: wrap;
@@ -514,116 +507,6 @@
                 .final-cta .tech-item svg {
                     margin-right: 0 !important;
                 }
-            }
-            #what-i-do .grid-cards {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            #what-i-do .grid-cards .card {
-                flex: 0 0 calc((100% - 2rem) / 2);
-                max-width: calc((100% - 2rem) / 2);
-            }
-            @media (max-width: 767px) {
-                #what-i-do .grid-cards .card {
-                    flex-basis: 100%;
-                    max-width: 100%;
-                }
-            }
-            .location-section {
-                padding: clamp(2rem, 5vh, 3rem) 0;
-            }
-            .location-card {
-                display: flex;
-                align-items: center;
-                gap: clamp(1.5rem, 4vw, 3rem);
-                max-width: 1000px;
-                margin: 0 auto;
-                padding: clamp(1.5rem, 4vw, 2.5rem);
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-top: 4px solid var(--accent);
-                border-radius: 10px;
-                box-shadow: var(--shadow);
-            }
-            .location-logo {
-                flex: 0 0 auto;
-                height: clamp(80px, 12vw, 130px);
-                width: auto;
-                max-width: 100%;
-            }
-            .location-text {
-                flex: 1 1 auto;
-                min-width: 0;
-                text-align: left;
-            }
-            .location-text h2 {
-                margin-bottom: 1rem;
-                font-size: clamp(1.4rem, 3vw, 2rem);
-                font-weight: 800;
-                line-height: 1.25;
-                color: var(--primary);
-            }
-            .location-text p {
-                font-size: 1.1rem;
-                color: var(--text-light);
-            }
-            .location-text .location-stack {
-                margin-top: 1rem;
-                font-size: 1rem;
-                font-weight: 600;
-                line-height: 1.7;
-                color: var(--text);
-            }
-            .location-link {
-                display: inline-block;
-                margin-top: 1.25rem;
-                font-size: 1.05rem;
-                font-weight: 700;
-                color: var(--accent);
-                text-decoration: none;
-            }
-            .location-link:hover {
-                text-decoration: underline;
-            }
-            @media (max-width: 767px) {
-                .location-card {
-                    flex-direction: column;
-                    text-align: center;
-                }
-                .location-text {
-                    text-align: center;
-                }
-            }
-            .portrait-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-            .portrait-card {
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-top: 4px solid var(--accent);
-                border-radius: 10px;
-                overflow: hidden;
-                box-shadow: var(--shadow);
-                display: flex;
-                flex-direction: column;
-                text-align: left;
-            }
-            .portrait-card img {
-                width: 100%;
-                height: 420px;
-                object-fit: cover;
-                object-position: top;
-                border-bottom: 3px solid var(--border);
-            }
-            .portrait-card .content {
-                padding: 1.5rem;
             }
             .blog-date {
                 font-size: 0.8rem;
@@ -873,9 +756,6 @@
                 .grid-cards {
                     grid-template-columns: 1fr;
                 }
-                .portrait-grid {
-                    grid-template-columns: 1fr;
-                }
                 .footer-credit {
                     font-size: 0.85rem;
                     padding: 0 10px;
@@ -1088,9 +968,8 @@
                     display: none;
                 }
             }
-                .site-header .nav-for-you::after {
-                    display: none;
-                }
+            .site-header .nav-for-you::after {
+                display: none;
             }
 
     
@@ -1156,7 +1035,32 @@
         "Transactional Email Templates",
         "Dynamic Email Content",
         "JavaScript",
-        "HTML Forms & ESP Integration"
+        "HTML Forms & ESP Integration",
+        {
+          "@type": "Thing",
+          "name": "Mailchimp",
+          "sameAs": "https://mailchimp.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "MailerLite",
+          "sameAs": "https://www.mailerlite.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "Brevo",
+          "sameAs": "https://www.brevo.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "Klaviyo",
+          "sameAs": "https://www.klaviyo.com/"
+        },
+        {
+          "@type": "Thing",
+          "name": "Kit (formerly ConvertKit)",
+          "sameAs": "https://kit.com/"
+        }
       ]
     },
     {
@@ -1164,7 +1068,7 @@
       "@id": "https://linleyb.com/#service",
       "name": "Email Development Services",
       "url": "https://linleyb.com/",
-      "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, plus the landing pages they link to, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing.",
+      "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, plus the landing pages they link to, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
       "provider": {
         "@id": "https://linleyb.com/#person"
       },
@@ -1189,7 +1093,12 @@
         "Dynamic Email Content",
         "Transactional Email Templates",
         "HTML Forms & ESP Integration",
-        "JavaScript"
+        "JavaScript",
+        "Mailchimp Email Development",
+        "MailerLite Email Development",
+        "Brevo Email Development",
+        "Klaviyo Email Development",
+        "Kit Email Development"
       ]
     }
   ]
@@ -1227,7 +1136,7 @@
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
                         <li>
-                            <a href="#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a>
+                            <a href="#what-i-fix" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a>
                         </li>
                     </ul>
                     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -1274,7 +1183,7 @@
  
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                      <p style="margin-top: 1.5rem">
-Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients locally and  worldwide.</br> I build and test email campaigns, focusing on cross-client compatibility testing and reliable rendering and integrate them into your Email Service Provider (ESP).
+Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients locally and  worldwide.<br /> I build and test email campaigns, focusing on cross-client compatibility testing and reliable rendering and integrate them into your Email Service Provider (ESP).
 </p>
  
                             <p style="margin-top: 1.5rem">
@@ -1636,49 +1545,50 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                     </div>
                 </div>
             </section>
- 
-        >
+
             <section id="what-i-fix">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-code-branch"></i> What I Fix</h2>
                     <div class="grid-cards">
                         <div class="card">
                             <i class="fas fa-laptop-code"></i>
-                            <h3>HTML, CSS,  MJML &amp; Maizzle Coding</h3>
+                            <h3>HTML, CSS, MJML &amp; Maizzle Coding</h3>
                             <p>
-                                Coded responsive emails in HTML/CSS, MJML or Maizzle with Tailwind CSS, built to survive legacy
-                                desktop clients.
+                                Responsive emails coded from your designs (Figma, Sketch, XD, PSD), built to survive legacy desktop clients.
                             </p>
+                            <a
+                                href="https://linleyb.com/portfolio.html"
+                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
+                                >See my coded emails &rarr;</a
+                            >
                         </div>
                         <div class="card">
                             <i class="fas fa-code"></i>
                             <h3>Dynamic Content Templating</h3>
                             <p>
-                                Dynamic templating in Handlebars, Liquid and Django/Jinja-like syntax, so personalised, data-driven
-                                content renders accurately for every recipient.
+                                Handlebars, Liquid and Django/Jinja-like templating, so personalised content renders correctly for every
+                                recipient.
                             </p>
                         </div>
                         <div class="card">
                             <i class="fas fa-gears"></i>
                             <h3>Email Automation</h3>
-                            <p>
-                                I set up automated flows in your platform, from the trigger and timing to the emails themselves, and
-                                test them before they go live.
-                            </p>
+                            <p>Automated flows built in your platform, from trigger and timing to the emails, tested before they go live.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-plug"></i>
                             <h3>ESP Integration &amp; Setup</h3>
                             <p>
-                                I prepare your sending account, upload coded templates and run live test sends, so layout and merge
-                                tags still work after upload.
+                                I prepare your sending account, upload templates, tag links with UTMs and run live test sends, so merge tags
+                                still work after upload.
                             </p>
                         </div>
                         <div class="card">
                             <i class="fas fa-check-double"></i>
                             <h3>QA Testing &amp; Bug Fixes</h3>
                             <p>
-                                Every file is verified in professional testing tools  across major email clients and devices. I diagnose and fix what breaks, from Outlook to dark mode and Gmail clipping.
+                                Tested across major email clients and devices, with accessibility checks. I diagnose and fix what breaks,
+                                from Outlook to dark mode and Gmail clipping.
                             </p>
                             <a
                                 href="/blog/"
@@ -1687,137 +1597,92 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                             >
                         </div>
                         <div class="card">
-                            <i class="fas fa-universal-access"></i>
-                            <h3>Email Accessibility</h3>
-                            <p>Semantic coding with correct ARIA roles and alt-text to ensure screen-reader compatibility.</p>
-                        </div>
-                        <div class="card">
                             <i class="fas fa-inbox"></i>
                             <h3>Email Deliverability</h3>
-                            <p>
-                                Clean HTML plus SPF, DKIM and DMARC setup on your domain (Cloudflare, GoDaddy, Namecheap and more), to
-                                avoid issues that can affect inbox placement.
-                            </p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-link"></i>
-                            <h3>UTM Link Tagging</h3>
-                            <p>
-                                I add your UTM tracking tags to every link, so your analytics shows which email and which button drove
-                                each visit.
-                            </p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-file-code"></i>
-                            <h3>Design to Code</h3>
-                            <p>
-                                Send me your design files (Figma, Sketch, XD, PSD) and brand assets, and I'll build, test and deliver clean email code. 
-                            </p>
-                            <a
-                                href="https://linleyb.com/portfolio.html"
-                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-                                >See my designed &amp; coded emails &rarr;</a
-                            >
+                            <p>Clean HTML plus SPF, DKIM and DMARC setup on your domain, to avoid issues that affect inbox placement.</p>
                         </div>
                     </div>
                 </div>
             </section>
-             <section id="esp-platforms" style="background-color: var(--bg-alt)">
-    <div class="container">
-        <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
-        <p
-            style="
-                text-align: center;
-                max-width: 800px;
-                margin: -2rem auto 3rem;
-                color: var(--text-light);
-                font-size: 1.15rem;
-                padding: 0 20px;
-            "
-        >
-            Clean, tested emails built for the platform you already use, with names, fallbacks and content that changes for different readers.
-        </p>
+            <section id="esp-platforms" style="background-color: var(--bg-alt)">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
+                    <p
+                        style="
+                            text-align: center;
+                            max-width: 800px;
+                            margin: -2rem auto 3rem;
+                            color: var(--text-light);
+                            font-size: 1.15rem;
+                            padding: 0 20px;
+                        "
+                    >
+                        Clean, tested emails built for the platform you already use.
+                    </p>
 
-        
+                    <!-- Tag and conditional content reference -->
+                    <div style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--text-light)">
+                                    <th style="padding: 10px; font-weight: bold">Platform</th>
+                                    <th style="padding: 10px; font-weight: bold">Tag language</th>
+                                    <th style="padding: 10px; font-weight: bold">First-name tag</th>
+                                    <th style="padding: 10px; font-weight: bold">Conditional content</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--border)">
+                                    <td style="padding: 10px; font-weight: bold">MailerLite</td>
+                                    <td style="padding: 10px">Variable tags</td>
+                                    <td style="padding: 10px"><code>{$name}</code></td>
+                                    <td style="padding: 10px">Merge tags only</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border)">
+                                    <td style="padding: 10px; font-weight: bold">Mailchimp</td>
+                                    <td style="padding: 10px">Mailchimp merge tags</td>
+                                    <td style="padding: 10px"><code>*|FNAME|*</code></td>
+                                    <td style="padding: 10px"><code>*|IF:|*</code> / <code>*|ELSE:|*</code></td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border)">
+                                    <td style="padding: 10px; font-weight: bold">Brevo</td>
+                                    <td style="padding: 10px">Brevo template language</td>
+                                    <td style="padding: 10px"><code>{{ contact.FIRSTNAME }}</code></td>
+                                    <td style="padding: 10px"><code>{% if %}</code> / <code>{% elif %}</code></td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border)">
+                                    <td style="padding: 10px; font-weight: bold">Klaviyo</td>
+                                    <td style="padding: 10px">Django-style tags</td>
+                                    <td style="padding: 10px"><code>{{ first_name }}</code></td>
+                                    <td style="padding: 10px"><code>{% if %}</code> / <code>{% elif %}</code></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; font-weight: bold">Kit</td>
+                                    <td style="padding: 10px">Liquid</td>
+                                    <td style="padding: 10px"><code>{{ subscriber.first_name }}</code></td>
+                                    <td style="padding: 10px">Liquid if / else</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-        <!-- Tag and conditional content reference -->
-        <div style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left;">
-                <thead>
-                    <tr style="border-bottom: 2px solid var(--text-light);">
-                        <th style="padding: 10px; font-weight: bold;">Platform</th>
-                        <th style="padding: 10px; font-weight: bold;">Tag language</th>
-                        <th style="padding: 10px; font-weight: bold;">First-name tag</th>
-                        <th style="padding: 10px; font-weight: bold;">Conditional content</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 10px; font-weight: bold;">MailerLite</td>
-                        <td style="padding: 10px;">Variable tags</td>
-                        <td style="padding: 10px;"><code>{$name}</code></td>
-                        <td style="padding: 10px;">Merge tags only</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 10px; font-weight: bold;">Mailchimp</td>
-                        <td style="padding: 10px;">Mailchimp merge tags</td>
-                        <td style="padding: 10px;"><code>*|FNAME|*</code></td>
-                        <td style="padding: 10px;"><code>*|IF:|*</code> / <code>*|ELSE:|*</code></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 10px; font-weight: bold;">Brevo</td>
-                        <td style="padding: 10px;">Brevo template language</td>
-                        <td style="padding: 10px;"><code>{{ contact.FIRSTNAME }}</code></td>
-                        <td style="padding: 10px;"><code>{% if %}</code> / <code>{% elif %}</code></td>
-                    </tr>
-                       <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 10px; font-weight: bold;">Klaviyo</td>
-                        <td style="padding: 10px;">Klaviyo template langauge</td>
-                        <td style="padding: 10px;"><code>{{ customer.first_name }}</code></td>
-                        <td style="padding: 10px;"><code>{% if %}</code> / <code>{% elif %}</code></td>
-                    </tr>
-                        <tr style="border-bottom: 1px solid var(--border);">
-                        <td style="padding: 10px; font-weight: bold;">Kit</td>
-                        <td style="padding: 10px;">Liquid</td>
-                        <td style="padding: 10px;"><code>{{ subscriber.first_name }}</code></td>
-                        <td style="padding: 10px;">Liquid if / else</td>
-                    </tr>
-                
-                </tbody>
-            </table>
-        </div>
-
-        <p
-            style="
-                text-align: center;
-                max-width: 800px;
-                margin: 2.5rem auto 0;
-                color: var(--text-light);
-                font-size: 1.15rem;
-                padding: 0 20px;
-                line-height: 1.6;
-            "
-        >
-            <strong style="color: var(--text)">Don't see your platform? I'll work in it.</strong> Every platform has its own tag format, so I build to yours.
-        </p>
-
-        <p
-            style="
-                text-align: center;
-                max-width: 800px;
-                margin: 2.5rem auto 0;
-                color: var(--text-light);
-                font-size: 1.05rem;
-                padding: 0 20px;
-            "
-        >
-            <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. If your emails need data from your site, I write the template and your developer connects it.
-        </p>
-    </div>
-</section>
-         
- 
-                        <section id="email-automation">
+                    <p
+                        style="
+                            text-align: center;
+                            max-width: 800px;
+                            margin: 2.5rem auto 0;
+                            color: var(--text-light);
+                            font-size: 1.1rem;
+                            padding: 0 20px;
+                            line-height: 1.6;
+                        "
+                    >
+                        <strong style="color: var(--text)">Another platform?</strong> I'll build to its tag format.
+                        <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. I write the template and your developer connects the data.
+                    </p>
+                </div>
+            </section>
+            <section id="email-automation">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-bolt"></i> Email Automation</h2>
                     <p
@@ -1830,32 +1695,32 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                             padding: 0 20px;
                         "
                     >
-                        Emails that send themselves at the right moment. I plan, build and test automated flows in your email platform, from the trigger to the final email.
+                        Emails that send themselves at the right moment. I plan, build and test automated flows in your email platform, from trigger to final email.
                     </p>
                     <div class="grid-cards">
                         <div class="card">
                             <i class="fas fa-bolt"></i>
                             <h3>Triggers</h3>
-                            <p>The event that starts a flow, such as a signup, purchase, abandoned cart, link click, tag or date.</p>
+                            <p>What starts a flow: a signup, purchase, abandoned cart, link click, tag or date.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-clock"></i>
                             <h3>Delays</h3>
-                            <p>How long the flow waits between emails, such as 1 hour after a cart is left or 3 days after signup.</p>
+                            <p>How long the flow waits between emails, such as 1 hour after a cart is left.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-code-branch"></i>
                             <h3>Conditions</h3>
-                            <p>Splits the flow by what a subscriber did or who they are, such as opened or not, new or returning.</p>
+                            <p>Splits the flow by what a subscriber did or who they are, such as opened or not.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-flag-checkered"></i>
                             <h3>Exit Rules</h3>
-                            <p>What ends the flow, so people stop getting emails once they buy, reply or unsubscribe.</p>
+                            <p>What ends the flow, so people stop getting emails once they buy or unsubscribe.</p>
                         </div>
                     </div>
                     <p style="text-align: center; margin-top: 2rem; color: var(--text-light); font-size: 1.1rem">
-                        Available triggers and conditions differ between platforms, so I build each flow to what yours supports. Tell me what should trigger your flow and what should happen next.
+                        Triggers and conditions vary by platform, so I build each flow to what yours supports.
                     </p>
                     <div class="consult-btn-wrapper" style="margin-top: 1.5rem">
                         <a href="#contact" class="cta-button">Contact me</a>
@@ -1866,61 +1731,57 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
-                        <p style="margin-bottom: 1.5rem; font-size: 1.3rem">
-                            I focus on <b>clean code and reliable delivery</b>. I do not do copywriting, marketing, or
-                            strategy. I solve your technical bottlenecks.
-                        </p>
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            My process is <b>simple and task-based</b>, acting as a technical pair of hands for your email marketing projects.
+                            I focus on <b>clean code and reliable delivery</b> and act as a technical pair of hands for your email projects. I do not do copywriting, marketing or strategy.
                         </p>
-                        <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Streamlined Handoff Process</h3>
+                        <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
                             <li>
-                                <b>1. Discuss &amp; Handoff:</b> We talk through your project, goals and brand needs. You send your design files and assets and I build to your specifications.
+                                <b>1. Discuss &amp; Handoff:</b> We talk through your project and brand needs. You send your design files and assets, and I build to your specifications.
                             </li>
                             <li>
-                                <b>2. Hand-Coded Build:</b> I code and build the email in HTML/CSS, MJML or Maizzle, adding dynamic templating in Handlebars, Liquid or Django/Jinja-like syntax where it needs personalised content, to match the design as closely as each email client allows.
+                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS, MJML or Maizzle, adding Handlebars, Liquid or Django/Jinja-like templating where it needs personalised content.
                             </li>
                             <li>
-                                <b>3. Test &amp; Minify:</b> I test the code across major email clients and devices, fix what breaks, then minify the final file to keep the size down and avoid Gmail clipping.
+                                <b>3. Test &amp; Minify:</b> I test across major email clients and devices, fix what breaks, then minify the file to avoid Gmail clipping.
                             </li>
                             <li>
-                                <b>4. Review &amp; Delivery:</b> You review the tested email, request any agreed changes and approve it. You then receive a zipped folder with clean HTML and assets, ready to upload and send, or set up in your ESP, including as an automated flow.
+                                <b>4. Review &amp; Delivery:</b> You review and approve the tested email, then receive a zipped folder of clean HTML and assets, ready to upload and send or set up in your ESP, including as an automated flow.
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
-   <section id="about">
-    <div class="container">
-        <h2 class="section-title"><i class="fas fa-terminal"></i> About Me</h2>
-        <div class="about-content">
-            <div class="about-image">
-                <img
-                    loading="lazy"
-                    decoding="async"
-                    src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp"
-                    alt="Linley Bignoux - Email Developer"
-                    width="350"
-                    height="350"
-                />
-            </div>
-            <div class="about-text">
-                <p>
-                    Hello, I'm Linley Bignoux, an Email Developer based in Mauritius. I am Australian, originally from Melbourne. I help businesses in Mauritius and digital agencies worldwide build, code, integrate, and solve the technical issues that affect promotional, transactional, welcome, drip, lifecycle, abandoned cart, re-engagement, and seasonal email campaigns across their ESPs: <b>Mailchimp</b>, <b>Brevo</b>, <b>Klaviyo</b>, and <b>MailerLite</b> and <b>Kit</b>.
-                </p>
-                <br />
-                <p>
-                    I focus entirely on technical work: writing clean HTML/CSS, building responsive layouts with MJML &amp; Maizzle, and creating dynamic data templates using <b>Liquid</b>, <b>Handlebars</b>, and <b>Django</b>. From dynamic cart loops to complex automated flows, I ensure your email campaigns render flawlessly—including dark mode support and legacy Outlook compatibility.
-                </p>
-                <h3>Professional Background &amp; Qualifications</h3>
-                <p>
-                    I bring 18 years of industry experience in logistics, information technology, and education. I hold multiple qualifications as an Email Developer, including professional certificates in Email Development, Web Development, IT Technical Support, and Email Marketing. I rigorously test every template and integrate it directly with ESP accounts.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+            <section id="about">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-terminal"></i> About Me</h2>
+                    <div class="about-content">
+                        <div class="about-image">
+                            <img
+                                loading="lazy"
+                                decoding="async"
+                                src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp"
+                                alt="Linley Bignoux - Email Developer"
+                                width="350"
+                                height="350"
+                            />
+                        </div>
+                        <div class="about-text">
+                            <p>
+                                Hello, I'm <b>Linley Bignoux</b>, an email developer based in Mauritius, originally from Melbourne, Australia. I help businesses in Mauritius and digital agencies worldwide build, integrate and fix promotional, transactional, welcome, drip, abandoned cart and re-engagement emails in <b>Mailchimp</b>, <b>Brevo</b>, <b>Klaviyo</b>, <b>MailerLite</b> and <b>Kit</b>.
+                            </p>
+                            <br />
+                            <p>
+                                I focus on technical work: clean HTML/CSS, responsive layouts in MJML and Maizzle, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility.
+                            </p>
+                            <h3>Background &amp; Qualifications</h3>
+                            <p>
+                                I bring 18 years of experience in logistics, IT and education, and hold certificates in Email Development, Web Development, IT Technical Support and Email Marketing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section id="github-portfolio" style="background-color: var(--bg-alt)">
                 <div class="container" style="text-align: center">
                     <h2 class="section-title"><i class="fab fa-github"></i> Inspect My Code</h2>
@@ -1944,7 +1805,7 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is coded from scratch. Visit my GitHub to inspect the raw HTML, CSS, MJML, Maizzle and Handlebars, Liquid or Django/Jinja-like templating logic, and review my coding practices firsthand.
+                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML, Maizzle and templating logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -1959,52 +1820,52 @@ Hi, I'm <b>Linley</b>, an email developer based in Mauritius, serving clients lo
                     </div>
                 </div>
             </section>
-                    <section id="web-development" style="border-top: 1px solid var(--border)">
-    <div class="container">
-        <h2 class="section-title"><i class="fas fa-arrow-pointer"></i> After the Click: Landing Pages</h2>
-        <p
-            style="
-                text-align: center;
-                max-width: 800px;
-                margin: -2rem auto 3rem;
-                color: var(--text-light);
-                font-size: 1.15rem;
-                padding: 0 20px;
-            "
-        >
-            Your emails send people somewhere. I build the pages they land on, hand-coded in HTML, CSS and JavaScript to match the campaign.
-        </p>
+            <section id="web-development" style="border-top: 1px solid var(--border)">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-arrow-pointer"></i> After the Click: Landing Pages</h2>
+                    <p
+                        style="
+                            text-align: center;
+                            max-width: 800px;
+                            margin: -2rem auto 3rem;
+                            color: var(--text-light);
+                            font-size: 1.15rem;
+                            padding: 0 20px;
+                        "
+                    >
+                        I also build the landing pages your emails link to, coded in HTML, CSS and JavaScript to match the campaign.
+                    </p>
 
-        <div class="tech-stack-icons" style="margin: -1rem 0 3rem; color: var(--text)">
-            <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-            <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-            <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-        </div>
+                    <div class="tech-stack-icons" style="margin: -1rem 0 3rem; color: var(--text)">
+                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                        <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    </div>
 
-        <div class="grid-cards">
-            <div class="card">
-                <i class="fas fa-bullseye"></i>
-                <h3>Campaign Landing Pages</h3>
-                <p>One focused page per email campaign, coded to match the email so the click from the inbox feels seamless.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-envelope-circle-check"></i>
-                <h3>Forms &amp; Thank-You Pages</h3>
-                <p>HTML signup forms with JavaScript validation, connected to your existing email tools, with UTM-tagged links.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-universal-access"></i>
-                <h3>Responsive &amp; Accessible</h3>
-                <p>Mobile-first layouts that load quickly and work for every visitor, because most email clicks happen on phones.</p>
-            </div>
-        </div>
+                    <div class="grid-cards">
+                        <div class="card">
+                            <i class="fas fa-bullseye"></i>
+                            <h3>Campaign Landing Pages</h3>
+                            <p>One focused page per campaign, matched to the email so the click feels seamless.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-envelope-circle-check"></i>
+                            <h3>Forms &amp; Thank-You Pages</h3>
+                            <p>HTML signup forms with JavaScript validation, connected to your email tools, with UTM-tagged links.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-universal-access"></i>
+                            <h3>Responsive &amp; Accessible</h3>
+                            <p>Mobile-first layouts that load quickly, because most email clicks happen on phones.</p>
+                        </div>
+                    </div>
 
-        <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
-            Need a full website? I also build hand-coded static sites.
-        </p>
-    </div>
-</section>
- 
+                    <p style="text-align: center; margin-top: 2.5rem; color: var(--text-light); font-size: 1.1rem">
+                        Need a full website? I also build static sites.
+                    </p>
+                </div>
+            </section>
+
             <section id="contact" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
