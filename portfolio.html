@@ -809,6 +809,79 @@
     line-height: 1.7;
     color: var(--text-light);
 }
+
+    /* ---------- Portfolio FAQ Section Styles ---------- */
+.portfolio-faq-section {
+    background-color: var(--bg-alt);
+    padding: clamp(3.5rem, 8vh, 6rem) 0;
+}
+
+.portfolio-faq-section .section-title {
+    text-align: center;
+    color: var(--primary);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 3.5rem;
+}
+
+.faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow);
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--primary);
+}
+
+.faq-item summary {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    padding-right: 2rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "\f078";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.faq-item p {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+}
 </style>
 
   <script type="application/ld+json">
@@ -1457,7 +1530,7 @@
 
                 </div>
             </section>
-<section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+<section id="faq" class="portfolio-faq-section">
     <div class="container">
         <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
         <div class="faq-list">
@@ -1487,7 +1560,7 @@
             </details>
             <details class="faq-item">
                 <summary>How are multi-column layouts handled on smaller mobile screens?</summary>
-                <p>Multi-column product grids and image-text blocks utilize fluid responsive breakpoints and MJML stacking logic to smoothly transition into clean, single-column vertical flows on mobile viewports.</p>
+                <p>Multi-product grids and image-text blocks utilize fluid responsive breakpoints and MJML stacking logic to smoothly transition into clean, single-column vertical flows on mobile viewports.</p>
             </details>
         </div>
     </div>
