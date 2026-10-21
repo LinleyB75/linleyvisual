@@ -36,58 +36,51 @@
     "@context": "https://schema.org",
     "@graph": [
         {
-            "@type": "WebSite",
-            "@id": "https://linleyb.com/#website",
-            "url": "https://linleyb.com/",
-            "name": "Linley Bignoux | Freelance Email Developer",
-            "inLanguage": ["en-AU", "en-MU"],
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/mj-group-padding.html#article",
+            "headline": "MJML images shrinking and spacing apart in columns: the padding fix",
+            "description": "How to fix MJML images in 2 and 3 column layouts shrinking and separating in webmail by zeroing padding.",
+            "datePublished": "2026-10-04",
+            "author": { "@id": "https://linleyb.com/#person" },
             "publisher": { "@id": "https://linleyb.com/#person" }
         },
         {
-            "@type": "Person",
-            "@id": "https://linleyb.com/#person",
-            "name": "Linley Bignoux",
-            "jobTitle": "Email Developer",
-            "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "nationality": { "@type": "Country", "name": "Australia" },
-            "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-            "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
-            "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
-        },
-        {
-            "@type": "ProfessionalService",
-            "@id": "https://linleyb.com/#service",
-            "name": "Linley Bignoux Email Development",
-            "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
-            "provider": { "@id": "https://linleyb.com/#person" },
-            "areaServed": [
-                { "@type": "Country", "name": "Mauritius" },
-                { "@type": "AdministrativeArea", "name": "Worldwide" }
-            ],
-            "serviceType": [
-                "MJML development",
-                "HTML email coding",
-                "Maizzle development",
-                "Handlebars email templating",
-                "Email testing and QA"
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/mj-group-padding.html#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What causes MJML images inside columns or mj-group to shrink and space apart?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "When using multi-column or group layouts in MJML, default or inherited padding and margins can conflict across webmail clients, causing images to unexpectedly scale down and create large unwanted gaps."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How is the MJML column image spacing bug fixed?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The issue is resolved by zeroing out or explicitly managing padding (setting padding to 0 on the affected columns or images) to stabilise responsive table rendering across webmail clients."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which email clients are most prone to MJML column spacing issues?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Webmail clients like Gmail and various browser-based or mobile email readers often handle responsive table and group layouts differently, making explicit padding management essential."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Were these MJML layout fixes tested across multiple clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes, every documented layout fix and code snippet is rigorously tested and verified across actual desktop, webmail, and mobile email clients."
+                    }
+                }
             ]
-        },
-        {
-            "@type": "BlogPosting",
-            "@id": "https://linleyb.com/mj-group-padding.html#richpost",
-            "url": "https://linleyb.com/mj-group-padding.html",
-            "headline": "Understanding MJML Group Padding",
-            "datePublished": "2026-10-02T08:00:00+00:00",
-            "dateModified": "2026-10-02T08:00:00+00:00",
-            "author": { "@id": "https://linleyb.com/#person" },
-            "publisher": { "@id": "https://linleyb.com/#person" },
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "https://linleyb.com/mj-group-padding.html"
-            }
         }
     ]
 }
