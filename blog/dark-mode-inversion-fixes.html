@@ -31,6 +31,48 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
+!--  PUT THE JSON-LD FAQ SCHEMA RIGHT HERE -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What caused the button text to turn blue in Outlook, and how was it fixed?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In certain Outlook desktop clients and Outlook.com, client-side dark mode inversion incorrectly recoloured custom button text. This was fixed by using explicit colour locks, a span wrapper with inline color rules, and Outlook.com attribute targets like [data-ogsc]."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How were footer backgrounds and social icons protected against unwanted dark mode recolouring?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The footer and social sections were assigned a stable dark grey background (#3D3D3D). Matching this hex code for both container backgrounds and social elements ensured the design harmony stayed intact across clients."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why did footer text render black in macOS dark mode, and how was it resolved?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Apple's data detectors reformatted text containing an address into links and overrode styles. The fix combined disabling format detectors via meta tags, forcing color inherit on data detectors, and setting explicit background colours on every nested footer block."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How widely were these dark mode inversion fixes tested?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Every documented fix and MJML code snippet in this post was tested and validated across 130 actual desktop, webmail, and mobile email clients."
+                }
+            }
+        ]
+    }
+    </script>
+    
 </head>
 <body>
 
