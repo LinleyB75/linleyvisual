@@ -14,70 +14,58 @@
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-
-    <!-- EDIT: title, description, canonical, og:url for each post -->
-    <title>POST TITLE | Email Dev Notes | Linley Bignoux</title>
-    <meta name="description" content="One sentence describing the problem and the fix (about 150 characters).">
-    <link rel="canonical" href="https://linleyb.com/blog/POST-FILE-NAME.html">
+    
+    <!-- CHANGE PER POST -->
+    <title>POST TITLE HERE | Linley Bignoux</title>
+    <meta name="description" content="POST DESCRIPTION HERE">
+    <link rel="canonical" href="https://linleyb.com/blog/YOUR-POST-FILENAME.html">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
-    <meta property="og:title" content="POST TITLE | Email Dev Notes">
-    <meta property="og:description" content="One sentence describing the problem and the fix.">
-    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
-    <meta property="og:url" content="https://linleyb.com/blog/POST-FILE-NAME.html">
-    <meta property="og:type" content="article">
-
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@graph": [
-        {
-            "@type": "WebSite",
-            "@id": "https://linleyb.com/#website",
-            "url": "https://linleyb.com/",
-            "name": "Linley Bignoux | Freelance Email Developer",
-            "publisher": { "@id": "https://linleyb.com/#person" }
-        },
-        {
-            "@type": "Person",
-            "@id": "https://linleyb.com/#person",
-            "name": "Linley Bignoux",
-            "jobTitle": "Email Developer",
-            "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-            "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
-            "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
-        },
-        {
-            "@type": "ProfessionalService",
-            "@id": "https://linleyb.com/#service",
-            "name": "Linley Bignoux Email Development",
-            "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DIRU2-BML.jpg",
-            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
-            "provider": { "@id": "https://linleyb.com/#person" },
-            "areaServed": [
-                { "@type": "Country", "name": "Mauritius" },
-                { "@type": "AdministrativeArea", "name": "Worldwide" }
-            ],
-            "serviceType": [
-                "MJML development",
-                "HTML email coding",
-                "Maizzle development",
-                "Handlebars email templating",
-                "Email testing and QA"
-            ]
-        }
-    ]
-}
-</script>
-    
+
+    <!-- JSON-LD Structured Data Template (UPDATE VALUES PER POST) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BlogPosting",
+                "@id": "https://linleyb.com/blog/YOUR-POST-FILENAME.html#article",
+                "headline": "POST TITLE HERE",
+                "description": "POST DESCRIPTION HERE",
+                "datePublished": "YYYY-MM-DD",
+                "author": { "@id": "https://linleyb.com/#person" },
+                "publisher": { "@id": "https://linleyb.com/#person" }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://linleyb.com/blog/YOUR-POST-FILENAME.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "QUESTION 1 HERE?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "ANSWER 1 HERE."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "QUESTION 2 HERE?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "ANSWER 2 HERE."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -86,9 +74,8 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span class="logo-name">Linley Bignoux</span>
-        <span class="pipe">|</span>
-        <span class="job-title">Email Developer &amp; Web Developer</span>
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span> 
+        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
       </div>
     </a>
 
@@ -102,7 +89,7 @@
         <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
         <li><a href="/#about">About</a></li>
         <li><a href="/certifications.html">Certs</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
         <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
@@ -113,79 +100,58 @@
 </header>
 
 <main role="main">
-  <article class="post-wrap">
-    <a class="back-link" href="/blog/">&larr; All posts</a>
+    <article class="post-wrap">
+        <a href="/blog/" class="back-link">&larr; All posts</a>
+        <span class="blog-date">CATEGORY • TOPIC</span>
+        <h1>POST TITLE HERE</h1>
+        <div class="post-meta">Published DATE HERE</div>
 
-    <span class="blog-date">MJML • Layout</span>
-    <h1>POST TITLE: the problem as someone would search it</h1>
-    <p class="post-meta">Published 1 October 2026</p>
-    <div class="tag-row"><span class="tag">mjml</span><span class="tag">padding</span><span class="tag">webmail</span></div>
+        <div class="post-content">
+            <p>POST CONTENT HERE...</p>
 
-    <div class="post-content">
+            <h2>Section Heading</h2>
+            <p>More post content here...</p>
+        </div>
 
-      <h2>The problem</h2>
-      <p>What you saw, in one or two sentences. Add a screenshot below.</p>
-      <img src="/blog/images/POST-before.png" alt="Describe what the screenshot shows" width="800" height="500" loading="lazy">
+        <div class="post-cta">
+            <p>Need this kind of problem fixed in your emails? I code, test, and fix email templates across clients.</p>
+            <a href="/#contact" class="cta-button">Get in touch</a>
+        </div>
+    </article>
 
-      <h2>Where it happens</h2>
-      <p>Clients, versions, and viewport widths where you saw it.</p>
-
-      <h2>The cause</h2>
-      <div class="status-box">
-        <p><b>Status:</b> Suspected (change to Confirmed after retesting)</p>
-      </div>
-      <p>Why it happens, in plain words.</p>
-
-      <h2>The fix</h2>
-      <p>Before:</p>
-<pre><code>&lt;mj-image src="placeholder.jpg" /&gt;</code></pre>
-      <p>After:</p>
-<pre><code>&lt;mj-image src="placeholder.jpg" padding="0" /&gt;</code></pre>
-
-      <h2>What I retested</h2>
-      <ul>
-        <li>Client or device and result</li>
-        <li>Client or device and result</li>
-      </ul>
-
-      <h2>Takeaway</h2>
-      <p>One sentence the reader can remember.</p>
-
-    </div>
-
-    <div class="post-cta">
-      <p>Need this kind of problem fixed in your emails? I code, test, and fix email templates across clients.</p>
-      <a href="/#contact" class="cta-button">Get in touch</a>
-    </div>
-  </article>
+    <!-- FAQ Section Placeholder -->
+    <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>QUESTION 1 HERE?</summary>
+                    <p>ANSWER 1 HERE.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>QUESTION 2 HERE?</summary>
+                    <p>ANSWER 2 HERE.</p>
+                </details>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer role="contentinfo">
     <div class="container">
         <div class="social-links">
-                          <a
-    href="https://linleybignouxzqme9nmu.contra.com/"
-    class="social-icon"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit my Contra Profile"
->
-    <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-        <!-- Red Rounded Background -->
-        <rect width="512" height="512" rx="112" fill="#E51937" />
-        <!-- White Custom Star Icon with Cross Cut -->
-        <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#FFFFFF" />
-        <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#FFFFFF" />
-        <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#FFFFFF" />
-        <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#FFFFFF" />
-    </svg>
-</a>
+            <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
             <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
             <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
         </div>
-      <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
-<p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
-            </div>
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img src="https://i.ibb.co/dwfK1J87/Lin-1.png" alt="Linley Bignoux logo" style="height: 120px; width: auto; display: inline-block" />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
 </footer>
 
 <script>
@@ -202,7 +168,7 @@
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
 
-    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    // THEME TOGGLE
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
     const storedTheme = localStorage.getItem('theme');
