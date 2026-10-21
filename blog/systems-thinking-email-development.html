@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E37T8FJ661');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Systems Thinking in Email Development: Why Isolated Code Fixes Fail | Email Dev Notes</title>
+    <meta name="description" content="Why isolated code fixes fail in email development. Explore the 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML.">
+    <link rel="canonical" href="https://linleyb.com/blog/systems-thinking-email-development.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Systems Thinking in Email Development: Why Isolated Code Fixes Fail">
+    <meta property="og:description" content="Explore the 5 interconnected layers of the email ecosystem and why systems thinking prevents rendering surprises.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/blog/systems-thinking-email-development.html">
+    <meta property="og:type" content="article">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://linleyb.com/#website",
+                "url": "https://linleyb.com/",
+                "name": "Linley Bignoux | Freelance Email Developer",
+                "inLanguage": ["en-AU", "en-MU"],
+                "publisher": { "@id": "https://linleyb.com/#person" }
+            },
+            {
+                "@type": "Person",
+                "@id": "https://linleyb.com/#person",
+                "name": "Linley Bignoux",
+                "jobTitle": "Email Developer",
+                "url": "https://linleyb.com/",
+                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+                "nationality": { "@type": "Country", "name": "Australia" },
+                "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
+                "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
+                "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
+            },
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://linleyb.com/#service",
+                "name": "Linley Bignoux Email Development",
+                "url": "https://linleyb.com/",
+                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdl-Il-Cnl2-DUi2-BML.jpg",
+                "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+                "provider": { "@id": "https://linleyb.com/#person" },
+                "areaServed": [
+                    { "@type": "Country", "name": "Mauritius" },
+                    { "@type": "AdministrativeArea", "name": "Worldwide" }
+                ],
+                "serviceType": [
+                    "MJML development",
+                    "HTML email coding",
+                    "Maizzle development",
+                    "Handlebars email templating",
+                    "Email testing and QA"
+                ]
+            },
+            {
+                "@type": "BlogPosting",
+                "@id": "https://linleyb.com/blog/systems-thinking-email-development.html#richpost",
+                "url": "https://linleyb.com/blog/systems-thinking-email-development.html",
+                "headline": "Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness",
+                "datePublished": "2026-10-10T08:00:00+00:00",
+                "dateModified": "2026-10-10T08:00:00+00:00",
+                "author": { "@id": "https://linleyb.com/#person" },
+                "publisher": { "@id": "https://linleyb.com/#person" },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://linleyb.com/blog/systems-thinking-email-development.html"
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://linleyb.com/blog/systems-thinking-email-development.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is systems thinking in the context of email development?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Systems thinking in email development means recognizing that an email campaign is never just a single isolated HTML file, but rather the final output of an interconnected technical ecosystem spanning design, code, data logic, ESP infrastructure, and rendering clients."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do upstream choices in Figma or Adobe XD affect downstream email code?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, code architecture bloats while trying to force compatibility across 50+ clients."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why is choosing between semantic HTML, MJML, and Maizzle an architectural decision?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Framework selection determines how components scale, how maintainable your template library is, and how cleanly final code minifies to avoid the Gmail 102KB clipping threshold."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does dynamic data and templating logic like Handlebars or Liquid impact email stability?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name variables or empty inventory arrays, ensuring syntax is native to the ESP to avoid parsing errors."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why must an email template be synchronized with ESPs like Klaviyo or Mailchimp?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before subscribers ever open them."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How should developers handle the hostile rendering environment of legacy Outlook and Dark Mode?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Because rendering environments are outside your control, the system must be resilient enough to degrade gracefully when advanced CSS is stripped away, utilizing VML ghost tables for Outlook and strict background forcing for Dark Mode."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Where can I inspect raw, tested email code and templates built with this systemic approach?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You can visit my GitHub repository at https://github.com/LinleyB75/Email-Dev to inspect raw HTML, MJML, Maizzle, and templating logic firsthand."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Freelance Email Developer</span>
+        <span class="pipe">|</span>
+        <span class="job-title">Linley Bignoux</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">Architecture • Strategy • Ecosystem</span>
+    <h1>Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</h1>
+    <p class="post-meta">Published 10 October 2026 • By Linley Bignoux</p>
+    <div class="tag-row"><span class="tag">systems-thinking</span><span class="tag">mjml</span><span class="tag">maizzle</span><span class="tag">esp-integration</span><span class="tag">qa</span></div>
+
+    <div class="post-content">
+
+      <p>If you treat an email template as a single, isolated HTML file, you will spend half your life fighting rendering bugs.</p>
+
+      <p>Here is a common scenario I encounter: A promotional campaign looks pristine in Figma. It gets coded, tested quickly in an email testing tool, and pushed live. Then, an Outlook user opens it on a desktop client with Dark Mode forced on, while a Klaviyo automated flow attempts to loop through a dynamic product array—and the whole layout collapses.</p>
+
+      <p>The immediate reaction is usually a patchwork fix: throwing an extra <code>!important</code> rule here or hacking a table width there. But in email development, fixing a symptom without understanding the underlying system always creates two new bugs.</p>
+
+      <p>To build campaigns that actually scale, survive legacy clients, and render data correctly, we have to look at email development through a systems-thinking lens. As an email developer working across global architectures, I've learned that an email campaign is never just a graphic; it is the final output of a five-layer technical ecosystem.</p>
+
+      <img src="/blog/images/systems-thinking-ecosystem.webp" alt="Conceptual diagram illustrating the five interconnected layers of the email development ecosystem" width="1000" height="600" loading="lazy" style="max-width:100%;height:auto;display:block;margin:1.5rem auto;border-radius:8px;">
+      <p style="text-align:center;font-size:0.9rem;color:var(--text-muted, #666);margin-bottom:2rem;">The 5-layer email ecosystem: a failure in any single layer ripples across the entire technical stack.</p>
+
+      <h2>The 5 Interconnected Layers of the Email Ecosystem</h2>
+      <p>When approaching an email build or debugging a recurring rendering failure at Linley Bignoux Email Development, a systemic workflow evaluates five distinct touchpoints:</p>
+
+      <h3>1. The Design System Layer (Input)</h3>
+      <ul>
+        <li><b>What lives here:</b> Figma, Adobe XD, Sketch, Photoshop, design tokens, typography scales, and spacing grids.</li>
+        <li><b>The Systemic Impact:</b> Upstream design choices dictate downstream complexity. If a designer creates a multi-column layout with arbitrary padding or overlapping elements without considering mobile stacking, your code architecture will bloat trying to force it to behave across 50+ clients.</li>
+      </ul>
+
+      <h3>2. The Code & Framework Layer (Architecture)</h3>
+      <ul>
+        <li><b>What lives here:</b> Semantic HTML, MJML, Maizzle, modular partials, and asset optimization.</li>
+        <li><b>The Systemic Impact:</b> Choosing a framework isn’t just about syntax preference. It determines how components scale, how maintainable your template library is, and how cleanly the final code minifies to avoid the dreaded Gmail clipping threshold (102KB). Check out some of my structure examples in my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</li>
+      </ul>
+
+      <h3>3. The Data & Logic Layer (Personalization)</h3>
+      <ul>
+        <li><b>What lives here:</b> Liquid, Handlebars, Django/Jinja, and native merge tags (<code>*|FNAME|*</code>, <code>{{subscriber.first_name}}</code>).</li>
+        <li><b>The Systemic Impact:</b> Static layouts meet dynamic data here. A system must account for edge cases: What happens when a first name variable is empty? How does a conditional loop handle an empty inventory array? Logic syntax must be native to the ESP or it will throw parsing errors.</li>
+      </ul>
+
+      <h3>4. The ESP & Infrastructure Layer (The Infrastructure)</h3>
+      <ul>
+        <li><b>What lives here:</b> Klaviyo, Mailchimp, Brevo, MailerLite, Kit, webhooks, timing triggers, and automated flow rules.</li>
+        <li><b>The Systemic Impact:</b> The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before a subscriber ever sees them.</li>
+      </ul>
+
+      <h3>5. The Hostile Rendering Environment (The Target)</h3>
+      <ul>
+        <li><b>What lives here:</b> Desktop, webmail, and mobile clients—from Apple Mail and Gmail to legacy Microsoft Outlook (requiring VML and ghost tables) and forced Dark Mode engines.</li>
+        <li><b>The Systemic Impact:</b> This is where the code meets reality. The rendering environment is entirely outside your control. The system must be resilient enough to degrade gracefully when advanced CSS is stripped away.</li>
+      </ul>
+
+      <h2>Why Ecosystem Awareness Changes Everything</h2>
+      <p>When a bug occurs—say, footer text turning pitch-black in macOS Dark Mode, or images shrinking inside MJML columns—a systems-thinking approach dictates how you investigate and fix it:</p>
+      <ol>
+        <li><b>Isolate the Condition:</b> What exact environment, client version, or state triggered the failure?</li>
+        <li><b>Examine the Ripple Effect:</b> Does changing this style property to fix Apple Mail break the layout in Windows Outlook?</li>
+        <li><b>Replicate and Test:</b> Build a clean replication test case, run it through actual device testing, and verify what works across clients.</li>
+        <li><b>Publish Transparency:</b> Once validated, the structural fix isn’t just kept as a personal trick—it is documented, packaged, and pushed live to a public GitHub repository.</li>
+      </ol>
+
+      <h2>Conclusion: Engineering Over Patchwork</h2>
+      <p>An email marketing campaign is an interconnected machine. When your design system, code framework, data logic, ESP infrastructure, and target rendering clients are synchronized, campaigns stop breaking unpredictably.</p>
+
+      <p>By treating email development as an engineering system rather than a series of one-off design conversions, you protect your sender reputation, eliminate frustrating rendering surprises, and build scalable templates that perform reliably every single time you hit send.</p>
+
+      <p>Have you encountered a recurring bug that seemed disconnected from your code? Head over to my Portfolio or explore my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a> to inspect raw, tested templates and solutions built with a systemic approach.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need robust, scalable email architectures built right the first time? I code, test, and integrate professional email systems.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <!-- FAQ Section -->
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is systems thinking in the context of email development?</summary>
+          <p>Systems thinking in email development means recognizing that an email campaign is never just a single isolated HTML file, but rather the final output of an interconnected technical ecosystem spanning design, code, data logic, ESP infrastructure, and rendering clients.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do upstream choices in Figma or Adobe XD affect downstream email code?</summary>
+          <p>Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, code architecture bloats while trying to force compatibility across 50+ clients.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is choosing between semantic HTML, MJML, and Maizzle an architectural decision?</summary>
+          <p>Framework selection determines how components scale, how maintainable your template library is, and how cleanly final code minifies to avoid the Gmail 102KB clipping threshold.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does dynamic data and templating logic like Handlebars or Liquid impact email stability?</summary>
+          <p>Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name variables or empty inventory arrays, ensuring syntax is native to the ESP to avoid parsing errors.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why must an email template be synchronized with ESPs like Klaviyo or Mailchimp?</summary>
+          <p>The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before subscribers ever open them.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How should developers handle the hostile rendering environment of legacy Outlook and Dark Mode?</summary>
+          <p>Because rendering environments are outside your control, the system must be resilient enough to degrade gracefully when advanced CSS is stripped away, utilizing VML ghost tables for Outlook and strict background forcing for Dark Mode.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Where can I inspect raw, tested email code and templates built with this systemic approach?</summary>
+          <p>You can visit my GitHub repository at <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">https://github.com/LinleyB75/Email-Dev</a> to inspect raw HTML, MJML, Maizzle, and templating logic firsthand.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+    href="https://linleybignouxzqme9nmu.contra.com/"
+    class="social-icon"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit my Contra Profile"
+>
+    <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+        <!-- Red Rounded Background -->
+        <rect width="512" height="512" rx="112" fill="#E51937" />
+        <!-- White Custom Star Icon with Cross Cut -->
+        <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#FFFFFF" />
+        <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#FFFFFF" />
+        <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#FFFFFF" />
+        <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#FFFFFF" />
+    </svg>
+</a>
+            <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+        </div>
+      <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+<p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+            </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+</script>
+</body>
+</html>
