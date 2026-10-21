@@ -30,7 +30,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
-  <script type="application/ld+json">
+ <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@graph": [
@@ -49,7 +49,26 @@
             "name": "Email Development Blog | Linley Bignoux",
             "description": "Articles, tips, and insights on MJML, Maizzle, HTML email coding, and rigorous cross-client testing by Linley Bignoux.",
             "isPartOf": { "@id": "https://linleyb.com/#website" },
-            "about": { "@id": "https://linleyb.com/#service" }
+            "about": { "@id": "https://linleyb.com/#service" },
+            "breadcrumb": { "@id": "https://linleyb.com/blog/#breadcrumb" }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://linleyb.com/blog/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://linleyb.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://linleyb.com/blog/"
+                }
+            ]
         },
         {
             "@type": "Person",
@@ -80,6 +99,44 @@
                 "Maizzle development",
                 "Handlebars email templating",
                 "Email testing and QA"
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What do these email dev notes and troubleshooting logs cover?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Each note focuses on a real-world email rendering bug or technical challenge, emphasizing the exact condition, result, replication of the problem, and what works. Once tested, these solutions are pushed and published directly to my GitHub repository for complete code transparency."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do these troubleshooting guides address Dark Mode and mobile rendering bugs?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Many notes specifically target tricky platform quirks, such as macOS Dark Mode text color overrides, Apple data detector styling issues, MJML column image spacing fixes, and legacy Outlook compatibility solutions."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are the code fixes tested in real email clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Absolutely. Every documented fix goes through rigorous replication and testing across actual desktop, webmail, and mobile email clients to ensure reliable rendering before final code is pushed live."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can other developers and agencies use these notes for debugging?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. These notes serve as practical, direct reference guides for freelance developers, internal marketing teams, and digital agencies looking to solve recurring cross-client email rendering frustrations."
+                    }
+                }
             ]
         }
     ]
