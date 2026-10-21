@@ -785,3 +785,10 @@ footer {
         max-width: 90%;
     }
 }
+
+.post-content h2.faq-title {
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
+    margin: 3rem 0 1.5rem;
+}
