@@ -692,6 +692,7 @@ footer {
     margin: 2.2rem 0 0.8rem;
     border-left: 5px solid var(--accent);
     padding-left: 15px;
+    text-align: center;
 }
 
 .post-content p, 
