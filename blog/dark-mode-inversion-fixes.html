@@ -229,20 +229,20 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
         <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
         <div class="faq-list">
             <details class="faq-item">
-                <summary>What caused the button text to turn blue in Outlook, and how was it fixed?</summary>
-                <p>In certain Outlook desktop clients (such as Outlook 2024 at 120 DPI) and Outlook.com, client-side dark mode inversion incorrectly recoloured custom button text. This was fixed by using explicit colour locks, a span wrapper with inline <code>color</code> and <code>-webkit-text-fill-color</code> rules, and Outlook.com attribute targets like <code>[data-ogsc]</code>.</p>
+                <summary>What caused the images inside 2 and 3 column layouts to shrink and separate in webmail?</summary>
+                <p>Default padding and spacing on column elements in webmail clients caused images within 2 and 3 column layouts to scale down unexpectedly and separate with large unwanted gaps.</p>
             </details>
             <details class="faq-item">
-                <summary>How were footer backgrounds and social icons protected against unwanted dark mode recolouring?</summary>
-                <p>To prevent heavy colour inversion from breaking the design harmony, the footer and social sections were assigned a stable dark grey background (<code>#3D3D3D</code>). Matching this exact hex code for both the container backgrounds and the social element settings ensured the brand aesthetic stayed intact across clients.</p>
+                <summary>How was the MJML image shrinking and column spacing issue resolved?</summary>
+                <p>Zeroing out the padding (setting <code>padding="0px"</code> on the affected elements) fixed the shrinking and eliminated the gaps across webmail layouts.</p>
             </details>
             <details class="faq-item">
-                <summary>Why did footer text render black in macOS dark mode, and how was it resolved?</summary>
-                <p>In macOS dark mode betas (like macOS Tahoe and Golden Gate), footer text containing an address was turning black instead of white. This happened because Apple's data detectors automatically reformatted text into links and overrode styles. The fix combined disabling format detectors via meta tags, forcing <code>color: inherit !important;</code> on Apple data detectors, and setting explicit background colours on every nested footer block.</p>
+                <summary>Did using <code>mj-group</code> resolve the column spacing bug on its own?</summary>
+                <p>No. <code>mj-group</code> alone did not fix the problem and continued to cause layout issues until the explicit zero-padding fix was applied.</p>
             </details>
             <details class="faq-item">
-                <summary>How widely were these dark mode inversion fixes tested?</summary>
-                <p>Every documented fix and MJML code snippet in this post underwent rigorous testing and validation across 130 actual desktop, webmail, and mobile email clients to ensure reliable cross-client rendering.</p>
+                <summary>How widely was this MJML padding fix tested across email clients?</summary>
+                <p>Every documented fix and code snippet underwent rigorous replication and testing across actual desktop, webmail, and mobile email clients to ensure reliable rendering before final code was published.</p>
             </details>
         </div>
     </div>
