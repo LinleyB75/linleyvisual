@@ -31,6 +31,130 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://linleyb.com/#website",
+                "url": "https://linleyb.com/",
+                "name": "Linley Bignoux | Freelance Email Developer",
+                "inLanguage": ["en-AU", "en-MU"],
+                "publisher": { "@id": "https://linleyb.com/#person" }
+            },
+            {
+                "@type": "Person",
+                "@id": "https://linleyb.com/#person",
+                "name": "Linley Bignoux",
+                "jobTitle": "Email Developer",
+                "url": "https://linleyb.com/",
+                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+                "nationality": { "@type": "Country", "name": "Australia" },
+                "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
+                "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
+                "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
+            },
+            {
+                "@type": "ProfessionalService",
+                "@id": "https://linleyb.com/#service",
+                "name": "Linley Bignoux Email Development",
+                "url": "https://linleyb.com/",
+                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+                "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+                "provider": { "@id": "https://linleyb.com/#person" },
+                "areaServed": [
+                    { "@type": "Country", "name": "Mauritius" },
+                    { "@type": "AdministrativeArea", "name": "Worldwide" }
+                ],
+                "serviceType": [
+                    "MJML development",
+                    "HTML email coding",
+                    "Maizzle development",
+                    "Handlebars email templating",
+                    "Email testing and QA"
+                ]
+            },
+            {
+                "@type": "BlogPosting",
+                "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#richpost",
+                "url": "https://linleyb.com/blog/dark-promo-email-fundamentals.html",
+                "headline": "Building a dark promo email: what broke, what fixed it, and what to watch for",
+                "datePublished": "2026-10-06T08:00:00+00:00",
+                "dateModified": "2026-10-06T08:00:00+00:00",
+                "author": { "@id": "https://linleyb.com/#person" },
+                "publisher": { "@id": "https://linleyb.com/#person" },
+                "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html"
+                }
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How was the dark background forced consistently across different email clients?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "By combining meta tags for dark color-schemes, adding a force-dark class to the body and sections, and targeting the class, tables, and cells using base CSS, @media (prefers-color-scheme: dark), and Outlook's [data-ogsc] attribute selector."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why are there two separate code versions for the \"SHOP NOW\" button?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Classic Outlook's Word-based engine ignores border-radius, so a VML <v:roundrect> is used to render rounded corners, while non-MSO clients receive a standard MJML button. Both share the same grey fill, white text, and yellow border."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How were social media icons fixed to prevent dark mode color distortion?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "By bypassing built-in icon image colors and supplying custom icon image URLs directly through the src attribute on each mj-social-element alongside explicit background color definitions."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How can multi-column layouts be forced to stack and center correctly on mobile?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "By placing media queries inside a normal mj-style block, targeting a custom css-class applied to columns rather than mj-column directly, and targeting .stack-col div for mobile text alignment."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do you prevent Apple Mail from turning addresses and phone numbers into blue links?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "By inserting format-detection meta tags in the document head for telephone, date, address, and email, paired with a CSS rule targeting a[x-apple-data-detectors] to force inherited font colors."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What fixed the rendering issue in Outlook 2021 at 150 DPI?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A conditional XML comment containing <w:DontUseAdvancedTypographyReadingMail/> was added to turn off Word's advanced reading pane typography settings for classic Outlook."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why was the CTA button changed from yellow to grey in the final design?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The original yellow button suffered aggressive color inversion issues in certain dark mode clients. Switching to a grey button fill with a yellow border preserved brand recognition while ensuring stable rendering."
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
 
@@ -229,7 +353,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
         <li>Outlook 2024 (dark) (Win 11), Outlook 2024 (120 DPI), and Outlook 2021 (150 DPI): retested many times after each fix.</li>
         <li>All 130 clients I tested worked in the end, on desktop, tablet, and mobile.</li>
       </ul>
-      <p>I haven't listed all 130 here, so test your own audience's clients before relying on any of this.</p>
+      <p>I haven't listed all 130 here, so test your own audience's clients before relying on any of it.</p>
 
       <h2>What I'd check next</h2>
       <p>In Outlook.com's dark mode, text colours use the <code>data-ogsc</code> attribute and backgrounds use <code>data-ogsb</code>. My background rule uses <code>data-ogsc</code>, so I'd test whether <code>data-ogsb</code> is the one that actually matters there. Next time I'd also record which clients I retested for each fix separately, not just the main three overall.</p>
@@ -247,12 +371,49 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
       <a href="/#contact" class="cta-button">Get in touch</a>
     </div>
   </article>
+
+  <!-- FAQ Section -->
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center;"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How was the dark background forced consistently across different email clients?</summary>
+          <p>By combining meta tags for dark color-schemes, adding a <code>force-dark</code> class to the body and sections, and targeting the class, tables, and cells using base CSS, <code>@media (prefers-color-scheme: dark)</code>, and Outlook's <code>[data-ogsc]</code> attribute selector.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why are there two separate code versions for the "SHOP NOW" button?</summary>
+          <p>Classic Outlook's Word-based engine ignores <code>border-radius</code>, so a VML <code>&lt;v:roundrect&gt;</code> is used to render rounded corners, while non-MSO clients receive a standard MJML button. Both share the same grey fill, white text, and yellow border.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How were social media icons fixed to prevent dark mode color distortion?</summary>
+          <p>By bypassing built-in icon image colors and supplying custom icon image URLs directly through the <code>src</code> attribute on each <code>mj-social-element</code> alongside explicit background color definitions.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How can multi-column layouts be forced to stack and center correctly on mobile?</summary>
+          <p>By placing media queries inside a normal <code>mj-style</code> block, targeting a custom <code>css-class</code> applied to columns rather than <code>mj-column</code> directly, and targeting <code>.stack-col div</code> for mobile text alignment.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do you prevent Apple Mail from turning addresses and phone numbers into blue links?</summary>
+          <p>By inserting <code>format-detection</code> meta tags in the document head for telephone, date, address, and email, paired with a CSS rule targeting <code>a[x-apple-data-detectors]</code> to force inherited font colors.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What fixed the rendering issue in Outlook 2021 at 150 DPI?</summary>
+          <p>A conditional XML comment containing <code>&lt;w:DontUseAdvancedTypographyReadingMail/&gt;</code> was added to turn off Word's advanced reading pane typography settings for classic Outlook.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why was the CTA button changed from yellow to grey in the final design?</summary>
+          <p>The original yellow button suffered aggressive color inversion issues in certain dark mode clients. Switching to a grey button fill with a yellow border preserved brand recognition while ensuring stable rendering.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer role="contentinfo">
     <div class="container">
         <div class="social-links">
-                          <a
+            <a
     href="https://linleybignouxzqme9nmu.contra.com/"
     class="social-icon"
     target="_blank"
