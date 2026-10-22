@@ -171,13 +171,13 @@
 
     <span class="blog-date">Dark mode • macOS</span>
     <h1>Footer text turning black in macOS dark mode: the fix</h1>
-    <p class="post-meta">Published 6 October 2026</p>
+    <p class="post-meta">Published 6 October 2026• By Linley Bignoux </p>
     <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">macos</span><span class="tag">apple-data-detectors</span><span class="tag">footer</span><span class="tag">mjml</span></div>
 
     <div class="post-content">
 
       <h2>The problem</h2>
-      <p>In a Re-cafe coffee newsletter built in MJML, the footer text is meant to be white on a grey background. In dark mode the text rendered black instead of white on the grey background.</p>
+      <p>In a Re-cafe coffee newsletter built in MJML, the footer text is meant to be white on a grey background. In dark mode, the text renders black instead of white on the grey background.</p>
 
       <h2>Where it happens</h2>
       <p><b>Clients:</b> macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta).<br>
@@ -186,12 +186,12 @@
       <h2>The cause</h2>
       <div class="status-box">
         <p><b>Fix:</b> Confirmed in both macOS clients.</p>
-        <p><b>Cause:</b> Not confirmed. Two changes were used together and I didn't test them separately.</p>
+        <p><b>Cause:</b> Not confirmed. Two changes were used together, and I didn't test them separately.</p>
       </div>
       <p>My best explanation is that Apple's mail apps use data detectors that recognise things like street addresses, phone numbers, and dates and turn them into links with their own styling. The footer contains a street address. The footer blocks also didn't set their own background colours explicitly. I can't say which of the two mattered more, so treat both as suspects.</p>
 
       <h2>The affected HTML and where it is</h2>
-      <p>The problem is in the footer text block, the one that holds the company name and street address. In this simplified version it sits in its own grey section:</p>
+      <p>The problem is in the footer text block, the one that holds the company name and street address. In this simplified version, it sits in its own grey section:</p>
 <pre><code>&lt;mj-section background-color="#3D3D3D" padding="0 0 10px 0"&gt;
   &lt;mj-column&gt;
     &lt;mj-text font-family="Helvetica, Arial, sans-serif" color="#ffffff" font-size="16px" align="center" padding="15px" line-height="1.6"&gt;
