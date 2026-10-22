@@ -29,7 +29,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=5">
+    <link rel="stylesheet" href="/blog/blog.css?v=6">
 
     <script type="application/ld+json">
     {
@@ -80,7 +80,7 @@
                 "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
                 "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
                 "sameAs": [
-                    "https://github.com/LinleyB75", 
+                    "https://github.com/LinleyB75",
                     "https://linleybignouxzqme9nmu.contra.com/",
                     "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
                     "https://www.fiverr.com/linleybignoux"
@@ -110,29 +110,30 @@
             {
                 "@type": "FAQPage",
                 "@id": "https://linleyb.com/blog/#faq",
+                "url": "https://linleyb.com/blog/",
                 "mainEntity": [
                     {
                         "@type": "Question",
-                        "name": "What do these email dev notes and troubleshooting logs cover?",
+                        "name": "What do these email dev notes cover?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Each note focuses on a real-world email rendering bug or technical challenge, emphasizing the exact condition, result, replication of the problem, and what works. Once tested, these solutions are pushed and published directly to my GitHub repository for complete code transparency."
+                            "text": "Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "Do these troubleshooting guides address Dark Mode and mobile rendering bugs?",
+                        "name": "Do these notes cover dark mode and mobile rendering bugs?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes. Many notes specifically target tricky platform quirks, such as macOS Dark Mode text color overrides, Apple data detector styling issues, MJML column image spacing fixes, and legacy Outlook compatibility solutions."
+                            "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "Are the code fixes tested in real email clients?",
+                        "name": "Are the fixes tested in real email clients?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Absolutely. Every documented fix goes through rigorous replication and testing across actual desktop, webmail, and mobile email clients to ensure reliable rendering before final code is pushed live."
+                            "text": "Each post says which clients I retested in. Some fixes were retested in only one client, so check the \"What I retested\" section and test in your own audience's clients before relying on a fix."
                         }
                     },
                     {
@@ -140,7 +141,7 @@
                         "name": "Can other developers and agencies use these notes for debugging?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes. These notes serve as practical, direct reference guides for freelance developers, internal marketing teams, and digital agencies looking to solve recurring cross-client email rendering frustrations."
+                            "text": "Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup."
                         }
                     }
                 ]
@@ -156,7 +157,7 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span> 
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
         <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
       </div>
     </a>
@@ -185,7 +186,7 @@
     <section class="blog-hero">
         <div class="container">
             <h1><i class="fas fa-book-open"></i> Email Dev Notes</h1>
-            <p><span class="tagline-accent">Real email rendering bugs, tested in real clients, with the fix.</span> Each post covers one problem: the symptom, the cause, the fix, and where I retested it.</p>
+            <p><span class="tagline-accent">Real email rendering bugs, tested in real clients, with the fix.</span> Each post covers one problem or lesson: what happened, the cause, the fix, and where I retested it.</p>
         </div>
     </section>
 
@@ -193,24 +194,10 @@
         <div class="container">
             <div class="post-grid">
                 <article class="post-card">
-                    <span class="blog-date">MJML • Layout</span>
-                    <h2><a href="/blog/mj-group-padding.html">MJML images shrinking and spacing apart in columns: the padding fix</a></h2>
-                    <p>Images in 2 and 3 column layouts shrank and separated in webmail. Zeroing the padding fixed it.</p>
-                    <a class="read-more" href="/blog/mj-group-padding.html">Read the fix &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">Dark mode • Newsletter</span>
-                    <h2><a href="/blog/dark-mode-inversion-fixes.html">What dark mode inversion did to my newsletter, and the fixes</a></h2>
-                    <p>Dark mode recoloured my newsletter button, footer, and social icons. Here is what broke in Outlook and macOS clients and what fixed it.</p>
-                    <a class="read-more" href="/blog/dark-mode-inversion-fixes.html">Read the fixes &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">Dark mode • macOS</span>
-                    <h2><a href="/blog/footer-text-macos-dark-mode.html">Footer text turning black in macOS dark mode: the fix</a></h2>
-                    <p>Footer text rendered black instead of white on grey in macOS dark mode. Apple data detector handling and explicit backgrounds fixed it.</p>
-                    <a class="read-more" href="/blog/footer-text-macos-dark-mode.html">Read the fix &rarr;</a>
+                    <span class="blog-date">Architecture • Strategy • Ecosystem</span>
+                    <h2><a href="/blog/systems-thinking-email-development.html">Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</a></h2>
+                    <p>The 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML, and why isolated code fixes fail.</p>
+                    <a class="read-more" href="/blog/systems-thinking-email-development.html">Read the post &rarr;</a>
                 </article>
 
                 <article class="post-card">
@@ -221,10 +208,24 @@
                 </article>
 
                 <article class="post-card">
-                    <span class="blog-date">Architecture • Strategy • Ecosystem</span>
-                    <h2><a href="/blog/systems-thinking-email-development.html">Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</a></h2>
-                    <p>The 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML, and why isolated code fixes fail.</p>
-                    <a class="read-more" href="/blog/systems-thinking-email-development.html">Read the post &rarr;</a>
+                    <span class="blog-date">Dark mode • macOS</span>
+                    <h2><a href="/blog/footer-text-macos-dark-mode.html">Footer text turning black in macOS dark mode: the fix</a></h2>
+                    <p>Footer text rendered black instead of white on grey in macOS dark mode. Apple data detector handling and explicit backgrounds fixed it.</p>
+                    <a class="read-more" href="/blog/footer-text-macos-dark-mode.html">Read the fix &rarr;</a>
+                </article>
+
+                <article class="post-card">
+                    <span class="blog-date">Dark mode • Newsletter</span>
+                    <h2><a href="/blog/dark-mode-inversion-fixes.html">What dark mode inversion did to my newsletter, and the fixes</a></h2>
+                    <p>Dark mode recoloured my newsletter button, footer, and social icons. Here is what broke in Outlook and macOS clients and what fixed it.</p>
+                    <a class="read-more" href="/blog/dark-mode-inversion-fixes.html">Read the fixes &rarr;</a>
+                </article>
+
+                <article class="post-card">
+                    <span class="blog-date">MJML • Layout</span>
+                    <h2><a href="/blog/mj-group-padding.html">MJML images shrinking and spacing apart in columns: the padding fix</a></h2>
+                    <p>Images in 2 and 3 column layouts shrank and separated in webmail. Zeroing the padding fixed it.</p>
+                    <a class="read-more" href="/blog/mj-group-padding.html">Read the fix &rarr;</a>
                 </article>
             </div>
         </div>
@@ -235,20 +236,20 @@
             <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
             <div class="faq-list">
                 <details class="faq-item">
-                    <summary>What do these email dev notes and troubleshooting logs cover?</summary>
-                    <p>Each note focuses on a real-world email rendering bug or technical challenge, emphasizing the exact condition, result, replication of the problem, and what works. Once tested, these solutions are pushed and published directly to my GitHub repository for complete code transparency.</p>
+                    <summary>What do these email dev notes cover?</summary>
+                    <p>Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Do these troubleshooting guides address Dark Mode and mobile rendering bugs?</summary>
-                    <p>Yes. Many notes specifically target tricky platform quirks, such as macOS Dark Mode text color overrides, Apple data detector styling issues, MJML column image spacing fixes, and legacy Outlook compatibility solutions.</p>
+                    <summary>Do these notes cover dark mode and mobile rendering bugs?</summary>
+                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Are the code fixes tested in real email clients?</summary>
-                    <p>Absolutely. Every documented fix goes through rigorous replication and testing across actual desktop, webmail, and mobile email clients to ensure reliable rendering before final code is pushed live.</p>
+                    <summary>Are the fixes tested in real email clients?</summary>
+                    <p>Each post says which clients I retested in. Some fixes were retested in only one client, so check the "What I retested" section and test in your own audience's clients before relying on a fix.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Can other developers and agencies use these notes for debugging?</summary>
-                    <p>Yes. These notes serve as practical, direct reference guides for freelance developers, internal marketing teams, and digital agencies looking to solve recurring cross-client email rendering frustrations.</p>
+                    <p>Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup.</p>
                 </details>
             </div>
         </div>
@@ -283,24 +284,24 @@
                 aria-label="Visit my GitHub Profile"
             ><i class="fab fa-github"></i></a>
             <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
-            
+
             <!-- Upwork Profile Icon Link -->
-            <a 
-                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Upwork Profile" 
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
                 class="social-icon social-upwork"
             ><i class="fa-brands fa-upwork"></i></a>
 
             <!-- Fiverr Profile Icon Link -->
-            <a 
-                href="https://www.fiverr.com/linleybignoux" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Fiverr Profile" 
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
                 class="social-icon social-fiverr"
-            ><i class="fa-solid fa-f"></i></a>        
+            ><i class="fa-solid fa-f"></i></a>
         </div>
 
         <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
