@@ -33,104 +33,165 @@
     <link rel="stylesheet" href="/blog/blog.css">
 
     <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "@id": "https://linleyb.com/#website",
-                "url": "https://linleyb.com/",
-                "name": "Linley Bignoux | Freelance Email Developer",
-                "inLanguage": ["en-AU", "en-MU"],
-                "publisher": { "@id": "https://linleyb.com/#person" }
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
             },
-            {
-                "@type": "Person",
-                "@id": "https://linleyb.com/#person",
-                "name": "Linley Bignoux",
-                "jobTitle": "Email Developer",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "nationality": { "@type": "Country", "name": "Australia" },
-                "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-                "sameAs": ["https://github.com/LinleyB75", "https://linleybignouxzqme9nmu.contra.com/"],
-                "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
-            },
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://linleyb.com/#service",
-                "name": "Linley Bignoux Email Development",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdl-Il-Cnl2-DUi2-BML.jpg",
-                "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
-                "provider": { "@id": "https://linleyb.com/#person" },
-                "areaServed": [
-                    { "@type": "Country", "name": "Mauritius" },
-                    { "@type": "AdministrativeArea", "name": "Worldwide" }
-                ],
-                "serviceType": [
-                    "MJML development",
-                    "HTML email coding",
-                    "Maizzle development",
-                    "Handlebars email templating",
-                    "Email testing and QA"
-                ]
-            },
-            {
-                "@type": "BlogPosting",
-                "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html#richpost",
-                "url": "https://linleyb.com/blog/footer-text-macos-dark-mode.html",
-                "headline": "Fixing Footer Text in macOS Dark Mode",
-                "datePublished": "2026-10-06T08:00:00+00:00",
-                "dateModified": "2026-10-06T08:00:00+00:00",
-                "author": { "@id": "https://linleyb.com/#person" },
-                "publisher": { "@id": "https://linleyb.com/#person" },
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html"
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
                 }
             },
-            {
-                "@type": "FAQPage",
-                "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html#faq",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "Why did email footer text render black instead of white in macOS dark mode?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "In macOS Tahoe and Golden Gate beta dark modes, Apple's mail apps used data detectors that recognized street addresses and converted them into links with black text overriding the original styling."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do meta tags help stop Apple data detectors from altering text color?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Adding format-detection meta tags for telephone numbers, dates, addresses, and emails into the HTML head prevents Apple Mail from automatically converting text into links."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Why is setting explicit background colors on sections, columns, and containers important?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Explicitly defining background colors (such as #3D3D3D or #898989) across every nested MJML block (section, column, and text container) ensures that email clients don't guess or improperly invert colors in dark mode."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What CSS rule ensures that any remaining Apple data detector links inherit their styling?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Styling a[x-apple-data-detectors] with color: inherit !important; and related inheritance properties ensures that detected items maintain the surrounding font color and typography."
-                        }
-                    }
-                ]
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "MJML",
+                "Maizzle",
+                "HTML/CSS for Email",
+                "Handlebars"
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "MJML development",
+                "HTML email coding",
+                "Maizzle development",
+                "Handlebars email templating",
+                "Email testing and QA"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html#article",
+            "url": "https://linleyb.com/blog/footer-text-macos-dark-mode.html",
+            "headline": "Footer text turning black in macOS dark mode: the fix",
+            "description": "Email footer text rendered black instead of white on grey in macOS dark mode. Apple data detector handling and explicit backgrounds fixed it.",
+            "datePublished": "2026-10-06",
+            "dateModified": "2026-10-22",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html"
             }
-        ]
-    }
-    </script>
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/footer-text-macos-dark-mode.html#faq",
+            "url": "https://linleyb.com/blog/footer-text-macos-dark-mode.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Why does my email footer text turn black in macOS dark mode?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In a Re-cafe coffee newsletter built in MJML, white footer text on a grey background rendered black in dark mode on macOS. I haven't confirmed the cause. My best explanation is Apple's data detectors, which recognise street addresses, phone numbers and dates and turn them into links with their own styling, combined with footer blocks that didn't set their own background colours."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I fix footer text going the wrong colour in Apple's dark mode?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Use two changes together. First, switch off Apple's data detectors with four format-detection meta tags (telephone, date, address and email), and add a rule that makes any detected link inherit its colour. Second, set the background colour explicitly on every footer block: the section, the column, and the text container."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What CSS stops Apple data detector links changing the footer colour?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Target a[x-apple-data-detectors] and set color, font-size, font-family, font-weight and line-height to inherit, and text-decoration to none, all marked !important. That makes any detected address or phone number take the colour of the text around it."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which email clients and layout was this tested in?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta). The email had grey footer blocks (#3D3D3D and #898989) with white text, built in MJML. After the fix, the footer text was white on grey in both."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is the cause of the black footer text confirmed?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. The fix is confirmed in both macOS clients, but the cause is not. I used the data detector handling and the explicit backgrounds together and didn't test them separately, so I can't say which mattered more."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can I find out which of the two changes is needed?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Turn off one change at a time and recheck macOS in dark mode. That would show whether the data detector handling, the explicit backgrounds, or both are needed."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does this fix work in other email clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "This post only claims the two macOS results. The full newsletter rendered well in 130 clients after all my dark mode fixes, with a few small differences, such as the red headline words appearing white in some older Outlook versions. Those other tests show the top of the email, not the footer fix, so test your own audience's clients before relying on it."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
 </head>
 <body>
 
@@ -171,13 +232,13 @@
 
     <span class="blog-date">Dark mode • macOS</span>
     <h1>Footer text turning black in macOS dark mode: the fix</h1>
-    <p class="post-meta">Published 6 October 2026• By Linley Bignoux </p>
+    <p class="post-meta">Published 6 October 2026</p>
     <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">macos</span><span class="tag">apple-data-detectors</span><span class="tag">footer</span><span class="tag">mjml</span></div>
 
     <div class="post-content">
 
       <h2>The problem</h2>
-      <p>In a Re-cafe coffee newsletter built in MJML, the footer text is meant to be white on a grey background. In dark mode, the text renders black instead of white on the grey background.</p>
+      <p>In a Re-cafe coffee newsletter built in MJML, the footer text is meant to be white on a grey background. In dark mode the text rendered black instead of white on the grey background.</p>
 
       <h2>Where it happens</h2>
       <p><b>Clients:</b> macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta).<br>
@@ -186,12 +247,12 @@
       <h2>The cause</h2>
       <div class="status-box">
         <p><b>Fix:</b> Confirmed in both macOS clients.</p>
-        <p><b>Cause:</b> Not confirmed. Two changes were used together, and I didn't test them separately.</p>
+        <p><b>Cause:</b> Not confirmed. Two changes were used together and I didn't test them separately.</p>
       </div>
       <p>My best explanation is that Apple's mail apps use data detectors that recognise things like street addresses, phone numbers, and dates and turn them into links with their own styling. The footer contains a street address. The footer blocks also didn't set their own background colours explicitly. I can't say which of the two mattered more, so treat both as suspects.</p>
 
       <h2>The affected HTML and where it is</h2>
-      <p>The problem is in the footer text block, the one that holds the company name and street address. In this simplified version, it sits in its own grey section:</p>
+      <p>The problem is in the footer text block, the one that holds the company name and street address. In this simplified version it sits in its own grey section:</p>
 <pre><code>&lt;mj-section background-color="#3D3D3D" padding="0 0 10px 0"&gt;
   &lt;mj-column&gt;
     &lt;mj-text font-family="Helvetica, Arial, sans-serif" color="#ffffff" font-size="16px" align="center" padding="15px" line-height="1.6"&gt;
@@ -268,26 +329,37 @@
     </div>
   </article>
 
-  <!-- FAQ Section -->
   <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
     <div class="container">
       <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Why did email footer text render black instead of white in macOS dark mode?</summary>
-          <p>In macOS Tahoe and Golden Gate beta dark modes, Apple's mail apps used data detectors that recognized street addresses and converted them into links with black text overriding the original styling.</p>
+          <summary>Why does my email footer text turn black in macOS dark mode?</summary>
+          <p>In a Re-cafe coffee newsletter built in MJML, white footer text on a grey background rendered black in dark mode on macOS. I haven't confirmed the cause. My best explanation is Apple's data detectors, which recognise street addresses, phone numbers and dates and turn them into links with their own styling, combined with footer blocks that didn't set their own background colours.</p>
         </details>
         <details class="faq-item">
-          <summary>How do meta tags help stop Apple data detectors from altering text color?</summary>
-          <p>Adding format-detection meta tags for telephone numbers, dates, addresses, and emails into the HTML head prevents Apple Mail from automatically converting text into links.</p>
+          <summary>How do I fix footer text going the wrong colour in Apple's dark mode?</summary>
+          <p>Use two changes together. First, switch off Apple's data detectors with four format-detection meta tags (telephone, date, address and email), and add a rule that makes any detected link inherit its colour. Second, set the background colour explicitly on every footer block: the section, the column, and the text container.</p>
         </details>
         <details class="faq-item">
-          <summary>Why is setting explicit background colors on sections, columns, and containers important?</summary>
-          <p>Explicitly defining background colors (such as <code>#3D3D3D</code> or <code>#898989</code>) across every nested MJML block (section, column, and text container) ensures that email clients don't guess or improperly invert colors in dark mode.</p>
+          <summary>What CSS stops Apple data detector links changing the footer colour?</summary>
+          <p>Target a[x-apple-data-detectors] and set color, font-size, font-family, font-weight and line-height to inherit, and text-decoration to none, all marked !important. That makes any detected address or phone number take the colour of the text around it.</p>
         </details>
         <details class="faq-item">
-          <summary>What CSS rule ensures that any remaining Apple data detector links inherit their styling?</summary>
-          <p>Styling <code>a[x-apple-data-detectors]</code> with <code>color: inherit !important;</code> and related inheritance properties ensures that detected items maintain the surrounding font color and typography.</p>
+          <summary>Which email clients and layout was this tested in?</summary>
+          <p>macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta). The email had grey footer blocks (#3D3D3D and #898989) with white text, built in MJML. After the fix, the footer text was white on grey in both.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the cause of the black footer text confirmed?</summary>
+          <p>No. The fix is confirmed in both macOS clients, but the cause is not. I used the data detector handling and the explicit backgrounds together and didn't test them separately, so I can't say which mattered more.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How can I find out which of the two changes is needed?</summary>
+          <p>Turn off one change at a time and recheck macOS in dark mode. That would show whether the data detector handling, the explicit backgrounds, or both are needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does this fix work in other email clients?</summary>
+          <p>This post only claims the two macOS results. The full newsletter rendered well in 130 clients after all my dark mode fixes, with a few small differences, such as the red headline words appearing white in some older Outlook versions. Those other tests show the top of the email, not the footer fix, so test your own audience's clients before relying on it.</p>
         </details>
       </div>
     </div>
@@ -315,11 +387,11 @@
     </svg>
 </a>
             <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-            <a href="mailto:contact@linleyb.com" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            <a href="mailto:blanyves@optusnet.com.au" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
         </div>
-           <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
-<p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
-            </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
 </footer>
 
 <script>
