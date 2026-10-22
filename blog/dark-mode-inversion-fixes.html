@@ -30,49 +30,146 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css">
+    <link rel="stylesheet" href="/blog/blog.css?v=6">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html#faq",
-      "mainEntity": [
+{
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "Question",
-          "name": "Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 can default link text to standard web blue. This was resolved by wrapping link text in a span with -webkit-text-fill-color: #FF0000 !important; and targeting Outlook.com attributes using [data-ogsc] and [data-ogsb]."
-          }
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
         },
         {
-          "@type": "Question",
-          "name": "How were the footer background and social icons locked to prevent dark mode inversion?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The footer section and social icon containers were assigned an explicit dark grey (#3D3D3D). Setting matching background and icon colors on the MJML social elements ensured stable rendering across dark mode clients."
-          }
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "MJML",
+                "Maizzle",
+                "HTML/CSS for Email",
+                "Handlebars"
+            ]
         },
         {
-          "@type": "Question",
-          "name": "Why did footer text turn black in macOS dark mode, and how was it fixed?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Apple's data detectors automatically converted street addresses into links and overrode text styling to black in macOS Tahoe and Golden Gate betas. Disabling format detectors with meta tags, styling a[x-apple-data-detectors] with color: inherit !important;, and setting explicit background colors on every nested MJML footer container fixed the issue."
-          }
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "MJML development",
+                "HTML email coding",
+                "Maizzle development",
+                "Handlebars email templating",
+                "Email testing and QA"
+            ]
         },
         {
-          "@type": "Question",
-          "name": "Which rules were found to be unnecessary when locking dark mode button colours?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Testing showed that a separate @media (prefers-color-scheme: dark) block, as well as bgcolor attributes or gradient background tricks, were not needed to lock the button colors once -webkit-text-fill-color and data-ogsc rules were in place."
-          }
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html#article",
+            "url": "https://linleyb.com/blog/dark-mode-inversion-fixes.html",
+            "headline": "What dark mode inversion did to my newsletter, and the fixes",
+            "description": "Dark mode recoloured my newsletter button, footer, and social icons. Here is what broke in Outlook and macOS clients and what fixed it.",
+            "datePublished": "2026-10-04",
+            "dateModified": "2026-10-22",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html#faq",
+            "url": "https://linleyb.com/blog/dark-mode-inversion-fixes.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In Outlook.com's dark mode the client recoloured the button, and in one Outlook client, which I believe was Outlook 2024 (120 DPI), the button text turned blue after inversion. I confirmed the fix but not the exact cause. The fix combined a span around the link text with -webkit-text-fill-color: #FF0000 !important, and rules targeting Outlook.com's data-ogsc and data-ogsb attributes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How were the footer background and social icons locked to prevent dark mode inversion?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I set the footer and social sections to an explicit dark grey (#3D3D3D) and gave the MJML social elements the same grey for both background and colour. The footer was a different colour before, though I didn't record which, and I didn't record which clients inverted it. The fix held across the 130 clients I tested."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why did footer text turn black in macOS dark mode, and how was it fixed?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta), the footer text rendered black instead of white on grey. The fix is confirmed in both, but the cause is not. I turned off Apple's data detectors with four format-detection meta tags, styled a[x-apple-data-detectors] with color: inherit !important, and set explicit background colours on every footer block. I used these together and didn't test them separately."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which rules were found to be unnecessary when locking dark mode button colours?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In my testing, a separate @media (prefers-color-scheme: dark) block and a bgcolor with a gradient background were not needed. The rules that were needed were the Outlook.com attribute rules and the text fill colour with a span wrapper on the link text."
+                    }
+                }
+            ]
         }
-      ]
-    }
-    </script>
+    ]
+}
+</script>
 </head>
 <body>
 
@@ -81,9 +178,8 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span class="logo-name">Freelance Email Developer</span>
-        <span class="pipe">|</span>
-        <span class="job-title">Linley Bignoux</span>
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
+        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
       </div>
     </a>
 
@@ -97,7 +193,7 @@
         <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
         <li><a href="/#about">About</a></li>
         <li><a href="/certifications.html">Certs</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
         <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
@@ -114,15 +210,14 @@
     <span class="blog-date">Dark mode • Newsletter</span>
     <h1>What dark mode inversion did to my newsletter, and the fixes</h1>
     <p class="post-meta">Published 4 October 2026 • By Linley Bignoux</p>
-    
-    <img src="/blog/images/recafe-test-outlook-legacy.webp" alt="An email template test comparison showing the Recafe email rendering in legacy Outlook" width="600" height="1000" loading="lazy" style="max-width:100%; height:auto; display:block; margin:1.5rem auto; border-radius:8px; border:1px solid var(--border);">
-
     <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">outlook-com</span><span class="tag">macos</span><span class="tag">buttons</span><span class="tag">footer</span><span class="tag">mjml</span></div>
 
     <div class="post-content">
 
       <h2>The newsletter</h2>
       <p>This is a Re-cafe coffee newsletter built in MJML on a near-black background, with red brand text and a white call-to-action button. After the dark mode fixes it rendered well in 130 clients. Three problems came up along the way, all caused by clients inverting or recolouring parts of the design. This post covers each one.</p>
+      <img src="/blog/images/recafe-test-outlook-legacy.webp" alt="Test results for the Re-cafe newsletter in Outlook 2016 pro plus, Outlook 2013, Outlook 2013 at 120dpi and Outlook 2010" width="1920" height="1080" loading="lazy">
+      <p>Test results for the newsletter in Outlook 2016 pro plus (2508), Outlook 2013, Outlook 2013 (120dpi), and Outlook 2010.</p>
 
       <h2>1. The button's colours (Outlook.com and Outlook)</h2>
       <p><b>Problem:</b> the button is meant to be white with red text and a grey border. In Outlook.com's dark mode the client recoloured it. In one Outlook client, which I believe was Outlook 2024 (120 DPI), the button text turned blue after inversion.</p>
@@ -175,7 +270,7 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
     &lt;/mj-social&gt;
   &lt;/mj-column&gt;
 &lt;/mj-section&gt;</code></pre>
-      <p>The footer was a different colour before, though I didn't record which one. I also didn't record which clients inverted the footer and icons, so I won't name any. The fix held across the 130 clients I tested.</p>
+      <p>The footer was a different colour before, though I didn't record which. I also didn't record which clients inverted the footer and icons, so I won't name any. The fix held across the 130 clients I tested.</p>
 
       <h2>3. Footer text black instead of white (macOS dark mode)</h2>
       <p><b>Problem:</b> in dark mode in macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta), the footer text rendered black instead of white on the grey background.</p>
@@ -230,25 +325,25 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
 
   <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
     <div class="container">
-        <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary>Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?</summary>
-                <p>Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 can default link text to standard web blue. This was resolved by wrapping the link text in a <code>&lt;span&gt;</code> tag with <code>-webkit-text-fill-color: #FF0000 !important;</code> and targeting Outlook.com attributes using <code>[data-ogsc]</code> and <code>[data-ogsb]</code>.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How were the footer background and social icons locked to prevent dark mode inversion?</summary>
-                <p>To keep the brand aesthetic intact when clients recoloured the footer, the footer section and social icon containers were assigned an explicit dark grey (<code>#3D3D3D</code>). Setting matching background and icon colors on the MJML social elements ensured stable rendering across dark mode clients.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Why did footer text turn black in macOS dark mode, and how was it fixed?</summary>
-                <p>In macOS Tahoe and Golden Gate (dark mode betas), Apple's data detectors automatically converted street addresses into links and overrode text styling to black. Disabling format detectors with meta tags (e.g. <code>content="address=no"</code>), styling <code>a[x-apple-data-detectors]</code> with <code>color: inherit !important;</code>, and setting explicit background colors on every nested MJML footer container fixed the issue.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Which rules were found to be unnecessary when locking dark mode button colours?</summary>
-                <p>Testing showed that a separate <code>@media (prefers-color-scheme: dark)</code> block, as well as <code>bgcolor</code> attributes or gradient background tricks, were not needed to lock the button colors once <code>-webkit-text-fill-color</code> and <code>data-ogsc</code> rules were in place.</p>
-            </details>
-        </div>
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?</summary>
+          <p>In Outlook.com's dark mode the client recoloured the button, and in one Outlook client, which I believe was Outlook 2024 (120 DPI), the button text turned blue after inversion. I confirmed the fix but not the exact cause. The fix combined a span around the link text with <code>-webkit-text-fill-color: #FF0000 !important</code>, and rules targeting Outlook.com's <code>data-ogsc</code> and <code>data-ogsb</code> attributes.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How were the footer background and social icons locked to prevent dark mode inversion?</summary>
+          <p>I set the footer and social sections to an explicit dark grey (<code>#3D3D3D</code>) and gave the MJML social elements the same grey for both background and colour. The footer was a different colour before, though I didn't record which, and I didn't record which clients inverted it. The fix held across the 130 clients I tested.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why did footer text turn black in macOS dark mode, and how was it fixed?</summary>
+          <p>In macOS Tahoe (dark) and macOS Golden Gate (dark3) (beta), the footer text rendered black instead of white on grey. The fix is confirmed in both, but the cause is not. I turned off Apple's data detectors with four format-detection meta tags, styled <code>a[x-apple-data-detectors]</code> with <code>color: inherit !important</code>, and set explicit background colours on every footer block. I used these together and didn't test them separately.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which rules were found to be unnecessary when locking dark mode button colours?</summary>
+          <p>In my testing, a separate <code>@media (prefers-color-scheme: dark)</code> block and a <code>bgcolor</code> with a gradient background were not needed. The rules that were needed were the Outlook.com attribute rules and the text fill colour with a span wrapper on the link text.</p>
+        </details>
+      </div>
     </div>
   </section>
 </main>
@@ -281,24 +376,24 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
                 aria-label="Visit my GitHub Profile"
             ><i class="fab fa-github"></i></a>
             <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
-            
+
             <!-- Upwork Profile Icon Link -->
-            <a 
-                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Upwork Profile" 
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
                 class="social-icon social-upwork"
             ><i class="fa-brands fa-upwork"></i></a>
 
             <!-- Fiverr Profile Icon Link -->
-            <a 
-                href="https://www.fiverr.com/linleybignoux" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Fiverr Profile" 
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
                 class="social-icon social-fiverr"
-            ><i class="fa-solid fa-f"></i></a>        
+            ><i class="fa-solid fa-f"></i></a>
         </div>
 
         <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
@@ -329,7 +424,7 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
 
-    // THEME TOGGLE
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
     const storedTheme = localStorage.getItem('theme');
