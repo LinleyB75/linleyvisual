@@ -16,14 +16,14 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
     <title>MJML Images Shrinking and Separating in Columns: the Padding Fix | Email Dev Notes</title>
-    <meta name="description" content="MJML images shrinking and spacing apart in multi-column layouts. Here is why default padding and mj-group caused it and how zeroing padding fixed it.">
+    <meta name="description" content="Images in MJML 2 and 3 column layouts shrank and spread apart in webmail. Zeroing mj-image padding fixed it, and removing mj-group kept layouts together.">
     <link rel="canonical" href="https://linleyb.com/blog/mj-group-padding.html">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
     <meta property="og:title" content="MJML Images Shrinking and Separating in Columns: the Padding Fix">
-    <meta property="og:description" content="Why MJML images shrink and separate in multi-column layouts, and how padding and mj-group fixes resolved it.">
+    <meta property="og:description" content="Zeroing mj-image padding fixed shrinking, spaced-out images in MJML columns. Removing mj-group kept layouts together.">
     <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <meta property="og:url" content="https://linleyb.com/blog/mj-group-padding.html">
     <meta property="og:type" content="article">
@@ -33,89 +33,165 @@
     <link rel="stylesheet" href="/blog/blog.css">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
+{
+    "@context": "https://schema.org",
+    "@graph": [
         {
-          "@type": "WebSite",
-          "@id": "https://linleyb.com/#website",
-          "url": "https://linleyb.com/",
-          "name": "Linley Bignoux | Freelance Email Developer",
-          "inLanguage": ["en-AU", "en-MU"],
-          "publisher": { "@id": "https://linleyb.com/#person" }
-        },
-        {
-          "@type": "Person",
-          "@id": "https://linleyb.com/#person",
-          "name": "Linley Bignoux",
-          "jobTitle": "Email Developer",
-          "url": "https://linleyb.com/",
-          "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-          "nationality": { "@type": "Country", "name": "Australia" },
-          "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-          "sameAs": [
-            "https://github.com/LinleyB75", 
-            "https://linleybignouxzqme9nmu.contra.com/",
-            "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
-            "https://www.fiverr.com/linleybignoux"
-          ],
-          "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
-        },
-        {
-          "@type": "BlogPosting",
-          "@id": "https://linleyb.com/blog/mj-group-padding.html#richpost",
-          "url": "https://linleyb.com/blog/mj-group-padding.html",
-          "headline": "MJML images shrinking and spacing apart in columns: the padding fix",
-          "datePublished": "2026-10-02T08:00:00+00:00",
-          "dateModified": "2026-10-02T08:00:00+00:00",
-          "author": { "@id": "https://linleyb.com/#person" },
-          "publisher": { "@id": "https://linleyb.com/#person" },
-          "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://linleyb.com/blog/mj-group-padding.html"
-          }
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://linleyb.com/blog/mj-group-padding.html#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Why did MJML images shrink and separate in multi-column layouts?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Default mj-image padding (10px 25px) subtracts fixed horizontal pixels from the column width, leaving a smaller image and visible gaps between neighboring columns."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "What role did mj-group play in the layout distortion?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Grouping columns wraps them in an inline-block container with hardcoded inline percentage widths rather than relying on media queries, which caused rendering and spacing issues in specific webmail clients."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How was the column spacing and shrinking issue resolved?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "By setting explicit zero or custom padding (e.g., padding=\"0\" or padding=\"0 4px\") on images and replacing mj-group with standard responsive columns."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Did changing the layout affect responsiveness across screen sizes?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Removing mj-group allowed standard media queries in the document head to handle column stacking and responsive widths correctly across desktop and mobile clients."
-              }
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
             }
-          ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "MJML",
+                "Maizzle",
+                "HTML/CSS for Email",
+                "Handlebars"
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "MJML development",
+                "HTML email coding",
+                "Maizzle development",
+                "Handlebars email templating",
+                "Email testing and QA"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/mj-group-padding.html#article",
+            "url": "https://linleyb.com/blog/mj-group-padding.html",
+            "headline": "MJML images shrinking and spacing apart in columns: the padding fix",
+            "description": "How to fix MJML images in 2 and 3 column layouts shrinking and separating in webmail by zeroing padding.",
+            "datePublished": "2026-10-02",
+            "dateModified": "2026-10-22",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/mj-group-padding.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/mj-group-padding.html#faq",
+            "url": "https://linleyb.com/blog/mj-group-padding.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Why do my MJML images shrink and spread apart in a multi-column layout?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "mj-image has a default padding of 10px 25px. In a 3-column layout on a 600px email, each column is about 200px wide, so the padding takes 50px away from each image. That leaves a 150px image in a 200px column, with 50px of space between neighbouring images."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I fix shrinking images in MJML columns?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Set the padding to 0 on each mj-image, and on the mj-section if you want the layout flush to the edges. If you want a small gap between images, use something like padding=\"0 4px\" instead. If mj-group still misbehaves in your email client, remove it and use plain columns."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does mj-group cause the problem?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I haven't identified why. Zeroing the padding fixed the shrinking and gaps, but mj-group still caused problems in Wall! Mail afterwards. Removing it and using plain columns kept the layouts together, but I haven't found the cause."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which email client and layouts were affected?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Wall! Mail (webmail), viewed in Google Chrome in a desktop window about 1200px wide. The 3-column, 2-column, and 2-column image and text layouts were affected. I didn't record a client version."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are the column widths the cause?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I found no evidence that they are. The widths (33.33% for three columns, 50% for two) are MJML's normal defaults, and I couldn't tie the behaviour to them."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Will this also happen on mobile or narrower screens?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I only tested at desktop width, so I haven't seen it. The padding is a fixed number of pixels while columns shrink in proportion to the screen, so on narrower screens the padding could take a bigger share of each column. That is a good reason to set the padding yourself instead of relying on the default."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is the fix confirmed in every email client?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. I retested it in Wall! Mail in Chrome only, where it worked in all three layouts. Test it in your own email clients before relying on it."
+                    }
+                }
+            ]
         }
-      ]
-    }
-    </script>
+    ]
+}
+</script>
 </head>
 <body>
 
@@ -124,8 +200,9 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span> 
-        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
+        <span class="logo-name">Freelance Email Developer</span>
+        <span class="pipe">|</span>
+        <span class="job-title">Linley Bignoux</span>
       </div>
     </a>
 
@@ -139,7 +216,7 @@
         <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
         <li><a href="/#about">About</a></li>
         <li><a href="/certifications.html">Certs</a></li>
-        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="/blog/">Blog</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
         <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
@@ -156,59 +233,55 @@
     <span class="blog-date">MJML • Layout</span>
     <h1>MJML images shrinking and spacing apart in columns: the padding fix</h1>
     <p class="post-meta">Published 2 October 2026 • By Linley Bignoux</p>
-    
     <div class="tag-row"><span class="tag">mjml</span><span class="tag">mj-group</span><span class="tag">mj-image</span><span class="tag">padding</span><span class="tag">webmail</span></div>
 
     <div class="post-content">
 
       <h2>The problem</h2>
       <p>While testing an MJML email in a webmail client, the images in my 3-column layout shrank and separated from each other instead of sitting flush. The same thing happened in my 2-column layout and in my 2-column image and text layout. I had wrapped the columns in <code>&lt;mj-group&gt;</code>.</p>
+      <img src="/blog/images/mj-group-padding-before.png" alt="Three-column MJML email where the images are small and spaced apart" width="800" height="500" loading="lazy">
 
       <h2>Where it happens</h2>
-      <p><b>Client:</b> Wall! Mail (webmail), viewed in Google Chrome. I didn't record a version.</p>
-      <p><b>Layouts affected:</b> 3 columns, 2 columns, and 2 columns with image and text.</p>
-      <p><b>Viewport:</b> desktop browser window, about 1200px wide.</p>
+      <p><b>Client:</b> Wall! Mail (webmail), viewed in Google Chrome. I didn't record a version.<br>
+      <b>Layouts affected:</b> 3 columns, 2 columns, and 2 columns with image and text<br>
+      <b>Viewport:</b> desktop browser window, about 1200px wide</p>
 
       <h2>The cause</h2>
-      <p><b>Padding:</b> Confirmed. Setting the padding to 0 fixed the shrinking and gaps.</p>
-      <p><b>mj-group:</b> Not identified. It still caused problems after the padding fix, and I haven't found out why.</p>
-      
+      <div class="status-box">
+        <p><b>Padding:</b> Confirmed. Setting the padding to 0 fixed the shrinking and gaps.</p>
+        <p><b>mj-group:</b> Not identified. It still caused problems after the padding fix, and I haven't found out why.</p>
+      </div>
       <p><code>mj-image</code> has a default padding of <code>10px 25px</code>. In a 3-column layout on a 600px email, each column is about 200px wide, so the padding takes 50px away from each image. That leaves a 150px image in a 200px column, with 50px of space between neighbouring images. That matches what I saw at a 1200px desktop window: smaller images with gaps between them instead of flush ones.</p>
-      
       <p>The percentage columns and the fixed padding also scale differently. A column shrinks in proportion to the screen, but the padding is a fixed number of pixels, so on narrower screens the padding would take a bigger share of each column and squeeze the image more than the column. I only tested this at desktop width, so I haven't seen that happen. It is still a good reason to set the padding yourself instead of relying on the default.</p>
-
-      <p>Zeroing the padding fixed that part. What I can't explain is why <code>mj-group</code> kept misbehaving in this client. I compiled and tested the layouts both ways and the grouped version was the one that failed.</p>
-
+      <p>Zeroing the padding fixed that part. What I can't explain is why <code>mj-group</code> kept misbehaving in this client. I compiled and tested the layouts both ways, and the grouped version was the one that failed.</p>
       <p>I also looked at the column widths (33.33% for three columns, 50% for two). I found no evidence that they cause the problem. They are MJML's normal defaults, and I couldn't tie the behaviour to them, so I don't count them as a cause.</p>
 
       <h2>The affected HTML and where it is</h2>
       <p>This is the compiled output of the simplified 3-column example in the next section, built with MJML 5.4.1. It is not my client's email, but the structure is the same. The problem lives in three places inside the <code>&lt;body&gt;</code>, all inside the table cell that holds the group.</p>
-      
+
       <p><b>1. The group wrapper.</b> <code>mj-group</code> compiles to an extra div that holds all three columns:</p>
-<pre><code>&lt;div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;"&gt;</code></pre>
+<pre><code>&lt;div class="mj-column-per-100 mj-outlook-group-fix"
+     style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;"&gt;</code></pre>
 
       <p><b>2. Each column inside the group.</b> The width is written inline as <code>33%</code>:</p>
-<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%;"&gt;</code></pre>
+<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%;"&gt;</code></pre>
 
       <p><b>3. The image cell inside each column.</b> This is where the default padding and a fixed image width appear:</p>
 <pre><code>&lt;td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"&gt;
   &lt;table ...&gt;&lt;tbody&gt;&lt;tr&gt;
     &lt;td style="width:150px;"&gt;
-      &lt;img alt="" src="placeholder.jpg" width="150" height="auto" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" /&gt;
-    &lt;/td&gt;
-  &lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/td&gt;</code></pre>
+      &lt;img alt="" src="placeholder.jpg" width="150" height="auto"
+           style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" /&gt;</code></pre>
 
-      <p>The numbers add up: a 600px email split into three gives a 200px column, minus 25px of padding on each side leaves a 150px image. At a 1200px desktop window the email is still 600px wide, so each image ends up at 150px instead of 200px, with 50px of space between images. That is the shrinking and separation I saw.</p>
+      <p>The numbers add up: a 600px email split into three gives a 200px column, minus 25px of padding on each side leaves a 150px image. At a 1200px desktop window, the email is still 600px wide, so each image ends up at 150px instead of 200px, with 50px of space between images. That is the shrinking and separation I saw.</p>
 
-      <p>The same layout without <code>mj-group</code> and with padding 0. Here the column div carries an inline width of 100%, the image cell has no padding, and the image is 200px:</p>
-<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"&gt;
+      <p><b>The same layout without mj-group and with padding 0.</b> Here the column div carries an inline width of 100%, the image cell has no padding, and the image is 200px:</p>
+<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+     style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"&gt;
 ...
 &lt;td align="center" style="font-size:0px;padding:0;word-break:break-word;"&gt;
-...
-&lt;td style="width:200px;"&gt;
-  &lt;img ... width="200" ... /&gt;
-&lt;/td&gt;</code></pre>
+  ...&lt;td style="width:200px;"&gt;&lt;img ... width="200" ... /&gt;</code></pre>
 
       <p>One more difference is worth knowing. In the grouped output, the column width of 33% is written inline. In the ungrouped output, the inline width is 100%, and the side-by-side layout comes from a media query in the head of the email:</p>
 <pre><code>@media only screen and (min-width:480px) {
@@ -218,8 +291,7 @@
 
       <h2>The fix</h2>
       <p>Two changes. First, zero the padding on the images (and on the section if you want the layout flush to the edges). Second, drop <code>mj-group</code> and use plain columns.</p>
-      
-      <p><b>Before (images shrink and separate):</b></p>
+      <p>Before (images shrink and separate):</p>
 <pre><code>&lt;mj-section&gt;
   &lt;mj-group&gt;
     &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" /&gt;&lt;/mj-column&gt;
@@ -227,18 +299,18 @@
     &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" /&gt;&lt;/mj-column&gt;
   &lt;/mj-group&gt;
 &lt;/mj-section&gt;</code></pre>
-
-      <p><b>After (images and text stay together):</b></p>
+      <p>After (images and text stay together):</p>
 <pre><code>&lt;mj-section padding="0"&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;
 &lt;/mj-section&gt;</code></pre>
       <p>These are simplified snippets. My production layouts had more content, but the changes were the same. If you want a small gap between images, use something like <code>padding="0 4px"</code> instead of 0.</p>
+      <img src="/blog/images/mjgroup-padding-after.webp" alt="The same layout after the fix, with images flush and together" width="800" height="500" loading="lazy">
 
       <h2>What I retested</h2>
       <ul>
-        <li>Wall! Mail in Chrome: fixed in the 3-column, 2-column, and 2-column image and text layouts.</li>
+        <li>Wall! Mail in Chrome: fixed in the 3-column, 2-column, and 2-column image and text layouts</li>
       </ul>
       <p>I haven't verified the fix in every client, so test it in yours before relying on it.</p>
 
@@ -258,25 +330,37 @@
 
   <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
     <div class="container">
-        <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary>Why did MJML images shrink and separate in multi-column layouts?</summary>
-                <p>Default <code>mj-image</code> padding (<code>10px 25px</code>) subtracts fixed horizontal pixels from the column width, leaving a smaller image and visible gaps between neighboring columns.</p>
-            </details>
-            <details class="faq-item">
-                <summary>What role did mj-group play in the layout distortion?</summary>
-                <p>Grouping columns wraps them in an inline-block container with hardcoded inline percentage widths rather than relying on media queries, which caused rendering and spacing issues in specific webmail clients.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How was the column spacing and shrinking issue resolved?</summary>
-                <p>By setting explicit zero or custom padding (e.g., <code>padding="0"</code> or <code>padding="0 4px"</code>) on images and replacing <code>mj-group</code> with standard responsive columns.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Did changing the layout affect responsiveness across screen sizes?</summary>
-                <p>Removing <code>mj-group</code> allowed standard media queries in the document head to handle column stacking and responsive widths correctly across desktop and mobile clients.</p>
-            </details>
-        </div>
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Why do my MJML images shrink and spread apart in a multi-column layout?</summary>
+          <p>mj-image has a default padding of 10px 25px. In a 3-column layout on a 600px email, each column is about 200px wide, so the padding takes 50px away from each image. That leaves a 150px image in a 200px column, with 50px of space between neighbouring images.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I fix shrinking images in MJML columns?</summary>
+          <p>Set the padding to 0 on each mj-image, and on the mj-section if you want the layout flush to the edges. If you want a small gap between images, use something like padding="0 4px" instead. If mj-group still misbehaves in your email client, remove it and use plain columns.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does mj-group cause the problem?</summary>
+          <p>I haven't identified why. Zeroing the padding fixed the shrinking and gaps, but mj-group still caused problems in Wall! Mail afterwards. Removing it and using plain columns kept the layouts together, but I haven't found the cause.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which email client and layouts were affected?</summary>
+          <p>Wall! Mail (webmail), viewed in Google Chrome in a desktop window about 1200px wide. The 3-column, 2-column, and 2-column image and text layouts were affected. I didn't record a client version.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Are the column widths the cause?</summary>
+          <p>I found no evidence that they are. The widths (33.33% for three columns, 50% for two) are MJML's normal defaults, and I couldn't tie the behaviour to them.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Will this also happen on mobile or narrower screens?</summary>
+          <p>I only tested at desktop width, so I haven't seen it. The padding is a fixed number of pixels while columns shrink in proportion to the screen, so on narrower screens the padding could take a bigger share of each column. That is a good reason to set the padding yourself instead of relying on the default.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the fix confirmed in every email client?</summary>
+          <p>No. I retested it in Wall! Mail in Chrome only, where it worked in all three layouts. Test it in your own email clients before relying on it.</p>
+        </details>
+      </div>
     </div>
   </section>
 </main>
@@ -285,58 +369,24 @@
     <div class="container">
         <div class="social-links">
             <a
-                href="https://linleybignouxzqme9nmu.contra.com/"
-                class="social-icon social-contra"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my Contra Profile"
-            >
-                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-                    <!-- White Rounded Background -->
-                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
-                    <!-- Black Custom Star Icon with Cross Cut -->
-                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
-                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
-                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
-                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
-                </svg>
-            </a>
-            <a
-                href="https://github.com/LinleyB75/Email-Dev"
-                class="social-icon social-github"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my GitHub Profile"
-            ><i class="fab fa-github"></i></a>
-            <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
-            
-            <!-- Upwork Profile Icon Link -->
-            <a 
-                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Upwork Profile" 
-                class="social-icon social-upwork"
-            ><i class="fa-brands fa-upwork"></i></a>
-
-            <!-- Fiverr Profile Icon Link -->
-            <a 
-                href="https://www.fiverr.com/linleybignoux" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label="Fiverr Profile" 
-                class="social-icon social-fiverr"
-            ><i class="fa-solid fa-f"></i></a>        
-        </div>
-
-        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
-            <a href="https://linleyb.com/">
-                <img
-                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-                    alt="Linley Bignoux logo"
-                    style="height: 100px; width: auto; display: inline-block"
-                />
-            </a>
+    href="https://linleybignouxzqme9nmu.contra.com/"
+    class="social-icon"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit my Contra Profile"
+>
+    <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+        <!-- Red Rounded Background -->
+        <rect width="512" height="512" rx="112" fill="#E51937" />
+        <!-- White Custom Star Icon with Cross Cut -->
+        <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#FFFFFF" />
+        <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#FFFFFF" />
+        <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#FFFFFF" />
+        <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#FFFFFF" />
+    </svg>
+</a>
+            <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
+            <a href="mailto:contact@linleyb.com" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
         <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
@@ -357,7 +407,7 @@
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
 
-    // THEME TOGGLE
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
     const storedTheme = localStorage.getItem('theme');
