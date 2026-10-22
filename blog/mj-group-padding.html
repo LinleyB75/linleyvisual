@@ -125,7 +125,7 @@
 
     <span class="blog-date">MJML • Layout</span>
     <h1>MJML images shrinking and spacing apart in columns: the padding fix</h1>
-    <p class="post-meta">Published 2 October 2026</p>
+    <p class="post-meta">Published 2 October 2026 • By Linley Bignoux</p>
     <div class="tag-row"><span class="tag">mjml</span><span class="tag">mj-group</span><span class="tag">mj-image</span><span class="tag">padding</span><span class="tag">webmail</span></div>
 
     <div class="post-content">
@@ -146,7 +146,7 @@
       </div>
       <p><code>mj-image</code> has a default padding of <code>10px 25px</code>. In a 3-column layout on a 600px email, each column is about 200px wide, so the padding takes 50px away from each image. That leaves a 150px image in a 200px column, with 50px of space between neighbouring images. That matches what I saw at a 1200px desktop window: smaller images with gaps between them instead of flush ones.</p>
       <p>The percentage columns and the fixed padding also scale differently. A column shrinks in proportion to the screen, but the padding is a fixed number of pixels, so on narrower screens the padding would take a bigger share of each column and squeeze the image more than the column. I only tested this at desktop width, so I haven't seen that happen. It is still a good reason to set the padding yourself instead of relying on the default.</p>
-      <p>Zeroing the padding fixed that part. What I can't explain is why <code>mj-group</code> kept misbehaving in this client. I compiled and tested the layouts both ways and the grouped version was the one that failed.</p>
+      <p>Zeroing the padding fixed that part. What I can't explain is why <code>mj-group</code> kept misbehaving in this client. I compiled and tested the layouts both ways, and the grouped version was the one that failed.</p>
       <p>I also looked at the column widths (33.33% for three columns, 50% for two). I found no evidence that they cause the problem. They are MJML's normal defaults, and I couldn't tie the behaviour to them, so I don't count them as a cause.</p>
 
       <h2>The affected HTML and where it is</h2>
