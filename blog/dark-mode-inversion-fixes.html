@@ -31,49 +31,48 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css">
-!--  PUT THE JSON-LD FAQ SCHEMA RIGHT HERE -->
+
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html#faq",
-  "mainEntity": [
     {
-      "@type": "Question",
-      "name": "Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 can default link text to standard web blue. This was resolved by wrapping link text in a span with -webkit-text-fill-color: #FF0000 !important; and targeting Outlook.com attributes using [data-ogsc] and [data-ogsb]."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How were the footer background and social icons locked to prevent dark mode inversion?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The footer section and social icon containers were assigned an explicit dark grey (#3D3D3D). Setting matching background and icon colors on the MJML social elements ensured stable rendering across dark mode clients."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why did footer text turn black in macOS dark mode, and how was it fixed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Apple's data detectors automatically converted street addresses into links and overrode text styling to black in macOS Tahoe and Golden Gate betas. Disabling format detectors with meta tags, styling a[x-apple-data-detectors] with color: inherit !important;, and setting explicit background colors on every nested MJML footer container fixed the issue."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which rules were found to be unnecessary when locking dark mode button colours?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Testing showed that a separate @media (prefers-color-scheme: dark) block, as well as bgcolor attributes or gradient background tricks, were not needed to lock the button colors once -webkit-text-fill-color and data-ogsc rules were in place."
-      }
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "@id": "https://linleyb.com/blog/dark-mode-inversion-fixes.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 can default link text to standard web blue. This was resolved by wrapping link text in a span with -webkit-text-fill-color: #FF0000 !important; and targeting Outlook.com attributes using [data-ogsc] and [data-ogsb]."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How were the footer background and social icons locked to prevent dark mode inversion?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The footer section and social icon containers were assigned an explicit dark grey (#3D3D3D). Setting matching background and icon colors on the MJML social elements ensured stable rendering across dark mode clients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why did footer text turn black in macOS dark mode, and how was it fixed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Apple's data detectors automatically converted street addresses into links and overrode text styling to black in macOS Tahoe and Golden Gate betas. Disabling format detectors with meta tags, styling a[x-apple-data-detectors] with color: inherit !important;, and setting explicit background colors on every nested MJML footer container fixed the issue."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which rules were found to be unnecessary when locking dark mode button colours?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Testing showed that a separate @media (prefers-color-scheme: dark) block, as well as bgcolor attributes or gradient background tricks, were not needed to lock the button colors once -webkit-text-fill-color and data-ogsc rules were in place."
+          }
+        }
+      ]
     }
-  ]
-}
-</script>
-    
+    </script>
 </head>
 <body>
 
@@ -82,9 +81,8 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span class="logo-name">Freelance Email Developer</span>
-        <span class="pipe">|</span>
-        <span class="job-title">Linley Bignoux</span>
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span> 
+        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
       </div>
     </a>
 
@@ -98,7 +96,7 @@
         <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
         <li><a href="/#about">About</a></li>
         <li><a href="/certifications.html">Certs</a></li>
-        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
         <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
@@ -115,7 +113,10 @@
     <span class="blog-date">Dark mode • Newsletter</span>
     <h1>What dark mode inversion did to my newsletter, and the fixes</h1>
     <p class="post-meta">Published 4 October 2026 • By Linley Bignoux</p>
-    <img src="images/recafe-test-outlook-legacy.webp" alt="An email template test comparison showing the Recafe email rendering in legacy Outlook" width="600" height="1000" loading="lazy" style="max-width:100%;height:auto;display:block;margin:1.5rem auto;border-radius:8px;">
+    
+    <!-- Image with locked responsive aspect ratio to preserve shape -->
+    <img src="/blog/images/recafe-test-outlook-legacy.webp" alt="An email template test comparison showing the Recafe email rendering in legacy Outlook" loading="lazy" style="max-width:100%; height:auto; display:block; margin:1.5rem auto; border-radius:8px; border:1px solid var(--border);">
+
     <div class="tag-row"><span class="tag">dark-mode</span><span class="tag">outlook-com</span><span class="tag">macos</span><span class="tag">buttons</span><span class="tag">footer</span><span class="tag">mjml</span></div>
 
     <div class="post-content">
@@ -226,13 +227,14 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
       <a href="/#contact" class="cta-button">Get in touch</a>
     </div>
   </article>
-    <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
     <div class="container">
         <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
         <div class="faq-list">
             <details class="faq-item">
                 <summary>Why did the CTA button text turn blue or recolour in Outlook and Outlook.com dark mode?</summary>
-                <p>Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 (120 DPI) can default link text to standard web blue. This was resolved by wrapping the link text in a <code>&lt;span&gt;</code> tag with <code>-webkit-text-fill-color: #FF0000 !important;</code> and targeting Outlook.com attributes using <code>[data-ogsc]</code> and <code>[data-ogsb]</code>.</p>
+                <p>Outlook.com rewrites inline styles during dark mode inversion, while desktop clients like Outlook 2024 can default link text to standard web blue. This was resolved by wrapping the link text in a <code>&lt;span&gt;</code> tag with <code>-webkit-text-fill-color: #FF0000 !important;</code> and targeting Outlook.com attributes using <code>[data-ogsc]</code> and <code>[data-ogsb]</code>.</p>
             </details>
             <details class="faq-item">
                 <summary>How were the footer background and social icons locked to prevent dark mode inversion?</summary>
@@ -248,15 +250,65 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
             </details>
         </div>
     </div>
-</section>
+  </section>
 </main>
 
 <footer role="contentinfo">
     <div class="container">
         <div class="social-links">
-            <a href="https://linleybignouxzqme9nmu.contra.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my Contra Profile"><i class="fas fa-file-invoice"></i></a>
-            <a href="https://github.com/LinleyB75/Email-Dev" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Visit my GitHub Profile"><i class="fab fa-github"></i></a>
-            <a href="mailto:contact@linleyb.com" class="social-icon" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            
+            <!-- Upwork Profile Icon Link -->
+            <a 
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Upwork Profile" 
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a 
+                href="https://www.fiverr.com/linleybignoux" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Fiverr Profile" 
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>        
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
         </div>
         <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
         <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
@@ -277,7 +329,7 @@ td.cta-btn-cell { border: 4px solid #898989 !important; }</code></pre>
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
 
-    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    // THEME TOGGLE
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
     const storedTheme = localStorage.getItem('theme');
