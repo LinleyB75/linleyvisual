@@ -423,7 +423,7 @@ footer {
     background: var(--accent);
     width: 60px;
     height: 60px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 50% !important;
@@ -435,18 +435,15 @@ footer {
 .social-icon:hover {
     transform: scale(1.1) rotate(360deg);
     background: var(--primary);
-    color: white;
+    color: #ffffff;
 }
 
 .custom-social-icon {
     display: block;
-    width: 26px;
-    height: 26px;
-    transition: opacity 0.2s ease;
-}
-
-.social-icon:hover .custom-social-icon {
-    opacity: 0.9;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .footer-credit-text {
@@ -640,14 +637,6 @@ footer {
     text-decoration: none;
 }
 
-.empty-note {
-    text-align: center;
-    color: var(--text-light);
-    font-size: 1.15rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
 .blog-date {
     font-size: 0.8rem;
     color: #ffffff;
@@ -657,21 +646,4 @@ footer {
     border-radius: 4px;
     display: inline-block;
     margin-bottom: 10px;
-}
-
-.tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0.5rem 0 0;
-}
-
-.tag {
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--primary);
-    border: 1px solid var(--border);
-    background: var(--bg-alt);
-    padding: 3px 10px;
-    border-radius: 50px;
 }
