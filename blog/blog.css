@@ -800,3 +800,24 @@ footer {
     line-height: 1.7;
     color: var(--text-light);
 }
+
+/* Custom Social Icon Styling for Contra */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.custom-social-icon {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px; /* matches your rounded aesthetic */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-icon:hover .custom-social-icon {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
