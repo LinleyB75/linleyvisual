@@ -25,7 +25,7 @@
         <meta name="color-scheme" content="light dark" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-        <title>Certifications |  Email Developer - Mauritius | Linley Bignoux</title>
+        <title>Certifications | Email Developer - Mauritius | Linley Bignoux</title>
         <meta name="description" content="Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration." />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
@@ -505,6 +505,21 @@
                 font-weight: 700;
                 color: var(--primary);
             }
+            .footer-credit-text {
+                margin-bottom: 10px;
+                font-weight: 700;
+                color: var(--primary);
+            }
+            .footer-copyright {
+                color: var(--text-light);
+                font-size: 0.95rem;
+            }
+            .custom-social-icon {
+                display: block;
+                width: 30px;
+                height: 30px;
+                border-radius: 6px;
+            }
             section[id] {
                 scroll-margin-top: 150px;
             }
@@ -530,6 +545,14 @@
                 .footer-credit {
                     font-size: 0.85rem;
                     padding: 0 10px;
+                }
+                .footer-credit-text {
+                    font-size: 0.85rem;
+                    padding: 0 10px;
+                }
+                .custom-social-icon {
+                    width: 22px;
+                    height: 22px;
                 }
                 .social-links {
                     gap: 10px;
@@ -697,8 +720,8 @@
                     overflow-y: auto;
                     flex-direction: column;
                     align-items: stretch;
-                    gap: 0;
-                    padding: 0.5rem 1.25rem 1.25rem;
+                    gap: 14px;
+                    padding: 1rem 1.25rem 1.5rem;
                     background: var(--bg);
                     border-bottom: 4px solid var(--accent);
                     box-shadow: var(--shadow-lg);
@@ -710,30 +733,28 @@
                 }
                 .site-header .nav-links li {
                     width: 100%;
-                    border-bottom: 1px solid var(--border);
-                }
-                .site-header .nav-links li:last-child {
-                    border-bottom: none;
                 }
                 .site-header .nav-links a {
                     display: block;
-                    padding: 14px 6px;
+                    padding: 12px 14px;
                     font-size: 1.1rem;
-                    border-bottom: none;
-                    text-align: left;
+                    text-align: center;
+                }
+                .site-header .nav-links a[aria-current="page"]:not(.nav-fix-btn):not(.nav-for-you) {
+                    color: var(--accent);
                 }
                 .site-header .nav-links a.nav-fix-btn {
-                    box-shadow: none;
-                    border: none !important;
-                    border-radius: 0;
-                    padding: 14px 6px !important;
+                    display: block;
+                    padding: 12px 14px !important;
+                    border: 2px solid var(--primary) !important;
+                    border-radius: 50px;
+                    box-shadow: 0 4px 0 var(--accent);
                 }
                 .site-header .nav-links a.nav-for-you {
                     display: flex !important;
                     justify-content: center;
                     width: 100%;
-                    height: 46px;
-                    margin-top: 12px;
+                    height: 48px;
                 }
                 .site-header .nav-for-you::after {
                     display: none;
@@ -744,6 +765,9 @@
             }
 
             /* ---------- FAQ Accordion Styling ---------- */
+            #faq {
+                padding: clamp(3.5rem, 8vh, 6rem) 0;
+            }
             .faq-list {
                 max-width: 900px;
                 margin: 0 auto;
@@ -786,7 +810,11 @@
                 transition: transform 0.3s;
             }
             .faq-item[open] summary::after {
-                content: "−";
+                content: "\2212";
+            }
+            .faq-item summary:focus-visible {
+                outline: 2px solid var(--accent);
+                outline-offset: 4px;
             }
             .faq-item p {
                 margin-top: 1rem;
@@ -835,177 +863,205 @@
                 #lightbox img { max-width: 100%; }
                 .close-lightbox { top: 10px; right: 20px; }
             }
-</style>
+        </style>
         <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://linleyb.com/#website",
-      "url": "https://linleyb.com/",
-      "name": "Linley Bignoux | Email Developer",
-      "inLanguage": [
-        "en-AU",
-        "en-MU"
-      ],
-      "publisher": {
-        "@id": "https://linleyb.com/#person"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://linleyb.com/#person",
-      "name": "Linley Bignoux",
-      "jobTitle": "Email Developer",
-      "url": "https://linleyb.com/",
-      "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-      "nationality": {
-        "@type": "Country",
-        "name": "Australia"
-      },
-      "workLocation": {
-        "@type": "Place",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Montagne Ory",
-          "addressRegion": "Mauritius",
-          "addressCountry": "MU"
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Montagne Ory",
+                    "addressRegion": "Mauritius",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Maizzle",
+                "Handlebars",
+                "Liquid",
+                "Django and Jinja-like Templating Syntax",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email Templates",
+                "Dynamic Email Content",
+                "JavaScript",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Email Development Services",
+            "url": "https://linleyb.com/",
+            "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                "Worldwide"
+            ],
+            "serviceType": [
+                "Email Development",
+                "HTML Email Development",
+                "MJML Development",
+                "Maizzle Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Django and Jinja-like Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Templates",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Template Audits and Code Cleanup"
+            ]
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://linleyb.com/certifications.html#webpage",
+            "url": "https://linleyb.com/certifications.html",
+            "name": "Certifications | Freelance Email Developer | Linley Bignoux",
+            "description": "Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration.",
+            "inLanguage": "en-AU",
+            "isPartOf": {
+                "@id": "https://linleyb.com/#website"
+            },
+            "about": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "breadcrumb": {
+                "@id": "https://linleyb.com/certifications.html#breadcrumb"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://linleyb.com/certifications.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://linleyb.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Certifications",
+                    "item": "https://linleyb.com/certifications.html"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/certifications.html#faq",
+            "url": "https://linleyb.com/certifications.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What professional certifications and training do you hold?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "My certificates cover Email Development, Web Development, IT Technical Support and Email Marketing, and they are shown on this page. They include training in MJML, responsive email layouts and the logic used in tools like Klaviyo and Mailchimp."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does your professional background influence your email development work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I have 18 years of experience across logistics, IT and education, plus technical training in email development. In email work, that shows up as careful attention to detail, systematic debugging and structured, documented fixes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are your coding and cross-client QA testing practices certified?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Some of this is covered by the certificates on this page, for example HTML and CSS coding and QA testing. The testing itself is practical work: I check every email in real email clients and write up what I find in my blog notes."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do these technical qualifications benefit agency and independent clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "They give me a structured grounding in email coding, responsive layouts and testing. What clients see in practice is in my portfolio and blog, where each fix says which clients I retested it in."
+                    }
+                }
+            ]
         }
-      },
-      "sameAs": [
-        "https://github.com/LinleyB75",
-        "https://linleybignouxzqme9nmu.contra.com/",
-        "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
-        "https://www.fiverr.com/linleybignoux"
-      ],
-      "knowsAbout": [
-        "Email Development",
-        "HTML Email",
-        "CSS for Email",
-        "MJML",
-        "Maizzle",
-        "Handlebars",
-        "Liquid",
-        "Django and Jinja-like Templating Syntax",
-        "Email Testing and Quality Assurance",
-        "Email Automation",
-        "Campaign Landing Pages",
-        "Transactional Email Templates",
-        "Dynamic Email Content",
-        "JavaScript",
-        "HTML Forms & ESP Integration"
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://linleyb.com/#service",
-      "name": "Email Development Services",
-      "url": "https://linleyb.com/",
-      "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, plus the landing pages they link to, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing.",
-      "provider": {
-        "@id": "https://linleyb.com/#person"
-      },
-      "areaServed": [
-        {
-          "@type": "Country",
-          "name": "Mauritius"
-        },
-        "Worldwide"
-      ],
-      "serviceType": [
-        "Email Development",
-        "HTML Email Development",
-        "MJML Development",
-        "Maizzle Development",
-        "Handlebars Email Templating",
-        "Liquid Email Templating",
-        "Django and Jinja-like Email Templating",
-        "Email Automation",
-        "Email Testing and Quality Assurance",
-        "Campaign Landing Pages",
-        "Dynamic Email Content",
-        "Transactional Email Templates",
-        "HTML Forms & ESP Integration",
-        "JavaScript"
-      ]
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://linleyb.com/certifications.html#webpage",
-      "url": "https://linleyb.com/certifications.html",
-      "name": "Certifications | Freelance Email Developer | Linley Bignoux",
-      "description": "Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration.",
-      "inLanguage": "en-AU",
-      "isPartOf": {
-        "@id": "https://linleyb.com/#website"
-      },
-      "about": {
-        "@id": "https://linleyb.com/#person"
-      },
-      "breadcrumb": {
-        "@id": "https://linleyb.com/certifications.html#breadcrumb"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://linleyb.com/certifications.html#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://linleyb.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Certifications",
-          "item": "https://linleyb.com/certifications.html"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://linleyb.com/certifications.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What professional certifications and training do you hold?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "I hold professional certifications spanning Email Development, Web Development, IT Technical Support, and Email Marketing. This includes specialized training in MJML framework development, responsive email layout design, and platform logic integration for tools like Klaviyo and Mailchimp."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does your professional background influence your email development work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "With 18 years of prior experience across logistics, IT, and education—combined with formal technical qualifications—I approach email builds with rigorous attention to detail, systematic debugging workflows, and highly structured technical execution."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Are your coding and cross-client QA testing practices certified?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. My core competencies—ranging from custom HTML/CSS coding and UI-to-code translation to cross-client QA testing methodologies and asset optimisation—are backed by dedicated professional credentials."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do these technical qualifications benefit agency and independent clients?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "These qualifications ensure that every campaign is built using industry best practices, resilient code structures, and efficient optimisation methods, minimising rendering errors across disparate email clients and legacy desktop apps."
-          }
-        }
-      ]
-    }
-  ]
+    ]
 }
-</script>
+        </script>
     </head>
     <body>
         <div id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview" onclick="closeLightbox(event)">
@@ -1080,29 +1136,31 @@
                     <a href="/" class="cta-button">Return to Homepage</a>
                 </div>
             </div>
-<section id="faq" style="background-color: var(--bg-alt)">
-    <div class="container">
-        <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary>What professional certifications and training do you hold?</summary>
-                <p>I hold professional certifications spanning Email Development, Web Development, IT Technical Support, and Email Marketing. This includes specialised training in MJML framework development, responsive email layout design, and platform logic integration for tools like Klaviyo and Mailchimp.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How does your professional background influence your email development work?</summary>
-                <p>With 18 years of prior experience across logistics, IT, and education—combined with formal technical qualifications—I approach email builds with rigorous attention to detail, systematic debugging workflows, and highly structured technical execution.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Are your coding and cross-client QA testing practices certified?</summary>
-                <p>Yes. My core competencies—ranging from custom HTML/CSS coding and UI-to-code translation to cross-client QA testing methodologies and asset optimisation—are backed by dedicated professional credentials.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How do these technical qualifications benefit agency and independent clients?</summary>
-                <p>These qualifications ensure that every campaign is built using industry best practices, resilient code structures, and efficient optimisation methods, minimising rendering errors across disparate email clients and legacy desktop apps.</p>
-            </details>
-        </div>
-    </div>
-</section>
+
+            <section id="faq" style="background-color: var(--bg-alt)">
+                <div class="container">
+                    <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary>What professional certifications and training do you hold?</summary>
+                            <p>My certificates cover Email Development, Web Development, IT Technical Support and Email Marketing, and they are shown on this page. They include training in MJML, responsive email layouts and the logic used in tools like Klaviyo and Mailchimp.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How does your professional background influence your email development work?</summary>
+                            <p>I have 18 years of experience across logistics, IT and education, plus technical training in email development. In email work, that shows up as careful attention to detail, systematic debugging and structured, documented fixes.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Are your coding and cross-client QA testing practices certified?</summary>
+                            <p>Some of this is covered by the certificates on this page, for example HTML and CSS coding and QA testing. The testing itself is practical work: I check every email in real email clients and write up what I find in my blog notes.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How do these technical qualifications benefit agency and independent clients?</summary>
+                            <p>They give me a structured grounding in email coding, responsive layouts and testing. What clients see in practice is in my portfolio and blog, where each fix says which clients I retested it in.</p>
+                        </details>
+                    </div>
+                </div>
+            </section>
+
             <section id="contact" class="contact-section">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
@@ -1145,105 +1203,105 @@
             </section>
 
             <section class="final-cta">
-    <div class="container">
-        <img
-            src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg"
-            alt=""
-            class="cta-profile-img"
-            width="125"
-            height="125"
-            loading="lazy"
-            decoding="async"
-        />
-    </div>
-    <div class="tech-stack-icons">
-        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-        <div class="tech-item">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="15 25 170 110"
-                width="1em"
-                height="1em"
-                style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
-                aria-hidden="true"
-            >
-                <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M 35,115 L 85,45" />
-                    <path d="M 65,115 L 115,45" />
-                    <path d="M 85,115 L 135,45" />
-                    <path d="M 115,115 L 165,45" />
-                    <path d="M 115,45 L 115,115" />
-                    <path d="M 165,45 L 165,115" />
-                    <path d="M 35,115 A 15,15 0 0,0 65,115" />
-                    <path d="M 85,45 A 15,15 0 0,1 115,45" />
-                    <path d="M 85,115 A 15,15 0 0,0 115,115" />
-                    <path d="M 135,45 A 15,15 0 0,1 165,45" />
-                    <path d="M 135,115 A 15,15 0 0,0 165,115" />
-                </g>
-            </svg>
-            <span>Maizzle</span>
-        </div>
-        <div class="tech-item">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <rect x="2" y="4" width="12" height="4" rx="2" />
-                <circle cx="20" cy="6" r="2" />
-                <circle cx="4" cy="12" r="2" />
-                <rect x="10" y="10" width="12" height="4" rx="2" />
-                <rect x="2" y="16" width="12" height="4" rx="2" />
-                <circle cx="20" cy="18" r="2" />
-            </svg>
-            <span>MJML</span>
-        </div>
-        <div class="tech-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M9 3C6.5 3 6.5 5.5 6.5 8C6.5 10 5.5 11.5 3.5 12C5.5 12.5 6.5 14 6.5 16C6.5 18.5 6.5 21 9 21" />
-                <path d="M15 3C17.5 3 17.5 5.5 17.5 8C17.5 10 18.5 11.5 20.5 12C18.5 12.5 17.5 14 17.5 16C17.5 18.5 17.5 21 15 21" />
-            </svg>
-            <span>Handlebars</span>
-        </div>
-        <div class="tech-item">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2.5C12 2.5 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5Z" />
-            </svg>
-            <span>Liquid</span>
-        </div>
-        <div class="tech-item">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="2" />
-                <text x="12" y="16.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="800" fill="currentColor">dj</text>
-            </svg>
-            <span>Django</span>
-        </div>
-        <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
-        <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
-        <div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
-    </div>
-</section>
+                <div class="container">
+                    <img
+                        src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg"
+                        alt=""
+                        class="cta-profile-img"
+                        width="125"
+                        height="125"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                </div>
+                <div class="tech-stack-icons">
+                    <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
+                    <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                    <div class="tech-item">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="15 25 170 110"
+                            width="1em"
+                            height="1em"
+                            style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
+                            aria-hidden="true"
+                        >
+                            <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M 35,115 L 85,45" />
+                                <path d="M 65,115 L 115,45" />
+                                <path d="M 85,115 L 135,45" />
+                                <path d="M 115,115 L 165,45" />
+                                <path d="M 115,45 L 115,115" />
+                                <path d="M 165,45 L 165,115" />
+                                <path d="M 35,115 A 15,15 0 0,0 65,115" />
+                                <path d="M 85,45 A 15,15 0 0,1 115,45" />
+                                <path d="M 85,115 A 15,15 0 0,0 115,115" />
+                                <path d="M 135,45 A 15,15 0 0,1 165,45" />
+                                <path d="M 135,115 A 15,15 0 0,0 165,115" />
+                            </g>
+                        </svg>
+                        <span>Maizzle</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="2" y="4" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="6" r="2" />
+                            <circle cx="4" cy="12" r="2" />
+                            <rect x="10" y="10" width="12" height="4" rx="2" />
+                            <rect x="2" y="16" width="12" height="4" rx="2" />
+                            <circle cx="20" cy="18" r="2" />
+                        </svg>
+                        <span>MJML</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M9 3C6.5 3 6.5 5.5 6.5 8C6.5 10 5.5 11.5 3.5 12C5.5 12.5 6.5 14 6.5 16C6.5 18.5 6.5 21 9 21" />
+                            <path d="M15 3C17.5 3 17.5 5.5 17.5 8C17.5 10 18.5 11.5 20.5 12C18.5 12.5 17.5 14 17.5 16C17.5 18.5 17.5 21 15 21" />
+                        </svg>
+                        <span>Handlebars</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2.5C12 2.5 5 10 5 15a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5Z" />
+                        </svg>
+                        <span>Liquid</span>
+                    </div>
+                    <div class="tech-item">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="2" />
+                            <text x="12" y="16.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="800" fill="currentColor">dj</text>
+                        </svg>
+                        <span>Django</span>
+                    </div>
+                    <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
+                    <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
+                    <div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
+                </div>
+            </section>
         </main>
 
         <footer role="contentinfo">
             <div class="container">
                 <div class="social-links">
-              <a
-    href="https://linleybignouxzqme9nmu.contra.com/"
-    class="social-icon social-contra"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Visit my Contra Profile"
->
-    <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-        <!-- White Rounded Background -->
-        <rect width="512" height="512" rx="112" fill="#FFFFFF" />
-        <!-- Black Custom Star Icon with Cross Cut -->
-        <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
-        <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
-        <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
-        <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
-    </svg>
-</a>
-                       <a
-                    href="https://github.com/LinleyB75/Email-Dev"
+                    <a
+                        href="https://linleybignouxzqme9nmu.contra.com/"
+                        class="social-icon social-contra"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit my Contra Profile"
+                    >
+                        <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                            <!-- White Rounded Background -->
+                            <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                            <!-- Black Custom Star Icon with Cross Cut -->
+                            <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                            <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                            <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                            <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                        </svg>
+                    </a>
+                    <a
+                        href="https://github.com/LinleyB75/Email-Dev"
                         class="social-icon social-github"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -1253,39 +1311,44 @@
                     <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"
                         ><i class="fas fa-envelope"></i
                     ></a>
-            
 
-              <!-- Upwork Profile Icon Link -->
-           <a href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           aria-label="Upwork Profile" 
-           class="social-icon social-upwork">
-          <i class="fa-brands fa-upwork"></i>
-    </a>
-            <!-- Fiverr Profile Icon Link -->
-<a href="https://www.fiverr.com/linleybignoux" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   aria-label="Fiverr Profile" 
-   class="social-icon social-fiverr">
-  <i class="fa-solid fa-f"></i>
-</a>        
-  </div>
+                    <!-- Upwork Profile Icon Link -->
+                    <a
+                        href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Upwork Profile"
+                        class="social-icon social-upwork"
+                    >
+                        <i class="fa-brands fa-upwork"></i>
+                    </a>
+                    <!-- Fiverr Profile Icon Link -->
+                    <a
+                        href="https://www.fiverr.com/linleybignoux"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Fiverr Profile"
+                        class="social-icon social-fiverr"
+                    >
+                        <i class="fa-solid fa-f"></i>
+                    </a>
+                </div>
 
-                
-       <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
-    <a href="https://linleyb.com/">
-        <img
-            src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-            alt="Linley Bignoux logo"
-            style="height: 120px; width: auto; display: inline-block"
-        />
-    </a>
-</div>
-<div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
-<p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
-</div>
+                <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+                    <a href="https://linleyb.com/">
+                        <img
+                            src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                            alt="Linley Bignoux logo"
+                            style="height: 100px; width: auto; display: inline-block"
+                        />
+                    </a>
+                </div>
+                <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+                <p class="footer-copyright">
+                    &copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) |
+                    <a href="/privacy.html" style="color: inherit; text-decoration: none">Privacy Policy</a>
+                </p>
+            </div>
         </footer>
 
         <script>
