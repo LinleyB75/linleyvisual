@@ -487,30 +487,6 @@
                     margin-right: 0 !important;
                 }
             }
-            .single-card {
-                max-width: 900px;
-                margin: 0 auto;
-                padding: clamp(1.5rem, 4vw, 2.5rem);
-                background: var(--card-bg);
-                border: 1px solid var(--border);
-                border-top: 4px solid var(--accent);
-                border-radius: 10px;
-                box-shadow: var(--shadow);
-                text-align: center;
-            }
-            .single-card h2 {
-                margin-bottom: 1rem;
-                font-size: clamp(1.5rem, 3vw, 2rem);
-                font-weight: 800;
-                line-height: 1.25;
-                color: var(--primary);
-            }
-            .single-card p {
-                max-width: 720px;
-                margin: 0 auto;
-                font-size: 1.1rem;
-                color: var(--text-light);
-            }
             .faq-list {
                 max-width: 800px;
                 margin: 0 auto;
@@ -979,8 +955,8 @@
                     overflow-y: auto;
                     flex-direction: column;
                     align-items: stretch;
-                    gap: 0;
-                    padding: 0.5rem 1.25rem 1.25rem;
+                    gap: 14px;
+                    padding: 1rem 1.25rem 1.5rem;
                     background: var(--bg);
                     border-bottom: 4px solid var(--accent);
                     box-shadow: var(--shadow-lg);
@@ -992,30 +968,25 @@
                 }
                 .site-header .nav-links li {
                     width: 100%;
-                    border-bottom: 1px solid var(--border);
-                }
-                .site-header .nav-links li:last-child {
-                    border-bottom: none;
                 }
                 .site-header .nav-links a {
                     display: block;
-                    padding: 14px 6px;
+                    padding: 12px 14px;
                     font-size: 1.1rem;
-                    border-bottom: none;
-                    text-align: left;
+                    text-align: center;
                 }
                 .site-header .nav-links a.nav-fix-btn {
-                    box-shadow: none;
-                    border: none !important;
-                    border-radius: 0;
-                    padding: 14px 6px !important;
+                    display: block;
+                    padding: 12px 14px !important;
+                    border: 2px solid var(--primary) !important;
+                    border-radius: 50px;
+                    box-shadow: 0 4px 0 var(--accent);
                 }
                 .site-header .nav-links a.nav-for-you {
                     display: flex !important;
                     justify-content: center;
                     width: 100%;
-                    height: 46px;
-                    margin-top: 12px;
+                    height: 48px;
                 }
                 .site-header .nav-for-you::after {
                     display: none;
@@ -1080,7 +1051,6 @@
                             "Transactional Email Templates",
                             "Dynamic Email Content",
                             "JavaScript",
-                            "HTML Forms & ESP Integration",
                             {
                                 "@type": "Thing",
                                 "name": "Mailchimp",
@@ -1136,8 +1106,6 @@
                             "Email Testing and Quality Assurance",
                             "Dynamic Email Content",
                             "Transactional Email Templates",
-                            "HTML Forms & ESP Integration",
-                            "JavaScript",
                             "Mailchimp Email Development",
                             "MailerLite Email Development",
                             "Brevo Email Development",
@@ -1659,7 +1627,7 @@
                         <div class="card">
                             <i class="fas fa-gears"></i>
                             <h3>Email Automation</h3>
-                            <p>Automated flows built in your platform, from trigger and timing to the emails, tested before they go live.</p>
+                            <p>I build the flow you've planned in your platform: triggers, delays, conditions and the emails themselves, then test it end to end before it goes live.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-plug"></i>
