@@ -1074,6 +1074,7 @@
                             "Transactional Email Templates",
                             "Dynamic Email Content",
                             "JavaScript",
+                            "SPF, DKIM and DMARC Email Authentication",
                             {
                                 "@type": "Thing",
                                 "name": "Mailchimp",
@@ -1106,7 +1107,7 @@
                         "@id": "https://linleyb.com/#service",
                         "name": "Email Development Services",
                         "url": "https://linleyb.com/",
-                        "description": "I code, develop, and test responsive emails for marketing campaigns and automated flows, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
                         "provider": {
                             "@id": "https://linleyb.com/#person"
                         },
@@ -1135,7 +1136,9 @@
                             "Klaviyo Email Development",
                             "Kit Email Development",
                             "Email Debugging and Troubleshooting",
-                            "Email Template Audits and Code Cleanup"
+                            "Email Template Audits and Code Cleanup",
+                            "Transactional Email Setup and Developer Handoff",
+                            "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
                         ]
                     },
                     {
@@ -1172,6 +1175,38 @@
                                 "acceptedAnswer": {
                                     "@type": "Answer",
                                     "text": "Operating in GMT+4 provides practical time-zone overlap with Europe, the UK, Australia, and early US East Coast mornings. This allows for smooth daily hand-offs and fast overnight turnarounds for Western agencies and international clients."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What transactional emails do you build?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "I build account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications. I can also update transactional templates you already have."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "How is a transactional email sent from the template you build?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "It depends on the platform. On platforms that send from hosted templates, such as Brevo, your developer sends the email by passing the template ID and a JSON payload, and your team can update the wording without touching your application's code. On platforms that send from flows or automations, such as Klaviyo, I build the template and set up the flow you've planned, triggered by the event your platform receives."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Do you write the backend code that sends the emails?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "No. I write the template and set it up in your email platform, and I give your developer what they need to connect it: the template ID or event name, a table of the fields it needs, and, where the platform uses an API, a sample JSON request. Your developer connects your website or app."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "Can you update a transactional template we already have?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Yes. I can fix rendering problems, add dynamic content such as a fallback for a missing first name, or adapt a template you already use, then re-test it in major email clients before it goes back into your platform."
                                 }
                             }
                         ]
@@ -1909,6 +1944,24 @@
                         </table>
                     </div>
 
+                    <!-- Transactional emails and developer handoff -->
+                    <div class="fit-box" style="margin-top: 3rem">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary); font-weight: 800">Transactional Emails &amp; Developer Handoff</h3>
+                        <p style="margin-bottom: 1.5rem; font-size: 1.15rem; color: var(--text-light)">
+                            I build and set up transactional emails: the automatic messages your system sends when someone signs up, buys, books or needs to confirm something. I can also update the templates you already have. Each template is hand-coded in HTML/CSS or MJML, tested in major email clients, and set up in your email platform. On platforms that send from hosted templates, such as Brevo, your developers send the email by passing the template ID and a JSON payload, and your team can update the wording without touching your application's code. On platforms that send from flows or automations, such as Klaviyo, I build the template and set up the flow you've planned, triggered by the event your platform receives.
+                        </p>
+                        <ul>
+                            <li><b>Emails I build:</b> account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications.</li>
+                            <li><b>Updating existing templates:</b> fixing rendering problems, adding dynamic content, or adapting a template you already use, then re-testing it before it goes back into your platform.</li>
+                            <li><b>HTML/CSS and MJML coding:</b> responsive, table-based layouts built for email client compatibility, including Outlook's Word engine.</li>
+                            <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid, Handlebars, or Django/Jinja-like syntax. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
+                            <li><b>Testing:</b> major clients including Outlook, Apple Mail, Gmail and dark mode, plus test sends with awkward data such as missing or very long names.</li>
+                            <li><b>Platform setup:</b> the template set up in your email platform, as a hosted template or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
+                            <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
+                            <li><b>Domain authentication:</b> SPF, DKIM and DMARC set up and checked. I need access to your domain's DNS.</li>
+                        </ul>
+                    </div>
+
                     <p
                         style="
                             text-align: center;
@@ -2039,6 +2092,22 @@
                         <details class="faq-item">
                             <summary>How does hiring an Email Developer in Mauritius benefit global clients?</summary>
                             <p>Operating in GMT+4 provides practical time-zone overlap with Europe, the UK, Australia, and early US East Coast mornings. This allows for smooth daily hand-offs and fast overnight turnarounds for Western agencies and international clients.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>What transactional emails do you build?</summary>
+                            <p>I build account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications. I can also update transactional templates you already have.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How is a transactional email sent from the template you build?</summary>
+                            <p>It depends on the platform. On platforms that send from hosted templates, such as Brevo, your developer sends the email by passing the template ID and a JSON payload, and your team can update the wording without touching your application's code. On platforms that send from flows or automations, such as Klaviyo, I build the template and set up the flow you've planned, triggered by the event your platform receives.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Do you write the backend code that sends the emails?</summary>
+                            <p>No. I write the template and set it up in your email platform, and I give your developer what they need to connect it: the template ID or event name, a table of the fields it needs, and, where the platform uses an API, a sample JSON request. Your developer connects your website or app.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Can you update a transactional template we already have?</summary>
+                            <p>Yes. I can fix rendering problems, add dynamic content such as a fallback for a missing first name, or adapt a template you already use, then re-test it in major email clients before it goes back into your platform.</p>
                         </details>
                     </div>
                 </div>
