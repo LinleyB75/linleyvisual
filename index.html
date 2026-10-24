@@ -1,15 +1,7 @@
 <!doctype html>
 <html lang="en-AU">
     <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-E37T8FJ661"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-            gtag("js", new Date());
-            gtag("config", "G-E37T8FJ661");
-        </script>
+        <script src="/consent.js?v=1" defer></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="color-scheme" content="light dark" />
@@ -1289,7 +1281,7 @@
                             "
                         >
                             <li>Build → Test → Diagnose → Fix → Deliver</li>
-                            <li>Email Development for <span style="color: #fff">Email Marketing Campaigns</span></li>
+                            <li>Email Development for <span style="color: #fff">Campaigns, Automations and Transactional Emails</span></li>
                         </ul>
 
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
@@ -1703,7 +1695,7 @@
                         <div class="card">
                             <i class="fas fa-inbox"></i>
                             <h3>Email Deliverability</h3>
-                            <p>Clean HTML plus SPF, DKIM and DMARC setup on your domain, to avoid issues that affect inbox placement.</p>
+                            <p>SPF, DKIM and DMARC records set up and checked on your domain, plus a check of the template itself for common causes of delivery problems, such as broken links, oversized HTML and a missing unsubscribe link in marketing emails.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-bug"></i>
@@ -1947,14 +1939,29 @@
                     <!-- Transactional emails and developer handoff -->
                     <div class="fit-box" style="margin-top: 3rem">
                         <h3 style="margin-bottom: 1rem; color: var(--primary); font-weight: 800">Transactional Emails &amp; Developer Handoff</h3>
-                        <p style="margin-bottom: 1.5rem; font-size: 1.15rem; color: var(--text-light)">
-                            I build and set up transactional emails: the automatic messages your system sends when someone signs up, buys, books or needs to confirm something. I can also update the templates you already have. Each template is hand-coded in HTML/CSS or MJML, tested in major email clients, and set up in your email platform. On platforms that send from hosted templates, such as Brevo, your developers send the email by passing the template ID and a JSON payload, and your team can update the wording without touching your application's code. On platforms that send from flows or automations, such as Klaviyo, I build the template and set up the flow you've planned, triggered by the event your platform receives.
+                        <p style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--text-light)">
+                            I build and set up transactional emails: the automatic messages your system sends when someone signs up, buys, books or needs to confirm something. I can also update the templates you already have.
                         </p>
+                        <p style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--text-light)">
+                            Each template is hand-coded in HTML/CSS or MJML, tested in major email clients, and set up in your email platform.
+                        </p>
+
+                        <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">How the email gets sent</h4>
+                        <ul>
+                            <li><b>Hosted templates (such as Brevo):</b> your developers send the email by passing the template ID and a JSON payload. Your team can update the wording without touching your application's code.</li>
+                            <li><b>Flows and automations (such as Klaviyo):</b> I build the template and set up the flow you've planned, triggered by the event your platform receives.</li>
+                        </ul>
+
+                        <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">What I build</h4>
                         <ul>
                             <li><b>Emails I build:</b> account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications.</li>
                             <li><b>Updating existing templates:</b> fixing rendering problems, adding dynamic content, or adapting a template you already use, then re-testing it before it goes back into your platform.</li>
                             <li><b>HTML/CSS and MJML coding:</b> responsive, table-based layouts built for email client compatibility, including Outlook's Word engine.</li>
                             <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid, Handlebars, or Django/Jinja-like syntax. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
+                        </ul>
+
+                        <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">Testing, setup and handoff</h4>
+                        <ul>
                             <li><b>Testing:</b> major clients including Outlook, Apple Mail, Gmail and dark mode, plus test sends with awkward data such as missing or very long names.</li>
                             <li><b>Platform setup:</b> the template set up in your email platform, as a hosted template or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
                             <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
@@ -1984,7 +1991,7 @@
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            I focus on <b>clean code and reliable delivery</b> and act as a technical pair of hands for your email projects. I do not do copywriting, marketing or strategy.
+                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I do not do copywriting, marketing or strategy.
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
