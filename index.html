@@ -10,7 +10,7 @@
         <title>Email Developer - Mauritius | Linley Bignoux</title>
         <meta
             name="description"
-            content="Freelance Email Developer in Mauritius, serving locally &amp; globally. HTML, CSS, MJML, Maizzle and dynamic content with rigorous cross-client testing and ESP integration."
+            content="Freelance Email Developer in Mauritius, serving locally &amp; globally. I design the data contract between your app and your email platform, troubleshoot the whole system, and build tested HTML/CSS and MJML emails with ESP integration."
         />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
@@ -24,7 +24,7 @@
         <meta property="og:title" content="Linley Bignoux | Freelance Email Developer" />
         <meta
             property="og:description"
-            content="Email developer. I turn your static designs into bulletproof HTML/CSS and responsive MJML / Maizzle email campaigns with ESP integration."
+            content="Email developer. I design the data contract between your app and your email platform, troubleshoot the whole system, and build responsive MJML email campaigns with ESP integration."
         />
         <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
         <meta property="og:image:alt" content="Linley Bignoux, freelance email developer" />
@@ -1057,7 +1057,6 @@
                             "HTML Email",
                             "CSS for Email",
                             "MJML",
-                            "Maizzle",
                             "Handlebars",
                             "Liquid",
                             "Django and Jinja-like Templating Syntax",
@@ -1066,6 +1065,10 @@
                             "Transactional Email Templates",
                             "Dynamic Email Content",
                             "JavaScript",
+                            "Node.js",
+                            "API Design",
+                            "JSON",
+                            "REST APIs",
                             "SPF, DKIM and DMARC Email Authentication",
                             {
                                 "@type": "Thing",
@@ -1099,7 +1102,7 @@
                         "@id": "https://linleyb.com/#service",
                         "name": "Email Development Services",
                         "url": "https://linleyb.com/",
-                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, Maizzle, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also design the data contract between your app and your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
                         "provider": {
                             "@id": "https://linleyb.com/#person"
                         },
@@ -1114,7 +1117,6 @@
                             "Email Development",
                             "HTML Email Development",
                             "MJML Development",
-                            "Maizzle Development",
                             "Handlebars Email Templating",
                             "Liquid Email Templating",
                             "Django and Jinja-like Email Templating",
@@ -1130,6 +1132,8 @@
                             "Email Debugging and Troubleshooting",
                             "Email Template Audits and Code Cleanup",
                             "Transactional Email Setup and Developer Handoff",
+                            "Transactional Email Payload Design and Testing",
+                            "API and Data Contract Design for Email",
                             "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
                         ]
                     },
@@ -1190,7 +1194,7 @@
                                 "name": "Do you write the backend code that sends the emails?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "No. I write the template and set it up in your email platform, and I give your developer what they need to connect it: the template ID or event name, a table of the fields it needs, and, where the platform uses an API, a sample JSON request. Your developer connects your website or app."
+                                    "text": "I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or app."
                                 }
                             },
                             {
@@ -1199,6 +1203,14 @@
                                 "acceptedAnswer": {
                                     "@type": "Answer",
                                     "text": "Yes. I can fix rendering problems, add dynamic content such as a fallback for a missing first name, or adapt a template you already use, then re-test it in major email clients before it goes back into your platform."
+                                }
+                            },
+                            {
+                                "@type": "Question",
+                                "name": "What do you test in a transactional email before it goes live?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "I test the template with missing, very long and special-character data, check the payload against the field table, and check the delivered email in major email clients, including dark mode. No test covers every client, so tell me which ones your customers use and I'll check those first."
                                 }
                             }
                         ]
@@ -1258,6 +1270,9 @@
                             <h1 style="flex: 1 1 100%; min-width: 372px; font-size: clamp(2rem, 4vw, 54px); line-height: 1.2">
                                 Email <span style="color: var(--accent)">Developer</span>
                             </h1>
+                            <p style="flex: 1 1 100%; margin: -0.5rem 0 0; font-size: clamp(1.05rem, 2vw, 1.35rem); color: #fff">
+                                Transactional email, data contracts and the systems behind them
+                            </p>
                             <img
                                 src="https://i.ibb.co/dwfK1J87/Lin-1.png"
                                 alt="Email Developer Mauritius logo"
@@ -1281,18 +1296,19 @@
                             "
                         >
                             <li>Build → Test → Diagnose → Fix → Deliver</li>
-                            <li>Email Development for <span style="color: #fff">Campaigns, Automations and Transactional Emails</span></li>
+                            <li>Email systems for <span style="color: #fff">Transactional Emails and Automations</span></li>
+                            <li>Whole-system view: <span style="color: #fff">App → JSON → Template → ESP → Inbox</span></li>
                         </ul>
 
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I build and test email campaigns for cross-client compatibility and reliable rendering, then set them up in your Email Service Provider (ESP).
+                                I build and test emails for reliable rendering and set them up in your Email Service Provider (ESP).<br />
+                                I look at the whole system, not just the code: how your data reaches the template, how the email is sent and where it can break. I design the data contract between your app and your email platform, and I troubleshoot by understanding how the parts fit together.
                             </p>
 
                             <p style="margin-top: 1.5rem">
-                                Responsive Email Development · Outlook · Dark Mode · Cross-Client QA ·
-                                Rigorous Testing in 100+ email clients · Accessibility
+                                API &amp; Data Contract Design · Troubleshooting &amp; Architecture · Transactional Email · JSON Payloads · ESP API Setup
                             </p>
                         </div>
 
@@ -1310,31 +1326,6 @@
                             <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
                             <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
                             <div class="tech-item">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="15 25 170 110"
-                                    width="1em"
-                                    height="1em"
-                                    style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
-                                    aria-hidden="true"
-                                >
-                                    <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M 35,115 L 85,45" />
-                                        <path d="M 65,115 L 115,45" />
-                                        <path d="M 85,115 L 135,45" />
-                                        <path d="M 115,115 L 165,45" />
-                                        <path d="M 115,45 L 115,115" />
-                                        <path d="M 165,45 L 165,115" />
-                                        <path d="M 35,115 A 15,15 0 0,0 65,115" />
-                                        <path d="M 85,45 A 15,15 0 0,1 115,45" />
-                                        <path d="M 85,115 A 15,15 0 0,0 115,115" />
-                                        <path d="M 135,45 A 15,15 0 0,1 165,45" />
-                                        <path d="M 135,115 A 15,15 0 0,0 165,115" />
-                                    </g>
-                                </svg>
-                                <span>Maizzle</span>
-                            </div>
-                            <div class="tech-item">
                                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                     <rect x="2" y="4" width="12" height="4" rx="2" />
                                     <circle cx="20" cy="6" r="2" />
@@ -1345,9 +1336,11 @@
                                 </svg>
                                 <span>MJML</span>
                             </div>
+                            <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                            <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                             <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
                             <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
-                            <div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
+                            <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
                         </div>
                         <!-- Closes .tech-stack-icons -->
                     </div>
@@ -1655,15 +1648,55 @@
                     <h2 class="section-title"><i class="fas fa-code-branch"></i> What I Fix</h2>
                     <div class="grid-cards">
                         <div class="card">
-                            <i class="fas fa-laptop-code"></i>
-                            <h3>HTML, CSS, MJML &amp; Maizzle Coding</h3>
+                            <i class="fas fa-table-list"></i>
+                            <h3>API &amp; Data Contract Design</h3>
                             <p>
-                                Responsive emails coded from your designs (Figma, Sketch, XD, PSD), built to survive legacy desktop clients.
+                                I design the contract between your app and your email platform: the JSON fields, their names and types, which are required, and the fallbacks. I write the field table your developers build against, and test it with missing, very long and special-character data before it reaches a customer.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-diagram-project"></i>
+                            <h3>Architecture Decisions</h3>
+                            <p>
+                                I help decide how the pieces fit together: what the template reads, who creates the links and tokens, who owns the API key, and what happens when a send fails. It is written down, so your team knows who owns what.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-screwdriver-wrench"></i>
+                            <h3>Troubleshooting the Whole System</h3>
+                            <p>
+                                I trace a problem through the whole flow, from your app's data to the template, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and templates that change after ESP upload.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-plug"></i>
+                            <h3>ESP Integration &amp; Setup</h3>
+                            <p>
+                                I prepare your sending account, upload templates, tag links with UTMs and run live test sends, so merge tags
+                                still work after upload.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-inbox"></i>
+                            <h3>Email Deliverability</h3>
+                            <p>SPF, DKIM and DMARC records set up and checked on your domain, plus a check of the template itself for common causes of delivery problems, such as broken links, oversized HTML and a missing unsubscribe link in marketing emails.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-check-double"></i>
+                            <h3>QA Testing</h3>
+                            <p>Every email is tested across major email clients and devices, with accessibility checks, before delivery.</p>
+                        </div>
+                        <div class="card">
+                            <i class="fas fa-bug"></i>
+                            <h3>Debugging &amp; Fixing</h3>
+                            <p>
+                                I find and fix Outlook rendering bugs, dark mode inversion, Gmail clipping, broken spacing and images, and
+                                merge tags that break after upload.
                             </p>
                             <a
-                                href="https://linleyb.com/portfolio.html"
+                                href="/blog/"
                                 style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-                                >See my coded emails &rarr;</a
+                                >See example fixes &rarr;</a
                             >
                         </div>
                         <div class="card">
@@ -1680,43 +1713,16 @@
                             <p>I build the flow you've planned in your platform: triggers, delays, conditions and the emails themselves, then test it end to end before it goes live.</p>
                         </div>
                         <div class="card">
-                            <i class="fas fa-plug"></i>
-                            <h3>ESP Integration &amp; Setup</h3>
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>HTML, CSS &amp; MJML Coding</h3>
                             <p>
-                                I prepare your sending account, upload templates, tag links with UTMs and run live test sends, so merge tags
-                                still work after upload.
-                            </p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-check-double"></i>
-                            <h3>QA Testing</h3>
-                            <p>Every email is tested across major email clients and devices, with accessibility checks, before delivery.</p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-inbox"></i>
-                            <h3>Email Deliverability</h3>
-                            <p>SPF, DKIM and DMARC records set up and checked on your domain, plus a check of the template itself for common causes of delivery problems, such as broken links, oversized HTML and a missing unsubscribe link in marketing emails.</p>
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-bug"></i>
-                            <h3>Debugging &amp; Fixing</h3>
-                            <p>
-                                I find and fix Outlook rendering bugs, dark mode inversion, Gmail clipping, broken spacing and images, and
-                                merge tags that break after upload.
+                                Responsive emails coded from your designs (Figma, Sketch, XD, PSD), built to survive legacy desktop clients.
                             </p>
                             <a
-                                href="/blog/"
+                                href="https://linleyb.com/portfolio.html"
                                 style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-                                >See example fixes &rarr;</a
+                                >See my coded emails &rarr;</a
                             >
-                        </div>
-                        <div class="card">
-                            <i class="fas fa-screwdriver-wrench"></i>
-                            <h3>Troubleshooting</h3>
-                            <p>
-                                I trace problems to their cause: empty merge tags, links that don't track, blocked images, and templates
-                                that change after ESP upload.
-                            </p>
                         </div>
                         <div class="card">
                             <i class="fas fa-magnifying-glass"></i>
@@ -1726,154 +1732,57 @@
                                 then clean it up.
                             </p>
                         </div>
+                        <div class="card">
+                            <i class="fab fa-node-js"></i>
+                            <h3>API Send Reference (Node.js)</h3>
+                            <p>
+                                I'm building a tested Node.js reference implementation of the send step: input checks, a secret check, error handling and a dry-run mode. Your developer deploys and runs it.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
+            
             <section id="what-i-do" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-user-check"></i> What I Do</h2>
-                    <p
-                        style="
-                            text-align: center;
-                            max-width: 800px;
-                            margin: -2rem auto 3rem;
-                            color: var(--text-light);
-                            font-size: 1.15rem;
-                            padding: 0 20px;
-                        "
-                    >
-                        Responsive, tested emails for every stage of the customer journey.
+                    <p style="text-align: center; max-width: 800px; margin: -2rem auto 3rem; color: var(--text-light); font-size: 1.15rem; padding: 0 20px">
+                        I build the emails, and I design and troubleshoot the system behind them.
                     </p>
                     <div class="grid-cards">
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/TMYfhw65/Screenshot-2026-09-26-161933.webp"
-                                alt="Responsive promotional email template design preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Promotional Campaigns</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Responsive promotional emails coded for every major email client.
-                                </p>
-                            </div>
+                        <div class="card" style="text-align: left">
+                            <i class="fas fa-diagram-project"></i>
+                            <h3>Email Systems Development</h3>
+                            <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem">Between your app and the inbox</p>
+                            <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7">
+                                <li>Design the data contract: the JSON your app sends and the fields your template reads</li>
+                                <li>Decide how the pieces fit together: who creates the links, who owns the API key, what happens when a send fails</li>
+                                <li>Set up the email platform: templates, template IDs and test sends</li>
+                                <li>Troubleshoot the whole flow, from your app's data to the inbox</li>
+                                <li>Build JavaScript and Node.js reference code for the send step, for your developers to adapt (in progress)</li>
+                            </ul>
                         </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/PGXcmWrK/Screenshot-2026-09-26-161007.webp"
-                                alt="Clean newsletter email layout preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Newsletters</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Table-based layouts built for reliable inbox delivery.
-                                </p>
-                            </div>
+                        <div class="card" style="text-align: left">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <h3>Email Development</h3>
+                            <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem">The emails themselves</p>
+                            <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7">
+                                <li>Code emails from your designs in HTML, CSS and MJML</li>
+                                <li>Add personalised content in Handlebars or Liquid, with fallbacks for missing data</li>
+                                <li>Build automation flows in your platform: triggers, delays and conditions</li>
+                                <li>Test in real email clients, with accessibility checks, and fix what breaks</li>
+                            </ul>
                         </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/hFTmZkSw/Screenshot-2026-09-26-161246.webp"
-                                alt="E-commerce product grid email design preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">E-commerce Emails</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Product grids and abandoned cart emails that stay clear on mobile.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/ymwj8wh5/batch-300-7210.webp"
-                                alt="Dark mode transactional receipt email preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Transactional Emails</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Receipts and notifications with tailored dark mode styling.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/FkcvNgc0/batch-300-7204.webp"
-                                alt="Welcome series onboarding email template preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Welcome &amp; Onboarding</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Clear visual hierarchy that guides new subscribers.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/d0pk1W0y/batch-300-7203.webp"
-                                alt="Special offer discount campaign email preview"
-                                style="
-                                    width: 100%;
-                                    height: 220px;
-                                    object-fit: cover;
-                                    object-position: top;
-                                    border-bottom: 4px solid var(--accent);
-                                "
-                            />
-                            <div style="padding: 1.5rem">
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Offers &amp; Discounts</h3>
-                                <p style="font-size: 0.95rem; margin-bottom: 5px; color: var(--text)">
-                                    Promotional elements built to convert, from sales to win-back campaigns.
-                                </p>
-                            </div>
-                        </div>
+                    </div>
+                    <p style="text-align: center; max-width: 800px; margin: 2.5rem auto 1.5rem; color: var(--text-light); padding: 0 20px">
+                        I do not do copywriting, marketing or strategy, and I do not host or run your live system. Your developers deploy and run it.
+                    </p>
+                    <div class="consult-btn-wrapper">
+                        <a href="#contact" class="cta-button">Tell me what you need</a>
                     </div>
                 </div>
             </section>
+
             <section id="esp-platforms">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
@@ -1950,6 +1859,7 @@
                         <ul>
                             <li><b>Hosted templates (such as Brevo):</b> your developers send the email by passing the template ID and a JSON payload. Your team can update the wording without touching your application's code.</li>
                             <li><b>Flows and automations (such as Klaviyo):</b> I build the template and set up the flow you've planned, triggered by the event your platform receives.</li>
+                            <li><b>API-triggered sends:</b> where your developers call the platform's API, I'm building a small Node.js reference implementation of the send step for them to adapt. Your developers deploy and run it.</li>
                         </ul>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">What I build</h4>
@@ -1966,6 +1876,7 @@
                             <li><b>Platform setup:</b> the template set up in your email platform, as a hosted template or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
                             <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
                             <li><b>Domain authentication:</b> SPF, DKIM and DMARC set up and checked. I need access to your domain's DNS.</li>
+                            <li><b>Payload contract and tests:</b> a field table plus scripted test cases for missing, very long and special-character data, run before the template goes into your platform.</li>
                         </ul>
                     </div>
 
@@ -1991,7 +1902,7 @@
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I do not do copywriting, marketing or strategy.
+                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I do not do copywriting, marketing or strategy.
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
@@ -1999,7 +1910,7 @@
                                 <b>1. Discuss &amp; Handoff:</b> We talk through your project and brand needs. You send your design files and assets, and I build to your specifications.
                             </li>
                             <li>
-                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS, MJML or Maizzle, adding Handlebars, Liquid or Django/Jinja-like templating where it needs personalised content.
+                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS or MJML, adding Handlebars, Liquid or Django/Jinja-like templating where it needs personalised content.
                             </li>
                             <li>
                                 <b>3. Test &amp; Minify:</b> I test across major email clients and devices, fix what breaks, then minify the file to avoid Gmail clipping.
@@ -2031,7 +1942,7 @@
                             </p>
                             <br />
                             <p>
-                                I focus on technical work: clean HTML/CSS, responsive layouts in MJML and Maizzle, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility.
+                                I focus on the technical side of email and how it connects to the rest of your system: API and data contract design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
                             </p>
                             <h3>Background &amp; Qualifications</h3>
                             <p>
@@ -2064,7 +1975,7 @@
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML, Maizzle and Handlebars, Liquid or Django/Jinja-like templating logic on my GitHub.
+                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML and Handlebars, Liquid or Django/Jinja-like templating logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -2110,11 +2021,15 @@
                         </details>
                         <details class="faq-item">
                             <summary>Do you write the backend code that sends the emails?</summary>
-                            <p>No. I write the template and set it up in your email platform, and I give your developer what they need to connect it: the template ID or event name, a table of the fields it needs, and, where the platform uses an API, a sample JSON request. Your developer connects your website or app.</p>
+                            <p>I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or app.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Can you update a transactional template we already have?</summary>
                             <p>Yes. I can fix rendering problems, add dynamic content such as a fallback for a missing first name, or adapt a template you already use, then re-test it in major email clients before it goes back into your platform.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>What do you test in a transactional email before it goes live?</summary>
+                            <p>I test the template with missing, very long and special-character data, check the payload against the field table, and check the delivered email in major email clients, including dark mode. No test covers every client, so tell me which ones your customers use and I'll check those first.</p>
                         </details>
                     </div>
                 </div>
@@ -2175,31 +2090,6 @@
                     <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
                     <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
                     <div class="tech-item">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="15 25 170 110"
-                            width="1em"
-                            height="1em"
-                            style="color: #f3f3f3; vertical-align: -0.125em; margin-right: 8px"
-                            aria-hidden="true"
-                        >
-                            <g fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M 35,115 L 85,45" />
-                                <path d="M 65,115 L 115,45" />
-                                <path d="M 85,115 L 135,45" />
-                                <path d="M 115,115 L 165,45" />
-                                <path d="M 115,45 L 115,115" />
-                                <path d="M 165,45 L 165,115" />
-                                <path d="M 35,115 A 15,15 0 0,0 65,115" />
-                                <path d="M 85,45 A 15,15 0 0,1 115,45" />
-                                <path d="M 85,115 A 15,15 0 0,0 115,115" />
-                                <path d="M 135,45 A 15,15 0 0,1 165,45" />
-                                <path d="M 135,115 A 15,15 0 0,0 165,115" />
-                            </g>
-                        </svg>
-                        <span>Maizzle</span>
-                    </div>
-                    <div class="tech-item">
                         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <rect x="2" y="4" width="12" height="4" rx="2" />
                             <circle cx="20" cy="6" r="2" />
@@ -2210,6 +2100,8 @@
                         </svg>
                         <span>MJML</span>
                     </div>
+                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M9 3C6.5 3 6.5 5.5 6.5 8C6.5 10 5.5 11.5 3.5 12C5.5 12.5 6.5 14 6.5 16C6.5 18.5 6.5 21 9 21" />
@@ -2223,17 +2115,9 @@
                         </svg>
                         <span>Liquid</span>
                     </div>
-                    <div class="tech-item">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" fill="none" stroke="currentColor" stroke-width="2" />
-                            <text x="12" y="16.2" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" font-weight="800" fill="currentColor">dj</text>
-                        </svg>
-                        <span>Django</span>
-                    </div>
                     <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
                     <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
-                    <div class="tech-item"><i class="fas fa-sliders-h" style="margin-right: 6px"></i><span>Dynamic Content</span></div>
-                </div>
+                    </div>
             </section>
         </main>
 
