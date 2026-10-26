@@ -1,1 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting | Email Dev Notes</title>
+    <meta name="description" content="A real client's payment receipt email, rebuilt as a Brevo template. How I mapped the system, wrote the JSON contract, tested each stage and traced what broke.">
+    <link rel="canonical" href="https://linleyb.com/blog/payment-receipt-email-from-json.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting">
+    <meta property="og:description" content="A payment receipt email rebuilt as a Brevo template: the system map, the JSON contract, and how I tested and troubleshot each stage.">
+    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:url" content="https://linleyb.com/blog/payment-receipt-email-from-json.html">
+    <meta property="og:type" content="article">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=7">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "MJML",
+                "HTML/CSS for Email",
+                "Handlebars",
+                "Liquid",
+                "JavaScript",
+                "Node.js",
+                "JSON",
+                "REST APIs",
+                "API Design"
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer: API and data contract design, troubleshooting, and tested HTML/CSS and MJML emails with ESP integration.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "MJML development",
+                "HTML email coding",
+                "Handlebars email templating",
+                "API and data contract design for email",
+                "Email testing and QA"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/payment-receipt-email-from-json.html#article",
+            "url": "https://linleyb.com/blog/payment-receipt-email-from-json.html",
+            "headline": "Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting",
+            "description": "A real client's payment receipt email, rebuilt as a Brevo template. How I mapped the system, wrote the JSON contract, tested each stage and traced what broke.",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "datePublished": "2026-10-26",
+            "dateModified": "2026-10-26",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/payment-receipt-email-from-json.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/payment-receipt-email-from-json.html#faq",
+            "url": "https://linleyb.com/blog/payment-receipt-email-from-json.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is params in a Brevo transactional email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In the send request, Brevo takes a JSON object called params next to the template ID. The template reads each value with a tag such as {{ params.customerName }}. This post uses that pattern."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why look at the whole system instead of just the template?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Because the problems in this project sat in different stages. A layout bug was in the template, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the template would have missed the data problems, so I check each stage on its own."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should a payment receipt email contain a full card number?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. The receipt in this project shows only the last digits, and my check refuses any value that looks like a full card number. That is my own safeguard, not a compliance standard, so check the rules that apply to your client."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How was this template checked?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Stage by stage. It compiles in MJML's strict mode, and when rendered with the original email's data its 47 lines of visible text match the original. A script checks the names and values, I rendered the layout and looked at it, and I did a real test send through Brevo and checked the delivered email in real email apps. I have not checked every app and version."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
+        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">CASE STUDY • TRANSACTIONAL EMAIL • SYSTEMS</span>
+    <h1>Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting</h1>
+    <p class="post-meta">Published 26 October 2026 • By Linley Bignoux</p>
+    <div class="tag-row"><span class="tag">brevo</span><span class="tag">transactional-email</span><span class="tag">json</span><span class="tag">mjml</span><span class="tag">data-contract</span><span class="tag">troubleshooting</span><span class="tag">testing</span></div>
+
+    <div class="post-content">
+
+      <h2>The brief</h2>
+      <p>A language-school client sent me a payment receipt email: "We have successfully charged your account". It was the compiled HTML output of an MJML email, with no source file, and every detail was typed into it: the amount, the dates, the name, the card line and the address. The job was to turn it into a Brevo transactional template whose details come from JSON.</p>
+      <p><b>My side:</b> the template, the list of values it needs (the params), the Brevo template and its ID. <b>Their side:</b> when the receipt is sent, the API key and the call from their own system. I don't touch their production system.</p>
+
+      <h2>Status</h2>
+      <div class="status-box">
+        <p><b>Tested, completed and delivered:</b> the template, the params list and the Brevo template, with the checks described below.</p>
+        <p><b>Their side:</b> connecting their own system to Brevo, as agreed.</p>
+      </div>
+
+      <h2>First, understand the system</h2>
+      <p>A receipt email is not one file. It is a chain, and a fault in any link looks the same to the customer: a wrong or empty receipt. Before I touched the template, I wrote the chain down.</p>
+      <svg viewBox="0 0 360 462" role="img" aria-labelledby="flow-title flow-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+        <title id="flow-title">How a receipt email gets from the client's system to the inbox</title>
+        <desc id="flow-desc">Five stages in order: the client's system, the JSON params, the Brevo template and ID, the rendered email, and the recipient's inbox.</desc>
+        <defs><marker id="flow-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="10" y="10" width="340" height="66" rx="10"/>
+          <rect x="10" y="104" width="340" height="66" rx="10"/>
+          <rect x="10" y="198" width="340" height="66" rx="10"/>
+          <rect x="10" y="292" width="340" height="66" rx="10"/>
+          <rect x="10" y="386" width="340" height="66" rx="10"/>
+          <line x1="180" y1="76" x2="180" y2="102" marker-end="url(#flow-arrow)"/>
+          <line x1="180" y1="170" x2="180" y2="196" marker-end="url(#flow-arrow)"/>
+          <line x1="180" y1="264" x2="180" y2="290" marker-end="url(#flow-arrow)"/>
+          <line x1="180" y1="358" x2="180" y2="384" marker-end="url(#flow-arrow)"/>
+        </g>
+        <g fill="currentColor" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">
+          <text x="180" y="40" font-size="17" font-weight="700">1. The client's system</text>
+          <text x="180" y="62" font-size="14">builds the values (the client's side)</text>
+          <text x="180" y="134" font-size="17" font-weight="700">2. The JSON params</text>
+          <text x="180" y="156" font-size="14">the contract, agreed by both sides</text>
+          <text x="180" y="228" font-size="17" font-weight="700">3. The Brevo template and ID</text>
+          <text x="180" y="250" font-size="14">the template is mine, the API key is theirs</text>
+          <text x="180" y="322" font-size="17" font-weight="700">4. The rendered email</text>
+          <text x="180" y="344" font-size="14">Brevo fills the tags with the values</text>
+          <text x="180" y="416" font-size="17" font-weight="700">5. The inbox</text>
+          <text x="180" y="438" font-size="14">the recipient's email app</text>
+        </g>
+      </svg>
+      <p>I use the same map to decide who owns what and where each kind of check belongs:</p>
+      <table>
+        <thead><tr><th>Stage</th><th>What can go wrong</th><th>How I check it</th></tr></thead>
+        <tbody>
+          <tr><td>1. The client's system</td><td>An unformatted amount, a misspelt field name, a full card number</td><td>The params check (the client's team fixes the source)</td></tr>
+          <tr><td>2. The JSON params</td><td>A missing required value, an empty list, a name the template doesn't read</td><td>The params check</td></tr>
+          <tr><td>3. The template</td><td>A layout bug, a button with no link, a link that doesn't match its text</td><td>A strict compile, rendering with real values, and looking at the result</td></tr>
+          <tr><td>4. Brevo</td><td>Tags changed by the editor, a loop Brevo doesn't handle</td><td>A real test send through Brevo</td></tr>
+          <tr><td>5. The inbox</td><td>Rendering differences between email apps, dark mode</td><td>Checking the delivered email in real email apps</td></tr>
+        </tbody>
+      </table>
+      <p>Most of what I found was not in the template at all. It was in the data stages, which is why I look at the whole chain, not just the HTML.</p>
+
+      <h2>Step 1: getting the source back from compiled HTML</h2>
+      <p>I rebuilt the MJML source from the compiled output, section by section. To prove I had matched it, I rendered my template with the original email's own values and compared the visible text line by line against the original: 47 lines, identical, in the same order. The 8 images, their alt text and widths, and the 6 column widths matched too.</p>
+      <p>That comparison covers text and structure. It does not tell me how the email looks in an inbox.</p>
+
+      <h2>Step 2: turning typed-in details into params</h2>
+      <p>Brevo receives the values as a JSON object called <code>params</code> alongside the template ID, and the template reads each one with a tag such as <code>{{ params.customerName }}</code>. I ended up with nine required values and two optional ones:</p>
+<pre><code>{
+  "customerName": "Alex Example",
+  "receiptNumber": "100245",
+  "invoiceDate": "March 1st, 2024",
+  "paymentDate": "March 1st, 2024",
+  "billingPeriod": "From March 1st 2024 - Ending 1st April 2024",
+  "planSummary": "$50 (2 hour class plan)",
+  "lineItems": [
+    { "description": "Monthly plan (2 hours of class)", "amount": "$50.00 AUD" }
+  ],
+  "total": "$50.00 AUD",
+  "cardBrand": "Mastercard",
+  "cardEnding": "*****42",
+  "billingAddressLines": ["12 Example Street", "Example City", "Example State", "Country"]
+}</code></pre>
+      <p>The rules are short. Dates and amounts arrive already formatted the way they should appear. A list is never empty: if there is nothing to show, the key is left out. The billing period box and the billing address are optional and hide themselves when they are missing:</p>
+<pre><code>{% if params.billingAddressLines %}
+  &lt;strong&gt;Billing address&lt;/strong&gt;
+  {% for line in params.billingAddressLines %}&lt;div&gt;{{ line }}&lt;/div&gt;{% endfor %}
+{% endif %}</code></pre>
+      <p>Charge rows work the same way: one row per item in <code>lineItems</code>, so a receipt with two charges needs no template change.</p>
+
+      <h2>Step 3: a check that refuses card numbers</h2>
+      <p>A receipt shows the end of a card, never the whole number. I wrote a small script (<code>npm run check-params</code>) that does two jobs. First, it compares the names the template reads with the names in the client's JSON, so a misspelt name is caught before it shows up as an empty gap in a customer's receipt. Second, it checks the values, including these two rules:</p>
+<pre><code>if (!/^[^0-9]*[0-9]{2,4}$/.test(params.cardEnding.trim())) {
+  problems.push("cardEnding must end with 2 to 4 digits. Never send a full card number.");
+}
+// and no value anywhere in the JSON may look like a card number
+if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
+  problems.push("a value looks like a full card number. Remove it.");
+}</code></pre>
+      <p>To prove it catches mistakes, I broke the data on purpose six ways:</p>
+      <table>
+        <thead><tr><th>What I broke</th><th>What the check did</th></tr></thead>
+        <tbody>
+          <tr><td>Renamed <code>customerName</code> to <code>customer_name</code></td><td>Caught: the template's name reported as missing, the new name noted as unused</td></tr>
+          <tr><td>A full card number in <code>cardEnding</code></td><td>Refused, with two messages</td></tr>
+          <tr><td>An empty <code>lineItems</code> list</td><td>Refused</td></tr>
+          <tr><td>A card number hidden in an address line</td><td>Refused</td></tr>
+          <tr><td>A line item with no amount</td><td>Refused</td></tr>
+          <tr><td>An extra field the template ignores</td><td>A note only, not an error</td></tr>
+        </tbody>
+      </table>
+      <p>This is my own safeguard, not a compliance standard, and it cannot know what the client's system does elsewhere.</p>
+
+      <h2>Troubleshooting: trace the symptom back through the chain</h2>
+      <p>My method is the same each time. Start at the symptom, ask which stage could produce it, then check that stage on its own before touching the others. Here is how it went on this project:</p>
+      <table>
+        <thead><tr><th>What I saw</th><th>Stage</th><th>What I did</th></tr></thead>
+        <tbody>
+          <tr><td>The footer squeezed into a narrow column</td><td>3. The template</td><td>Rendered the layout and looked. Two columns had no width set, so MJML split the section four ways. I set <code>width="100%"</code> on them.</td></tr>
+          <tr><td>A visible address that linked to a different address</td><td>3. The template</td><td>Read the compiled HTML. This goes to the client as a question, because only they know which address is right.</td></tr>
+          <tr><td>A "Download" button that did nothing</td><td>3. The template</td><td>Found it was a styled paragraph with no link, and made it a real button with a placeholder link.</td></tr>
+          <tr><td>A possible gap where a name should be</td><td>2. The params</td><td>The names part of the check compares both sides, so a mismatch is reported before sending.</td></tr>
+          <tr><td>A risk of a card number in the data</td><td>1. The client's system</td><td>Added the card rules, so the check refuses it however it arrives.</td></tr>
+        </tbody>
+      </table>
+      <p>The last two stages, Brevo and the inbox, I checked with a real test send and in real email apps, as the next sections explain.</p>
+
+      <h2>Testing and rendering: what each test can and can't tell me</h2>
+      <p>No single test covers the chain, so I keep a list of what each one proves:</p>
+      <table>
+        <thead><tr><th>Test</th><th>What it shows</th><th>What it doesn't</th></tr></thead>
+        <tbody>
+          <tr><td>Strict compile in MJML</td><td>The source is valid</td><td>How it looks</td></tr>
+          <tr><td>Render with the original values and compare 47 lines of text</td><td>The text and its order match the original</td><td>The layout</td></tr>
+          <tr><td>Render the layout and look at it</td><td>The structure. This is how I found the footer bug.</td><td>Real email apps. My renderer was an older browser engine with fallback fonts.</td></tr>
+          <tr><td>The params check</td><td>The names and values follow the rules</td><td>What Brevo does with them</td></tr>
+          <tr><td>A real test send through Brevo</td><td>That the real platform fills the tags and sends the email</td><td>How it looks in each email app</td></tr>
+          <tr><td>Checking the delivered email in real email apps</td><td>How it looks to a recipient</td><td>Every app and version. I have not checked them all.</td></tr>
+        </tbody>
+      </table>
+      <p>One caution on rendering: I render locally with a stand-in for Brevo's template language. It reads the same tags, but it is not Brevo, so it can't settle questions about Brevo itself. That is why I also did a real send.</p>
+
+      <h2>Where this fits</h2>
+      <p>This is one of about seven emails I have built: transactional, promotional, notification and two-factor, each with a different design, and some with a Node.js back end for the send step.</p>
+      <p>The receipt was the one where the data stage mattered most, because it carries money and card details. A promotional email leans on rendering instead, and a two-factor email is time-sensitive and security-sensitive. The pattern stays the same: understand the chain, write down the contract, build the template, then test each stage on its own.</p>
+
+      <h2>What I found in the original</h2>
+      <ul>
+        <li>The visible support address did not match the address it linked to.</li>
+        <li>The "Download" button had no link at all. It was a styled paragraph.</li>
+        <li>Two different company addresses appeared in the same email, one in the seller block and one in the footer.</li>
+        <li>The language was set to "undetermined" instead of English.</li>
+        <li>The social icons had empty alt text, and two of them were share links, not links to a profile.</li>
+        <li>A promotion for an ebook sat inside a receipt. That is worth asking about, in case it affects how the email is classified where the client sends.</li>
+      </ul>
+      <p>These go to the client as questions, because only they know which address is right and what they want the links to do.</p>
+
+      <h2>What I tested</h2>
+      <ul>
+        <li>The source compiles in MJML's strict mode.</li>
+        <li>Rendered with the original email's data, all 47 lines of visible text match the original.</li>
+        <li>The layout, rendered and looked at.</li>
+        <li>The params contract, including six deliberate breaks.</li>
+        <li>A real test send through Brevo.</li>
+        <li>The delivered email, in real email apps.</li>
+      </ul>
+      <p>I haven't checked every email app and version, so test the email in the ones your customers use. Connecting the client's own system to Brevo was their side of the job.</p>
+
+      <h2>What was delivered</h2>
+      <p>The client received the Brevo template with its template ID and the list of values their system sends (the params). Their team connects their own system and sends the receipt.</p>
+
+      <h2>Takeaway</h2>
+      <p>The template is the part everyone sees, but the receipt is only as right as the chain behind it. Map the stages, write the contract down, make a script enforce it, and test each stage for what it can actually tell you.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need a transactional email built, tested and traced through your whole system? I design the data contract, build the template and test each stage.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <!-- FAQ: the text here and in the JSON-LD in the head must be word for word the same. -->
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is params in a Brevo transactional email?</summary>
+          <p>In the send request, Brevo takes a JSON object called params next to the template ID. The template reads each value with a tag such as {{ params.customerName }}. This post uses that pattern.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why look at the whole system instead of just the template?</summary>
+          <p>Because the problems in this project sat in different stages. A layout bug was in the template, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the template would have missed the data problems, so I check each stage on its own.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Should a payment receipt email contain a full card number?</summary>
+          <p>No. The receipt in this project shows only the last digits, and my check refuses any value that looks like a full card number. That is my own safeguard, not a compliance standard, so check the rules that apply to your client.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How was this template checked?</summary>
+          <p>Stage by stage. It compiles in MJML's strict mode, and when rendered with the original email's data its 47 lines of visible text match the original. A script checks the names and values, I rendered the layout and looked at it, and I did a real test send through Brevo and checked the delivered email in real email apps. I have not checked every app and version.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+</script>
+</body>
+</html>
