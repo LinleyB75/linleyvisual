@@ -10,14 +10,14 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
     <title>Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting | Email Dev Notes</title>
-    <meta name="description" content="A real client's payment receipt email, rebuilt as a Brevo template. How I mapped the system, wrote the JSON contract, tested each stage and traced what broke.">
+    <meta name="description" content="Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON contract, testing and what I traced.">
     <link rel="canonical" href="https://linleyb.com/blog/payment-receipt-email-from-json.html">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
     <meta property="og:title" content="Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting">
-    <meta property="og:description" content="A payment receipt email rebuilt as a Brevo template: the system map, the JSON contract, and how I tested and troubleshot each stage.">
+    <meta property="og:description" content="Kick Off → Your English's payment receipt email rebuilt as a Brevo template: the system map, the JSON contract, and how I tested and troubleshot each stage.">
     <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <meta property="og:url" content="https://linleyb.com/blog/payment-receipt-email-from-json.html">
     <meta property="og:type" content="article">
@@ -113,7 +113,7 @@
             "@id": "https://linleyb.com/blog/payment-receipt-email-from-json.html#article",
             "url": "https://linleyb.com/blog/payment-receipt-email-from-json.html",
             "headline": "Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting",
-            "description": "A real client's payment receipt email, rebuilt as a Brevo template. How I mapped the system, wrote the JSON contract, tested each stage and traced what broke.",
+            "description": "Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON contract, testing and what I traced.",
             "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
             "datePublished": "2026-10-26",
             "dateModified": "2026-10-26",
@@ -209,13 +209,13 @@
 
     <span class="blog-date">CASE STUDY • TRANSACTIONAL EMAIL • SYSTEMS</span>
     <h1>Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting</h1>
-    <p class="post-meta">Published 26 October 2026 • By Linley Bignoux</p>
+    <p class="post-meta">Published 26 October 2026 • By Linley Bignoux • Client: Kick Off → Your English</p>
     <div class="tag-row"><span class="tag">brevo</span><span class="tag">transactional-email</span><span class="tag">json</span><span class="tag">mjml</span><span class="tag">data-contract</span><span class="tag">troubleshooting</span><span class="tag">testing</span></div>
 
     <div class="post-content">
 
       <h2>The brief</h2>
-      <p>A language-school client sent me a payment receipt email: "We have successfully charged your account". It was the compiled HTML output of an MJML email, with no source file, and every detail was typed into it: the amount, the dates, the name, the card line and the address. The job was to turn it into a Brevo transactional template whose details come from JSON.</p>
+      <p>My client Kick Off → Your English, an English-classes service from Geo English, sent me a payment receipt email: "We have successfully charged your account". It was the compiled HTML output of an MJML email, with no source file, and every detail was typed into it: the amount, the dates, the name, the card line and the address. The job was to turn it into a Brevo transactional template whose details come from JSON. They have agreed to be named in this write-up.</p>
       <p><b>My side:</b> the template, the list of values it needs (the params), the Brevo template and its ID. <b>Their side:</b> when the receipt is sent, the API key and the call from their own system. I don't touch their production system.</p>
 
       <h2>Status</h2>
@@ -346,6 +346,9 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
         </tbody>
       </table>
       <p>One caution on rendering: I render locally with a stand-in for Brevo's template language. It reads the same tags, but it is not Brevo, so it can't settle questions about Brevo itself. That is why I also did a real send.</p>
+      <p>Here is the receipt email in a local dark mode preview:</p>
+      <img src="/blog/images/kick-off-payment-receipt-dark-mode.webp" alt="Dark mode preview of the Kick Off → Your English payment receipt email, showing the thank-you message, the receipt details, the total and the footer" width="800" height="2523" loading="lazy">
+      <p><em>A local dark mode preview of the receipt email, shown with the client's permission.</em></p>
 
       <h2>Where this fits</h2>
       <p>This is one of about seven emails I have built: transactional, promotional, notification and two-factor, each with a different design, and some with a Node.js back end for the send step.</p>
