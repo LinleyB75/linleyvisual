@@ -42,7 +42,7 @@
                 "@id": "https://linleyb.com/blog/#webpage",
                 "url": "https://linleyb.com/blog/",
                 "name": "Email Development Blog | Linley Bignoux",
-                "description": "Articles, tips, and insights on MJML, Maizzle, HTML email coding, and rigorous cross-client testing by Linley Bignoux.",
+                "description": "Articles, case studies and notes on transactional email, data contracts, MJML email coding and cross-client testing by Linley Bignoux.",
                 "isPartOf": { "@id": "https://linleyb.com/#website" },
                 "about": { "@id": "https://linleyb.com/#service" },
                 "breadcrumb": { "@id": "https://linleyb.com/blog/#breadcrumb" }
@@ -79,7 +79,7 @@
                     "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
                     "https://www.fiverr.com/linleybignoux"
                 ],
-                "knowsAbout": ["Email Development", "MJML", "Maizzle", "HTML/CSS for Email", "Handlebars"]
+                "knowsAbout": ["Email Development", "MJML", "HTML/CSS for Email", "Handlebars", "Liquid", "JavaScript", "Node.js", "JSON", "REST APIs", "API Design"]
             },
             {
                 "@type": "ProfessionalService",
@@ -87,7 +87,7 @@
                 "name": "Linley Bignoux Email Development",
                 "url": "https://linleyb.com/",
                 "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+                "description": "Freelance email developer: API and data contract design, troubleshooting, and tested HTML/CSS and MJML emails with ESP integration.",
                 "provider": { "@id": "https://linleyb.com/#person" },
                 "areaServed": [
                     { "@type": "Country", "name": "Mauritius" },
@@ -96,8 +96,8 @@
                 "serviceType": [
                     "MJML development",
                     "HTML email coding",
-                    "Maizzle development",
                     "Handlebars email templating",
+                    "API and data contract design for email",
                     "Email testing and QA"
                 ]
             },
@@ -187,6 +187,12 @@
     <section class="blog-section">
         <div class="container">
             <div class="post-grid">
+                <article class="post-card">
+                    <span class="blog-date">Case study • Transactional email</span>
+                    <h2><a href="/blog/payment-receipt-email-from-json.html">Rebuilding a Payment Receipt Email So Its Details Come From JSON</a></h2>
+                    <p>How I rebuilt a client's hard-coded payment receipt email as a Brevo template: a JSON params contract, a check that refuses card numbers, and what I found.</p>
+                    <a class="read-more" href="/blog/payment-receipt-email-from-json.html">Read the post &rarr;</a>
+                </article>
                 <article class="post-card">
                     <span class="blog-date">Architecture • Strategy • Ecosystem</span>
                     <h2><a href="/blog/systems-thinking-email-development.html">Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</a></h2>
