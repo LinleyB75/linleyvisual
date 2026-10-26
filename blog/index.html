@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+  NEW POST CHECKLIST FOR THIS PAGE (the blog index)
+  1. Add a card for the new post at the TOP of the post grid, newest first. Look for "NEW POST CARD GOES HERE" below.
+  2. Card title = the post's h1. Card text = one or two sentences. Link = /blog/YOUR-POST-FILENAME.html
+  3. Add a url entry for the new post to sitemap.xml, and update the lastmod of /blog/ there
+  4. If the topic is new, update the FAQ answer "Do these notes cover dark mode and mobile rendering bugs?": the visible text AND the JSON-LD in the head must match word for word
+  5. Keep knowsAbout and serviceType in the JSON-LD the same as on the homepage and in post-template.html
+  6. If the focus of the blog changes, update the hero text below, the meta description and the og:description
+  7. After uploading: view-source to confirm it is live, then run Google's Rich Results Test
+-->
 <head>
     <script src="/consent.js?v=1" defer></script>
 
@@ -25,6 +35,7 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     <link rel="stylesheet" href="/blog/blog.css?v=7">
 
+    <!-- JSON-LD below: comments are not allowed inside it. Keep knowsAbout and serviceType the same as on the homepage and in post-template.html. If you change the FAQ text in the page, change it here too. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -179,6 +190,7 @@
 <main role="main">
     <section class="blog-hero">
         <div class="container">
+            <!-- HERO: if the focus of the blog changes, update this text, the meta description and the og:description in the head -->
             <h1><i class="fas fa-book-open"></i> Email Dev Notes</h1>
             <p><span class="tagline-accent">Real email rendering bugs, tested in real clients, with the fix.</span> Each post covers one problem or lesson: what happened, the cause, the fix, and where I retested it.</p>
         </div>
@@ -187,10 +199,19 @@
     <section class="blog-section">
         <div class="container">
             <div class="post-grid">
+                <!-- NEW POST CARD GOES HERE: add it above the first card, newest first.
+                     Copy this block, remove the comment markers, and replace the CAPITAL words.
+                     <article class="post-card">
+                         <span class="blog-date">CATEGORY • TOPIC</span>
+                         <h2><a href="/blog/YOUR-POST-FILENAME.html">POST TITLE (same as the post's h1)</a></h2>
+                         <p>ONE OR TWO SENTENCES ABOUT THE POST.</p>
+                         <a class="read-more" href="/blog/YOUR-POST-FILENAME.html">Read the post &rarr;</a>
+                     </article>
+                -->
                 <article class="post-card">
-                    <span class="blog-date">Case study • Transactional email</span>
-                    <h2><a href="/blog/payment-receipt-email-from-json.html">Rebuilding a Payment Receipt Email So Its Details Come From JSON</a></h2>
-                    <p>How I rebuilt a client's hard-coded payment receipt email as a Brevo template: a JSON params contract, a check that refuses card numbers, and what I found.</p>
+                    <span class="blog-date">Case study • Transactional email • Systems</span>
+                    <h2><a href="/blog/payment-receipt-email-from-json.html">Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting</a></h2>
+                    <p>Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON contract, testing and what I traced.</p>
                     <a class="read-more" href="/blog/payment-receipt-email-from-json.html">Read the post &rarr;</a>
                 </article>
                 <article class="post-card">
@@ -231,6 +252,7 @@
         </div>
     </section>
 
+    <!-- FAQ: if you change a question or answer here, change the same text in the JSON-LD in the head. They must match word for word. -->
     <section id="faq" style="background-color: var(--bg-alt)">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
