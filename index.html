@@ -10,7 +10,7 @@
         <title>Email Developer - Mauritius | Linley Bignoux</title>
         <meta
             name="description"
-            content="Freelance Email Developer in Mauritius, serving locally &amp; globally. I design the data contract between your app and your email platform, troubleshoot the whole system, and build tested HTML/CSS and MJML emails with ESP integration."
+            content="Freelance Email Developer in Mauritius, serving locally &amp; globally. I define what data your application sends to your email platform, troubleshoot the whole system, and build tested HTML/CSS and MJML emails with ESP integration."
         />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
@@ -24,7 +24,7 @@
         <meta property="og:title" content="Linley Bignoux | Freelance Email Developer" />
         <meta
             property="og:description"
-            content="Email developer. I design the data contract between your app and your email platform, troubleshoot the whole system, and build responsive MJML email campaigns with ESP integration."
+            content="Email developer. I define what data your application sends to your email platform, troubleshoot the whole system, and build responsive MJML email campaigns with ESP integration."
         />
         <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
         <meta property="og:image:alt" content="Linley Bignoux, freelance email developer" />
@@ -546,15 +546,26 @@
                 max-width: 1200px;
                 margin: 0 auto;
             }
+            .about-image {
+                flex: 0 0 auto;
+                width: min(70vw, 320px);
+                aspect-ratio: 4 / 5;
+                position: relative;
+                overflow: hidden;
+                border-radius: 999px 999px 28px 28px;
+                box-shadow: 14px 14px 0 var(--accent);
+                background: #1a1a1a;
+                border: 4px solid var(--primary);
+                box-sizing: border-box;
+            }
             .about-image img {
-                width: 350px;
+                position: absolute;
+                display: block;
+                width: 114.29%;
+                max-width: none;
                 height: auto;
-                max-width: 100%;
-                aspect-ratio: 1/1;
-                border-radius: 15px;
-                object-fit: cover;
-                border: 6px solid var(--primary);
-                box-shadow: var(--shadow-lg);
+                left: -10.71%;
+                top: -27.14%;
             }
             .about-text {
                 flex: 1;
@@ -1121,7 +1132,7 @@
                         "@id": "https://linleyb.com/#service",
                         "name": "Email Development Services",
                         "url": "https://linleyb.com/",
-                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also design the data contract between your app and your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
                         "provider": {
                             "@id": "https://linleyb.com/#person"
                         },
@@ -1152,7 +1163,7 @@
                             "Email Template Audits and Code Cleanup",
                             "Transactional Email Setup and Developer Handoff",
                             "Transactional Email Payload Design and Testing",
-                            "API and Data Contract Design for Email",
+                            "API and Data Design for Email",
                             "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
                         ]
                     },
@@ -1213,7 +1224,7 @@
                                 "name": "Do you write the backend code that sends the emails?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or app."
+                                    "text": "I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application."
                                 }
                             },
                             {
@@ -1290,13 +1301,8 @@
                                 Email <span style="color: var(--accent)">Developer</span>
                             </h1>
                             <p style="flex: 1 1 100%; margin: -0.5rem 0 0; font-size: clamp(1.05rem, 2vw, 1.35rem); color: #fff">
-                                Transactional email, data contracts and the systems behind them
+                                Transactional email and the systems behind it
                             </p>
-                            <img
-                                src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-                                alt="Email Developer Mauritius logo"
-                                style="height: clamp(100px, 14vw, 220px) !important; width: auto !important; flex-shrink: 0"
-                            />
                         </div>
 
                         <ul
@@ -1314,20 +1320,20 @@
                                 letter-spacing: 0.5px;
                             "
                         >
-                            <li>Build → Test → Diagnose → Fix → Deliver</li>
                             <li>Email systems for <span style="color: #fff">Transactional Emails and Automations</span></li>
-                            <li>Whole-system view: <span style="color: #fff">App → JSON → Template → ESP → Inbox</span></li>
+                            <li>End to end: <span style="color: #fff">Application → Data → Template → Email Platform → Inbox</span></li>
+                            <li>Build → Test → Diagnose → Fix → Deliver</li>
                         </ul>
 
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I build and test emails for reliable rendering and set them up in your Email Service Provider (ESP).<br />
-                                I look at the whole system, not just the code: how your data reaches the template, how the email is sent and where it can break. I design the data contract between your app and your email platform, and I troubleshoot by understanding how the parts fit together.
+                                I look at the whole system, not just the code: how your data reaches the template, how the email is sent and where it can break.<br />
+                                I define what data your application sends to your email platform, and I troubleshoot how the parts fit together.
                             </p>
 
                             <p style="margin-top: 1.5rem">
-                                API &amp; Data Contract Design · Troubleshooting &amp; Architecture · Transactional Email · JSON Payloads · ESP API Setup
+                                API &amp; Data Design · Troubleshooting &amp; Architecture · Transactional Email · JSON Payloads · ESP API Setup
                             </p>
                         </div>
 
@@ -1367,7 +1373,7 @@
                     </div>
                     <!-- Closes Left Column -->
 
-                    <!-- RIGHT: photo -->
+                    <!-- RIGHT: logo in the arched frame -->
                     <div
                         style="
                             flex: 0 0 auto;
@@ -1383,12 +1389,10 @@
                         "
                     >
                         <img
-                            src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp"
-                            alt="Photo of Linley Bignoux, freelance email developer"
-                            width="640"
-                            height="960"
+                            src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                            alt="Email Developer Mauritius logo"
                             fetchpriority="high"
-                            style="position: absolute; display: block; width: 114.29%; max-width: none; height: auto; left: -10.71%; top: -27.14%"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 72%; max-height: 72%; height: auto; object-fit: contain"
                         />
                     </div>
                 </div>
@@ -1670,9 +1674,9 @@
                     <div class="grid-cards">
                         <div class="card">
                             <i class="fas fa-table-list"></i>
-                            <h3>API &amp; Data Contract Design</h3>
+                            <h3>API &amp; Data Design</h3>
                             <p>
-                                I design the contract between your app and your email platform: the JSON fields, their names and types, which are required, and the fallbacks. I write the field table your developers build against, and test it with missing, very long and special-character data before it reaches a customer.
+                                I define what data your application sends to your email platform: the JSON fields, their names and types, which are required, and the fallbacks. I write the field table your developers build against, and test it with missing, very long and special-character data before it reaches a customer.
                             </p>
                         </div>
                         <div class="card">
@@ -1686,7 +1690,7 @@
                             <i class="fas fa-screwdriver-wrench"></i>
                             <h3>Troubleshooting the Whole System</h3>
                             <p>
-                                I trace a problem through the whole flow, from your app's data to the template, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and templates that change after ESP upload.
+                                I trace a problem through the whole flow, from your application's data to the template, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and templates that change after ESP upload.
                             </p>
                         </div>
                         <div class="card">
@@ -1774,12 +1778,12 @@
                         <div class="card" style="text-align: left">
                             <i class="fas fa-diagram-project"></i>
                             <h3>Email Systems Development</h3>
-                            <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem">Between your app and the inbox</p>
+                            <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem">Between your application and the inbox</p>
                             <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7">
-                                <li>Design the data contract: the JSON your app sends and the fields your template reads</li>
+                                <li>Define what data your application sends: the JSON fields and the fields your template reads</li>
                                 <li>Decide how the pieces fit together: who creates the links, who owns the API key, what happens when a send fails</li>
                                 <li>Set up the email platform: templates, template IDs and test sends</li>
-                                <li>Troubleshoot the whole flow, from your app's data to the inbox</li>
+                                <li>Troubleshoot the whole flow, from your application's data to the inbox</li>
                                 <li>Build JavaScript and Node.js reference code for the send step, for your developers to adapt (in progress)</li>
                             </ul>
                         </div>
@@ -1897,7 +1901,7 @@
                             <li><b>Platform setup:</b> the template set up in your email platform, as a hosted template or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
                             <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
                             <li><b>Domain authentication:</b> SPF, DKIM and DMARC set up and checked. I need access to your domain's DNS.</li>
-                            <li><b>Payload contract and tests:</b> a field table plus scripted test cases for missing, very long and special-character data, run before the template goes into your platform.</li>
+                            <li><b>Payload checks and tests:</b> a field table plus scripted test cases for missing, very long and special-character data, run before the template goes into your platform.</li>
                         </ul>
                     </div>
 
@@ -1913,7 +1917,7 @@
                         "
                     >
                         <strong style="color: var(--text)">Another platform?</strong> I'll build to its tag format.
-                        <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or app to your email platform. I write the template and your developer connects the data.
+                        <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or application to your email platform. I write the template and your developer connects the data.
                     </p>
                 </div>
             </section>
@@ -1948,14 +1952,7 @@
                     <h2 class="section-title"><i class="fas fa-terminal"></i> About Me</h2>
                     <div class="about-content">
                         <div class="about-image">
-                            <img
-                                loading="lazy"
-                                decoding="async"
-                                src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp"
-                                alt="Linley Bignoux - Email Developer" style="object-position: 50% 30%"
-                                width="350"
-                                height="350"
-                            />
+                            <img loading="lazy" decoding="async" src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp" alt="Linley Bignoux - Email Developer" width="640" height="960" />
                         </div>
                         <div class="about-text">
                             <p>
@@ -1963,7 +1960,7 @@
                             </p>
                             <br />
                             <p>
-                                I focus on the technical side of email and how it connects to the rest of your system: API and data contract design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
+                                I focus on the technical side of email and how it connects to the rest of your system: API and data design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
                             </p>
                             <h3>Background &amp; Qualifications</h3>
                             <p>
@@ -2042,7 +2039,7 @@
                         </details>
                         <details class="faq-item">
                             <summary>Do you write the backend code that sends the emails?</summary>
-                            <p>I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or app.</p>
+                            <p>I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Can you update a transactional template we already have?</summary>
