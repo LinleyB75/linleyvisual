@@ -19,17 +19,26 @@
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
     <title>Email Dev Notes | Mauritius | Linley Bignoux</title>
-    <meta name="description" content="Real email rendering bugs, tested in real clients, with the fix. Notes from an email developer.">
+    <meta name="description" content="Email development notes: rendering bugs and their fixes, transactional email, and the systems behind it. Tested in real email clients.">
     <link rel="canonical" href="https://linleyb.com/blog/">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
     <meta property="og:title" content="Email Dev Notes | Linley Bignoux">
-    <meta property="og:description" content="Real email rendering bugs, tested in real clients, with the fix.">
-    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:description" content="Rendering bugs and fixes, transactional email, and the systems behind it. Notes from an email developer.">
+    <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
     <meta property="og:url" content="https://linleyb.com/blog/">
     <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Email Dev Notes | Linley Bignoux">
+    <meta name="twitter:description" content="Rendering bugs and fixes, transactional email, and the systems behind it. Notes from an email developer.">
+    <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -38,121 +47,205 @@
     <!-- JSON-LD below: comments are not allowed inside it. Keep knowsAbout and serviceType the same as on the homepage and in post-template.html. If you change the FAQ text in the page, change it here too. -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "@id": "https://linleyb.com/#website",
-                "url": "https://linleyb.com/",
-                "name": "Linley Bignoux | Freelance Email Developer",
-                "inLanguage": ["en-AU", "en-MU"],
-                "publisher": { "@id": "https://linleyb.com/#person" }
-            },
-            {
-                "@type": "CollectionPage",
-                "@id": "https://linleyb.com/blog/#webpage",
-                "url": "https://linleyb.com/blog/",
-                "name": "Email Development Blog | Linley Bignoux",
-                "description": "Articles, case studies and notes on transactional email, data contracts, MJML email coding and cross-client testing by Linley Bignoux.",
-                "isPartOf": { "@id": "https://linleyb.com/#website" },
-                "about": { "@id": "https://linleyb.com/#service" },
-                "breadcrumb": { "@id": "https://linleyb.com/blog/#breadcrumb" }
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": "https://linleyb.com/blog/#breadcrumb",
-                "itemListElement": [
-                    {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Home",
-                        "item": "https://linleyb.com/"
-                    },
-                    {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Blog",
-                        "item": "https://linleyb.com/blog/"
-                    }
-                ]
-            },
-            {
-                "@type": "Person",
-                "@id": "https://linleyb.com/#person",
-                "name": "Linley Bignoux",
-                "jobTitle": "Email Developer",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-                "sameAs": [
-                    "https://github.com/LinleyB75",
-                    "https://linleybignouxzqme9nmu.contra.com/",
-                    "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
-                    "https://www.fiverr.com/linleybignoux"
-                ],
-                "knowsAbout": ["Email Development", "MJML", "HTML/CSS for Email", "Handlebars", "Liquid", "JavaScript", "Node.js", "JSON", "REST APIs", "API Design"]
-            },
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://linleyb.com/#service",
-                "name": "Linley Bignoux Email Development",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "description": "Freelance email developer: API and data contract design, troubleshooting, and tested HTML/CSS and MJML emails with ESP integration.",
-                "provider": { "@id": "https://linleyb.com/#person" },
-                "areaServed": [
-                    { "@type": "Country", "name": "Mauritius" },
-                    { "@type": "AdministrativeArea", "name": "Worldwide" }
-                ],
-                "serviceType": [
-                    "MJML development",
-                    "HTML email coding",
-                    "Handlebars email templating",
-                    "API and data contract design for email",
-                    "Email testing and QA"
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "@id": "https://linleyb.com/blog/#faq",
-                "url": "https://linleyb.com/blog/",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "What do these email dev notes cover?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Do these notes cover dark mode and mobile rendering bugs?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Are the fixes tested in real email clients?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Each post says which clients I retested in. Some fixes were retested in only one client, so check the \"What I retested\" section and test in your own audience's clients before relying on a fix."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Can other developers and agencies use these notes for debugging?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup."
-                        }
-                    }
-                ]
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
             }
-        ]
-    }
+        },
+        {
+            "@type": "CollectionPage",
+            "@id": "https://linleyb.com/blog/#webpage",
+            "url": "https://linleyb.com/blog/",
+            "name": "Email Development Blog | Linley Bignoux",
+            "description": "Articles, case studies and notes on transactional email, data design, MJML email coding and cross-client testing by Linley Bignoux.",
+            "isPartOf": {
+                "@id": "https://linleyb.com/#website"
+            },
+            "about": {
+                "@id": "https://linleyb.com/#service"
+            },
+            "breadcrumb": {
+                "@id": "https://linleyb.com/blog/#breadcrumb"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://linleyb.com/blog/#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://linleyb.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://linleyb.com/blog/"
+                }
+            ]
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Django and Jinja-like Templating Syntax",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email Templates",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Design",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Django and Jinja-like Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Templates",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Template Audits and Code Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Payload Design and Testing",
+                "API and Data Design for Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/#faq",
+            "url": "https://linleyb.com/blog/",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What do these email dev notes cover?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do these notes cover dark mode and mobile rendering bugs?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There is also a transactional email case study and a post on systems thinking."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Are the fixes tested in real email clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Each post says which clients I retested in. Some fixes were retested in only one client, so check the \"What I retested\" section and test in your own audience's clients before relying on a fix."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can other developers and agencies use these notes for debugging?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup."
+                    }
+                }
+            ]
+        }
+    ]
+}
     </script>
 </head>
 <body>
@@ -192,7 +285,7 @@
         <div class="container">
             <!-- HERO: if the focus of the blog changes, update this text, the meta description and the og:description in the head -->
             <h1><i class="fas fa-book-open"></i> Email Dev Notes</h1>
-            <p><span class="tagline-accent">Real email rendering bugs, tested in real clients, with the fix.</span> Each post covers one problem or lesson: what happened, the cause, the fix, and where I retested it.</p>
+            <p><span class="tagline-accent">Rendering bugs and fixes, transactional email, and the systems behind it.</span> Each post covers one problem or lesson: what happened, the cause, the fix, and where I tested it.</p>
         </div>
     </section>
 
@@ -263,7 +356,7 @@
                 </details>
                 <details class="faq-item">
                     <summary>Do these notes cover dark mode and mobile rendering bugs?</summary>
-                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking.</p>
+                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There is also a transactional email case study and a post on systems thinking.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Are the fixes tested in real email clients?</summary>
