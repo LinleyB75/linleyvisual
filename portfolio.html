@@ -356,14 +356,18 @@
             }
             @media (max-width: 1100px) {
                 .final-cta .tech-stack-icons {
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    max-width: 560px;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    max-width: 760px;
                     margin-left: auto;
                     margin-right: auto;
                     gap: 1.25rem 0.75rem;
                 }
             }
             @media (max-width: 767px) {
+                .final-cta .tech-stack-icons {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    max-width: 360px;
+                }
                 .final-cta .tech-item {
                     text-align: center;
                 }
@@ -876,7 +880,10 @@
                 .portfolio-card { max-width: 100%; }
                 .portfolio-img-wrap { height: 250px; }
             }
-        </style>
+        
+        /* icons wider than 1em (like the code brackets) keep a gap before their label */
+        .tech-item i { width: auto; min-width: 1em; }
+    </style>
         <script type="application/ld+json">
 {
     "@context": "https://schema.org",
@@ -927,7 +934,6 @@
                 "MJML",
                 "Handlebars",
                 "Liquid",
-                "Django and Jinja-like Templating Syntax",
                 "Email Testing and Quality Assurance",
                 "Email Automation",
                 "Transactional Email Templates",
@@ -970,7 +976,7 @@
             "@id": "https://linleyb.com/#service",
             "name": "Email Development Services",
             "url": "https://linleyb.com/",
-            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars and Liquid templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -987,7 +993,6 @@
                 "MJML Development",
                 "Handlebars Email Templating",
                 "Liquid Email Templating",
-                "Django and Jinja-like Email Templating",
                 "Email Automation",
                 "Email Testing and Quality Assurance",
                 "Dynamic Email Content",
@@ -1152,7 +1157,7 @@
             <section class="portfolio-header">
                 <div class="container">
                     <h1>Email Development Portfolio</h1>
-                    <p>A complete showcase of responsive, custom-coded HTML, CSS, MJML and dynamic content coded in Handlebars and Liquid email templates, fully tested. Click any image to view the full desktop and mobile rendering.</p>
+                    <p>A showcase of responsive, custom-coded HTML, CSS and MJML emails, with dynamic content in Handlebars and Liquid, fully tested. Where an email is triggered by your system, such as a receipt, a sign-up confirmation or a 2FA code, I also handle the integration side: what data your application sends, how it reaches the template in your email platform, and Node.js reference code for your developers. Click any image to view the full desktop and mobile rendering.</p>
 
                     <div class="tech-stack-icons">
                         <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
@@ -1477,7 +1482,7 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
                     <p class="contact-intro-text">
-                        Have a design that needs coding? Send me the details below and get a quote for your next campaign.
+                        Have a design that needs coding, or an email your system needs to send? Send me the details below and get a quote for your next campaign or transactional email.
                     </p>
                     <div class="contact-container">
                         <form action="https://formsubmit.co/contact@linleyb.com" method="POST">
@@ -1505,7 +1510,7 @@
                                     id="message"
                                     name="message"
                                     rows="5"
-                                    placeholder="Tell me about the design, or paste a link..."
+                                    placeholder="Tell me about the design (or paste a link), your email platform and what triggers the email..."
                                 ></textarea>
                             </div>
                             <div class="form-btn-wrap"><button type="submit" class="cta-button">Send Secure Message</button></div>
@@ -1540,13 +1545,14 @@
                         </svg>
                         <span>MJML</span>
                     </div>
-                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
                     <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
+                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
                     <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
-                    </div>
+                    <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
+                </div>
             </section>
         </main>
 
