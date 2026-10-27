@@ -17,28 +17,28 @@
         <meta name="color-scheme" content="light dark" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-        <title>Email Development Portfolio - Mauritius | Linley Bignoux</title>
-        <meta name="description" content="Portfolio of custom-coded HTML, CSS and MJML emails with dynamic templating. Responsive, Outlook-safe and tested across email clients." />
+        <title>Certifications | Email Developer - Mauritius | Linley Bignoux</title>
+        <meta name="description" content="Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration." />
         <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
         <link rel="icon" type="image/jpeg" sizes="192x192" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
         <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
-        <meta property="og:title" content="Email Development Portfolio | Linley Bignoux" />
-        <meta property="og:description" content="Custom-coded HTML, CSS and MJML email projects, with dynamic templating. Responsive, Outlook-safe and tested." />
+        <meta property="og:title" content="Certifications | Linley Bignoux - Freelance Email Developer" />
+        <meta property="og:description" content="Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration." />
         <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it." />
-        <meta property="og:url" content="https://linleyb.com/portfolio.html" />
+        <meta property="og:url" content="https://linleyb.com/certifications.html" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Linley Bignoux | Email Developer" />
         <meta property="og:locale" content="en_AU" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Email Development Portfolio | Linley Bignoux" />
-        <meta name="twitter:description" content="Custom-coded HTML, CSS and MJML email projects, with dynamic templating. Responsive, Outlook-safe and tested." />
+        <meta name="twitter:title" content="Certifications | Linley Bignoux - Freelance Email Developer" />
+        <meta name="twitter:description" content="Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration." />
         <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg" />
         <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it." />
-        <link rel="canonical" href="https://linleyb.com/portfolio.html" />
+        <link rel="canonical" href="https://linleyb.com/certifications.html" />
 
         <link rel="preconnect" href="https://i.ibb.co" />
         <link
@@ -768,39 +768,31 @@
                 display: none;
             }
 
-            /* ---------- Portfolio FAQ Section Styles ---------- */
-            .portfolio-faq-section {
-                background-color: var(--bg-alt);
+            /* ---------- FAQ Accordion Styling ---------- */
+            #faq {
                 padding: clamp(3.5rem, 8vh, 6rem) 0;
-            }
-            .portfolio-faq-section .section-title {
-                text-align: center;
-                color: var(--primary);
-                font-size: clamp(1.8rem, 4vw, 2.8rem);
-                font-weight: 800;
-                margin-bottom: 3.5rem;
             }
             .faq-list {
                 max-width: 900px;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
-                gap: 1.25rem;
+                gap: 15px;
             }
             .faq-item {
                 background: var(--card-bg);
-                border: 1px solid var(--border);
+                border: 2px solid var(--border);
                 border-radius: 12px;
                 padding: 1.25rem 1.5rem;
-                box-shadow: var(--shadow);
-                transition: border-color 0.3s ease;
+                transition: border-color 0.3s, box-shadow 0.3s;
             }
-            .faq-item:hover {
+            .faq-item[open] {
                 border-color: var(--primary);
+                box-shadow: var(--shadow);
             }
             .faq-item summary {
-                font-size: 1.1rem;
                 font-weight: 700;
+                font-size: 1.1rem;
                 color: var(--primary);
                 cursor: pointer;
                 list-style: none;
@@ -811,18 +803,18 @@
                 display: none;
             }
             .faq-item summary::after {
-                content: "\f078";
-                font-family: "Font Awesome 6 Free";
-                font-weight: 900;
+                content: "+";
                 position: absolute;
                 right: 0;
                 top: 50%;
                 transform: translateY(-50%);
+                font-size: 1.5rem;
+                font-weight: 400;
                 color: var(--accent);
-                transition: transform 0.3s ease;
+                transition: transform 0.3s;
             }
             .faq-item[open] summary::after {
-                transform: translateY(-50%) rotate(180deg);
+                content: "\2212";
             }
             .faq-item summary:focus-visible {
                 outline: 2px solid var(--accent);
@@ -830,55 +822,50 @@
             }
             .faq-item p {
                 margin-top: 1rem;
-                margin-bottom: 0;
+                color: var(--text-light);
                 font-size: 1rem;
                 line-height: 1.7;
-                color: var(--text-light);
             }
 
-            /* ---------- Portfolio page specifics ---------- */
-            :root { --page-bg: var(--bg-alt); }
-            [data-theme="dark"] { --page-bg: #000000; }
+            /* ---------- Certifications page specifics ---------- */
+            :root { --page-bg: var(--bg-alt); --cert-bg-dark: #0a0a0a; }
+            [data-theme="dark"] { --page-bg: #000000; --cert-bg-dark: #000000; }
             @media (prefers-color-scheme: dark) {
-                :root:not([data-theme="light"]) { --page-bg: #000000; }
+                :root:not([data-theme="light"]) { --page-bg: #000000; --cert-bg-dark: #000000; }
             }
             html, body { background: var(--page-bg); }
             body { display: flex; flex-direction: column; min-height: 100vh; }
             main { flex: 1 0 auto; }
             footer { margin-top: auto; }
 
-            .portfolio-header { text-align: center; padding: 4rem 20px 2rem; }
-            .portfolio-header h1 { color: var(--primary); font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 1rem; }
-            .portfolio-header p { font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto; }
-            .portfolio-header .tech-stack-icons { color: var(--primary); margin-top: 2.5rem; }
-            .portfolio-header .tech-item { font-size: clamp(0.9rem, 1.4vw, 1.05rem); }
-            .portfolio-header .tech-item i, .portfolio-header .tech-item svg { font-size: clamp(1.25rem, 2vw, 1.6rem); }
+            .content-wrapper { padding: 4rem 20px; }
+            .page-header { text-align: center; max-width: 900px; margin: 0 auto 3rem; }
+            .page-header h1 { color: var(--primary); font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 1rem; font-weight: 900; }
+            .page-header p { color: var(--text-light); font-size: 1.15rem; }
 
-            .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; padding: 2rem 0 6rem; }
-            .portfolio-card { width: 100%; flex: 1 1 320px; max-width: 380px; background: var(--card-bg); border-radius: 15px; border: 1px solid var(--border); overflow: hidden; box-shadow: var(--shadow-lg); transition: transform 0.3s; display: flex; flex-direction: column; }
-            .portfolio-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-            .portfolio-img-wrap { width: 100%; height: 300px; overflow: hidden; border-bottom: 4px solid var(--accent); position: relative; display: block; }
-            .portfolio-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 0.5s ease; }
-            .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.05); }
-            .view-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(209, 5, 0, 0.85); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 800; opacity: 0; transition: opacity 0.3s; }
-            .portfolio-img-wrap:hover .view-overlay { opacity: 1; }
-            .portfolio-content { padding: 2rem; flex-grow: 1; display: flex; flex-direction: column; }
-            .portfolio-tech { font-size: 0.85rem; color: #ffffff; font-weight: 800; background: var(--accent); padding: 5px 12px; border-radius: 4px; display: inline-block; margin-bottom: 15px; align-self: flex-start; }
-            .portfolio-title { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; font-weight: 800; }
-            .portfolio-desc { color: var(--text); font-size: 1rem; margin-bottom: 20px; flex-grow: 1; }
-            .portfolio-links { display: flex; gap: 15px; margin-top: auto; }
-            .btn-outline { flex: 1; text-align: center; padding: 10px; border: 2px solid var(--primary); border-radius: 8px; color: var(--primary); font-weight: 700; text-decoration: none; transition: 0.3s; }
-            .btn-outline:hover { background: var(--primary); color: var(--bg); }
+            .cert-container-box { border: 3px solid var(--primary); border-radius: 15px; padding: 3rem 1.5rem; background-color: var(--cert-bg-dark); max-width: 1350px; margin: 0 auto; }
+            .cert-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+            .cert-item { flex: 1 1 180px; max-width: 300px; min-width: 180px; }
+            .cert-item img { width: 100%; height: auto; border-radius: 8px; border: 3px solid var(--accent); cursor: zoom-in; }
+            .back-link-wrapper { text-align: center; margin-top: 3rem; }
 
             .contact-section { padding: clamp(3.5rem, 8vh, 6rem) 0; background: var(--bg); }
 
+            @media (min-width: 1101px) {
+                .nav-links a[aria-current="page"]:not(.nav-fix-btn):not(.nav-for-you) { border-bottom-color: var(--accent); }
+            }
+
+            /* LIGHTBOX */
+            #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); overflow-y: auto; text-align: center; padding: 20px; }
+            #lightbox img { max-width: 90%; max-height: 90vh; border: 4px solid white; cursor: zoom-in; margin: auto; display: block; transition: 0.3s; position: relative; z-index: 2001; }
+            #lightbox img.expanded { max-height: none; max-width: 100%; width: auto; cursor: zoom-out; }
+            .close-lightbox { position: fixed; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 2005; transition: 0.3s; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+            .close-lightbox:hover { color: var(--accent); transform: scale(1.1); }
+
             @media (max-width: 767px) {
-                .portfolio-header .tech-item { font-size: 0.8rem; flex: 0 0 calc((100% - 1.5rem) / 4); min-width: 0; letter-spacing: 0; }
-                .portfolio-header .tech-item span { overflow-wrap: anywhere; }
-                .portfolio-header .tech-stack-icons { margin-top: 2rem; gap: 1.25rem 0.5rem; }
-                .portfolio-grid { gap: 2rem; }
-                .portfolio-card { max-width: 100%; }
-                .portfolio-img-wrap { height: 250px; }
+                #lightbox { padding: 10px; }
+                #lightbox img { max-width: 100%; }
+                .close-lightbox { top: 10px; right: 20px; }
             }
         
         /* icons wider than 1em (like the code brackets) keep a gap before their label */
@@ -1011,11 +998,11 @@
             ]
         },
         {
-            "@type": "CollectionPage",
-            "@id": "https://linleyb.com/portfolio.html#webpage",
-            "url": "https://linleyb.com/portfolio.html",
-            "name": "Email Development Portfolio | Linley Bignoux",
-            "description": "Portfolio of custom-coded HTML, CSS and MJML emails with dynamic templating. Responsive, Outlook-safe and tested across email clients.",
+            "@type": "WebPage",
+            "@id": "https://linleyb.com/certifications.html#webpage",
+            "url": "https://linleyb.com/certifications.html",
+            "name": "Certifications | Freelance Email Developer | Linley Bignoux",
+            "description": "Professional certifications held by Linley Bignoux, covering email development, MJML, HTML/CSS coding and ESP integration.",
             "inLanguage": "en-AU",
             "isPartOf": {
                 "@id": "https://linleyb.com/#website"
@@ -1024,12 +1011,12 @@
                 "@id": "https://linleyb.com/#person"
             },
             "breadcrumb": {
-                "@id": "https://linleyb.com/portfolio.html#breadcrumb"
+                "@id": "https://linleyb.com/certifications.html#breadcrumb"
             }
         },
         {
             "@type": "BreadcrumbList",
-            "@id": "https://linleyb.com/portfolio.html#breadcrumb",
+            "@id": "https://linleyb.com/certifications.html#breadcrumb",
             "itemListElement": [
                 {
                     "@type": "ListItem",
@@ -1040,70 +1027,46 @@
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Portfolio",
-                    "item": "https://linleyb.com/portfolio.html"
+                    "name": "Certifications",
+                    "item": "https://linleyb.com/certifications.html"
                 }
             ]
         },
         {
             "@type": "FAQPage",
-            "@id": "https://linleyb.com/portfolio.html#faq",
-            "url": "https://linleyb.com/portfolio.html",
+            "@id": "https://linleyb.com/certifications.html#faq",
+            "url": "https://linleyb.com/certifications.html",
             "mainEntity": [
                 {
                     "@type": "Question",
-                    "name": "Can I inspect the raw code behind these portfolio examples?",
+                    "name": "What professional certifications and training do you hold?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Yes. My email code is on GitHub, and the View Code buttons link to the repository. You can read the raw HTML, CSS, MJML and templating logic and judge the code quality yourself."
+                        "text": "My certificates cover Email Development, Web Development, IT Technical Support and Email Marketing, and they are shown on this page. They include training in MJML, responsive email layouts and the logic used in tools like Klaviyo and Mailchimp."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "Which frameworks and technologies are used across these templates?",
+                    "name": "How does your professional background influence your email development work?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt built as a Brevo template. I also work with Handlebars and Liquid templating."
+                        "text": "I have 18 years of experience across logistics, IT and education, plus technical training in email development. In email work, that shows up as careful attention to detail, systematic debugging and structured, documented fixes."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "How do these templates handle legacy Outlook and Dark Mode rendering?",
+                    "name": "Are your coding and cross-client QA testing practices certified?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Layouts that need it use ghost tables and VML for classic Outlook desktop clients, and explicit colour-scheme settings for dark mode. My blog notes show specific fixes, including which clients I retested them in."
+                        "text": "Some of this is covered by the certificates on this page, for example HTML and CSS coding and QA testing. The testing itself is practical work: I check every email in real email clients and write up what I find in my blog notes."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "What deliverables do I receive when a custom design build is complete?",
+                    "name": "How do these technical qualifications benefit agency and independent clients?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "On a custom build I deliver clean, minified HTML and an organised folder of compressed assets. I can also set the template up in your email platform and run live test sends."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Are these email templates tested across real mobile and desktop clients?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes. I test emails across major email clients and devices, including Gmail, Apple Mail, Outlook desktop and web, iOS and Android, and fix what breaks before delivery. Clients render email differently, so the result matches the design as closely as each client allows."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "Can these templates be integrated into major Email Service Providers (ESPs)?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Yes. I set templates up in Mailchimp, Brevo, Klaviyo, MailerLite and Kit, using each platform's own tags for names and dynamic content."
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": "How are multi-column layouts handled on smaller mobile screens?",
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": "Multi-column layouts and image-text blocks use responsive breakpoints and MJML stacking, so they drop into a clean single column on mobile."
+                        "text": "They give me a structured grounding in email coding, responsive layouts and testing. What clients see in practice is in my portfolio and blog, where each fix says which clients I retested it in."
                     }
                 }
             ]
@@ -1113,6 +1076,11 @@
         </script>
     </head>
     <body>
+        <div id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate preview" onclick="closeLightbox(event)">
+            <span class="close-lightbox" role="button" aria-label="Close preview" onclick="closeLightbox(event)">&times;</span>
+            <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" onclick="toggleZoom(event)" />
+        </div>
+
         <header class="site-header" role="banner">
             <nav role="navigation" aria-label="Main">
                 <a href="/" class="logo-wrap">
@@ -1136,9 +1104,9 @@
                 <div class="nav-right">
                     <ul class="nav-links" id="navLinks">
                         <li><a href="/#home">Home</a></li>
-                        <li><a href="/portfolio.html" class="nav-fix-btn" aria-current="page">Portfolio</a></li>
+                        <li><a href="/portfolio.html" class="nav-fix-btn">Portfolio</a></li>
                         <li><a href="/#about">About</a></li>
-                        <li><a href="/certifications.html">Certs</a></li>
+                        <li><a href="/certifications.html" aria-current="page">Certs</a></li>
                         <li><a href="/blog/">Blog</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
@@ -1154,326 +1122,53 @@
         </header>
 
         <main role="main">
-            <section class="portfolio-header">
-                <div class="container">
-                    <h1>Email Development Portfolio</h1>
-                    <p>A showcase of responsive, custom-coded HTML, CSS and MJML emails, with dynamic content in Handlebars and Liquid, fully tested. Where an email is triggered by your system, such as a receipt, a sign-up confirmation or a 2FA code, I also handle the integration side: what data your application sends, how it reaches the template in your email platform, and Node.js reference code for your developers. Click any image to view the full desktop and mobile rendering.</p>
-
-                    <div class="tech-stack-icons">
-                        <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-                        <div class="tech-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-                        <div class="tech-item">
-                            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                <rect x="2" y="4" width="12" height="4" rx="2" />
-                                <circle cx="20" cy="6" r="2" />
-                                <circle cx="4" cy="12" r="2" />
-                                <rect x="10" y="10" width="12" height="4" rx="2" />
-                                <rect x="2" y="16" width="12" height="4" rx="2" />
-                                <circle cx="20" cy="18" r="2" />
-                            </svg>
-                            <span>MJML</span>
-                        </div>
-                        <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
-                        <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
-                        <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-                        <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
-                        </div>
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h1><i class="fas fa-id-badge"></i> Certifications &amp; Experience</h1>
+                    <p>Professional certificates in Email Development, Web Development, IT Technical Support, and Email Marketing. Click any image to view it in full.</p>
                 </div>
-            </section>
 
-            <section class="container">
-                <div class="portfolio-grid">
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/21WBKz9x/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Frameler-Abondoned-Cart-Final-html.png" alt="E-commerce abandoned cart email layout showcasing dynamic product grids." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • E-commerce</span>
-                        <h2 class="portfolio-title">Abandoned Cart Flow</h2>
-                        <p class="portfolio-desc">A highly responsive e-commerce email featuring dynamic product grids, mobile-stacked layouts, and clear conversion CTA buttons.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
+                <div class="cert-container-box">
+                    <div class="cert-grid">
+                    <div class="cert-item"><img src="https://i.ibb.co/6J7HsxYF/UC-e0732ac0-e884-4061-8104-d4183a396f62.jpg" alt="Email Developer Certification - HTML &amp; CSS Coding" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/N2QBGPJ6/Screenshot-2024-05-15-220124.png" alt="MJML Framework Development Qualification" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/3YMdrb2T/UC-5470b374-47e2-45e1-8a42-96a57f1491b0.jpg" alt="Responsive Email Layouts and QA Testing Certificate" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/YTjFT09X/UC-443a3f23-9f0d-4f21-be68-c78cc35fddba.jpg" alt="Klaviyo and Mailchimp Logic Integration Certificate" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/N2qZxwKz/UC-22ed3d60-cf94-4cff-94f1-ca9433bc1ce9.jpg" alt="Technical Logic and Problem Solving Credential" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/5X3pff8Q/UC-8f49453e-ec74-44be-a3bd-5dd2bbdc48d2.jpg" alt="Custom HTML Email Development for Agencies" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/j9qpGWxk/Screenshot-2024-05-06-111012.png" alt="Advanced Coding and Digital Environment Architecture" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/RkDvnHgq/Screenshot-2024-05-06-110829.png" alt="UI to HTML Code Translation Certification" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/NdZpYMX3/1e83e38cb78b429689e304fe773667bd.png" alt="Email Asset Delivery and Optimization Methodology" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/rKWkyjcy/Screenshot-2026-02-19-161324.png" alt="Technical Email Development and Professional Certification" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
+                    <div class="cert-item"><img src="https://i.ibb.co/WNtjzJp9/Screenshot-2026-02-19-235754.png" alt="Professional Technical Certification for Email Development and Marketing Automation" width="300" height="200" loading="lazy" decoding="async" onclick="zoom(this)"></div>
                     </div>
                 </div>
 
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/q3BpknZs/127-0-0-1-51561-Republica2-FARevised4-html.png" alt="Corporate monthly newsletter email built with responsive HTML." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML/CSS • Corporate</span>
-                        <h2 class="portfolio-title">Monthly Newsletter</h2>
-                        <p class="portfolio-desc">Custom HTML/CSS coded specifically to survive legacy Outlook clients (2013-2021) using bulletproof ghost tables and VML.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
+                <div class="back-link-wrapper">
+                    <a href="/" class="cta-button">Return to Homepage</a>
                 </div>
+            </div>
 
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/3mFRHp4C/127-0-0-1-55724-Welcome-New-Ebook-Kickoff-html.png" alt="SaaS onboarding welcome series email with clean typography." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • Onboarding</span>
-                        <h2 class="portfolio-title">Welcome Series Kickoff</h2>
-                        <p class="portfolio-desc">A clean, engaging welcome email structured for accessibility, fast load times, and high conversion click-through rates.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/Q79WXDNm/C-Program-Files-x86-Brackets-samples-root-Getting-Started-Orangejuice1mjml-html.png" alt="Promotional email template for a beverage brand featuring bright colors and responsive image grid." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • Promotional</span>
-                        <h2 class="portfolio-title">Beverage Promo Campaign</h2>
-                        <p class="portfolio-desc">Vibrant, image-heavy promotional email coded in MJML, ensuring flawless mobile rendering and image optimization.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/60hMp1Tt/127-0-0-1-17880-Tommapasta1-html-1.png" alt="E-commerce email template for a food brand with product highlights." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML/CSS • E-commerce</span>
-                        <h2 class="portfolio-title">Food Brand Newsletter</h2>
-                        <p class="portfolio-desc">Custom semantic HTML layout featuring complex grid structures, web-safe typography, and strict fallback fonts.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/WvV4rWy8/127-0-0-1-51561-insurance2normalmode-html.png" alt="Corporate insurance newsletter email with a clean, professional layout." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML/CSS • Corporate</span>
-                        <h2 class="portfolio-title">Insurance Policy Update</h2>
-                        <p class="portfolio-desc">A highly readable, text-optimized corporate communication built with bulletproof Outlook compatibility and clear margins.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/ZRKqNcdB/127-0-0-1-51561-Ignite1-html.png" alt="Software launch email template with a dark modern theme." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • SaaS</span>
-                        <h2 class="portfolio-title">Software Event Launch</h2>
-                        <p class="portfolio-desc">Sleek, dark-mode optimized announcement email featuring distinct hero imagery and a highly structured CTA hierarchy.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/SDCCzY26/127-0-0-1-5500-Subscriber-Confirmation-1-html.png" alt="Double opt-in subscriber confirmation transactional email." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML • Transactional</span>
-                        <h2 class="portfolio-title">Double Opt-in Flow</h2>
-                        <p class="portfolio-desc">A clean, ultra-lightweight transactional email designed specifically for instant rendering and maximum click conversions.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/VYMn4Jz6/127-0-0-1-51561-Framler22-html-1.png" alt="Retail or product showcase email template with stacked lifestyle images." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • Retail</span>
-                        <h2 class="portfolio-title">Product Showcase</h2>
-                        <p class="portfolio-desc">Responsive product showcase featuring alternating image-text blocks that transition cleanly into stacked mobile views.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/JFkw6nB6/127-0-0-1-5500-Meaty-Australia-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/JFkw6nB6/127-0-0-1-5500-Meaty-Australia-html.png" alt="Newsletter template for an Australian food retailer with warm branding." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML/CSS • B2C</span>
-                        <h2 class="portfolio-title">Retail Promo Newsletter</h2>
-                        <p class="portfolio-desc">Brand-focused B2C newsletter utilizing carefully coded semantic margins and padding for cross-client consistency.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/3yNcBk87/127-0-0-1-51561-Finiti2-html.png" alt="Modern financial or tech services promotional email template." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • FinTech</span>
-                        <h2 class="portfolio-title">FinTech Promo Campaign</h2>
-                        <p class="portfolio-desc">Crisp, professional layout utilizing specific MJML spacer and divider components to create a clean, modern UI aesthetic.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/DfmgZsD0/127-0-0-1-56650-Streatwearmjml1-html.png" alt="Apparel e-commerce email template featuring streetwear clothing collections." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">MJML • Apparel</span>
-                        <h2 class="portfolio-title">Apparel Collection Drop</h2>
-                        <p class="portfolio-desc">Image-rich e-commerce campaign highlighting the latest clothing drops using fluid, responsive multi-column product grids.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/PvRfjSx8/Dark-Light-Republica1-html.png" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/PvRfjSx8/Dark-Light-Republica1-html.png" alt="Dark mode 2FA authentication email with clear security messaging." loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">2FA • Authentication</span>
-                        <h2 class="portfolio-title">Dark Mode 2FA</h2>
-                        <p class="portfolio-desc">2FA authentication email in dark mode, with clear security messaging and reliable rendering across major email clients.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/jvGm8CfT/127-0-0-1-51561-moodfinal-html-2.webp" alt="Mood brand promotional email preview showing clean layout and responsive design" loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">Newsletter • Brand Promo</span>
-                        <h2 class="portfolio-title">Mood Brand Newsletter</h2>
-                        <p class="portfolio-desc">A moody brand newsletter and promotional email featuring clean responsive layouts, custom typography, and reliable email client rendering.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/VWc340RR/127-0-0-1-51561-Recafe1-html.webp" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/VWc340RR/127-0-0-1-51561-Recafe1-html.webp" alt="Recafe coffee brand promotional email preview showing clean layout and responsive design" loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">Promo • Newsletter</span>
-                        <h2 class="portfolio-title">Recafe Product</h2>
-                        <p class="portfolio-desc">A modern and inviting promotional email for Recafe featuring clean, responsive layout, appealing typography, and a polished user interface.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://i.ibb.co/PvJMtDfX/127-0-0-1-51561-kick-off-billing-receipt-notification-Transcational-Email-Simply-English-html1.webp" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap">
-                        <img src="https://i.ibb.co/PvJMtDfX/127-0-0-1-51561-kick-off-billing-receipt-notification-Transcational-Email-Simply-English-html1.webp" alt="Kick Off → Your English payment receipt email, built as a Brevo template" loading="lazy" decoding="async">
-                        <div class="view-overlay"><i class="fas fa-search-plus"></i> View Full Build</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">Dynamic • Transactional</span>
-                        <h2 class="portfolio-title">Billing Receipt Email</h2>
-                        <p class="portfolio-desc">A transactional payment receipt email built as a Brevo template. The customer, receipt number, dates, line items and card ending come from JSON, with checks that refuse card numbers. Includes a promo block for the Kick Off ebook.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-card">
-                    <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer" class="portfolio-img-wrap" style="background: var(--section-highlight); display: flex; align-items: center; justify-content: center;">
-                        <i class="fab fa-github" style="font-size: 5rem; color: var(--primary);"></i>
-                        <div class="view-overlay"><i class="fab fa-github"></i> GitHub Repository</div>
-                    </a>
-                    <div class="portfolio-content">
-                        <span class="portfolio-tech">HTML • Handlebars</span>
-                        <h2 class="portfolio-title">Dynamic Templates</h2>
-                        <p class="portfolio-desc">Visit my GitHub repository to inspect the raw code, templating logic, and inline CSS practices across multiple different ESP formats.</p>
-                        <div class="portfolio-links">
-                            <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline" style="background: var(--primary); color: var(--bg);"><i class="fab fa-github"></i> Browse Repository</a>
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </section>
-
-            <section id="faq" class="portfolio-faq-section">
+            <section id="faq" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
                     <div class="faq-list">
-            <details class="faq-item">
-                <summary>Can I inspect the raw code behind these portfolio examples?</summary>
-                <p>Yes. My email code is on GitHub, and the View Code buttons link to the repository. You can read the raw HTML, CSS, MJML and templating logic and judge the code quality yourself.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Which frameworks and technologies are used across these templates?</summary>
-                <p>The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt built as a Brevo template. I also work with Handlebars and Liquid templating.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How do these templates handle legacy Outlook and Dark Mode rendering?</summary>
-                <p>Layouts that need it use ghost tables and VML for classic Outlook desktop clients, and explicit colour-scheme settings for dark mode. My blog notes show specific fixes, including which clients I retested them in.</p>
-            </details>
-            <details class="faq-item">
-                <summary>What deliverables do I receive when a custom design build is complete?</summary>
-                <p>On a custom build I deliver clean, minified HTML and an organised folder of compressed assets. I can also set the template up in your email platform and run live test sends.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Are these email templates tested across real mobile and desktop clients?</summary>
-                <p>Yes. I test emails across major email clients and devices, including Gmail, Apple Mail, Outlook desktop and web, iOS and Android, and fix what breaks before delivery. Clients render email differently, so the result matches the design as closely as each client allows.</p>
-            </details>
-            <details class="faq-item">
-                <summary>Can these templates be integrated into major Email Service Providers (ESPs)?</summary>
-                <p>Yes. I set templates up in Mailchimp, Brevo, Klaviyo, MailerLite and Kit, using each platform's own tags for names and dynamic content.</p>
-            </details>
-            <details class="faq-item">
-                <summary>How are multi-column layouts handled on smaller mobile screens?</summary>
-                <p>Multi-column layouts and image-text blocks use responsive breakpoints and MJML stacking, so they drop into a clean single column on mobile.</p>
-            </details>
+                        <details class="faq-item">
+                            <summary>What professional certifications and training do you hold?</summary>
+                            <p>My certificates cover Email Development, Web Development, IT Technical Support and Email Marketing, and they are shown on this page. They include training in MJML, responsive email layouts and the logic used in tools like Klaviyo and Mailchimp.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How does your professional background influence your email development work?</summary>
+                            <p>I have 18 years of experience across logistics, IT and education, plus technical training in email development. In email work, that shows up as careful attention to detail, systematic debugging and structured, documented fixes.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Are your coding and cross-client QA testing practices certified?</summary>
+                            <p>Some of this is covered by the certificates on this page, for example HTML and CSS coding and QA testing. The testing itself is practical work: I check every email in real email clients and write up what I find in my blog notes.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>How do these technical qualifications benefit agency and independent clients?</summary>
+                            <p>They give me a structured grounding in email coding, responsive layouts and testing. What clients see in practice is in my portfolio and blog, where each fix says which clients I retested it in.</p>
+                        </details>
                     </div>
                 </div>
             </section>
@@ -1488,7 +1183,7 @@
                         <form action="https://formsubmit.co/contact@linleyb.com" method="POST">
                             <input type="hidden" name="_captcha" value="false" />
                             <input type="hidden" name="_next" value="https://linleyb.com/thanks.html" />
-                            <input type="hidden" name="_subject" value="New enquiry from linleyb.com portfolio page" />
+                            <input type="hidden" name="_subject" value="New enquiry from linleyb.com certifications page" />
                             <div class="form-group">
                                 <label for="name">Full Name</label
                                 ><input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
@@ -1642,8 +1337,29 @@
             document.addEventListener("click", (e) => {
                 if (!e.target.closest(".site-header")) setMenu(false);
             });
+
+            // LIGHTBOX ZOOM FOR CERTIFICATIONS
+            function zoom(img) {
+                const lightboxImg = document.getElementById("lightbox-img");
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt;
+                lightboxImg.classList.remove("expanded");
+                document.getElementById("lightbox").style.display = "block";
+                document.body.style.overflow = "hidden";
+            }
+            function toggleZoom(event) {
+                event.stopPropagation();
+                document.getElementById("lightbox-img").classList.toggle("expanded");
+            }
+            function closeLightbox() {
+                document.getElementById("lightbox").style.display = "none";
+                document.body.style.overflow = "auto";
+            }
             document.addEventListener("keydown", (e) => {
-                if (e.key === "Escape") setMenu(false);
+                if (e.key === "Escape") {
+                    setMenu(false);
+                    closeLightbox();
+                }
             });
 
             // THEME TOGGLE
