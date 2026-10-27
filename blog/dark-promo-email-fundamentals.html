@@ -18,9 +18,18 @@
 
     <meta property="og:title" content="Building a Dark Promo Email: What Broke and What to Watch For">
     <meta property="og:description" content="Dark mode, Outlook, Apple data detectors, and mobile stacking in a promo email built in MJML.">
-    <meta property="og:image" content="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
     <meta property="og:url" content="https://linleyb.com/blog/dark-promo-email-fundamentals.html">
     <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building a Dark Promo Email: What Broke and What to Watch For">
+    <meta name="twitter:description" content="Dark mode, Outlook, Apple data detectors, and mobile stacking in a promo email built in MJML.">
+    <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -28,132 +37,217 @@
 
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebSite",
-                "@id": "https://linleyb.com/#website",
-                "url": "https://linleyb.com/",
-                "name": "Linley Bignoux | Freelance Email Developer",
-                "inLanguage": ["en-AU", "en-MU"],
-                "publisher": { "@id": "https://linleyb.com/#person" }
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
             },
-            {
-                "@type": "Person",
-                "@id": "https://linleyb.com/#person",
-                "name": "Linley Bignoux",
-                "jobTitle": "Email Developer",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "nationality": { "@type": "Country", "name": "Australia" },
-                "workLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressCountry": "MU" } },
-                "sameAs": [
-                    "https://github.com/LinleyB75",
-                    "https://linleybignouxzqme9nmu.contra.com/",
-                    "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
-                    "https://www.fiverr.com/linleybignoux"
-                ],
-                "knowsAbout": ["Email Development", "MJML", "HTML/CSS for Email", "Handlebars", "Liquid", "JavaScript", "Node.js", "JSON", "REST APIs", "API Design"]
-            },
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://linleyb.com/#service",
-                "name": "Linley Bignoux Email Development",
-                "url": "https://linleyb.com/",
-                "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-                "description": "Freelance email developer: API and data contract design, troubleshooting, and tested HTML/CSS and MJML emails with ESP integration.",
-                "provider": { "@id": "https://linleyb.com/#person" },
-                "areaServed": [
-                    { "@type": "Country", "name": "Mauritius" },
-                    { "@type": "AdministrativeArea", "name": "Worldwide" }
-                ],
-                "serviceType": [
-                    "MJML development",
-                    "HTML email coding",
-                    "Handlebars email templating",
-                    "API and data contract design for email",
-                    "Email testing and QA"
-                ]
-            },
-            {
-                "@type": "BlogPosting",
-                "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#article",
-                "url": "https://linleyb.com/blog/dark-promo-email-fundamentals.html",
-                "headline": "Building a dark promo email: what broke, what fixed it, and what to watch for",
-                "datePublished": "2026-10-06T08:00:00+00:00",
-                "dateModified": "2026-10-22T08:00:00+00:00",
-                "author": { "@id": "https://linleyb.com/#person" },
-                "publisher": { "@id": "https://linleyb.com/#person" },
-                "mainEntityOfPage": {
-                    "@type": "WebPage",
-                    "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html"
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
                 }
             },
-            {
-                "@type": "FAQPage",
-                "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#faq",
-                "url": "https://linleyb.com/blog/dark-promo-email-fundamentals.html",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "How was the dark background forced consistently across different email clients?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "By combining meta tags for dark color-schemes, adding a force-dark class to the body and sections, and targeting the class, tables, and cells using base CSS, @media (prefers-color-scheme: dark), and Outlook's [data-ogsc] attribute selector."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Why are there two separate code versions for the \"SHOP NOW\" button?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Classic Outlook's Word-based engine ignores border-radius, so a VML <v:roundrect> is used to render rounded corners, while non-MSO clients receive a standard MJML button. Both share the same grey fill, white text, and yellow border."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How were social media icons fixed to prevent dark mode color distortion?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "By bypassing built-in icon image colors and supplying custom icon image URLs directly through the src attribute on each mj-social-element alongside explicit background color definitions."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How can multi-column layouts be forced to stack and center correctly on mobile?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "By placing media queries inside a normal mj-style block, targeting a custom css-class applied to columns rather than mj-column directly, and targeting .stack-col div for mobile text alignment."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "How do you prevent Apple Mail from turning addresses and phone numbers into blue links?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "By inserting format-detection meta tags in the document head for telephone, date, address, and email, paired with a CSS rule targeting a[x-apple-data-detectors] to force inherited font colors."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "What fixed the rendering issue in Outlook 2021 at 150 DPI?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "A conditional XML comment containing <w:DontUseAdvancedTypographyReadingMail/> was added to turn off Word's advanced reading pane typography settings for classic Outlook."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Why was the CTA button changed from yellow to grey in the final design?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "The original yellow button suffered aggressive color inversion issues in certain dark mode clients. Switching to a grey button fill with a yellow border preserved brand recognition while ensuring stable rendering."
-                        }
-                    }
-                ]
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Django and Jinja-like Templating Syntax",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email Templates",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Design",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Django and Jinja-like Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Templates",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Template Audits and Code Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Payload Design and Testing",
+                "API and Data Design for Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#article",
+            "url": "https://linleyb.com/blog/dark-promo-email-fundamentals.html",
+            "headline": "Building a dark promo email: what broke, what fixed it, and what to watch for",
+            "datePublished": "2026-10-06T08:00:00+00:00",
+            "dateModified": "2026-10-22T08:00:00+00:00",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html"
             }
-        ]
-    }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/dark-promo-email-fundamentals.html#faq",
+            "url": "https://linleyb.com/blog/dark-promo-email-fundamentals.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How was the dark background forced consistently across different email clients?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "By combining meta tags for dark color-schemes, adding a force-dark class to the body and sections, and targeting the class, tables, and cells using base CSS, @media (prefers-color-scheme: dark), and Outlook's [data-ogsc] attribute selector."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why are there two separate code versions for the \"SHOP NOW\" button?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Classic Outlook's Word-based engine ignores border-radius, so a VML <v:roundrect> is used to render rounded corners, while non-MSO clients receive a standard MJML button. Both share the same grey fill, white text, and yellow border."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How were social media icons fixed to prevent dark mode color distortion?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "By bypassing built-in icon image colors and supplying custom icon image URLs directly through the src attribute on each mj-social-element alongside explicit background color definitions."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can multi-column layouts be forced to stack and center correctly on mobile?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "By placing media queries inside a normal mj-style block, targeting a custom css-class applied to columns rather than mj-column directly, and targeting .stack-col div for mobile text alignment."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you prevent Apple Mail from turning addresses and phone numbers into blue links?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "By inserting format-detection meta tags in the document head for telephone, date, address, and email, paired with a CSS rule targeting a[x-apple-data-detectors] to force inherited font colors."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What fixed the rendering issue in Outlook 2021 at 150 DPI?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A conditional XML comment containing <w:DontUseAdvancedTypographyReadingMail/> was added to turn off Word's advanced reading pane typography settings for classic Outlook."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why was the CTA button changed from yellow to grey in the final design?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The original yellow button suffered aggressive color inversion issues in certain dark mode clients. Switching to a grey button fill with a yellow border preserved brand recognition while ensuring stable rendering."
+                    }
+                }
+            ]
+        }
+    ]
+}
     </script>
 </head>
 <body>
