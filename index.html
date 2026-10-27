@@ -466,14 +466,18 @@
             }
             @media (max-width: 1100px) {
                 .final-cta .tech-stack-icons {
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    max-width: 560px;
+                    grid-template-columns: repeat(5, minmax(0, 1fr));
+                    max-width: 760px;
                     margin-left: auto;
                     margin-right: auto;
                     gap: 1.25rem 0.75rem;
                 }
             }
             @media (max-width: 767px) {
+                .final-cta .tech-stack-icons {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                    max-width: 360px;
+                }
                 .final-cta .tech-item {
                     text-align: center;
                 }
@@ -1043,7 +1047,25 @@
             .site-header .nav-for-you::after {
                 display: none;
             }
-        </style>
+        
+        /* ---------- Hero system line: drawn by script from the real positions of the text, buttons and logo ---------- */
+        .hero { position: relative; }
+        .hero > .container { position: relative; z-index: 1; }
+        .hero-trace { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: visible; }
+        .hero-trace path { fill: none; stroke: var(--accent); stroke-linejoin: round; }
+        .hero-trace .dot { fill: var(--accent); }
+        .hero-trace .ring { fill: #111418; stroke: var(--accent); }
+        
+        /* hero tech icons: two even rows of five on laptop and tablet (phones keep four per row) */
+        @media (min-width: 768px) {
+            .hero .tech-stack-icons { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.25rem 0.5rem; justify-items: center; }
+            .hero .tech-item { flex-direction: column; text-align: center; gap: 4px; font-size: 0.85rem; letter-spacing: 0; }
+            .hero .tech-item i, .hero .tech-item svg { font-size: 1.4rem; margin-right: 0 !important; }
+        }
+    
+        /* icons wider than 1em (like the code brackets) keep a gap before their label */
+        .tech-item i { width: auto; min-width: 1em; }
+    </style>
 
         <script type="application/ld+json">
             {
@@ -1092,7 +1114,6 @@
                             "MJML",
                             "Handlebars",
                             "Liquid",
-                            "Django and Jinja-like Templating Syntax",
                             "Email Testing and Quality Assurance",
                             "Email Automation",
                             "Transactional Email Templates",
@@ -1135,7 +1156,7 @@
                         "@id": "https://linleyb.com/#service",
                         "name": "Email Development Services",
                         "url": "https://linleyb.com/",
-                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+                        "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars and Liquid templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
                         "provider": {
                             "@id": "https://linleyb.com/#person"
                         },
@@ -1152,7 +1173,6 @@
                             "MJML Development",
                             "Handlebars Email Templating",
                             "Liquid Email Templating",
-                            "Django and Jinja-like Email Templating",
                             "Email Automation",
                             "Email Testing and Quality Assurance",
                             "Dynamic Email Content",
@@ -1187,7 +1207,7 @@
                                 "name": "Why hire an Email Developer over using a drag-and-drop builder?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated code that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Custom coding overcomes these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars, Django)."
+                                    "text": "Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated code that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Custom coding overcomes these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars)."
                                 }
                             },
                             {
@@ -1195,7 +1215,7 @@
                                 "name": "Which ESPs and dynamic templating languages do you support?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic templates using Liquid, Handlebars, and Django."
+                                    "text": "I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic templates using Liquid and Handlebars."
                                 }
                             },
                             {
@@ -1227,7 +1247,7 @@
                                 "name": "Do you write the backend code that sends the emails?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application."
+                                    "text": "I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I also offer a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application."
                                 }
                             },
                             {
@@ -1340,7 +1360,7 @@
                             </p>
                         </div>
 
-                        <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1rem; flex-wrap: wrap">
+                        <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
                             <a href="#contact" class="cta-button">Contact me</a>
                             <a
                                 href="#portfolio"
@@ -1386,7 +1406,7 @@
                             overflow: hidden;
                             border-radius: 999px 999px 28px 28px;
                             box-shadow: 16px 16px 0 var(--accent);
-                            background: #1a1a1a;
+                            background: #ffffff;
                             border: 3px solid #f2f2f2;
                             box-sizing: border-box;
                         "
@@ -1395,7 +1415,7 @@
                             src="https://i.ibb.co/dwfK1J87/Lin-1.png"
                             alt="Email Developer Mauritius logo"
                             fetchpriority="high"
-                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 72%; max-height: 72%; height: auto; object-fit: contain"
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 80%; max-height: 80%; height: auto; object-fit: contain"
                         />
                     </div>
                 </div>
@@ -1731,7 +1751,7 @@
                             <i class="fas fa-code"></i>
                             <h3>Dynamic Content Templating</h3>
                             <p>
-                                Handlebars, Liquid and Django/Jinja-like templating, so personalised content renders correctly for every
+                                Handlebars and Liquid templating, so personalised content renders correctly for every
                                 recipient.
                             </p>
                         </div>
@@ -1764,7 +1784,7 @@
                             <i class="fab fa-node-js"></i>
                             <h3>API Send Reference (Node.js)</h3>
                             <p>
-                                I'm building a tested Node.js reference implementation of the send step: input checks, a secret check, error handling and a dry-run mode. Your developer deploys and runs it.
+                                I offer a tested Node.js reference implementation of the send step: input checks, a secret check, error handling and a dry-run mode. Your developer deploys and runs it.
                             </p>
                         </div>
                     </div>
@@ -1787,7 +1807,7 @@
                                 <li>Decide how the pieces fit together: who creates the links, who owns the API key, what happens when a send fails</li>
                                 <li>Set up the email platform: templates, template IDs and test sends</li>
                                 <li>Troubleshoot the whole flow, from your application's data to the inbox</li>
-                                <li>Build JavaScript and Node.js reference code for the send step, for your developers to adapt (in progress)</li>
+                                <li>Provide JavaScript and Node.js reference code for the send step, for your developers to adapt</li>
                             </ul>
                         </div>
                         <div class="card" style="text-align: left">
@@ -1859,7 +1879,7 @@
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border)">
                                     <td style="padding: 10px; font-weight: bold">Klaviyo</td>
-                                    <td style="padding: 10px">Django-style tags</td>
+                                    <td style="padding: 10px">Klaviyo template tags</td>
                                     <td style="padding: 10px"><code>{{ first_name }}</code></td>
                                     <td style="padding: 10px"><code>{% if %}</code> / <code>{% elif %}</code></td>
                                 </tr>
@@ -1887,7 +1907,7 @@
                         <ul>
                             <li><b>Hosted templates (such as Brevo):</b> your developers send the email by passing the template ID and a JSON payload. Your team can update the wording without touching your application's code.</li>
                             <li><b>Flows and automations (such as Klaviyo):</b> I build the template and set up the flow you've planned, triggered by the event your platform receives.</li>
-                            <li><b>API-triggered sends:</b> where your developers call the platform's API, I'm building a small Node.js reference implementation of the send step for them to adapt. Your developers deploy and run it.</li>
+                            <li><b>API-triggered sends:</b> where your developers call the platform's API, I offer a small Node.js reference implementation of the send step for them to adapt. Your developers deploy and run it.</li>
                         </ul>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">What I build</h4>
@@ -1895,7 +1915,7 @@
                             <li><b>Emails I build:</b> account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications.</li>
                             <li><b>Updating existing templates:</b> fixing rendering problems, adding dynamic content, or adapting a template you already use, then re-testing it before it goes back into your platform.</li>
                             <li><b>HTML/CSS and MJML coding:</b> responsive, table-based layouts built for email client compatibility, including Outlook's Word engine.</li>
-                            <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid, Handlebars, or Django/Jinja-like syntax. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
+                            <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid or Handlebars. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
                         </ul>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">Testing, setup and handoff</h4>
@@ -1930,7 +1950,7 @@
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I do not do copywriting, marketing or strategy.
+                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I also map how your application, your email platform and your customers' inboxes connect, so the right details reach the right person. I do not do copywriting, marketing or strategy.
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
@@ -1938,7 +1958,7 @@
                                 <b>1. Discuss &amp; Handoff:</b> We talk through your project and brand needs. You send your design files and assets, and I build to your specifications.
                             </li>
                             <li>
-                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS or MJML, adding Handlebars, Liquid or Django/Jinja-like templating where it needs personalised content.
+                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS or MJML, adding Handlebars or Liquid templating where it needs personalised content.
                             </li>
                             <li>
                                 <b>3. Test &amp; Minify:</b> I test across major email clients and devices, fix what breaks, then minify the file to avoid Gmail clipping.
@@ -1963,7 +1983,7 @@
                             </p>
                             <br />
                             <p>
-                                I focus on the technical side of email and how it connects to the rest of your system: API and data design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b>, <b>Handlebars</b> and <b>Django</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
+                                I focus on the technical side of email and how it connects to the rest of your system: API and data design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b> and <b>Handlebars</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
                             </p>
                             <h3>Background &amp; Qualifications</h3>
                             <p>
@@ -1996,7 +2016,7 @@
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML and Handlebars, Liquid or Django/Jinja-like templating logic on my GitHub.
+                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML and Handlebars or Liquid templating logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -2022,11 +2042,11 @@
                         </details>
                         <details class="faq-item">
                             <summary>Why hire an Email Developer over using a drag-and-drop builder?</summary>
-                            <p>Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated code that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Custom coding overcomes these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars, Django).</p>
+                            <p>Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated code that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Custom coding overcomes these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars).</p>
                         </details>
                         <details class="faq-item">
                             <summary>Which ESPs and dynamic templating languages do you support?</summary>
-                            <p>I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic templates using Liquid, Handlebars, and Django.</p>
+                            <p>I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic templates using Liquid and Handlebars.</p>
                         </details>
                         <details class="faq-item">
                             <summary>How does hiring an Email Developer in Mauritius benefit global clients?</summary>
@@ -2042,7 +2062,7 @@
                         </details>
                         <details class="faq-item">
                             <summary>Do you write the backend code that sends the emails?</summary>
-                            <p>I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I'm also building a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application.</p>
+                            <p>I don't build or run your live system. I write the template, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I also offer a tested Node.js reference implementation of the sending step, so your developer has working code to adapt. Your developer deploys it, stores the security tokens and connects your website or application.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Can you update a transactional template we already have?</summary>
@@ -2059,7 +2079,7 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
                     <p class="contact-intro-text">
-                        Have a design that needs coding? Send me the details below and get a quote for your next campaign.
+                        Have a design that needs coding, or an email your system needs to send? Send me the details below and get a quote for your next campaign or transactional email.
                     </p>
                     <div class="contact-container">
                         <form action="https://formsubmit.co/contact@linleyb.com" method="POST">
@@ -2086,7 +2106,7 @@
                                     id="message"
                                     name="message"
                                     rows="5"
-                                    placeholder="Tell me about the design, or paste a link..."
+                                    placeholder="Tell me about the design (or paste a link), your email platform and what triggers the email..."
                                 ></textarea>
                             </div>
                             <div class="form-btn-wrap"><button type="submit" class="cta-button">Send Secure Message</button></div>
@@ -2121,13 +2141,14 @@
                         </svg>
                         <span>MJML</span>
                     </div>
-                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
                     <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
+                    <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                    <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
                     <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
-                    </div>
+                    <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
+                </div>
             </section>
         </main>
 
@@ -2273,6 +2294,77 @@
                 }
                 equaliseCards();
             })();
+        
+        // HERO SYSTEM LINE: one red line that starts after the "r" of Developer, runs under the list and the paragraph
+        // with 45-degree bends, links Contact me, See my work and the logo. Redrawn whenever the layout changes.
+        (function () {
+            var hero = document.getElementById("home");
+            if (!hero) return;
+            var NS = "http://www.w3.org/2000/svg";
+            var svg = document.createElementNS(NS, "svg");
+            svg.setAttribute("class", "hero-trace");
+            svg.setAttribute("aria-hidden", "true");
+            hero.insertBefore(svg, hero.firstChild);
+            function textBox(el) { var r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect(); }
+            function chamfer(pts, c) {
+                var d = "M" + pts[0][0] + " " + pts[0][1];
+                for (var i = 1; i < pts.length - 1; i++) {
+                    var a = pts[i - 1], p = pts[i], b = pts[i + 1];
+                    var v0 = [Math.sign(p[0] - a[0]), Math.sign(p[1] - a[1])], v1 = [Math.sign(b[0] - p[0]), Math.sign(b[1] - p[1])];
+                    var l0 = Math.abs(p[0] - a[0]) + Math.abs(p[1] - a[1]), l1 = Math.abs(b[0] - p[0]) + Math.abs(b[1] - p[1]);
+                    var k = Math.min(c, l0 / 2, l1 / 2);
+                    d += " L" + (p[0] - v0[0] * k) + " " + (p[1] - v0[1] * k) + " L" + (p[0] + v1[0] * k) + " " + (p[1] + v1[1] * k);
+                }
+                var z = pts[pts.length - 1];
+                return d + " L" + z[0] + " " + z[1];
+            }
+            function add(tag, attrs) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; }
+            function draw() {
+                while (svg.firstChild) svg.removeChild(svg.firstChild);
+                var H = hero.getBoundingClientRect();
+                var dev = hero.querySelector("h1 span"), list = hero.querySelector("ul");
+                var paras = hero.querySelectorAll(".hero-intro-text p"), btns = hero.querySelectorAll(".consult-btn-wrapper .cta-button");
+                var logo = hero.querySelector('img[src*="Lin-1"]');
+                if (!dev || !list || paras.length < 2 || btns.length < 2 || !logo) return;
+                var phone = H.width < 768, c = phone ? 8 : 14, gut = phone ? 10 : 16, sw = phone ? 2 : 3, dr = phone ? 4 : 5;
+                svg.setAttribute("width", H.width); svg.setAttribute("height", H.height); svg.setAttribute("viewBox", "0 0 " + H.width + " " + H.height);
+                function R(b) { return { l: b.left - H.left, r: b.right - H.left, t: b.top - H.top, b: b.bottom - H.top, cx: (b.left + b.right) / 2 - H.left, cy: (b.top + b.bottom) / 2 - H.top }; }
+                var texts = [dev.closest("div").querySelector("p")].concat([].slice.call(list.querySelectorAll("li")), [].slice.call(paras)).map(function (e) { return R(textBox(e)); });
+                var xR = Math.min(Math.max.apply(null, texts.map(function (r) { return r.r; })) + gut, H.width - 6);
+                var xL = Math.max(Math.min.apply(null, texts.map(function (r) { return r.l; })) - gut, 6);
+                var rs = dev.getClientRects(), last = R(rs[rs.length - 1]);
+                var S = { x: Math.min(last.r + (phone ? 10 : 14), xR - 2 * c), y: last.t + (last.b - last.t) * 0.6 };
+                var lis = list.querySelectorAll("li"), yList = R(textBox(lis[lis.length - 1])).b + 10;
+                var p1 = R(textBox(paras[0])), p2 = R(textBox(paras[1]));
+                var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
+                var yP1 = p1.b + 12, yBtn = (p2.b + B1.t) / 2;
+                var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 16; A.b2 = A.b + 16;
+                var dots = [];
+                function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
+                // line 1: from Developer, under the list, under the paragraph, into Contact me
+                path([[S.x, S.y], [xR, S.y], [xR, yList], [xL, yList], [xL, yP1], [xR, yP1], [xR, yBtn], [B1.cx, yBtn], [B1.cx, B1.t]]);
+                dots.push([S.x, S.y], [B1.cx, B1.t]);
+                // line 2: Contact me to See my work
+                path([[B1.r, B1.cy], [B2.l, B2.cy]]);
+                dots.push([B1.r, B1.cy], [B2.l, B2.cy]);
+                // line 3: See my work to the logo
+                var end, pts;
+                if (A.l > B2.r + 30) {
+                    if (A.b2 + 12 < B2.cy) { pts = [[B2.r, B2.cy], [A.cx, B2.cy], [A.cx, A.b2]]; end = [A.cx, A.b2]; }
+                    else { pts = [[B2.r, B2.cy], [A.l - 28, B2.cy], [A.l - 28, A.cy], [A.l, A.cy]]; end = [A.l, A.cy]; }
+                } else { pts = [[B2.r, B2.cy], [xR, B2.cy], [xR, A.cy], [A.r2, A.cy]]; end = [A.r2, A.cy]; }
+                path(pts); dots.push([B2.r, B2.cy]);
+                dots.forEach(function (d) { add("circle", { cx: d[0], cy: d[1], r: dr, class: "dot" }); });
+                add("circle", { cx: end[0], cy: end[1], r: dr + 1, class: "ring", "stroke-width": sw });
+            }
+            var timer;
+            function later() { clearTimeout(timer); timer = setTimeout(draw, 60); }
+            window.addEventListener("resize", later);
+            window.addEventListener("load", draw);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+            if (window.ResizeObserver) new ResizeObserver(later).observe(hero);
+            draw();
+        })();
         </script>
     </body>
 </html>
