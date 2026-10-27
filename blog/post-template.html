@@ -11,6 +11,7 @@
   7. After uploading: view-source to confirm it is live, then run Google's Rich Results Test
   8. Keep the skills list (knowsAbout) and service types in the JSON-LD the same as on the homepage
   9. The twitter:title and twitter:description must match the og:title and og:description
+  10. If you ever change blog.css, raise the number in /blog/blog.css?v=8 on every blog page so browsers reload it
 -->
 <head>
     <script src="/consent.js?v=1" defer></script>
@@ -45,7 +46,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=7">
+    <link rel="stylesheet" href="/blog/blog.css?v=8">
 
     <script type="application/ld+json">
 {
@@ -95,7 +96,6 @@
                 "MJML",
                 "Handlebars",
                 "Liquid",
-                "Django and Jinja-like Templating Syntax",
                 "Email Testing and Quality Assurance",
                 "Email Automation",
                 "Transactional Email Templates",
@@ -139,7 +139,7 @@
             "name": "Linley Bignoux Email Development",
             "url": "https://linleyb.com/",
             "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars, Liquid and Django/Jinja-like templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars and Liquid templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -159,7 +159,6 @@
                 "MJML Development",
                 "Handlebars Email Templating",
                 "Liquid Email Templating",
-                "Django and Jinja-like Email Templating",
                 "Email Automation",
                 "Email Testing and Quality Assurance",
                 "Dynamic Email Content",
@@ -302,7 +301,7 @@
     </div>
 
     <div class="post-cta">
-      <p>Need this kind of problem fixed in your emails? I code, test, and fix email templates across clients.</p>
+      <p>Need this kind of problem fixed in your emails? I code, test and fix email templates, and trace problems through the whole system, from your application to the inbox.</p>
       <a href="/#contact" class="cta-button">Get in touch</a>
     </div>
   </article>
