@@ -1,5 +1,5 @@
 /* blog.css - synchronized with index.html, certifications.html, and portfolio.html
-   Link it on every blog page as: /blog/blog.css?v=7   (bump the number when you change this file) */
+   Link it on every blog page as: /blog/blog.css?v=6   (bump the number when you change this file) */
 * {
     margin: 0;
     padding: 0;
@@ -872,6 +872,56 @@ footer {
         font-size: 1rem;
         width: auto;
         max-width: 90%;
+    }
+}
+
+/* ---------- Tables and diagrams inside posts ---------- */
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.post-content th,
+.post-content td {
+    border: 1px solid var(--border);
+    padding: 0.65rem 0.85rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.post-content th {
+    background: var(--bg-alt);
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.post-content tbody tr:nth-child(even) td {
+    background: var(--bg-alt);
+}
+
+.post-content td code {
+    font-size: 0.9em;
+    word-break: break-word;
+}
+
+.post-content svg {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 767px) {
+    .post-content table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .post-content th,
+    .post-content td {
+        padding: 0.5rem 0.65rem;
+        font-size: 0.9rem;
     }
 }
 
