@@ -1065,7 +1065,16 @@
     
         /* icons wider than 1em (like the code brackets) keep a gap before their label */
         .tech-item i { width: auto; min-width: 1em; }
-    </style>
+    
+        /* hero: your photo above the smaller logo frame, joined by a short red line */
+        .hero-visual { display: flex; flex-direction: column; align-items: center; flex: 0 0 auto; }
+        .hero-person { position: relative; width: 210px; height: 210px; border-radius: 50%; overflow: hidden; border: 4px solid var(--accent); background: #1a1a1a; box-sizing: border-box; z-index: 1; }
+        .hero-person img { position: absolute; display: block; width: 150%; max-width: none; height: auto; left: -29.5%; top: -60%; }
+        .hero-link { position: relative; width: 3px; height: 36px; background: var(--accent); }
+        .hero-link::before, .hero-link::after { content: ""; position: absolute; left: 50%; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); transform: translateX(-50%); }
+        .hero-link::before { top: -5px; } .hero-link::after { bottom: -5px; }
+        @media (max-width: 767px) { .hero-person { width: 156px; height: 156px; border-width: 3px; } .hero-link { height: 30px; width: 2px; } }
+</style>
 
         <script type="application/ld+json">
             {
@@ -1324,42 +1333,39 @@
                                 Email <span style="color: var(--accent)">Developer</span>
                             </h1>
                             <p style="flex: 1 1 100%; margin: -0.5rem 0 0; font-size: clamp(1.05rem, 2vw, 1.35rem); color: #fff">
-                                Transactional email and the systems behind it
+                                <span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px">Transactional Email, API Integration</span> and the systems behind it
                             </p>
                         </div>
-
-                        <ul
-                            style="
-                                list-style: none;
-                                margin: 0 0 2rem;
-                                padding: 0;
-                                display: flex;
-                                flex-direction: column;
-                                gap: 6px;
-                                font-size: clamp(1rem, 2vw, 1.4rem);
-                                color: var(--accent);
-                                font-weight: 700;
-                                text-transform: uppercase;
-                                letter-spacing: 0.5px;
-                            "
-                        >
-                            <li>Email systems for <span style="color: #fff">Transactional Emails and Automations</span></li>
-                            <li>End to end: <span style="color: #fff">Application → Data → Template → Email Platform → Inbox</span></li>
-                            <li>Build → Test → Diagnose → Fix → Deliver</li>
-                        </ul>
 
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I look at the whole system, not just the code: how your data reaches the template, how the email is sent and where it can break.<br />
-                                I define what data your application sends to your email platform, and I troubleshoot how the parts fit together.
-                            </p>
-
-                            <p style="margin-top: 1.5rem">
-                                API &amp; Data Design · Troubleshooting &amp; Architecture · Transactional Email · JSON Payloads · ESP API Setup
+                                I build the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send.<br />
+                                I look at the whole system, not just the email.
                             </p>
                         </div>
+                        <ul
+                            style="
+                                list-style: none;
+                                margin: 1.5rem 0 1.25rem;
+                                padding: 0;
+                                display: flex;
+                                flex-direction: column;
+                                gap: 6px;
+                                font-size: clamp(1rem, 1.8vw, 1.2rem);
+                                color: var(--accent);
+                                font-weight: 700;
+                                letter-spacing: 0.5px;
+                            "
+                        >
+                            <li><span style="text-transform: uppercase">Set up:</span> <span style="color: #fff; font-weight: 600">the email built in your platform, ready for your developer to connect</span></li>
+                            <li><span style="text-transform: uppercase">Test:</span> <span style="color: #fff; font-weight: 600">with awkward data, in real email clients</span></li>
+                            <li><span style="text-transform: uppercase">Fix:</span> <span style="color: #fff; font-weight: 600">problems traced from your application to the inbox</span></li>
+                        </ul>
 
+                        <p class="hero-case" style="margin: 0 0 2rem; font-size: 1rem">
+                            <a href="/blog/payment-receipt-email-from-json.html" style="color: #fff; text-decoration: none"><span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px">Case study:</span> a payment receipt email, built and tested end to end &rarr;</a>
+                        </p>
                         <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
                             <a href="#contact" class="cta-button">Contact me</a>
                             <a
@@ -1396,16 +1402,19 @@
                     </div>
                     <!-- Closes Left Column -->
 
-                    <!-- RIGHT: logo in the arched frame -->
-                    <div
+                    <!-- RIGHT: photo, red line and logo -->
+                    <div class="hero-visual">
+                        <div class="hero-person"><img src="https://i.ibb.co/k21cdtSr/linley-hero-photo.webp" alt="Linley Bignoux, email developer" width="640" height="960" /></div>
+                        <div class="hero-link" aria-hidden="true"></div>
+                        <div
                         style="
                             flex: 0 0 auto;
-                            width: min(70vw, 380px);
+                            width: min(56vw, 270px);
                             aspect-ratio: 4 / 5;
                             position: relative;
                             overflow: hidden;
                             border-radius: 999px 999px 28px 28px;
-                            box-shadow: 16px 16px 0 var(--accent);
+                            box-shadow: 12px 12px 0 var(--accent);
                             background: #ffffff;
                             border: 3px solid #f2f2f2;
                             box-sizing: border-box;
@@ -1417,6 +1426,7 @@
                             fetchpriority="high"
                             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: block; width: 80%; max-height: 80%; height: auto; object-fit: contain"
                         />
+                    </div>
                     </div>
                 </div>
             </section>
@@ -1434,8 +1444,7 @@
                             padding: 0 20px;
                         "
                     >
-                        A selection of recent responsive, tested emails coded from designs. Click any image to view the full design in a new
-                        tab.
+                        A selection of recent emails, designed and developed by me. Where an email needs it, I add dynamic content, set it up in the email platform and test it in a non-production environment, with a Node.js reference implementation for the send step. Click any image to view the full design in a new tab.
                     </p>
                     <div class="grid-cards">
                         <div class="card" style="padding: 0; overflow: hidden; text-align: left">
@@ -1461,7 +1470,7 @@
                                 <span class="blog-date">MJML • E-commerce</span>
                                 <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Abandoned Cart Flow</h3>
                                 <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text)">
-                                    Responsive e-commerce email featuring dynamic product grids and mobile-stacked layouts.
+                                    An abandoned cart email with a dynamic product grid and a layout that stacks on mobile.
                                 </p>
                             </div>
                         </div>
@@ -1488,7 +1497,7 @@
                                 <span class="blog-date">HTML/CSS • Corporate</span>
                                 <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Monthly Newsletter</h3>
                                 <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text)">
-                                    Custom HTML coded specifically to survive Outlook 2013-2021 with bulletproof ghost tables.
+                                    A newsletter built for older desktop Outlook (2013 to 2021), using ghost tables.
                                 </p>
                             </div>
                         </div>
@@ -1515,7 +1524,7 @@
                                 <span class="blog-date">MJML • Onboarding</span>
                                 <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Welcome Series Kickoff</h3>
                                 <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text)">
-                                    A clean, engaging welcome email structured for accessibility and high conversion click-through rates.
+                                    A welcome email for a new sign-up, built with accessibility in mind and one clear next step.
                                 </p>
                             </div>
                         </div>
@@ -1764,7 +1773,7 @@
                             <i class="fas fa-laptop-code"></i>
                             <h3>HTML, CSS &amp; MJML Coding</h3>
                             <p>
-                                Responsive emails coded from your designs (Figma, Sketch, XD, PSD), built to survive legacy desktop clients.
+                                Your design (Figma, Sketch, XD or PSD) built as an email that holds up in older desktop clients, with dynamic content set up for your platform.
                             </p>
                             <a
                                 href="https://linleyb.com/portfolio.html"
@@ -1776,8 +1785,7 @@
                             <i class="fas fa-magnifying-glass"></i>
                             <h3>Audits &amp; Code Cleanup</h3>
                             <p>
-                                Already have a template? I audit it for bloated code, rendering bugs, dark mode and accessibility issues,
-                                then clean it up.
+                                Already have an email in use? I audit it for rendering bugs, dark mode and accessibility issues, and for anything that breaks once real data fills it, then fix what I find.
                             </p>
                         </div>
                         <div class="card">
@@ -1844,7 +1852,7 @@
                             padding: 0 20px;
                         "
                     >
-                        Clean, tested emails built for the platform you already use.
+                        Emails and integration support for the platform you already use.
                     </p>
 
                     <!-- Tag and conditional content reference -->
@@ -1900,7 +1908,7 @@
                             I build and set up transactional emails: the automatic messages your system sends when someone signs up, buys, books or needs to confirm something. I can also update the templates you already have.
                         </p>
                         <p style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--text-light)">
-                            Each template is hand-coded in HTML/CSS or MJML, tested in major email clients, and set up in your email platform.
+                            Each email is built in HTML/CSS or MJML, tested in major email clients, and set up in your email platform.
                         </p>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">How the email gets sent</h4>
@@ -1914,7 +1922,7 @@
                         <ul>
                             <li><b>Emails I build:</b> account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications.</li>
                             <li><b>Updating existing templates:</b> fixing rendering problems, adding dynamic content, or adapting a template you already use, then re-testing it before it goes back into your platform.</li>
-                            <li><b>HTML/CSS and MJML coding:</b> responsive, table-based layouts built for email client compatibility, including Outlook's Word engine.</li>
+                            <li><b>HTML/CSS and MJML coding:</b> layouts built to hold up across email clients, including Outlook's Word engine.</li>
                             <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid or Handlebars. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
                         </ul>
 
@@ -1950,7 +1958,7 @@
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
                     <div class="fit-box">
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            I focus on <b>clean code and reliable delivery</b> and handle the technical side of your email: templates, platform setup, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I also map how your application, your email platform and your customers' inboxes connect, so the right details reach the right person. I do not do copywriting, marketing or strategy.
+                            I focus on <b>reliable delivery and the whole path to the inbox</b>, and handle the technical side of your email: platform setup, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I also map how your application, your email platform and your customers' inboxes connect, so the right details reach the right person. I do not do copywriting, marketing or strategy.
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
@@ -1958,13 +1966,13 @@
                                 <b>1. Discuss &amp; Handoff:</b> We talk through your project and brand needs. You send your design files and assets, and I build to your specifications.
                             </li>
                             <li>
-                                <b>2. Code &amp; Build:</b> I code the email in HTML/CSS or MJML, adding Handlebars or Liquid templating where it needs personalised content.
+                                <b>2. Build:</b> I build the email in HTML/CSS or MJML, adding Handlebars or Liquid where it needs personalised content.
                             </li>
                             <li>
                                 <b>3. Test &amp; Minify:</b> I test across major email clients and devices, fix what breaks, then minify the file to avoid Gmail clipping.
                             </li>
                             <li>
-                                <b>4. Review &amp; Delivery:</b> You review and approve the tested email, then receive a zipped folder of clean HTML and assets, ready to upload and send or set up in your ESP, including as an automated flow.
+                                <b>4. Review &amp; Delivery:</b> You review and approve the tested email, then receive a zipped folder of HTML and assets, ready to upload and send or set up in your ESP, including as an automated flow.
                             </li>
                         </ul>
                     </div>
@@ -1983,7 +1991,7 @@
                             </p>
                             <br />
                             <p>
-                                I focus on the technical side of email and how it connects to the rest of your system: API and data design, troubleshooting by understanding the architecture, not just the code, clean HTML/CSS and responsive layouts in MJML, and dynamic templates in <b>Liquid</b> and <b>Handlebars</b>, with dark mode support and legacy Outlook compatibility. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
+                                I focus on the technical side of email and how it connects to the rest of your system: API and data design, troubleshooting by understanding the whole system, not just the email, HTML/CSS and MJML layouts with dark mode support and legacy Outlook compatibility, and dynamic content in <b>Liquid</b> and <b>Handlebars</b>. I also work in <b>JavaScript</b> and <b>Node.js</b> on the integration side of email: JSON payloads, ESP APIs and the tests behind them.
                             </p>
                             <h3>Background &amp; Qualifications</h3>
                             <p>
@@ -2016,7 +2024,7 @@
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is coded from scratch. Inspect the raw HTML, CSS, MJML and Handlebars or Liquid templating logic on my GitHub.
+                            Every email in my portfolio is built from scratch. Inspect the raw HTML, CSS, MJML and the Handlebars or Liquid logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -2079,7 +2087,7 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-paper-plane"></i> Get In Touch</h2>
                     <p class="contact-intro-text">
-                        Have a design that needs coding, or an email your system needs to send? Send me the details below and get a quote for your next campaign or transactional email.
+                        Have a design to build, or an email your system needs to send? Send me the details below and get a quote for your next campaign or transactional email.
                     </p>
                     <div class="contact-container">
                         <form action="https://formsubmit.co/contact@linleyb.com" method="POST">
@@ -2325,7 +2333,7 @@
                 var dev = hero.querySelector("h1 span"), list = hero.querySelector("ul");
                 var paras = hero.querySelectorAll(".hero-intro-text p"), btns = hero.querySelectorAll(".consult-btn-wrapper .cta-button");
                 var logo = hero.querySelector('img[src*="Lin-1"]');
-                if (!dev || !list || paras.length < 2 || btns.length < 2 || !logo) return;
+                if (!dev || !list || paras.length < 1 || btns.length < 2 || !logo) return;
                 var phone = H.width < 768, c = phone ? 8 : 14, gut = phone ? 10 : 16, sw = phone ? 2 : 3, dr = phone ? 4 : 5;
                 svg.setAttribute("width", H.width); svg.setAttribute("height", H.height); svg.setAttribute("viewBox", "0 0 " + H.width + " " + H.height);
                 function R(b) { return { l: b.left - H.left, r: b.right - H.left, t: b.top - H.top, b: b.bottom - H.top, cx: (b.left + b.right) / 2 - H.left, cy: (b.top + b.bottom) / 2 - H.top }; }
@@ -2335,14 +2343,14 @@
                 var rs = dev.getClientRects(), last = R(rs[rs.length - 1]);
                 var S = { x: Math.min(last.r + (phone ? 10 : 14), xR - 2 * c), y: last.t + (last.b - last.t) * 0.6 };
                 var lis = list.querySelectorAll("li"), yList = R(textBox(lis[lis.length - 1])).b + 10;
-                var p1 = R(textBox(paras[0])), p2 = R(textBox(paras[1]));
+                var p1 = R(textBox(paras[0])), caseLine = R(textBox(hero.querySelector(".hero-case")));
                 var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
-                var yP1 = p1.b + 12, yBtn = (p2.b + B1.t) / 2;
-                var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 16; A.b2 = A.b + 16;
+                var yP1 = p1.b + 12, yBtn = (caseLine.b + B1.t) / 2;
+                var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 12; A.b2 = A.b + 12;
                 var dots = [];
                 function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
                 // line 1: from Developer, under the list, under the paragraph, into Contact me
-                path([[S.x, S.y], [xR, S.y], [xR, yList], [xL, yList], [xL, yP1], [xR, yP1], [xR, yBtn], [B1.cx, yBtn], [B1.cx, B1.t]]);
+                path([[S.x, S.y], [xR, S.y], [xR, yP1], [xL, yP1], [xL, yList], [xR, yList], [xR, yBtn], [B1.cx, yBtn], [B1.cx, B1.t]]);
                 dots.push([S.x, S.y], [B1.cx, B1.t]);
                 // line 2: Contact me to See my work
                 path([[B1.r, B1.cy], [B2.l, B2.cy]]);
@@ -2351,7 +2359,7 @@
                 var end, pts;
                 if (A.l > B2.r + 30) {
                     if (A.b2 + 12 < B2.cy) { pts = [[B2.r, B2.cy], [A.cx, B2.cy], [A.cx, A.b2]]; end = [A.cx, A.b2]; }
-                    else { pts = [[B2.r, B2.cy], [A.l - 28, B2.cy], [A.l - 28, A.cy], [A.l, A.cy]]; end = [A.l, A.cy]; }
+                    else { pts = [[B2.r, B2.cy], [A.l - 14, B2.cy], [A.l - 14, A.cy], [A.l, A.cy]]; end = [A.l, A.cy]; }
                 } else { pts = [[B2.r, B2.cy], [xR, B2.cy], [xR, A.cy], [A.r2, A.cy]]; end = [A.r2, A.cy]; }
                 path(pts); dots.push([B2.r, B2.cy]);
                 dots.forEach(function (d) { add("circle", { cx: d[0], cy: d[1], r: dr, class: "dot" }); });
