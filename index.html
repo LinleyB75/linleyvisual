@@ -1095,6 +1095,17 @@
             .hero-arch { width: clamp(320px, 30vw, 500px); box-shadow: 16px 16px 0 var(--accent); }
             .hero-logo { width: clamp(160px, 11.5vw, 230px); }
         }
+
+        /* hero: the case study link looks and behaves like a button, but stays quieter than Contact me and See my work */
+        .case-pill { display: inline-flex; align-items: center; gap: 0.6rem; color: #fff; text-decoration: none; border: 2px solid #fff; border-radius: 999px; padding: 0.65rem 1.2rem; background: rgba(255, 255, 255, 0.06); line-height: 1.3; transition: border-color 0.2s, background 0.2s; }
+        .case-pill .case-arrow { display: inline-block; transition: transform 0.2s; }
+        .case-pill:hover, .case-pill:focus-visible { border-color: var(--accent); background: rgba(255, 26, 26, 0.14); }
+        .case-pill:hover .case-arrow, .case-pill:focus-visible .case-arrow { transform: translateX(4px); }
+        .case-pill:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        @media (max-width: 767px) {
+            .case-pill { border-radius: 22px; padding: 0.6rem 1rem; align-items: flex-start; gap: 0.55rem; font-size: 0.95rem; }
+            .case-pill .case-label { white-space: nowrap; }
+        }
 </style>
 
         <script type="application/ld+json">
@@ -1385,7 +1396,7 @@
                         </ul>
 
                         <p class="hero-case" style="margin: 0 0 2rem; font-size: 1rem">
-                            <a href="/blog/payment-receipt-email-from-json.html" style="color: #fff; text-decoration: none"><span style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px">Case study:</span> a payment receipt email, built and tested end to end &rarr;</a>
+                            <a class="case-pill" href="/blog/payment-receipt-email-from-json.html"><span class="case-label" style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px">Case study:</span> <span>a payment receipt email, built and tested end to end</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                         </p>
                         <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
                             <a href="#contact" class="cta-button">Contact me</a>
@@ -2348,7 +2359,7 @@
                 var rs = dev.getClientRects(), last = R(rs[rs.length - 1]);
                 var S = { x: Math.min(last.r + (phone ? 10 : 14), xR - 2 * c), y: last.t + (last.b - last.t) * 0.6 };
                 var lis = list.querySelectorAll("li"), yList = R(textBox(lis[lis.length - 1])).b + 10;
-                var p1 = R(textBox(paras[0])), caseLine = R(textBox(hero.querySelector(".hero-case")));
+                var p1 = R(textBox(paras[0])), caseLine = R(hero.querySelector(".hero-case").getBoundingClientRect());
                 var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
                 var yP1 = p1.b + 12, yBtn = (caseLine.b + B1.t) / 2;
                 var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 10; A.b2 = A.b + 10;
@@ -2356,7 +2367,10 @@
                 function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
                 // line 1: from Developer, under the list, under the paragraph, into Contact me
                 path([[S.x, S.y], [xR, S.y], [xR, yP1], [xL, yP1], [xL, yList], [xR, yList], [xR, yBtn], [B1.cx, yBtn], [B1.cx, B1.t]]);
-                dots.push([S.x, S.y], [B1.cx, B1.t]);
+                // three more nodes on the corners before the case study button: same size and colour as the start dot.
+        // A corner is cut at 45 degrees, so each node sits in the middle of the cut.
+        var kk = c;
+        dots.push([S.x, S.y], [B1.cx, B1.t], [xR - kk / 2, yP1 - kk / 2], [xL + kk / 2, yList - kk / 2], [xR - kk / 2, yList + kk / 2]);
                 // line 2: Contact me to See my work
                 path([[B1.r, B1.cy], [B2.l, B2.cy]]);
                 dots.push([B1.r, B1.cy], [B2.l, B2.cy]);
