@@ -1108,6 +1108,28 @@
             .case-pill { border-radius: 22px; padding: 0.6rem 1rem; align-items: flex-start; gap: 0.55rem; font-size: 0.95rem; }
             .case-pill .case-label { white-space: nowrap; }
         }
+
+        /* hero: See my work is an outline button that turns red on hover and keyboard focus, the same as the case study button */
+        .cta-outline { background: transparent; box-shadow: inset 0 0 0 2px #fff; color: #fff; }
+        .cta-outline:hover, .cta-outline:focus-visible { background: rgba(255, 26, 26, 0.14); box-shadow: inset 0 0 0 2px var(--accent); color: #fff; }
+        .cta-outline:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+        /* hero: the case study label (moved out of the markup) and the rotating button */
+        .case-label { font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .case-rotator:not(.is-live) .case-slide:not(:first-child) { display: none; }
+        .case-rotator.is-live .case-track { display: grid; justify-items: start; }
+        .case-rotator.is-live .case-slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.45s, transform 0.45s, visibility 0s linear 0.45s, border-color 0.2s, background 0.2s, color 0.2s; }
+        .case-rotator.is-live .case-slide.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.45s, transform 0.45s, visibility 0s, border-color 0.2s, background 0.2s, color 0.2s; }
+        .case-rotator.is-live .case-slide.is-leaving { transform: translateY(-10px); }
+        .case-dots { display: flex; gap: 0; margin-top: 4px; }
+        .case-dot { position: relative; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
+        .case-dot::before { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); transition: background 0.2s; }
+        .case-dot[aria-current="true"]::before { background: var(--accent); }
+        .case-dot:hover::before { background: #fff; }
+        .case-dot:focus-visible { outline: 2px solid #fff; outline-offset: 1px; border-radius: 4px; }
+        @media (prefers-reduced-motion: reduce) {
+            .case-rotator.is-live .case-slide, .case-rotator.is-live .case-slide.is-active { transition: none; transform: none; }
+        }
 </style>
 
         <script type="application/ld+json">
@@ -1159,11 +1181,11 @@
                             "Liquid",
                             "Email Testing and Quality Assurance",
                             "Email Automation",
-                            "Transactional Email Templates",
+                            "Transactional Email",
                             "Dynamic Email Content",
                             "JavaScript",
                             "Node.js",
-                            "API Design",
+                            "API Integration",
                             "JSON",
                             "REST APIs",
                             "SPF, DKIM and DMARC Email Authentication",
@@ -1219,17 +1241,18 @@
                             "Email Automation",
                             "Email Testing and Quality Assurance",
                             "Dynamic Email Content",
-                            "Transactional Email Templates",
+                            "Transactional Email Setup",
                             "Mailchimp Email Development",
                             "MailerLite Email Development",
                             "Brevo Email Development",
                             "Klaviyo Email Development",
                             "Kit Email Development",
                             "Email Debugging and Troubleshooting",
-                            "Email Template Audits and Code Cleanup",
+                            "Email Audits and Cleanup",
                             "Transactional Email Setup and Developer Handoff",
-                            "Transactional Email Payload Design and Testing",
+                            "Transactional Email Data Checks and Testing",
                             "API and Data Design for Email",
+                            "Node.js Reference Implementation for Transactional Email",
                             "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
                         ]
                     },
@@ -1374,7 +1397,7 @@
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I build the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send.<br />
+                                I build the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send, and give your developer a tested API request and a Node.js reference for the send step.<br />
                                 I look at the whole system, not just the email.
                             </p>
                         </div>
@@ -1397,17 +1420,19 @@
                             <li><span style="text-transform: uppercase">Fix:</span> <span style="color: #fff; font-weight: 600">problems traced from your application to the inbox</span></li>
                         </ul>
 
-                        <p class="hero-case" style="margin: 0 0 2rem; font-size: 1rem">
-                            <a class="case-pill" href="/blog/payment-receipt-email-from-json.html"><span class="case-label" style="color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px">Case study:</span> <span>a payment receipt email, built and tested end to end</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
-                        </p>
+                        <div class="hero-case case-rotator" id="case-rotator" role="group" aria-roledescription="carousel" aria-label="Case studies" style="margin: 0 0 2rem; font-size: 1rem">
+                            <!--
+                                CASE STUDIES (newest first). To add a new case study, copy one line below to the TOP of the list and change the link and the words.
+                                The newest one shows first, then the others slide in. Keep the list to the newest 4.
+                            -->
+                            <div class="case-track">
+                                <a class="case-pill case-slide" href="/blog/2fa-setup-notification-email-brevo.html"><span class="case-label">Case study:</span> <span>a Brevo 2FA setup email, from MJML to tested send</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
+                                <a class="case-pill case-slide" href="/blog/payment-receipt-email-from-json.html"><span class="case-label">Case study:</span> <span>a payment receipt email, built and tested end to end</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
+                            </div>
+                        </div>
                         <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
                             <a href="#contact" class="cta-button">Contact me</a>
-                            <a
-                                href="#portfolio"
-                                class="cta-button"
-                                style="background: transparent; box-shadow: inset 0 0 0 2px #fff; color: #fff"
-                                >See my work</a
-                            >
+                            <a href="#portfolio" class="cta-button cta-outline">See my work</a>
                         </div>
 
                         <div class="tech-stack-icons" style="justify-content: flex-start; margin-top: 2.5rem">
@@ -2395,5 +2420,60 @@
             draw();
         })();
         </script>
-    </body>
+    
+    <script>
+        // HERO CASE STUDIES: the links above rotate. Newest first, one full cycle, then it rests on the newest one.
+        // It pauses on hover and keyboard focus, stops as soon as someone uses the dots, and does not move at all
+        // when the visitor has asked their device for reduced motion. Without scripts, only the newest link shows.
+        (function () {
+            var box = document.getElementById("case-rotator");
+            if (!box) return;
+            var slides = [].slice.call(box.querySelectorAll(".case-slide"));
+            if (slides.length < 2) return;
+            var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            var current = 0, paused = false, stopped = reduce, timer = null;
+            box.classList.add("is-live");
+            slides[0].classList.add("is-active");
+            var dots = document.createElement("div");
+            dots.className = "case-dots";
+            var buttons = slides.map(function (s, n) {
+                var b = document.createElement("button");
+                b.type = "button";
+                b.className = "case-dot";
+                b.setAttribute("aria-label", "Show case study " + (n + 1) + " of " + slides.length);
+                b.setAttribute("aria-current", n === 0 ? "true" : "false");
+                b.addEventListener("click", function () { stop(); show(n); });
+                dots.appendChild(b);
+                return b;
+            });
+            box.appendChild(dots);
+            function show(n) {
+                if (n === current) return;
+                var from = slides[current];
+                from.classList.remove("is-active");
+                from.classList.add("is-leaving");
+                setTimeout(function () { from.classList.remove("is-leaving"); }, 600);
+                slides[n].classList.add("is-active");
+                buttons[current].setAttribute("aria-current", "false");
+                buttons[n].setAttribute("aria-current", "true");
+                current = n;
+            }
+            function stop() { stopped = true; clearInterval(timer); }
+            if (!stopped) {
+                timer = setInterval(function () {
+                    if (paused || document.hidden) return;
+                    var n = (current + 1) % slides.length;
+                    show(n);
+                    if (n === 0) stop();
+                }, 5000);
+            }
+            box.addEventListener("mouseenter", function () { paused = true; });
+            box.addEventListener("mouseleave", function () { paused = false; });
+            box.addEventListener("focusin", function () { paused = true; });
+            box.addEventListener("focusout", function () { paused = false; });
+            // the buttons and the red line below are measured from this box, so ask them to measure again
+            window.dispatchEvent(new Event("resize"));
+        })();
+    </script>
+</body>
 </html>
