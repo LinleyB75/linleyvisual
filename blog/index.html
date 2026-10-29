@@ -67,7 +67,7 @@
             "@id": "https://linleyb.com/blog/#webpage",
             "url": "https://linleyb.com/blog/",
             "name": "Email Development Blog | Linley Bignoux",
-            "description": "Articles, case studies and notes on transactional email, data design, MJML email coding and cross-client testing by Linley Bignoux.",
+            "description": "Articles, case studies and notes on transactional email, data design, MJML email development and cross-client testing by Linley Bignoux.",
             "isPartOf": {
                 "@id": "https://linleyb.com/#website"
             },
@@ -125,11 +125,11 @@
                 "Liquid",
                 "Email Testing and Quality Assurance",
                 "Email Automation",
-                "Transactional Email Templates",
+                "Transactional Email",
                 "Dynamic Email Content",
                 "JavaScript",
                 "Node.js",
-                "API Design",
+                "API Integration",
                 "JSON",
                 "REST APIs",
                 "SPF, DKIM and DMARC Email Authentication",
@@ -166,7 +166,7 @@
             "name": "Linley Bignoux Email Development",
             "url": "https://linleyb.com/",
             "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "description": "I code, develop, and test responsive emails for marketing campaigns, transactional messages and automated flows, using HTML, CSS, MJML, and Handlebars and Liquid templating, with a focus on cross-client compatibility, reliable rendering, and rigorous testing. I also define what data your application sends to your email platform. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I build and test emails in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -189,17 +189,18 @@
                 "Email Automation",
                 "Email Testing and Quality Assurance",
                 "Dynamic Email Content",
-                "Transactional Email Templates",
+                "Transactional Email Setup",
                 "Mailchimp Email Development",
                 "MailerLite Email Development",
                 "Brevo Email Development",
                 "Klaviyo Email Development",
                 "Kit Email Development",
                 "Email Debugging and Troubleshooting",
-                "Email Template Audits and Code Cleanup",
+                "Email Audits and Cleanup",
                 "Transactional Email Setup and Developer Handoff",
-                "Transactional Email Payload Design and Testing",
+                "Transactional Email Data Checks and Testing",
                 "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
                 "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
             ]
         },
@@ -221,7 +222,7 @@
                     "name": "Do these notes cover dark mode and mobile rendering bugs?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There is also a transactional email case study and a post on systems thinking."
+                        "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also two transactional email case studies, a payment receipt and a two-factor setup email, and a post on systems thinking."
                     }
                 },
                 {
@@ -300,9 +301,15 @@
                      </article>
                 -->
                 <article class="post-card">
+                    <span class="blog-date">Case study • Transactional email • Pipeline</span>
+                    <h2><a href="/blog/2fa-setup-notification-email-brevo.html">Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send</a></h2>
+                    <p>A case study of a two-factor setup email for Kick Off → Your English, taken through an eight-stage development pipeline: fix the source, define the data, check it, send safely and test in layers.</p>
+                    <a class="read-more" href="/blog/2fa-setup-notification-email-brevo.html">Read the post &rarr;</a>
+                </article>
+                <article class="post-card">
                     <span class="blog-date">Case study • Transactional email • Systems</span>
                     <h2><a href="/blog/payment-receipt-email-from-json.html">Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting</a></h2>
-                    <p>Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON contract, testing and what I traced.</p>
+                    <p>Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON data, testing and what I traced.</p>
                     <a class="read-more" href="/blog/payment-receipt-email-from-json.html">Read the post &rarr;</a>
                 </article>
                 <article class="post-card">
@@ -354,7 +361,7 @@
                 </details>
                 <details class="faq-item">
                     <summary>Do these notes cover dark mode and mobile rendering bugs?</summary>
-                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There is also a transactional email case study and a post on systems thinking.</p>
+                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also two transactional email case studies, a payment receipt and a two-factor setup email, and a post on systems thinking.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Are the fixes tested in real email clients?</summary>
