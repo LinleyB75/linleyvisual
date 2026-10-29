@@ -1397,9 +1397,12 @@
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I build the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send, and give your developer a tested API request and a Node.js reference for the send step.<br />
-                                I look at the whole system, not just the email.
+                                I build the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send, and give your developer a tested API request and a Node.js reference for the send step.
                             </p>
+                        </div>
+                        <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
+                            <a href="#contact" class="cta-button">Contact me</a>
+                            <a href="#portfolio" class="cta-button cta-outline">See my work</a>
                         </div>
                         <ul
                             style="
@@ -1415,8 +1418,8 @@
                                 letter-spacing: 0.5px;
                             "
                         >
-                            <li><span style="text-transform: uppercase">Set up:</span> <span style="color: #fff; font-weight: 600">the email built in your platform, ready for your developer to connect</span></li>
-                            <li><span style="text-transform: uppercase">Test:</span> <span style="color: #fff; font-weight: 600">with awkward data, in real email clients</span></li>
+                            <li><span style="text-transform: uppercase">Set up:</span> <span style="color: #fff; font-weight: 600">the email built in your platform, ready for your developer</span></li>
+                            <li><span style="text-transform: uppercase">Test:</span> <span style="color: #fff; font-weight: 600">with missing and unusual data, in real email clients</span></li>
                             <li><span style="text-transform: uppercase">Fix:</span> <span style="color: #fff; font-weight: 600">problems traced from your application to the inbox</span></li>
                         </ul>
 
@@ -1429,10 +1432,6 @@
                                 <a class="case-pill case-slide" href="/blog/2fa-setup-notification-email-brevo.html"><span class="case-label">Case study:</span> <span>a Brevo 2FA setup email, from MJML to tested send</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                                 <a class="case-pill case-slide" href="/blog/payment-receipt-email-from-json.html"><span class="case-label">Case study:</span> <span>a payment receipt email, built and tested end to end</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                             </div>
-                        </div>
-                        <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
-                            <a href="#contact" class="cta-button">Contact me</a>
-                            <a href="#portfolio" class="cta-button cta-outline">See my work</a>
                         </div>
 
                         <div class="tech-stack-icons" style="justify-content: flex-start; margin-top: 2.5rem">
@@ -1996,7 +1995,7 @@
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">Testing, setup and handoff</h4>
                         <ul>
-                            <li><b>Testing:</b> major clients including Outlook, Apple Mail, Gmail and dark mode, plus test sends with awkward data such as missing or very long names.</li>
+                            <li><b>Testing:</b> major clients including Outlook, Apple Mail, Gmail and dark mode, plus test sends with unusual data such as missing or very long names.</li>
                             <li><b>Platform setup:</b> the template set up in your email platform, as a hosted template or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
                             <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
                             <li><b>Domain authentication:</b> SPF, DKIM and DMARC set up and checked. I need access to your domain's DNS.</li>
@@ -2371,8 +2370,9 @@
                 equaliseCards();
             })();
         
-        // HERO SYSTEM LINE: one red line that starts after the "r" of Developer, runs under the list and the paragraph
-        // with 45-degree bends, links Contact me, See my work and the logo. Redrawn whenever the layout changes.
+        // HERO SYSTEM LINE: one red line that starts after the "r" of Developer, runs down the right edge and under the
+        // paragraph with 45-degree bends, links Contact me and See my work, then runs down the right edge to the logo.
+        // Redrawn whenever the layout changes.
         (function () {
             var hero = document.getElementById("home");
             if (!hero) return;
@@ -2405,34 +2405,39 @@
                 var phone = H.width < 768, c = phone ? 8 : 14, gut = phone ? 10 : 16, sw = phone ? 2 : 3, dr = phone ? 4 : 5;
                 svg.setAttribute("width", H.width); svg.setAttribute("height", H.height); svg.setAttribute("viewBox", "0 0 " + H.width + " " + H.height);
                 function R(b) { return { l: b.left - H.left, r: b.right - H.left, t: b.top - H.top, b: b.bottom - H.top, cx: (b.left + b.right) / 2 - H.left, cy: (b.top + b.bottom) / 2 - H.top }; }
-                var texts = [dev.closest("div").querySelector("p")].concat([].slice.call(list.querySelectorAll("li")), [].slice.call(paras)).map(function (e) { return R(textBox(e)); });
-                var xR = Math.min(Math.max.apply(null, texts.map(function (r) { return r.r; })) + gut, H.width - 6);
-                var xL = Math.max(Math.min.apply(null, texts.map(function (r) { return r.l; })) - gut, 6);
+                // everything in the left column that the line runs beside: its right-hand edge decides where the line runs
+                var sub = dev.closest("div").querySelector("p");
+                var edges = [R(textBox(sub))]
+                    .concat([].slice.call(list.querySelectorAll("li")).map(function (e) { return R(textBox(e)); }))
+                    .concat([].slice.call(paras).map(function (e) { return R(textBox(e)); }))
+                    .concat([].slice.call(hero.querySelectorAll(".case-slide, .tech-item")).map(function (e) { return R(e.getBoundingClientRect()); }));
+                var xR = Math.min(Math.max.apply(null, edges.map(function (r) { return r.r; })) + gut, H.width - 6);
                 var rs = dev.getClientRects(), last = R(rs[rs.length - 1]);
                 var S = { x: Math.min(last.r + (phone ? 10 : 14), xR - 2 * c), y: last.t + (last.b - last.t) * 0.6 };
-                var lis = list.querySelectorAll("li"), yList = R(textBox(lis[lis.length - 1])).b + 10;
-                var p1 = R(textBox(paras[0])), caseLine = R(hero.querySelector(".hero-case").getBoundingClientRect());
+                var p1 = R(textBox(paras[0]));
                 var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
-                var yP1 = p1.b + 12, yBtn = (caseLine.b + B1.t) / 2;
-                var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 10; A.b2 = A.b + 10;
-                var dots = [];
+                var yP1 = p1.b + 12;
+                var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 10;
+                var dots = [], kk = c;
                 function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
-                // line 1: from Developer, under the list, under the paragraph, into Contact me
-                path([[S.x, S.y], [xR, S.y], [xR, yP1], [xL, yP1], [xL, yList], [xR, yList], [xR, yBtn], [B1.cx, yBtn], [B1.cx, B1.t]]);
-                // three more nodes on the corners before the case study button: same size and colour as the start dot.
-        // A corner is cut at 45 degrees, so each node sits in the middle of the cut.
-        var kk = c;
-        dots.push([S.x, S.y], [B1.cx, B1.t], [xR - kk / 2, yP1 - kk / 2], [xL + kk / 2, yList - kk / 2], [xR - kk / 2, yList + kk / 2]);
-                // line 2: Contact me to See my work
-                path([[B1.r, B1.cy], [B2.l, B2.cy]]);
-                dots.push([B1.r, B1.cy], [B2.l, B2.cy]);
-                // line 3: See my work to the logo
-                var end, pts;
-                if (A.l > B2.r + 30) {
-                    if (A.b2 + 12 < B2.cy) { pts = [[B2.r, B2.cy], [A.cx, B2.cy], [A.cx, A.b2]]; end = [A.cx, A.b2]; }
-                    else { pts = [[B2.r, B2.cy], [A.l - 14, B2.cy], [A.l - 14, A.cy], [A.l, A.cy]]; end = [A.l, A.cy]; }
-                } else { pts = [[B2.r, B2.cy], [xR, B2.cy], [xR, A.cy], [A.r2, A.cy]]; end = [A.r2, A.cy]; }
-                path(pts); dots.push([B2.r, B2.cy]);
+                // line 1: from Developer, down the right edge, under the paragraph, into Contact me
+                path([[S.x, S.y], [xR, S.y], [xR, yP1], [B1.cx, yP1], [B1.cx, B1.t]]);
+                // a corner is cut at 45 degrees, so a node on a corner sits in the middle of the cut
+                dots.push([S.x, S.y], [xR - kk / 2, yP1 - kk / 2], [B1.cx, B1.t]);
+                // line 2: Contact me to See my work. Side by side, it runs across the gap; stacked (very narrow screens), it drops straight down
+                if (Math.abs(B1.cy - B2.cy) > Math.min(B1.b - B1.t, B2.b - B2.t) * 0.5) {
+                    path([[B1.cx, B1.b], [B1.cx, B2.t]]);
+                    dots.push([B1.cx, B1.b], [B1.cx, B2.t]);
+                } else {
+                    path([[B1.r, B1.cy], [B2.l, B2.cy]]);
+                    dots.push([B1.r, B1.cy], [B2.l, B2.cy]);
+                }
+                // line 3: See my work, out to the right edge, then down to the logo
+                var pts, end;
+                if (A.l > B2.r + 30) { pts = [[B2.r, B2.cy], [xR, B2.cy], [xR, A.cy], [A.l, A.cy]]; end = [A.l, A.cy]; }
+                else { pts = [[B2.r, B2.cy], [xR, B2.cy], [xR, A.cy], [A.r2, A.cy]]; end = [A.r2, A.cy]; }
+                path(pts);
+                dots.push([B2.r, B2.cy], [xR - kk / 2, B2.cy + kk / 2]);
                 dots.forEach(function (d) { add("circle", { cx: d[0], cy: d[1], r: dr, class: "dot" }); });
                 add("circle", { cx: end[0], cy: end[1], r: dr + 1, class: "ring", "stroke-width": sw });
             }
