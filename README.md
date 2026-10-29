@@ -1,5 +1,7 @@
 # Linley Bignoux | Email Developer Portfolio
 
+**Email Developer / Front End Developer / Backend Integration** — HTML, CSS, MJML, Dynamic Content, Handlebars, Liquid, Node.js
+
 The source of my portfolio site, [linleyb.com](https://linleyb.com/). I'm a freelance **Email Developer** in Mauritius, working with clients locally and worldwide.
 
 I build transactional and campaign emails in HTML, CSS and MJML, with dynamic content in Handlebars and Liquid. I also look at the whole system behind an email, from your application's data through the email and your platform to the inbox, so I can find where it breaks. I test in major email clients, including older desktop Outlook versions, with accessibility and deliverability in mind.
