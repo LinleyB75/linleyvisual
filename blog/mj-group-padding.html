@@ -33,7 +33,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=8">
+    <link rel="stylesheet" href="/blog/blog.css?v=9">
 
     <script type="application/ld+json">
 {
@@ -316,15 +316,15 @@
       <p>This is the compiled output of the simplified 3-column example in the next section, built with MJML 5.4.1. It is not my client's email, but the structure is the same. The problem lives in three places inside the <code>&lt;body&gt;</code>, all inside the table cell that holds the group.</p>
 
       <p><b>1. The group wrapper.</b> <code>mj-group</code> compiles to an extra div that holds all three columns:</p>
-<pre><code>&lt;div class="mj-column-per-100 mj-outlook-group-fix"
+<pre tabindex="0"><code>&lt;div class="mj-column-per-100 mj-outlook-group-fix"
      style="font-size:0;line-height:0;text-align:left;display:inline-block;width:100%;direction:ltr;"&gt;</code></pre>
 
       <p><b>2. Each column inside the group.</b> The width is written inline as <code>33%</code>:</p>
-<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+<pre tabindex="0"><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:33%;"&gt;</code></pre>
 
       <p><b>3. The image cell inside each column.</b> This is where the default padding and a fixed image width appear:</p>
-<pre><code>&lt;td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"&gt;
+<pre tabindex="0"><code>&lt;td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;"&gt;
   &lt;table ...&gt;&lt;tbody&gt;&lt;tr&gt;
     &lt;td style="width:150px;"&gt;
       &lt;img alt="" src="placeholder.jpg" width="150" height="auto"
@@ -333,14 +333,14 @@
       <p>The numbers add up: a 600px email split into three gives a 200px column, minus 25px of padding on each side leaves a 150px image. At a 1200px desktop window, the email is still 600px wide, so each image ends up at 150px instead of 200px, with 50px of space between images. That is the shrinking and separation I saw.</p>
 
       <p><b>The same layout without mj-group and with padding 0.</b> Here the column div carries an inline width of 100%, the image cell has no padding, and the image is 200px:</p>
-<pre><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
+<pre tabindex="0"><code>&lt;div class="mj-column-per-33-333333333333336 mj-outlook-group-fix"
      style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;"&gt;
 ...
 &lt;td align="center" style="font-size:0px;padding:0;word-break:break-word;"&gt;
   ...&lt;td style="width:200px;"&gt;&lt;img ... width="200" ... /&gt;</code></pre>
 
       <p>One more difference is worth knowing. In the grouped output, the column width of 33% is written inline. In the ungrouped output, the inline width is 100%, and the side-by-side layout comes from a media query in the head of the email:</p>
-<pre><code>@media only screen and (min-width:480px) {
+<pre tabindex="0"><code>@media only screen and (min-width:480px) {
   .mj-column-per-33-333333333333336 { width: 33.333333333333336% !important; max-width: 33.333333333333336%; }
 }</code></pre>
       <p>So the two versions depend on different things: one on fixed inline widths, the other on the head styles. That may be why one client handled them differently. I haven't confirmed that, so treat it as a lead and not a cause.</p>
@@ -348,7 +348,7 @@
       <h2>The fix</h2>
       <p>Two changes. First, zero the padding on the images (and on the section if you want the layout flush to the edges). Second, drop <code>mj-group</code> and use plain columns.</p>
       <p>Before (images shrink and separate):</p>
-<pre><code>&lt;mj-section&gt;
+<pre tabindex="0"><code>&lt;mj-section&gt;
   &lt;mj-group&gt;
     &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" /&gt;&lt;/mj-column&gt;
     &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" /&gt;&lt;/mj-column&gt;
@@ -356,7 +356,7 @@
   &lt;/mj-group&gt;
 &lt;/mj-section&gt;</code></pre>
       <p>After (images and text stay together):</p>
-<pre><code>&lt;mj-section padding="0"&gt;
+<pre tabindex="0"><code>&lt;mj-section padding="0"&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;
   &lt;mj-column&gt;&lt;mj-image src="placeholder.jpg" padding="0" /&gt;&lt;/mj-column&gt;

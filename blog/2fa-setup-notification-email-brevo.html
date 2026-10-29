@@ -33,7 +33,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=8">
+    <link rel="stylesheet" href="/blog/blog.css?v=9">
 
     <script type="application/ld+json">
 {
@@ -423,7 +423,7 @@
       </table>
       <p>The data must pass the stage 5 checks first. The API key is never printed, the test address is masked, there is only ever one recipient, and the script says plainly that accepted is not the same as delivered.</p>
       <p>The sandbox flag goes in the JSON body, in a <code>headers</code> object, not in an HTTP header:</p>
-<pre><code>{
+<pre tabindex="0"><code>{
   "to": [ { "email": "you@example.com", "name": "Alex" } ],
   "templateId": 12,
   "params": { "firstName": "Alex", "maskedUsername": "a******e", "setupUrl": "https://app.example.com/2fa/setup?token=SAMPLE-TOKEN-123" },

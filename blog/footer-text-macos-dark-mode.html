@@ -33,7 +33,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=8">
+    <link rel="stylesheet" href="/blog/blog.css?v=9">
 
     <script type="application/ld+json">
 {
@@ -309,7 +309,7 @@
 
       <h2>The affected HTML and where it is</h2>
       <p>The problem is in the footer text block, the one that holds the company name and street address. In this simplified version it sits in its own grey section:</p>
-<pre><code>&lt;mj-section background-color="#3D3D3D" padding="0 0 10px 0"&gt;
+<pre tabindex="0"><code>&lt;mj-section background-color="#3D3D3D" padding="0 0 10px 0"&gt;
   &lt;mj-column&gt;
     &lt;mj-text font-family="Helvetica, Arial, sans-serif" color="#ffffff" font-size="16px" align="center" padding="15px" line-height="1.6"&gt;
       &amp;copy; Example Co.&lt;br /&gt;1 Example Street, Melbourne, Victoria 3000 Australia
@@ -320,10 +320,10 @@
       <h2>The fix</h2>
       <p>Two changes, used together.</p>
       <p><b>1. Switch off Apple's data detectors and make any detected link inherit its colour.</b> Four meta tags go in the head, and one rule resets the link styling:</p>
-<pre><code>&lt;meta name="format-detection" content="telephone=no"&gt;
+<pre tabindex="0"><code>&lt;meta name="format-detection" content="telephone=no"&gt;
 &lt;meta name="format-detection" content="date=no"&gt;
 &lt;meta name="format-detection" content="address=no"&gt;
-&lt;meta name="format-detection" content="email=no"&gt;</code></pre><pre><code>a[x-apple-data-detectors] {
+&lt;meta name="format-detection" content="email=no"&gt;</code></pre><pre tabindex="0"><code>a[x-apple-data-detectors] {
   color: inherit !important;
   text-decoration: none !important;
   font-size: inherit !important;
@@ -332,7 +332,7 @@
   line-height: inherit !important;
 }</code></pre>
       <p><b>2. Set the background colour explicitly on every footer block.</b> That means the section, the column, and the text container, so no client has to guess it. For example:</p>
-<pre><code>&lt;mj-section background-color="#898989" padding="10px 0px 18px 0px"&gt;
+<pre tabindex="0"><code>&lt;mj-section background-color="#898989" padding="10px 0px 18px 0px"&gt;
   &lt;mj-column width="100%" background-color="#898989"&gt;
     &lt;mj-text container-background-color="#898989" font-size="16px" line-height="24px" align="center" color="#FFF"&gt;
       ...

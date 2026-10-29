@@ -33,7 +33,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=8">
+    <link rel="stylesheet" href="/blog/blog.css?v=9">
 
     <script type="application/ld+json">
 {
@@ -329,7 +329,7 @@
 
       <h2>Step 2: turning typed-in details into params</h2>
       <p>Brevo receives the values as a JSON object called <code>params</code> alongside the template ID, and the template reads each one with a tag such as <code>{{ params.customerName }}</code>. I ended up with nine required values and two optional ones:</p>
-<pre><code>{
+<pre tabindex="0"><code>{
   "customerName": "Alex Example",
   "receiptNumber": "100245",
   "invoiceDate": "March 1st, 2024",
@@ -345,7 +345,7 @@
   "billingAddressLines": ["12 Example Street", "Example City", "Example State", "Country"]
 }</code></pre>
       <p>The rules are short. Dates and amounts arrive already formatted the way they should appear. A list is never empty: if there is nothing to show, the key is left out. The billing period box and the billing address are optional and hide themselves when they are missing:</p>
-<pre><code>{% if params.billingAddressLines %}
+<pre tabindex="0"><code>{% if params.billingAddressLines %}
   &lt;strong&gt;Billing address&lt;/strong&gt;
   {% for line in params.billingAddressLines %}&lt;div&gt;{{ line }}&lt;/div&gt;{% endfor %}
 {% endif %}</code></pre>
@@ -353,7 +353,7 @@
 
       <h2>Step 3: a check that refuses card numbers</h2>
       <p>A receipt shows the end of a card, never the whole number. I wrote a small script (<code>npm run check-params</code>) that does two jobs. First, it compares the names the template reads with the names in the client's JSON, so a misspelt name is caught before it shows up as an empty gap in a customer's receipt. Second, it checks the values, including these two rules:</p>
-<pre><code>if (!/^[^0-9]*[0-9]{2,4}$/.test(params.cardEnding.trim())) {
+<pre tabindex="0"><code>if (!/^[^0-9]*[0-9]{2,4}$/.test(params.cardEnding.trim())) {
   problems.push("cardEnding must end with 2 to 4 digits. Never send a full card number.");
 }
 // and no value anywhere in the JSON may look like a card number

@@ -706,7 +706,7 @@ footer {
     font-size: 0.8rem;
     color: #ffffff;
     font-weight: 800;
-    background: var(--accent);
+    background: #d10500;
     padding: 4px 10px;
     border-radius: 4px;
     display: inline-block;
@@ -933,3 +933,6 @@ footer {
         transition: none !important;
     }
 }
+
+/* code blocks that scroll sideways can be reached and scrolled with the keyboard, so show where the focus is */
+.post-content pre:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }

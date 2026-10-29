@@ -79,7 +79,7 @@
             ".cc-actions{display:flex;gap:.75rem;flex:0 0 auto}" +
             ".cc-btn{font:inherit;font-weight:800;font-size:1rem;padding:.7rem 1.6rem;min-width:7.5rem;border-radius:10px;border:2px solid var(--primary,#0a0a0a);cursor:pointer;background:transparent;color:var(--primary,#0a0a0a)}" +
             ".cc-btn:hover{background:var(--primary,#0a0a0a);color:var(--bg,#fff)}" +
-            ".cc-accept{background:var(--accent,#d10500);border-color:var(--accent,#d10500);color:#fff}" +
+            ".cc-accept{background:#d10500;border-color:#d10500;color:#fff}" +
             ".cc-accept:hover{background:#b30000;border-color:#b30000;color:#fff}" +
             ".cc-btn:focus-visible{outline:3px solid var(--accent,#d10500);outline-offset:3px}" +
             "@media (max-width:600px){.cc-actions{width:100%}.cc-btn{flex:1}}";

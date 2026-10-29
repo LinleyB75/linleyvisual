@@ -33,7 +33,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=8">
+    <link rel="stylesheet" href="/blog/blog.css?v=9">
 
     <script type="application/ld+json">
     {
@@ -304,15 +304,15 @@
 
       <h2>1. Keeping the background dark</h2>
       <p>The head of the email tells clients that it supports dark only, and switches off Apple's data detectors (more on those below):</p>
-<pre><code>&lt;meta name="color-scheme" content="dark"&gt;
+<pre tabindex="0"><code>&lt;meta name="color-scheme" content="dark"&gt;
 &lt;meta name="supported-color-schemes" content="dark"&gt;
 &lt;meta name="format-detection" content="telephone=no"&gt;
 &lt;meta name="format-detection" content="date=no"&gt;
 &lt;meta name="format-detection" content="address=no"&gt;
 &lt;meta name="format-detection" content="email=no"&gt;</code></pre>
       <p>The background is then forced three ways, so each kind of client gets the same black. I add a <code>force-dark</code> class to the body and to every section, and the CSS targets the class, the tables, and the cells:</p>
-<pre><code>&lt;mj-body background-color="#000" css-class="force-dark"&gt;
-  &lt;mj-section background-color="#000000" padding="20px 0" css-class="force-dark"&gt;</code></pre><pre><code>/* base */
+<pre tabindex="0"><code>&lt;mj-body background-color="#000" css-class="force-dark"&gt;
+  &lt;mj-section background-color="#000000" padding="20px 0" css-class="force-dark"&gt;</code></pre><pre tabindex="0"><code>/* base */
 body, .force-dark, .force-dark table, .force-dark td { background-color: #000000 !important; }
 
 /* clients that use prefers-color-scheme */
@@ -332,7 +332,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
       <h2>2. The button: colours changing, and square corners in Outlook</h2>
       <p><b>Problem:</b> the button's colours changed in dark mode, in Outlook.com and the Outlook app, and in Outlook for Windows. Separately, classic Outlook draws every button as a plain rectangle, because its Word-based engine ignores <code>border-radius</code>. The only way to get a rounded shape there is VML.</p>
       <p>So the button is built twice. Classic Outlook gets a VML rounded rectangle, and every other client gets the normal MJML button. Each conditional comment sits inside an <code>mj-raw</code> tag so MJML passes it through untouched:</p>
-<pre><code>&lt;!--[if mso]&gt;
+<pre tabindex="0"><code>&lt;!--[if mso]&gt;
 &lt;div align="center"&gt;
 &lt;v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word"
   href="https://example.com" style="height:62px;v-text-anchor:middle;width:250px;"
@@ -341,7 +341,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
 &lt;center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:bold;"&gt;SHOP NOW&lt;/center&gt;
 &lt;/v:roundrect&gt;
 &lt;/div&gt;
-&lt;![endif]--&gt;</code></pre><pre><code>&lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;![endif]--&gt;</code></pre><pre tabindex="0"><code>&lt;!--[if !mso]&gt;&lt;!--&gt;
 &lt;mj-button css-class="button" align="center" href="https://example.com" width="250px"
   inner-padding="20px" background-color="#808080" font-size="18px" font-weight="bold"
   color="white" border="solid yellow 6px" border-radius="45px" padding="45px"&gt;
@@ -356,7 +356,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
 
       <h2>3. The social icons</h2>
       <p>The built-in <code>mj-social</code> icons come with their colours baked into the icon images. I had problems with them in dark mode, so I changed approach: I supply my own icon images through the <code>src</code> attribute on each element, and set the element background myself:</p>
-<pre><code>&lt;mj-social font-size="18px" icon-size="26px" mode="horizontal" padding-top="0" padding-bottom="0"&gt;
+<pre tabindex="0"><code>&lt;mj-social font-size="18px" icon-size="26px" mode="horizontal" padding-top="0" padding-bottom="0"&gt;
   &lt;mj-social-element name="facebook" href="https://facebook.com"
     src="https://i.ibb.co/SDkQY5BN/filled-facebook-flat-1.png"
     background-color="#000000" padding="0px 10px" /&gt;
@@ -369,13 +369,13 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
 
       <h2>4. Blue text in the footer (Apple data detectors)</h2>
       <p><b>Problem:</b> the footer address and phone number showed up as blue text. Apple's mail apps scan text for things that look like phone numbers, addresses, dates, and email addresses, and turn them into blue links. A footer is the most likely place to trigger it. This is the type of text it affects, with placeholder details:</p>
-<pre><code>&lt;mj-text align="center" color="white" font-family="Arial, sans-serif" font-size="14px" padding="18px" line-height="1.5"&gt;
+<pre tabindex="0"><code>&lt;mj-text align="center" color="white" font-family="Arial, sans-serif" font-size="14px" padding="18px" line-height="1.5"&gt;
   &lt;strong&gt;&amp;copy; Example Co.&lt;/strong&gt;&lt;br /&gt;&lt;br /&gt;
   1 Example Street, Example Town&lt;br /&gt;
   Tel: +000 0000 0000
 &lt;/mj-text&gt;</code></pre>
       <p><b>Fix:</b> the four <code>format-detection</code> meta tags in the head (shown in section 1) tell Apple to stop. This email uses the tags only. In my Re-cafe newsletter I pair them with a CSS rule, in case a link still gets through, that makes any detected link inherit the surrounding colour:</p>
-<pre><code>a[x-apple-data-detectors] {
+<pre tabindex="0"><code>a[x-apple-data-detectors] {
   color: inherit !important;
   text-decoration: none !important;
   font-size: inherit !important;
@@ -386,7 +386,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
 
       <h2>5. Outlook 2021 (150 DPI) typography</h2>
       <p>In Outlook 2021 at 150 DPI I hit a rendering issue that I traced to Word's "advanced typography" setting in the reading pane. I didn't record the exact symptom, but Outlook 2021 (150 DPI) was one of the clients I retested most. The fix is a small block that switches the setting off for classic Outlook:</p>
-<pre><code>&lt;!--[if mso]&gt;&lt;xml&gt;&lt;w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word"&gt;&lt;w:DontUseAdvancedTypographyReadingMail/&gt;&lt;/w:WordDocument&gt;&lt;/xml&gt;&lt;![endif]--&gt;</code></pre>
+<pre tabindex="0"><code>&lt;!--[if mso]&gt;&lt;xml&gt;&lt;w:WordDocument xmlns:w="urn:schemas-microsoft-com:office:word"&gt;&lt;w:DontUseAdvancedTypographyReadingMail/&gt;&lt;/w:WordDocument&gt;&lt;/xml&gt;&lt;![endif]--&gt;</code></pre>
 
       <h2>6. Columns not stacking or centring on mobile</h2>
       <p><b>Problem:</b> the two-column brand block (30% logo, 70% text) wasn't stacking on mobile, and the text wasn't centring once it did. I found three causes:</p>
@@ -395,8 +395,8 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
         <li><b>The <code>mj-column</code> tag never appears in the compiled output.</b> A selector on <code>mj-column</code> matches nothing. I give the columns a <code>css-class</code> instead and target that.</li>
         <li><b>An inline style blocks inheritance.</b> <code>mj-text</code> writes <code>text-align</code> directly onto its inner div, so centring the column isn't enough. The rule has to target <code>.stack-col div</code>.</li>
       </ul>
-<pre><code>&lt;mj-column width="30%" css-class="stack-col"&gt; ...logo... &lt;/mj-column&gt;
-&lt;mj-column width="70%" css-class="stack-col"&gt; ...brand copy... &lt;/mj-column&gt;</code></pre><pre><code>@media screen and (max-width:480px) {
+<pre tabindex="0"><code>&lt;mj-column width="30%" css-class="stack-col"&gt; ...logo... &lt;/mj-column&gt;
+&lt;mj-column width="70%" css-class="stack-col"&gt; ...brand copy... &lt;/mj-column&gt;</code></pre><pre tabindex="0"><code>@media screen and (max-width:480px) {
   .stack-col { width: 100% !important; }
   .stack-col div { text-align: center !important; }
 }
