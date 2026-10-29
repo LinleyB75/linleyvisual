@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send | Email Dev Notes</title>
+    <meta name="description" content="Case study: a two-factor setup email for Kick Off → Your English, from a supplied MJML file to a tested Brevo send, in an eight-stage development pipeline.">
+    <link rel="canonical" href="https://linleyb.com/blog/2fa-setup-notification-email-brevo.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send">
+    <meta property="og:description" content="A case study of an eight-stage development pipeline for a Brevo transactional email, from a supplied MJML file to a tested send.">
+    <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+    <meta property="og:url" content="https://linleyb.com/blog/2fa-setup-notification-email-brevo.html">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send">
+    <meta name="twitter:description" content="A case study of an eight-stage development pipeline for a Brevo transactional email, from a supplied MJML file to a tested send.">
+    <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=8">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I build and test emails in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Setup",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/2fa-setup-notification-email-brevo.html#article",
+            "url": "https://linleyb.com/blog/2fa-setup-notification-email-brevo.html",
+            "headline": "Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send",
+            "description": "Case study: a two-factor setup email for Kick Off → Your English, from a supplied MJML file to a tested Brevo send, in an eight-stage development pipeline.",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "datePublished": "2026-10-28",
+            "dateModified": "2026-10-28",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/2fa-setup-notification-email-brevo.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/2fa-setup-notification-email-brevo.html#faq",
+            "url": "https://linleyb.com/blog/2fa-setup-notification-email-brevo.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a development pipeline for a transactional email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A fixed order of stages, each with its own check, so mistakes fail early and cheaply. For this email: compile the supplied file in strict mode, fix the source, define the data, build, check the data, send in safe modes, test in layers and hand over. Nothing reaches a real inbox until the later stages."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Should a two-factor setup email contain the verification code?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In this build, no. It is a notification that two-factor authentication has been switched on, with a button to finish setting it up. It never carries a verification code, a backup code, a setup key or a QR link, because anyone who can read the email could use them. That is my recommendation, not a Brevo rule."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can you test a Brevo transactional email without sending it?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Partly. Brevo's sandbox accepts a request without sending an email and without making a log, but it only checks the format of the request, not how the email looks. A dry run and a simulated Brevo cover more of the sequence, but a real send to your own inbox and a check in real email clients are still needed."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Which version of Node.js does this pipeline need?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Node.js 20 or newer. I ran the whole project from a clean copy on Node 16, 18, 20, 22 and 24. The build fails on 16 and 18, and everything passes on 20, 22 and 24. Node 18 reached end of life in April 2025 and Node 20 in April 2026, so use 22 or 24. I haven't tested Node 26."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does PCI DSS apply to a two-factor setup email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not to this email, because it carries no payment card data. PCI DSS has its own two-factor rule, but it governs who may reach card systems, not a notification like this. It does matter for emails that show a card, such as receipts: PCI DSS v4.0.1 requires a card number to be masked when displayed, with no more than the first six and last four digits shown, and says unprotected card numbers must not be sent by email. I am not a PCI assessor, so confirm the scope with the client's acquirer or assessor."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do you connect the email to our system?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. I work out what data your application needs to send, build and test the email, and set it up in your email platform. Your developer connects it and sends it. I can supply a sample request and a Node.js reference implementation of the send step for them to adapt."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
+        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">CASE STUDY • TRANSACTIONAL EMAIL • BREVO</span>
+    <h1>Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send</h1>
+    <p class="post-meta">Published 28 October 2026 • By Linley Bignoux • Built for: Kick Off &rarr; Your English</p>
+    <div class="tag-row"><span class="tag">brevo</span><span class="tag">transactional-email</span><span class="tag">case-study</span><span class="tag">development-pipeline</span><span class="tag">mjml</span><span class="tag">testing</span><span class="tag">2fa</span></div>
+
+    <div class="post-content">
+
+      <h2>The pipeline in one view</h2>
+      <p>This case study follows one email, a two-factor setup notification for Kick Off &rarr; Your English (Geo English), through the development pipeline I use for transactional email: from a supplied MJML file to a tested send in Brevo. The client agreed to be named, and every value in this post is made-up sample data.</p>
+      <p>The pipeline is eight stages in a fixed order, each with its own check. A mistake fails early and cheaply, and nothing reaches a real inbox until the later stages.</p>
+      <img src="/blog/images/Kick-off-2FA-setup-notification-Transactional.webp" alt="The two-factor authentication setup email for Kick Off → Your English: a black header with the brand name and logo, a greeting, a pink panel with a blue Set Up Two-Factor Authentication button, and a grey footer with orange social icons, two logos and the address" loading="lazy">
+      <svg viewBox="0 0 360 590" role="img" aria-labelledby="pipe-title pipe-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+        <title id="pipe-title">The eight stages of the development pipeline</title>
+        <desc id="pipe-desc">In order: intake, fix the source, define the data, build, check the data, send safely, test in layers, and hand over.</desc>
+        <defs><marker id="pipe-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="10" width="340" height="52" rx="10"/><rect x="10" y="84" width="340" height="52" rx="10"/><rect x="10" y="158" width="340" height="52" rx="10"/><rect x="10" y="232" width="340" height="52" rx="10"/><rect x="10" y="306" width="340" height="52" rx="10"/><rect x="10" y="380" width="340" height="52" rx="10"/><rect x="10" y="454" width="340" height="52" rx="10"/><rect x="10" y="528" width="340" height="52" rx="10"/><line x1="180" y1="62" x2="180" y2="82" marker-end="url(#pipe-arrow)"/><line x1="180" y1="136" x2="180" y2="156" marker-end="url(#pipe-arrow)"/><line x1="180" y1="210" x2="180" y2="230" marker-end="url(#pipe-arrow)"/><line x1="180" y1="284" x2="180" y2="304" marker-end="url(#pipe-arrow)"/><line x1="180" y1="358" x2="180" y2="378" marker-end="url(#pipe-arrow)"/><line x1="180" y1="432" x2="180" y2="452" marker-end="url(#pipe-arrow)"/><line x1="180" y1="506" x2="180" y2="526" marker-end="url(#pipe-arrow)"/></g>
+        <g fill="currentColor" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"><text x="180" y="32" font-size="16" font-weight="700">1. Intake</text><text x="180" y="51" font-size="12.5">compile the supplied file in strict mode</text><text x="180" y="106" font-size="16" font-weight="700">2. Fix the source</text><text x="180" y="125" font-size="12.5">wording, links, icons, footer</text><text x="180" y="180" font-size="16" font-weight="700">3. Define the data</text><text x="180" y="199" font-size="12.5">fields, rules, what must never appear</text><text x="180" y="254" font-size="16" font-weight="700">4. Build</text><text x="180" y="273" font-size="12.5">strict compile and leftover warnings</text><text x="180" y="328" font-size="16" font-weight="700">5. Check the data</text><text x="180" y="347" font-size="12.5">safety rules and deliberate breaks</text><text x="180" y="402" font-size="16" font-weight="700">6. Send, safely</text><text x="180" y="421" font-size="12.5">dry run, sandbox, live</text><text x="180" y="476" font-size="16" font-weight="700">7. Test in layers</text><text x="180" y="495" font-size="12.5">simulated, real account, email clients</text><text x="180" y="550" font-size="16" font-weight="700">8. Hand over</text><text x="180" y="569" font-size="12.5">field table, sample request, checker</text></g>
+      </svg>
+      <table>
+        <thead><tr><th>Stage</th><th>What happens</th><th>What it catches</th><th>Command or file</th></tr></thead>
+        <tbody>
+          <tr><td>1. Intake</td><td>Compile the supplied MJML in strict mode before changing anything</td><td>Invalid and duplicate attributes</td><td><code>npm run build</code></td></tr>
+          <tr><td>2. Fix the source</td><td>Correct the wording, links, icons and footer</td><td>Wrong names, dead links, typos</td><td>The MJML</td></tr>
+          <tr><td>3. Define the data</td><td>Three fields, their rules, and what must never appear</td><td>Secrets in a security email</td><td>The field table</td></tr>
+          <tr><td>4. Build</td><td>Strict compile, then warnings for leftovers</td><td>Placeholder links, example.com, size</td><td><code>npm run build</code></td></tr>
+          <tr><td>5. Check the data</td><td>Safety rules and 17 test cases</td><td>Codes, keys, QR links, unmasked values</td><td><code>npm test</code></td></tr>
+          <tr><td>6. Send, safely</td><td>Dry run, sandbox, then live to my own address</td><td>Bad requests and accidental sends</td><td><code>npm run send:dry</code></td></tr>
+          <tr><td>7. Test in layers</td><td>Simulated Brevo, then a real account, then real email clients</td><td>Faults only a real send or a real client shows</td><td><code>npm run simulate</code></td></tr>
+          <tr><td>8. Hand over</td><td>Field table, sample request and a setup checker</td><td>Missing or stale files</td><td><code>node scripts/verify-setup.js</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>What runs it: Node.js</h2>
+      <p>The whole pipeline runs on Node.js, with three packages: MJML for the build, dotenv to read the settings file, and nunjucks for the simulated Brevo only. The calls to Brevo use Node's built-in <code>fetch</code> with a 10 second timeout, the SEND prompt uses <code>readline</code>, and the simulated Brevo uses the built-in <code>http</code> module.</p>
+      <p><b>Which version.</b> I ran the whole project from a clean copy on five Node.js versions:</p>
+      <table>
+        <thead><tr><th>Node.js</th><th>Build</th><th>Data tests</th><th>Send tests</th><th>Simulated walkthrough</th></tr></thead>
+        <tbody>
+          <tr><td>16</td><td>Fails: <code>ReadableStream is not defined</code></td><td>Pass</td><td>7 fail</td><td>Can't run, because there is no build</td></tr>
+          <tr><td>18</td><td>Fails: <code>File is not defined</code></td><td>Pass</td><td>Pass</td><td>Can't run, because there is no build</td></tr>
+          <tr><td>20</td><td>Pass</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+          <tr><td>22</td><td>Pass</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+          <tr><td>24</td><td>Pass</td><td>Pass</td><td>Pass</td><td>Pass</td></tr>
+        </tbody>
+      </table>
+      <p>So the pipeline needs Node.js 20 or newer, and I would use 22 or 24. Node 18 reached end of life in April 2025 and Node 20 in April 2026, Node 22 is in maintenance until April 2027, and Node 24 is the current long-term support release. The <a href="https://nodejs.org/en/about/previous-releases" target="_blank" rel="noopener noreferrer">Node.js release schedule</a> says production applications should only use an Active or Maintenance LTS release. I haven't tested Node 26. Check yours first with <code>node --version</code>.</p>
+      <p><b>The scripts, file by file.</b></p>
+      <table>
+        <thead><tr><th>File</th><th>What it does</th><th>Run with</th></tr></thead>
+        <tbody>
+          <tr><td><code>package.json</code></td><td>Lists the commands and the three packages</td><td><code>npm install</code></td></tr>
+          <tr><td><code>templates/2fa-setup-notification.mjml</code></td><td>The email itself</td><td>The build</td></tr>
+          <tr><td><code>scripts/make-dist.js</code></td><td>Creates the output folder, because Git doesn't keep empty ones</td><td>Runs before the build</td></tr>
+          <tr><td><code>scripts/check-build.js</code></td><td>Warns about leftovers after the build</td><td>Runs after the build</td></tr>
+          <tr><td><code>check-params.js</code></td><td>The data safety rules, as a command and as a module that <code>send.js</code> also uses</td><td><code>npm run check-params</code></td></tr>
+          <tr><td><code>scripts/test-checks.js</code></td><td>The 17 cases for the data rules</td><td><code>npm test</code></td></tr>
+          <tr><td><code>send.js</code></td><td>Sends through Brevo in three modes</td><td><code>npm run send:dry</code>, <code>send:sandbox</code>, <code>send:live</code></td></tr>
+          <tr><td><code>scripts/test-send.js</code></td><td>15 tests of <code>send.js</code> against a simulated Brevo server</td><td><code>npm run test:send</code></td></tr>
+          <tr><td><code>scripts/simulated-brevo.js</code></td><td>The simulated Brevo</td><td><code>npm run simulated-brevo</code></td></tr>
+          <tr><td><code>scripts/brevo-walkthrough.js</code></td><td>The Brevo steps as one run, against the simulated Brevo or a real account</td><td><code>npm run simulate</code>, <code>npm run test:brevo</code></td></tr>
+          <tr><td><code>scripts/verify-setup.js</code></td><td>Checks the files, their versions, leftovers, and that nothing unsafe is about to be pushed</td><td><code>node scripts/verify-setup.js</code></td></tr>
+          <tr><td><code>.env</code></td><td>The API key, template ID and test address. Never committed</td><td>Copy from <code>.env.example</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Stage 1: Intake</h2>
+      <p>I compile the supplied file before changing anything. It compiled in soft mode with one warning, and it failed strict mode. Here is what I found.</p>
+      <table>
+        <thead><tr><th>What I found</th><th>Why it matters</th><th>What I did</th></tr></thead>
+        <tbody>
+          <tr><td>The social icons block had an attribute MJML doesn't allow</td><td>It fails strict mode</td><td>Removed it</td></tr>
+          <tr><td>Duplicate attributes on the button</td><td>The first one wins, so the button is 70% wide</td><td>Kept 70% and removed the duplicates</td></tr>
+          <tr><td><code>&lt;br&gt;&lt;/br&gt;</code> used for spacing</td><td>Browsers read <code>&lt;/br&gt;</code> as a second break, so each one is a blank line. Single breaks shrank the email by 135 px</td><td>Kept the double breaks</td></tr>
+          <tr><td>The button had no link</td><td>A button that goes nowhere</td><td>The link now comes from the data</td></tr>
+          <tr><td>Icons named for sharing</td><td>They make "share this page" links, not links to the client's pages</td><td>Switched to the plain link versions</td></tr>
+          <tr><td>Another client's name in the text, and a fixed greeting ("Good morning Linley!")</td><td>Wrong for every other reader and time of day</td><td>Corrected. The greeting comes from the data, with "Hi there," as the fallback</td></tr>
+          <tr><td>Four typos, a link that pointed at an email address, and a link to example.com</td><td>Careless in a security email</td><td>Fixed. The client still has to supply the real policy address</td></tr>
+          <tr><td>A "subscribe to the newsletter" line</td><td>Promotional content in a security email</td><td>Removed (see stage 2)</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Stage 2: Fix the source</h2>
+      <p><b>The social icons.</b> The standard MJML icons are always white. To get orange icons on the client's grey, I drew four custom ones (Facebook, X, Instagram, YouTube) as small transparent PNGs in the client's orange, #EA6D2F, from Font Awesome Free brand shapes (licensed CC BY 4.0). They sit on the grey, #DFE0E5, with no box behind them.</p>
+      <p><b>The newsletter line.</b> A security email should do one job. A newsletter invitation competes with the button, and promotional content can blur whether a message counts as transactional. That is not legal advice, so check with the client if it matters.</p>
+      <p><b>The footer.</b> It is laid out like the client's payment receipt: the small Kick Off logo, "brought to you by Geo English", the round Geo English logo and the address. On phones the logo and its text centre when the columns stack.</p>
+      <p><b>What I leave alone.</b> The black header and the body colours. I compared the header with the original in a real browser at 700 px wide, and it is identical pixel for pixel.</p>
+      <p>I also measure colour contrast instead of guessing:</p>
+      <table>
+        <thead><tr><th>Pair</th><th>Contrast</th><th>Guideline</th></tr></thead>
+        <tbody>
+          <tr><td>Orange icon on the grey</td><td>2.37:1</td><td>3:1 for graphics. I kept the client's orange. #D25A1C reaches 3.05:1</td></tr>
+          <tr><td>Link blue (#007bff) on white</td><td>3.98:1</td><td>4.5:1 for text. #0056b3 gives 7.04:1</td></tr>
+          <tr><td>White text on the blue button</td><td>8.59:1</td><td>Passes</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Stage 3: Define the data</h2>
+      <p>Three fields. The project uses example names, and the client's developer maps their own names onto them.</p>
+      <table>
+        <thead><tr><th>Example name</th><th>Required</th><th>Example (made-up)</th><th>If missing</th></tr></thead>
+        <tbody>
+          <tr><td><code>firstName</code></td><td>No</td><td>Alex</td><td>The greeting becomes "Hi there,"</td></tr>
+          <tr><td><code>maskedUsername</code></td><td>Yes</td><td>a******e</td><td>The username line would be empty</td></tr>
+          <tr><td><code>setupUrl</code></td><td>Yes</td><td>https://app.example.com/2fa/setup?token=SAMPLE-TOKEN-123</td><td>The button has no link</td></tr>
+        </tbody>
+      </table>
+      <p>I define the field list and what each value must look like. The client's system produces the values.</p>
+      <p>This stage also decides what the email must never contain. A two-factor setup email is a notification, not a way to deliver secrets. It never carries a verification code, a backup code, a setup key or a QR link, because anyone who can read the email could use them. That is my recommendation, not a Brevo rule. It shows the username only in masked form, and the button should lead to a link that the client's system creates, uses once and expires. That is what I ask the client's developer to provide. I don't see or test their system.</p>
+
+      <h2>Stage 4: Build</h2>
+      <p>The build compiles the MJML in strict mode, so a mistake stops it with the line number. A short script then warns about leftovers that must be fixed before the email goes into Brevo: placeholder icon links, links still pointing at example.com, social links that go to the sites' home pages, and a size near Gmail's clipping limit. The built email is about 35 KB.</p>
+      <p>A fresh copy of the project failed to build at first. Git doesn't keep empty folders, so there was no folder for the built email. It only showed up when I unpacked the project into a clean folder and ran everything from scratch. A small step now creates the folder.</p>
+
+      <h2>Stage 5: Check the data</h2>
+      <p>A script reads the email to work out which fields it uses (the ones inside an <code>{% if %}</code> are optional), then checks the sample data. It refuses anything that must never be in a two-factor email:</p>
+      <ul>
+        <li>a QR or authenticator link (<code>otpauth://</code>)</li>
+        <li>a 6 to 8 digit number that could be a verification code</li>
+        <li>a long string shaped like a setup key</li>
+        <li>a full phone number, or an email address that isn't masked</li>
+        <li>HTML, or template tags, so a value can't change the email</li>
+        <li>a link that doesn't start with <code>https://</code></li>
+        <li>a params object over the 100 KB that <a href="https://developers.brevo.com/docs/send-a-transactional-email" target="_blank" rel="noopener noreferrer">Brevo's documentation</a> allows</li>
+      </ul>
+      <p>There are 17 test cases: 3 that must pass and 14 deliberate breaks, such as a code in the first name, a setup key, a QR link, a phone number and a misspelt field name. All 17 behave as expected.</p>
+      <p>These rules guess at the shape of a code or a key, so they can flag something harmless. I would rather get too many flags than miss a real one. They check the sample data, not what the client's system really sends, so the handoff includes the same check for their developer to run on a real request.</p>
+
+      <h2>Masking, card data and PCI DSS</h2>
+      <p><b>Mask at the source, check at the edge.</b> I ask the client's system to mask personal values before they reach the email, so the username should arrive as <code>a******e</code> and never in full. My data check refuses anything that isn't masked: an email address, a full phone number, or a username without a <code>*</code>. The send script masks the test address in everything it prints, as <code>t***@example.com</code>, and never prints the API key.</p>
+      <p><b>What PCI DSS covers.</b> PCI DSS is the payment card industry's data security standard, and it is about card data. This two-factor email carries none, so it isn't a PCI DSS question. PCI DSS has its own two-factor rule (requirement 8.4), but that decides who must use multi-factor authentication to reach card systems, which is a different question from this notification. The same pipeline also builds receipt emails, where card data does matter. In version 4.0.1, requirement 3.4.1 says a card number is masked when displayed, with no more than the first six and last four digits ever shown (the same rule was numbered 3.3 in version 3.2.1), and the standard says unprotected card numbers must not go out through end-user messaging such as email.</p>
+      <p>In my receipt build, the data check is stricter than the rule. It accepts only the last two to four digits of a card, and it refuses any run of 13 to 19 digits anywhere in the data, so a full card number can't slip into a field by mistake.</p>
+      <p>I'm not a PCI assessor, and whether a system is in scope is for the client's acquirer or assessor to decide, so confirm it with them. Also check what your Brevo plan keeps in its logs, and for how long, rather than assuming.</p>
+
+      <h2>Stage 6: Send, safely</h2>
+      <table>
+        <thead><tr><th>Command</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm run send:dry</code></td><td>Prints the request and sends nothing. This is the default</td></tr>
+          <tr><td><code>npm run send:sandbox</code></td><td>Calls Brevo with its sandbox flag: nothing is sent and no log is made</td></tr>
+          <tr><td><code>npm run send:live</code></td><td>Sends one email to my own test address, after I type SEND</td></tr>
+        </tbody>
+      </table>
+      <p>The data must pass the stage 5 checks first. The API key is never printed, the test address is masked, there is only ever one recipient, and the script says plainly that accepted is not the same as delivered.</p>
+      <p>The sandbox flag goes in the JSON body, in a <code>headers</code> object, not in an HTTP header:</p>
+<pre><code>{
+  "to": [ { "email": "you@example.com", "name": "Alex" } ],
+  "templateId": 12,
+  "params": { "firstName": "Alex", "maskedUsername": "a******e", "setupUrl": "https://app.example.com/2fa/setup?token=SAMPLE-TOKEN-123" },
+  "headers": { "X-Sib-Sandbox": "drop" }
+}</code></pre>
+      <p><a href="https://developers.brevo.com/docs/using-sandbox-mode" target="_blank" rel="noopener noreferrer">Brevo's documentation</a> says the sandbox sends no email and makes no log, and that it only checks the format of the request. <a href="https://community.brevo.com/t/brevo-sandbox-mode-issue/2593" target="_blank" rel="noopener noreferrer">A Brevo community answer</a> reports that putting the flag in a real HTTP header still sends live emails, which is why the script uses the body.</p>
+
+      <h2>Stage 7: Test in layers</h2>
+      <p>The cheapest checks come first. Before touching a real account I test the whole sequence against a simulated Brevo on my own computer. It follows what Brevo's documentation says: requests carry an <code>api-key</code> header; a template must exist and be activated; the template's sender and subject apply unless the request overrides them; the sandbox flag means no email and no log; one params object can be up to 100 KB; and the log needs an email, a template ID or a message ID.</p>
+      <p>It does <b>not</b> show how real Brevo treats the HTML, special characters or its editor, and its error messages aren't Brevo's. The honest label for these results is simulated testing. What the walkthrough showed:</p>
+      <ul>
+        <li>Sending before the template was activated was refused, with a "not found or not activated" message.</li>
+        <li>After activation, the sandbox call was accepted and left <b>no</b> log entry.</li>
+        <li>A wrong API key was refused with a 401.</li>
+        <li>A live send returned a message ID and one log entry.</li>
+        <li>The saved message passed five inbox checks and gave two warnings: the icon links were still placeholders, and the policy link still pointed at example.com. Both warnings were correct, because those two items were still placeholders at that point.</li>
+        <li>With the first name removed, the greeting fell back to "Hi there,".</li>
+      </ul>
+      <p>The same walkthrough then runs against a real Brevo account with one command, <code>npm run test:brevo</code>, and the email is checked in real email clients. The simulated stage and the real stages use identical steps, so a fault found early is cheap to fix and a fault found late is rare.</p>
+
+      <h2>Stage 8: Hand over</h2>
+      <p>The client's developer gets what they need to connect it: the field table, a sample request, and the same data check to run on a real request. A build log records every stage, and a setup checker confirms that every file is the latest version, that nothing from an earlier version is left over, and that nothing which must not be pushed, such as an API key, is in the project. The developer maps their own field names onto the three example names, connects the email to their system, and sends it.</p>
+
+      <h2>What can go wrong, and what to check</h2>
+      <p>These are the faults I look for, with the check that catches each one.</p>
+      <table>
+        <thead><tr><th>What can go wrong</th><th>What you would see</th><th>What to check</th></tr></thead>
+        <tbody>
+          <tr><td>Node.js is too old</td><td>The build stops with "File is not defined", or the send tests fail</td><td><code>node --version</code> is 22 or 24. Node 20 works but is out of support</td></tr>
+          <tr><td>A fresh copy has no output folder</td><td>The build fails on a new machine</td><td>Run the project from a clean copy. The build creates the folder itself</td></tr>
+          <tr><td>The settings file is wrong</td><td>The send script stops with a clear message</td><td><code>.env</code> has the API key, template ID and test address, and the key is an API key, not an SMTP key</td></tr>
+          <tr><td>The Brevo template isn't activated, or the ID is wrong</td><td>A "not found or not activated" error</td><td>The template is activated in Brevo and the ID matches</td></tr>
+          <tr><td>Field names don't match (they are case-sensitive)</td><td>The greeting falls back, or a line is empty</td><td><code>npm run check-params</code>, then a real send to your own inbox</td></tr>
+          <tr><td>Something sensitive in the data: a code, a setup key, a full card number or phone number</td><td>The email would carry it</td><td>The safety rules and the 17 tests. For card data, the rules in the PCI DSS section</td></tr>
+          <tr><td>A long name, an accent or an apostrophe</td><td>A broken layout, or characters shown wrongly</td><td>Test awkward names such as O'Brien, José and a very long one, on a phone as well</td></tr>
+          <tr><td>The set-up link is wrong, expired, reused or rewritten</td><td>The button fails, or the address shown isn't the one that opens</td><td>The link must be https, and I ask for it to be single-use and expiring on the client's side. Check whether tracking rewrites it</td></tr>
+          <tr><td>The sandbox passes but the email is wrong</td><td>The sandbox only checks the request</td><td>A real send to your own inbox</td></tr>
+          <tr><td>The sender isn't verified, or the domain isn't authenticated</td><td>The email lands in spam, or isn't accepted</td><td>The sender and domain settings in Brevo, and the spam folder on the first real send</td></tr>
+          <tr><td>Image links are placeholders, blocked or deleted</td><td>Broken icons and logos</td><td>The links are real and public, the images are set not to auto-delete, and every image has alt text</td></tr>
+          <tr><td>The email is too large</td><td>Gmail clips emails at about 102 KB</td><td>The build warning. This email is about 35 KB</td></tr>
+          <tr><td>An API key leaks</td><td>Anyone holding it can send as you</td><td><code>.env</code> is git-ignored, a hook blocks commits containing a key, and the setup checker scans for one. If one is ever exposed, delete it in Brevo and make a new one</td></tr>
+          <tr><td>A live send by mistake</td><td>A real email goes out</td><td>The dry run is the default, and live needs SEND typed and goes to one address</td></tr>
+          <tr><td>Dark mode</td><td>This email has no dark mode styling</td><td>Look at it in dark mode in real email clients</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Four bugs the pipeline caught</h2>
+      <ol>
+        <li><b>Typing SEND counted as cancelled.</b> The prompt's close handler ran before the answer was recorded. The send tests caught it.</li>
+        <li><b>The test harness blocked its own simulated server,</b> so requests timed out. It was fixed by starting the script asynchronously.</li>
+        <li><b>A fresh copy of the project couldn't build.</b> The clean-folder run caught it.</li>
+        <li><b>The build needs Node.js 20 or newer.</b> It passed on one version and only failed when I ran the whole project on five.</li>
+      </ol>
+      <p>All four were invisible until something ran them. I haven't verified this email in every email client, so test it in yours before relying on it.</p>
+
+      <h2>Takeaway</h2>
+      <p>A transactional email is a chain, and a development pipeline gives every link its own check. Here the data is the risky part, so it got three fields, a list of things that must never appear, and tests that prove the checks fire. Put the cheap, loud checks first, send nothing real until the end, and run the whole project from a clean copy, on more than one Node.js version, before you trust it.</p>
+    </div>
+
+    <div class="post-cta">
+      <p>Need a transactional email set up properly, from your application to the inbox? I define what data your application sends, build and test the email, and trace problems through the whole system.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+    <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a development pipeline for a transactional email?</summary>
+          <p>A fixed order of stages, each with its own check, so mistakes fail early and cheaply. For this email: compile the supplied file in strict mode, fix the source, define the data, build, check the data, send in safe modes, test in layers and hand over. Nothing reaches a real inbox until the later stages.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Should a two-factor setup email contain the verification code?</summary>
+          <p>In this build, no. It is a notification that two-factor authentication has been switched on, with a button to finish setting it up. It never carries a verification code, a backup code, a setup key or a QR link, because anyone who can read the email could use them. That is my recommendation, not a Brevo rule.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can you test a Brevo transactional email without sending it?</summary>
+          <p>Partly. Brevo's sandbox accepts a request without sending an email and without making a log, but it only checks the format of the request, not how the email looks. A dry run and a simulated Brevo cover more of the sequence, but a real send to your own inbox and a check in real email clients are still needed.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which version of Node.js does this pipeline need?</summary>
+          <p>Node.js 20 or newer. I ran the whole project from a clean copy on Node 16, 18, 20, 22 and 24. The build fails on 16 and 18, and everything passes on 20, 22 and 24. Node 18 reached end of life in April 2025 and Node 20 in April 2026, so use 22 or 24. I haven't tested Node 26.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does PCI DSS apply to a two-factor setup email?</summary>
+          <p>Not to this email, because it carries no payment card data. PCI DSS has its own two-factor rule, but it governs who may reach card systems, not a notification like this. It does matter for emails that show a card, such as receipts: PCI DSS v4.0.1 requires a card number to be masked when displayed, with no more than the first six and last four digits shown, and says unprotected card numbers must not be sent by email. I am not a PCI assessor, so confirm the scope with the client's acquirer or assessor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you connect the email to our system?</summary>
+          <p>No. I work out what data your application needs to send, build and test the email, and set it up in your email platform. Your developer connects it and sends it. I can supply a sample request and a Node.js reference implementation of the send step for them to adapt.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+</script>
+</body>
+</html>
