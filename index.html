@@ -289,7 +289,7 @@
             .cta-button {
                 display: inline-block;
                 padding: 1.2rem 2.5rem;
-                background: var(--accent);
+                background: #d10500;
                 color: #fff;
                 text-decoration: none;
                 border-radius: 10px;
@@ -1134,6 +1134,18 @@
         /* contact form: the bot trap sits off screen (not display:none, which some bots detect), and the status line */
         .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
         .form-status { text-align: center; margin-top: 1rem; min-height: 1.5rem; font-weight: 600; color: var(--text-light); }
+        /* the platform table scrolls sideways on small screens: show where the keyboard focus is */
+        .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        /* portfolio cards: three across on laptops, two on tablets, one on phones, and a last row with fewer cards sits in the centre */
+        #portfolio .grid-cards { display: flex; flex-wrap: wrap; justify-content: center; }
+        #portfolio .grid-cards > .card { flex: 0 0 calc((100% - 4rem) / 3); max-width: calc((100% - 4rem) / 3); height: auto; align-self: stretch; }
+        #portfolio .grid-cards > .consult-btn-wrapper { flex: 0 0 100%; max-width: 100%; }
+        @media (max-width: 1024px) {
+            #portfolio .grid-cards > .card { flex-basis: calc((100% - 2rem) / 2); max-width: calc((100% - 2rem) / 2); }
+        }
+        @media (max-width: 767px) {
+            #portfolio .grid-cards > .card { flex-basis: 100%; max-width: 100%; }
+        }
 </style>
 
         <script type="application/ld+json">
@@ -1885,6 +1897,32 @@
                             </div>
                         </div>
 
+                        <div class="card" style="padding: 0; overflow: hidden; text-align: left">
+                            <a href="https://res.cloudinary.com/xrzqkwov/image/upload/Tomma-Pasta2-Darkmode.webp" target="_blank" rel="noopener noreferrer">
+                                <img
+                                    loading="lazy"
+                                    decoding="async"
+                                    src="https://res.cloudinary.com/xrzqkwov/image/upload/Tomma-Pasta2-Darkmode.webp"
+                                    alt="Product email for an Italian pasta sauce brand, shown in dark mode"
+                                    style="
+                                        width: 100%;
+                                        height: 220px;
+                                        object-fit: cover;
+                                        object-position: top;
+                                        border-bottom: 4px solid var(--accent);
+                                        cursor: pointer;
+                                    "
+                                />
+                            </a>
+                            <div style="padding: 1.5rem">
+                                <span class="blog-date">MJML • HTML • CSS • Node.js • Dark Mode</span>
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Pasta Sauce Brand Email (Dark)</h3>
+                                <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text)">
+                                    A dark mode version of a product email for an Italian pasta sauce brand, built in MJML, HTML and CSS with Node.js, and tested to see how its colours hold up in dark mode
+                                </p>
+                            </div>
+                        </div>
+
                         <div
                             class="consult-btn-wrapper"
                             style="margin-top: 4rem; width: 100%; grid-column: 1 / -1; display: flex; justify-content: center"
@@ -2053,7 +2091,7 @@
                     </p>
 
                     <!-- Tag and conditional content reference -->
-                    <div style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto">
+                    <div class="table-scroll" role="region" aria-label="Email platform tag languages" style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto">
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left">
                             <thead>
                                 <tr style="border-bottom: 2px solid var(--text-light)">
@@ -2513,6 +2551,19 @@
                 equaliseCards();
             })();
         
+
+        // PLATFORM TABLE: it scrolls sideways on small screens, so it gets a keyboard stop only while it really scrolls.
+        (function () {
+            var box = document.querySelector(".table-scroll");
+            if (!box) return;
+            function check() {
+                if (box.scrollWidth > box.clientWidth + 1) box.setAttribute("tabindex", "0");
+                else box.removeAttribute("tabindex");
+            }
+            window.addEventListener("load", check);
+            window.addEventListener("resize", check);
+            check();
+        })();
 
         // CONTACT FORM SPAM PROTECTION
         // The email address is put together here, so it is not in the page source for harvesting bots to read.
