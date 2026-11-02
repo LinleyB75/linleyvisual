@@ -71,8 +71,10 @@
 
         var style = document.createElement("style");
         style.textContent =
-            ".cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;background:var(--card-bg,#fff);color:var(--text,#1a1a1a);border-top:4px solid var(--accent,#d10500);box-shadow:0 -8px 20px rgba(0,0,0,.18);padding:1rem 1.25rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}" +
+            ".cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;transform:translateY(105%);transition:transform .8s cubic-bezier(.22,.61,.36,1);background:var(--card-bg,#fff);color:var(--text,#1a1a1a);border-top:4px solid var(--accent,#d10500);box-shadow:0 -8px 20px rgba(0,0,0,.18);padding:1rem 1.25rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}" +
             ".cc-banner[hidden]{display:none}" +
+            ".cc-banner.cc-visible{transform:translateY(0)}" +
+            "@media (prefers-reduced-motion:reduce){.cc-banner{transition:none}}" +
             ".cc-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;justify-content:space-between}" +
             ".cc-text{margin:0;flex:1 1 380px;font-size:1rem;line-height:1.5}" +
             ".cc-text a{color:inherit;font-weight:700;text-decoration:underline}" +
@@ -102,21 +104,45 @@
         banner.querySelector(".cc-accept").addEventListener("click", function () {
             setChoice("granted");
             loadAnalytics();
-            banner.hidden = true;
+            hideBanner();
         });
         banner.querySelector(".cc-decline").addEventListener("click", function () {
             setChoice("denied");
             gtag("consent", "update", { analytics_storage: "denied" });
             removeAnalyticsCookies();
-            banner.hidden = true;
+            hideBanner();
         });
         return banner;
     }
 
-    function showBanner(moveFocus) {
+    var SHOW_DELAY = 1200; // how long after the page opens the banner starts to slide up (milliseconds)
+    var SLIDE_TIME = 800; // how long the slide takes, the same as in the style above
+
+    function reducedMotion() {
+        return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+
+    // Slide the banner up from the bottom of the screen. "delay" waits first, so it does not just appear with the page.
+    function showBanner(moveFocus, delay) {
         var b = buildBanner();
-        b.hidden = false;
-        if (moveFocus) b.querySelector(".cc-accept").focus();
+        setTimeout(function () {
+            b.hidden = false;
+            // wait for two frames, so the browser draws it below the screen first and then slides it up
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    b.classList.add("cc-visible");
+                });
+            });
+            if (moveFocus) b.querySelector(".cc-accept").focus();
+        }, reducedMotion() ? 0 : delay || 0);
+    }
+
+    // Slide the banner back down, then hide it
+    function hideBanner() {
+        banner.classList.remove("cc-visible");
+        setTimeout(function () {
+            if (!banner.classList.contains("cc-visible")) banner.hidden = true;
+        }, reducedMotion() ? 0 : SLIDE_TIME);
     }
 
     function addSettingsLink() {
@@ -135,7 +161,7 @@
         var t = e.target.closest ? e.target.closest("[data-cookie-settings]") : null;
         if (t) {
             e.preventDefault();
-            showBanner(true);
+            showBanner(true, 0);
         }
     });
 
@@ -143,7 +169,7 @@
         addSettingsLink();
         var choice = getChoice();
         if (choice === "granted") loadAnalytics();
-        else if (choice !== "denied") showBanner(false);
+        else if (choice !== "denied") showBanner(false, SHOW_DELAY);
     }
 
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
