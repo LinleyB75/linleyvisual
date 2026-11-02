@@ -1131,21 +1131,12 @@
             .case-rotator.is-live .case-slide, .case-rotator.is-live .case-slide.is-active { transition: none; transform: none; }
         }
 
-        /* contact form: the bot trap sits off screen (not display:none, which some bots detect), and the status line */
+        /* contact form: the bot trap sits off screen (not display:none, which some bots detect), the status box and the note under the button */
         .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
         .form-status { text-align: center; margin-top: 1rem; min-height: 1.5rem; font-weight: 600; color: var(--text-light); }
-        /* the platform table scrolls sideways on small screens: show where the keyboard focus is */
-        .table-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-        /* portfolio cards: three across on laptops, two on tablets, one on phones, and a last row with fewer cards sits in the centre */
-        #portfolio .grid-cards { display: flex; flex-wrap: wrap; justify-content: center; }
-        #portfolio .grid-cards > .card { flex: 0 0 calc((100% - 4rem) / 3); max-width: calc((100% - 4rem) / 3); height: auto; align-self: stretch; }
-        #portfolio .grid-cards > .consult-btn-wrapper { flex: 0 0 100%; max-width: 100%; }
-        @media (max-width: 1024px) {
-            #portfolio .grid-cards > .card { flex-basis: calc((100% - 2rem) / 2); max-width: calc((100% - 2rem) / 2); }
-        }
-        @media (max-width: 767px) {
-            #portfolio .grid-cards > .card { flex-basis: 100%; max-width: 100%; }
-        }
+        .form-status:not(:empty) { text-align: left; color: var(--text); background: var(--bg-alt); border-left: 5px solid var(--accent); border-radius: 8px; padding: 0.85rem 1rem; }
+        .form-note { text-align: center; margin-top: 1.25rem; font-size: 0.95rem; color: var(--text-light); }
+        .form-note a { color: var(--accent); font-weight: 700; text-decoration: underline; }
 </style>
 
         <script type="application/ld+json">
@@ -2333,8 +2324,8 @@
                             <input type="hidden" name="_subject" value="New enquiry from linleyb.com" />
                             <input type="hidden" name="_blacklist" value="backlinks,guest post,link building,seo services,rank your website,increase your traffic,web traffic,make money online,earn money online,viagra,escort,adult dating,payday loan,buy followers,cheap pills,loan offer" />
                             <div class="hp-field" aria-hidden="true">
-                                <label for="website">Leave this field empty</label>
-                                <input type="text" id="website" name="_honey" tabindex="-1" autocomplete="off" />
+                                <label for="contact-hp">Leave this field empty</label>
+                                <input type="text" id="contact-hp" name="_honey" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" />
                             </div>
                             <div class="form-group">
                                 <label for="name">Full Name</label
@@ -2359,13 +2350,13 @@
                                     name="message"
                                     rows="5"
                                     required
-                                    minlength="10"
                                     maxlength="3000"
                                     placeholder="Tell me about the design (or paste a link), your email platform and what triggers the email..."
                                 ></textarea>
                             </div>
                             <div class="form-btn-wrap"><button type="submit" class="cta-button">Send Secure Message</button></div>
-                            <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+                            <p id="formStatus" class="form-status" role="alert"></p>
+                            <p class="form-note">After you press Send you may be asked to confirm you are human, and then you will see a thank-you page. Prefer email? <a href="/#contact" data-u="contact" data-d="linleyb.com" data-show>contact [at] linleyb.com</a></p>
                         </form>
                     </div>
                 </div>
@@ -2568,30 +2559,38 @@
         // CONTACT FORM SPAM PROTECTION
         // The email address is put together here, so it is not in the page source for harvesting bots to read.
         // To hide it completely, paste FormSubmit's random-string alias into data-alias on the form.
+        // Every time the form refuses to send, it says why in the box under the button.
         (function () {
-            var form = document.getElementById("contactForm");
             document.querySelectorAll("a[data-u][data-d]").forEach(function (a) {
-                if (a.classList.contains("social-email")) a.href = "mailto:" + a.dataset.u + "@" + a.dataset.d;
+                var address = a.dataset.u + "@" + a.dataset.d;
+                a.href = "mailto:" + address;
+                if (a.hasAttribute("data-show")) a.textContent = address;
             });
+            var form = document.getElementById("contactForm");
             if (!form) return;
             var status = document.getElementById("formStatus");
             var opened = Date.now();
+            var firstTouch = 0;
+            function touched() { if (!firstTouch) firstTouch = Date.now(); }
+            form.addEventListener("focusin", touched);
+            form.addEventListener("input", touched);
             form.action = "https://formsubmit.co/" + (form.dataset.alias || form.dataset.u + "@" + form.dataset.d);
             form.hidden = false;
+            function say(text) {
+                status.textContent = text;
+                if (text && status.scrollIntoView) status.scrollIntoView({ block: "nearest" });
+            }
             form.addEventListener("submit", function (e) {
                 var problem = "";
-                if (form.elements["_honey"].value) {
-                    e.preventDefault(); // a bot filled the hidden field: stop quietly
-                    return;
-                }
-                if (Date.now() - opened < 4000) problem = "Please take a moment to check your message, then send it again.";
+                if (form.elements["_honey"].value) problem = "Something went wrong with the form. Please reload the page and try again, or email me using the link below.";
+                else if (Date.now() - (firstTouch || opened) < 2000) problem = "Please check your message, then press Send again.";
                 else if ((form.elements["message"].value.match(/https?:\/\/|www\./gi) || []).length > 2) problem = "Please include no more than two links in your message.";
                 if (problem) {
                     e.preventDefault();
-                    status.textContent = problem;
+                    say(problem);
                     return;
                 }
-                status.textContent = "Sending...";
+                say("Sending... You may be asked to confirm you are human, and then you will see a thank-you page.");
             });
         })();
 
