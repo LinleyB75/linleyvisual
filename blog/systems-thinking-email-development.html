@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <script src="/consent.js?v=1" defer></script>
+        <script src="/mail-link.js?v=1" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +34,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=9">
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
 
     <script type="application/ld+json">
 {
@@ -257,8 +258,8 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
-        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
       </div>
     </a>
 
@@ -425,7 +426,7 @@
                 rel="noopener noreferrer"
                 aria-label="Visit my GitHub Profile"
             ><i class="fab fa-github"></i></a>
-            <a href="mailto:contact@linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
 
             <!-- Upwork Profile Icon Link -->
             <a
@@ -491,6 +492,15 @@
         icon.classList.toggle('fa-sun', theme === 'dark');
         icon.classList.toggle('fa-moon', theme !== 'dark');
     }
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
 </script>
 </body>
 </html>
