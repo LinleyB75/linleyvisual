@@ -872,8 +872,7 @@
         /* icons wider than 1em (like the code brackets) keep a gap before their label */
         .tech-item i { width: auto; min-width: 1em; }
     
-        /* contact form: the bot trap sits off screen (not display:none, which some bots detect), the status box and the note under the button */
-        .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+        /* contact form: the status box and the note under the button */
         .form-status { text-align: center; margin-top: 1rem; min-height: 1.5rem; font-weight: 600; color: var(--text-light); }
         .form-status:not(:empty) { text-align: left; color: var(--text); background: var(--bg-alt); border-left: 5px solid var(--accent); border-radius: 8px; padding: 0.85rem 1rem; }
         .form-note { text-align: center; margin-top: 1.25rem; font-size: 0.95rem; color: var(--text-light); }
@@ -1191,15 +1190,11 @@
                     <div class="contact-container">
                         <noscript><p class="form-status">This form needs JavaScript. Please email me at contact [at] linleyb.com instead.</p></noscript>
                         <form id="contactForm" method="POST" data-u="contact" data-d="linleyb.com" data-alias="" hidden>
-                            <!-- Spam protection: the captcha is ON, hidden bot trap, banned phrases. The address is added by the script, so it is not in the page source. -->
+                            <!-- Spam protection: the captcha is ON, banned phrases, and the address is added by the script so it is not in the page source. -->
                             <input type="hidden" name="_captcha" value="true" />
                             <input type="hidden" name="_next" value="https://linleyb.com/thanks.html" />
                             <input type="hidden" name="_subject" value="New enquiry from linleyb.com certifications page" />
                             <input type="hidden" name="_blacklist" value="backlinks,guest post,link building,seo services,rank your website,increase your traffic,web traffic,make money online,earn money online,viagra,escort,adult dating,payday loan,buy followers,cheap pills,loan offer" />
-                            <div class="hp-field" aria-hidden="true">
-                                <label for="contact-hp">Leave this field empty</label>
-                                <input type="text" id="contact-hp" name="_honey" tabindex="-1" autocomplete="off" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" />
-                            </div>
                             <div class="form-group">
                                 <label for="name">Full Name</label
                                 ><input type="text" id="name" name="name" required maxlength="80" placeholder="Your name" autocomplete="name" />
@@ -1431,8 +1426,7 @@
             }
             form.addEventListener("submit", function (e) {
                 var problem = "";
-                if (form.elements["_honey"].value) problem = "Something went wrong with the form. Please reload the page and try again, or email me using the link below.";
-                else if (Date.now() - (firstTouch || opened) < 2000) problem = "Please check your message, then press Send again.";
+                if (Date.now() - (firstTouch || opened) < 2000) problem = "Please check your message, then press Send again.";
                 else if ((form.elements["message"].value.match(/https?:\/\/|www\./gi) || []).length > 2) problem = "Please include no more than two links in your message.";
                 if (problem) {
                     e.preventDefault();
