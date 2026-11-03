@@ -43,7 +43,7 @@
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=9">
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
 
     <!-- JSON-LD below: comments are not allowed inside it. Keep knowsAbout and serviceType the same as on the homepage and in post-template.html. If you change the FAQ text in the page, change it here too. -->
     <script type="application/ld+json">
@@ -223,7 +223,7 @@
                     "name": "Do these notes cover dark mode and mobile rendering bugs?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also two transactional email case studies, a payment receipt and a two-factor setup email, and a post on systems thinking."
+                        "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also three transactional email case studies, a payment receipt, a two-factor setup email and a payment failure email, and a post on systems thinking."
                     }
                 },
                 {
@@ -255,8 +255,8 @@
     <a href="/#home" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
-        <span style="color: #888888;">Linley Bignoux</span><span class="pipe">|</span>
-        <span style="color: #ff0000;" class="job-title">Freelance Email Developer</span>
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
       </div>
     </a>
 
@@ -301,6 +301,12 @@
                          <a class="read-more" href="/blog/YOUR-POST-FILENAME.html">Read the post &rarr;</a>
                      </article>
                 -->
+                <article class="post-card">
+                    <span class="blog-date">Case study • Transactional email • Step by step</span>
+                    <h2><a href="/blog/payment-failure-email-step-by-step.html">Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo</a></h2>
+                    <p>A step-by-step build of a payment failure email for Kick Off → Your English in VS Code: the MJML, the dark mode CSS, the Node.js checks, Brevo, 130-client testing and what went wrong.</p>
+                    <a class="read-more" href="/blog/payment-failure-email-step-by-step.html">Read the post &rarr;</a>
+                </article>
                 <article class="post-card">
                     <span class="blog-date">Case study • Transactional email • Pipeline</span>
                     <h2><a href="/blog/2fa-setup-notification-email-brevo.html">Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send</a></h2>
@@ -362,7 +368,7 @@
                 </details>
                 <details class="faq-item">
                     <summary>Do these notes cover dark mode and mobile rendering bugs?</summary>
-                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also two transactional email case studies, a payment receipt and a two-factor setup email, and a post on systems thinking.</p>
+                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also three transactional email case studies, a payment receipt, a two-factor setup email and a payment failure email, and a post on systems thinking.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Are the fixes tested in real email clients?</summary>
