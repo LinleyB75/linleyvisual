@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
+        <script src="/mail-link.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo | Email Dev Notes</title>
+    <meta name="description" content="A step-by-step build of a payment failure email: MJML, HTML, CSS and Node.js in VS Code, dark mode, Brevo sends and 130-client testing.">
+    <link rel="canonical" href="https://linleyb.com/blog/payment-failure-email-step-by-step.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo">
+    <meta property="og:description" content="From a supplied MJML file to a tested Brevo send: every step of a payment failure email, with diagrams, checks and what went wrong.">
+    <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+    <meta property="og:url" content="https://linleyb.com/blog/payment-failure-email-step-by-step.html">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo">
+    <meta name="twitter:description" content="From a supplied MJML file to a tested Brevo send: every step of a payment failure email, with diagrams, checks and what went wrong.">
+    <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I build and test emails in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Setup",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/payment-failure-email-step-by-step.html#article",
+            "url": "https://linleyb.com/blog/payment-failure-email-step-by-step.html",
+            "headline": "Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo",
+            "description": "A step-by-step build of a payment failure email: MJML, HTML, CSS and Node.js in VS Code, dark mode, Brevo sends and 130-client testing.",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "datePublished": "2026-11-03",
+            "dateModified": "2026-11-03",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/payment-failure-email-step-by-step.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/payment-failure-email-step-by-step.html#faq",
+            "url": "https://linleyb.com/blog/payment-failure-email-step-by-step.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What tools do you need to build a transactional email like this?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A text editor such as VS Code, Node.js 20 or newer (I used 24), MJML to write the email, Git to save and back up the project, and a Brevo account to set it up and send it. The checks and the send script run on Node.js."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why write the email in MJML and not plain HTML?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "MJML is shorter and stricter, and it builds the nested HTML tables that email apps need. In strict mode the build stops on a mistake that a soft build would let through. I still read the built HTML, because that is what email apps receive."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How does dark mode work in this email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The email declares both colour schemes, and its dark rules sit inside a prefers-color-scheme: dark block, so the light version cannot change. Separate rules cover Outlook.com and the Outlook apps, which mark their dark mode with attributes. Gmail and Outlook still gave a number of dark mode rendering issues, and the button needed VML fixes, so I tested in 130 email clients."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can you test a Brevo email without sending it?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Partly. The sandbox flag checks the request without sending or logging anything, and a simulated Brevo covers the sequence of steps. Neither shows how the email looks, so I also sent real emails to my own inbox and tested in real email clients."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does this email need data from the client's application?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not yet. In this version the amount, the plan name and the retry wording are fixed text, and the links are placeholders until the client sends the real ones. If values are added later, I define the list of names and the rules first, and the client's developer sends them."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who connects the email to the client's system?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "The client's developer. I define what data the application sends, build and set up the email, and test it. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">CASE STUDY • TRANSACTIONAL EMAIL • STEP BY STEP</span>
+    <h1>Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo</h1>
+    <p class="post-meta">Published 3 November 2026 • By Linley Bignoux • Built for: Kick Off &rarr; Your English</p>
+    <div class="tag-row"><span class="tag">brevo</span><span class="tag">transactional-email</span><span class="tag">case-study</span><span class="tag">mjml</span><span class="tag">html</span><span class="tag">css</span><span class="tag">nodejs</span><span class="tag">vs-code</span><span class="tag">dark-mode</span></div>
+
+    <div class="post-content">
+      <h2>The brief</h2>
+      <p>Kick Off &rarr; Your English (Geo English) sent me the MJML source of a payment failure email. It is the message a customer gets when a monthly payment could not be processed. The client has agreed to be named. The email's wording and design belong to the client. This post shows screenshots of the finished email and describes what I did to the file, but it does not publish the source files. Everything else shown is my own scripts or made-up sample data.</p>
+      <p>The brief for this round: keep the design and layout exactly as supplied, fix the syntax and the wording, use placeholder links for now, add no data values yet, and add dark and light mode.</p>
+      <p><b>My side:</b> the MJML, the dark and light mode, the Brevo email and its ID, and the tests. <b>The client's developer:</b> when the email is sent, the real links, the API key and the production call to Brevo.</p>
+
+      <h2>Status</h2>
+      <div class="status-box">
+        <p><b>Done:</b> built, the strict build passes, the Node.js checks and tests pass, a real Brevo email created, activated and sent to my own inbox, tested in 130 email clients, and committed and pushed to GitHub.</p>
+        <p><b>Waiting for the client:</b> the real links, the subject line, and the handoff to their developer.</p>
+      </div>
+
+      <h2>The build in one view</h2>
+      <p>Thirteen steps, in a fixed order, each with its own check. A mistake fails early and cheaply, and nothing real is sent until step 10.</p>
+      <svg viewBox="0 0 360 988" role="img" aria-labelledby="pf-title pf-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+        <title id="pf-title">The thirteen steps of the payment failure email build</title>
+        <desc id="pf-desc">In order: set up, intake, fix the MJML, define the data, dark and light mode, strict build, Node.js checks, simulated Brevo, save it, real Brevo, real email clients, write it up, and back up and hand over.</desc>
+        <defs><marker id="pf-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="10" width="340" height="56" rx="10"/><rect x="10" y="86" width="340" height="56" rx="10"/><rect x="10" y="162" width="340" height="56" rx="10"/><rect x="10" y="238" width="340" height="56" rx="10"/><rect x="10" y="314" width="340" height="56" rx="10"/><rect x="10" y="390" width="340" height="56" rx="10"/><rect x="10" y="466" width="340" height="56" rx="10"/><rect x="10" y="542" width="340" height="56" rx="10"/><rect x="10" y="618" width="340" height="56" rx="10"/><rect x="10" y="694" width="340" height="56" rx="10"/><rect x="10" y="770" width="340" height="56" rx="10"/><rect x="10" y="846" width="340" height="56" rx="10"/><rect x="10" y="922" width="340" height="56" rx="10"/><line x1="180" y1="66" x2="180" y2="84" marker-end="url(#pf-arrow)"/><line x1="180" y1="142" x2="180" y2="160" marker-end="url(#pf-arrow)"/><line x1="180" y1="218" x2="180" y2="236" marker-end="url(#pf-arrow)"/><line x1="180" y1="294" x2="180" y2="312" marker-end="url(#pf-arrow)"/><line x1="180" y1="370" x2="180" y2="388" marker-end="url(#pf-arrow)"/><line x1="180" y1="446" x2="180" y2="464" marker-end="url(#pf-arrow)"/><line x1="180" y1="522" x2="180" y2="540" marker-end="url(#pf-arrow)"/><line x1="180" y1="598" x2="180" y2="616" marker-end="url(#pf-arrow)"/><line x1="180" y1="674" x2="180" y2="692" marker-end="url(#pf-arrow)"/><line x1="180" y1="750" x2="180" y2="768" marker-end="url(#pf-arrow)"/><line x1="180" y1="826" x2="180" y2="844" marker-end="url(#pf-arrow)"/><line x1="180" y1="902" x2="180" y2="920" marker-end="url(#pf-arrow)"/></g>
+        <g fill="currentColor" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"><text x="180" y="32" font-size="16" font-weight="700">1. Set up</text><text x="180" y="51" font-size="12.5">VS Code, Node.js, Git, the commit guard</text><text x="180" y="108" font-size="16" font-weight="700">2. Intake</text><text x="180" y="127" font-size="12.5">read the supplied MJML before changing it</text><text x="180" y="184" font-size="16" font-weight="700">3. Fix the MJML</text><text x="180" y="203" font-size="12.5">syntax, wording, links, icons</text><text x="180" y="260" font-size="16" font-weight="700">4. Define the data</text><text x="180" y="279" font-size="12.5">the values, and the rules for them</text><text x="180" y="336" font-size="16" font-weight="700">5. Dark and light mode</text><text x="180" y="355" font-size="12.5">CSS rules for each, light unchanged</text><text x="180" y="412" font-size="16" font-weight="700">6. Strict build</text><text x="180" y="431" font-size="12.5">MJML to HTML and CSS, stops on mistakes</text><text x="180" y="488" font-size="16" font-weight="700">7. Node.js checks</text><text x="180" y="507" font-size="12.5">data check, tests, safe send script</text><text x="180" y="564" font-size="16" font-weight="700">8. Simulated Brevo</text><text x="180" y="583" font-size="12.5">the whole send sequence, nothing real</text><text x="180" y="640" font-size="16" font-weight="700">9. Save it</text><text x="180" y="659" font-size="12.5">verify, then the first commit</text><text x="180" y="716" font-size="16" font-weight="700">10. Real Brevo</text><text x="180" y="735" font-size="12.5">create it, sandbox call, real send</text><text x="180" y="792" font-size="16" font-weight="700">11. Real email clients</text><text x="180" y="811" font-size="12.5">130 clients, light and dark mode</text><text x="180" y="868" font-size="16" font-weight="700">12. Write it up</text><text x="180" y="887" font-size="12.5">README, build log, next steps</text><text x="180" y="944" font-size="16" font-weight="700">13. Back up and hand over</text><text x="180" y="963" font-size="12.5">private GitHub, handoff</text></g>
+      </svg>
+
+      <table>
+        <thead><tr><th>Step</th><th>What happens</th><th>What it catches</th><th>Command or file</th></tr></thead>
+        <tbody>
+          <tr><td>1. Set up</td><td>Node.js 24, Git, the commit guard</td><td>Missing tools, a key or a settings file being committed</td><td><code>node -v</code>, <code>git init</code>, <code>npm install</code>, <code>npm run setup:hooks</code></td></tr>
+          <tr><td>2. Intake</td><td>A soft and a strict build, then a report on links, images, colours and wording</td><td>Mistakes the soft build lets through</td><td><code>npm run intake</code></td></tr>
+          <tr><td>3. Fix the MJML</td><td>Syntax, wording, links, icons</td><td>Invalid MJML, dead links, wrong colours</td><td>The MJML file</td></tr>
+          <tr><td>4. Define the data</td><td>The values the email needs, and the rules for them</td><td>Wrong or unsafe data, before it reaches the email</td><td><code>project.config.js</code>, <code>data/params.json</code></td></tr>
+          <tr><td>5. Dark and light mode</td><td>CSS rules for dark mode, with measured contrast</td><td>Unreadable text in dark mode</td><td>The styles in the MJML head</td></tr>
+          <tr><td>6. Strict build</td><td>MJML to HTML and CSS, then warnings</td><td>Placeholder links, a size near Gmail's limit</td><td><code>npm run build</code></td></tr>
+          <tr><td>7. Node.js checks</td><td>Data check, tests, the safe send script</td><td>Wrong data, unsafe sends</td><td><code>npm run check-params</code>, <code>npm test</code>, <code>npm run test:send</code></td></tr>
+          <tr><td>8. Simulated Brevo</td><td>The whole send sequence on my own computer</td><td>A Brevo email left inactive, a wrong key, a sandbox call that logs</td><td><code>npm run simulate</code></td></tr>
+          <tr><td>9. Save it</td><td>A pre-push check, then the first commit</td><td>Missing files, a stale build, a key in the project</td><td><code>npm run verify</code>, <code>git commit</code></td></tr>
+          <tr><td>10. Real Brevo</td><td>Create it, sandbox call, a real send to my own inbox</td><td>Faults only a real account shows</td><td><code>npm run send:dry</code>, <code>send:sandbox</code>, <code>send:live</code></td></tr>
+          <tr><td>11. Real email clients</td><td>130 clients, in light and dark mode</td><td>Dark mode and button faults in Gmail and Outlook</td><td>My testing tool</td></tr>
+          <tr><td>12. Write it up</td><td>README, build log and next steps</td><td>Lost knowledge, unclear status</td><td><code>README.md</code>, <code>BUILD-LOG.md</code>, <code>NEXT-STEPS.md</code></td></tr>
+          <tr><td>13. Back up and hand over</td><td>A private GitHub repository, and a note for the client's developer</td><td>Lost work, unclear ownership</td><td><code>git push</code></td></tr>
+        </tbody>
+      </table>
+
+      <h2>How MJML, HTML, CSS and Node.js fit together</h2>
+      <p>Four languages work on one email, and each has its own job. I write MJML. MJML builds the HTML and CSS that email apps receive. Node.js runs the build, and the scripts that check and send the email.</p>
+      <svg viewBox="0 0 360 490" role="img" aria-labelledby="fit-title fit-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+        <title id="fit-title">How MJML, HTML, CSS and Node.js fit together</title>
+        <desc id="fit-desc">The MJML source is built by MJML, which runs on Node.js, into HTML and CSS. Node.js scripts check the built email and send it. Brevo sends it to the inbox.</desc>
+        <defs><marker id="fit-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="10" y="10" width="340" height="60" rx="10"/>
+          <rect x="10" y="100" width="340" height="60" rx="10"/>
+          <rect x="10" y="190" width="340" height="76" rx="10"/>
+          <rect x="10" y="300" width="165" height="86" rx="10"/>
+          <rect x="185" y="300" width="165" height="86" rx="10"/>
+          <rect x="10" y="420" width="340" height="60" rx="10"/>
+          <line x1="180" y1="70" x2="180" y2="98" marker-end="url(#fit-arrow)"/>
+          <line x1="180" y1="160" x2="180" y2="188" marker-end="url(#fit-arrow)"/>
+          <line x1="92" y1="266" x2="92" y2="298" marker-end="url(#fit-arrow)"/>
+          <line x1="268" y1="266" x2="268" y2="298" marker-end="url(#fit-arrow)"/>
+          <line x1="92" y1="386" x2="92" y2="418" marker-end="url(#fit-arrow)"/>
+          <line x1="268" y1="386" x2="268" y2="418" marker-end="url(#fit-arrow)"/>
+        </g>
+        <g fill="currentColor" text-anchor="middle" font-family="Arial, Helvetica, sans-serif">
+          <text x="180" y="35" font-size="16" font-weight="700">MJML source</text><text x="180" y="55" font-size="12.5">the file I write and edit</text>
+          <text x="180" y="125" font-size="16" font-weight="700">mjml build (runs on Node.js)</text><text x="180" y="145" font-size="12.5">strict mode stops on any mistake</text>
+          <text x="180" y="215" font-size="16" font-weight="700">HTML and CSS</text><text x="180" y="236" font-size="12.5">dist/email.html: nested tables,</text><text x="180" y="253" font-size="12.5">inline styles, dark mode rules</text>
+          <text x="92" y="326" font-size="16" font-weight="700">Node.js checks</text><text x="92" y="348" font-size="12.5">build warnings,</text><text x="92" y="365" font-size="12.5">data check, tests</text>
+          <text x="268" y="326" font-size="16" font-weight="700">send.js</text><text x="268" y="348" font-size="12.5">dry run, sandbox,</text><text x="268" y="365" font-size="12.5">live send</text>
+          <text x="180" y="445" font-size="16" font-weight="700">Brevo</text><text x="180" y="465" font-size="12.5">sends it and keeps the log</text>
+        </g>
+      </svg>
+
+      <table>
+        <thead><tr><th>Language</th><th>What it does here</th><th>Where I touch it</th></tr></thead>
+        <tbody>
+          <tr><td>MJML</td><td>The language I write the email in. It is short, and stricter than HTML.</td><td>The MJML file in the <code>templates</code> folder</td></tr>
+          <tr><td>HTML</td><td>What the build produces: nested tables that email apps understand.</td><td><code>dist/email.html</code>. I read it, and I never edit it.</td></tr>
+          <tr><td>CSS</td><td>Inline styles that MJML writes, plus the head styles for dark mode and Outlook.</td><td>The styles in the MJML head</td></tr>
+          <tr><td>Node.js</td><td>Runs the build, the checks, the tests, the send script and a simulated Brevo.</td><td>The scripts in the <code>scripts</code> folder</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The project folder</h2>
+      <p>I start every email from the same starter project, so the checks and the send script are the same each time. Three files are different for each email: the MJML, the settings file, and the sample data. This is the finished folder:</p>
+<pre tabindex="0"><code>kick-off-payment-notification-failure-brevo-a/
+├── templates/
+│   └── email.mjml          the email, written in MJML
+├── dist/
+│   └── email.html          the built HTML (never edited by hand)
+├── data/
+│   └── params.json         sample data for the email (empty for now)
+├── scripts/                build helpers, tests, simulated Brevo, the guard
+├── project.config.js       the one settings file for this email
+├── check-params.js         the data check
+├── send.js                 dry run, sandbox and live send
+├── package.json            the commands, run as npm run ...
+├── .env.example            the three settings, with no secrets in it
+├── .gitignore              keeps .env, node_modules and the original out of Git
+├── README.md               what it is, who does what, status
+├── BUILD-LOG.md            every step, including the mistakes
+└── NEXT-STEPS.md           what is left to do</code></pre>
+      <p>Two things never go into the repository: <code>node_modules</code> (the installed packages) and <code>.env</code> (the real settings, including the API key). The supplied original file is kept out as well, because its preview text named another client.</p>
+
+      <h2>Step 1: set up VS Code, Node.js and Git</h2>
+      <p>I open the project folder in VS Code (File, Open Folder), open the terminal (Terminal, New Terminal), and check that the terminal path ends with the project folder. Then I check the tools before anything else.</p>
+      <img src="/blog/images/payment-failure-01a-node-not-found.webp" alt="The VS Code terminal showing an error that node is not recognised as a command" width="1920" height="1080" loading="lazy">
+      <p>The first check failed: Node.js was not installed.</p>
+
+      <img src="/blog/images/payment-failure-01-node-version.webp" alt="The VS Code terminal showing node -v printing v24.22.2, with 25 changes on the Source Control icon" width="1920" height="1080" loading="lazy">
+      <p>After installing Node 24 LTS: v24.22.2. The 25 changes on the Source Control icon show the project was still inside my public Email-Dev repository.</p>
+
+<pre tabindex="0"><code>node -v
+git init
+npm install
+npm run setup:hooks</code></pre>
+      <p>Three things went wrong on the way, and each is worth knowing about:</p>
+      <ul>
+        <li><b>Node.js was not installed.</b> The first command said <code>node</code> was not recognised. I installed Node 24 LTS, which is the version I tested this project on (<code>node -v</code> shows v24.22.2). I haven't tested Node 26.</li>
+        <li><b>The project was first opened inside my public Email-Dev repository.</b> VS Code showed 25 changes. I moved the folder out before running <code>git init</code>, so client files could never be committed to a public repository by mistake.</li>
+        <li><b>Windows blocked npm</b> with "running scripts is disabled on this system". One line allows it for my own user account only: <code>Set-ExecutionPolicy -Scope CurrentUser RemoteSigned</code>.</li>
+      </ul>
+      <img src="/blog/images/payment-failure-02-git-init.webp" alt="The terminal after git init in the project folder, then npm install blocked by a Windows script setting" width="1920" height="1080" loading="lazy">
+      <p>git init in the project's own folder, then Windows blocking npm. The error is in red.</p>
+
+      <p><code>npm install</code> added 253 packages. It also printed a notice about a deprecated part inside MJML and 33 moderate vulnerabilities. Those are reports about the build tools on my computer, not about the finished email, which is plain HTML. I did not run <code>npm audit fix --force</code>, because it can change MJML's version and break the build.</p>
+      <img src="/blog/images/payment-failure-03-npm-install.webp" alt="The terminal showing npm install adding 253 packages and reporting 33 moderate vulnerabilities" width="1920" height="1080" loading="lazy">
+      <p>npm install finishing: 253 packages added, and the notices I did not act on.</p>
+
+      <p>The last command installs a guard that runs before every commit. It stops a commit that contains an API key or a settings file:</p>
+<pre tabindex="0"><code># the check inside the guard
+if git diff --cached -U0 | grep -E -q 'xkeysib-[A-Za-z0-9]{32,}|xsmtpsib-[A-Za-z0-9]{32,}'; then
+  echo "BLOCKED: something shaped like a Brevo key is in the staged changes."
+  exit 1
+fi</code></pre>
+
+      <h2>Step 2: intake, read before changing anything</h2>
+      <p>I saved the supplied MJML as <code>templates/original.mjml</code>, which Git ignores, and ran an intake script on it before touching anything. It builds the file twice, once softly and once in strict mode, then reports on links, images, colours and wording. It changes nothing. It found 26 points, and reading the file myself added more.</p>
+<pre tabindex="0"><code>npm run intake templates/original.mjml</code></pre>
+      <p>The most useful result: the soft build said OK, but the strict build failed. A closing tag was missing near the end of the file, and a soft build lets that through.</p>
+      <!-- SCREENSHOT 04: the intake script output, with the strict build FAILED line and the list of findings.
+           Save it as /blog/images/payment-failure-04-intake-report.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-04-intake-report.webp" alt="The intake script output showing the strict build failing and the list of findings" width="1920" height="1080" loading="lazy">
+      <p>The intake report on the supplied file.</p>
+      -->
+
+      <table>
+        <thead><tr><th>Found in the supplied file</th><th>Why it matters</th><th>What I did</th></tr></thead>
+        <tbody>
+          <tr><td>A closing tag missing near the end</td><td>The soft build still says OK</td><td>Added it</td></tr>
+          <tr><td>The strict build failed: an invalid attribute, an invalid unit, and colours missing their hash</td><td>Strict mode refuses them</td><td>Fixed each</td></tr>
+          <tr><td>A style block with a brace never closed, and a misspelt <code>!important</code></td><td>The browser drops every rule after the break</td><td>Replaced it with a short, correct block</td></tr>
+          <tr><td><code>&lt;br&gt;&lt;/br&gt;</code> used for spacing, nine times</td><td>Browsers read <code>&lt;/br&gt;</code> as a second break, so each one is a blank line</td><td>Changed to <code>&lt;br /&gt;&lt;br /&gt;</code>, with the same spacing</td></tr>
+          <tr><td>Social icons named for sharing, with placeholder links</td><td>They make share links, not links to the client's pages</td><td>Switched to the plain link versions, with placeholder links for now</td></tr>
+          <tr><td>A colour written as the word BLUE</td><td>Not a valid colour</td><td>Real blue, after measuring contrast (see step 3)</td></tr>
+          <tr><td>Fonts ending in <code>serif</code></td><td>A phone without the first font shows a serif face</td><td>Changed to <code>sans-serif</code></td></tr>
+          <tr><td>Preview text and title that belonged to another client's email</td><td>They show in the inbox list</td><td>Rewrote them</td></tr>
+          <tr><td>Typos, and a button with no link</td><td>Careless in a payment email</td><td>Fixed</td></tr>
+          <tr><td>Both images were the same file, with file names as alt text, and no language set</td><td>Poor for screen readers</td><td>Proper alt text, and a language on the email</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Step 3: fix the MJML</h2>
+      <p>The design and layout stay exactly as supplied. I fix the syntax and the wording, and I check the result against the original in a browser, side by side, at desktop width. Four of the fixes, as small before and after pairs:</p>
+<pre tabindex="0"><code>&lt;!-- spacing: one break each, not a second break from the stray closing tag --&gt;
+before: Your payment&lt;br&gt;&lt;/br&gt;&lt;br&gt;&lt;/br&gt;
+after:  Your payment&lt;br /&gt;&lt;br /&gt;
+
+&lt;!-- icons: the plain link version, not a share link --&gt;
+before: &lt;mj-social-element name="facebook" href="https://example.com/facebook"&gt;
+after:  &lt;mj-social-element name="facebook-noshare" href="https://example.com/facebook"&gt;
+
+&lt;!-- an invalid unit --&gt;
+before: icon-size="38rpx"
+after:  icon-size="38px"
+
+&lt;!-- a colour that was written as a word --&gt;
+before: style="color: #BLUE;"
+after:  style="color: #0000ff;"</code></pre>
+      <!-- SCREENSHOT 05: a VS Code diff of the MJML, before and after one of these fixes.
+           Save it as /blog/images/payment-failure-05-before-after.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-05-before-after.webp" alt="A VS Code side-by-side diff of the MJML before and after a fix" width="1920" height="1080" loading="lazy">
+      <p>A fix shown as a diff in VS Code.</p>
+      -->
+
+      <p>Two of these taught me something:</p>
+      <ul>
+        <li><b>The unit.</b> <code>38rpx</code> is not a CSS unit, so my first guess was 20 px. It was wrong. The compiled original shows the icons at 38 px. I found it by comparing the compiled output of both versions, not by guessing.</li>
+        <li><b>The colour.</b> The word BLUE meant blue. My first replacement, <code>#007bff</code>, would have failed contrast on the light-blue box at 2.60:1. Real blue, <code>#0000ff</code>, gives 5.62:1. Measuring before choosing caught it.</li>
+      </ul>
+
+      <h2>Step 4: define the data</h2>
+      <p>This is the step where I define what data the client's application sends. For this email the answer, by decision, is none yet. The amount, the plan name and the retry wording are fixed text, and every link is a placeholder. So the sample data file is empty, and the settings file has no data rules:</p>
+<pre tabindex="0"><code>// data/params.json
+{}
+
+// project.config.js (the part about the data)
+module.exports = {
+  name: "Kick Off payment notification failure",
+  mjml: "templates/email.mjml",
+  html: "dist/email.html",
+  subject: "We could not process your payment",   // the client confirms the real subject
+  maxLength: { default: 200 },
+  links: [],
+  masked: [],
+  never: [],
+};</code></pre>
+      <p>I still wrote down the list of values the email could take, so the client can decide. Names match the ones I used in the receipt email, and every example is made up:</p>
+      <table>
+        <thead><tr><th>Name</th><th>Required</th><th>Example (made-up)</th></tr></thead>
+        <tbody>
+          <tr><td><code>customerName</code></td><td>No</td><td>Alex Example</td></tr>
+          <tr><td><code>total</code></td><td>Yes</td><td>50.00 AUD</td></tr>
+          <tr><td><code>planSummary</code></td><td>Yes</td><td>Monthly 2 hour Class Plan</td></tr>
+          <tr><td><code>retryDate</code></td><td>No</td><td>March 4th, 2024</td></tr>
+          <tr><td><code>updatePaymentUrl</code></td><td>Yes</td><td>https://app.example.com/billing/update?token=SAMPLE-TOKEN-123</td></tr>
+          <tr><td><code>paymentsPageUrl</code></td><td>Yes</td><td>https://app.example.com/account/payments</td></tr>
+        </tbody>
+      </table>
+      <p>If the client adds values, the MJML reads each one with a Brevo tag such as <code>{{ params.total }}</code>, the optional ones sit inside an <code>{% if %}</code>, and the same scripts check them: links must start with https, personal values must be masked, and nothing that looks like a card number can get through.</p>
+
+      <h2>Step 5: dark and light mode</h2>
+      <p>The email declares that it supports both colour schemes. The dark rules sit inside a <code>prefers-color-scheme: dark</code> block, so light mode cannot change. Outlook.com and the Outlook apps mark their dark mode with <code>data-ogsb</code> and <code>data-ogsc</code> attributes, so they get their own rules:</p>
+<pre tabindex="0"><code>&lt;meta name="color-scheme" content="light dark" /&gt;
+&lt;meta name="supported-color-schemes" content="light dark" /&gt;
+
+/* Apple Mail, iOS Mail and other apps that follow the device setting */
+@media (prefers-color-scheme: dark) {
+  .dm-white { background-color: #1c1c1e !important; }
+  .dm-copy div { color: #e6e6e6 !important; }
+  .dm-copy a { color: #8cc4ff !important; }
+}
+
+/* Outlook.com and the Outlook apps */
+[data-ogsb] .dm-white { background-color: #1c1c1e !important; }
+[data-ogsc] .dm-copy div { color: #e6e6e6 !important; }</code></pre>
+      <p>To prove the dark rules cannot touch light mode, I took screenshots with and without them: 0 pixels differ. In dark mode the page is <code>#121212</code>, the content areas <code>#1c1c1e</code>, the light-blue box <code>#1f3a4a</code>, and the text and links are light. The black header, the black footer and the orange button stay the same.</p>
+      <img src="/blog/images/payment-failure-06-light-mode.webp" alt="The finished payment failure email in light mode, with a black header, white body, orange button and light-blue box" width="974" height="2343" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
+      <p>The finished email in light mode.</p>
+
+      <img src="/blog/images/payment-failure-07-dark-mode.webp" alt="The finished payment failure email in dark mode, with a dark grey body and a dark teal box" width="974" height="2343" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
+      <p>The finished email in dark mode.</p>
+
+      <p>I measure contrast instead of guessing:</p>
+      <table>
+        <thead><tr><th>Pair</th><th>Contrast</th><th>Needs</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Body text #333 on white</td><td>12.63:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>Text #000 on the light-blue box</td><td>13.74:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>Link #007bff on white, left as designed</td><td>3.98:1</td><td>4.5:1</td><td>Fails. A choice for the client; #0056b3 would pass.</td></tr>
+          <tr><td>Link #0000ff on the light-blue box</td><td>5.62:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>White button text on orange #EA6D2F</td><td>3.12:1</td><td>3:1 (large bold text)</td><td>Passes</td></tr>
+          <tr><td>Dark: text #e6e6e6 on #1c1c1e</td><td>13.63:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>Dark: text #e8f1f5 on the box #1f3a4a</td><td>10.40:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>Dark: links #8cc4ff on #1c1c1e</td><td>9.28:1</td><td>4.5:1</td><td>Passes</td></tr>
+          <tr><td>Dark: links #8cc4ff on the box #1f3a4a</td><td>6.50:1</td><td>4.5:1</td><td>Passes</td></tr>
+        </tbody>
+      </table>
+      <p>This stage is tested in a browser only. Real email apps treat dark mode differently, which is why step 11 exists.</p>
+
+      <h2>Step 6: the strict build, and reading the HTML and CSS</h2>
+      <p>One command builds the email. A small script runs before it to make the output folder, and another runs after it to warn about anything that must be fixed before the email goes into Brevo:</p>
+<pre tabindex="0"><code>"prebuild":  "node scripts/make-dist.js",
+"build":     "mjml templates/email.mjml --config.validationLevel=strict -o dist/email.html",
+"postbuild": "node scripts/check-build.js"</code></pre>
+      <p>Strict mode stops the build on any mistake and gives the line number. This is what a good build prints. The one warning is expected, because the brief asked for placeholder links:</p>
+<pre tabindex="0"><code>Built dist/email.html (33 KB).
+
+Before this goes into Brevo:
+  - A link still points at example.com. Put in the real address.</code></pre>
+      <img src="/blog/images/payment-failure-08-npm-run-build.webp" alt="The terminal showing the guard installed, then npm run build finishing at 33 KB with one warning" width="1920" height="1080" loading="lazy">
+      <p>The guard installed, then a good build with the one expected warning.</p>
+
+      <p>I then open <code>dist/email.html</code> and read it. This is the HTML and CSS that email apps actually receive: nested tables, inline styles, and Outlook-specific markup that MJML writes for me. I never edit this file by hand. It is rebuilt every time, so any change would be lost. If something is wrong, I fix the MJML and build again.</p>
+      <p>VS Code underlines about nine things in the built file, because its checker does not understand the Outlook markup. That is expected, and I leave them alone.</p>
+
+      <h2>Step 7: the Node.js checks</h2>
+      <p>The scripts around the email are plain Node.js, with a few packages: MJML for the build, dotenv to read the settings file, and nunjucks for the simulated Brevo only. The calls to Brevo use Node's built-in <code>fetch</code> with a 10 second timeout. Each script has one job:</p>
+      <table>
+        <thead><tr><th>Script</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td><code>scripts/make-dist.js</code></td><td>Makes the output folder before the build, because Git does not keep empty folders</td></tr>
+          <tr><td><code>scripts/check-build.js</code></td><td>After the build, warns about placeholder links, a size near Gmail's limit, and tags the build removed</td></tr>
+          <tr><td><code>check-params.js</code></td><td>Checks the data against what the email reads, and against the safety rules</td></tr>
+          <tr><td><code>scripts/test-checks.js</code></td><td>Proves the data checks work, using the email's own rules</td></tr>
+          <tr><td><code>send.js</code></td><td>The send script: dry run, sandbox and live</td></tr>
+          <tr><td><code>scripts/test-send.js</code></td><td>Tests the send script against a simulated server</td></tr>
+          <tr><td><code>scripts/simulated-brevo.js</code></td><td>A simulated Brevo that runs on my computer</td></tr>
+          <tr><td><code>scripts/brevo-walkthrough.js</code></td><td>The Brevo steps as one run, simulated or real</td></tr>
+          <tr><td><code>scripts/install-hooks.js</code></td><td>Installs the commit guard</td></tr>
+          <tr><td><code>scripts/verify-setup.js</code></td><td>Checks the project is ready to push</td></tr>
+          <tr><td><code>scripts/intake-check.js</code></td><td>The intake report on a supplied email</td></tr>
+        </tbody>
+      </table>
+<pre tabindex="0"><code>"check-params": "node check-params.js",
+"test":         "node scripts/test-checks.js",
+"send:dry":     "node send.js",
+"send:sandbox": "node send.js --sandbox",
+"send:live":    "node send.js --live",
+"test:send":    "node scripts/test-send.js"</code></pre>
+      <p>This email has no data values yet, so the data check reports none required and none optional, and the test runs 1 case (1 of 1). When values are added, the same scripts check their names, links, masking and length.</p>
+      <img src="/blog/images/payment-failure-09b-data-check.webp" alt="The terminal showing the data check with no required and no optional values, then npm test passing" width="1920" height="1080" loading="lazy">
+      <p>The data check, and the first test.</p>
+
+      <p>The send script has three modes. Dry run is the default and sends nothing. The sandbox mode calls Brevo with its sandbox flag, which goes in the JSON body, not in an HTTP header. Live mode needs the word SEND typed, and goes to one address:</p>
+<pre tabindex="0"><code>// Brevo's sandbox flag goes in the JSON body's "headers" object, not in the HTTP headers
+if (mode === "sandbox") body.headers = { "X-Sib-Sandbox": "drop" };</code></pre>
+      <p><a href="https://developers.brevo.com/docs/using-sandbox-mode" target="_blank" rel="noopener noreferrer">Brevo's documentation</a> says the sandbox sends no email and makes no log, and that it only checks the format of the request.</p>
+      <p><code>npm run test:send</code> runs the send script against a small simulated Brevo server on my computer. It runs 14 tests: the dry run sends nothing and masks the address, the sandbox flag is in the right place, typing anything but SEND cancels, a wrong key gives a clear 401 message, a missing key or a bad template ID stops before any request, and the API key is never printed. All 14 pass.</p>
+      <img src="/blog/images/payment-failure-09-tests.webp" alt="The terminal showing npm test passing 1 of 1, then the 14 send tests all passing" width="1920" height="1080" loading="lazy">
+      <p>The data test and the 14 send tests, all passing.</p>
+
+
+      <h2>Step 8: a simulated Brevo</h2>
+      <p>Before touching a real account, I run the whole send sequence against a simulated Brevo on my own computer. It follows what Brevo's documentation says. What the walkthrough showed:</p>
+      <ul>
+        <li>A Brevo email is created inactive. Sending before it was activated was refused with a "not found or not activated" message. That refusal is on purpose, to show the mistake.</li>
+        <li>After activation, the sandbox call was accepted and left no log entry.</li>
+        <li>A wrong API key was refused with a 401.</li>
+        <li>A live send returned a message ID and one log entry.</li>
+        <li>The saved message passed six inbox checks and gave one warning, for the placeholder links. That warning is correct.</li>
+      </ul>
+      <img src="/blog/images/payment-failure-10-simulate.webp" alt="The end of the simulated Brevo walkthrough, with six checks passing and one warning about placeholder links" width="1920" height="1080" loading="lazy">
+      <p>The simulated walkthrough finishing, with six checks passing and the one expected warning.</p>
+
+      <p>It does <b>not</b> show how real Brevo treats the HTML, special characters or its editor, and its error messages are not Brevo's. The honest label for these results is simulated testing.</p>
+
+      <h2>Step 9: save it, verify and the first commit</h2>
+      <p>Before the first commit I run a pre-push check. It looks at five things: the files that should exist, stray files, Git and the guard, anything shaped like a Brevo key, and that <code>dist/email.html</code> is newer than the MJML. It must end with "All checks passed. Ready to push."</p>
+<pre tabindex="0"><code>npm run verify
+git add -A
+git status
+git commit -m "Build the payment notification failure email for Brevo"</code></pre>
+      <img src="/blog/images/payment-failure-16-verify.webp" alt="The terminal showing npm run verify ending with All checks passed, then git add with line-ending warnings" width="1920" height="1080" loading="lazy">
+      <p>npm run verify passing, then git add. The line-ending warnings are harmless.</p>
+
+      <p>On Windows, <code>git add</code> prints a long list of warnings that line endings will change from LF to CRLF. They change nothing in the files, and I ignore them. Then <code>git status</code> shows exactly what is about to be saved. I check three things in that list: no <code>.env</code>, no <code>node_modules</code> and no <code>simulated-inbox</code>.</p>
+      <img src="/blog/images/payment-failure-17-git-status.webp" alt="The terminal showing git status listing the 22 new files to be committed" width="1920" height="1080" loading="lazy">
+      <p>git status: the 22 files about to be committed.</p>
+
+      <p>The commit guard runs silently first, and speaks up only if it finds a key or a settings file. The first commit saved 22 files.</p>
+      <img src="/blog/images/payment-failure-15a-commit.webp" alt="The terminal after git commit, showing the first commit of 22 files" width="1920" height="1080" loading="lazy">
+      <p>The first commit: 22 files, and no .env.</p>
+
+
+      <h2>Step 10: real Brevo</h2>
+      <p>Now the real account. Brevo only sends from a verified sender, so I check I have one first. Then I create the Brevo email from the built HTML. I use the option to paste my own HTML, not the drag-and-drop editor, so Brevo does not rebuild the design.</p>
+      <ol>
+        <li>In Brevo: Transactional, then Templates, then New Template. I enter a name, the subject line and the sender.</li>
+        <li>I copy the whole of <code>dist/email.html</code> and paste it in, then Save and Activate. It cannot be sent until it is activated.</li>
+        <li>The ID is the number after the <code>#</code> in its name.</li>
+        <li>I make an API key for this project, in the API keys tab. An API key starts with <code>xkeysib-</code>. An SMTP key is the wrong kind.</li>
+        <li>The settings go in a file called <code>.env</code>, which Git ignores, and the commit guard blocks as well. I never paste a key anywhere else.</li>
+      </ol>
+<pre tabindex="0"><code>BREVO_API_KEY=your-brevo-api-key-here
+BREVO_TEMPLATE_ID=12
+TEST_TO_EMAIL=you@example.com</code></pre>
+      <!-- SCREENSHOT 11: the Brevo templates list showing the email as Active. Hide anything private.
+           Save it as /blog/images/payment-failure-11-brevo-active.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-11-brevo-active.webp" alt="The Brevo templates list showing the payment failure email as Active" width="1920" height="1080" loading="lazy">
+      <p>The Brevo email, created and active.</p>
+      -->
+
+      <p>After saving the file, I run <code>git status</code> again. It must say the working tree is clean, with no <code>.env</code> listed. Then the same three safe steps as before, this time against the real account:</p>
+      <ul>
+        <li><code>npm run send:dry</code> printed the request with my template ID and a masked address, and never the key.</li>
+        <li><code>npm run send:sandbox</code> was accepted by Brevo, with nothing sent and nothing logged.</li>
+        <li><code>npm run send:live</code> sent one real email to my own inbox, after I typed SEND.</li>
+      </ul>
+      <!-- SCREENSHOT 12: the terminal showing send:dry, send:sandbox and send:live, with the key and address masked. Do not show the .env file.
+           Save it as /blog/images/payment-failure-12-send-steps.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-12-send-steps.webp" alt="The terminal showing the dry run, the sandbox call and the live send" width="1920" height="1080" loading="lazy">
+      <p>The three send steps against the real account.</p>
+      -->
+
+      <p>I then checked the result in three places: Brevo's transactional log, my inbox, and my phone. Accepted is not the same as delivered, so I always look.</p>
+      <!-- SCREENSHOT 13: the email open in a real inbox or on a phone, in light and dark mode.
+           Save it as /blog/images/payment-failure-13-inbox.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-13-inbox.webp" alt="The payment failure email open in a real inbox in light and dark mode" width="1920" height="1080" loading="lazy">
+      <p>The email in a real inbox.</p>
+      -->
+
+
+      <h2>Step 11: real email clients</h2>
+      <p>A browser cannot show how email apps treat an email. I tested the email in 130 email clients, before and after the dark mode and button fixes. The coverage included Outlook, webmail, mobile and tablet viewports and displays, and operating systems, with Gmail dark mode, Outlook dark mode and the Outlook 365 variants.</p>
+      <p>As usual with Gmail and Outlook, there were a number of dark mode rendering issues. The button also needed VML fixes before testing. Classic Outlook draws buttons with Word's engine, which ignores rounded corners, so a VML version of the button is used for it. After the fixes, everything rendered correctly.</p>
+      <!-- SCREENSHOT 14: the results grid from the 130-client test.
+           Save it as /blog/images/payment-failure-14-client-tests.webp, then delete the comment markers around this block.
+      <img src="/blog/images/payment-failure-14-client-tests.webp" alt="The results grid from the 130-client test" width="1920" height="1080" loading="lazy">
+      <p>Part of the 130-client results.</p>
+      -->
+
+      <p>I haven't listed all 130 here, so test your own audience's clients before relying on any of this.</p>
+
+      <h2>Step 12: write it up</h2>
+      <p>Three plain text files travel with the project, so nobody has to ask me what was done:</p>
+      <ul>
+        <li><b>README.md</b> says what the email is, who does what, the status of each part, the draft list of values, the commands, and what is still open.</li>
+        <li><b>BUILD-LOG.md</b> records every step above, with the numbers, the contrast tables, and the mistakes.</li>
+        <li><b>NEXT-STEPS.md</b> is a step-by-step list of what is left: the real links, the Brevo steps, and the handoff.</li>
+      </ul>
+      <p>After the client testing, I updated the README status and committed it as its own change: "Record the 130-client testing in the README".</p>
+
+      <h2>Step 13: back it up and hand it over</h2>
+      <p>The project is backed up to GitHub. I keep client repositories private until the client agrees what can be shown. On github.com I create a new repository with the same name as the folder, choose Private, and tick nothing else, because the project already has its own README and ignore file. Then three commands connect and upload it:</p>
+<pre tabindex="0"><code>git branch -M main
+git remote add origin https://github.com/YOUR-NAME/YOUR-REPOSITORY.git
+git push -u origin main</code></pre>
+      <img src="/blog/images/payment-failure-15b-push.webp" alt="The terminal after git push to GitHub, and the Source Control graph showing two commits" width="1920" height="1080" loading="lazy">
+      <p>The push to GitHub, and the two commits.</p>
+
+      <p>Last, I check the repository page: the file list is what I expect, and there is no <code>.env</code> and no <code>node_modules</code>.</p>
+      <img src="/blog/images/payment-failure-15-github-files.webp" alt="The GitHub repository page listing the project files, with two commits" width="1920" height="1080" loading="lazy">
+      <p>The project on GitHub.</p>
+
+      <p>The client's developer gets the README, the built HTML and the subject line. Brevo email IDs are different in every account, so they create their own from the same HTML and use their own ID. They decide when the email is sent, supply the real links, keep the API key and make the production call.</p>
+
+      <h2>What went wrong</h2>
+      <ol>
+        <li><b>The soft build said OK although a closing tag was missing.</b> The strict build found it. The intake script now counts unclosed tags and also catches buttons with no link, placeholder social links, empty links, invalid colours and broken CSS.</li>
+        <li><b>A colour that looked invalid was a request for blue.</b> My first replacement would have failed contrast at 2.60:1. Measuring caught it.</li>
+        <li><b>I misread an invalid unit.</b> I guessed 20 px, and the compiled original showed 38 px.</li>
+        <li><b>I miscounted the send tests.</b> I wrote 15 in my build log, and the project runs 14, because the 15th test only applies to emails with link values. Counting the real output found it.</li>
+        <li><b>Node.js was not installed on my computer.</b> Installing Node 24 LTS fixed it.</li>
+        <li><b>The project was first opened inside a public repository.</b> I moved it out before the first <code>git init</code>.</li>
+        <li><b>Windows blocked npm.</b> One line fixed it for my own account.</li>
+      </ol>
+
+      <h2>What each test shows, and what it doesn't</h2>
+      <table>
+        <thead><tr><th>Test</th><th>What it shows</th><th>What it doesn't show</th></tr></thead>
+        <tbody>
+          <tr><td>Strict build</td><td>The source is valid</td><td>How it looks</td></tr>
+          <tr><td>Browser check, light and dark</td><td>The layout, and that light mode is unchanged</td><td>Real email apps</td></tr>
+          <tr><td>Data check and tests</td><td>The rules work (no values yet)</td><td>What the client's application sends</td></tr>
+          <tr><td>Send tests against a simulated server</td><td>The send script behaves in 14 cases</td><td>Real Brevo</td></tr>
+          <tr><td>Simulated Brevo</td><td>The sequence of steps</td><td>How real Brevo treats the HTML</td></tr>
+          <tr><td>Pre-push check</td><td>The project is complete and holds no key</td><td>That the email looks right</td></tr>
+          <tr><td>Real sandbox call</td><td>Brevo accepts the request</td><td>How the email looks</td></tr>
+          <tr><td>Real send to my own inbox</td><td>The real platform sends it</td><td>Other email clients</td></tr>
+          <tr><td>130-client testing</td><td>How it looks in Outlook, webmail, mobile, tablet, operating systems, and Gmail and Outlook dark mode</td><td>Clients I did not test</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What is not finished</h2>
+      <ul>
+        <li>The real links: the update payment page, the account payments page, and the four social pages. They are placeholders now.</li>
+        <li>The subject line. "We could not process your payment" is a placeholder until the client confirms it.</li>
+        <li>Whether the retry wording stays fixed text or becomes a value.</li>
+        <li>The logo is on a free image host. It belongs on the client's own hosting for production.</li>
+        <li>The handoff to the client's developer.</li>
+      </ul>
+
+      <h2>Takeaway</h2>
+      <p>An email is a chain, and every link needs its own check. Read the file before you change it, build in strict mode, measure instead of guessing, send nothing real until the later steps, and test in real email clients. Keep a build log as you go, and write the mistakes in it too, because they are the most useful part.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need a transactional email set up properly, from your application to the inbox? I define what data your application sends, build and test the email, and trace problems through the whole system.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What tools do you need to build a transactional email like this?</summary>
+          <p>A text editor such as VS Code, Node.js 20 or newer (I used 24), MJML to write the email, Git to save and back up the project, and a Brevo account to set it up and send it. The checks and the send script run on Node.js.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why write the email in MJML and not plain HTML?</summary>
+          <p>MJML is shorter and stricter, and it builds the nested HTML tables that email apps need. In strict mode the build stops on a mistake that a soft build would let through. I still read the built HTML, because that is what email apps receive.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How does dark mode work in this email?</summary>
+          <p>The email declares both colour schemes, and its dark rules sit inside a prefers-color-scheme: dark block, so the light version cannot change. Separate rules cover Outlook.com and the Outlook apps, which mark their dark mode with attributes. Gmail and Outlook still gave a number of dark mode rendering issues, and the button needed VML fixes, so I tested in 130 email clients.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can you test a Brevo email without sending it?</summary>
+          <p>Partly. The sandbox flag checks the request without sending or logging anything, and a simulated Brevo covers the sequence of steps. Neither shows how the email looks, so I also sent real emails to my own inbox and tested in real email clients.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does this email need data from the client's application?</summary>
+          <p>Not yet. In this version the amount, the plan name and the retry wording are fixed text, and the links are placeholders until the client sends the real ones. If values are added later, I define the list of names and the rules first, and the client's developer sends them.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who connects the email to the client's system?</summary>
+          <p>The client's developer. I define what data the application sends, build and set up the email, and test it. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
+</script>
+</body>
+</html>
