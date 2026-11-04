@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
+        <script src="/mail-link.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>Where Transactional Email Fails: Seven Places Between Your Application and the Inbox | Email Dev Notes</title>
+    <meta name="description" content="Why transactional emails go wrong, and where: seven places from the design to the customer's inbox, with symptoms, who fixes each, and a checklist.">
+    <link rel="canonical" href="https://linleyb.com/blog/where-transactional-email-fails.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Where Transactional Email Fails: Seven Places Between Your Application and the Inbox">
+    <meta property="og:description" content="Receipts, password resets and payment notices fail in seven places, and most are not in the email file. A plain guide with a symptom table and a checklist.">
+    <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+    <meta property="og:url" content="https://linleyb.com/blog/where-transactional-email-fails.html">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Where Transactional Email Fails: Seven Places Between Your Application and the Inbox">
+    <meta name="twitter:description" content="Receipts, password resets and payment notices fail in seven places, and most are not in the email file. A plain guide with a symptom table and a checklist.">
+    <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it.">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "Email Design",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "Email Design",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Setup",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/where-transactional-email-fails.html#article",
+            "url": "https://linleyb.com/blog/where-transactional-email-fails.html",
+            "headline": "Where Transactional Email Fails: Seven Places Between Your Application and the Inbox",
+            "description": "Why transactional emails go wrong, and where: seven places from the design to the customer's inbox, with symptoms, who fixes each, and a checklist.",
+            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "datePublished": "2026-11-03",
+            "dateModified": "2026-11-03",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/where-transactional-email-fails.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/where-transactional-email-fails.html#faq",
+            "url": "https://linleyb.com/blog/where-transactional-email-fails.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is a transactional email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "An email your application sends because of something a customer did, such as a receipt, a password reset or a payment failure notice. It is different from a newsletter, which you send to a list."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why are email problems often not in the email file?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Because an email passes through several places before the customer sees it: the design, the source, the data your application sends, the email platform, the sending domain and the customer's inbox. A fault in any one of them looks the same to the customer."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How can I tell which stage a problem is in?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Start from what the customer says. An email that never arrives points to the platform or the sending domain. A blank or wrong name points to the data. A button that looks wrong points to the inbox. The symptom table in this post matches each one to a stage."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What does an end-to-end approach to email mean?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It means treating the design, the source, the data, the platform, the sending domain and the inbox as one system, with one trace from the application to the customer. Each place hands the next a written result, and a problem is traced back through the places instead of being fixed where it shows up."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Can an email be tested without sending it to customers?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Partly. Checks can catch bad data and a faulty source, and a sandbox can test a request without sending anything. Only a real send to your own inbox, and a look in real email clients, shows how the email looks and whether it arrives."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who should fix an email problem?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It depends on the stage. Whoever designs and builds the email fixes the design, the source and how it looks in inboxes, and in my work that is me, including my side of the API. The client's developer fixes the data they send and the call to the platform. Whoever owns the domain fixes the sending records. A good build log says which."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">TROUBLESHOOTING • TRANSACTIONAL EMAIL • END TO END</span>
+    <h1>Where Transactional Email Fails: Seven Places Between Your Application and the Inbox</h1>
+    <p class="post-meta">Published 3 November 2026 • By Linley Bignoux</p>
+    <div class="tag-row"><span class="tag">transactional-email</span><span class="tag">troubleshooting</span><span class="tag">rendering</span><span class="tag">dark-mode</span><span class="tag">testing</span><span class="tag">checklist</span></div>
+
+    <div class="post-content">
+      <p>When a customer says "your email looks wrong", everyone looks at the email. Most of the time, that is the wrong place to look. An email your application sends because of something a customer did, such as a receipt, a password reset or a payment failure notice, passes through seven places before the customer sees it. A fault in any one of them looks the same from the customer's side: something is missing, wrong or unreadable.</p>
+      <p>This post follows one email through those seven places, the way I trace a problem. I design, develop, program and test the emails I build, so I see each one as a single system, from your application to the inbox, not as a file. For each place it says what the customer notices, why it happens, who fixes it, and how to catch it before anyone is affected. The examples come from emails I have built and tested for Kick Off &rarr; Your English, who have agreed to be named, and I say plainly where a check cannot tell you something.</p>
+
+      <h2>Why it matters</h2>
+      <p>A payment failure email is a good example. If it never arrives, or the button cannot be read, the customer has no easy way to fix the payment, and the client finds out late. Nothing in the email file would show that. The cost of these faults is rarely the email itself. It is the customer who could not act on it, and the support message that follows.</p>
+
+      <h2>The seven places</h2>
+      <svg viewBox="0 0 360 532" role="img" aria-labelledby="ef-title ef-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+        <title id="ef-title">The seven places a transactional email can fail</title>
+        <desc id="ef-desc">In order: the brief and design, the source, the data, the platform, delivery, the inbox, and after launch. A fault in any one looks the same to the customer.</desc>
+        <defs><marker id="ef-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
+        <g fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="10" width="340" height="56" rx="10"/><rect x="10" y="86" width="340" height="56" rx="10"/><rect x="10" y="162" width="340" height="56" rx="10"/><rect x="10" y="238" width="340" height="56" rx="10"/><rect x="10" y="314" width="340" height="56" rx="10"/><rect x="10" y="390" width="340" height="56" rx="10"/><rect x="10" y="466" width="340" height="56" rx="10"/><line x1="180" y1="66" x2="180" y2="84" marker-end="url(#ef-arrow)"/><line x1="180" y1="142" x2="180" y2="160" marker-end="url(#ef-arrow)"/><line x1="180" y1="218" x2="180" y2="236" marker-end="url(#ef-arrow)"/><line x1="180" y1="294" x2="180" y2="312" marker-end="url(#ef-arrow)"/><line x1="180" y1="370" x2="180" y2="388" marker-end="url(#ef-arrow)"/><line x1="180" y1="446" x2="180" y2="464" marker-end="url(#ef-arrow)"/></g>
+        <g fill="currentColor" text-anchor="middle" font-family="Arial, Helvetica, sans-serif"><text x="180" y="32" font-size="16" font-weight="700">1. Brief and design</text><text x="180" y="51" font-size="12.5">nobody asked &quot;what if?&quot;</text><text x="180" y="108" font-size="16" font-weight="700">2. The source</text><text x="180" y="127" font-size="12.5">the file behind the email</text><text x="180" y="184" font-size="16" font-weight="700">3. The data</text><text x="180" y="203" font-size="12.5">what your application sends</text><text x="180" y="260" font-size="16" font-weight="700">4. The platform</text><text x="180" y="279" font-size="12.5">set up, activated, sent</text><text x="180" y="336" font-size="16" font-weight="700">5. Delivery</text><text x="180" y="355" font-size="12.5">the sending domain and trust</text><text x="180" y="412" font-size="16" font-weight="700">6. The inbox</text><text x="180" y="431" font-size="12.5">every app and every screen</text><text x="180" y="488" font-size="16" font-weight="700">7. After launch</text><text x="180" y="507" font-size="12.5">edits, changes and time</text></g>
+      </svg>
+
+      <h2>Start from what the customer says</h2>
+      <p>You will rarely hear "the data is wrong". You will hear a sentence like these, and each one points to a place to look first and a check to run:</p>
+      <table>
+        <thead><tr><th>What the customer says</th><th>Look first at</th><th>First check</th></tr></thead>
+        <tbody>
+          <tr><td>"The email never arrived"</td><td>4 and 5: the platform, then the sending domain</td><td>The platform's log, then a real send to your own inbox</td></tr>
+          <tr><td>"It says Hi , with no name"</td><td>3: the data</td><td>Run the data check on the real request</td></tr>
+          <tr><td>"The amount or the date is wrong"</td><td>3: the data, then 1: the design</td><td>Compare the values sent with what the design expected</td></tr>
+          <tr><td>"The button does nothing"</td><td>2: the source, then 3: the data</td><td>Open the built email and follow the link</td></tr>
+          <tr><td>"The link goes somewhere else"</td><td>2: the source</td><td>Read every link in the built email</td></tr>
+          <tr><td>"It looks fine on my computer but broken on my phone"</td><td>6: the inbox</td><td>Open it in the customer's app, on a phone</td></tr>
+          <tr><td>"I can't read it in dark mode"</td><td>6: the inbox</td><td>Open it in dark mode in Gmail and Outlook</td></tr>
+          <tr><td>"It was fine last month"</td><td>7: after launch</td><td>Compare the live email with the source, then read the build log</td></tr>
+        </tbody>
+      </table>
+
+      <h2>1. The brief and design: nobody asked "what if?"</h2>
+      <p>Many failures are planted before any email exists. A design shows one happy example: a short name, one item, a light background. It does not say what happens with a very long name, no name at all, two items, or a customer who uses dark mode. The developer has to guess, and the guesses come back later as bug reports. When I design the email myself, I answer those questions on the page before I build anything.</p>
+      <p>In the payment failure email, the amount, the plan and the retry wording were typed into the design. That works for one customer and is wrong for every other. I recorded it as a decision, not an accident: fixed wording for now, with a written list of the values the client may want later.</p>
+      <p>The answer to a "what if" often fits in one line of the email. A greeting that survives a missing name looks like this:</p>
+<pre tabindex="0"><code>Hi {% if params.firstName %}{{ params.firstName }}{% else %}there{% endif %},</code></pre>
+      <p><b>Who fixes it:</b> whoever designs the email. When a design is supplied, I ask the questions. When I design it, I answer them before I build. <b>How to catch it:</b> a short list of "what if" questions before the build starts: empty, very long, two items, dark mode.</p>
+
+      <h2>2. The source: a file that says OK and is not</h2>
+      <p>The file behind an email can be broken and still look fine. On the payment failure email, a forgiving build said OK while a strict build refused the file, on an invalid unit, a colour missing its hash and an attribute that does not exist on that part. A closing tag was missing too, and neither build noticed. A style block with one brace left open meant the browser quietly dropped every rule after it. Another client's name sat in the preview text, which is the line shown in the inbox list. A button had no link at all, and in another email a visible support address linked to a different address.</p>
+      <p>The customer never sees "invalid file". They see a button that does nothing. Faults like these three pass a forgiving build and fail a strict one:</p>
+<pre tabindex="0"><code>&lt;!-- a strict build refuses all three; a forgiving build lets them through --&gt;
+&lt;mj-image src="https://example.com/logo.png" width="120rpx" /&gt;   &lt;!-- rpx is not a CSS unit --&gt;
+&lt;mj-text color="FFF"&gt;Pay now&lt;/mj-text&gt;                           &lt;!-- a colour needs its # --&gt;
+&lt;mj-text colour="#ffffff"&gt;Pay now&lt;/mj-text&gt;                      &lt;!-- misspelt: the attribute is color --&gt;</code></pre>
+      <p>This is what a supplied file looks like when it arrives: the MJML for one of the client's other emails, in an online MJML editor, with a stray closing tag after each line break and file names used as alt text:</p>
+      <img src="/blog/images/email-fails-12-supplied-mjml.webp" alt="An online MJML editor showing a supplied file, with stray closing tags after line breaks and file names as alt text" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A supplied file, as it arrived.</p>
+      <p>And the email that file builds:</p>
+      <img src="/blog/images/email-fails-13-supplied-email.webp" alt="The email that supplied file builds: an orange page border, a large logo, a blue button and a dark footer" width="974" height="3150" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
+      <p>The email that file builds, typos included. The customer sees this, not the markup.</p>
+      <p>Two more get through even a strict build, so only a report on the built email finds them: a button with no link, and a repeated attribute, where the first one wins. One command builds the email strictly, and refuses the file with the line and the part that is wrong:</p>
+<pre tabindex="0"><code>mjml email.mjml --config.validationLevel=strict -o dist/email.html</code></pre>
+      <p><b>Who fixes it:</b> whoever builds the email, which in my work is me. <b>How to catch it:</b> build in strict mode, read a report on every link, image and line of wording, and compare the result with the original, side by side.</p>
+      <!-- SCREENSHOT 01: the intake report showing the soft build passing and the strict build failing.
+           Save it as /blog/images/email-fails-01-strict-build.webp, then delete the comment markers around this block.
+      <img src="/blog/images/email-fails-01-strict-build.webp" alt="The intake report showing the strict build failing where the soft build said OK" width="1920" height="1080" loading="lazy">
+      <p>A forgiving build says OK. A strict build tells the truth.</p>
+      -->
+
+
+      <h2>3. The data: where most of the surprises hide</h2>
+      <p>An email is a fixed layout with gaps that your application fills in: the name, the amount, the date, a link. Everything that changes from one customer to the next comes from the data. An empty name becomes "Hi ,". A misspelt field name leaves a blank gap and no error. An amount arrives unformatted. A link text shows one address while the link goes to another. In practice the whole agreement fits on a few lines. This is made-up sample data:</p>
+<pre tabindex="0"><code>{
+  "firstName": "Sam",
+  "amount": "19.00 USD",
+  "payUrl": "https://example.com/pay?token=SAMPLE"
+}</code></pre>
+      <p>The serious risks are worse. A full card number has no place in an email, and a link that gives access to an account should work once and then expire. On the receipt email, I wrote a check that refuses any value that looks like a full card number. It also reports a field the email never reads, so a misspelt name is caught before a customer sees a blank. To prove it works, I broke the data on purpose six ways, and the check refused five and flagged the sixth. The check itself is short, and plain Node.js:</p>
+<pre tabindex="0"><code>// check-data.js: refuse bad or unsafe values before anything is sent
+const CARD_LIKE = /\b\d{13,19}\b/;
+
+function checkData(data, { required, readByEmail }) {
+  const problems = [];
+  const notes = [];
+
+  for (const name of required) {
+    if (!data[name] || String(data[name]).trim() === "") problems.push(`"${name}" is missing`);
+  }
+  for (const key of Object.keys(data)) {
+    if (!readByEmail.includes(key)) notes.push(`"${key}" is sent but the email never reads it`);
+  }
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value !== "string") { problems.push(`"${key}" must be text`); continue; }
+    if (/[&lt;&gt;]|\{\{|\{%/.test(value)) problems.push(`"${key}" contains markup`);
+    if (CARD_LIKE.test(value.replace(/[\s-]/g, ""))) problems.push(`"${key}" looks like a full card number`);
+    if (key.endsWith("Url") &amp;&amp; !value.startsWith("https://")) problems.push(`"${key}" must start with https://`);
+  }
+  return { problems, notes };
+}</code></pre>
+      <p>In a finished receipt, the same rule shows up as masked values. Here is a receipt email beside its source:</p>
+      <img src="/blog/images/email-fails-14-receipt-masked.webp" alt="A receipt email beside its source in a code editor, with the card shown only as its last digits and the address lines masked" width="525" height="371" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A receipt email beside its source. The card shows only its last digits, and the address lines are masked.</p>
+      <p>One assumption causes a lot of trouble: that the email developer sees the real data. They do not. They work with sample data, so the written list of values and the rules are the only agreement between the two sides. If it is vague, each side fills the gap differently.</p>
+      <p><b>Who fixes it:</b> the client's developer sends the right data. I define the list of values, which are required, which are optional, and what must never appear, and I program my side of the API call to carry them. <b>How to catch it:</b> a check that runs before anything is sent, and that has itself been tested with deliberately bad data.</p>
+
+      <h2>4. The platform: set up, but not switched on</h2>
+      <p>The email platform, Brevo in my builds, can fail for reasons that have nothing to do with the email. The email may not be activated. The key may be the wrong kind, because an SMTP key is not an API key. The sender may not be verified. The ID in the request may be wrong. When I rehearsed this on a simulated platform, sending before activation was refused with "not found or not activated", which is exactly what a real account does.</p>
+      <p>The trap is the word "accepted". A platform accepting a request does not mean the customer received anything. The send step is written so the safe path is the default:</p>
+<pre tabindex="0"><code>// send.js: the safe path is the default
+const body = {
+  to: [{ email: process.env.TEST_TO_EMAIL }],
+  templateId: Number(process.env.EMAIL_ID),
+  params: data,
+};
+if (mode === "sandbox") body.headers = { "X-Sib-Sandbox": "drop" }; // in the JSON body, not an HTTP header
+
+if (mode === "dry") { console.log(JSON.stringify(body, null, 2)); process.exit(0); } // sends nothing
+
+const res = await fetch("https://api.brevo.com/v3/smtp/email", {
+  method: "POST",
+  headers: { "api-key": process.env.BREVO_API_KEY, "content-type": "application/json" },
+  body: JSON.stringify(body),
+  signal: AbortSignal.timeout(10000),
+});
+console.log(res.status); // 201 means accepted. It does not mean delivered.</code></pre>
+      <p>Keys stay out of the project, and a guard that runs before every commit enforces it:</p>
+<pre tabindex="0"><code># pre-commit: stop a key from ever entering the project
+if git diff --cached -U0 | grep -E -q 'xkeysib-[A-Za-z0-9]{32,}|xsmtpsib-[A-Za-z0-9]{32,}'; then
+  echo "BLOCKED: something shaped like an API key is staged."; exit 1
+fi</code></pre>
+      <p><b>Who fixes it:</b> I set the email up and program my side of the API call, and the client's team owns the account, the sender and the key. <b>How to catch it:</b> a dry run that sends nothing, a sandbox call that checks the request, then one real send to your own inbox. Then look in two places: the platform's log and the inbox.</p>
+
+      <h2>5. Delivery: sent, but not trusted</h2>
+      <p>Mailbox providers check the sending domain's records, which prove an email really came from you. Without them, an email is more likely to land in spam. Those records are set up by whoever controls the domain, so they are not part of the email file at all. This is why "it never arrived" is so often not a build problem. A starting record for a sending domain looks like this, where <code>p=none</code> means watch and report without blocking anything:</p>
+<pre tabindex="0"><code>_dmarc.example.com   TXT   "v=DMARC1; p=none; rua=mailto:dmarc-reports@example.com"</code></pre>
+      <p>What the email says matters too. In a two-factor email, I removed a "subscribe to the newsletter" line, because promotional content in a security message blurs what the message is. That is not legal advice, so check with the client if it matters to them.</p>
+      <p><b>Who fixes it:</b> whoever owns the domain, usually the client's IT, with me advising and checking. <b>How to catch it:</b> a verified sender, the records in place, and a first real send that reaches the inbox, not the spam folder.</p>
+
+      <h2>6. The inbox: one email, many screens</h2>
+      <p>Every email app draws the same email a little differently. Gmail and Outlook recolour parts of an email in dark mode on their own, so the email declares both colour schemes and carries separate rules for apps that follow the device and for Outlook.com and the Outlook apps, which mark their dark mode with attributes:</p>
+<pre tabindex="0"><code>&lt;mj-head&gt;
+  &lt;mj-raw&gt;
+    &lt;meta name="color-scheme" content="light dark" /&gt;
+    &lt;meta name="supported-color-schemes" content="light dark" /&gt;
+  &lt;/mj-raw&gt;
+  &lt;mj-style&gt;
+    :root { color-scheme: light dark; supported-color-schemes: light dark; }
+
+    /* apps that follow the device setting */
+    @media (prefers-color-scheme: dark) {
+      .bg-page  { background-color: #0f1115 !important; }
+      .bg-panel, .bg-panel &gt; table { background-color: #16181d !important; }
+      .text-main div { color: #e9ecf1 !important; }
+      .text-link a   { color: #9db8ff !important; }
+    }
+
+    /* Outlook.com and the Outlook apps mark their dark mode with attributes */
+    [data-ogsb] .bg-panel { background-color: #16181d !important; }
+    [data-ogsc] .text-main div { color: #e9ecf1 !important; }
+  &lt;/mj-style&gt;
+&lt;/mj-head&gt;</code></pre>
+      <img src="/blog/images/email-fails-05-dark-mode-notes.webp" alt="A whiteboard of my dark mode notes, with the data-ogsc and data-ogsb selectors for Outlook and a prefers-color-scheme block" width="600" height="398" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>My own notes for the dark mode rules.</p>
+      <img src="/blog/images/email-fails-09-dark-css-editor.webp" alt="VS Code showing the dark mode and Outlook attribute CSS rules, with the finished email open in a browser beside it" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>The same rules in the editor, beside the email they apply to.</p>
+      <p>Classic Outlook for Windows draws buttons with Word's engine, which ignores rounded corners. It gets its own button, wrapped so every other app ignores it:</p>
+<pre tabindex="0"><code>&lt;mj-raw&gt;
+  &lt;!--[if mso]&gt;
+  &lt;v:roundrect
+    xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:w="urn:schemas-microsoft-com:office:word"
+    href="https://example.com/pay"
+    style="height:48px;width:220px;v-text-anchor:middle;"
+    arcsize="12%" stroke="f" fillcolor="#0057d8"&gt;
+    &lt;w:anchorlock/&gt;
+    &lt;center style="color:#ffffff;font-family:Arial,sans-serif;
+      font-size:16px;font-weight:bold;"&gt;Pay now&lt;/center&gt;
+  &lt;/v:roundrect&gt;
+  &lt;![endif]--&gt;
+  &lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;/mj-raw&gt;
+&lt;mj-button href="https://example.com/pay" background-color="#0057d8"
+  border-radius="6px" width="220px"&gt;Pay now&lt;/mj-button&gt;
+&lt;mj-raw&gt;&lt;!--&lt;![endif]--&gt;&lt;/mj-raw&gt;</code></pre>
+      <p>Gmail also clips a long email at about 102 KB, which can hide the footer, and link tracking can rewrite a link. A short check after the build warns before either becomes a customer's problem:</p>
+<pre tabindex="0"><code>// check-build.js: warn before Gmail clips the email
+const html = require("fs").readFileSync("dist/email.html", "utf8");
+const kb = Buffer.byteLength(html) / 1024;
+if (/https?:\/\/(www\.)?example\.com/.test(html)) console.log("A link still points at example.com");
+if (kb &gt; 90) console.log(`The HTML is ${kb.toFixed(0)} KB. Gmail clips emails at about 102 KB.`);</code></pre>
+      <p>A testing tool shows the results side by side. This is a two-factor sample email I designed and built, in desktop Outlook, light and dark:</p>
+      <img src="/blog/images/email-fails-07-outlook-desktop-grid.webp" alt="A sample two-factor email in four desktop Outlook renderings, two light and two dark" width="1678" height="1007" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>Desktop Outlook, light and dark.</p>
+      <p>And the same email on phones:</p>
+      <img src="/blog/images/email-fails-08-iphone-grid.webp" alt="The same email on four iPhones in Gmail, the last one in dark mode" width="1672" height="1063" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>Four iPhones in Gmail, the last in dark mode.</p>
+      <p>Even one app is not one screen. Outlook comes in several versions, and each can run at a different display scaling. Here is a sample email I designed and built, in four Outlook renderings:</p>
+      <img src="/blog/images/email-fails-02-outlook-dpi.webp" alt="One sample email in four Outlook renderings side by side on a laptop, including 120 and 250 DPI display scaling" width="600" height="398" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A sample email I designed and built, in four Outlook renderings, including 120 and 250 DPI display scaling.</p>
+      <p>Dark mode adds another variable. In these four renderings of the same email, the two marked dark mode show a light background and dull yellow headings, where the other two show the black design:</p>
+      <img src="/blog/images/email-fails-03-outlook-dark.webp" alt="One sample email in four Outlook and Office 365 renderings, the two marked dark mode showing a light background" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>The same email in four renderings. The two marked dark mode show a light background and dull yellow headings.</p>
+      <p>Here is another sample I designed and built, in a dark rendering:</p>
+      <img src="/blog/images/email-fails-04-dark-inbox.webp" alt="A sample pasta sauce email in a dark inbox, with a dark grey page, light text and a red button" width="352" height="1024" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A pasta sauce sample email, in a dark rendering.</p>
+      <p>On the payment failure email, there were a number of dark mode issues in Gmail and Outlook, as usual, and the button needed a special version for Outlook. I tested it in 130 email clients, before and after those fixes. Here is the finished email in both modes:</p>
+      <img src="/blog/images/payment-failure-06-light-mode.webp" alt="The finished payment failure email in light mode, with a black header, white body, orange button and light-blue box" width="974" height="2343" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
+      <p>Light mode.</p>
+      <img src="/blog/images/payment-failure-07-dark-mode.webp" alt="The finished payment failure email in dark mode, with a dark grey body and a dark teal box" width="974" height="2343" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
+      <p>Dark mode. The header, the footer and the button stay the same.</p>
+      <p><b>Who fixes it:</b> me, as the person who designs and builds the email. <b>How to catch it:</b> test in the apps your own customers use, on a phone, and in dark mode.</p>
+
+      <h2>7. After launch: emails drift</h2>
+      <p>An email that was right at launch can go wrong later without anyone breaking it on purpose. Someone edits the live email in the platform's editor and damages the layout. A brand change or a new plan is never reflected. A page a link points to moves. A logo hosted on a free image service disappears. The payment failure email's logo is on one, so I flagged that it belongs on the client's own hosting. Every change goes through the same commands, so the live email never drifts from the source:</p>
+<pre tabindex="0"><code>"scripts": {
+  "build":        "mjml email.mjml --config.validationLevel=strict -o dist/email.html",
+  "postbuild":    "node scripts/check-build.js",
+  "test":         "node scripts/test-checks.js",
+  "send:sandbox": "node send.js --sandbox"
+}</code></pre>
+      <p>Every change is recorded too, so the history shows who changed what, and when:</p>
+      <img src="/blog/images/email-fails-15-commit-history.webp" alt="The Source Control panel in VS Code, listing a series of commits, with the email file open beside it" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A project's commit history: every change to the source, in order.</p>
+      <p>Editing in the platform is tempting, because it makes it easy. These are three platforms' own HTML editors:</p>
+      <img src="/blog/images/email-fails-06-platform-editor.webp" alt="A platform's custom HTML editor, with the email's source on the right and a preview on the left" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A platform's own HTML editor. A change made here never reaches the source file.</p>
+      <img src="/blog/images/email-fails-10-platform-editor-2.webp" alt="A second platform's HTML editor, showing the email's source with a count of errors and one warning" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A second platform's editor. Every platform has one, and each invites the same edit.</p>
+      <img src="/blog/images/email-fails-11-platform-editor-3.webp" alt="A third platform's HTML editor, with a preview on the left and the email's source on the right" width="1920" height="1080" loading="lazy" style="display:block;margin:1rem auto;">
+      <p>A third platform's editor, with the source beside a preview.</p>
+      <p><b>Who fixes it:</b> the client's team owns changes, and the source file is the true copy. <b>How to catch it:</b> change the source and rebuild, never edit the built email or the live one, and re-test after every change. Keep a build log of what was tested, and where.</p>
+      <p>Even a small change, such as a new plan name, should go through the same checks. A one-line edit in a live editor skips every check described above.</p>
+
+      <h2>Treat it as one chain, with one trace</h2>
+      <p>Seven places can have seven owners: the designer, the email developer, the client's developer, whoever runs the platform account, whoever owns the domain, and the team that edits the email later. That is how problems fall between them. Each owner fixes the symptom that reaches them, the same fault returns, and nobody holds the whole picture. When I build the email, the design, the source, the tests and my side of the API are one person's work, so the trace is shorter. The other places still have their own owners, which is why the trace has to cross them.</p>
+      <p>The end-to-end approach is simple. One person holds the trace from the application to the inbox, and in my work that is me. A problem is traced back through the places, one at a time, and each place is tested on its own before the next one is touched. Fixing the button in the inbox does nothing if the link in the data is wrong. Each place hands the next one a written result:</p>
+      <table>
+        <thead><tr><th>Place</th><th>What it hands to the next</th></tr></thead>
+        <tbody>
+          <tr><td>1. Brief and design</td><td>The answers to the "what if" questions</td></tr>
+          <tr><td>2. The source</td><td>A file that builds in strict mode, with every link checked</td></tr>
+          <tr><td>3. The data</td><td>The list of values and the rules, and a check that enforces them</td></tr>
+          <tr><td>4. The platform</td><td>An activated email, its ID, and a key kept out of the project</td></tr>
+          <tr><td>5. Delivery</td><td>A verified sender and the domain records</td></tr>
+          <tr><td>6. The inbox</td><td>Test results from the apps your customers use</td></tr>
+          <tr><td>7. After launch</td><td>A build log, and the source as the true copy</td></tr>
+        </tbody>
+      </table>
+      <p>When something fails, that list is the map. The log shows which result was missing, and the fix goes there, once.</p>
+
+      <h2>What a test can and cannot tell you</h2>
+      <table>
+        <thead><tr><th>Check</th><th>It shows</th><th>It does not show</th></tr></thead>
+        <tbody>
+          <tr><td>Strict build and data check</td><td>The file and the data follow the rules</td><td>How it looks</td></tr>
+          <tr><td>Sandbox call</td><td>The platform accepts the request</td><td>That anything is sent</td></tr>
+          <tr><td>Real send to your own inbox</td><td>The email arrives and renders</td><td>Other apps and screens</td></tr>
+          <tr><td>Testing in real email clients</td><td>How it looks across the apps tested</td><td>Apps nobody tested</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Before you launch: seven questions</h2>
+      <ol>
+        <li>Has the design said what happens with an empty, long or missing value, two items and dark mode?</li>
+        <li>Does the source build in strict mode, and is every link, image and line of wording the right one?</li>
+        <li>Is the list of data values written down, with checks that refuse bad or unsafe data?</li>
+        <li>Is the email activated, the sender verified and the right key in use?</li>
+        <li>Are the domain records set, and did a real send reach the inbox, not spam?</li>
+        <li>Did you open it on a phone, in dark mode, and in the apps your customers use?</li>
+        <li>Who holds the trace from the application to the inbox, who owns changes after launch, and where is the log of what was tested?</li>
+      </ol>
+
+      <h2>What this post does not cover</h2>
+      <p>This is about transactional email built in MJML, sent through Brevo, and tested in the clients mentioned. I have not measured delivery rates or revenue, and I make no claims about either. Other platforms fail in similar places but have their own settings, so check theirs.</p>
+
+      <h2>Takeaway</h2>
+      <p>When an email looks wrong, find the place first, then fix it, and test that place on its own. Treated as one chain from your application to the inbox, most problems turn out not to be in the email file.</p>
+
+    </div>
+
+    <div class="post-cta">
+      <p>Need a transactional email done properly, from your application to the inbox? I design, develop, program and test it end to end, write my side of the API, define what data your application sends, and trace problems through the whole system.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a transactional email?</summary>
+          <p>An email your application sends because of something a customer did, such as a receipt, a password reset or a payment failure notice. It is different from a newsletter, which you send to a list.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why are email problems often not in the email file?</summary>
+          <p>Because an email passes through several places before the customer sees it: the design, the source, the data your application sends, the email platform, the sending domain and the customer's inbox. A fault in any one of them looks the same to the customer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How can I tell which stage a problem is in?</summary>
+          <p>Start from what the customer says. An email that never arrives points to the platform or the sending domain. A blank or wrong name points to the data. A button that looks wrong points to the inbox. The symptom table in this post matches each one to a stage.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does an end-to-end approach to email mean?</summary>
+          <p>It means treating the design, the source, the data, the platform, the sending domain and the inbox as one system, with one trace from the application to the customer. Each place hands the next a written result, and a problem is traced back through the places instead of being fixed where it shows up.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can an email be tested without sending it to customers?</summary>
+          <p>Partly. Checks can catch bad data and a faulty source, and a sandbox can test a request without sending anything. Only a real send to your own inbox, and a look in real email clients, shows how the email looks and whether it arrives.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who should fix an email problem?</summary>
+          <p>It depends on the stage. Whoever designs and builds the email fixes the design, the source and how it looks in inboxes, and in my work that is me, including my side of the API. The client's developer fixes the data they send and the call to the platform. Whoever owns the domain fixes the sending records. A good build log says which.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
+</script>
+</body>
+</html>

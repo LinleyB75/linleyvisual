@@ -79,6 +79,7 @@
             ],
             "knowsAbout": [
                 "Email Development",
+                "Email Design",
                 "HTML Email",
                 "CSS for Email",
                 "MJML",
@@ -127,7 +128,7 @@
             "name": "Linley Bignoux Email Development",
             "url": "https://linleyb.com/",
             "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I build and test emails in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -143,6 +144,7 @@
             ],
             "serviceType": [
                 "Email Development",
+                "Email Design",
                 "HTML Email Development",
                 "MJML Development",
                 "Handlebars Email Templating",
@@ -235,7 +237,7 @@
                     "name": "Who connects the email to the client's system?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "The client's developer. I define what data the application sends, build and set up the email, and test it. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo."
+                        "text": "The client's developer. I design, develop and test the email end to end, define what data the application sends, and program my side of the API call. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo."
                     }
                 }
             ]
@@ -289,7 +291,7 @@
       <h2>The brief</h2>
       <p>Kick Off &rarr; Your English (Geo English) sent me the MJML source of a payment failure email. It is the message a customer gets when a monthly payment could not be processed. The client has agreed to be named. The email's wording and design belong to the client. This post shows screenshots of the finished email and describes what I did to the file, but it does not publish the source files. Everything else shown is my own scripts or made-up sample data.</p>
       <p>The brief for this round: keep the design and layout exactly as supplied, fix the syntax and the wording, use placeholder links for now, add no data values yet, and add dark and light mode.</p>
-      <p><b>My side:</b> the MJML, the dark and light mode, the Brevo email and its ID, and the tests. <b>The client's developer:</b> when the email is sent, the real links, the API key and the production call to Brevo.</p>
+      <p><b>My side:</b> the dark and light mode design, the MJML, the Node.js scripts and my side of the API call, the Brevo email and its ID, and the tests, end to end. <b>The client's developer:</b> when the email is sent, the real links, the API key and the production call to Brevo.</p>
 
       <h2>Status</h2>
       <div class="status-box">
@@ -422,7 +424,7 @@ fi</code></pre>
       <h2>Step 2: intake, read before changing anything</h2>
       <p>I saved the supplied MJML as <code>templates/original.mjml</code>, which Git ignores, and ran an intake script on it before touching anything. It builds the file twice, once softly and once in strict mode, then reports on links, images, colours and wording. It changes nothing. It found 26 points, and reading the file myself added more.</p>
 <pre tabindex="0"><code>npm run intake templates/original.mjml</code></pre>
-      <p>The most useful result: the soft build said OK, but the strict build failed. A closing tag was missing near the end of the file, and a soft build lets that through.</p>
+      <p>The most useful result: the soft build said OK, but the strict build refused the file, on an invalid attribute, an invalid unit and colours missing their hash. A closing tag was also missing near the end of the file, and neither build noticed. The intake script did not count unclosed tags at the time, so I found it by reading.</p>
       <!-- SCREENSHOT 04: the intake script output, with the strict build FAILED line and the list of findings.
            Save it as /blog/images/payment-failure-04-intake-report.webp, then delete the comment markers around this block.
       <img src="/blog/images/payment-failure-04-intake-report.webp" alt="The intake script output showing the strict build failing and the list of findings" width="1920" height="1080" loading="lazy">
@@ -432,7 +434,7 @@ fi</code></pre>
       <table>
         <thead><tr><th>Found in the supplied file</th><th>Why it matters</th><th>What I did</th></tr></thead>
         <tbody>
-          <tr><td>A closing tag missing near the end</td><td>The soft build still says OK</td><td>Added it</td></tr>
+          <tr><td>A closing tag missing near the end</td><td>Neither build reports it</td><td>Added it</td></tr>
           <tr><td>The strict build failed: an invalid attribute, an invalid unit, and colours missing their hash</td><td>Strict mode refuses them</td><td>Fixed each</td></tr>
           <tr><td>A style block with a brace never closed, and a misspelt <code>!important</code></td><td>The browser drops every rule after the break</td><td>Replaced it with a short, correct block</td></tr>
           <tr><td><code>&lt;br&gt;&lt;/br&gt;</code> used for spacing, nine times</td><td>Browsers read <code>&lt;/br&gt;</code> as a second break, so each one is a blank line</td><td>Changed to <code>&lt;br /&gt;&lt;br /&gt;</code>, with the same spacing</td></tr>
@@ -519,7 +521,7 @@ module.exports = {
 /* Outlook.com and the Outlook apps */
 [data-ogsb] .dm-white { background-color: #1c1c1e !important; }
 [data-ogsc] .dm-copy div { color: #e6e6e6 !important; }</code></pre>
-      <p>To prove the dark rules cannot touch light mode, I took screenshots with and without them: 0 pixels differ. In dark mode the page is <code>#121212</code>, the content areas <code>#1c1c1e</code>, the light-blue box <code>#1f3a4a</code>, and the text and links are light. The black header, the black footer and the orange button stay the same.</p>
+      <p>To prove the dark rules cannot touch light mode, I took screenshots with and without them: 0 pixels differ. In dark mode the page is <code>#121212</code>, the content areas <code>#1c1c1e</code>, the light-blue box <code>#1f3a4a</code>, and the text and links are light. The black header, the black footer and the orange button stay the same. The supplied design had no dark version, so the dark palette is my own design.</p>
       <img src="/blog/images/payment-failure-06-light-mode.webp" alt="The finished payment failure email in light mode, with a black header, white body, orange button and light-blue box" width="974" height="2343" loading="lazy" style="width:100%;max-width:420px;height:auto;display:block;margin:1rem auto;">
       <p>The finished email in light mode.</p>
 
@@ -548,7 +550,7 @@ module.exports = {
 <pre tabindex="0"><code>"prebuild":  "node scripts/make-dist.js",
 "build":     "mjml templates/email.mjml --config.validationLevel=strict -o dist/email.html",
 "postbuild": "node scripts/check-build.js"</code></pre>
-      <p>Strict mode stops the build on any mistake and gives the line number. This is what a good build prints. The one warning is expected, because the brief asked for placeholder links:</p>
+      <p>Strict mode refuses to build when it finds an invalid value or an attribute that does not exist, and it names the line. This is what a good build prints. The one warning is expected, because the brief asked for placeholder links:</p>
 <pre tabindex="0"><code>Built dist/email.html (33 KB).
 
 Before this goes into Brevo:
@@ -587,7 +589,7 @@ Before this goes into Brevo:
       <img src="/blog/images/payment-failure-09b-data-check.webp" alt="The terminal showing the data check with no required and no optional values, then npm test passing" width="1920" height="1080" loading="lazy">
       <p>The data check, and the first test.</p>
 
-      <p>The send script has three modes. Dry run is the default and sends nothing. The sandbox mode calls Brevo with its sandbox flag, which goes in the JSON body, not in an HTTP header. Live mode needs the word SEND typed, and goes to one address:</p>
+      <p>The send script is my side of the API call, and it has three modes. Dry run is the default and sends nothing. The sandbox mode calls Brevo with its sandbox flag, which goes in the JSON body, not in an HTTP header. Live mode needs the word SEND typed, and goes to one address:</p>
 <pre tabindex="0"><code>// Brevo's sandbox flag goes in the JSON body's "headers" object, not in the HTTP headers
 if (mode === "sandbox") body.headers = { "X-Sib-Sandbox": "drop" };</code></pre>
       <p><a href="https://developers.brevo.com/docs/using-sandbox-mode" target="_blank" rel="noopener noreferrer">Brevo's documentation</a> says the sandbox sends no email and makes no log, and that it only checks the format of the request.</p>
@@ -702,7 +704,7 @@ git push -u origin main</code></pre>
 
       <h2>What went wrong</h2>
       <ol>
-        <li><b>The soft build said OK although a closing tag was missing.</b> The strict build found it. The intake script now counts unclosed tags and also catches buttons with no link, placeholder social links, empty links, invalid colours and broken CSS.</li>
+        <li><b>A closing tag was missing, and neither build reported it.</b> I found it by reading. The intake script now counts unclosed tags and also catches buttons with no link, placeholder social links, empty links, invalid colours and broken CSS.</li>
         <li><b>A colour that looked invalid was a request for blue.</b> My first replacement would have failed contrast at 2.60:1. Measuring caught it.</li>
         <li><b>I misread an invalid unit.</b> I guessed 20 px, and the compiled original showed 38 px.</li>
         <li><b>I miscounted the send tests.</b> I wrote 15 in my build log, and the project runs 14, because the 15th test only applies to emails with link values. Counting the real output found it.</li>
@@ -742,7 +744,7 @@ git push -u origin main</code></pre>
     </div>
 
     <div class="post-cta">
-      <p>Need a transactional email set up properly, from your application to the inbox? I define what data your application sends, build and test the email, and trace problems through the whole system.</p>
+      <p>Need a transactional email done properly, from your application to the inbox? I design, develop, program and test it end to end, write my side of the API, define what data your application sends, and trace problems through the whole system.</p>
       <a href="/#contact" class="cta-button">Get in touch</a>
     </div>
   </article>
@@ -773,7 +775,7 @@ git push -u origin main</code></pre>
         </details>
         <details class="faq-item">
           <summary>Who connects the email to the client's system?</summary>
-          <p>The client's developer. I define what data the application sends, build and set up the email, and test it. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo.</p>
+          <p>The client's developer. I design, develop and test the email end to end, define what data the application sends, and program my side of the API call. They decide when it is sent, supply the real links, keep the API key and make the production call to Brevo.</p>
         </details>
       </div>
     </div>
@@ -837,7 +839,7 @@ git push -u origin main</code></pre>
                 />
             </a>
         </div>
-        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
         <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
     </div>
 </footer>
