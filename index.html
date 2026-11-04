@@ -26,10 +26,8 @@
             property="og:description"
             content="Freelance email developer in Mauritius. I design, develop, program and test emails end to end, write my side of the API, and troubleshoot the whole system."
         />
-        <meta property="og:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it." />
+        <meta property="og:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp" />
+        <meta property="og:image:alt" content="Linley Bignoux, freelance email developer" />
         <meta property="og:url" content="https://linleyb.com/" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Linley Bignoux | Email Developer" />
@@ -40,8 +38,8 @@
             name="twitter:description"
             content="Freelance email developer in Mauritius. I design, develop, program and test emails end to end, write my side of the API, and troubleshoot the whole system."
         />
-        <meta name="twitter:image" content="https://linleyb.com/blog/images/linley-bignoux-share.jpg" />
-        <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer. Transactional email and the systems behind it." />
+        <meta name="twitter:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp" />
+        <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer" />
         <link rel="canonical" href="https://linleyb.com/" />
         <meta name="google-site-verification" content="V2cMQj4EDXZagJ5m00FoS-FWLdv6m1MBP9LlDObMGeA" />
 
@@ -1136,7 +1134,23 @@
         .form-status:not(:empty) { text-align: left; color: var(--text); background: var(--bg-alt); border-left: 5px solid var(--accent); border-radius: 8px; padding: 0.85rem 1rem; }
         .form-note { text-align: center; margin-top: 1.25rem; font-size: 0.95rem; color: var(--text-light); }
         .form-note a { color: var(--accent); font-weight: 700; text-decoration: underline; }
-</style>
+
+      /* From your application to the inbox: three steps */
+      .pipeline { padding: 3.5rem 0 3rem; background: var(--bg); }
+      .pipeline .section-title { margin-bottom: 2.5rem; }
+      .pipeline-steps { list-style: none; margin: 0 auto; padding: 0 20px; max-width: 1100px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+      .pipeline-step { position: relative; background: var(--card-bg); border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 10px; box-shadow: var(--shadow); padding: 1.5rem 1.4rem 1.6rem; text-align: left; }
+      .pipeline-step h3 { display: flex; align-items: center; gap: 0.75rem; margin: 0 0 0.75rem; font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+      .pipeline-num { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 2px solid var(--accent); border-radius: 50%; font-size: 1rem; font-weight: 800; color: var(--text); }
+      .pipeline-step p { margin: 0; color: var(--text); line-height: 1.6; }
+      .pipeline-step:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -2.25rem; width: 1.5rem; height: 1.5rem; margin-top: -0.75rem; background: var(--accent); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z'/%3E%3C/svg%3E") center / contain no-repeat; }
+      .pipeline-note { max-width: 1100px; margin: 2.25rem auto 0; padding: 0 20px; text-align: center; color: var(--text); line-height: 1.7; }
+      .pipeline-note a { color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+      @media (max-width: 800px) {
+        .pipeline-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+        .pipeline-step:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -2rem; margin: 0 0 0 -0.75rem; transform: rotate(90deg); }
+      }
+    </style>
 
         <script type="application/ld+json">
             {
@@ -1158,7 +1172,7 @@
                         "name": "Linley Bignoux",
                         "jobTitle": "Email Developer",
                         "url": "https://linleyb.com/",
-                        "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+                        "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
                         "nationality": {
                             "@type": "Country",
                             "name": "Australia"
@@ -1405,7 +1419,10 @@
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
                                 Hi, I'm <b>Linley</b>, an email developer in Mauritius, serving clients locally and worldwide.<br />
-                                I design, develop, program and test the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages. I work out exactly what data your application needs to send, and write my side of the API: a tested request and a Node.js reference for the send step, ready for your developer.
+                                I design, develop, program and test the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages.
+                            </p>
+                            <p style="margin-top: 1rem">
+                                I work out exactly what data your application needs to send, and write my side of the API: a tested request and a Node.js reference for the send step, ready for your developer.
                             </p>
                         </div>
                         <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
@@ -1471,7 +1488,7 @@
                     <!-- RIGHT: photo, red line and logo -->
                     <div class="hero-visual">
                         <div class="hero-arch">
-                            <img src="https://res.cloudinary.com/xrzqkwov/image/upload/v1793772575/linley-hero-photo.webp" alt="Linley Bignoux, email developer" width="640" height="960" fetchpriority="high" />
+                            <img src="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp" alt="Linley Bignoux, email developer" width="640" height="960" fetchpriority="high" />
                         </div>
                         <div class="hero-link" aria-hidden="true"></div>
                         <div class="hero-logo">
@@ -1480,6 +1497,31 @@
                     </div>
                 </div>
             </section>
+
+    <!-- From your application to the inbox -->
+    <section id="pipeline" class="pipeline" aria-labelledby="pipeline-title">
+      <div class="container">
+        <h2 class="section-title" id="pipeline-title">From your application to the inbox</h2>
+        <ol class="pipeline-steps">
+          <li class="pipeline-step">
+            <h3><span class="pipeline-num" aria-hidden="true">1</span> Your application</h3>
+            <p>The data and the trigger. I work out exactly what it needs to send: the fields, formats and fallbacks.</p>
+          </li>
+          <li class="pipeline-step">
+            <h3><span class="pipeline-num" aria-hidden="true">2</span> The send step</h3>
+            <p>My side of the API: a tested request and a Node.js reference, with the Liquid or Handlebars logic inside the email.</p>
+          </li>
+          <li class="pipeline-step">
+            <h3><span class="pipeline-num" aria-hidden="true">3</span> The inbox</h3>
+            <p>Tested in the email clients your customers use, in light and dark mode, with SPF, DKIM and DMARC set up and checked on your domain.</p>
+          </li>
+        </ol>
+        <p class="pipeline-note">
+          Your developer connects it. I design, develop, program and test everything up to that point.<br />
+          <a href="/blog/payment-failure-email-step-by-step.html">See it worked through: the 13-step build&nbsp;→</a>
+        </p>
+      </div>
+    </section>
 
             <section id="portfolio" style="background-color: var(--bg-alt)">
                 <div class="container">
@@ -2210,7 +2252,7 @@
                     <h2 class="section-title"><i class="fas fa-terminal"></i> About Me</h2>
                     <div class="about-content">
                         <div class="about-image">
-                            <img loading="lazy" decoding="async" src="https://res.cloudinary.com/xrzqkwov/image/upload/v1793772575/linley-hero-photo.webp" alt="Linley Bignoux - Email Developer" width="640" height="960" />
+                            <img loading="lazy" decoding="async" src="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp" alt="Linley Bignoux - Email Developer" width="640" height="960" />
                         </div>
                         <div class="about-text">
                             <p>
@@ -2591,7 +2633,7 @@
         })();
 
         // HERO SYSTEM LINE: one red line that starts after the "r" of Developer, runs down the right edge and under the
-        // paragraph with 45-degree bends, links Contact me and See my work, then runs down the right edge to the logo.
+        // last paragraph with 45-degree bends, links Contact me and See my work, then runs down the right edge to the logo.
         // Redrawn whenever the layout changes.
         (function () {
             var hero = document.getElementById("home");
@@ -2634,13 +2676,13 @@
                 var xR = Math.min(Math.max.apply(null, edges.map(function (r) { return r.r; })) + gut, H.width - 6);
                 var rs = dev.getClientRects(), last = R(rs[rs.length - 1]);
                 var S = { x: Math.min(last.r + (phone ? 10 : 14), xR - 2 * c), y: last.t + (last.b - last.t) * 0.6 };
-                var p1 = R(textBox(paras[0]));
+                var p1 = R(textBox(paras[paras.length - 1]));
                 var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
                 var yP1 = p1.b + 12;
                 var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 10;
                 var dots = [], kk = c;
                 function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
-                // line 1: from Developer, down the right edge, under the paragraph, into Contact me
+                // line 1: from Developer, down the right edge, under the last paragraph, into Contact me
                 path([[S.x, S.y], [xR, S.y], [xR, yP1], [B1.cx, yP1], [B1.cx, B1.t]]);
                 // a corner is cut at 45 degrees, so a node on a corner sits in the middle of the cut
                 dots.push([S.x, S.y], [xR - kk / 2, yP1 - kk / 2], [B1.cx, B1.t]);
