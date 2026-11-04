@@ -435,10 +435,10 @@
       <p><a href="https://developers.brevo.com/docs/using-sandbox-mode" target="_blank" rel="noopener noreferrer">Brevo's documentation</a> says the sandbox sends no email and makes no log, and that it only checks the format of the request. <a href="https://community.brevo.com/t/brevo-sandbox-mode-issue/2593" target="_blank" rel="noopener noreferrer">A Brevo community answer</a> reports that putting the flag in a real HTTP header still sends live emails, which is why the script uses the body.</p>
 
       <h2>Stage 7: Test in layers</h2>
-      <p>The cheapest checks come first. Before touching a real account I test the whole sequence against a simulated Brevo on my own computer. It follows what Brevo's documentation says: requests carry an <code>api-key</code> header; a template must exist and be activated; the template's sender and subject apply unless the request overrides them; the sandbox flag means no email and no log; one params object can be up to 100 KB; and the log needs an email, a template ID or a message ID.</p>
+      <p>The cheapest checks come first. Before touching a real account I test the whole sequence against a simulated Brevo on my own computer. It follows what Brevo's documentation says: requests carry an <code>api-key</code> header; an email must exist and be activated; the template's sender and subject apply unless the request overrides them; the sandbox flag means no email and no log; one params object can be up to 100 KB; and the log needs an email, a template ID or a message ID.</p>
       <p>It does <b>not</b> show how real Brevo treats the HTML, special characters or its editor, and its error messages aren't Brevo's. The honest label for these results is simulated testing. What the walkthrough showed:</p>
       <ul>
-        <li>Sending before the template was activated was refused, with a "not found or not activated" message.</li>
+        <li>Sending before the email was activated was refused, with a "not found or not activated" message.</li>
         <li>After activation, the sandbox call was accepted and left <b>no</b> log entry.</li>
         <li>A wrong API key was refused with a 401.</li>
         <li>A live send returned a message ID and one log entry.</li>
@@ -458,7 +458,7 @@
           <tr><td>Node.js is too old</td><td>The build stops with "File is not defined", or the send tests fail</td><td><code>node --version</code> is 22 or 24. Node 20 works but is out of support</td></tr>
           <tr><td>A fresh copy has no output folder</td><td>The build fails on a new machine</td><td>Run the project from a clean copy. The build creates the folder itself</td></tr>
           <tr><td>The settings file is wrong</td><td>The send script stops with a clear message</td><td><code>.env</code> has the API key, template ID and test address, and the key is an API key, not an SMTP key</td></tr>
-          <tr><td>The Brevo template isn't activated, or the ID is wrong</td><td>A "not found or not activated" error</td><td>The template is activated in Brevo and the ID matches</td></tr>
+          <tr><td>The Brevo template isn't activated, or the ID is wrong</td><td>A "not found or not activated" error</td><td>The email is activated in Brevo and the ID matches</td></tr>
           <tr><td>Field names don't match (they are case-sensitive)</td><td>The greeting falls back, or a line is empty</td><td><code>npm run check-params</code>, then a real send to your own inbox</td></tr>
           <tr><td>Something sensitive in the data: a code, a setup key, a full card number or phone number</td><td>The email would carry it</td><td>The safety rules and the 17 tests. For card data, the rules in the PCI DSS section</td></tr>
           <tr><td>A long name, an accent or an apostrophe</td><td>A broken layout, or characters shown wrongly</td><td>Test awkward names such as O'Brien, José and a very long one, on a phone as well</td></tr>

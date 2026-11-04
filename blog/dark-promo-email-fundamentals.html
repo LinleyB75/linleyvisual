@@ -300,7 +300,7 @@
       <img src="/blog/images/linx-email-local-preview.webp" alt="Full Linx Systems promo email on a black background with a yellow headline, product photos, a white SHOP NOW button, and social icons" width="974" height="6055" loading="lazy" style="max-width:420px;display:block;margin:1rem auto;">
       <p>My local live preview of an earlier version of the email. The button is white with black text and the social icons include Twitter. The final version has a grey button with white text and a YouTube icon instead.</p>
       <div class="status-box">
-        <p><b>What this post covers:</b> the final code and the problems I met while building it.</p>
+        <p><b>What this post covers:</b> the final source and the problems I met while building it.</p>
         <p><b>Clients I retested most:</b> Outlook 2024 (dark) (Win 11), Outlook 2024 (120 DPI), and Outlook 2021 (150 DPI), many times for each fix.</p>
         <p><b>Result:</b> in the end, all 130 clients I tested worked across desktop, tablet, and mobile. Test in the clients your audience uses before relying on any of it.</p>
       </div>
@@ -416,7 +416,7 @@ body, .force-dark, .force-dark table, .force-dark td { background-color: #000000
       <p>None of the problems above are unusual. They come from how email works, and a few habits would have caught most of them sooner:</p>
       <ul>
         <li><b>Email is tables, not the modern web.</b> MJML writes the tables for you, but always read the compiled HTML, because that is what clients interpret (see <a href="/blog/mj-group-padding.html">the padding post</a>).</li>
-        <li><b>Clients edit your code.</b> Some drop media queries, strip style blocks, or rewrite colours. Keep critical styles inline and don't depend on one feature working everywhere.</li>
+        <li><b>Email clients edit your HTML.</b> Some drop media queries, strip style blocks, or rewrite colours. Keep critical styles inline and don't depend on one feature working everywhere.</li>
         <li><b>Classic Outlook uses Word to render.</b> No rounded corners, limited CSS, and different spacing. Use conditional comments and VML where the design needs it.</li>
         <li><b>Dark mode is not one behaviour.</b> Declare your colour scheme, handle <code>prefers-color-scheme</code>, and handle Outlook's attribute selectors. Then test, because each client behaves differently.</li>
         <li><b>Anything baked into an image or a component is outside your CSS.</b> Social icons are the classic case. Give images alt text and set their sizes explicitly.</li>

@@ -197,15 +197,15 @@
                     "name": "What is params in a Brevo transactional email?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "In the send request, Brevo takes a JSON object called params next to the template ID. The template reads each value with a tag such as {{ params.customerName }}. This post uses that pattern."
+                        "text": "In the send request, Brevo takes a JSON object called params next to the template ID. The email reads each value with a tag such as {{ params.customerName }}. This post uses that pattern."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "Why look at the whole system instead of just the template?",
+                    "name": "Why look at the whole system instead of just the layout?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Because the problems in this project sat in different stages. A layout bug was in the template, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the template would have missed the data problems, so I check each stage on its own."
+                        "text": "Because the problems in this project sat in different stages. A layout bug was in the MJML, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the layout would have missed the data problems, so I check each stage on its own."
                     }
                 },
                 {
@@ -218,7 +218,7 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "How was this template checked?",
+                    "name": "How was this email checked?",
                     "acceptedAnswer": {
                         "@type": "Answer",
                         "text": "Stage by stage. It compiles in MJML's strict mode, and when rendered with the original email's data its 47 lines of visible text match the original. A script checks the names and values, I rendered the layout and looked at it, and I did a real test send through Brevo and checked the delivered email in real email clients. I have not checked every client and version."
@@ -275,16 +275,16 @@
 
       <h2>The brief</h2>
       <p>My client Kick Off → Your English, an English-classes service from Geo English, sent me a payment receipt email: "We have successfully charged your account". It was the compiled HTML output of an MJML email, with no source file, and every detail was typed into it: the amount, the dates, the name, the card line and the address. The job was to turn it into a Brevo transactional template whose details come from JSON. They have agreed to be named in this write-up.</p>
-      <p><b>My side:</b> the template, the list of values it needs (the params), the Brevo template and its ID. <b>Their side:</b> when the receipt is sent, the API key and the call from their own system. I don't touch their production system.</p>
+      <p><b>My side:</b> the rebuilt email, the list of values it needs (the params), the checks and my side of the API call, the Brevo template and its ID. <b>Their side:</b> when the receipt is sent, the API key and the call from their own system. I don't touch their production system.</p>
 
       <h2>Status</h2>
       <div class="status-box">
-        <p><b>Tested, completed and delivered:</b> the template, the params list and the Brevo template, with the checks described below.</p>
+        <p><b>Tested, completed and delivered:</b> the email, the params list and the Brevo template, with the checks described below.</p>
         <p><b>Their side:</b> connecting their own system to Brevo, as agreed.</p>
       </div>
 
       <h2>First, understand the system</h2>
-      <p>A receipt email is not one file. It is a chain, and a fault in any link looks the same to the customer: a wrong or empty receipt. Before I touched the template, I wrote the chain down.</p>
+      <p>A receipt email is not one file. It is a chain, and a fault in any link looks the same to the customer: a wrong or empty receipt. Before I touched the email, I wrote the chain down.</p>
       <svg viewBox="0 0 360 462" role="img" aria-labelledby="flow-title flow-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
         <title id="flow-title">How a receipt email gets from the client's system to the inbox</title>
         <desc id="flow-desc">Five stages in order: the client's system, the JSON params, the Brevo template and ID, the rendered email, and the recipient's inbox.</desc>
@@ -318,20 +318,20 @@
         <thead><tr><th>Stage</th><th>What can go wrong</th><th>How I check it</th></tr></thead>
         <tbody>
           <tr><td>1. The client's system</td><td>An unformatted amount, a misspelt field name, a full card number</td><td>The params check (the client's team fixes the source)</td></tr>
-          <tr><td>2. The JSON params</td><td>A missing required value, an empty list, a name the template doesn't read</td><td>The params check</td></tr>
-          <tr><td>3. The template</td><td>A layout bug, a button with no link, a link that doesn't match its text</td><td>A strict compile, rendering with real values, and looking at the result</td></tr>
+          <tr><td>2. The JSON params</td><td>A missing required value, an empty list, a name the email doesn't read</td><td>The params check</td></tr>
+          <tr><td>3. The layout</td><td>A layout bug, a button with no link, a link that doesn't match its text</td><td>A strict compile, rendering with real values, and looking at the result</td></tr>
           <tr><td>4. Brevo</td><td>Tags changed by the editor, a loop Brevo doesn't handle</td><td>A real test send through Brevo</td></tr>
           <tr><td>5. The inbox</td><td>Rendering differences between email clients, dark mode</td><td>Checking the delivered email in real email clients</td></tr>
         </tbody>
       </table>
-      <p>Most of what I found was not in the template at all. It was in the data stages, which is why I look at the whole chain, not just the HTML.</p>
+      <p>Most of what I found was not in the layout at all. It was in the data stages, which is why I look at the whole chain, not just the HTML.</p>
 
       <h2>Step 1: getting the source back from compiled HTML</h2>
-      <p>I rebuilt the MJML source from the compiled output, section by section. To prove I had matched it, I rendered my template with the original email's own values and compared the visible text line by line against the original: 47 lines, identical, in the same order. The 8 images, their alt text and widths, and the 6 column widths matched too.</p>
+      <p>I rebuilt the MJML source from the compiled output, section by section. To prove I had matched it, I rendered my rebuild with the original email's own values and compared the visible text line by line against the original: 47 lines, identical, in the same order. The 8 images, their alt text and widths, and the 6 column widths matched too.</p>
       <p>That comparison covers text and structure. It does not tell me how the email looks in an inbox.</p>
 
       <h2>Step 2: turning typed-in details into params</h2>
-      <p>Brevo receives the values as a JSON object called <code>params</code> alongside the template ID, and the template reads each one with a tag such as <code>{{ params.customerName }}</code>. I ended up with nine required values and two optional ones:</p>
+      <p>Brevo receives the values as a JSON object called <code>params</code> alongside the template ID, and the email reads each one with a tag such as <code>{{ params.customerName }}</code>. I ended up with nine required values and two optional ones:</p>
 <pre tabindex="0"><code>{
   "customerName": "Alex Example",
   "receiptNumber": "100245",
@@ -352,10 +352,10 @@
   &lt;strong&gt;Billing address&lt;/strong&gt;
   {% for line in params.billingAddressLines %}&lt;div&gt;{{ line }}&lt;/div&gt;{% endfor %}
 {% endif %}</code></pre>
-      <p>Charge rows work the same way: one row per item in <code>lineItems</code>, so a receipt with two charges needs no template change.</p>
+      <p>Charge rows work the same way: one row per item in <code>lineItems</code>, so a receipt with two charges needs no change to the email.</p>
 
       <h2>Step 3: a check that refuses card numbers</h2>
-      <p>A receipt shows the end of a card, never the whole number. I wrote a small script (<code>npm run check-params</code>) that does two jobs. First, it compares the names the template reads with the names in the client's JSON, so a misspelt name is caught before it shows up as an empty gap in a customer's receipt. Second, it checks the values, including these two rules:</p>
+      <p>A receipt shows the end of a card, never the whole number. I wrote a small script (<code>npm run check-params</code>) that does two jobs. First, it compares the names the email reads with the names in the client's JSON, so a misspelt name is caught before it shows up as an empty gap in a customer's receipt. Second, it checks the values, including these two rules:</p>
 <pre tabindex="0"><code>if (!/^[^0-9]*[0-9]{2,4}$/.test(params.cardEnding.trim())) {
   problems.push("cardEnding must end with 2 to 4 digits. Never send a full card number.");
 }
@@ -367,12 +367,12 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
       <table>
         <thead><tr><th>What I broke</th><th>What the check did</th></tr></thead>
         <tbody>
-          <tr><td>Renamed <code>customerName</code> to <code>customer_name</code></td><td>Caught: the template's name reported as missing, the new name noted as unused</td></tr>
+          <tr><td>Renamed <code>customerName</code> to <code>customer_name</code></td><td>Caught: the email's name reported as missing, the new name noted as unused</td></tr>
           <tr><td>A full card number in <code>cardEnding</code></td><td>Refused, with two messages</td></tr>
           <tr><td>An empty <code>lineItems</code> list</td><td>Refused</td></tr>
           <tr><td>A card number hidden in an address line</td><td>Refused</td></tr>
           <tr><td>A line item with no amount</td><td>Refused</td></tr>
-          <tr><td>An extra field the template ignores</td><td>A note only, not an error</td></tr>
+          <tr><td>An extra field the email ignores</td><td>A note only, not an error</td></tr>
         </tbody>
       </table>
       <p>This is my own safeguard, not a compliance standard, and it cannot know what the client's system does elsewhere.</p>
@@ -382,9 +382,9 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
       <table>
         <thead><tr><th>What I saw</th><th>Stage</th><th>What I did</th></tr></thead>
         <tbody>
-          <tr><td>The footer squeezed into a narrow column</td><td>3. The template</td><td>Rendered the layout and looked. Two columns had no width set, so MJML split the section four ways. I set <code>width="100%"</code> on them.</td></tr>
-          <tr><td>A visible address that linked to a different address</td><td>3. The template</td><td>Read the compiled HTML. This goes to the client as a question, because only they know which address is right.</td></tr>
-          <tr><td>A "Download" button that did nothing</td><td>3. The template</td><td>Found it was a styled paragraph with no link, and made it a real button with a placeholder link.</td></tr>
+          <tr><td>The footer squeezed into a narrow column</td><td>3. The layout</td><td>Rendered the layout and looked. Two columns had no width set, so MJML split the section four ways. I set <code>width="100%"</code> on them.</td></tr>
+          <tr><td>A visible address that linked to a different address</td><td>3. The layout</td><td>Read the compiled HTML. This goes to the client as a question, because only they know which address is right.</td></tr>
+          <tr><td>A "Download" button that did nothing</td><td>3. The layout</td><td>Found it was a styled paragraph with no link, and made it a real button with a placeholder link.</td></tr>
           <tr><td>A possible gap where a name should be</td><td>2. The params</td><td>The names part of the check compares both sides, so a mismatch is reported before sending.</td></tr>
           <tr><td>A risk of a card number in the data</td><td>1. The client's system</td><td>Added the card rules, so the check refuses it however it arrives.</td></tr>
         </tbody>
@@ -439,7 +439,7 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
       <p>The client received the Brevo template with its template ID and the list of values their system sends (the params). Their team connects their own system and sends the receipt.</p>
 
       <h2>Takeaway</h2>
-      <p>The template is the part everyone sees, but the receipt is only as right as the chain behind it. Map the stages, write the list of values down, make a script enforce it, and test each stage for what it can actually tell you.</p>
+      <p>The layout is the part everyone sees, but the receipt is only as right as the chain behind it. Map the stages, write the list of values down, make a script enforce it, and test each stage for what it can actually tell you.</p>
 
     </div>
 
@@ -456,18 +456,18 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
       <div class="faq-list">
         <details class="faq-item">
           <summary>What is params in a Brevo transactional email?</summary>
-          <p>In the send request, Brevo takes a JSON object called params next to the template ID. The template reads each value with a tag such as {{ params.customerName }}. This post uses that pattern.</p>
+          <p>In the send request, Brevo takes a JSON object called params next to the template ID. The email reads each value with a tag such as {{ params.customerName }}. This post uses that pattern.</p>
         </details>
         <details class="faq-item">
-          <summary>Why look at the whole system instead of just the template?</summary>
-          <p>Because the problems in this project sat in different stages. A layout bug was in the template, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the template would have missed the data problems, so I check each stage on its own.</p>
+          <summary>Why look at the whole system instead of just the layout?</summary>
+          <p>Because the problems in this project sat in different stages. A layout bug was in the MJML, a possible name mismatch was in the data, and a card number could come from the client's system. Checking only the layout would have missed the data problems, so I check each stage on its own.</p>
         </details>
         <details class="faq-item">
           <summary>Should a payment receipt email contain a full card number?</summary>
           <p>No. The receipt in this project shows only the last digits, and my check refuses any value that looks like a full card number. That is my own safeguard, not a compliance standard, so check the rules that apply to your client.</p>
         </details>
         <details class="faq-item">
-          <summary>How was this template checked?</summary>
+          <summary>How was this email checked?</summary>
           <p>Stage by stage. It compiles in MJML's strict mode, and when rendered with the original email's data its 47 lines of visible text match the original. A script checks the names and values, I rendered the layout and looked at it, and I did a real test send through Brevo and checked the delivered email in real email clients. I have not checked every client and version.</p>
         </details>
       </div>
