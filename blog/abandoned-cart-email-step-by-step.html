@@ -353,6 +353,7 @@
         </g>
       </svg>
       <p>Reading it from the bottom up is how I trace a problem. If a customer sees a broken email, is it the inbox, the HTML, the way Brevo filled in the values, the request, or the data that left the shop? Each boundary has its own check, so the answer is a measurement and not a guess.</p>
+      <p>Two words get used loosely here, so I define them the way I use them. <b>Architecture</b> is the set of decisions that are expensive to change once other people build on them: the chain above, who owns each link, and the request with its six values. Once the client's developer has built against those, changing them costs them work. <b>Design</b> is everything inside my own links that I can change without anyone else noticing: the checks, the tests, the internals of the send step, and the HTML and CSS. People draw the line between the two in different places, and that is fine. What matters is knowing which decisions are the expensive ones before you make them.</p>
       <p>The design decisions that sit at those boundaries:</p>
       <ul>
         <li><b>One flat object of six values, every one of them text.</b> A flat list is easy for the client's developer to send and easy for me to check. Even the quantity is sent as text.</li>
