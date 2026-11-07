@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
+        <script src="/mail-link.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS | Email Dev Notes</title>
+    <meta name="description" content="Five faults from one email build that only showed in the built HTML and CSS, plus the resets, hybrid layouts and fallbacks MJML hides.">
+    <link rel="canonical" href="https://linleyb.com/blog/mjml-is-an-abstraction-layer.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS">
+    <meta property="og:description" content="MJML writes the tables, but the faults that matter live underneath it. Five real faults, resets, hybrid layouts, fallbacks and working in someone else&#x27;s email.">
+    <meta property="og:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer">
+    <meta property="og:url" content="https://linleyb.com/blog/mjml-is-an-abstraction-layer.html">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS">
+    <meta name="twitter:description" content="MJML writes the tables, but the faults that matter live underneath it. Five real faults, resets, hybrid layouts, fallbacks and working in someone else&#x27;s email.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "Email Design",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "Email Design",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Setup",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/mjml-is-an-abstraction-layer.html#article",
+            "url": "https://linleyb.com/blog/mjml-is-an-abstraction-layer.html",
+            "headline": "MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS",
+            "description": "Five faults from one email build that only showed in the built HTML and CSS, plus the resets, hybrid layouts and fallbacks MJML hides.",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "datePublished": "2026-11-06",
+            "dateModified": "2026-11-06",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/mjml-is-an-abstraction-layer.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/mjml-is-an-abstraction-layer.html#faq",
+            "url": "https://linleyb.com/blog/mjml-is-an-abstraction-layer.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Should I learn MJML or plain HTML first?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "HTML and CSS first. MJML is a faster way to write what HTML and CSS already do, and it is an abstraction layer on top of them. If you know the layer underneath, MJML is a tool you control. If you do not, the first fault it hides from you is one you cannot find."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Is the HTML that MJML builds ready to send as it is?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Not without reading it. In the build I describe, the built HTML showed a button drawn as a paragraph, a width that made the page too wide for a phone, and a rule that became display flex on a table cell. All three were invisible in the MJML."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why write the whole email again as plain HTML?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Some clients want plain HTML with no build step, and it proves that I understand the email without the tool. I compared the two pixel by pixel in light and dark mode. The first attempt was 60 pixels off in dark mode, because I had put a rounded corner on the wrong element."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Does MJML handle dark mode and Outlook for you?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. Dark mode is CSS that I write, inside a prefers-color-scheme block, with separate rules for Outlook.com. The rounded Outlook button is VML that I write by hand in a raw block. I did not test the Outlook parts of this cart email in real Outlook. I have tested Outlook.com's dark-mode rules in a different project, which is not published here."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What does MJML's strict mode catch?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "It refused an invalid unit and a colour with no hash when I tested version 5.4.1. It accepted a missing closing body tag, a repeated attribute and a button with no link, so I wrote extra checks for those."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What are Gmail's limits for an email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Gmail clips an email over about 102 KB, and ignores embedded CSS past about 16,384 characters. Both apply to the built file, not to the MJML, so measure the HTML that is really sent."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What is a hybrid email layout?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A layout built from fluid blocks with a maximum width, so it follows the screen, plus fixed-width tables in conditional comments for Outlook for Windows, which ignores maximum widths and side-by-side blocks. The cart email is built this way. Its columns stack by default and sit side by side from 480 pixels up."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "What do the reset lines at the top of an email do?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Each exists because some client does something unwanted: adding a margin around the body, enlarging text on a phone, adding space around tables in Outlook, or putting a border on a linked image. Learn the reason for each line before you remove one."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you work in an email someone else built?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I read the HTML from the top and work out the width approach, the conditional comments, the media queries and the dark mode. Then I copy the file, run my checks for a baseline, change one thing at a time, and compare before and after."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">ARTICLE • EMAIL DEVELOPMENT • HTML AND CSS</span>
+    <h1>MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS</h1>
+    <p class="post-meta">Published 7 November 2026 • By Linley Bignoux • From the build of: Kick Off &rarr; Your English abandoned cart email</p>
+    <div class="tag-row"><span class="tag">mjml</span><span class="tag">html</span><span class="tag">css</span><span class="tag">email-development</span><span class="tag">outlook</span><span class="tag">dark-mode</span><span class="tag">gmail</span><span class="tag">vml</span><span class="tag">fundamentals</span></div>
+
+    <div class="post-content">
+      <h2>The claim</h2>
+      <p>I write most of my emails in MJML, and I am glad of it. It writes the nested tables, the Outlook conditional comments and the responsive columns for me, and its strict mode stops some mistakes. But MJML is an abstraction layer. It sits on top of HTML and CSS, an email client never sees it, and every fault in this post lived underneath it.</p>
+      <p>In every project I end up in the HTML and CSS, many times: to change a spacing, to fix how one email client draws something, to read what the build produced, or to hand a developer a file with no build step. Vanilla HTML and CSS are the foundation of email development, and knowing them is what lets me use MJML as a tool and not as a crutch.</p>
+      <p>These five faults come from one build, the abandoned cart email for Kick Off &rarr; Your English, which I describe step by step in <a href="/blog/abandoned-cart-email-step-by-step.html">the full build post</a>. The email in it is a test version. The test I apply to each fault: could I have fixed it without reading the HTML? In every case, no.</p>
+
+      <h2>Fault 1: a button that was drawn as a paragraph</h2>
+      <p>The draft's button, in MJML, looked fine. It had a fixed width, and no link yet:</p>
+<pre tabindex="0"><code>&lt;mj-button css-class="button" align="left" background-color="#0055FF"
+           font-family="Tahoma, serif" inner-padding="20px 35px" width="380px"&gt;
+  Return to Your Cart
+&lt;/mj-button&gt;</code></pre>
+      <p>This is what MJML built from it, shortened:</p>
+<pre tabindex="0"><code>&lt;td align="center" class="button"
+    style="font-size: 0px; padding: 0; word-break: break-word; width: auto; display: flex; text-align: center;"&gt;
+  &lt;table style="border-collapse:separate;width:380px;line-height:100%;"&gt;
+    &lt;tr&gt;&lt;td bgcolor="#0055FF" style="border-radius:12px;background:#0055FF;"&gt;
+      &lt;p style="display:inline-block;width:310px;background:#0055FF;color:#ffffff; ... padding:20px 35px;border-radius:12px;"&gt;
+        Return to Your Cart
+      &lt;/p&gt;
+    &lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/td&gt;</code></pre>
+      <p>Three separate facts are in that output, and none is in the MJML:</p>
+      <ul>
+        <li><b>It is a paragraph, not a link.</b> With no <code>href</code>, MJML draws a <code>&lt;p&gt;</code>. It looks like a button and does nothing when pressed.</li>
+        <li><b>The table is 380px wide,</b> inside a column with 30px of padding on each side: 380 + 60 = 440. The page was 440px wide on a 320px phone, and on a 414px one.</li>
+        <li><b>My own CSS rule became <code>display: flex</code> on a table cell.</b> A table cell is not a flex container in any useful way, so that line did nothing except make the cell harder to reason about.</li>
+      </ul>
+      <p>Once the button had a link, MJML built an <code>&lt;a&gt;</code> in its place:</p>
+<pre tabindex="0"><code>&lt;a href="https://example.com/cart" style="display:inline-block;background:#0055FF;color:#ffffff; ... padding:20px 35px;border-radius:12px;" target="_blank"&gt;Return to Your Cart&lt;/a&gt;</code></pre>
+      <p>I removed the fixed width and the rule, and the button became 254 &times; 70px at every screen size. My checks now refuse a button with no link, because strict mode does not: I tested MJML 5.4.1, and it accepts a button with no link without complaint.</p>
+
+      <h2>Fault 2: a rounded corner on the wrong element</h2>
+      <p>I wrote the whole email a second time by hand, as plain HTML with no MJML, and compared it with the MJML build pixel by pixel, in light and dark mode. My first attempt was identical in light mode and <b>60 pixels off in dark mode</b>. All 60 were in the corners of one box: the white box holding the heading in the orange band. They differed from MJML's by a single colour level out of 255.</p>
+      <p>The cause was where the corner lived. MJML puts the rounded corner on the table itself, with the text cell directly inside:</p>
+<pre tabindex="0"><code>&lt;table style="background-color:#FFFFFF;border-radius:8px;vertical-align:top;border-collapse:separate;" width="100%"&gt;
+  &lt;tr&gt;&lt;td class="dm-text" style="padding:10px 25px;"&gt; ...the heading... &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      <p>I had put it on a cell, two tables deeper:</p>
+<pre tabindex="0"><code>&lt;table width="100%"&gt;
+  &lt;tr&gt;&lt;td style="background-color:#FFF;border-radius:8px;vertical-align:top;"&gt;
+    &lt;table width="100%"&gt;&lt;tr&gt;&lt;td class="dm-text" style="padding:10px 25px;"&gt; ...the heading... &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+  &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+      <p>Moving the corner to the table made the two builds exactly equal. It also showed me something about my own design. This is the top-left corner of that box, enlarged: dark mode on the left, light mode on the right.</p>
+      <img src="/blog/images/mjml-abstraction-01-box-corner-dark-vs-light.webp" alt="A close-up of the top-left corner of the heading box in the orange band. On the left, in dark mode, the dark box has a square corner. On the right, in light mode, the white box has a rounded corner." width="1010" height="350" loading="lazy">
+      <p>In light mode the corner is rounded. In dark mode it is square, because my dark rule also paints the column's square wrapper behind the rounded table, and that covers the corner. Both builds do exactly this, which is why the test passed. It is a small flaw in my dark design, found only because I had to match the two builds, and it is still to fix.</p>
+
+      <h2>Fault 3: the rounded button in Outlook for Windows</h2>
+      <p>Outlook for Windows draws email with a different engine from a browser, and it does not give a link rounded corners. The usual answer is VML, a shape drawn inside conditional comments. It is not MJML. I write it by hand in a raw block, and give everyone else the normal button:</p>
+<pre tabindex="0"><code>&lt;!--[if mso]&gt;
+  &lt;v:roundrect href="{{ params.cartUrl }}" style="height:70px;width:260px;" arcsize="17%" fillcolor="#0055FF"&gt;
+    &lt;center&gt;Return to Your Cart&lt;/center&gt;
+  &lt;/v:roundrect&gt;
+&lt;![endif]--&gt;
+&lt;!--[if !mso]&gt;&lt;!--&gt;  ...the normal button...  &lt;!--&lt;![endif]--&gt;</code></pre>
+      <p>Two conditional comments make sure only one shows. In the plain HTML version I also wrote Outlook's "ghost tables" by hand around every section. I have <b>not seen this email's button in real Outlook</b>. It follows the pattern MJML itself writes, and I checked it in a browser, which is all I can say for this build.</p>
+
+      <h2>Fault 4: Outlook.com's dark mode, and where the dark rules go</h2>
+      <p>Dark mode is plain CSS, and where you put it decides whether light mode survives. My dark rules sit inside a <code>prefers-color-scheme</code> block, so light mode cannot change. Outlook.com and the Outlook applications are handled separately, because I target them with the attributes they add when they recolour an email:</p>
+<pre tabindex="0"><code>@media (prefers-color-scheme: dark) {
+  .dm-white, .dm-white &gt; table, .dm-white &gt; table &gt; tbody &gt; tr &gt; td { background: #1c1c1e !important; }
+  .dm-text div { color: #f2f2f2 !important; }
+}
+[data-ogsb] .dm-white { background-color: #1c1c1e !important; }   /* Outlook.com */
+[data-ogsc] .dm-text div { color: #f2f2f2 !important; }</code></pre>
+      <p>Gmail recolours emails by its own rules, so nothing here switches it on. As for Outlook.com, <b>I tested these rules in a different project, one that is not published here.</b> I did not test them in this cart build, so for this email they are written, and the light mode is proven unchanged.</p>
+
+      <h2>Fault 5: Gmail's limits, and measuring the file that is really sent</h2>
+      <p>Gmail clips an email over about 102 KB, hiding the rest behind "View entire message", and it ignores embedded CSS past about 16,384 characters. Both limits apply to the built file, not to the MJML. This is where my own checks were wrong. At one stage they reported the email at 37.1 KB, while the file the build wrote was 41,732 bytes, which is 40.8 KB. The checks were measuring MJML's unformatted output, and the build writes the formatted one. Nothing was near the limit, but a measure that disagrees with the file you hand over is not one to trust. They now measure the built file: for the finished email, 44.0 KB and 3,562 characters of style.</p>
+
+      <h2>What the built HTML contains that the MJML never mentions</h2>
+      <p>The first surprise, when I started reading what MJML builds, was how much of it is not my design at all. It is the groundwork every email needs, and if you have only ever worked in the framework, you have never had to look at it.</p>
+      <h3>The resets</h3>
+      <p>Near the top of the built file is a block of rules before any of my styling:</p>
+<pre tabindex="0"><code>body { margin: 0; padding: 0; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+table, td { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; }
+p { display: block; margin: 13px 0; }</code></pre>
+      <p>Each line exists because some client does something unwanted. The <code>body</code> rule removes the margin a client adds around the whole email, and the two <code>text-size-adjust</code> lines stop some mobile clients enlarging text on their own. The <code>table</code> rule, with its two <code>mso</code> lines, removes space that Outlook adds around tables. The <code>img</code> rule stops borders and outlines on images, makes them scale with their container, and smooths a scaled image in Outlook's engine. The <code>p</code> rule sets the paragraph margin explicitly, because clients disagree about the default. If you do not know the reason for a line, you cannot tell which ones are safe to remove, or which new client needs a new one.</p>
+      <h3>Outlook's own settings</h3>
+      <p>Just after the resets, inside a conditional comment that only Outlook reads:</p>
+<pre tabindex="0"><code>&lt;!--[if mso]&gt;&lt;noscript&gt;&lt;xml&gt;&lt;o:OfficeDocumentSettings&gt;
+  &lt;o:AllowPNG/&gt;&lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;
+&lt;/o:OfficeDocumentSettings&gt;&lt;/xml&gt;&lt;/noscript&gt;&lt;![endif]--&gt;</code></pre>
+      <p>That is how an email asks Outlook for Windows to draw it at 96 pixels per inch. Without it, Outlook can scale an email up on a high-resolution screen. I wrote about that scaling problem in <a href="/blog/where-transactional-email-fails.html">Where Transactional Email Fails</a>.</p>
+      <h3>The preheader</h3>
+      <p>Before the visible email there is a hidden line:</p>
+<pre tabindex="0"><code>&lt;div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;"&gt;
+  Something in your cart, still interested?
+&lt;/div&gt;</code></pre>
+      <p>The inbox shows that text next to the subject. MJML writes it from one line, <code>mj-preview</code>. In plain HTML you write it yourself, and you hide it several ways at once, because different clients ignore different ones.</p>
+      <h3>The small details</h3>
+      <p>Counting in the finished email, these are the details I would never have chosen to write, and would miss if they were gone:</p>
+      <table>
+        <thead><tr><th>Detail</th><th>Why it is there</th></tr></thead>
+        <tbody>
+          <tr><td><code>role="presentation"</code> on 71 layout tables</td><td>Tells a screen reader these tables are layout, not data</td></tr>
+          <tr><td><code>font-size:0</code> on the cell that holds the columns</td><td>Removes the gaps that appear between side-by-side blocks</td></tr>
+          <tr><td><code>font-size:13px</code> on the images</td><td>Sets the size of the alt text if a picture does not load</td></tr>
+          <tr><td><code>word-break:break-word</code> on 19 cells</td><td>Lets a long unbroken word, such as a long product name, wrap instead of widening the layout</td></tr>
+          <tr><td><code>mso-padding-alt</code> on the button</td><td>Gives Outlook its own padding for the link, because it treats padding on links differently</td></tr>
+          <tr><td><code>mso-line-height-rule: exactly</code> on the Outlook tables</td><td>Stops Outlook adding height of its own</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Fixed, fluid and hybrid layouts</h2>
+      <p>There are three ways to make an email fit a screen, and a framework picks one for you. You need to know which, and why, before a design asks for something different.</p>
+      <table>
+        <thead><tr><th>Approach</th><th>How it works</th><th>Strength</th><th>Weakness</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed</td><td>A table with a fixed width, such as 600px</td><td>Simple and predictable</td><td>Too wide for a phone unless something shrinks it</td></tr>
+          <tr><td>Fluid</td><td>Percentage widths, and images at 100%</td><td>Follows the screen</td><td>Little control on large screens, and it leans on client support for CSS</td></tr>
+          <tr><td>Hybrid</td><td>Fluid blocks with a maximum width, plus fixed-width tables for Outlook in conditional comments</td><td>Works across the widest range of clients</td><td>More markup, and you maintain the Outlook tables</td></tr>
+        </tbody>
+      </table>
+      <p>The cart email is hybrid. This is the real structure MJML built for three columns, shortened:</p>
+<pre tabindex="0"><code>&lt;div style="margin:0px auto;max-width:600px;"&gt;
+  &lt;table style="width:100%;"&gt;&lt;tr&gt;
+    &lt;td style="direction:ltr;font-size:0px;padding:10px;text-align:center;"&gt;
+      &lt;!--[if mso | IE]&gt;&lt;table role="presentation"&gt;&lt;tr&gt;&lt;td style="vertical-align:top;width:191px;"&gt;&lt;![endif]--&gt;
+      &lt;div class="mj-column-per-33" style="font-size:0px;display:inline-block;vertical-align:top;width:100%;"&gt; ...column... &lt;/div&gt;
+      &lt;!--[if mso | IE]&gt;&lt;/td&gt;&lt;td style="vertical-align:top;width:191px;"&gt;&lt;![endif]--&gt;
+      &lt;div class="mj-column-per-33" style="font-size:0px;display:inline-block;vertical-align:top;width:100%;"&gt; ...column... &lt;/div&gt;
+      ...</code></pre>
+      <p>And the CSS that makes it respond:</p>
+<pre tabindex="0"><code>@media only screen and (min-width:480px) {
+  .mj-column-per-33 { width: 33% !important; max-width: 33%; }
+}</code></pre>
+      <p>Read it closely and you see how it works. Each column is an inline block, <b>100% wide by default</b>, so on a phone the columns stack. The media query only widens them to a third from 480px up. That is mobile-first: if a client ignores the media query, the columns stay stacked and readable. The <code>max-width:600px</code> container does the fluid part. And Outlook for Windows ignores both <code>max-width</code> and side-by-side blocks, so the conditional comments add real tables with fixed widths just for it.</p>
+      <h3>When the design changes</h3>
+      <p>Designs change. A client asks for two products side by side on a phone, or the image above the text on a desktop and below it on a phone, or a banner with text laid over a picture. Some of that MJML does. Some of it it fights, and I wrote up one place it does in <a href="/blog/mj-group-padding.html">images shrinking and spacing apart in columns</a>. Reversing the order in which columns stack on a phone, for example, is done with <code>direction: rtl</code> on the row and <code>direction: ltr</code> on each cell, which is HTML and CSS you write yourself. Either way, the file that is sent is HTML and CSS, so the change ends up there.</p>
+
+      <h2>Web fonts and fallbacks</h2>
+      <p>The built email links the Ubuntu web font in two ways, and fences both off from Outlook:</p>
+<pre tabindex="0"><code>&lt;!--[if !mso]&gt;&lt;!--&gt;
+&lt;link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700" rel="stylesheet" type="text/css"&gt;
+&lt;style type="text/css"&gt; @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700); &lt;/style&gt;
+&lt;!--&lt;![endif]--&gt;</code></pre>
+      <p>A client that blocks external fonts falls back along the font stack, <code>Ubuntu, Helvetica, Arial, sans-serif</code>, so the stack matters as much as the link. This also exposes a real limit in my own proof. My pixel comparison blocks web fonts for both emails, so both render in the fallback font. My hand-written version does not link the web font at all, so <b>where that font loads, the two emails will not look identical.</b> The test proved what it could prove. The hand-written file needs the same few lines.</p>
+
+      <h2>When it is not my file</h2>
+      <p>A framework only helps if the file you are given has one. Often it does not. I take over an email another developer built by hand, or one exported from an editor, or one edited after the build, and I am asked for an overhaul or a few adjustments. That is where the HTML and CSS stops being optional. I read it from the top:</p>
+      <ol>
+        <li><b>The head:</b> the language, the viewport, the meta tags, the resets and Outlook's settings.</li>
+        <li><b>How the width is built:</b> fixed, fluid or hybrid.</li>
+        <li><b>The conditional comments:</b> what Outlook gets that nobody else does.</li>
+        <li><b>The media queries:</b> exactly what changes on a phone.</li>
+        <li><b>Dark mode:</b> any <code>prefers-color-scheme</code> block, the Outlook selectors, the colour-scheme tags.</li>
+        <li><b>Where each style lives:</b> inline, in the style block, or both, and any <code>!important</code> fighting another rule.</li>
+        <li><b>Links and images:</b> real addresses, alt text, sizes, https.</li>
+        <li><b>The size</b> of the finished file.</li>
+      </ol>
+      <p>Before I change anything, I copy the file and keep the copy, run my checks to get a baseline, change one thing at a time, and compare before and after. That is the routine in <a href="/blog/abandoned-cart-email-step-by-step.html">the cart build</a>: saved snapshots, checks, and a pixel comparison. I also never trust an editor's preview, because some editors rewrite markup when they save, so I read what was actually stored.</p>
+
+      <h2>What I would learn first</h2>
+      <p>If you write email and want to stop depending on a tool:</p>
+      <ol>
+        <li><b>The box model,</b> and what padding, margin and width really do to a table cell.</li>
+        <li><b>Nested tables,</b> and why email still uses them for layout.</li>
+        <li><b>Inline styles,</b> and which CSS each email client reads and ignores.</li>
+        <li><b>The resets,</b> and the reason for every line in them.</li>
+        <li><b>Fixed, fluid and hybrid layouts,</b> and how columns sit side by side and stack: inline blocks, a font size of zero, and a media query.</li>
+        <li><b>Conditional comments,</b> and what Outlook for Windows does differently.</li>
+        <li><b>The preheader,</b> web fonts and their fallbacks.</li>
+        <li><b>How to read the built HTML,</b> and someone else's file, from the top, every time, before you trust it.</li>
+      </ol>
+
+      <h2>Where MJML earns its place</h2>
+      <table>
+        <thead><tr><th>What MJML gives me</th><th>What it does not do</th></tr></thead>
+        <tbody>
+          <tr><td>Writes the nested tables and the responsive columns</td><td>Tell me when one of them is wrong</td></tr>
+          <tr><td>Strict mode refuses an invalid unit or a colour with no <code>#</code></td><td>Refuse a missing closing body tag, a repeated attribute or a button with no link (tested on 5.4.1)</td></tr>
+          <tr><td>A short, readable source file</td><td>Change the fact that the client receives the built HTML</td></tr>
+          <tr><td>A raw block for hand-written parts</td><td>Write the VML or the dark-mode CSS for me</td></tr>
+          <tr><td>Builds the columns mobile-first</td><td>Decide what a design needs when a column should not stack, or should stack in a different order</td></tr>
+          <tr><td>Writes the Outlook tables for the layout it built</td><td>Tell me whether they still fit a layout I then changed by hand</td></tr>
+          <tr><td>A stable way to write the email today</td><td>Keep its output the same between versions. This one wraps the whole email in a div with a role of article, so I pin the version, 5.4.1, and read the HTML again after an upgrade</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Takeaway</h2>
+      <p>An abstraction layer is good. It also hides things, and some of what it hides is exactly what you need to know: the fundamentals underneath it, and the limits of the framework itself. MJML will not do everything. Designs change, a client's email arrives built by someone else, and something goes wrong in one client at the worst time. The day that happens, you need to be able to get into the HTML and CSS and fix it. So use MJML, keep reading what it builds, and know the layer underneath well enough to write the whole email without the tool, because that is the day you find out whether you understand your own email.</p>
+    </div>
+
+    <div class="post-cta">
+      <p>Need an email that holds up in real email clients, written and checked down to the HTML and CSS? I design, develop, program and test it end to end, write my side of the API, define what data your application sends, and trace problems through the whole system.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Should I learn MJML or plain HTML first?</summary>
+          <p>HTML and CSS first. MJML is a faster way to write what HTML and CSS already do, and it is an abstraction layer on top of them. If you know the layer underneath, MJML is a tool you control. If you do not, the first fault it hides from you is one you cannot find.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the HTML that MJML builds ready to send as it is?</summary>
+          <p>Not without reading it. In the build I describe, the built HTML showed a button drawn as a paragraph, a width that made the page too wide for a phone, and a rule that became display flex on a table cell. All three were invisible in the MJML.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why write the whole email again as plain HTML?</summary>
+          <p>Some clients want plain HTML with no build step, and it proves that I understand the email without the tool. I compared the two pixel by pixel in light and dark mode. The first attempt was 60 pixels off in dark mode, because I had put a rounded corner on the wrong element.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does MJML handle dark mode and Outlook for you?</summary>
+          <p>No. Dark mode is CSS that I write, inside a prefers-color-scheme block, with separate rules for Outlook.com. The rounded Outlook button is VML that I write by hand in a raw block. I did not test the Outlook parts of this cart email in real Outlook. I have tested Outlook.com&#x27;s dark-mode rules in a different project, which is not published here.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does MJML&#x27;s strict mode catch?</summary>
+          <p>It refused an invalid unit and a colour with no hash when I tested version 5.4.1. It accepted a missing closing body tag, a repeated attribute and a button with no link, so I wrote extra checks for those.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What are Gmail&#x27;s limits for an email?</summary>
+          <p>Gmail clips an email over about 102 KB, and ignores embedded CSS past about 16,384 characters. Both apply to the built file, not to the MJML, so measure the HTML that is really sent.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is a hybrid email layout?</summary>
+          <p>A layout built from fluid blocks with a maximum width, so it follows the screen, plus fixed-width tables in conditional comments for Outlook for Windows, which ignores maximum widths and side-by-side blocks. The cart email is built this way. Its columns stack by default and sit side by side from 480 pixels up.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What do the reset lines at the top of an email do?</summary>
+          <p>Each exists because some client does something unwanted: adding a margin around the body, enlarging text on a phone, adding space around tables in Outlook, or putting a border on a linked image. Learn the reason for each line before you remove one.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do you work in an email someone else built?</summary>
+          <p>I read the HTML from the top and work out the width approach, the conditional comments, the media queries and the dark mode. Then I copy the file, run my checks for a baseline, change one thing at a time, and compare before and after.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
+</script>
+</body>
+</html>

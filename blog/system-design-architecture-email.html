@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="/consent.js?v=1" defer></script>
+        <script src="/mail-link.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+
+    <title>System Design and Architecture for Email: Which Decisions Are Expensive to Change | Email Dev Notes</title>
+    <meta name="description" content="What system design and architecture mean when the system is one email that depends on an API: the decisions that are expensive to change, sorted and argued.">
+    <link rel="canonical" href="https://linleyb.com/blog/system-design-architecture-email.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="System Design and Architecture for Email: Which Decisions Are Expensive to Change">
+    <meta property="og:description" content="A worked example from an abandoned cart email: who owns each link, which decisions other people build on, and how to design for failure.">
+    <meta property="og:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer">
+    <meta property="og:url" content="https://linleyb.com/blog/system-design-architecture-email.html">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="System Design and Architecture for Email: Which Decisions Are Expensive to Change">
+    <meta name="twitter:description" content="A worked example from an abandoned cart email: who owns each link, which decisions other people build on, and how to design for failure.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=10">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Freelance Email Developer",
+            "inLanguage": [
+                "en-AU",
+                "en-MU"
+            ],
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Email Developer",
+            "url": "https://linleyb.com/",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "workLocation": {
+                "@type": "Place",
+                "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "MU"
+                }
+            },
+            "sameAs": [
+                "https://github.com/LinleyB75",
+                "https://linleybignouxzqme9nmu.contra.com/",
+                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
+                "https://www.fiverr.com/linleybignoux"
+            ],
+            "knowsAbout": [
+                "Email Development",
+                "Email Design",
+                "HTML Email",
+                "CSS for Email",
+                "MJML",
+                "Handlebars",
+                "Liquid",
+                "Email Testing and Quality Assurance",
+                "Email Automation",
+                "Transactional Email",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Mailchimp",
+                    "sameAs": "https://mailchimp.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "MailerLite",
+                    "sameAs": "https://www.mailerlite.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Klaviyo",
+                    "sameAs": "https://www.klaviyo.com/"
+                },
+                {
+                    "@type": "Thing",
+                    "name": "Kit (formerly ConvertKit)",
+                    "sameAs": "https://kit.com/"
+                }
+            ]
+        },
+        {
+            "@type": "ProfessionalService",
+            "@id": "https://linleyb.com/#service",
+            "name": "Linley Bignoux Email Development",
+            "url": "https://linleyb.com/",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "provider": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "areaServed": [
+                {
+                    "@type": "Country",
+                    "name": "Mauritius"
+                },
+                {
+                    "@type": "AdministrativeArea",
+                    "name": "Worldwide"
+                }
+            ],
+            "serviceType": [
+                "Email Development",
+                "Email Design",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Email Templating",
+                "Liquid Email Templating",
+                "Email Automation",
+                "Email Testing and Quality Assurance",
+                "Dynamic Email Content",
+                "Transactional Email Setup",
+                "Mailchimp Email Development",
+                "MailerLite Email Development",
+                "Brevo Email Development",
+                "Klaviyo Email Development",
+                "Kit Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/system-design-architecture-email.html#article",
+            "url": "https://linleyb.com/blog/system-design-architecture-email.html",
+            "headline": "System Design and Architecture for Email: Which Decisions Are Expensive to Change",
+            "description": "What system design and architecture mean when the system is one email that depends on an API: the decisions that are expensive to change, sorted and argued.",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "datePublished": "2026-11-06",
+            "dateModified": "2026-11-06",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/system-design-architecture-email.html"
+            }
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/system-design-architecture-email.html#faq",
+            "url": "https://linleyb.com/blog/system-design-architecture-email.html",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "What is the difference between system design and architecture?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "A common line is between the high-level shape of a system and the detail of how each part works. For a small system I find the cost of change more useful. Architecture is the set of decisions that are expensive to change once other people build on them. Design is everything inside my own links that I can change without anyone else noticing."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Do you need large-scale system design to build transactional email?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "No. The topics that fill most writing on system design, such as sharding, load balancing and replication, do not apply to one email and one API call. What does apply is knowing the chain and who owns each link, defining the interface first, and making every boundary refuse what it can and report what it cannot."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Who owns queues, retries and bounce handling in an email system?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In the cart system they belong to the client's application, their domain and Brevo. I define the data, write my side of the API and build and test the email. I name the others so that nobody assumes they are covered."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Why is the price sent already formatted?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Because the application knows the currency and the format, and the email should not guess either. Moving the formatting into the email would change both sides, which is why it is a decision with a high cost of change."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you change an API the client has already built against?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "In my experience the cheapest route is often a second email with its own ID for the new case, leaving the first alone, or adding optional values and keeping the old ones. Changing the meaning of an existing value forces every caller to change at once."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do you trace an email that never arrived?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "I move one link at a time along the chain: was a request made, did Brevo accept it, what does its log say about that message ID, and if it was delivered, what did the customer's email client do with it. Each question has an owner."
+                    }
+                }
+            ]
+        }
+    ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/#home" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">Freelance Email Developer</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#home">Home</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Certs</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">ARTICLE • SYSTEM DESIGN • EMAIL ARCHITECTURE</span>
+    <h1>System Design and Architecture for Email: Which Decisions Are Expensive to Change</h1>
+    <p class="post-meta">Published 7 November 2026 • By Linley Bignoux • Worked example: the Kick Off &rarr; Your English abandoned cart email</p>
+    <div class="tag-row"><span class="tag">system-design</span><span class="tag">architecture</span><span class="tag">api</span><span class="tag">transactional-email</span><span class="tag">brevo</span><span class="tag">data-design</span><span class="tag">trade-offs</span><span class="tag">nodejs</span></div>
+
+    <div class="post-content">
+      <h2>The question I started with</h2>
+      <p>Most of what is written about system design is about scale: queues, sharding, load balancing, replication. Most of my systems are not that. They are small: one email, one API call, one client. I work at the point where an email meets an API, so the question I keep coming back to is what system design and architecture mean when the system is one email that depends on an API.</p>
+      <p>My answer is short. They mean knowing which decisions are expensive to change, making those decisions on purpose, and checking every boundary. The <a href="/blog/abandoned-cart-email-step-by-step.html">abandoned cart build</a> is the worked example. The email in it is a test version, built for Kick Off &rarr; Your English, who have agreed to be named.</p>
+
+      <h2>Two words, used loosely</h2>
+      <p>People draw the line between architecture and design in different places. A common one is that architecture sets the high-level shape, and design fills in how each part works. That is a fair line. For a small system I find a different one more useful, which is the cost of change:</p>
+      <ul>
+        <li><b>Architecture</b> is the set of decisions that are expensive to change once other people build on them.</li>
+        <li><b>Design</b> is everything inside my own links that I can change without anyone else noticing.</li>
+      </ul>
+      <p>A decision moves from design to architecture the moment someone else depends on it. People draw the line in different places, and that is fine. What matters is knowing which decisions are the expensive ones <i>before</i> you make them.</p>
+
+      <h2>The chain, and who owns each link</h2>
+      <p>An abandoned cart email is a chain from the shop's application to the inbox. Every link has an owner and its own way of failing.</p>
+      <svg viewBox="0 0 360 536" role="img" aria-labelledby="sd-title sd-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto">
+        <title id="sd-title">From the shop's application to the inbox, and who owns each part</title>
+        <desc id="sd-desc">Five steps in order, as white boxes with black text on a black background. One: the client's application knows the cart. Two: the send step builds one request and refuses bad values, owned by me. Three: Brevo's API checks the key, finds the email by its ID and fills in the values. Four: the email in Brevo, HTML and CSS with six tags, owned by me. Five: the inbox, where each email client redraws and recolours it.</desc>
+        <defs><marker id="sd-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ffffff"/></marker></defs>
+        <rect width="360" height="536" rx="14" fill="#000000"/>
+        <g fill="#ffffff" stroke="#ffffff" stroke-width="2"><rect x="10" y="10" width="340" height="84" rx="10"/><rect x="10" y="118" width="340" height="84" rx="10"/><rect x="10" y="226" width="340" height="84" rx="10"/><rect x="10" y="334" width="340" height="84" rx="10"/><rect x="10" y="442" width="340" height="84" rx="10"/></g>
+        <g fill="none" stroke="#ffffff" stroke-width="2"><line x1="180" y1="94" x2="180" y2="116" marker-end="url(#sd-arrow)"/><line x1="180" y1="202" x2="180" y2="224" marker-end="url(#sd-arrow)"/><line x1="180" y1="310" x2="180" y2="332" marker-end="url(#sd-arrow)"/><line x1="180" y1="418" x2="180" y2="440" marker-end="url(#sd-arrow)"/></g>
+        <g fill="#000000" font-family="inherit"><text x="24" y="34" font-size="14" font-weight="700">1. The client's application</text><text x="24" y="56" font-size="12">Knows the cart: who, what, how much, where to</text><text x="24" y="78" font-size="12" font-style="italic">Owner: the client's developer</text><text x="24" y="142" font-size="14" font-weight="700">2. The send step (Node.js)</text><text x="24" y="164" font-size="12">Builds one request, refuses bad values</text><text x="24" y="186" font-size="12" font-style="italic">Owner: me, my side of the API</text><text x="24" y="250" font-size="14" font-weight="700">3. Brevo's API</text><text x="24" y="272" font-size="12">Checks the key, finds the email, fills in the values</text><text x="24" y="294" font-size="12" font-style="italic">Owner: Brevo</text><text x="24" y="358" font-size="14" font-weight="700">4. The email in Brevo</text><text x="24" y="380" font-size="12">HTML and CSS, six tags, a fallback for the name</text><text x="24" y="402" font-size="12" font-style="italic">Owner: me</text><text x="24" y="466" font-size="14" font-weight="700">5. The inbox</text><text x="24" y="488" font-size="12">Each email client redraws and recolours it</text><text x="24" y="510" font-size="12" font-style="italic">Owner: each email client</text></g>
+      </svg>
+
+      <h2>The decisions, sorted by cost of change</h2>
+      <p>Here are the decisions in the cart build, sorted by who has to change if I change my mind. The test is simple: if I change it, does anyone besides me have to do work?</p>
+      <table>
+        <thead><tr><th>Decision</th><th>Expensive to change?</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>The request: a recipient, the email's ID and six values</td><td>Yes</td><td>The client's developer builds against it</td></tr>
+          <tr><td>Every value is text, even the quantity</td><td>Yes</td><td>Changing a type breaks the caller</td></tr>
+          <tr><td>The price arrives already formatted</td><td>Yes</td><td>Moving the formatting into the email would change both sides</td></tr>
+          <tr><td>One product per email</td><td>Yes</td><td>A list changes the shape of the request</td></tr>
+          <tr><td>The first name is optional, with the fallback inside the email</td><td>Partly</td><td>Adding an optional value breaks nobody. Making a value required would</td></tr>
+          <tr><td>The email lives in the client's Brevo account and is found by its ID</td><td>Yes</td><td>The ID differs per account, and per test and live setup</td></tr>
+          <tr><td>The API key lives in the client's environment</td><td>Yes</td><td>It decides who is able to send</td></tr>
+          <tr><td>Brevo as the platform</td><td>Very</td><td>The request, the tags and the logs all follow its API</td></tr>
+          <tr><td>The checks, the tests, the dark palette, the HTML and CSS</td><td>No</td><td>All mine. Nobody else notices</td></tr>
+          <tr><td>The footer wording</td><td>No</td><td>Two lines, and I proved nothing outside the footer moved</td></tr>
+        </tbody>
+      </table>
+      <p>One decision crossed the line while I was working. My checks could say a value was present, short enough and safe, but not that a quantity was a number, so a quantity of "one" or a price of "free" would have passed. Adding a format rule was a change to my own checks, which is design. But the rule is also part of what the client's developer builds against, so it became part of the data design I hand over. It is a good example of why the line is not fixed: a rule I write for myself becomes architecture the moment I publish it to someone else.</p>
+
+      <h2>Trade-offs, and what would make me reconsider</h2>
+      <p>A decision is only half made until you say what would change it.</p>
+      <table>
+        <thead><tr><th>I chose</th><th>The alternative</th><th>What would make me reconsider</th></tr></thead>
+        <tbody>
+          <tr><td>A flat object of six text values</td><td>A nested list of items</td><td>The client needs a cart with several products in one email</td></tr>
+          <tr><td>The price formatted by the application</td><td>An amount and a currency, formatted by the email</td><td>The email has to show totals or convert between currencies</td></tr>
+          <tr><td>The fallback for a missing name inside the email</td><td>The application handles the missing case</td><td>More optional values appear, so the email's conditions get hard to read</td></tr>
+          <tr><td>The email found by its ID in Brevo</td><td>Sending the whole HTML with every request</td><td>The client needs to change the wording without a deployment, or the reverse</td></tr>
+          <tr><td>A send step that is dry by default</td><td>A send step that sends</td><td>It never changes. The cost of a surprise email is too high</td></tr>
+        </tbody>
+      </table>
+
+      <h2>The interface is where most things break</h2>
+      <p>In my experience the interfaces between components are where most integration problems live, so the interface is where I spend my care. For the cart email it is six values: the first name, the product name, the product picture's address, the price, the quantity and the cart link, with a rule for each, written down once and checked before anything is sent. Twenty-six deliberate breaks must all be refused, and a generated page, <code>docs/data-design.md</code>, holds the same table for the client's developer. The full detail is in <a href="/blog/abandoned-cart-email-step-by-step.html">the cart build</a>.</p>
+      <p>The reason to define it first is the cost of change. A rule written down before anyone builds on it costs nothing. The same rule changed after the client's developer has shipped costs them a deployment, and costs the customer a broken email while the two sides disagree.</p>
+
+      <h2>Designing for failure: every boundary refuses what it can and reports what it cannot</h2>
+      <table>
+        <thead><tr><th>Boundary</th><th>What it does</th></tr></thead>
+        <tbody>
+          <tr><td>Before the request</td><td>The data checks refuse a bad value, and the send step refuses to send it</td></tr>
+          <tr><td>The request</td><td>A dry run prints it and sends nothing. The sandbox checks it with Brevo and sends nothing</td></tr>
+          <tr><td>Brevo's answer</td><td>The status and Brevo's own message are printed, and the key never is</td></tr>
+          <tr><td>After sending</td><td>"Accepted" is not "delivered". The message ID is the thread to pull</td></tr>
+          <tr><td>The inbox</td><td>Opening the email in real email clients is the only way to see it</td></tr>
+        </tbody>
+      </table>
+      <p>That table is also how I trace a problem backwards. If a customer says no email arrived: was a request made, did Brevo accept it, what does Brevo's log say about that message ID, and if it was delivered, what did the customer's email client do with it? Each question moves one link along the chain, and each has an owner. I wrote the symptom-by-symptom version of this in <a href="/blog/where-transactional-email-fails.html">Where Transactional Email Fails</a>.</p>
+
+      <h2>What sits outside my links</h2>
+      <p>An email system has a lot that sits outside my links, and I would rather name it than pretend it is not there. In the cart system, these belong to the client's application, their domain, or Brevo:</p>
+      <ul>
+        <li><b>A queue between the request and the send,</b> so a spike of abandoned carts does not slow the shop down.</li>
+        <li><b>Retries with backoff,</b> for when a request to Brevo fails.</li>
+        <li><b>Bounces and suppression:</b> a hard bounce means stop sending to that address, a soft bounce means try again later.</li>
+        <li><b>Sender authentication,</b> the SPF, DKIM and DMARC records on the sending domain, without which messages are far more likely to land in spam.</li>
+        <li><b>Rate limits and the reputation of the sending address.</b></li>
+        <li><b>The unsubscribe decision,</b> which depends on the rules where the customers are, and is for the client to make.</li>
+      </ul>
+      <p>I would put one more at the top of that list: make sure a retry cannot send two emails for one cart. A customer who gets the same reminder twice trusts the shop a little less.</p>
+
+      <h2>The last box: the inbox</h2>
+      <p>Descriptions of the email pipeline often end at the inbox: the provider runs spam filters, categorises, and renders. That is one box in the diagram, and it is where I do most of my work. Dark mode, Gmail clipping an email over about 102 KB, Outlook drawing a button differently, a white-backed logo showing as a white block: all of it lives inside that last box, and none of it shows up in a request, a response status or a log. The system is not finished when Brevo says accepted, and it is not finished when the log says delivered. I wrote about what I find in that box in <a href="/blog/mjml-is-an-abstraction-layer.html">MJML Is an Abstraction Layer</a>.</p>
+
+      <h2>Keep it small</h2>
+      <p>I aim for the minimum architecture that gets through the next twelve months. The cart email shows one product because that is what the client needs now. It is also the reason I can say what would change if that stopped being true, and what each option would cost:</p>
+      <ol>
+        <li><b>Add an optional list of items</b> to the request and keep the old values. Existing callers are untouched, and the email gets harder to read.</li>
+        <li><b>Change the request</b> so the single product becomes a list. Every caller must change at once. The most expensive option.</li>
+        <li><b>Make a second email with its own ID</b> for carts with several products, and leave the first alone. The application chooses which ID to send. In my experience this is often the cheapest, because nothing the client has already built changes.</li>
+      </ol>
+      <p>I would only know that ordering because I had listed the decisions by cost of change before anyone built on them.</p>
+
+      <h2>A diagram that cannot go stale</h2>
+      <p>Architecture diagrams go stale, because the real system moves on. I cannot keep a picture in sync with a system by hand, so I generate the part that matters. The table of values the client's developer builds against is written by a script from my settings file and from the email itself, so it cannot drift from what is actually checked. The picture shows the chain. The generated table is the interface.</p>
+
+      <h2>Takeaway</h2>
+      <p>You do not need a large system to need system design. You need to know the chain, who owns each link, and which decisions other people will build on. Make those on purpose, write down what would change them, define the interface before anyone depends on it, make every boundary refuse what it can and report what it cannot, and name the things that belong to someone else. Everything else, you are free to change quietly.</p>
+
+      <h2>References</h2>
+      <p>The facts about Brevo's API in this post come from its documentation:</p>
+      <ul>
+        <li><a href="https://developers.brevo.com/docs/using-sandbox-mode" target="_blank" rel="noopener noreferrer">Brevo: using sandbox mode</a></li>
+        <li><a href="https://developers.brevo.com/docs/ip-security" target="_blank" rel="noopener noreferrer">Brevo: IP security</a></li>
+      </ul>
+    </div>
+
+    <div class="post-cta">
+      <p>Need an email that depends on your application done properly, with the data defined, my side of the API written, and every boundary checked? I design, develop, program and test it end to end, define what data your application sends, and trace problems through the whole system, from your application to the inbox.</p>
+      <a href="/#contact" class="cta-button">Get in touch</a>
+    </div>
+  </article>
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is the difference between system design and architecture?</summary>
+          <p>A common line is between the high-level shape of a system and the detail of how each part works. For a small system I find the cost of change more useful. Architecture is the set of decisions that are expensive to change once other people build on them. Design is everything inside my own links that I can change without anyone else noticing.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do you need large-scale system design to build transactional email?</summary>
+          <p>No. The topics that fill most writing on system design, such as sharding, load balancing and replication, do not apply to one email and one API call. What does apply is knowing the chain and who owns each link, defining the interface first, and making every boundary refuse what it can and report what it cannot.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Who owns queues, retries and bounce handling in an email system?</summary>
+          <p>In the cart system they belong to the client&#x27;s application, their domain and Brevo. I define the data, write my side of the API and build and test the email. I name the others so that nobody assumes they are covered.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Why is the price sent already formatted?</summary>
+          <p>Because the application knows the currency and the format, and the email should not guess either. Moving the formatting into the email would change both sides, which is why it is a decision with a high cost of change.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do you change an API the client has already built against?</summary>
+          <p>In my experience the cheapest route is often a second email with its own ID for the new case, leaving the first alone, or adding optional values and keeping the old ones. Changing the meaning of an existing value forces every caller to change at once.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do you trace an email that never arrived?</summary>
+          <p>I move one link at a time along the chain: was a request made, did Brevo accept it, what does its log say about that message ID, and if it was delivered, what did the customer&#x27;s email client do with it. Each question has an owner.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <a
+                href="https://linleybignouxzqme9nmu.contra.com/"
+                class="social-icon social-contra"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my Contra Profile"
+            >
+                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
+                    <!-- White Rounded Background -->
+                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
+                    <!-- Black Custom Star Icon with Cross Cut -->
+                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
+                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
+                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
+                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
+                </svg>
+            </a>
+            <a
+                href="https://github.com/LinleyB75/Email-Dev"
+                class="social-icon social-github"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Visit my GitHub Profile"
+            ><i class="fab fa-github"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+
+            <!-- Upwork Profile Icon Link -->
+            <a
+                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upwork Profile"
+                class="social-icon social-upwork"
+            ><i class="fa-brands fa-upwork"></i></a>
+
+            <!-- Fiverr Profile Icon Link -->
+            <a
+                href="https://www.fiverr.com/linleybignoux"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Fiverr Profile"
+                class="social-icon social-fiverr"
+            ><i class="fa-solid fa-f"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
+                    alt="Linley Bignoux logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
+    themeBtn.addEventListener('click', () => {
+        let current = document.documentElement.getAttribute('data-theme');
+        let target = current === 'dark' ? 'light' : 'dark';
+        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
+</script>
+</body>
+</html>

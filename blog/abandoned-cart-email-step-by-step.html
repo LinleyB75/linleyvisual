@@ -243,7 +243,7 @@
                     "name": "Did you test it in Outlook?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "No. I tested it in a real browser and opened it in other real email clients, but not in Outlook, in any version. The rounded Outlook button and the Outlook dark-mode rules are written and checked, but I have never seen them in real Outlook, and the repository says so."
+                        "text": "No. I tested it in a real browser and opened it in other real email clients, but not in Outlook, in any version. The rounded Outlook button and the Outlook dark-mode rules are written and checked, but I have not seen this email in real Outlook, and the repository says so. I have tested Outlook.com's dark-mode rules in a different project, which is not published here."
                     }
                 }
             ]
@@ -303,7 +303,7 @@
       <h2>Status</h2>
       <div class="status-box">
         <p><b>Done:</b> built, checked, and fixed until it passes. Dark and light mode. A data design with 26 deliberate breaks and 15 send tests. The same email written a second time as plain HTML, pixel-identical to the MJML build. A real send through my own Brevo account, which arrived as it should. Opened in real email clients. A one-page handoff for the client's developer.</p>
-        <p><b>Not tested:</b> Outlook, in any version. The rounded Outlook button is written and checked, but I have never seen it in real Outlook, and I say so everywhere it matters.</p>
+        <p><b>Not tested in this build:</b> Outlook, in any version. The rounded Outlook button is written and checked, but I have not seen this email's button in real Outlook, and I say so everywhere it matters. I have tested Outlook.com's dark-mode rules in a different project, which is not published here.</p>
         <p><b>Waiting for the client:</b> the real links, the subject line, whether the email needs an unsubscribe link, and whether showing one product is enough.</p>
       </div>
 
@@ -326,7 +326,7 @@
       <p>I do not only write MJML. In every project I end up in the HTML and CSS, many times: to change a spacing, to fix how one email client draws something, to read what the build produced, or to hand a developer a file with no build step. Vanilla HTML and CSS are the foundation of everything I do in email. MJML is an abstraction layer. It writes the nested tables for me, and I am glad of it, but it sits on top of HTML and CSS, and the faults that matter live underneath.</p>
       <p>This project shows why that matters, in five places:</p>
       <ul>
-        <li><b>The draft was 440px wide on a 320px phone.</b> I found out by reading the HTML that MJML had built. The button had no link, so MJML drew it as a plain paragraph, and the CSS rule meant to style it never applied.</li>
+        <li><b>The draft was 440px wide on a 320px phone.</b> I found out by reading the HTML that MJML had built. The button had a fixed width of 380px inside a column with 30px of padding on each side, and because it had no link, MJML drew it as a plain paragraph, not a link.</li>
         <li><b>The rounded Outlook button is not MJML.</b> It is VML inside conditional comments, written by hand, and Outlook for Windows is the only client that reads it.</li>
         <li><b>Outlook.com's dark mode is a CSS attribute selector.</b> It marks its dark mode with <code>data-ogsb</code> and <code>data-ogsc</code>, so those rules are plain CSS.</li>
         <li><b>Gmail's limits are about the built file:</b> it clips an email over about 102 KB, and ignores CSS past about 16,384 characters. I measure the HTML that is actually sent, not the MJML.</li>
@@ -336,21 +336,14 @@
 
       <h2>How everything connects: the system behind the API</h2>
       <p>An abandoned cart email is not one file. It is a chain, and every link has an owner and its own way of failing. Understanding the whole system is what lets me design the email, define the data, write my side of the API, and trace a problem to the right place.</p>
-      <svg viewBox="0 0 360 536" role="img" aria-labelledby="sys-title sys-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto;color:inherit">
+      <svg viewBox="0 0 360 536" role="img" aria-labelledby="sys-title sys-desc" style="width:100%;max-width:420px;display:block;margin:1.5rem auto">
         <title id="sys-title">From the shop's application to the inbox, and who owns each part</title>
-        <desc id="sys-desc">Five steps in order. One: the client's application knows the cart. Two: the send step builds one request and refuses bad values, owned by me. Three: Brevo's API checks the key, finds the email by its ID and fills in the values. Four: the email in Brevo, HTML and CSS with six tags, owned by me. Five: the inbox, where each email client redraws and recolours it.</desc>
-        <defs><marker id="sys-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="currentColor"/></marker></defs>
-        <g fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="10" y="10" width="340" height="84" rx="10"/><rect x="10" y="118" width="340" height="84" rx="10"/><rect x="10" y="226" width="340" height="84" rx="10"/><rect x="10" y="334" width="340" height="84" rx="10"/><rect x="10" y="442" width="340" height="84" rx="10"/>
-          <line x1="180" y1="94" x2="180" y2="116" marker-end="url(#sys-arrow)"/><line x1="180" y1="202" x2="180" y2="224" marker-end="url(#sys-arrow)"/><line x1="180" y1="310" x2="180" y2="332" marker-end="url(#sys-arrow)"/><line x1="180" y1="418" x2="180" y2="440" marker-end="url(#sys-arrow)"/>
-        </g>
-        <g fill="currentColor" font-family="inherit">
-          <text x="24" y="34" font-size="14" font-weight="700">1. The client's application</text><text x="24" y="56" font-size="12">Knows the cart: who, what, how much, where to</text><text x="24" y="78" font-size="12" font-style="italic">Owner: the client's developer</text>
-          <text x="24" y="142" font-size="14" font-weight="700">2. The send step (Node.js)</text><text x="24" y="164" font-size="12">Builds one request, refuses bad values</text><text x="24" y="186" font-size="12" font-style="italic">Owner: me, my side of the API</text>
-          <text x="24" y="250" font-size="14" font-weight="700">3. Brevo's API</text><text x="24" y="272" font-size="12">Checks the key, finds the email, fills in the values</text><text x="24" y="294" font-size="12" font-style="italic">Owner: Brevo</text>
-          <text x="24" y="358" font-size="14" font-weight="700">4. The email in Brevo</text><text x="24" y="380" font-size="12">HTML and CSS, six tags, a fallback for the name</text><text x="24" y="402" font-size="12" font-style="italic">Owner: me</text>
-          <text x="24" y="466" font-size="14" font-weight="700">5. The inbox</text><text x="24" y="488" font-size="12">Each email client redraws and recolours it</text><text x="24" y="510" font-size="12" font-style="italic">Owner: each email client</text>
-        </g>
+        <desc id="sys-desc">Five steps in order, as white boxes with black text on a black background. One: the client's application knows the cart. Two: the send step builds one request and refuses bad values, owned by me. Three: Brevo's API checks the key, finds the email by its ID and fills in the values. Four: the email in Brevo, HTML and CSS with six tags, owned by me. Five: the inbox, where each email client redraws and recolours it.</desc>
+        <defs><marker id="sys-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ffffff"/></marker></defs>
+        <rect width="360" height="536" rx="14" fill="#000000"/>
+        <g fill="#ffffff" stroke="#ffffff" stroke-width="2"><rect x="10" y="10" width="340" height="84" rx="10"/><rect x="10" y="118" width="340" height="84" rx="10"/><rect x="10" y="226" width="340" height="84" rx="10"/><rect x="10" y="334" width="340" height="84" rx="10"/><rect x="10" y="442" width="340" height="84" rx="10"/></g>
+        <g fill="none" stroke="#ffffff" stroke-width="2"><line x1="180" y1="94" x2="180" y2="116" marker-end="url(#sys-arrow)"/><line x1="180" y1="202" x2="180" y2="224" marker-end="url(#sys-arrow)"/><line x1="180" y1="310" x2="180" y2="332" marker-end="url(#sys-arrow)"/><line x1="180" y1="418" x2="180" y2="440" marker-end="url(#sys-arrow)"/></g>
+        <g fill="#000000" font-family="inherit"><text x="24" y="34" font-size="14" font-weight="700">1. The client's application</text><text x="24" y="56" font-size="12">Knows the cart: who, what, how much, where to</text><text x="24" y="78" font-size="12" font-style="italic">Owner: the client's developer</text><text x="24" y="142" font-size="14" font-weight="700">2. The send step (Node.js)</text><text x="24" y="164" font-size="12">Builds one request, refuses bad values</text><text x="24" y="186" font-size="12" font-style="italic">Owner: me, my side of the API</text><text x="24" y="250" font-size="14" font-weight="700">3. Brevo's API</text><text x="24" y="272" font-size="12">Checks the key, finds the email, fills in the values</text><text x="24" y="294" font-size="12" font-style="italic">Owner: Brevo</text><text x="24" y="358" font-size="14" font-weight="700">4. The email in Brevo</text><text x="24" y="380" font-size="12">HTML and CSS, six tags, a fallback for the name</text><text x="24" y="402" font-size="12" font-style="italic">Owner: me</text><text x="24" y="466" font-size="14" font-weight="700">5. The inbox</text><text x="24" y="488" font-size="12">Each email client redraws and recolours it</text><text x="24" y="510" font-size="12" font-style="italic">Owner: each email client</text></g>
       </svg>
       <p>Reading it from the bottom up is how I trace a problem. If a customer sees a broken email, is it the inbox, the HTML, the way Brevo filled in the values, the request, or the data that left the shop? Each boundary has its own check, so the answer is a measurement and not a guess.</p>
       <p>Two words get used loosely here, so I define them the way I use them. <b>Architecture</b> is the set of decisions that are expensive to change once other people build on them: the chain above, who owns each link, and the request with its six values. Once the client's developer has built against those, changing them costs them work. <b>Design</b> is everything inside my own links that I can change without anyone else noticing: the checks, the tests, the internals of the send step, and the HTML and CSS. People draw the line between the two in different places, and that is fine. What matters is knowing which decisions are the expensive ones before you make them.</p>
@@ -442,7 +435,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
           <tr><td>A sans-serif font falling back to serif</td><td>1</td><td><code>Tahoma, serif</code></td></tr>
         </tbody>
       </table>
-      <p><b>Why 440px.</b> The button had a fixed width of 380px, and its column had 30px of padding on each side: 380 + 60 = 440. A phone is narrower than that. And because the button had no link, MJML drew it as a <code>&lt;p&gt;</code>, so the <code>.button</code> rule in the style block never applied. That is a fault I could only find by reading the HTML.</p>
+      <p><b>Why 440px.</b> The button had a fixed width of 380px, and its column had 30px of padding on each side: 380 + 60 = 440. A phone is narrower than that. Separately, because the button had no link, MJML drew it as a <code>&lt;p&gt;</code> instead of a link, so it would have done nothing when pressed. And my <code>.button</code> rule did apply, as <code>display: flex</code> on a table cell, which does nothing useful. All three facts are visible only in the built HTML.</p>
 
       <h2>Step 4: fix what the checks found, and the first build</h2>
       <table>
@@ -568,6 +561,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
         <li><b>The same pixels:</b> compared with the MJML build, with the same data filled into both, <b>0 pixels differ</b>, in light and dark, at 600, 414 and 320px.</li>
         <li><b>The test can say no:</b> one text colour wrong by a single level out of 255 shows hundreds of differing pixels, and one extra pixel of padding changes the page height.</li>
       </ul>
+      <p><b>One caveat.</b> The comparison blocks web fonts for both emails, so both render in the fallback font. The MJML build links the Ubuntu web font and my hand-written version does not, so where that font loads, the two will not look identical. That is a limit of what the pixel test proved, and the hand-written version needs the same few lines.</p>
       <p>My first attempt was identical in light mode and 60 pixels off in dark mode, all in the rounded corners of the white box in the orange band. This is the difference. MJML puts the corner on the table itself, and the text cell sits directly inside it:</p>
 <pre tabindex="0"><code>&lt;table style="background-color:#FFF;border-radius:8px;border-collapse:separate;" width="100%"&gt;
   &lt;tr&gt;&lt;td class="dm-text" style="padding:10px 25px;"&gt; ...the heading... &lt;/td&gt;&lt;/tr&gt;
@@ -587,7 +581,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
 
       <h2>Step 10: real email clients</h2>
       <p>I sent the real email to my own addresses and opened it in real email clients, in light and in dark mode. What each one did, with pictures, is recorded in the repository, in <code>evidence/stage-7-clients/RESULTS.md</code>. Gmail recolours emails by its own rules, so a client's own dark mode can change what I designed, and that is exactly what this step is for.</p>
-      <p><b>Not tested: Outlook, in any version.</b> I stopped here on purpose. The Outlook button and the Outlook dark-mode rules are written and checked in a real browser, but they have never been seen in real Outlook, and the build log and the handoff both say so.</p>
+      <p><b>Not tested in this build: Outlook, in any version.</b> I stopped here on purpose. The Outlook button and the Outlook dark-mode rules are written and checked in a real browser, but this email has not been seen in real Outlook, and the build log and the handoff both say so. I have tested Outlook.com's dark-mode rules in a different project, which is not published here.</p>
 
       <h2>Step 11: write it up, and hand it over</h2>
       <p>A recorder script runs the checks for a stage, saves the raw output with the time and the exit code, and takes pictures of the email in light and dark mode. The build log has every stage with its numbers, the lab notebook has the experiments behind each decision, and a one-page handoff tells the client's developer what they receive, how to set the email up in Brevo, what their application sends, and what is still open. The last command is the setup check:</p>
@@ -630,7 +624,7 @@ All checks passed. Ready to push.</code></pre>
         <li>The subject line, and whether the email needs an unsubscribe link, which is a decision for the client.</li>
         <li>Whether showing one product is enough. A cart with several products sends the main one.</li>
         <li>Two images with white backgrounds, which show as white blocks in dark mode, until the client supplies transparent versions.</li>
-        <li>Real Outlook, which I have not tested.</li>
+        <li>This email in real Outlook, which I have not tested in this build.</li>
       </ul>
 
       <h2>Takeaway</h2>
@@ -674,7 +668,7 @@ All checks passed. Ready to push.</code></pre>
         </details>
         <details class="faq-item">
           <summary>Did you test it in Outlook?</summary>
-          <p>No. I tested it in a real browser and opened it in other real email clients, but not in Outlook, in any version. The rounded Outlook button and the Outlook dark-mode rules are written and checked, but I have never seen them in real Outlook, and the repository says so.</p>
+          <p>No. I tested it in a real browser and opened it in other real email clients, but not in Outlook, in any version. The rounded Outlook button and the Outlook dark-mode rules are written and checked, but I have not seen this email in real Outlook, and the repository says so. I have tested Outlook.com&#x27;s dark-mode rules in a different project, which is not published here.</p>
         </details>
       </div>
     </div>
