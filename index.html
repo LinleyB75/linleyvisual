@@ -1119,12 +1119,16 @@
         .case-rotator.is-live .case-slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity 0.45s, transform 0.45s, visibility 0s linear 0.45s, border-color 0.2s, background 0.2s, color 0.2s; }
         .case-rotator.is-live .case-slide.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.45s, transform 0.45s, visibility 0s, border-color 0.2s, background 0.2s, color 0.2s; }
         .case-rotator.is-live .case-slide.is-leaving { transform: translateY(-10px); }
-        .case-dots { display: flex; gap: 0; margin-top: 4px; }
+        .case-dots { display: flex; align-items: center; gap: 0; margin-top: 4px; }
         .case-dot { position: relative; width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
         .case-dot::before { content: ""; position: absolute; inset: 8px; border-radius: 50%; background: rgba(255, 255, 255, 0.5); transition: background 0.2s; }
         .case-dot[aria-current="true"]::before { background: var(--accent); }
         .case-dot:hover::before { background: #fff; }
         .case-dot:focus-visible { outline: 2px solid #fff; outline-offset: 1px; border-radius: 4px; }
+        .case-pause { width: 24px; height: 24px; padding: 0; margin-left: 8px; border: 0; background: none; color: rgba(255, 255, 255, 0.8); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+        .case-pause svg { display: block; width: 12px; height: 12px; fill: currentColor; }
+        .case-pause:hover { color: var(--accent); }
+        .case-pause:focus-visible { outline: 2px solid #fff; outline-offset: 1px; border-radius: 4px; }
         @media (prefers-reduced-motion: reduce) {
             .case-rotator.is-live .case-slide, .case-rotator.is-live .case-slide.is-active { transition: none; transform: none; }
         }
@@ -1422,7 +1426,7 @@
                                 I design, develop, program and test the transactional emails your system sends: receipts, sign-ups, password resets, bookings and two-factor messages.
                             </p>
                             <p style="margin-top: 1rem">
-                                I work out exactly what data your application needs to send, and write my side of the API: a tested request and a Node.js reference for the send step, ready for your developer.
+                                I work out exactly what data your application needs to send, and write my side of the API: a tested request and a Node.js reference for the send step, with a clear handoff for your team.
                             </p>
                         </div>
                         <div class="consult-btn-wrapper" style="justify-content: flex-start; gap: 1.75rem; flex-wrap: wrap">
@@ -1443,7 +1447,7 @@
                                 letter-spacing: 0.5px;
                             "
                         >
-                            <li><span style="text-transform: uppercase">Design &amp; build:</span> <span style="color: #fff; font-weight: 600">the email, set up in your platform, ready for your developer</span></li>
+                            <li><span style="text-transform: uppercase">Design &amp; build:</span> <span style="color: #fff; font-weight: 600">the email, set up in your platform, with a handoff for your team</span></li>
                             <li><span style="text-transform: uppercase">Test:</span> <span style="color: #fff; font-weight: 600">with missing and unusual data, in real email clients</span></li>
                             <li><span style="text-transform: uppercase">Fix:</span> <span style="color: #fff; font-weight: 600">problems traced from your application to the inbox</span></li>
                         </ul>
@@ -1451,9 +1455,11 @@
                         <div class="hero-case case-rotator" id="case-rotator" role="group" aria-roledescription="carousel" aria-label="Case studies" style="margin: 0 0 2rem; font-size: 1rem">
                             <!--
                                 CASE STUDIES (newest first). To add a new case study, copy one line below to the TOP of the list and change the link and the words.
-                                The newest one shows first, then the others slide in. Keep the list to the newest 4.
+                                The newest one shows first, then the rotation loops through all of them every 7 seconds. Keep the list to the newest 4.
                             -->
                             <div class="case-track">
+                                <a class="case-pill case-slide" href="/blog/abandoned-cart-email-step-by-step.html"><span class="case-label">Case study:</span> <span>an abandoned cart email: HTML, CSS, MJML, Node.js and Brevo</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
+                                <a class="case-pill case-slide" href="/blog/payment-failure-email-step-by-step.html"><span class="case-label">Case study:</span> <span>a payment failure email, built step by step with Node.js and Brevo</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                                 <a class="case-pill case-slide" href="/blog/2fa-setup-notification-email-brevo.html"><span class="case-label">Case study:</span> <span>a Brevo 2FA setup email, from MJML to tested send</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                                 <a class="case-pill case-slide" href="/blog/payment-receipt-email-from-json.html"><span class="case-label">Case study:</span> <span>a payment receipt email, built and tested end to end</span> <span class="case-arrow" aria-hidden="true">&rarr;</span></a>
                             </div>
@@ -2714,31 +2720,48 @@
         </script>
     
     <script>
-        // HERO CASE STUDIES: the links above rotate. Newest first, one full cycle, then it rests on the newest one.
-        // It pauses on hover and keyboard focus, stops as soon as someone uses the dots, and does not move at all
-        // when the visitor has asked their device for reduced motion. Without scripts, only the newest link shows.
+        // HERO CASE STUDIES: the links above rotate every 7 seconds, newest first, and keep going round.
+        // A pause button and the dots give the visitor control. It also pauses on hover and keyboard focus,
+        // and it does not start by itself when the visitor has asked their device for reduced motion.
+        // Without scripts, only the newest link shows.
         (function () {
             var box = document.getElementById("case-rotator");
             if (!box) return;
+            var track = box.querySelector(".case-track");
             var slides = [].slice.call(box.querySelectorAll(".case-slide"));
             if (slides.length < 2) return;
+            var INTERVAL = 7000;
             var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            var current = 0, paused = false, stopped = reduce, timer = null;
+            var current = 0, playing = !reduce, hovering = false;
             box.classList.add("is-live");
             slides[0].classList.add("is-active");
-            var dots = document.createElement("div");
-            dots.className = "case-dots";
+            var controls = document.createElement("div");
+            controls.className = "case-dots";
             var buttons = slides.map(function (s, n) {
                 var b = document.createElement("button");
                 b.type = "button";
                 b.className = "case-dot";
                 b.setAttribute("aria-label", "Show case study " + (n + 1) + " of " + slides.length);
                 b.setAttribute("aria-current", n === 0 ? "true" : "false");
-                b.addEventListener("click", function () { stop(); show(n); });
-                dots.appendChild(b);
+                b.addEventListener("click", function () { setPlaying(false); show(n); });
+                controls.appendChild(b);
                 return b;
             });
-            box.appendChild(dots);
+            var toggle = document.createElement("button");
+            toggle.type = "button";
+            toggle.className = "case-pause";
+            controls.appendChild(toggle);
+            box.appendChild(controls);
+            var ICON_PAUSE = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><rect x="2" y="1" width="3.5" height="12"/><rect x="8.5" y="1" width="3.5" height="12"/></svg>';
+            var ICON_PLAY = '<svg viewBox="0 0 14 14" aria-hidden="true" focusable="false"><path d="M3 1l9 6-9 6z"/></svg>';
+            function setPlaying(on) {
+                playing = on;
+                toggle.innerHTML = on ? ICON_PAUSE : ICON_PLAY;
+                toggle.setAttribute("aria-label", on ? "Pause the case study rotation" : "Play the case study rotation");
+                track.setAttribute("aria-live", on ? "off" : "polite");
+            }
+            toggle.addEventListener("click", function () { setPlaying(!playing); });
+            setPlaying(playing);
             function show(n) {
                 if (n === current) return;
                 var from = slides[current];
@@ -2750,19 +2773,16 @@
                 buttons[n].setAttribute("aria-current", "true");
                 current = n;
             }
-            function stop() { stopped = true; clearInterval(timer); }
-            if (!stopped) {
-                timer = setInterval(function () {
-                    if (paused || document.hidden) return;
-                    var n = (current + 1) % slides.length;
-                    show(n);
-                    if (n === 0) stop();
-                }, 5000);
-            }
-            box.addEventListener("mouseenter", function () { paused = true; });
-            box.addEventListener("mouseleave", function () { paused = false; });
-            box.addEventListener("focusin", function () { paused = true; });
-            box.addEventListener("focusout", function () { paused = false; });
+            setInterval(function () {
+                if (!playing || hovering || document.hidden) return;
+                show((current + 1) % slides.length);
+            }, INTERVAL);
+            box.addEventListener("mouseenter", function () { hovering = true; });
+            box.addEventListener("mouseleave", function () { hovering = false; });
+            // keyboard focus on a link or a dot holds the rotation. Focus on the pause button itself must not,
+            // or pressing Play with the keyboard would leave it stuck.
+            box.addEventListener("focusin", function (e) { if (e.target !== toggle) hovering = true; });
+            box.addEventListener("focusout", function () { hovering = false; });
             // the buttons and the red line below are measured from this box, so ask them to measure again
             window.dispatchEvent(new Event("resize"));
         })();
