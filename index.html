@@ -1154,6 +1154,36 @@
         .pipeline-steps { grid-template-columns: 1fr; gap: 2.5rem; }
         .pipeline-step:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -2rem; margin: 0 0 0 -0.75rem; transform: rotate(90deg); }
       }
+      /* the pipeline, flow and chain cards lift on hover, the same as the other cards */
+      .pipeline-step, .flow-step, .chain-box { transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+      .pipeline-step:hover, .flow-step:hover { transform: translateY(-8px); border-color: var(--primary); border-top-color: var(--primary); box-shadow: var(--shadow-lg); }
+      .chain-box:hover { transform: translateY(-8px); border-color: var(--accent); }
+      @media (prefers-reduced-motion: reduce) { .pipeline-step:hover, .flow-step:hover, .chain-box:hover { transform: none; } }
+
+      /* flow chart: how an email is built, tested and handed over */
+      .flow, .chain { max-width: 1100px; margin: 0 auto 3rem; padding: 0 20px; }
+      .flow-title { text-align: center; font-size: clamp(1.3rem, 2.5vw, 1.8rem); color: var(--primary); font-weight: 800; margin: 0 0 0.6rem; }
+      .flow-intro { text-align: center; color: var(--text-light); max-width: 760px; margin: 0 auto 2rem; line-height: 1.6; }
+      .flow-phase-wrap { margin: 0 0 1.25rem; }
+      .flow-phase { display: inline-block; font-size: 0.8rem; font-weight: 800; color: #fff; background: #d10500; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+      .flow-steps { list-style: none; margin: 0 0 2.25rem; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+      .flow-step { position: relative; display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--border); border-top: 4px solid var(--accent); border-radius: 10px; box-shadow: var(--shadow); padding: 1.4rem 1.3rem 1.5rem; text-align: left; }
+      .flow-step h4 { display: flex; align-items: flex-start; gap: 0.75rem; margin: 0 0 0.7rem; font-size: 1.15rem; font-weight: 800; color: var(--primary); line-height: 1.3; }
+      .flow-num { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border: 2px solid var(--accent); border-radius: 50%; font-size: 1rem; font-weight: 800; color: var(--text); }
+      .flow-step p { margin: 0 0 1rem; color: var(--text); line-height: 1.6; }
+      .flow-file { margin-top: auto; align-self: flex-start; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.85rem; padding: 0.15rem 0.6rem; border: 1px solid var(--border); border-radius: 6px; background: var(--bg-alt); color: var(--text); }
+      .flow-step:not(:last-child)::after, .chain-box:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -2.25rem; width: 1.5rem; height: 1.5rem; margin-top: -0.75rem; background: var(--accent); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11h12.2l-4.6-4.6L13 5l7 7-7 7-1.4-1.4 4.6-4.6H4z'/%3E%3C/svg%3E") center / contain no-repeat; }
+
+      /* the chain diagram: white boxes, black text, black background */
+      .chain-list { list-style: none; margin: 0; padding: 1.75rem; background: #000; border-radius: 14px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2.4rem; }
+      .chain-box { position: relative; display: flex; flex-direction: column; gap: 0.4rem; background: #fff; color: #000; border: 2px solid #fff; border-radius: 10px; padding: 1rem; text-align: left; }
+      .chain-box strong { font-size: 1rem; font-weight: 800; line-height: 1.3; }
+      .chain-box span { font-size: 0.9rem; line-height: 1.45; }
+      .chain-box em { margin-top: auto; font-size: 0.85rem; font-style: italic; }
+      .chain-box:not(:last-child)::after { right: -2rem; width: 1.4rem; height: 1.4rem; margin-top: -0.7rem; background: #fff; }
+      @media (max-width: 1000px) { .chain-list { grid-template-columns: 1fr; gap: 2.2rem; } .chain-box:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -1.85rem; margin: 0 0 0 -0.7rem; transform: rotate(90deg); } }
+      @media (max-width: 800px) { .flow-steps { grid-template-columns: 1fr; gap: 2.5rem; } .flow-step:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -2rem; margin: 0 0 0 -0.75rem; transform: rotate(90deg); } }
+
     </style>
 
         <script type="application/ld+json">
@@ -1165,7 +1195,10 @@
                         "@id": "https://linleyb.com/#website",
                         "url": "https://linleyb.com/",
                         "name": "Linley Bignoux | Freelance Email Developer",
-                        "inLanguage": ["en-AU", "en-MU"],
+                        "inLanguage": [
+                            "en-AU",
+                            "en-MU"
+                        ],
                         "publisher": {
                             "@id": "https://linleyb.com/#person"
                         }
@@ -1203,10 +1236,9 @@
                             "CSS for Email",
                             "MJML",
                             "Handlebars",
-                            "Liquid",
                             "Email Testing and Quality Assurance",
-                            "Email Automation",
                             "Transactional Email",
+                            "Transactional Email APIs",
                             "Dynamic Email Content",
                             "JavaScript",
                             "Node.js",
@@ -1216,28 +1248,8 @@
                             "SPF, DKIM and DMARC Email Authentication",
                             {
                                 "@type": "Thing",
-                                "name": "Mailchimp",
-                                "sameAs": "https://mailchimp.com/"
-                            },
-                            {
-                                "@type": "Thing",
-                                "name": "MailerLite",
-                                "sameAs": "https://www.mailerlite.com/"
-                            },
-                            {
-                                "@type": "Thing",
                                 "name": "Brevo",
                                 "sameAs": "https://www.brevo.com/"
-                            },
-                            {
-                                "@type": "Thing",
-                                "name": "Klaviyo",
-                                "sameAs": "https://www.klaviyo.com/"
-                            },
-                            {
-                                "@type": "Thing",
-                                "name": "Kit (formerly ConvertKit)",
-                                "sameAs": "https://kit.com/"
                             }
                         ]
                     },
@@ -1246,7 +1258,7 @@
                         "@id": "https://linleyb.com/#service",
                         "name": "Email Development Services",
                         "url": "https://linleyb.com/",
-                        "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+                        "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test transactional emails end to end in HTML, CSS, MJML, Handlebars, JavaScript and Node.js, set up at your sending provider so your application sends the email by its ID, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Providers: Brevo, Postmark, SendGrid and MailerSend.",
                         "provider": {
                             "@id": "https://linleyb.com/#person"
                         },
@@ -1262,20 +1274,16 @@
                             "Email Design",
                             "HTML Email Development",
                             "MJML Development",
-                            "Handlebars Email Templating",
-                            "Liquid Email Templating",
-                            "Email Automation",
+                            "Handlebars Dynamic Content",
                             "Email Testing and Quality Assurance",
-                            "Dynamic Email Content",
                             "Transactional Email Setup",
-                            "Mailchimp Email Development",
-                            "MailerLite Email Development",
                             "Brevo Email Development",
-                            "Klaviyo Email Development",
-                            "Kit Email Development",
+                            "Postmark Email Development",
+                            "SendGrid Email Development",
+                            "MailerSend Email Development",
                             "Email Debugging and Troubleshooting",
                             "Email Audits and Cleanup",
-                            "Transactional Email Setup and Developer Handoff",
+                            "Transactional Email Setup and Handoff",
                             "Transactional Email Data Checks and Testing",
                             "API and Data Design for Email",
                             "Node.js Reference Implementation for Transactional Email",
@@ -1299,15 +1307,15 @@
                                 "name": "Why hire an Email Developer over using a drag-and-drop builder?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated markup that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Hand-built emails overcome these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars)."
+                                    "text": "Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated markup that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Hand-built emails overcome these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Handlebars and your provider's own tag language)."
                                 }
                             },
                             {
                                 "@type": "Question",
-                                "name": "Which ESPs and dynamic templating languages do you support?",
+                                "name": "Which sending providers do you work with?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic content using Liquid and Handlebars."
+                                    "text": "I build for transactional providers that keep the email on their side and send it by its ID, so your application only passes the data: Brevo, Postmark, SendGrid and MailerSend. Dynamic content is written in Handlebars or your provider's own tag language, with a fallback for anything missing."
                                 }
                             },
                             {
@@ -1331,7 +1339,7 @@
                                 "name": "How is a transactional email sent once you've built it?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "It depends on the platform. On platforms that host the email, such as Brevo, your developer sends it by passing the template ID and a JSON payload, and your team can update the wording without changing anything in your application. On platforms that send from flows or automations, such as Klaviyo, I build the email and set up the flow you've planned, triggered by the event your platform receives."
+                                    "text": "Your application sends one request to your provider's API with the email's ID and a JSON object of values. The email is stored at the provider, so your team can update the wording without changing anything in your application. I define the values and write my side of that request: a tested Node.js reference for the send step. Your team connects it and keeps the API key."
                                 }
                             },
                             {
@@ -1339,7 +1347,7 @@
                                 "name": "Do you write the backend that sends the emails?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I don't build or run your live system. I design, develop and test the email, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I also write my side of the API: a tested Node.js reference implementation of the sending step, so your developer has a working reference to adapt. Your developer deploys it, stores the security tokens and connects your website or application."
+                                    "text": "I don't build or run your live system. I design, develop and test the email, set it up at your sending provider and give your team the email's ID, a table of the fields it needs and a sample JSON request. I also write my side of the API: a tested Node.js reference implementation of the sending step, so your team has a working reference to adapt. Your team deploys it, stores the security tokens and connects your website or application."
                                 }
                             },
                             {
@@ -1447,7 +1455,7 @@
                                 letter-spacing: 0.5px;
                             "
                         >
-                            <li><span style="text-transform: uppercase">Design &amp; build:</span> <span style="color: #fff; font-weight: 600">the email, set up in your platform, with a handoff for your team</span></li>
+                            <li><span style="text-transform: uppercase">Design &amp; build:</span> <span style="color: #fff; font-weight: 600">the email, set up at your sending provider, with a handoff for your team</span></li>
                             <li><span style="text-transform: uppercase">Test:</span> <span style="color: #fff; font-weight: 600">with missing and unusual data, in real email clients</span></li>
                             <li><span style="text-transform: uppercase">Fix:</span> <span style="color: #fff; font-weight: 600">problems traced from your application to the inbox</span></li>
                         </ul>
@@ -1480,11 +1488,11 @@
                                 <span>MJML</span>
                             </div>
                             <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
-                            <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
+                            <div class="tech-item"><i class="fas fa-shield-halved"></i><span>SPF, DKIM &amp; DMARC</span></div>
                             <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
                             <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                             <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
-                            <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
+                            <div class="tech-item"><i class="fas fa-right-left" style="margin-right: 6px"></i><span>API Integration</span></div>
                             <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
                         </div>
                         <!-- Closes .tech-stack-icons -->
@@ -1515,7 +1523,7 @@
           </li>
           <li class="pipeline-step">
             <h3><span class="pipeline-num" aria-hidden="true">2</span> The send step</h3>
-            <p>My side of the API: a tested request and a Node.js reference, with the Liquid or Handlebars logic inside the email.</p>
+            <p>My side of the API: a tested request and a Node.js reference. The email is stored at your provider and found by its ID.</p>
           </li>
           <li class="pipeline-step">
             <h3><span class="pipeline-num" aria-hidden="true">3</span> The inbox</h3>
@@ -1523,7 +1531,7 @@
           </li>
         </ol>
         <p class="pipeline-note">
-          Your developer connects it. I design, develop, program and test everything up to that point.<br />
+          Your team connects it. I design, develop, program and test everything up to that point.<br />
           <a href="/blog/payment-failure-email-step-by-step.html">See it worked through: the 13-step build&nbsp;→</a>
         </p>
       </div>
@@ -1591,7 +1599,7 @@
                             /></a>
                             <div style="padding: 1.5rem">
                                 <span class="blog-date">MJML • E-commerce</span>
-                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Abandoned Cart Flow</h3>
+                                <h3 style="font-size: 1.3rem; margin: 10px 0; color: var(--primary)">Abandoned Cart Email</h3>
                                 <p style="font-size: 0.95rem; margin-bottom: 15px; color: var(--text)">
                                     An abandoned cart email with a dynamic product grid and a layout that stacks on mobile.
                                 </p>
@@ -1997,15 +2005,14 @@
                             <i class="fas fa-screwdriver-wrench"></i>
                             <h3>Troubleshooting the Whole System</h3>
                             <p>
-                                I trace a problem through the whole flow, from your application's data to the email, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and emails that change after ESP upload.
+                                I trace a problem through the whole flow, from your application's data to the email, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and emails that change after upload to your provider.
                             </p>
                         </div>
                         <div class="card">
                             <i class="fas fa-plug"></i>
-                            <h3>ESP Integration &amp; Setup</h3>
+                            <h3>Provider Setup</h3>
                             <p>
-                                I prepare your sending account, upload your emails, tag links with UTMs and run live test sends, so merge tags
-                                still work after upload.
+                                I set up the email at your sending provider, note its ID, and run sandbox and real test sends, so the values still fill in correctly after upload.
                             </p>
                         </div>
                         <div class="card">
@@ -2033,22 +2040,21 @@
                         </div>
                         <div class="card">
                             <i class="fas fa-code"></i>
-                            <h3>Dynamic Content Templating</h3>
+                            <h3>Dynamic Content</h3>
                             <p>
-                                Handlebars and Liquid templating, so personalised content renders correctly for every
-                                recipient.
+                                Handlebars and your provider's own tag language, so personalised content renders correctly for every recipient, with a fallback when a value is missing.
                             </p>
                         </div>
                         <div class="card">
-                            <i class="fas fa-gears"></i>
-                            <h3>Email Automation</h3>
-                            <p>I build the flow you've planned in your platform: triggers, delays, conditions and the emails themselves, then test it end to end before it goes live.</p>
+                            <i class="fas fa-vial"></i>
+                            <h3>Sandbox &amp; Real-Send Testing</h3>
+                            <p>Dry runs, sandbox calls and one real send to an inbox, with checks that refuse bad data before a customer sees it.</p>
                         </div>
                         <div class="card">
                             <i class="fas fa-laptop-code"></i>
                             <h3>Email Design &amp; Development</h3>
                             <p>
-                                I design the email, or build it from your design (Figma, Sketch, XD or PSD), so it holds up in older desktop clients, with dynamic content set up for your platform.
+                                I design the email, or build it from your design (Figma, Sketch, XD or PSD), so it holds up in older desktop clients, with dynamic content set up for your provider.
                             </p>
                             <a
                                 href="https://linleyb.com/portfolio.html"
@@ -2088,7 +2094,7 @@
                             <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7">
                                 <li>Define what data your application sends: the JSON fields and the fields your email reads</li>
                                 <li>Decide how the pieces fit together: who creates the links, who owns the API key, what happens when a send fails</li>
-                                <li>Set up the email platform: your emails, their IDs and test sends</li>
+                                <li>Set up the email at your provider: the email, its ID and test sends</li>
                                 <li>Troubleshoot the whole flow, from your application's data to the inbox</li>
                                 <li>Write my side of the API: a tested JavaScript and Node.js reference for the send step, for your developers to adapt</li>
                             </ul>
@@ -2099,14 +2105,14 @@
                             <p style="font-weight: 700; color: var(--primary); margin-bottom: 0.75rem">The emails themselves</p>
                             <ul style="padding-left: 1.2rem; margin: 0; line-height: 1.7">
                                 <li>Design and build emails in HTML, CSS and MJML, or build from your designs</li>
-                                <li>Add personalised content in Handlebars or Liquid, with fallbacks for missing data</li>
-                                <li>Build automation flows in your platform: triggers, delays and conditions</li>
+                                <li>Add personalised content in Handlebars or your provider's tag language, with fallbacks for missing data</li>
+                                <li>Check the email in a real browser: accessibility, contrast, dark mode and a pixel comparison</li>
                                 <li>Test in real email clients, with accessibility checks, and fix what breaks</li>
                             </ul>
                         </div>
                     </div>
                     <p style="text-align: center; max-width: 800px; margin: 2.5rem auto 1.5rem; color: var(--text-light); padding: 0 20px">
-                        I do not do copywriting, marketing or strategy, and I do not host or run your live system. Your developers deploy and run it.
+                        I do not do copywriting, marketing, campaigns or visual flows, and I do not host or run your live system. Your team deploys and runs it.
                     </p>
                     <div class="consult-btn-wrapper">
                         <a href="#contact" class="cta-button">Tell me what you need</a>
@@ -2116,7 +2122,7 @@
 
             <section id="esp-platforms">
                 <div class="container">
-                    <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Email Platform</h2>
+                    <h2 class="section-title"><i class="fas fa-plug"></i> Works With Your Sending Provider</h2>
                     <p
                         style="
                             text-align: center;
@@ -2127,50 +2133,62 @@
                             padding: 0 20px;
                         "
                     >
-                        Emails and integration support for the platform you already use.
+                        I work with transactional providers that keep the email on their side and send it by its ID, so your application only passes the data.
                     </p>
+                    <div class="chain" aria-labelledby="chain-title">
+                        <h3 class="flow-title" id="chain-title">The whole chain, and who owns each link</h3>
+                        <p class="flow-intro">An email that depends on an API is a chain. Every link has an owner and its own way of failing, so I check each one.</p>
+                        <ol class="chain-list">
+                            <li class="chain-box"><strong>1. Your application</strong><span>Knows the customer, the order and the trigger</span><em>Owner: your team</em></li>
+                            <li class="chain-box"><strong>2. The send step</strong><span>Builds one request and refuses bad values</span><em>Owner: me, my side of the API</em></li>
+                            <li class="chain-box"><strong>3. Your provider's API</strong><span>Checks the key, finds the email by its ID, fills in the values</span><em>Owner: the provider</em></li>
+                            <li class="chain-box"><strong>4. The email at your provider</strong><span>HTML and CSS with tags and fallbacks</span><em>Owner: me</em></li>
+                            <li class="chain-box"><strong>5. The inbox</strong><span>Each email client redraws and recolours it</span><em>Owner: each email client</em></li>
+                        </ol>
+                    </div>
 
-                    <!-- Tag and conditional content reference -->
-                    <div class="table-scroll" role="region" aria-label="Email platform tag languages" style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto">
+
+                    <!-- Sending providers: how each one finds the email, and its tag language -->
+                    <div class="table-scroll" role="region" aria-label="Sending providers and their tag languages" style="max-width: 1000px; margin: 2.5rem auto 0; padding: 0 20px; overflow-x: auto">
                         <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem; color: var(--text); text-align: left">
                             <thead>
                                 <tr style="border-bottom: 2px solid var(--text-light)">
-                                    <th style="padding: 10px; font-weight: bold">Platform</th>
+                                    <th style="padding: 10px; font-weight: bold">Provider</th>
+                                    <th style="padding: 10px; font-weight: bold">Finds the email by</th>
                                     <th style="padding: 10px; font-weight: bold">Tag language</th>
                                     <th style="padding: 10px; font-weight: bold">First-name tag</th>
                                     <th style="padding: 10px; font-weight: bold">Conditional content</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr style="border-bottom: 1px solid var(--border)">
-                                    <td style="padding: 10px; font-weight: bold">MailerLite</td>
-                                    <td style="padding: 10px">Variable tags</td>
-                                    <td style="padding: 10px"><code>{$name}</code></td>
-                                    <td style="padding: 10px">Merge tags only</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border)">
-                                    <td style="padding: 10px; font-weight: bold">Mailchimp</td>
-                                    <td style="padding: 10px">Mailchimp merge tags</td>
-                                    <td style="padding: 10px"><code>*|FNAME|*</code></td>
-                                    <td style="padding: 10px"><code>*|IF:|*</code> / <code>*|ELSE:|*</code></td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--border)">
                                     <td style="padding: 10px; font-weight: bold">Brevo</td>
-                                    <td style="padding: 10px">Brevo template language</td>
-                                    <td style="padding: 10px"><code>{{ contact.FIRSTNAME }}</code></td>
-                                    <td style="padding: 10px"><code>{% if %}</code> / <code>{% elif %}</code></td>
+                                    <td style="padding: 10px">Template ID</td>
+                                    <td style="padding: 10px">Brevo's own</td>
+                                    <td style="padding: 10px"><code>{{ params.firstName }}</code></td>
+                                    <td style="padding: 10px"><code>{% if %}</code> / <code>{% else %}</code></td>
                                 </tr>
                                 <tr style="border-bottom: 1px solid var(--border)">
-                                    <td style="padding: 10px; font-weight: bold">Klaviyo</td>
-                                    <td style="padding: 10px">Klaviyo template tags</td>
-                                    <td style="padding: 10px"><code>{{ first_name }}</code></td>
-                                    <td style="padding: 10px"><code>{% if %}</code> / <code>{% elif %}</code></td>
+                                    <td style="padding: 10px; font-weight: bold">Postmark</td>
+                                    <td style="padding: 10px">Template ID or alias</td>
+                                    <td style="padding: 10px">Mustachio</td>
+                                    <td style="padding: 10px"><code>{{name}}</code></td>
+                                    <td style="padding: 10px"><code>{{#name}}</code> sections</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border)">
+                                    <td style="padding: 10px; font-weight: bold">SendGrid</td>
+                                    <td style="padding: 10px">Template ID</td>
+                                    <td style="padding: 10px">Handlebars</td>
+                                    <td style="padding: 10px"><code>{{first_name}}</code></td>
+                                    <td style="padding: 10px"><code>{{#if}}</code> / <code>{{else}}</code></td>
                                 </tr>
                                 <tr>
-                                    <td style="padding: 10px; font-weight: bold">Kit</td>
-                                    <td style="padding: 10px">Liquid</td>
-                                    <td style="padding: 10px"><code>{{ subscriber.first_name }}</code></td>
-                                    <td style="padding: 10px">Liquid if / else</td>
+                                    <td style="padding: 10px; font-weight: bold">MailerSend</td>
+                                    <td style="padding: 10px">Template ID</td>
+                                    <td style="padding: 10px">Twig (limited)</td>
+                                    <td style="padding: 10px"><code>{{ name }}</code></td>
+                                    <td style="padding: 10px"><code>{% if %}</code></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -2178,9 +2196,9 @@
 
                     <!-- Transactional emails and developer handoff -->
                     <div class="fit-box" style="margin-top: 3rem">
-                        <h3 style="margin-bottom: 1rem; color: var(--primary); font-weight: 800">Transactional Emails &amp; Developer Handoff</h3>
+                        <h3 style="margin-bottom: 1rem; color: var(--primary); font-weight: 800">Transactional Emails &amp; Handoff</h3>
                         <p style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--text-light)">
-                            I design, develop and test transactional emails: the messages your system sends when someone signs up, buys, books or needs to confirm something, set up in your platform with my side of the API written and tested. I can also update the emails you already have.
+                            I design, develop and test transactional emails: the messages your system sends when someone signs up, buys, books or needs to confirm something, set up at your sending provider with my side of the API written and tested. I can also update the emails you already have.
                         </p>
                         <p style="margin-bottom: 1rem; font-size: 1.15rem; color: var(--text-light)">
                             Each email is designed and built in HTML/CSS or MJML, tested in major email clients, and set up in your email platform.
@@ -2188,9 +2206,8 @@
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">How the email gets sent</h4>
                         <ul>
-                            <li><b>Emails hosted in the platform (such as Brevo):</b> your developers send the email by passing the template ID and a JSON payload. Your team can update the wording without changing anything in your application.</li>
-                            <li><b>Flows and automations (such as Klaviyo):</b> I build the email and set up the flow you've planned, triggered by the event your platform receives.</li>
-                            <li><b>API-triggered sends:</b> where your developers call the platform's API, I write my side of it: a small, tested Node.js reference implementation of the send step for them to adapt. Your developers deploy and run it.</li>
+                            <li><b>Hosted by the provider:</b> your application sends the email's ID and a JSON object of values in one request. Your team can update the wording without changing anything in your application.</li>
+                            <li><b>My side of the API:</b> I write a small, tested Node.js reference for the send step, with a dry run, a sandbox call and a live mode. Your team deploys and runs it.</li>
                         </ul>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">What I build</h4>
@@ -2198,14 +2215,14 @@
                             <li><b>Emails I build:</b> account setup and welcome emails, email verification and double opt-in, password resets and 2FA codes, order confirmations and receipts, booking and class confirmations and reminders, and account notifications.</li>
                             <li><b>Updating existing emails:</b> fixing rendering problems, adding dynamic content, or adapting an email you already use, then re-testing it before it goes back into your platform.</li>
                             <li><b>HTML/CSS and MJML design and development:</b> layouts I design and build to hold up across email clients, including Outlook's Word engine.</li>
-                            <li><b>Dynamic content:</b> personalisation written in your platform's own tag language: merge tags, Liquid or Handlebars. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your platform supports them.</li>
+                            <li><b>Dynamic content:</b> personalisation written in Handlebars or your provider's own tag language. That includes fallbacks for missing data (for example "Hi there" when there's no first name), and conditional blocks and loops where your provider supports them.</li>
                         </ul>
 
                         <h4 style="margin: 2rem 0 0.5rem; color: var(--primary); font-weight: 800; font-size: 1.2rem">Testing, setup and handoff</h4>
                         <ul>
                             <li><b>Testing:</b> major clients including Outlook, Apple Mail, Gmail and dark mode, plus test sends with unusual data such as missing or very long names.</li>
-                            <li><b>Platform setup:</b> the email set up in your email platform, hosted there or inside the flow or automation that sends it, with its merge tags or parameters configured.</li>
-                            <li><b>Developer handoff:</b> the template ID or event name, a table of the fields it needs (name, format, required or optional) and, where the platform uses an API, a sample JSON request.</li>
+                            <li><b>Provider setup:</b> the email set up at your sending provider and found by its ID, with its tags and fallbacks configured.</li>
+                            <li><b>Handoff:</b> the email's ID, a table of the fields it needs (name, format, required or optional) and a sample JSON request.</li>
                             <li><b>Domain authentication:</b> SPF, DKIM and DMARC set up and checked. I need access to your domain's DNS.</li>
                             <li><b>Payload checks and tests:</b> a field table plus scripted test cases for missing, very long and special-character data, run before the email goes into your platform.</li>
                         </ul>
@@ -2222,8 +2239,8 @@
                             line-height: 1.6;
                         "
                     >
-                        <strong style="color: var(--text)">Another platform?</strong> I'll build to its tag format.
-                        <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or application to your email platform. I write the email and your developer connects the data.
+                        <strong style="color: var(--text)">Another provider that sends by ID?</strong> Ask me.
+                        <strong style="color: var(--text)">What I don't do:</strong> connect your website, shop or application to your provider. I set up the email and define the data, and your team connects it.
                     </p>
                 </div>
             </section>
@@ -2231,9 +2248,27 @@
             <section id="way-we-learn" style="background-color: var(--bg-alt)">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-cogs"></i> The Way I Work</h2>
+                    <div class="flow" aria-labelledby="flow-title">
+                        <h3 class="flow-title" id="flow-title">How an email is built, tested and handed over</h3>
+                        <p class="flow-intro">The same six steps for every provider: the email is written and checked first, then connected, tested and handed over.</p>
+                        <p class="flow-phase-wrap"><span class="flow-phase">Build the email</span></p>
+                        <ol class="flow-steps">
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">1</span> Write the email</h4><p>MJML, HTML and CSS, with the dark mode and the Outlook parts written by hand.</p><span class="flow-file">email.mjml</span></li>
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">2</span> Build and check it</h4><p>A strict build with Node.js and MJML. Then accessibility, contrast and dark mode in a real browser, and a pixel comparison so a change cannot alter the design unseen.</p><span class="flow-file">dist/email.html</span></li>
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">3</span> Set it up at your provider</h4><p>The email is stored at your sending provider and found by its ID, with its values as tags and a fallback for anything missing.</p><span class="flow-file">the email's ID</span></li>
+                        </ol>
+                        <p class="flow-phase-wrap"><span class="flow-phase">Connect, test and hand over</span></p>
+                        <ol class="flow-steps">
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">4</span> Define the data and write my side of the API</h4><p>The JSON values, their rules and fallbacks, and a Node.js send step that refuses bad data before anything is sent.</p><span class="flow-file">data + send.js</span></li>
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">5</span> Test it</h4><p>A dry run, a sandbox call where the provider has one, then one real send to an inbox, opened in real email clients in light and dark mode.</p><span class="flow-file">logs + evidence</span></li>
+                            <li class="flow-step"><h4><span class="flow-num" aria-hidden="true">6</span> Hand it over</h4><p>The email's ID, a field table, a sample request and the Node.js reference, as a one-page handoff for your team.</p><span class="flow-file">handoff page</span></li>
+                        </ol>
+                        <p class="pipeline-note">See every step with real output: <a href="/blog/abandoned-cart-email-step-by-step.html">the abandoned cart build&nbsp;&rarr;</a></p>
+                    </div>
+
                     <div class="fit-box">
                         <p style="margin-bottom: 2rem; font-size: 1.3rem">
-                            I design, develop, program and test your email end to end, and I focus on <b>reliable delivery and the whole path to the inbox</b>: platform setup, my side of the API, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I also map how your application, your email platform and your customers' inboxes connect, so the right details reach the right person. I do not do copywriting, marketing or strategy.
+                            I design, develop, program and test your email end to end, and I focus on <b>reliable delivery and the whole path to the inbox</b>: platform setup, my side of the API, testing and fixes. I look at the whole system behind the email, so I fix causes, not just symptoms. I also map how your application, your sending provider and your customers' inboxes connect, so the right details reach the right person. I do not do copywriting, marketing or strategy.
                         </p>
                         <h3 style="margin-bottom: 1.5rem; color: var(--primary); font-weight: 800">My Process</h3>
                         <ul>
@@ -2241,13 +2276,13 @@
                                 <b>1. Discuss &amp; Handoff:</b> We talk through your project and brand needs. You send your design files and assets, or I design the email from your brand, and I build to your specifications.
                             </li>
                             <li>
-                                <b>2. Design &amp; Build:</b> I design and build the email in HTML/CSS or MJML, adding Handlebars or Liquid where it needs personalised content.
+                                <b>2. Design &amp; Build:</b> I design and build the email in HTML/CSS or MJML, adding Handlebars or your provider's tag language where it needs personalised content.
                             </li>
                             <li>
                                 <b>3. Test &amp; Minify:</b> I test across major email clients and devices, fix what breaks, then minify the file to avoid Gmail clipping.
                             </li>
                             <li>
-                                <b>4. Review &amp; Delivery:</b> You review and approve the tested email, then receive a zipped folder of HTML and assets, ready to upload and send or set up in your ESP, including as an automated flow.
+                                <b>4. Review &amp; Delivery:</b> You review and approve the tested email, then receive a zipped folder of HTML and assets, ready to upload to your sending provider, with the handoff for your team.
                             </li>
                         </ul>
                     </div>
@@ -2262,11 +2297,11 @@
                         </div>
                         <div class="about-text">
                             <p>
-                                Hello, I'm <b>Linley Bignoux</b>, an email developer in Mauritius, originally from Melbourne, Australia, working in <b>Mailchimp</b>, <b>Brevo</b>, <b>Klaviyo</b>, <b>MailerLite</b> and <b>Kit</b>.
+                                Hello, I'm <b>Linley Bignoux</b>, an email developer in Mauritius, originally from Melbourne, Australia, building emails for <b>Brevo</b>, <b>Postmark</b>, <b>SendGrid</b> and <b>MailerSend</b>.
                             </p>
                             <br />
                             <p>
-                                I design, develop, program and test emails end to end, and I focus on how they connect to the rest of your system: API and data design, troubleshooting by understanding the whole system, not just the email, HTML/CSS and MJML layouts that I design, with dark mode support and legacy Outlook compatibility, and dynamic content in <b>Liquid</b> and <b>Handlebars</b>. I also work in <b>JavaScript</b> and <b>Node.js</b> on my side of the API: JSON payloads, ESP APIs and the tests behind them.
+                                I design, develop, program and test emails end to end, and I focus on how they connect to the rest of your system: API and data design, troubleshooting by understanding the whole system, not just the email, HTML/CSS and MJML layouts that I design, with dark mode support and legacy Outlook compatibility, and dynamic content in <b>Handlebars</b> and each provider's own tag language. I also work in <b>JavaScript</b> and <b>Node.js</b> on my side of the API: JSON payloads, provider APIs and the tests behind them.
                             </p>
                             <br />
                             <p>
@@ -2299,7 +2334,7 @@
                             style="width: 100px; height: 100px; margin-top: -1rem; margin-bottom: 1.5rem"
                         />
                         <p style="font-size: 1.2rem; color: var(--text); line-height: 1.8; margin-bottom: 2rem">
-                            Every email in my portfolio is designed and built by me from scratch. Inspect the raw HTML, CSS, MJML and the Handlebars or Liquid logic on my GitHub.
+                            Every email in my portfolio is designed and built by me from scratch. Inspect the raw HTML, CSS, MJML and the Handlebars logic on my GitHub.
                         </p>
                         <div class="consult-btn-wrapper" style="margin-top: 0">
                             <a
@@ -2325,11 +2360,11 @@
                         </details>
                         <details class="faq-item">
                             <summary>Why hire an Email Developer over using a drag-and-drop builder?</summary>
-                            <p>Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated markup that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Hand-built emails overcome these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Liquid, Handlebars).</p>
+                            <p>Drag-and-drop builders definitely have their place and usage, especially for design mockups, rapid prototyping, and building simple to intermediate layouts. However, when scaling or building complex designs, they can generate bloated markup that gets clipped in Gmail, breaks in legacy Outlook versions, or scrambles in Dark Mode. Hand-built emails overcome these limits, delivering consistent rendering across major email clients and unlocking advanced dynamic data loops (Handlebars and your provider's own tag language).</p>
                         </details>
                         <details class="faq-item">
-                            <summary>Which ESPs and dynamic templating languages do you support?</summary>
-                            <p>I work with platforms including Mailchimp, Brevo, Klaviyo, MailerLite and Kit, implementing custom dynamic content using Liquid and Handlebars.</p>
+                            <summary>Which sending providers do you work with?</summary>
+                            <p>I build for transactional providers that keep the email on their side and send it by its ID, so your application only passes the data: Brevo, Postmark, SendGrid and MailerSend. Dynamic content is written in Handlebars or your provider's own tag language, with a fallback for anything missing.</p>
                         </details>
                         <details class="faq-item">
                             <summary>How does hiring an Email Developer in Mauritius benefit global clients?</summary>
@@ -2341,11 +2376,11 @@
                         </details>
                         <details class="faq-item">
                             <summary>How is a transactional email sent once you've built it?</summary>
-                            <p>It depends on the platform. On platforms that host the email, such as Brevo, your developer sends it by passing the template ID and a JSON payload, and your team can update the wording without changing anything in your application. On platforms that send from flows or automations, such as Klaviyo, I build the email and set up the flow you've planned, triggered by the event your platform receives.</p>
+                            <p>Your application sends one request to your provider's API with the email's ID and a JSON object of values. The email is stored at the provider, so your team can update the wording without changing anything in your application. I define the values and write my side of that request: a tested Node.js reference for the send step. Your team connects it and keeps the API key.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Do you write the backend that sends the emails?</summary>
-                            <p>I don't build or run your live system. I design, develop and test the email, set it up in your email platform and give your developer the template ID or event name, a table of the fields it needs and, where the platform uses an API, a sample JSON request. I also write my side of the API: a tested Node.js reference implementation of the sending step, so your developer has a working reference to adapt. Your developer deploys it, stores the security tokens and connects your website or application.</p>
+                            <p>I don't build or run your live system. I design, develop and test the email, set it up at your sending provider and give your team the email's ID, a table of the fields it needs and a sample JSON request. I also write my side of the API: a tested Node.js reference implementation of the sending step, so your team has a working reference to adapt. Your team deploys it, stores the security tokens and connects your website or application.</p>
                         </details>
                         <details class="faq-item">
                             <summary>Can you update a transactional email we already have?</summary>
@@ -2396,7 +2431,7 @@
                                     rows="5"
                                     required
                                     maxlength="3000"
-                                    placeholder="Tell me about the design (or paste a link), your email platform and what triggers the email..."
+                                    placeholder="Tell me about the design (or paste a link), your sending provider and what triggers the email..."
                                 ></textarea>
                             </div>
                             <div class="form-btn-wrap"><button type="submit" class="cta-button">Send Secure Message</button></div>
@@ -2434,11 +2469,11 @@
                         <span>MJML</span>
                     </div>
                     <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
-                    <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
+                    <div class="tech-item"><i class="fas fa-shield-halved"></i><span>SPF, DKIM &amp; DMARC</span></div>
                     <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
                     <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
-                    <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
+                    <div class="tech-item"><i class="fas fa-right-left" style="margin-right: 6px"></i><span>API Integration</span></div>
                     <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
                 </div>
             </section>
@@ -2732,7 +2767,7 @@
             if (slides.length < 2) return;
             var INTERVAL = 7000;
             var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            var current = 0, playing = !reduce, hovering = false;
+            var current = 0, playing = !reduce, hovering = false, hoverIgnored = false;
             box.classList.add("is-live");
             slides[0].classList.add("is-active");
             var controls = document.createElement("div");
@@ -2760,7 +2795,11 @@
                 toggle.setAttribute("aria-label", on ? "Pause the case study rotation" : "Play the case study rotation");
                 track.setAttribute("aria-live", on ? "off" : "polite");
             }
-            toggle.addEventListener("click", function () { setPlaying(!playing); });
+            toggle.addEventListener("click", function () {
+                setPlaying(!playing);
+                // pressing Play means play, even though the cursor is still on the box
+                if (playing) { hovering = false; hoverIgnored = true; }
+            });
             setPlaying(playing);
             function show(n) {
                 if (n === current) return;
@@ -2777,8 +2816,8 @@
                 if (!playing || hovering || document.hidden) return;
                 show((current + 1) % slides.length);
             }, INTERVAL);
-            box.addEventListener("mouseenter", function () { hovering = true; });
-            box.addEventListener("mouseleave", function () { hovering = false; });
+            box.addEventListener("mouseenter", function () { if (!hoverIgnored) hovering = true; });
+            box.addEventListener("mouseleave", function () { hovering = false; hoverIgnored = false; });
             // keyboard focus on a link or a dot holds the rotation. Focus on the pause button itself must not,
             // or pressing Play with the keyboard would leave it stuck.
             box.addEventListener("focusin", function (e) { if (e.target !== toggle) hovering = true; });
