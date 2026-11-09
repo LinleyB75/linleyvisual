@@ -938,10 +938,9 @@
                 "CSS for Email",
                 "MJML",
                 "Handlebars",
-                "Liquid",
                 "Email Testing and Quality Assurance",
-                "Email Automation",
                 "Transactional Email",
+                "Transactional Email APIs",
                 "Dynamic Email Content",
                 "JavaScript",
                 "Node.js",
@@ -951,28 +950,8 @@
                 "SPF, DKIM and DMARC Email Authentication",
                 {
                     "@type": "Thing",
-                    "name": "Mailchimp",
-                    "sameAs": "https://mailchimp.com/"
-                },
-                {
-                    "@type": "Thing",
-                    "name": "MailerLite",
-                    "sameAs": "https://www.mailerlite.com/"
-                },
-                {
-                    "@type": "Thing",
                     "name": "Brevo",
                     "sameAs": "https://www.brevo.com/"
-                },
-                {
-                    "@type": "Thing",
-                    "name": "Klaviyo",
-                    "sameAs": "https://www.klaviyo.com/"
-                },
-                {
-                    "@type": "Thing",
-                    "name": "Kit (formerly ConvertKit)",
-                    "sameAs": "https://kit.com/"
                 }
             ]
         },
@@ -981,7 +960,7 @@
             "@id": "https://linleyb.com/#service",
             "name": "Email Development Services",
             "url": "https://linleyb.com/",
-            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test transactional emails end to end in HTML, CSS, MJML, Handlebars, JavaScript and Node.js, set up at your sending provider so your application sends the email by its ID, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Providers: Brevo, Postmark, SendGrid and MailerSend.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -997,20 +976,16 @@
                 "Email Design",
                 "HTML Email Development",
                 "MJML Development",
-                "Handlebars Email Templating",
-                "Liquid Email Templating",
-                "Email Automation",
+                "Handlebars Dynamic Content",
                 "Email Testing and Quality Assurance",
-                "Dynamic Email Content",
                 "Transactional Email Setup",
-                "Mailchimp Email Development",
-                "MailerLite Email Development",
                 "Brevo Email Development",
-                "Klaviyo Email Development",
-                "Kit Email Development",
+                "Postmark Email Development",
+                "SendGrid Email Development",
+                "MailerSend Email Development",
                 "Email Debugging and Troubleshooting",
                 "Email Audits and Cleanup",
-                "Transactional Email Setup and Developer Handoff",
+                "Transactional Email Setup and Handoff",
                 "Transactional Email Data Checks and Testing",
                 "API and Data Design for Email",
                 "Node.js Reference Implementation for Transactional Email",
@@ -1070,7 +1045,7 @@
                     "name": "Which frameworks and technologies are used across these emails?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt set up in Brevo. I also work with Handlebars and Liquid for dynamic content."
+                        "text": "The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt set up in Brevo. I also work with Handlebars and each provider's own tag language for dynamic content."
                     }
                 },
                 {
@@ -1099,10 +1074,10 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "Can these emails be set up in major Email Service Providers (ESPs)?",
+                    "name": "Can these emails be set up at my sending provider?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Yes. I set emails up in Mailchimp, Brevo, Klaviyo, MailerLite and Kit, using each platform's own tags for names and dynamic content."
+                        "text": "Yes. I set emails up at transactional providers that keep the email on their side and send it by its ID: Brevo, Postmark, SendGrid and MailerSend, using each provider's own tags for names and dynamic content."
                     }
                 },
                 {
@@ -1117,7 +1092,7 @@
         }
     ]
 }
-        </script>
+</script>
     </head>
     <body>
         <header class="site-header" role="banner">
@@ -1145,7 +1120,7 @@
                         <li><a href="/#home">Home</a></li>
                         <li><a href="/portfolio.html" class="nav-fix-btn" aria-current="page">Portfolio</a></li>
                         <li><a href="/#about">About</a></li>
-                        <li><a href="/certifications.html">Certs</a></li>
+                        <li><a href="/transactional-email-development.html">Services</a></li>
                         <li><a href="/blog/">Blog</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
@@ -1164,7 +1139,7 @@
             <section class="portfolio-header">
                 <div class="container">
                     <h1>Email Development Portfolio</h1>
-                    <p>A showcase of emails I design, develop, program and test end to end in HTML, CSS and MJML, with dynamic content in Handlebars and Liquid, tested in a non-production environment. Where an email is triggered by your system, such as a receipt, a sign-up confirmation or a two-factor message, I also write my side of the API: what data your application sends, how it reaches the email in your platform, and a Node.js reference implementation for your developers. Click any image to view the full desktop and mobile rendering.</p>
+                    <p>A showcase of emails I design, develop, program and test end to end in HTML, CSS and MJML, with dynamic content in Handlebars and each provider's own tag language, tested in a non-production environment. Where an email is triggered by your system, such as a receipt, a sign-up confirmation or a two-factor message, I also write my side of the API: what data your application sends, how it reaches the email in your platform, and a Node.js reference implementation for your developers. Click any image to view the full desktop and mobile rendering.</p>
 
                     <div class="tech-stack-icons">
                         <div class="tech-item"><i class="fab fa-html5"></i><span>HTML</span></div>
@@ -1198,7 +1173,7 @@
                     </a>
                     <div class="portfolio-content">
                         <span class="portfolio-tech">MJML • E-commerce</span>
-                        <h2 class="portfolio-title">Abandoned Cart Flow</h2>
+                        <h2 class="portfolio-title">Abandoned Cart Email</h2>
                         <p class="portfolio-desc">An abandoned cart email with a dynamic product grid, a layout that stacks on mobile, and one clear button.</p>
                         <div class="portfolio-links">
                             <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
@@ -1303,7 +1278,7 @@
                     </a>
                     <div class="portfolio-content">
                         <span class="portfolio-tech">HTML • Transactional</span>
-                        <h2 class="portfolio-title">Double Opt-in Flow</h2>
+                        <h2 class="portfolio-title">Double Opt-in Confirmation</h2>
                         <p class="portfolio-desc">A lightweight double opt-in confirmation: one message, one button, and a fast load.</p>
                         <div class="portfolio-links">
                             <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener" class="btn-outline"><i class="fab fa-github"></i> View Code</a>
@@ -1560,7 +1535,7 @@
             </details>
             <details class="faq-item">
                 <summary>Which frameworks and technologies are used across these emails?</summary>
-                <p>The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt set up in Brevo. I also work with Handlebars and Liquid for dynamic content.</p>
+                <p>The portfolio includes builds in semantic HTML/CSS and MJML, plus a transactional receipt set up in Brevo. I also work with Handlebars and each provider's own tag language for dynamic content.</p>
             </details>
             <details class="faq-item">
                 <summary>How do these emails handle legacy Outlook and Dark Mode rendering?</summary>
@@ -1575,8 +1550,8 @@
                 <p>Yes. I test emails across major email clients and devices, including Gmail, Apple Mail, Outlook desktop and web, iOS and Android, and fix what breaks before delivery. Clients render email differently, so the result matches the design as closely as each client allows.</p>
             </details>
             <details class="faq-item">
-                <summary>Can these emails be set up in major Email Service Providers (ESPs)?</summary>
-                <p>Yes. I set emails up in Mailchimp, Brevo, Klaviyo, MailerLite and Kit, using each platform's own tags for names and dynamic content.</p>
+                <summary>Can these emails be set up at my sending provider?</summary>
+                <p>Yes. I set emails up at transactional providers that keep the email on their side and send it by its ID: Brevo, Postmark, SendGrid and MailerSend, using each provider's own tags for names and dynamic content.</p>
             </details>
             <details class="faq-item">
                 <summary>How are multi-column layouts handled on smaller mobile screens?</summary>
@@ -1662,11 +1637,11 @@
                         <span>MJML</span>
                     </div>
                     <div class="tech-item"><i class="fas fa-code"></i><span>Handlebars</span></div>
-                    <div class="tech-item"><i class="fas fa-droplet"></i><span>Liquid</span></div>
+                    <div class="tech-item"><i class="fas fa-shield-halved"></i><span>SPF, DKIM &amp; DMARC</span></div>
                     <div class="tech-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
                     <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
                     <div class="tech-item"><i class="fas fa-vial" style="margin-right: 6px"></i><span>Email Testing &amp; QA</span></div>
-                    <div class="tech-item"><i class="fas fa-plug" style="margin-right: 6px"></i><span>ESP Integration</span></div>
+                    <div class="tech-item"><i class="fas fa-right-left" style="margin-right: 6px"></i><span>API Integration</span></div>
                     <div class="tech-item"><i class="fas fa-file-code" style="margin-right: 6px"></i><span>JSON &amp; APIs</span></div>
                 </div>
             </section>
