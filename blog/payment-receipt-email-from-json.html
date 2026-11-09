@@ -14,12 +14,14 @@
     <meta name="description" content="Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON data, testing and what I traced.">
     <link rel="canonical" href="https://linleyb.com/blog/payment-receipt-email-from-json.html">
 
-    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
-    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="icon" type="image/png" href="/images/linley-icon-192.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
     <meta property="og:title" content="Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting">
     <meta property="og:description" content="Kick Off → Your English's payment receipt email rebuilt as a Brevo template: the system map, the JSON data, and how I tested and troubleshot each stage.">
-    <meta property="og:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Linley Bignoux, freelance email developer">
     <meta property="og:url" content="https://linleyb.com/blog/payment-receipt-email-from-json.html">
     <meta property="og:type" content="article">
@@ -27,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting">
     <meta name="twitter:description" content="Kick Off → Your English's payment receipt email rebuilt as a Brevo template: the system map, the JSON data, and how I tested and troubleshot each stage.">
-    <meta name="twitter:image" content="https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp">
+    <meta name="twitter:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
     <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer">
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -57,7 +59,7 @@
             "name": "Linley Bignoux",
             "jobTitle": "Email Developer",
             "url": "https://linleyb.com/",
-            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
             "nationality": {
                 "@type": "Country",
                 "name": "Australia"
@@ -70,10 +72,7 @@
                 }
             },
             "sameAs": [
-                "https://github.com/LinleyB75",
-                "https://linleybignouxzqme9nmu.contra.com/",
-                "https://www.upwork.com/freelancers/~01eb5fd74932f25b39",
-                "https://www.fiverr.com/linleybignoux"
+                "https://github.com/LinleyB75"
             ],
             "knowsAbout": [
                 "Email Development",
@@ -125,7 +124,7 @@
             "@id": "https://linleyb.com/#service",
             "name": "Linley Bignoux Email Development",
             "url": "https://linleyb.com/",
-            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
             "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
@@ -171,7 +170,7 @@
             "url": "https://linleyb.com/blog/payment-receipt-email-from-json.html",
             "headline": "Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting",
             "description": "Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON data, testing and what I traced.",
-            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
             "datePublished": "2026-10-26",
             "dateModified": "2026-11-04",
             "author": {
@@ -233,7 +232,7 @@
 <header class="site-header" role="banner">
   <nav role="navigation" aria-label="Main">
     <a href="/#home" class="logo-wrap">
-      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <img src="/images/linley-bignoux-avatar.webp" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
         <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
         <span class="job-title">Freelance Email Developer</span>
@@ -477,23 +476,6 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
     <div class="container">
         <div class="social-links">
             <a
-                href="https://linleybignouxzqme9nmu.contra.com/"
-                class="social-icon social-contra"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my Contra Profile"
-            >
-                <svg class="custom-social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="30" height="30">
-                    <!-- White Rounded Background -->
-                    <rect width="512" height="512" rx="112" fill="#FFFFFF" />
-                    <!-- Black Custom Star Icon with Cross Cut -->
-                    <path d="M240 240 V90 C240 140, 140 240, 90 240 H240 Z" fill="#000000" />
-                    <path d="M272 240 V90 C272 140, 372 240, 422 240 H272 Z" fill="#000000" />
-                    <path d="M240 272 V422 C240 372, 140 272, 90 272 H240 Z" fill="#000000" />
-                    <path d="M272 272 V422 C272 372, 372 272, 422 272 H272 Z" fill="#000000" />
-                </svg>
-            </a>
-            <a
                 href="https://github.com/LinleyB75/Email-Dev"
                 class="social-icon social-github"
                 target="_blank"
@@ -502,23 +484,7 @@ if (strings.some((s) =&gt; /\b\d{13,19}\b/.test(s.replace(/[\s-]/g, "")))) {
             ><i class="fab fa-github"></i></a>
             <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
 
-            <!-- Upwork Profile Icon Link -->
-            <a
-                href="https://www.upwork.com/freelancers/~01eb5fd74932f25b39"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Upwork Profile"
-                class="social-icon social-upwork"
-            ><i class="fa-brands fa-upwork"></i></a>
 
-            <!-- Fiverr Profile Icon Link -->
-            <a
-                href="https://www.fiverr.com/linleybignoux"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Fiverr Profile"
-                class="social-icon social-fiverr"
-            ><i class="fa-solid fa-f"></i></a>
         </div>
 
         <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
