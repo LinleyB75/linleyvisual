@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
 
     <title>Systems Thinking in Email Development: Why Isolated Code Fixes Fail | Email Dev Notes</title>
-    <meta name="description" content="Why isolated code fixes fail in email development. Explore the 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML.">
+    <meta name="description" content="Why isolated fixes fail in email development: the 5 connected layers of an email system, from Figma design tokens to provider infrastructure and Outlook VML.">
     <link rel="canonical" href="https://linleyb.com/blog/systems-thinking-email-development.html">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
@@ -49,7 +49,7 @@
             "name": "Linley Bignoux",
             "jobTitle": "Email Developer",
             "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
+            "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1793821151/linley-hero-photo1.webp",
             "nationality": {
                 "@type": "Country",
                 "name": "Australia"
@@ -58,6 +58,8 @@
                 "@type": "Place",
                 "address": {
                     "@type": "PostalAddress",
+                    "addressLocality": "Montagne Ory",
+                    "addressRegion": "Mauritius",
                     "addressCountry": "MU"
                 }
             },
@@ -69,19 +71,34 @@
             ],
             "knowsAbout": [
                 "Email Development",
+                "Email Design",
+                "HTML Email",
+                "CSS for Email",
                 "MJML",
-                "Maizzle",
-                "HTML/CSS for Email",
-                "Handlebars"
+                "Handlebars",
+                "Email Testing and Quality Assurance",
+                "Transactional Email",
+                "Transactional Email APIs",
+                "Dynamic Email Content",
+                "JavaScript",
+                "Node.js",
+                "API Integration",
+                "JSON",
+                "REST APIs",
+                "SPF, DKIM and DMARC Email Authentication",
+                {
+                    "@type": "Thing",
+                    "name": "Brevo",
+                    "sameAs": "https://www.brevo.com/"
+                }
             ]
         },
         {
             "@type": "ProfessionalService",
             "@id": "https://linleyb.com/#service",
-            "name": "Linley Bignoux Email Development",
+            "name": "Email Development Services",
             "url": "https://linleyb.com/",
-            "image": "https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg",
-            "description": "Freelance email developer turning designs into bulletproof HTML/CSS, MJML, Maizzle and Handlebars emails.",
+            "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test transactional emails end to end in HTML, CSS, MJML, Handlebars, JavaScript and Node.js, set up at your sending provider so your application sends the email by its ID, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Providers: Brevo, Postmark, SendGrid and MailerSend.",
             "provider": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -90,17 +107,27 @@
                     "@type": "Country",
                     "name": "Mauritius"
                 },
-                {
-                    "@type": "AdministrativeArea",
-                    "name": "Worldwide"
-                }
+                "Worldwide"
             ],
             "serviceType": [
-                "MJML development",
-                "HTML email coding",
-                "Maizzle development",
-                "Handlebars email templating",
-                "Email testing and QA"
+                "Email Development",
+                "Email Design",
+                "HTML Email Development",
+                "MJML Development",
+                "Handlebars Dynamic Content",
+                "Email Testing and Quality Assurance",
+                "Transactional Email Setup",
+                "Brevo Email Development",
+                "Postmark Email Development",
+                "SendGrid Email Development",
+                "MailerSend Email Development",
+                "Email Debugging and Troubleshooting",
+                "Email Audits and Cleanup",
+                "Transactional Email Setup and Handoff",
+                "Transactional Email Data Checks and Testing",
+                "API and Data Design for Email",
+                "Node.js Reference Implementation for Transactional Email",
+                "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
             ]
         },
         {
@@ -108,9 +135,9 @@
             "@id": "https://linleyb.com/blog/systems-thinking-email-development.html#article",
             "url": "https://linleyb.com/blog/systems-thinking-email-development.html",
             "headline": "Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness",
-            "description": "Why isolated code fixes fail in email development. Explore the 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML.",
+            "description": "Why isolated fixes fail in email development: the 5 connected layers of an email system, from Figma design tokens to provider infrastructure and Outlook VML.",
             "datePublished": "2026-10-10",
-            "dateModified": "2026-10-22",
+            "dateModified": "2026-11-09",
             "author": {
                 "@id": "https://linleyb.com/#person"
             },
@@ -132,39 +159,39 @@
                     "name": "What is systems thinking in the context of email development?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Systems thinking in email development means recognizing that an email campaign is never just a single isolated HTML file, but rather the final output of an interconnected technical ecosystem spanning design, code, data logic, ESP infrastructure, and rendering clients."
+                        "text": "Systems thinking in email development means recognizing that an email is never just a single isolated HTML file, but rather the final output of an interconnected technical system spanning design, build, data logic, provider infrastructure, and rendering clients."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "How do upstream choices in Figma or Adobe XD affect downstream email code?",
+                    "name": "How do upstream choices in Figma or Adobe XD affect the downstream email build?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, code architecture bloats while trying to force compatibility across 50+ clients."
+                        "text": "Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, the build bloats while trying to force compatibility across 50+ clients."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "Why is choosing between semantic HTML, MJML, and Maizzle an architectural decision?",
+                    "name": "Why is choosing between semantic HTML and MJML an architectural decision?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Framework selection determines how components scale, how maintainable your template library is, and how cleanly final code minifies to avoid the Gmail 102KB clipping threshold."
+                        "text": "Framework selection determines how components scale, how maintainable your library of emails is, and how cleanly the final HTML minifies to avoid the Gmail 102KB clipping threshold. A framework is also an abstraction layer, so when something breaks, the fix is in the HTML and CSS underneath it."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "How does dynamic data and templating logic like Handlebars or Liquid impact email stability?",
+                    "name": "How does dynamic data and tag logic like Handlebars impact email stability?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name variables or empty inventory arrays, ensuring syntax is native to the ESP to avoid parsing errors."
+                        "text": "Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name values or empty arrays. The values your application sends must match what the email expects, with fallbacks, so the tag syntax stays native to the provider and does not throw parsing errors."
                     }
                 },
                 {
                     "@type": "Question",
-                    "name": "Why must an email template be synchronized with ESPs like Klaviyo or Mailchimp?",
+                    "name": "Why must an email match the way my sending provider receives data?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before subscribers ever open them."
+                        "text": "The email must speak the language of the provider that stores it. Sending a value in the wrong format, or one the email does not expect, will break the email before a customer ever sees it."
                     }
                 },
                 {
@@ -177,10 +204,10 @@
                 },
                 {
                     "@type": "Question",
-                    "name": "Where can I inspect raw, tested email code and templates built with this systemic approach?",
+                    "name": "Where can I inspect raw, tested emails built with this systemic approach?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "You can visit my GitHub repository at https://github.com/LinleyB75/Email-Dev to inspect raw HTML, MJML, Maizzle, and templating logic firsthand."
+                        "text": "You can visit my GitHub repository at https://github.com/LinleyB75/Email-Dev to inspect raw HTML, MJML and the logic in the emails firsthand, or the abandoned cart build at https://github.com/LinleyB75/kick-off-abandoned-cart-brevo, which has tests and raw output for every stage."
                     }
                 }
             ]
@@ -227,18 +254,18 @@
 
     <span class="blog-date">Architecture • Strategy • Ecosystem</span>
     <h1>Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</h1>
-    <p class="post-meta">Published 10 October 2026 • By Linley Bignoux</p>
-    <div class="tag-row"><span class="tag">systems-thinking</span><span class="tag">mjml</span><span class="tag">maizzle</span><span class="tag">esp-integration</span><span class="tag">qa</span></div>
+    <p class="post-meta">Published 10 October 2026 • Updated 9 November 2026 • By Linley Bignoux</p>
+    <div class="tag-row"><span class="tag">systems-thinking</span><span class="tag">mjml</span><span class="tag">html-css</span><span class="tag">api-integration</span><span class="tag">qa</span></div>
 
     <div class="post-content">
 
-      <p>If you treat an email template as a single, isolated HTML file, you will spend half your life fighting rendering bugs.</p>
+      <p>If you treat an email as a single, isolated HTML file, you will spend half your life fighting rendering bugs.</p>
 
-      <p>Here is a common scenario I encounter: A promotional campaign looks pristine in Figma. It gets coded, tested quickly in an email testing tool, and pushed live. Then, an Outlook user opens it on a desktop client with Dark Mode forced on, while a Klaviyo automated flow attempts to loop through a dynamic product array—and the whole layout collapses.</p>
+      <p>Here is a common scenario I encounter: A password reset email looks pristine in Figma. It gets built, tested quickly in an email testing tool, and pushed live. Then an Outlook user opens it on a desktop client with Dark Mode forced on, while your application sends the first name as an empty value, and the greeting reads "Hi ," above a layout that has collapsed.</p>
 
       <p>The immediate reaction is usually a patchwork fix: throwing an extra <code>!important</code> rule here or hacking a table width there. But in email development, fixing a symptom without understanding the underlying system always creates two new bugs.</p>
 
-      <p>To build campaigns that actually scale, survive legacy clients, and render data correctly, we have to look at email development through a systems-thinking lens. As an email developer working across global architectures, I've learned that an email campaign is never just a graphic; it is the final output of a five-layer technical ecosystem.</p>
+      <p>To build emails that survive legacy clients and render data correctly, we have to look at email development through a systems-thinking lens. I design, develop, program and test emails end to end, and I've learned that an email is never just a graphic; it is the final output of a five-layer technical system.</p>
 
       <img src="/blog/images/tomma-pasta-email-preview.webp" alt="An email development rendering test screenshot in dark mode for an Italian pasta sauce product" width="352" height="1024" loading="lazy" style="max-width:100%;height:auto;display:block;margin:1.5rem auto;border-radius:8px;">
       <p style="text-align:center;font-size:0.9rem;color:var(--text-light);margin-bottom:2rem;">A dark mode rendering test of a product email: a failure in one layer shows up across the whole stack.</p>
@@ -249,31 +276,31 @@
       <h3>1. The Design System Layer (Input)</h3>
       <ul>
         <li><b>What lives here:</b> Figma, Adobe XD, Sketch, Photoshop, design tokens, typography scales, and spacing grids.</li>
-        <li><b>The Systemic Impact:</b> Upstream design choices dictate downstream complexity. If a designer creates a multi-column layout with arbitrary padding or overlapping elements without considering mobile stacking, your code architecture will bloat trying to force it to behave across 50+ clients.</li>
+        <li><b>The Systemic Impact:</b> Upstream design choices dictate downstream complexity. If a designer creates a multi-column layout with arbitrary padding or overlapping elements without considering mobile stacking, your build will bloat trying to force it to behave across 50+ clients.</li>
       </ul>
 
-      <h3>2. The Code &amp; Framework Layer (Architecture)</h3>
+      <h3>2. The Build &amp; Framework Layer (Architecture)</h3>
       <ul>
-        <li><b>What lives here:</b> Semantic HTML, MJML, Maizzle, modular partials, and asset optimisation.</li>
-        <li><b>The Systemic Impact:</b> Choosing a framework isn’t just about syntax preference. It determines how components scale, how maintainable your template library is, and how cleanly the final code minifies to avoid the dreaded Gmail clipping threshold (102KB). Check out some of my structure examples in my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</li>
+        <li><b>What lives here:</b> Semantic HTML and CSS, MJML, the HTML that MJML builds, and asset optimisation.</li>
+        <li><b>The Systemic Impact:</b> Choosing a framework isn’t just about syntax preference. It determines how components scale, how maintainable your library of emails is, and how cleanly the final HTML minifies to avoid the dreaded Gmail clipping threshold (102KB). A framework is also an abstraction layer: when something breaks, the fix is in the HTML and CSS underneath it, which I wrote about in <a href="/blog/mjml-is-an-abstraction-layer.html">MJML Is an Abstraction Layer</a>. Check out some of my structure examples in my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</li>
       </ul>
 
       <h3>3. The Data &amp; Logic Layer (Personalization)</h3>
       <ul>
-        <li><b>What lives here:</b> Liquid, Handlebars, Django/Jinja, and native merge tags (<code>*|FNAME|*</code>, <code>{{subscriber.first_name}}</code>).</li>
-        <li><b>The Systemic Impact:</b> Static layouts meet dynamic data here. A system must account for edge cases: What happens when a first name variable is empty? How does a conditional loop handle an empty inventory array? Logic syntax must be native to the ESP or it will throw parsing errors.</li>
+        <li><b>What lives here:</b> Handlebars, your provider's own tag language (<code>{{ params.firstName }}</code>), and the JSON values your application sends.</li>
+        <li><b>The Systemic Impact:</b> Static layouts meet dynamic data here. A system must account for edge cases: What happens when a first name variable is empty? How does a conditional loop handle an empty inventory array? Logic syntax must be native to your provider or it will throw parsing errors. This is also where the data design matters: the values your application sends, their formats and their fallbacks are defined before anything is sent.</li>
       </ul>
 
-      <h3>4. The ESP &amp; Infrastructure Layer (The Infrastructure)</h3>
+      <h3>4. The Provider &amp; Infrastructure Layer (The Infrastructure)</h3>
       <ul>
-        <li><b>What lives here:</b> Klaviyo, Mailchimp, Brevo, MailerLite, Kit, webhooks, timing triggers, and automated flow rules.</li>
-        <li><b>The Systemic Impact:</b> The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before a subscriber ever sees them.</li>
+        <li><b>What lives here:</b> Your sending provider (such as Brevo), the email's ID, the API key, and the provider's limits.</li>
+        <li><b>The Systemic Impact:</b> The email must speak the language of the provider that stores it. Sending a value in the wrong format, or one the email does not expect, will break the email before a customer ever sees it.</li>
       </ul>
 
       <h3>5. The Hostile Rendering Environment (The Target)</h3>
       <ul>
         <li><b>What lives here:</b> Desktop, webmail, and mobile clients—from Apple Mail and Gmail to legacy Microsoft Outlook (requiring VML and ghost tables) and forced Dark Mode engines.</li>
-        <li><b>The Systemic Impact:</b> This is where the code meets reality. The rendering environment is entirely outside your control. The system must be resilient enough to degrade gracefully when advanced CSS is stripped away.</li>
+        <li><b>The Systemic Impact:</b> This is where the build meets reality. The rendering environment is entirely outside your control. The system must be resilient enough to degrade gracefully when advanced CSS is stripped away.</li>
       </ul>
 
       <h2>Why Ecosystem Awareness Changes Everything</h2>
@@ -286,16 +313,18 @@
       </ol>
 
       <h2>Conclusion: Engineering Over Patchwork</h2>
-      <p>An email marketing campaign is an interconnected machine. When your design system, code framework, data logic, ESP infrastructure, and target rendering clients are synchronised, campaigns stop breaking unpredictably.</p>
-      <img src="/blog/images/linx-test-outlook-legacy.webp" alt="An email template screenshot being tested on a testing platform for dark and light mode compatibility" width="600" height="1000" loading="lazy" style="max-width:100%;height:auto;display:block;margin:1.5rem auto;border-radius:8px;">
-      <p>By treating email development as an engineering system rather than a series of one-off design conversions, you protect your sender reputation, eliminate frustrating rendering surprises, and build scalable templates that perform reliably every single time you hit send.</p>
+      <p>An email is an interconnected machine. When your design system, build, data logic, provider infrastructure, and target rendering clients are synchronised, emails stop breaking unpredictably.</p>
+      <img src="/blog/images/linx-test-outlook-legacy.webp" alt="An email screenshot being tested on a testing platform for dark and light mode compatibility" width="600" height="1000" loading="lazy" style="max-width:100%;height:auto;display:block;margin:1.5rem auto;border-radius:8px;">
+      <p>By treating email development as an engineering system rather than a series of one-off design conversions, you protect your sender reputation, eliminate frustrating rendering surprises, and build emails that perform reliably every single time they are sent.</p>
 
-      <p>Have you encountered a recurring bug that seemed disconnected from your code? Head over to my Portfolio or explore my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a> to inspect raw, tested templates and solutions built with a systemic approach.</p>
+      <p>Have you encountered a recurring bug that seemed disconnected from your build? Head over to my Portfolio or explore my <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">GitHub repository</a> to inspect raw, tested emails and solutions built with a systemic approach.</p>
+
+      <p>If your emails depend on an API, see <a href="/transactional-email-development.html">how I build and test the email side of your system</a>, and <a href="/blog/system-design-architecture-email.html">which decisions are expensive to change</a>.</p>
 
     </div>
 
     <div class="post-cta">
-      <p>Need robust, scalable email architectures built right the first time? I code, test, and integrate professional email systems.</p>
+      <p>Need an email that depends on your application built right the first time? I design, develop, program and test it end to end, write my side of the API, and trace problems through the whole system.</p>
       <a href="/#contact" class="cta-button">Get in touch</a>
     </div>
   </article>
@@ -306,31 +335,31 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>What is systems thinking in the context of email development?</summary>
-          <p>Systems thinking in email development means recognizing that an email campaign is never just a single isolated HTML file, but rather the final output of an interconnected technical ecosystem spanning design, code, data logic, ESP infrastructure, and rendering clients.</p>
+          <p>Systems thinking in email development means recognizing that an email is never just a single isolated HTML file, but rather the final output of an interconnected technical system spanning design, build, data logic, provider infrastructure, and rendering clients.</p>
         </details>
         <details class="faq-item">
-          <summary>How do upstream choices in Figma or Adobe XD affect downstream email code?</summary>
-          <p>Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, code architecture bloats while trying to force compatibility across 50+ clients.</p>
+          <summary>How do upstream choices in Figma or Adobe XD affect the downstream email build?</summary>
+          <p>Upstream design choices dictate downstream complexity. If a designer creates multi-column layouts with arbitrary padding or overlapping elements without considering mobile stacking, the build bloats while trying to force compatibility across 50+ clients.</p>
         </details>
         <details class="faq-item">
-          <summary>Why is choosing between semantic HTML, MJML, and Maizzle an architectural decision?</summary>
-          <p>Framework selection determines how components scale, how maintainable your template library is, and how cleanly final code minifies to avoid the Gmail 102KB clipping threshold.</p>
+          <summary>Why is choosing between semantic HTML and MJML an architectural decision?</summary>
+          <p>Framework selection determines how components scale, how maintainable your library of emails is, and how cleanly the final HTML minifies to avoid the Gmail 102KB clipping threshold. A framework is also an abstraction layer, so when something breaks, the fix is in the HTML and CSS underneath it.</p>
         </details>
         <details class="faq-item">
-          <summary>How does dynamic data and templating logic like Handlebars or Liquid impact email stability?</summary>
-          <p>Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name variables or empty inventory arrays, ensuring syntax is native to the ESP to avoid parsing errors.</p>
+          <summary>How does dynamic data and tag logic like Handlebars impact email stability?</summary>
+          <p>Static layouts meet dynamic data in this layer. Systems must account for edge cases such as empty first-name values or empty arrays. The values your application sends must match what the email expects, with fallbacks, so the tag syntax stays native to the provider and does not throw parsing errors.</p>
         </details>
         <details class="faq-item">
-          <summary>Why must an email template be synchronized with ESPs like Klaviyo or Mailchimp?</summary>
-          <p>The template must speak the language of the platform hosting it. Hardcoding subscription logic or tracking tags that conflict with an ESP's API data payload will break automated drip flows before subscribers ever open them.</p>
+          <summary>Why must an email match the way my sending provider receives data?</summary>
+          <p>The email must speak the language of the provider that stores it. Sending a value in the wrong format, or one the email does not expect, will break the email before a customer ever sees it.</p>
         </details>
         <details class="faq-item">
           <summary>How should developers handle the hostile rendering environment of legacy Outlook and Dark Mode?</summary>
           <p>Because rendering environments are outside your control, the system must be resilient enough to degrade gracefully when advanced CSS is stripped away, utilizing VML ghost tables for Outlook and strict background forcing for Dark Mode.</p>
         </details>
         <details class="faq-item">
-          <summary>Where can I inspect raw, tested email code and templates built with this systemic approach?</summary>
-          <p>You can visit my GitHub repository at <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">https://github.com/LinleyB75/Email-Dev</a> to inspect raw HTML, MJML, Maizzle, and templating logic firsthand.</p>
+          <summary>Where can I inspect raw, tested emails built with this systemic approach?</summary>
+          <p>You can visit my GitHub repository at <a href="https://github.com/LinleyB75/Email-Dev" target="_blank" rel="noopener noreferrer">https://github.com/LinleyB75/Email-Dev</a> to inspect raw HTML, MJML and the logic in the emails firsthand, or the abandoned cart build at <a href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo" target="_blank" rel="noopener noreferrer">https://github.com/LinleyB75/kick-off-abandoned-cart-brevo</a>, which has tests and raw output for every stage.</p>
         </details>
       </div>
     </div>
@@ -394,7 +423,7 @@
                 />
             </a>
         </div>
-        <div class="footer-credit-text">Site coded &amp; developed by Linley Bignoux</div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
         <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
     </div>
 </footer>
