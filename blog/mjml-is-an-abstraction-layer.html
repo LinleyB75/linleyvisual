@@ -314,7 +314,7 @@
       <p>In every project I end up in the HTML and CSS, many times: to change a spacing, to fix how one email client draws something, to read what the build produced, or to hand a developer a file with no build step. Vanilla HTML and CSS are the foundation of email development, and knowing them is what lets me use MJML as a tool and not as a crutch.</p>
       <p>These five faults come from one build, the abandoned cart email for Kick Off &rarr; Your English, which I describe step by step in <a href="/blog/abandoned-cart-email-step-by-step.html">the full build post</a>. The email in it is a test version. The test I apply to each fault: could I have fixed it without reading the HTML? In every case, no.</p>
 
-      <h2>Fault 1: a button that was drawn as a paragraph</h2>
+      <h2 id="fault-1">Fault 1: a button that was drawn as a paragraph</h2>
       <p>The draft's button, in MJML, looked fine. It had a fixed width, and no link yet:</p>
 <pre tabindex="0"><code>&lt;mj-button css-class="button" align="left" background-color="#0055FF"
            font-family="Tahoma, serif" inner-padding="20px 35px" width="380px"&gt;
@@ -341,7 +341,7 @@
 <pre tabindex="0"><code>&lt;a href="https://example.com/cart" style="display:inline-block;background:#0055FF;color:#ffffff; ... padding:20px 35px;border-radius:12px;" target="_blank"&gt;Return to Your Cart&lt;/a&gt;</code></pre>
       <p>I removed the fixed width and the rule, and the button became 254 &times; 70px at every screen size. My checks now refuse a button with no link, because strict mode does not: I tested MJML 5.4.1, and it accepts a button with no link without complaint.</p>
 
-      <h2>Fault 2: a rounded corner on the wrong element</h2>
+      <h2 id="fault-2">Fault 2: a rounded corner on the wrong element</h2>
       <p>I wrote the whole email a second time by hand, as plain HTML with no MJML, and compared it with the MJML build pixel by pixel, in light and dark mode. My first attempt was identical in light mode and <b>60 pixels off in dark mode</b>. All 60 were in the corners of one box: the white box holding the heading in the orange band. They differed from MJML's by a single colour level out of 255.</p>
       <p>The cause was where the corner lived. MJML puts the rounded corner on the table itself, with the text cell directly inside:</p>
 <pre tabindex="0"><code>&lt;table style="background-color:#FFFFFF;border-radius:8px;vertical-align:top;border-collapse:separate;" width="100%"&gt;
@@ -357,7 +357,7 @@
       <img src="/blog/images/mjml-abstraction-01-box-corner-dark-vs-light.webp" alt="A close-up of the top-left corner of the heading box in the orange band. On the left, in dark mode, the dark box has a square corner. On the right, in light mode, the white box has a rounded corner." width="1010" height="350" loading="lazy">
       <p>In light mode the corner is rounded. In dark mode it is square, because my dark rule also paints the column's square wrapper behind the rounded table, and that covers the corner. Both builds do exactly this, which is why the test passed. It is a small flaw in my dark design, found only because I had to match the two builds, and it is still to fix.</p>
 
-      <h2>Fault 3: the rounded button in Outlook for Windows</h2>
+      <h2 id="fault-3">Fault 3: the rounded button in Outlook for Windows</h2>
       <p>Outlook for Windows draws email with a different engine from a browser, and it does not give a link rounded corners. The usual answer is VML, a shape drawn inside conditional comments. It is not MJML. I write it by hand in a raw block, and give everyone else the normal button:</p>
 <pre tabindex="0"><code>&lt;!--[if mso]&gt;
   &lt;v:roundrect href="{{ params.cartUrl }}" style="height:70px;width:260px;" arcsize="17%" fillcolor="#0055FF"&gt;
@@ -367,7 +367,7 @@
 &lt;!--[if !mso]&gt;&lt;!--&gt;  ...the normal button...  &lt;!--&lt;![endif]--&gt;</code></pre>
       <p>Two conditional comments make sure only one shows. In the plain HTML version I also wrote Outlook's "ghost tables" by hand around every section. I have <b>not seen this email's button in real Outlook</b>. It follows the pattern MJML itself writes, and I checked it in a browser, which is all I can say for this build.</p>
 
-      <h2>Fault 4: Outlook.com's dark mode, and where the dark rules go</h2>
+      <h2 id="fault-4">Fault 4: Outlook.com's dark mode, and where the dark rules go</h2>
       <p>Dark mode is plain CSS, and where you put it decides whether light mode survives. My dark rules sit inside a <code>prefers-color-scheme</code> block, so light mode cannot change. Outlook.com and the Outlook applications are handled separately, because I target them with the attributes they add when they recolour an email:</p>
 <pre tabindex="0"><code>@media (prefers-color-scheme: dark) {
   .dm-white, .dm-white &gt; table, .dm-white &gt; table &gt; tbody &gt; tr &gt; td { background: #1c1c1e !important; }
@@ -377,7 +377,7 @@
 [data-ogsc] .dm-text div { color: #f2f2f2 !important; }</code></pre>
       <p>Gmail recolours emails by its own rules, so nothing here switches it on. As for Outlook.com, <b>I tested these rules in a different project, one that is not published here.</b> I did not test them in this cart build, so for this email they are written, and the light mode is proven unchanged.</p>
 
-      <h2>Fault 5: Gmail's limits, and measuring the file that is really sent</h2>
+      <h2 id="fault-5">Fault 5: Gmail's limits, and measuring the file that is really sent</h2>
       <p>Gmail clips an email over about 102 KB, hiding the rest behind "View entire message", and it ignores embedded CSS past about 16,384 characters. Both limits apply to the built file, not to the MJML. This is where my own checks were wrong. At one stage they reported the email at 37.1 KB, while the file the build wrote was 41,732 bytes, which is 40.8 KB. The checks were measuring MJML's unformatted output, and the build writes the formatted one. Nothing was near the limit, but a measure that disagrees with the file you hand over is not one to trust. They now measure the built file: for the finished email, 44.0 KB and 3,562 characters of style.</p>
 
       <h2>What the built HTML contains that the MJML never mentions</h2>
@@ -450,7 +450,7 @@ p { display: block; margin: 13px 0; }</code></pre>
 &lt;!--&lt;![endif]--&gt;</code></pre>
       <p>A client that blocks external fonts falls back along the font stack, <code>Ubuntu, Helvetica, Arial, sans-serif</code>, so the stack matters as much as the link. This also exposes a real limit in my own proof. My pixel comparison blocks web fonts for both emails, so both render in the fallback font. My hand-written version does not link the web font at all, so <b>where that font loads, the two emails will not look identical.</b> The test proved what it could prove. The hand-written file needs the same few lines.</p>
 
-      <h2>When it is not my file</h2>
+      <h2 id="not-my-file">When it is not my file</h2>
       <p>A framework only helps if the file you are given has one. Often it does not. I take over an email another developer built by hand, or one exported from an editor, or one edited after the build, and I am asked for an overhaul or a few adjustments. That is where the HTML and CSS stops being optional. I read it from the top:</p>
       <ol>
         <li><b>The head:</b> the language, the viewport, the meta tags, the resets and Outlook's settings.</li>

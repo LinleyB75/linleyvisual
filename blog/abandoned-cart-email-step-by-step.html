@@ -387,7 +387,7 @@
         </tbody>
       </table>
 
-      <h2>Step 1: set up, and put the key guard in first</h2>
+      <h2 id="step-1">Step 1: set up, and put the key guard in first</h2>
       <p>This repository is public, so a leaked API key would be public too. Before any email file went in, I made a new repository, installed a pre-commit guard, and tested it with fake keys. The guard refuses a commit that contains a <code>.env</code> file or anything shaped like a Brevo key.</p>
 <pre tabindex="0"><code>git init -b main
 npm run setup:hooks
@@ -397,7 +397,7 @@ git commit -m "this must be blocked"</code></pre>
       <img src="/blog/images/abandoned-cart-01-key-guard-blocks.webp" alt="The VS Code terminal. A commit containing a fake Brevo key prints BLOCKED: something shaped like a Brevo key is in the staged changes. A forced .env file prints BLOCKED: .env must never be committed. Then git log says the branch has no commits yet." width="1090" height="683" loading="lazy">
       <p>Both attempts were blocked, and <code>git log</code> afterwards said the branch had no commits yet, so nothing had slipped through. The key in the picture is a made-up string with the right shape. The first real commit was the guard itself, so every later commit went through it.</p>
 
-      <h2>Step 2: build the checks before touching the draft</h2>
+      <h2 id="step-2">Step 2: build the checks before touching the draft</h2>
       <p>I did not start by fixing the draft. I started by building the checks, so that every later stage is tested the same way.</p>
       <table>
         <thead><tr><th>Check</th><th>What it does</th></tr></thead>
@@ -416,7 +416,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       <img src="/blog/images/abandoned-cart-02-broken-email-fails.webp" alt="The VS Code terminal. The checks on a deliberately broken email end with FAIL: 17 errors, 11 warnings, and light grey text on white at 2.32:1. Below it, the palette tool prints a table of contrast ratios, where the link blue #007bff on white is 3.98:1 and fails." width="1305" height="670" loading="lazy">
       <p>A tool you have not seen fail is a tool you cannot trust. The deliberately broken email fails with 17 errors, and the palette tool shows why a familiar link blue is a problem: <code>#007bff</code> on white is 3.98:1, under the 4.5:1 that normal text needs.</p>
 
-      <h2>Step 3: the first check of the draft</h2>
+      <h2 id="step-3">Step 3: the first check of the draft</h2>
       <p>The draft is 177 lines of MJML that I wrote, as close to the real email as I could make it. It mixed two brands: the title and the logo text said Frameler eyewear, while the product, price and footer were Kick Off Your English. The email is for Kick Off &rarr; Your English.</p>
 <pre tabindex="0"><code>node email-checks/run.js stages/01-draft-as-received.mjml --out reports/first-run</code></pre>
       <img src="/blog/images/abandoned-cart-03-first-run-draft-fails.webp" alt="The VS Code terminal. The first run of the checks on the draft ends with FAIL: 12 errors, 4 warnings. It lists social icons with no alt text, lang und, four links with no accessible name, and contrast failures of 2.35:1 and 3.22:1 in the footer." width="1305" height="677" loading="lazy">
@@ -436,7 +436,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       </table>
       <p><b>Why 440px.</b> The button had a fixed width of 380px, and its column had 30px of padding on each side: 380 + 60 = 440. A phone is narrower than that. Separately, because the button had no link, MJML drew it as a <code>&lt;p&gt;</code> instead of a link, so it would have done nothing when pressed. And my <code>.button</code> rule did apply, as <code>display: flex</code> on a table cell, which does nothing useful. All three facts are visible only in the built HTML.</p>
 
-      <h2>Step 4: fix what the checks found, and the first build</h2>
+      <h2 id="step-4">Step 4: fix what the checks found, and the first build</h2>
       <table>
         <thead><tr><th>Change</th><th>Why</th></tr></thead>
         <tbody>
@@ -464,7 +464,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       <img src="/blog/images/abandoned-cart-04-first-build.webp" alt="The VS Code terminal. npm run build runs a prebuild step and then mjml in strict mode writing dist/email.html. Checking the file size prints 41732." width="1305" height="280" loading="lazy">
       <p><code>dist/email.html</code> is the real HTML: 41,732 bytes at this stage. I run the checks on that built file on its own too, with no MJML involved, because that file is what Brevo and the inbox receive.</p>
 
-      <h2>Step 5: dark and light mode, and proving light did not change</h2>
+      <h2 id="step-5">Step 5: dark and light mode, and proving light did not change</h2>
       <p>The rule for this stage: <b>light mode must not change.</b> So I built the proof first. A comparison test renders two emails in light mode with the same grey stand-in for every image, at three widths, and counts the pixels that differ. I tried it on an email against itself, which must be identical, and on the draft against the fixed email, which must not be. Only then did I change the email.</p>
       <p>The dark mode is plain CSS. The dark rules sit inside <code>@media (prefers-color-scheme: dark)</code>, so light mode cannot change:</p>
 <pre tabindex="0"><code>@media (prefers-color-scheme: dark) {
@@ -509,7 +509,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       <p>Light mode did not change by a single pixel, at three widths. The page heights depend on the fonts installed on the computer, so they are the heights on mine. What the test judges is whether two emails match each other on the same computer.</p>
       <p><b>What this stage cannot prove.</b> Gmail ignores <code>prefers-color-scheme</code> and recolours emails itself, so nothing in the email can switch it on, and only testing in Gmail shows what it does. Outlook's own engine cannot be tested here either. The Gmail measures I could take: the style blocks are 3,562 characters against a limit of about 16,384, and the built file is 44.0 KB against the 102 KB clipping limit.</p>
 
-      <h2>Step 6: define the data the email needs</h2>
+      <h2 id="step-6">Step 6: define the data the email needs</h2>
       <p>Six things in the email were typed in: the customer's name, the product, its picture, the price, the quantity and the cart link. A real cart email needs each of them to come from the application. Working out exactly what it must send, and refusing anything wrong before it is sent, is my side of the API.</p>
       <table>
         <thead><tr><th>Value</th><th>Required</th><th>The rule</th></tr></thead>
@@ -541,7 +541,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       <p>The checks passed, but they had measured the words <code>{{ params.productName }}</code>, not a product. A long product name would never have been tried. So I taught the checks to fill the email in with test data first, the way Brevo will, and then compare. With the old typed-in values filled in, the new email was <b>identical to the previous stage in light and dark, at all three widths</b>. With a different customer filled in, a few thousand pixels differed, so the test can tell.</p>
       <p>I tested the send step against a small simulated Brevo that I wrote, and it has 15 tests: the dry run, the sandbox, typing SEND to confirm, a wrong key, a missing key, and refusing bad data before any request. The whole walkthrough passes with 9 checks and 1 warning, and the warning is honest: the social and footer links still point at <code>example.com</code>.</p>
 
-      <h2>Step 7: the footer, and proving only the footer changed</h2>
+      <h2 id="step-7">Step 7: the footer, and proving only the footer changed</h2>
       <p>The test version's footer did not match the client's finished emails. I found the wording in their other emails and compared:</p>
       <table>
         <thead><tr><th></th><th>The test version had</th><th>The finished emails have</th></tr></thead>
@@ -552,7 +552,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       </table>
       <p>The change is exactly two lines. To prove it, I taught the comparison test to allow differences only inside a named part of the email, found by its wording as it was and as it is now. At every width, in light and in dark mode, it reported <b>0 pixels outside the footer</b>. Without the allowance the same comparison fails, and against the draft it fails even with the allowance, so the test can say no.</p>
 
-      <h2>Step 8: the same email as plain HTML, with no MJML</h2>
+      <h2 id="step-8">Step 8: the same email as plain HTML, with no MJML</h2>
       <p>Some clients want plain HTML and no build step, and some developers will edit the final HTML. So I wrote the whole email a second time by hand, as nested tables with inline styles: the same six tags, the same dark rules, the Outlook button and its ghost tables. It is indented so a person can read it, with a comment above each section.</p>
       <ul>
         <li><b>The same checks pass:</b> 0 errors, 1 warning (the placeholder links), the same lowest contrast of 5.05:1.</li>
@@ -567,7 +567,7 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
 &lt;/table&gt;</code></pre>
       <p>I had put the corner on a cell nested two tables deep, so the dark background showed through differently at the corners. Moving it to the table made the two emails exactly equal. It is a good example of why I read the HTML that MJML writes.</p>
 
-      <h2>Step 9: real Brevo</h2>
+      <h2 id="step-9">Step 9: real Brevo</h2>
       <p>Everything so far used my simulated Brevo. The simulation follows Brevo's documented behaviour, but it is not Brevo, so this step uses the real one, in the same order every time: look, check, send.</p>
       <ol>
         <li>I made an API key in Brevo with a short expiry, and put it only in <code>.env</code>. I never paste the key into a chat, a screenshot or a file that is committed.</li>
@@ -578,16 +578,16 @@ node email-checks/palette.js "#ffffff" "#0056b3" "#007bff"</code></pre>
       </ol>
       <p>The email arrived in my inbox, and everything in it was as it should be. Brevo's documentation also warns that its IP security can reject a request from an address it does not know once its learning phase ends, and that adding the address under Security, then Authorized IPs, fixes it. I did not hit it, but it is on the list for the client's developer.</p>
 
-      <h2>Step 10: real email clients</h2>
+      <h2 id="step-10">Step 10: real email clients</h2>
       <p>I sent the real email to my own addresses and opened it in real email clients, in light and in dark mode. What each one did, with pictures, is recorded in the repository, in <code>evidence/stage-7-clients/RESULTS.md</code>. Gmail recolours emails by its own rules, so a client's own dark mode can change what I designed, and that is exactly what this step is for.</p>
       <p><b>Not tested in this build: Outlook, in any version.</b> I stopped here on purpose. The Outlook button and the Outlook dark-mode rules are written and checked in a real browser, but this email has not been seen in real Outlook, and the build log and the handoff both say so. I have tested Outlook.com's dark-mode rules in a different project, which is not published here.</p>
 
-      <h2>Step 11: write it up, and hand it over</h2>
+      <h2 id="step-11">Step 11: write it up, and hand it over</h2>
       <p>A recorder script runs the checks for a stage, saves the raw output with the time and the exit code, and takes pictures of the email in light and dark mode. The build log has every stage with its numbers, the lab notebook has the experiments behind each decision, and a one-page handoff tells the client's developer what they receive, how to set the email up in Brevo, what their application sends, and what is still open. The last command is the setup check:</p>
 <pre tabindex="0"><code>npm run verify
 All checks passed. Ready to push.</code></pre>
 
-      <h2>What went wrong</h2>
+      <h2 id="what-went-wrong">What went wrong</h2>
       <ol>
         <li><b>My first run of the checks missed three kinds of fault.</b> I found them by reading the file and added checks.</li>
         <li><b>The first fix for the button looked right and was not.</b> Measuring showed the clickable area was smaller than the visible button.</li>

@@ -1178,6 +1178,11 @@
       .chain-box:not(:last-child)::after { right: -2rem; width: 1.4rem; height: 1.4rem; margin-top: -0.7rem; background: #fff; }
       @media (max-width: 1000px) { .chain-list { grid-template-columns: 1fr; gap: 2.2rem; } .chain-box:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -1.85rem; margin: 0 0 0 -0.7rem; transform: rotate(90deg); } }
       @media (max-width: 800px) { .flow-steps { grid-template-columns: 1fr; gap: 2.5rem; } .flow-step:not(:last-child)::after { top: auto; right: auto; left: 50%; bottom: -2rem; margin: 0 0 0 -0.75rem; transform: rotate(90deg); } }
+      /* a link at the foot of a card: the cards are flex columns, so it sits at the bottom whatever the text above */
+      .card-link { display: inline-block; margin-top: auto; padding-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none; }
+      .card-link + .card-link { margin-top: 0; padding-top: 0.4rem; }
+      .card-link:hover, .card-link:focus-visible { text-decoration: underline; }
+
 
     </style>
 
@@ -1986,6 +1991,7 @@
                             <p>
                                 I define what data your application sends to your email platform: the JSON fields, their names and types, which are required, and the fallbacks. I write the field table your developers build against, and test it with missing, very long and special-character data before it reaches a customer. I write my side of the API call to carry it.
                             </p>
+                            <a class="card-link" href="/blog/abandoned-cart-email-step-by-step.html#step-6">See how the data is tested &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-diagram-project"></i>
@@ -1993,6 +1999,7 @@
                             <p>
                                 I help decide how the pieces fit together: what the email reads, who creates the links and tokens, who owns the API key, and what happens when a send fails. It is written down, so your team knows who owns what.
                             </p>
+                            <a class="card-link" href="/blog/system-design-architecture-email.html">Which decisions are expensive to change &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-screwdriver-wrench"></i>
@@ -2000,6 +2007,7 @@
                             <p>
                                 I trace a problem through the whole flow, from your application's data to the email, the platform and the inbox, so I fix the cause and not just the symptom: empty merge tags, wrong data formats, links that don't track, blocked images, and emails that change after upload to your provider.
                             </p>
+                            <a class="card-link" href="/blog/where-transactional-email-fails.html">Seven places an email fails &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-plug"></i>
@@ -2007,16 +2015,19 @@
                             <p>
                                 I set up the email at your sending provider, note its ID, and run sandbox and real test sends, so the values still fill in correctly after upload.
                             </p>
+                            <a class="card-link" href="/blog/2fa-setup-notification-email-brevo.html">A Brevo setup, from source to tested send &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-inbox"></i>
                             <h3>Email Deliverability</h3>
                             <p>SPF, DKIM and DMARC records set up and checked on your domain, plus a check of the email itself for common causes of delivery problems, such as broken links, oversized HTML and a missing unsubscribe link in marketing emails.</p>
+                            <a class="card-link" href="/blog/where-transactional-email-fails.html">Where authentication fits in the chain &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-check-double"></i>
                             <h3>QA Testing</h3>
                             <p>Every email is tested across major email clients and devices, with accessibility checks, before delivery.</p>
+                            <a class="card-link" href="/blog/payment-failure-email-step-by-step.html">Testing across 130 email clients &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-bug"></i>
@@ -2025,11 +2036,7 @@
                                 I find and fix Outlook rendering bugs, dark mode inversion, Gmail clipping, broken spacing and images, and
                                 merge tags that break after upload.
                             </p>
-                            <a
-                                href="/blog/"
-                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-                                >See example fixes &rarr;</a
-                            >
+                            <a class="card-link" href="/blog/">See example fixes &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-code"></i>
@@ -2037,11 +2044,13 @@
                             <p>
                                 Handlebars and your provider's own tag language, so personalised content renders correctly for every recipient, with a fallback when a value is missing.
                             </p>
+                            <a class="card-link" href="/blog/payment-receipt-email-from-json.html">Dynamic content in a real receipt &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-vial"></i>
                             <h3>Sandbox &amp; Real-Send Testing</h3>
                             <p>Dry runs, sandbox calls and one real send to an inbox, with checks that refuse bad data before a customer sees it.</p>
+                            <a class="card-link" href="/blog/abandoned-cart-email-step-by-step.html#step-9">A dry run, a sandbox call and a real send &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-laptop-code"></i>
@@ -2049,11 +2058,8 @@
                             <p>
                                 I design the email, or build it from your design (Figma, Sketch, XD or PSD), so it holds up in older desktop clients, with dynamic content set up for your provider.
                             </p>
-                            <a
-                                href="https://linleyb.com/portfolio.html"
-                                style="margin-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none"
-                                >See my emails &rarr;</a
-                            >
+                            <a class="card-link" href="/portfolio.html">See my emails &rarr;</a>
+                            <a class="card-link" href="/blog/mjml-is-an-abstraction-layer.html">The HTML and CSS under MJML &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fas fa-magnifying-glass"></i>
@@ -2061,6 +2067,7 @@
                             <p>
                                 Already have an email in use? I audit it for rendering bugs, dark mode and accessibility issues, and for anything that breaks once real data fills it, then fix what I find.
                             </p>
+                            <a class="card-link" href="/blog/mjml-is-an-abstraction-layer.html#not-my-file">How I read an email someone else built &rarr;</a>
                         </div>
                         <div class="card">
                             <i class="fab fa-node-js"></i>
@@ -2068,6 +2075,7 @@
                             <p>
                                 I write my side of the API: a tested Node.js reference implementation of the send step, with input checks, a secret check, error handling and a dry-run mode. Your developer deploys and runs it.
                             </p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/blob/main/send.js" target="_blank" rel="noopener noreferrer">Inspect the send step on GitHub &rarr;</a>
                         </div>
                     </div>
                 </div>
@@ -2298,8 +2306,7 @@
                             </p>
                             <br />
                             <p>
-                                Before email, I spent about 18 years in stock control and inventory, where the data has to be right at every step. I work the same way now: I trace problems through the whole flow and check the data before a customer sees it. I'm also a teacher, interested in C, systems programming and computer science. I hold the Google IT Support Professional Certificate (2022).
-                            </p>
+                                Before email, I spent about 18 years in stock control and inventory, where the data has to be right at every step. I work the same way now: I trace problems through the whole flow and check the data before a customer sees it. I'm also a teacher, interested in C, systems programming and computer science. I hold certificates in email development, web development, email marketing, email marketing automation, information technology (technical support) and programming.</p>
                         </div>
                     </div>
                 </div>

@@ -1193,6 +1193,11 @@
       @media (max-width: 800px) { .svc-two { grid-template-columns: 1fr; } }
       @media (max-width: 560px) { .svc-stats { grid-template-columns: 1fr; } }
       @media (prefers-reduced-motion: reduce) { .svc-stat:hover { transform: none; } }
+      /* a link at the foot of a card: the cards are flex columns, so it sits at the bottom whatever the text above */
+      .card-link { display: inline-block; margin-top: auto; padding-top: 1rem; color: var(--accent); font-weight: 700; text-decoration: none; }
+      .card-link + .card-link { margin-top: 0; padding-top: 0.4rem; }
+      .card-link:hover, .card-link:focus-visible { text-decoration: underline; }
+
 
 
     </style>
@@ -1551,7 +1556,19 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-triangle-exclamation"></i> The problems I fix</h2>
                     <div class="grid-cards">
-                        <div class="card"><i class="fas fa-triangle-exclamation"></i><h3>Empty or wrong fields</h3><p>"Hi ," and "undefined" in a customer's inbox. I define each value, its format and its fallback, and refuse bad data before anything is sent.</p></div><div class="card"><i class="fas fa-circle-half-stroke"></i><h3>Emails that break in dark mode or Outlook</h3><p>Checked in a real browser and opened in real email clients, in light and dark mode, with the parts clients disagree about written by hand.</p></div><div class="card"><i class="fas fa-hourglass-half"></i><h3>A developer losing days to email HTML</h3><p>They receive a finished, checked email and a tested send step to adapt, so the work is connecting it, not building it.</p></div><div class="card"><i class="fas fa-pen-to-square"></i><h3>Wording changes that need a deployment</h3><p>The email lives at your provider and is found by its ID. Your team edits the wording there.</p></div><div class="card"><i class="fas fa-route"></i><h3>Problems nobody can trace</h3><p>Every link in the chain has an owner and a check, so a fault is traced to its link, from your application's data to the inbox.</p></div><div class="card"><i class="fas fa-key"></i><h3>A key or secret in the wrong place</h3><p>The send step never prints your API key, refuses to send until someone types SEND, and keeps the key in your environment, not in a file.</p></div>
+                        <div class="card"><i class="fas fa-triangle-exclamation"></i><h3>Empty or wrong fields</h3><p>"Hi ," and "undefined" in a customer's inbox. I define each value, its format and its fallback, and refuse bad data before anything is sent.</p>
+                            <a class="card-link" href="/blog/abandoned-cart-email-step-by-step.html#step-6">See how the data is tested &rarr;</a>
+                        </div><div class="card"><i class="fas fa-circle-half-stroke"></i><h3>Emails that break in dark mode or Outlook</h3><p>Checked in a real browser and opened in real email clients, in light and dark mode, with the parts clients disagree about written by hand.</p>
+                            <a class="card-link" href="/blog/mjml-is-an-abstraction-layer.html">The faults I fixed by hand &rarr;</a>
+                        </div><div class="card"><i class="fas fa-hourglass-half"></i><h3>A developer losing days to email HTML</h3><p>They receive a finished, checked email and a tested send step to adapt, so the work is connecting it, not building it.</p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/blob/main/docs/handoff.md" target="_blank" rel="noopener noreferrer">See a real handoff &rarr;</a>
+                        </div><div class="card"><i class="fas fa-pen-to-square"></i><h3>Wording changes that need a deployment</h3><p>The email lives at your provider and is found by its ID. Your team edits the wording there.</p>
+                            <a class="card-link" href="/blog/system-design-architecture-email.html">Why the email lives at the provider &rarr;</a>
+                        </div><div class="card"><i class="fas fa-route"></i><h3>Problems nobody can trace</h3><p>Every link in the chain has an owner and a check, so a fault is traced to its link, from your application's data to the inbox.</p>
+                            <a class="card-link" href="/blog/where-transactional-email-fails.html">Trace a fault, link by link &rarr;</a>
+                        </div><div class="card"><i class="fas fa-key"></i><h3>A key or secret in the wrong place</h3><p>The send step never prints your API key, refuses to send until someone types SEND, and keeps the key in your environment, not in a file.</p>
+                            <a class="card-link" href="/blog/abandoned-cart-email-step-by-step.html#step-1">See the key guard at work &rarr;</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1560,7 +1577,19 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-box-open"></i> What you receive</h2>
                     <div class="grid-cards">
-                        <div class="card"><i class="fas fa-envelope-open-text"></i><h3>The finished email</h3><p>As MJML source and built HTML, checked in light and dark mode. A hand-written plain HTML version too, when you want no build step.</p></div><div class="card"><i class="fas fa-table-list"></i><h3>A field table</h3><p>Each value your application sends: its name, format, limits, whether it is required, and its fallback.</p></div><div class="card"><i class="fas fa-file-code"></i><h3>A sample request</h3><p>A JSON request your team can copy, with made-up data, matching the table exactly.</p></div><div class="card"><i class="fab fa-node-js"></i><h3>My side of the API</h3><p>A tested Node.js reference for the send step, with a dry run, a sandbox call and a live mode, and checks that refuse bad data.</p></div><div class="card"><i class="fas fa-check-double"></i><h3>A checks report</h3><p>Accessibility, contrast and dark mode measured in a real browser, and a pixel comparison that proves a change did not alter the design.</p></div><div class="card"><i class="fas fa-clipboard-list"></i><h3>A one-page handoff</h3><p>The email's ID, the table, the request, how to test it, and what is still open.</p></div>
+                        <div class="card"><i class="fas fa-envelope-open-text"></i><h3>The finished email</h3><p>As MJML source and built HTML, checked in light and dark mode. A hand-written plain HTML version too, when you want no build step.</p>
+                            <a class="card-link" href="/portfolio.html">See finished emails &rarr;</a>
+                        </div><div class="card"><i class="fas fa-table-list"></i><h3>A field table</h3><p>Each value your application sends: its name, format, limits, whether it is required, and its fallback.</p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/blob/main/docs/data-design.md" target="_blank" rel="noopener noreferrer">See a real field table &rarr;</a>
+                        </div><div class="card"><i class="fas fa-file-code"></i><h3>A sample request</h3><p>A JSON request your team can copy, with made-up data, matching the table exactly.</p>
+                            <a class="card-link" href="/blog/abandoned-cart-email-step-by-step.html#step-6">See the request in a real build &rarr;</a>
+                        </div><div class="card"><i class="fab fa-node-js"></i><h3>My side of the API</h3><p>A tested Node.js reference for the send step, with a dry run, a sandbox call and a live mode, and checks that refuse bad data.</p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/blob/main/send.js" target="_blank" rel="noopener noreferrer">Inspect the send step &rarr;</a>
+                        </div><div class="card"><i class="fas fa-check-double"></i><h3>A checks report</h3><p>Accessibility, contrast and dark mode measured in a real browser, and a pixel comparison that proves a change did not alter the design.</p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/tree/main/reports" target="_blank" rel="noopener noreferrer">See the real reports &rarr;</a>
+                        </div><div class="card"><i class="fas fa-clipboard-list"></i><h3>A one-page handoff</h3><p>The email's ID, the table, the request, how to test it, and what is still open.</p>
+                            <a class="card-link" href="https://github.com/LinleyB75/kick-off-abandoned-cart-brevo/blob/main/docs/handoff.md" target="_blank" rel="noopener noreferrer">Read a real handoff &rarr;</a>
+                        </div>
                     </div>
                     <p class="pipeline-note">If you want to see how the plain HTML version is proved identical to the MJML build: <a href="/blog/mjml-is-an-abstraction-layer.html">MJML is an abstraction layer&nbsp;&rarr;</a></p>
                 </div>
