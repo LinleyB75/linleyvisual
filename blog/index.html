@@ -1,79 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <!--
   NEW POST CHECKLIST FOR THIS PAGE (the blog index)
   1. Add a card for the new post at the TOP of the post grid, newest first. Look for "NEW POST CARD GOES HERE" below.
   2. Card title = the post's h1. Card text = one or two sentences. Link = /blog/YOUR-POST-FILENAME.html
   3. Add a url entry for the new post to sitemap.xml, and update the lastmod of /blog/ there
-  4. If the topic is new, update the FAQ answer "Do these notes cover dark mode and mobile rendering bugs?": the visible text AND the JSON-LD in the head must match word for word
-  5. Keep knowsAbout and serviceType in the JSON-LD the same as on the homepage and in post-template.html
+  4. If a rewritten post replaces an old email post, add a 301 redirect from the old address to the new one
+  5. If the topics change, update the FAQ answer "What does this blog cover?": the visible text AND the JSON-LD in the head must match word for word
   6. If the focus of the blog changes, update the hero text below, the meta description and the og:description
   7. After uploading: view-source to confirm it is live, then run Google's Rich Results Test
 -->
 <head>
-    <script src="/consent.js?v=1" defer></script>
-        <script src="/mail-link.js?v=1" defer></script>
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            }
+        })();
+    </script>
+
+    <script src="/consent.js?v=2" defer></script>
+    <script src="/mail-link.js?v=1" defer></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
-    <title>Email Dev Notes | Mauritius | Linley Bignoux</title>
-    <meta name="description" content="Email development notes: rendering bugs and their fixes, transactional email, and the systems behind it. Tested in real email clients.">
+    <meta name="theme-color" content="#071a33" media="(prefers-color-scheme: dark)">
+    <title>English at Work Blog for Tech Professionals | Linley Bignoux</title>
+    <meta name="description" content="Practical English for developers and tech professionals: stand-ups, code reviews, meetings and presentations, with key phrases, real examples and common mistakes.">
     <link rel="canonical" href="https://linleyb.com/blog/">
 
     <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
 
-    <meta property="og:title" content="Email Dev Notes | Linley Bignoux">
-    <meta property="og:description" content="Rendering bugs and fixes, transactional email, and the systems behind it. Notes from an email developer.">
+    <meta property="og:title" content="English at Work Blog for Tech Professionals | Linley Bignoux">
+    <meta property="og:description" content="Stand-ups, code reviews, meetings and presentations in English: key phrases, real examples and common mistakes.">
     <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Linley Bignoux, freelance email developer">
+    <meta property="og:image:alt" content="Linley Bignoux, English teacher for tech professionals">
     <meta property="og:url" content="https://linleyb.com/blog/">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Linley Bignoux | English for Tech Professionals">
+    <meta property="og:locale" content="en_AU">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Email Dev Notes | Linley Bignoux">
-    <meta name="twitter:description" content="Rendering bugs and fixes, transactional email, and the systems behind it. Notes from an email developer.">
+    <meta name="twitter:title" content="English at Work Blog for Tech Professionals | Linley Bignoux">
+    <meta name="twitter:description" content="Stand-ups, code reviews, meetings and presentations in English: key phrases, real examples and common mistakes.">
     <meta name="twitter:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
-    <meta name="twitter:image:alt" content="Linley Bignoux, freelance email developer">
+    <meta name="twitter:image:alt" content="Linley Bignoux, English teacher for tech professionals">
 
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-    <link rel="stylesheet" href="/blog/blog.css?v=10">
+    <link rel="stylesheet" href="/blog/blog.css?v=11">
 
-    <!-- JSON-LD below: comments are not allowed inside it. Keep knowsAbout and serviceType the same as on the homepage and in post-template.html. If you change the FAQ text in the page, change it here too. -->
+    <!-- JSON-LD below: comments are not allowed inside it. If you change the FAQ text in the page, change it here too. Add each new post to blogPost. -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@graph": [
             {
-                "@type": "WebSite",
-                "@id": "https://linleyb.com/#website",
+                "@type": "Person",
+                "@id": "https://linleyb.com/#person",
+                "name": "Linley Bignoux",
+                "jobTitle": "Business English Teacher",
                 "url": "https://linleyb.com/",
-                "name": "Linley Bignoux | Freelance Email Developer",
-                "inLanguage": [
-                    "en-AU",
-                    "en-MU"
-                ],
+                "sameAs": [
+                    "https://github.com/LinleyB75"
+                ]
+            },
+            {
+                "@type": "Blog",
+                "@id": "https://linleyb.com/blog/#blog",
+                "url": "https://linleyb.com/blog/",
+                "name": "English at Work for Tech Professionals",
+                "description": "Practical English for developers and tech professionals: stand-ups, code reviews, meetings and presentations, with key phrases, real examples and common mistakes.",
+                "inLanguage": "en-AU",
+                "author": {
+                    "@id": "https://linleyb.com/#person"
+                },
                 "publisher": {
                     "@id": "https://linleyb.com/#person"
-                }
+                },
+                "blogPost": [
+                    {
+                        "@type": "BlogPosting",
+                        "@id": "https://linleyb.com/blog/daily-stand-up-updates-in-english.html#article",
+                        "headline": "Daily Stand-ups in English: How to Report Work in Progress",
+                        "url": "https://linleyb.com/blog/daily-stand-up-updates-in-english.html",
+                        "datePublished": "2026-11-13"
+                    }
+                ]
             },
             {
                 "@type": "CollectionPage",
                 "@id": "https://linleyb.com/blog/#webpage",
                 "url": "https://linleyb.com/blog/",
-                "name": "Email Development Blog | Linley Bignoux",
-                "description": "Articles, case studies and notes on transactional email, data design, MJML email development and cross-client testing by Linley Bignoux.",
-                "isPartOf": {
-                    "@id": "https://linleyb.com/#website"
-                },
+                "name": "English at Work Blog for Tech Professionals | Linley Bignoux",
+                "inLanguage": "en-AU",
                 "about": {
-                    "@id": "https://linleyb.com/#service"
+                    "@id": "https://linleyb.com/blog/#blog"
                 },
                 "breadcrumb": {
                     "@id": "https://linleyb.com/blog/#breadcrumb"
@@ -98,164 +127,56 @@
                 ]
             },
             {
-                "@type": "Person",
-                "@id": "https://linleyb.com/#person",
-                "name": "Linley Bignoux",
-                "jobTitle": "Email Developer",
-                "url": "https://linleyb.com/",
-                "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
-                "workLocation": {
-                    "@type": "Place",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "addressCountry": "MU"
-                    }
-                },
-                "sameAs": [
-                    "https://github.com/LinleyB75"
-                ],
-                "knowsAbout": [
-                    "Email Development",
-                    "Email Design",
-                    "HTML Email",
-                    "CSS for Email",
-                    "MJML",
-                    "Handlebars",
-                    "Liquid",
-                    "Email Testing and Quality Assurance",
-                    "Email Automation",
-                    "Transactional Email",
-                    "Dynamic Email Content",
-                    "JavaScript",
-                    "Node.js",
-                    "API Integration",
-                    "JSON",
-                    "REST APIs",
-                    "SPF, DKIM and DMARC Email Authentication",
-                    {
-                        "@type": "Thing",
-                        "name": "Mailchimp",
-                        "sameAs": "https://mailchimp.com/"
-                    },
-                    {
-                        "@type": "Thing",
-                        "name": "MailerLite",
-                        "sameAs": "https://www.mailerlite.com/"
-                    },
-                    {
-                        "@type": "Thing",
-                        "name": "Brevo",
-                        "sameAs": "https://www.brevo.com/"
-                    },
-                    {
-                        "@type": "Thing",
-                        "name": "Klaviyo",
-                        "sameAs": "https://www.klaviyo.com/"
-                    },
-                    {
-                        "@type": "Thing",
-                        "name": "Kit (formerly ConvertKit)",
-                        "sameAs": "https://kit.com/"
-                    }
-                ]
-            },
-            {
-                "@type": "ProfessionalService",
-                "@id": "https://linleyb.com/#service",
-                "name": "Linley Bignoux Email Development",
-                "url": "https://linleyb.com/",
-                "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
-                "description": "Freelance email developer in Mauritius, serving clients locally and worldwide. I design, develop, program and test emails end to end in HTML, CSS, MJML, Handlebars, Liquid, JavaScript and Node.js, set up in your email platform with ESP integration, and I write my side of the API. I define what data your application sends and troubleshoot the whole system, from your application to the inbox. Platforms: Mailchimp, MailerLite, Brevo, Klaviyo and Kit.",
-                "provider": {
-                    "@id": "https://linleyb.com/#person"
-                },
-                "areaServed": [
-                    {
-                        "@type": "Country",
-                        "name": "Mauritius"
-                    },
-                    {
-                        "@type": "AdministrativeArea",
-                        "name": "Worldwide"
-                    }
-                ],
-                "serviceType": [
-                    "Email Development",
-                    "Email Design",
-                    "HTML Email Development",
-                    "MJML Development",
-                    "Handlebars Email Templating",
-                    "Liquid Email Templating",
-                    "Email Automation",
-                    "Email Testing and Quality Assurance",
-                    "Dynamic Email Content",
-                    "Transactional Email Setup",
-                    "Mailchimp Email Development",
-                    "MailerLite Email Development",
-                    "Brevo Email Development",
-                    "Klaviyo Email Development",
-                    "Kit Email Development",
-                    "Email Debugging and Troubleshooting",
-                    "Email Audits and Cleanup",
-                    "Transactional Email Setup and Developer Handoff",
-                    "Transactional Email Data Checks and Testing",
-                    "API and Data Design for Email",
-                    "Node.js Reference Implementation for Transactional Email",
-                    "Email Domain Authentication Setup (SPF, DKIM, DMARC)"
-                ]
-            },
-            {
                 "@type": "FAQPage",
                 "@id": "https://linleyb.com/blog/#faq",
-                "url": "https://linleyb.com/blog/",
                 "mainEntity": [
                     {
                         "@type": "Question",
-                        "name": "What do these email dev notes cover?",
+                        "name": "What does this blog cover?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository."
+                            "text": "The English you need at work in tech: stand-ups, code reviews, meetings, presentations, emails and interviews. Each post explains one situation, why it matters, how to handle it, the key phrases, a full example and the common mistakes."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "Do these notes cover dark mode and mobile rendering bugs?",
+                        "name": "Who is this blog for?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also three transactional email case studies, a payment receipt, a two-factor setup email and a payment failure email, a post on systems thinking, and a plain-language guide to where transactional email fails."
+                            "text": "Developers, QA and DevOps engineers, tech leads and other professionals who already use English at work and want to sound clearer and more confident in it."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "Are the fixes tested in real email clients?",
+                        "name": "Are the examples from real work?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Each post says which clients I retested in. Some fixes were retested in only one client, so check the \"What I retested\" section and test in your own audience's clients before relying on a fix."
+                            "text": "Yes. The situations come from my own work as a developer, generalised so that no client is identified."
                         }
                     },
                     {
                         "@type": "Question",
-                        "name": "Can other developers and agencies use these notes for debugging?",
+                        "name": "Can I practise these situations with you?",
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": "Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup."
+                            "text": "Yes. I teach one-to-one online lessons where we practise these situations with your real work. You can start with a free 20-minute trial lesson."
                         }
                     }
                 ]
             }
         ]
     }
-</script>
+    </script>
 </head>
 <body>
 
 <header class="site-header" role="banner">
   <nav role="navigation" aria-label="Main">
-    <a href="/#home" class="logo-wrap">
+    <a href="/" class="logo-wrap">
       <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
       <div class="logo-text-group">
         <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
-        <span class="job-title">Freelance Email Developer</span>
+        <span class="job-title">English for Tech Professionals</span>
       </div>
     </a>
 
@@ -265,14 +186,13 @@
 
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
-        <li><a href="/#home">Home</a></li>
-        <li><a href="/#portfolio" class="nav-fix-btn">Portfolio</a></li>
+        <li><a href="/#portfolio" class="nav-fix-btn">Lessons</a></li>
         <li><a href="/#about">About</a></li>
-        <li><a href="/transactional-email-development.html">Services</a></li>
+        <li><a href="/certifications.html">Qualifications</a></li>
         <li><a href="/blog/" aria-current="page">Blog</a></li>
         <li><a href="/#contact">Contact</a></li>
         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
-        <li><a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a></li>
+        <li><a href="https://www.classgap.com/me/linley" class="nav-for-you" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Book a lesson</a></li>
       </ul>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
     </div>
@@ -283,8 +203,8 @@
     <section class="blog-hero">
         <div class="container">
             <!-- HERO: if the focus of the blog changes, update this text, the meta description and the og:description in the head -->
-            <h1><i class="fas fa-book-open"></i> Email Dev Notes</h1>
-            <p><span class="tagline-accent">Rendering bugs and fixes, transactional email, and the systems behind it.</span> Each post covers one problem or lesson: what happened, the cause, the fix, and where I tested it.</p>
+            <h1><i class="fas fa-book-open"></i> English at Work for Tech Professionals</h1>
+            <p><span class="tagline-accent">Stand-ups, code reviews, meetings and presentations in English.</span> Each post covers one real situation: why it matters, how to handle it, the key phrases, a full example and the common mistakes.</p>
         </div>
     </section>
 
@@ -301,80 +221,10 @@
                      </article>
                 -->
                 <article class="post-card">
-                    <span class="blog-date">Article • System design • Email architecture</span>
-                    <h2><a href="/blog/system-design-architecture-email.html">System Design and Architecture for Email: Which Decisions Are Expensive to Change</a></h2>
-                    <p>What system design and architecture mean when the system is one email that depends on an API: who owns each link, which decisions other people build on, and how to design for failure.</p>
-                    <a class="read-more" href="/blog/system-design-architecture-email.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Article • Email development • HTML and CSS</span>
-                    <h2><a href="/blog/mjml-is-an-abstraction-layer.html">MJML Is an Abstraction Layer: Five Faults I Could Only Fix in the HTML and CSS</a></h2>
-                    <p>MJML writes the tables, but the faults that matter live underneath it. Five real faults from one email build, plus resets, hybrid layouts, fallbacks and working in someone else's email.</p>
-                    <a class="read-more" href="/blog/mjml-is-an-abstraction-layer.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Case study • Transactional email • Step by step</span>
-                    <h2><a href="/blog/abandoned-cart-email-step-by-step.html">Building an Abandoned Cart Email, Step by Step: HTML, CSS, MJML, Node.js and Brevo</a></h2>
-                    <p>A full build of an abandoned cart email for Kick Off → Your English: the HTML and CSS under MJML, dark mode, a Node.js send step, a real Brevo send, and the system design behind the API.</p>
-                    <a class="read-more" href="/blog/abandoned-cart-email-step-by-step.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Troubleshooting • Transactional email • End to end</span>
-                    <h2><a href="/blog/where-transactional-email-fails.html">Where Transactional Email Fails: Seven Places Between Your Application and the Inbox</a></h2>
-                    <p>Why receipts, password resets and payment notices go wrong, and where: seven places from the design to the inbox, a symptom table, who fixes each, and a checklist.</p>
-                    <a class="read-more" href="/blog/where-transactional-email-fails.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Case study • Transactional email • Step by step</span>
-                    <h2><a href="/blog/payment-failure-email-step-by-step.html">Building a Payment Failure Email, Step by Step: MJML, HTML, CSS, Node.js and Brevo</a></h2>
-                    <p>A step-by-step build of a payment failure email for Kick Off → Your English in VS Code: the MJML, the dark mode CSS, the Node.js checks, Brevo, 130-client testing and what went wrong.</p>
-                    <a class="read-more" href="/blog/payment-failure-email-step-by-step.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Case study • Transactional email • Pipeline</span>
-                    <h2><a href="/blog/2fa-setup-notification-email-brevo.html">Brevo 2FA Setup Email: A Development Pipeline from MJML to Tested Send</a></h2>
-                    <p>A case study of a two-factor setup email for Kick Off → Your English, taken through an eight-stage development pipeline: fix the source, define the data, check it, send safely and test in layers.</p>
-                    <a class="read-more" href="/blog/2fa-setup-notification-email-brevo.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Case study • Transactional email • Systems</span>
-                    <h2><a href="/blog/payment-receipt-email-from-json.html">Receipt Email Rebuilt as a System: JSON Data, Testing and Troubleshooting</a></h2>
-                    <p>Kick Off → Your English's payment receipt email, rebuilt as a Brevo template: the system map, the JSON data, testing and what I traced.</p>
-                    <a class="read-more" href="/blog/payment-receipt-email-from-json.html">Read the post &rarr;</a>
-                </article>
-                <article class="post-card">
-                    <span class="blog-date">Architecture • Strategy • Ecosystem</span>
-                    <h2><a href="/blog/systems-thinking-email-development.html">Systems Thinking in Email Development: Why Isolated Code Fixes Fail Without Ecosystem Awareness</a></h2>
-                    <p>The 5 interconnected layers of the email ecosystem, from Figma design tokens to ESP infrastructure and Outlook VML, and why isolated code fixes fail.</p>
-                    <a class="read-more" href="/blog/systems-thinking-email-development.html">Read the post &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">Dark mode • Fundamentals</span>
-                    <h2><a href="/blog/dark-promo-email-fundamentals.html">Building a dark promo email: what broke, what fixed it, and what to watch for</a></h2>
-                    <p>Forcing a dark background, a two-version button for Outlook, Apple blue text, mobile stacking, and the email fundamentals to watch for.</p>
-                    <a class="read-more" href="/blog/dark-promo-email-fundamentals.html">Read the post &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">Dark mode • macOS</span>
-                    <h2><a href="/blog/footer-text-macos-dark-mode.html">Footer text turning black in macOS dark mode: the fix</a></h2>
-                    <p>Footer text rendered black instead of white on grey in macOS dark mode. Apple data detector handling and explicit backgrounds fixed it.</p>
-                    <a class="read-more" href="/blog/footer-text-macos-dark-mode.html">Read the fix &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">Dark mode • Newsletter</span>
-                    <h2><a href="/blog/dark-mode-inversion-fixes.html">What dark mode inversion did to my newsletter, and the fixes</a></h2>
-                    <p>Dark mode recoloured my newsletter button, footer, and social icons. Here is what broke in Outlook and macOS clients and what fixed it.</p>
-                    <a class="read-more" href="/blog/dark-mode-inversion-fixes.html">Read the fixes &rarr;</a>
-                </article>
-
-                <article class="post-card">
-                    <span class="blog-date">MJML • Layout</span>
-                    <h2><a href="/blog/mj-group-padding.html">MJML images shrinking and spacing apart in columns: the padding fix</a></h2>
-                    <p>Images in 2 and 3 column layouts shrank and separated in webmail. Zeroing the padding fixed it.</p>
-                    <a class="read-more" href="/blog/mj-group-padding.html">Read the fix &rarr;</a>
+                    <span class="blog-date">English for developers • Stand-ups</span>
+                    <h2><a href="/blog/daily-stand-up-updates-in-english.html">Daily Stand-ups in English: How to Report Work in Progress</a></h2>
+                    <p>A four-part structure for stand-up updates when your work is halfway through, with key phrases, a weak and strong example, and the common mistakes, including false friends.</p>
+                    <a class="read-more" href="/blog/daily-stand-up-updates-in-english.html">Read the post &rarr;</a>
                 </article>
             </div>
         </div>
@@ -386,21 +236,24 @@
             <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
             <div class="faq-list">
                 <details class="faq-item">
-                    <summary>What do these email dev notes cover?</summary>
-                    <p>Each note covers one real email rendering problem or technical topic: what happened, the cause (or that it isn't confirmed), the fix, and which clients I retested in. Some notes link to examples in my GitHub repository.</p>
+                    <summary>What does this blog cover?</summary>
+                    <p>The English you need at work in tech: stand-ups, code reviews, meetings, presentations, emails and interviews. Each post explains one situation, why it matters, how to handle it, the key phrases, a full example and the common mistakes.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Do these notes cover dark mode and mobile rendering bugs?</summary>
-                    <p>Yes. Topics so far include macOS dark mode text colour, Apple data detector styling, dark mode colour inversion in Outlook, MJML column image spacing, and mobile column stacking. There are also three transactional email case studies, a payment receipt, a two-factor setup email and a payment failure email, a post on systems thinking, and a plain-language guide to where transactional email fails.</p>
+                    <summary>Who is this blog for?</summary>
+                    <p>Developers, QA and DevOps engineers, tech leads and other professionals who already use English at work and want to sound clearer and more confident in it.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Are the fixes tested in real email clients?</summary>
-                    <p>Each post says which clients I retested in. Some fixes were retested in only one client, so check the "What I retested" section and test in your own audience's clients before relying on a fix.</p>
+                    <summary>Are the examples from real work?</summary>
+                    <p>Yes. The situations come from my own work as a developer, generalised so that no client is identified.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Can other developers and agencies use these notes for debugging?</summary>
-                    <p>Yes. They are written as practical references for developers, marketing teams and agencies facing similar cross-client rendering problems, but each fix should be tested in your own setup.</p>
+                    <summary>Can I practise these situations with you?</summary>
+                    <p>Yes. I teach one-to-one online lessons where we practise these situations with your real work. You can start with a free 20-minute trial lesson.</p>
                 </details>
+            </div>
+            <div style="text-align: center; margin-top: 2.5rem">
+                <a href="https://www.classgap.com/me/linley" class="cta-button" target="_blank" rel="noopener">Book a free trial</a>
             </div>
         </div>
     </section>
@@ -409,29 +262,24 @@
 <footer role="contentinfo">
     <div class="container">
         <div class="social-links">
-            <a
-                href="https://github.com/LinleyB75/Email-Dev"
-                class="social-icon social-github"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my GitHub Profile"
-            ><i class="fab fa-github"></i></a>
+            <!-- LinkedIn: paste your profile address into href, then remove the comment marks around this link
+            <a href="https://www.linkedin.com/in/YOUR-PROFILE/" class="social-icon social-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            -->
+            <a href="https://github.com/LinleyB75" class="social-icon social-github" target="_blank" rel="noopener noreferrer" aria-label="See my developer work on GitHub"><i class="fab fa-github"></i></a>
             <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
-
-
         </div>
 
         <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
             <a href="https://linleyb.com/">
                 <img
-                    src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-                    alt="Linley Bignoux logo"
+                    src="https://res.cloudinary.com/xrzqkwov/image/upload/v1794557846/linley-bignoux-english-teacher-logo.webp"
+                    alt="Linley Bignoux, English Teacher logo"
                     style="height: 100px; width: auto; display: inline-block"
                 />
             </a>
         </div>
         <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
-        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Business English &amp; English for Tech Professionals (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
     </div>
 </footer>
 
@@ -448,24 +296,24 @@
     menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
     document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-    // THEME TOGGLE
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
     const themeBtn = document.getElementById('themeToggle');
     const icon = themeBtn.querySelector('i');
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) { document.documentElement.setAttribute('data-theme', storedTheme); updateIcon(storedTheme); }
-    themeBtn.addEventListener('click', () => {
-        let current = document.documentElement.getAttribute('data-theme');
-        let target = current === 'dark' ? 'light' : 'dark';
-        if (!current) { target = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'; }
-        document.documentElement.setAttribute('data-theme', target);
-        localStorage.setItem('theme', target);
-        updateIcon(target);
-    });
     function updateIcon(theme) {
         icon.classList.toggle('fa-sun', theme === 'dark');
         icon.classList.toggle('fa-moon', theme !== 'dark');
     }
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    updateIcon(document.documentElement.getAttribute('data-theme') || (systemDark ? 'dark' : 'light'));
+    themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+        const target = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
 </script>
 </body>
 </html>
