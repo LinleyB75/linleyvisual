@@ -1,0 +1,38 @@
+UPLOAD NOTES FOR LINLEYB.COM (GitHub repository: linleyvisual, served by GitHub Pages)
+
+This zip has the same folder layout as the repository: the files at the top go in the top of the
+repository, blog/ goes in blog/, and images/certificates/ goes in images/certificates/.
+
+1. FIX THE STAND-UP POST'S FILE NAME
+   In blog/ on GitHub, delete:  "daily-standup-updates-in -english.html.html"
+   The correct file, blog/daily-stand-up-updates-in-english.html, is in this zip.
+   Every link on the site uses that exact name (no space, "stand-up" with a hyphen, one .html).
+
+2. UPLOAD EVERYTHING IN THIS ZIP, replacing the files with the same names.
+   GitHub Pages does not read .htaccess or _redirects files, so the old blog addresses are now small
+   redirect pages with the OLD file names. They send visitors (and Google) to the new posts:
+     blog/2fa-setup-notification-email-brevo.html          -> daily-stand-up-updates-in-english.html
+     blog/abandoned-cart-email-step-by-step.html           -> daily-stand-up-updates-in-english.html
+     blog/where-transactional-email-fails.html          -> explaining-a-problem-in-english.html
+     blog/payment-failure-email-step-by-step.html       -> delivering-bad-news-in-english.html
+     blog/payment-receipt-email-from-json.html          -> talking-about-numbers-in-english.html
+     blog/system-design-architecture-email.html         -> explaining-technical-decisions-in-english.html
+     blog/systems-thinking-email-development.html       -> explaining-a-process-in-english.html
+     blog/mjml-is-an-abstraction-layer.html             -> code-review-comments-in-english.html
+     blog/dark-mode-inversion-fixes.html                -> bug-reports-and-incident-updates-in-english.html
+     blog/dark-promo-email-fundamentals.html            -> project-update-meetings-in-english.html
+     blog/footer-text-macos-dark-mode.html              -> asking-clarifying-questions-in-english.html
+     blog/mj-group-padding.html                         -> writing-clear-work-emails-in-english.html
+
+3. CERTIFICATE IMAGES: upload images/certificates/ (11 JPG files) so they end up at
+   images/certificates/ in the repository. Keep the file names exactly as they are.
+
+4. DELETE from the repository:
+     portfolio.html
+     transactional-email-development.html
+   GitHub Pages then shows your 404 page for them, and Google drops them from search.
+
+5. AFTER UPLOADING: open the homepage, the blog, one post, the qualifications page and one old blog
+   address (to see it redirect). Then submit sitemap.xml in Google Search Console.
+
+Files NOT in this zip because they have not changed: mail-link.js and any other files already on the site.

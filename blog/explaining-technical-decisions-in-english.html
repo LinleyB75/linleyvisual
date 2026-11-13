@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+    <!-- Theme Flash Prevention -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                document.documentElement.setAttribute("data-theme", savedTheme);
+            }
+        })();
+    </script>
+
+    <script src="/consent.js?v=2" defer></script>
+    <script src="/mail-link.js?v=1" defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#071a33" media="(prefers-color-scheme: dark)">
+
+    <title>Explaining a Technical Decision to Non-Technical People in English | Linley Bignoux</title>
+    <meta name="description" content="How to explain a technical decision in plain English to managers and clients: a five-step structure, jargon-free alternatives, phrases for trade-offs and recommendations, and common mistakes.">
+    <link rel="canonical" href="https://linleyb.com/blog/explaining-technical-decisions-in-english.html">
+
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg">
+
+    <meta property="og:title" content="Explaining a Technical Decision to Non-Technical People in English">
+    <meta property="og:description" content="A five-step structure, plain-English alternatives to jargon, and phrases for trade-offs and recommendations.">
+    <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Linley Bignoux, Business English teacher for professionals">
+    <meta property="og:url" content="https://linleyb.com/blog/explaining-technical-decisions-in-english.html">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Linley Bignoux | Business English for Professionals">
+    <meta property="og:locale" content="en_AU">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Explaining a Technical Decision to Non-Technical People in English">
+    <meta name="twitter:description" content="A five-step structure, plain-English alternatives to jargon, and phrases for trade-offs and recommendations.">
+    <meta name="twitter:image" content="https://linleyb.com/images/linley-bignoux-share.jpg">
+    <meta name="twitter:image:alt" content="Linley Bignoux, Business English teacher for professionals">
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="/blog/blog.css?v=11">
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Business English Teacher",
+            "url": "https://linleyb.com/",
+            "sameAs": [
+                "https://github.com/LinleyB75"
+            ]
+        },
+        {
+            "@type": "BlogPosting",
+            "@id": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html#article",
+            "url": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html",
+            "headline": "Explaining a Technical Decision to Non-Technical People in English",
+            "description": "How to explain a technical decision in plain English to managers and clients: a five-step structure, jargon-free alternatives, phrases for trade-offs and recommendations, and common mistakes.",
+            "inLanguage": "en-AU",
+            "datePublished": "2026-11-13",
+            "dateModified": "2026-11-13",
+            "author": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "about": [
+                "Explaining technical decisions",
+                "Plain English",
+                "English for engineers and developers"
+            ],
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://linleyb.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://linleyb.com/blog/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Explaining a Technical Decision in English",
+                    "item": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html"
+                }
+            ]
+        },
+        {
+            "@type": "FAQPage",
+            "@id": "https://linleyb.com/blog/explaining-technical-decisions-in-english.html#faq",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "How do I avoid jargon when I explain technical work?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Describe the effect instead of the technology. Say how long the customer waits rather than latency, and some earlier shortcuts are slowing us down rather than technical debt. If a technical word is necessary, explain it once in plain English."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I check someone understood without being rude?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Ask Does that make sense so far? or Would an example help? rather than Do you understand?, which can sound like a test."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "How do I recommend an option clearly but politely?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Name the option and give one main reason: I'd recommend option B, because it's easier to change later. Then mention the main downside, so the listener trusts your recommendation."
+                    }
+                }
+            ]
+        }
+    ]
+}
+    </script>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <nav role="navigation" aria-label="Main">
+    <a href="/" class="logo-wrap">
+      <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux" class="header-photo" width="84" height="84" fetchpriority="high">
+      <div class="logo-text-group">
+        <span class="logo-name">Linley Bignoux</span><span class="pipe">|</span>
+        <span class="job-title">English for Tech Professionals</span>
+      </div>
+    </a>
+
+    <div class="theme-wrap">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+
+    <div class="nav-right">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/#portfolio" class="nav-fix-btn">Lessons</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/certifications.html">Qualifications</a></li>
+        <li><a href="/blog/" aria-current="page">Blog</a></li>
+        <li><a href="/#contact">Contact</a></li>
+        <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
+        <li><a href="https://www.classgap.com/me/linley" class="nav-for-you" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Book a lesson</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+</header>
+
+<main role="main">
+  <article class="post-wrap">
+    <a class="back-link" href="/blog/">&larr; All posts</a>
+
+    <span class="blog-date">ENGLISH FOR TECH • DECISIONS</span>
+    <h1>Explaining a Technical Decision to Non-Technical People in English</h1>
+    <p class="post-meta">Published 13 November 2026 • By Linley Bignoux</p>
+    <div class="tag-row"><span class="tag">english-for-developers</span><span class="tag">business-english</span><span class="tag">meetings</span><span class="tag">plain-english</span><span class="tag">phrases</span></div>
+
+    <div class="post-content">
+<h2>The situation</h2>
+      <p>When I worked as a developer, some decisions were expensive to change later: where a piece of the system lived, who owned each part, what would happen when something failed. The people who had to approve those decisions were often managers and clients, not developers.</p>
+      <p>Engineers explaining a design choice, IT teams proposing a new system, and logistics managers explaining a change to the warehouse software all face the same task: explain a technical decision so that someone without your background can make a good choice.</p>
+
+      <h2>Why it matters</h2>
+      <ul>
+        <li><b>Good ideas get rejected when nobody understands them.</b></li>
+        <li><b>Jargon makes listeners feel excluded,</b> and people rarely approve what they don't understand.</li>
+        <li><b>Clear explanations build trust,</b> and the next decision is easier to get approved.</li>
+      </ul>
+
+      <h2>How to do it: five steps</h2>
+      <ol>
+        <li><b>The decision:</b> "We need to decide where to store customer files."</li>
+        <li><b>The options:</b> two or three, no more.</li>
+        <li><b>The trade-off:</b> what each option costs in money, time or risk.</li>
+        <li><b>Your recommendation,</b> with one main reason.</li>
+        <li><b>What it means for them:</b> the cost, the date, and what they need to do.</li>
+      </ol>
+
+      <h2>Jargon into plain English</h2>
+      <table>
+        <thead><tr><th>Instead of</th><th>Try</th></tr></thead>
+        <tbody>
+          <tr><td>"We need to refactor the module."</td><td>"We need to reorganise part of the code so future changes are faster."</td></tr>
+          <tr><td>"There's a lot of technical debt."</td><td>"Some earlier shortcuts are now slowing us down."</td></tr>
+          <tr><td>"It doesn't scale."</td><td>"It works now, but it will struggle when we have more customers."</td></tr>
+          <tr><td>"We're deprecating the old API."</td><td>"We'll stop supporting the old connection, so partners need to switch by March."</td></tr>
+          <tr><td>"The tolerance is too tight."</td><td>"The part needs to be made more precisely than our supplier can manage."</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Useful phrases</h2>
+      <p><b>Presenting options</b></p>
+      <ul>
+        <li>"We looked at three options."</li>
+        <li>"The main difference is&hellip;"</li>
+      </ul>
+      <p><b>Explaining trade-offs</b></p>
+      <ul>
+        <li>"It's cheaper, but it's harder to change later."</li>
+        <li>"The downside is&hellip; / The risk is&hellip;"</li>
+      </ul>
+      <p><b>Recommending</b></p>
+      <ul>
+        <li>"I'd recommend option B, because&hellip;"</li>
+        <li>"On balance, I think&hellip; is the safer choice."</li>
+      </ul>
+      <p><b>Checking understanding</b></p>
+      <ul>
+        <li>"Does that make sense so far?"</li>
+        <li>"Would it help if I showed you an example?"</li>
+      </ul>
+
+      <h2>A full example: weak and strong</h2>
+      <p><b>Weak:</b></p>
+      <blockquote>"So basically we should use a managed service with autoscaling instead of self-hosting because of the latency and the technical debt, it's easy, everybody does it now."</blockquote>
+      <p><b>Strong:</b></p>
+      <blockquote>"We need to decide where the new booking system runs. We can run it on our own server, which is cheaper now, or use a hosted service, which costs about 20% more but handles busy periods for us. I'd recommend the hosted service, because last December our own server slowed down for two days. The main downside is the monthly cost."</blockquote>
+      <p>Decision, two options, the trade-off in money and risk, a recommendation with a real reason, and the downside, with no jargon.</p>
+
+      <h2>Common mistakes</h2>
+      <table>
+        <thead><tr><th>Mistake</th><th>Instead of</th><th>Say</th></tr></thead>
+        <tbody>
+          <tr><td>Making it sound simple</td><td>"It's easy."</td><td>"It's a well-tested approach."</td></tr>
+          <tr><td>Testing the listener</td><td>"Do you understand?"</td><td>"Does that make sense so far?"</td></tr>
+          <tr><td>Sounding impatient</td><td>"Like I said&hellip;"</td><td>"To come back to the main point&hellip;"</td></tr>
+          <tr><td>Too many options</td><td>Six options, all in detail</td><td>Two or three, and your recommendation</td></tr>
+          <tr><td>Hiding the downside</td><td>Only the benefits</td><td>"The main downside is&hellip;"</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Try it yourself</h2>
+      <p>Choose a decision from your work. Explain it in five sentences to someone outside your team: the decision, the options, the trade-off, your recommendation and what it means for them. Remove every word they might not know.</p>
+      <p>For developers, see my <a href="/english-for-developers.html">English lessons for software developers</a>.</p>
+    </div>
+
+    <div class="post-cta">
+      <p>Explain your technical work so managers and clients understand it. I teach one-to-one online lessons for developers, engineers and tech leads, using your real projects.</p>
+      <a href="https://www.classgap.com/me/linley" class="cta-button" target="_blank" rel="noopener">Book a free trial</a>
+    </div>
+  </article>
+
+  <section id="faq" style="background-color: var(--bg-alt); padding: clamp(3.5rem, 8vh, 6rem) 0;">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-circle-question"></i> Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How do I avoid jargon when I explain technical work?</summary>
+          <p>Describe the effect instead of the technology. Say how long the customer waits rather than latency, and some earlier shortcuts are slowing us down rather than technical debt. If a technical word is necessary, explain it once in plain English.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I check someone understood without being rude?</summary>
+          <p>Ask Does that make sense so far? or Would an example help? rather than Do you understand?, which can sound like a test.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I recommend an option clearly but politely?</summary>
+          <p>Name the option and give one main reason: I'd recommend option B, because it's easier to change later. Then mention the main downside, so the listener trusts your recommendation.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer role="contentinfo">
+    <div class="container">
+        <div class="social-links">
+            <!-- LinkedIn: paste your profile address into href, then remove the comment marks around this link
+            <a href="https://www.linkedin.com/in/YOUR-PROFILE/" class="social-icon social-linkedin" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile"><i class="fab fa-linkedin-in"></i></a>
+            -->
+            <a href="https://github.com/LinleyB75" class="social-icon social-github" target="_blank" rel="noopener noreferrer" aria-label="See my developer work on GitHub"><i class="fab fa-github"></i></a>
+            <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
+            <a href="https://linleyb.com/">
+                <img
+                    src="https://res.cloudinary.com/xrzqkwov/image/upload/v1794557846/linley-bignoux-english-teacher-logo.webp"
+                    alt="Linley Bignoux, English Teacher logo"
+                    style="height: 100px; width: auto; display: inline-block"
+                />
+            </a>
+        </div>
+        <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
+        <p class="footer-copyright">&copy; 2026 <b>Linley Bignoux</b> | Business English &amp; English for Tech Professionals (Mauritius &amp; Global) | <a href="/privacy.html" style="color: inherit; text-decoration: none;">Privacy Policy</a></p>
+    </div>
+</footer>
+
+<script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuBtn.setAttribute('aria-expanded', open);
+        menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        menuBtn.querySelector('i').className = open ? 'fas fa-times' : 'fas fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('click', e => { if (!e.target.closest('.site-header')) setMenu(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+
+    // THEME TOGGLE (shares the same 'theme' setting as the main site)
+    const themeBtn = document.getElementById('themeToggle');
+    const icon = themeBtn.querySelector('i');
+    function updateIcon(theme) {
+        icon.classList.toggle('fa-sun', theme === 'dark');
+        icon.classList.toggle('fa-moon', theme !== 'dark');
+    }
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    updateIcon(document.documentElement.getAttribute('data-theme') || (systemDark ? 'dark' : 'light'));
+    themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+        const target = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', target);
+        localStorage.setItem('theme', target);
+        updateIcon(target);
+    });
+
+    // Wide tables scroll sideways on small screens. A table gets a keyboard stop only while it really scrolls.
+    function focusableTables() {
+        document.querySelectorAll('.post-content table').forEach(t => {
+            if (t.scrollWidth > t.clientWidth + 1) t.setAttribute('tabindex', '0');
+            else t.removeAttribute('tabindex');
+        });
+    }
+    window.addEventListener('load', focusableTables);
+    window.addEventListener('resize', focusableTables);
+</script>
+</body>
+</html>
