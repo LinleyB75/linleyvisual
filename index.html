@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en-AU">
     <head>
-        <script src="/consent.js?v=1" defer></script>
+        <script src="/consent.js?v=2" defer></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="color-scheme" content="light dark" />
@@ -1507,11 +1507,11 @@
                     <!-- RIGHT: photo, line and logo -->
                     <div class="hero-visual">
                         <div class="hero-arch">
-                            <img src="https://res.cloudinary.com/xrzqkwov/image/upload/f_auto,q_auto,c_limit,w_1000/v1794253386/edited-photo" alt="Linley Bignoux, English teacher" width="640" height="960" fetchpriority="high" />
+                            <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux, English teacher" width="640" height="800" fetchpriority="high" />
                         </div>
                         <div class="hero-link" aria-hidden="true"></div>
                         <div class="hero-logo">
-                            <img src="https://i.ibb.co/dwfK1J87/Lin-1.png" alt="Linley Bignoux logo" width="150" height="150" />
+                            <img src="https://res.cloudinary.com/xrzqkwov/image/upload/v1794557846/linley-bignoux-english-teacher-logo.webp" alt="Linley Bignoux, English Teacher logo" width="150" height="150" />
                         </div>
                     </div>
                 </div>
@@ -1767,6 +1767,7 @@
                                 <li>Presentations, demos and system design walkthroughs</li>
                                 <li>Job interviews for tech roles</li>
                             </ul>
+                            <a class="card-link" href="/english-for-developers.html">English for software developers &rarr;</a>
                         </div>
                         <div class="card" style="text-align: left">
                             <i class="fas fa-briefcase"></i>
@@ -2208,8 +2209,8 @@
                 <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
                     <a href="https://linleyb.com/">
                         <img
-                            src="https://i.ibb.co/dwfK1J87/Lin-1.png"
-                            alt="Linley Bignoux logo"
+                            src="https://res.cloudinary.com/xrzqkwov/image/upload/v1794557846/linley-bignoux-english-teacher-logo.webp"
+                            alt="Linley Bignoux, English Teacher logo"
                             style="height: 100px; width: auto; display: inline-block"
                         />
                     </a>
@@ -2375,7 +2376,7 @@
                 var H = hero.getBoundingClientRect();
                 var dev = hero.querySelector("h1 span"), list = hero.querySelector("ul");
                 var paras = hero.querySelectorAll(".hero-intro-text p"), btns = hero.querySelectorAll(".consult-btn-wrapper .cta-button");
-                var logo = hero.querySelector('img[src*="Lin-1"]');
+                var logo = hero.querySelector(".hero-logo img");
                 if (!dev || !list || paras.length < 1 || btns.length < 2 || !logo) return;
                 var phone = H.width < 768, c = phone ? 8 : 14, gut = phone ? 10 : 16, sw = phone ? 2 : 3, dr = phone ? 4 : 5;
                 svg.setAttribute("width", H.width); svg.setAttribute("height", H.height); svg.setAttribute("viewBox", "0 0 " + H.width + " " + H.height);
