@@ -2,7 +2,8 @@
    - Google Analytics is NOT loaded until the visitor clicks Accept.
    - The choice is remembered in the browser (localStorage key: cookie-consent).
    - Visitors can change their mind with the "Cookie settings" link in the footer.
-   Link it on every page as: <script src="/consent.js?v=1" defer></script> */
+   - Colours follow the site's theme variables (royal blue and yellow), with fallbacks for pages without them.
+   Link it on every page as: <script src="/consent.js?v=2" defer></script> */
 (function () {
     "use strict";
 
@@ -71,7 +72,7 @@
 
         var style = document.createElement("style");
         style.textContent =
-            ".cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;transform:translateY(105%);transition:transform .8s cubic-bezier(.22,.61,.36,1);background:var(--card-bg,#fff);color:var(--text,#1a1a1a);border-top:4px solid var(--accent,#d10500);box-shadow:0 -8px 20px rgba(0,0,0,.18);padding:1rem 1.25rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}" +
+            ".cc-banner{position:fixed;left:0;right:0;bottom:0;z-index:1000;transform:translateY(105%);transition:transform .8s cubic-bezier(.22,.61,.36,1);background:var(--card-bg,#fff);color:var(--text,#0b1f3a);border-top:4px solid var(--accent,#014aae);box-shadow:0 -8px 20px rgba(0,0,0,.18);padding:1rem 1.25rem;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}" +
             ".cc-banner[hidden]{display:none}" +
             ".cc-banner.cc-visible{transform:translateY(0)}" +
             "@media (prefers-reduced-motion:reduce){.cc-banner{transition:none}}" +
@@ -79,11 +80,11 @@
             ".cc-text{margin:0;flex:1 1 380px;font-size:1rem;line-height:1.5}" +
             ".cc-text a{color:inherit;font-weight:700;text-decoration:underline}" +
             ".cc-actions{display:flex;gap:.75rem;flex:0 0 auto}" +
-            ".cc-btn{font:inherit;font-weight:800;font-size:1rem;padding:.7rem 1.6rem;min-width:7.5rem;border-radius:10px;border:2px solid var(--primary,#0a0a0a);cursor:pointer;background:transparent;color:var(--primary,#0a0a0a)}" +
-            ".cc-btn:hover{background:var(--primary,#0a0a0a);color:var(--bg,#fff)}" +
-            ".cc-accept{background:#d10500;border-color:#d10500;color:#fff}" +
-            ".cc-accept:hover{background:#b30000;border-color:#b30000;color:#fff}" +
-            ".cc-btn:focus-visible{outline:3px solid var(--accent,#d10500);outline-offset:3px}" +
+            ".cc-btn{font:inherit;font-weight:800;font-size:1rem;padding:.7rem 1.6rem;min-width:7.5rem;border-radius:10px;border:2px solid var(--primary,#014aae);cursor:pointer;background:transparent;color:var(--primary,#014aae)}" +
+            ".cc-btn:hover{background:var(--primary,#014aae);color:var(--bg,#fff)}" +
+            ".cc-accept{background:#ffff00;border-color:var(--btn-border,#014aae);color:#014aae}" +
+            ".cc-accept:hover{background:#fedd59;border-color:var(--btn-border,#014aae);color:#014aae}" +
+            ".cc-btn:focus-visible{outline:3px solid var(--accent,#014aae);outline-offset:3px}" +
             "@media (max-width:600px){.cc-actions{width:100%}.cc-btn{flex:1}}";
         document.head.appendChild(style);
 
