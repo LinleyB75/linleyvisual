@@ -24,15 +24,19 @@ repository, blog/ goes in blog/, and images/certificates/ goes in images/certifi
      blog/footer-text-macos-dark-mode.html              -> asking-clarifying-questions-in-english.html
      blog/mj-group-padding.html                         -> writing-clear-work-emails-in-english.html
 
-3. CERTIFICATE IMAGES: upload images/certificates/ (11 JPG files) so they end up at
-   images/certificates/ in the repository. Keep the file names exactly as they are.
+3. IMAGES: upload the images folder from this zip. It adds images/linley-bignoux.jpg (your photo for the
+   homepage hero and About section) and images/certificates/ (11 certificate JPGs). Keep the file names
+   exactly as they are. Your existing images stay where they are.
 
 4. DELETE from the repository:
      portfolio.html
      transactional-email-development.html
    GitHub Pages then shows your 404 page for them, and Google drops them from search.
 
-5. AFTER UPLOADING: open the homepage, the blog, one post, the qualifications page and one old blog
+5. NEW PAGE: business-english.html (Business English for Professionals) is in this zip. It is linked from the
+   homepage, the developers page and the qualifications page, and listed in sitemap.xml.
+
+6. AFTER UPLOADING: open the homepage, business-english.html, the blog, one post, the qualifications page and one old blog
    address (to see it redirect). Then submit sitemap.xml in Google Search Console.
 
 Files NOT in this zip because they have not changed: mail-link.js and any other files already on the site.

@@ -926,6 +926,11 @@
             .site-header .job-title {
                 color: var(--accent);
             }
+            /* the job title is two short lines: Business English, then English for Tech Professionals */
+            .site-header .job-title span {
+                display: block;
+                line-height: 1.25;
+            }
             .site-header .theme-wrap {
                 position: static;
                 transform: none;
@@ -1098,11 +1103,11 @@
         @media (max-width: 767px) { .hero-link { height: 28px; width: 2px; } }
 
         /* hero: your photo in the arched frame, a short line, then a small square logo */
-        .hero-arch { position: relative; width: min(70vw, 360px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 999px 999px 28px 28px; box-shadow: 14px 14px 0 var(--accent); background: #1a1a1a; border: 3px solid #f2f2f2; box-sizing: border-box; z-index: 1; }
+        .hero-arch { position: relative; width: min(64vw, 320px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 999px 999px 28px 28px; box-shadow: 14px 14px 0 var(--accent); background: #1a1a1a; border: 3px solid #f2f2f2; box-sizing: border-box; z-index: 1; }
         .hero-arch img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 30%; }
-        .hero-logo { position: relative; width: 170px; aspect-ratio: 1 / 1; background: #ffffff; border: 3px solid #f2f2f2; box-shadow: 10px 10px 0 var(--accent); box-sizing: border-box; z-index: 1; }
+        .hero-logo { position: relative; width: 210px; aspect-ratio: 1 / 1; background: #ffffff; border: 3px solid #f2f2f2; box-shadow: 10px 10px 0 var(--accent); box-sizing: border-box; z-index: 1; }
         .hero-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
-        @media (max-width: 767px) { .hero-logo { width: 132px; box-shadow: 8px 8px 0 var(--accent); } }
+        @media (max-width: 767px) { .hero-logo { width: 170px; box-shadow: 8px 8px 0 var(--accent); } }
         /* big screens: the hero uses more of the width, and its text and photo scale up */
         @media (min-width: 1100px) {
             .hero { min-height: calc(100vh - 135px); display: flex; align-items: center; }
@@ -1116,8 +1121,8 @@
             .hero-case { font-size: clamp(1rem, 1.2vw, 1.3rem) !important; }
             .hero .tech-item { font-size: clamp(0.85rem, 1vw, 1.1rem); }
             .hero .tech-item i, .hero .tech-item svg { font-size: clamp(1.4rem, 1.7vw, 1.9rem); }
-            .hero-arch { width: clamp(320px, 30vw, 500px); box-shadow: 16px 16px 0 var(--accent); }
-            .hero-logo { width: clamp(160px, 11.5vw, 230px); }
+            .hero-arch { width: clamp(290px, 26vw, 430px); box-shadow: 16px 16px 0 var(--accent); }
+            .hero-logo { width: clamp(210px, 15vw, 300px); }
         }
 
         /* hero: the lesson focus link looks and behaves like a button, but stays quieter than the two main buttons */
@@ -1247,21 +1252,12 @@
                         "@id": "https://linleyb.com/#person",
                         "name": "Linley Bignoux",
                         "jobTitle": "Business English Teacher",
-                        "description": "Australian English teacher in Mauritius, teaching Business English and English for tech professionals online.",
+                        "description": "Australian English teacher, teaching Business English and English for tech professionals online.",
                         "url": "https://linleyb.com/",
-                        "image": "https://res.cloudinary.com/xrzqkwov/image/upload/v1794253386/edited-photo.png",
+                        "image": "https://linleyb.com/images/linley-bignoux.jpg",
                         "nationality": {
                             "@type": "Country",
                             "name": "Australia"
-                        },
-                        "workLocation": {
-                            "@type": "Place",
-                            "address": {
-                                "@type": "PostalAddress",
-                                "addressLocality": "Montagne Ory",
-                                "addressRegion": "Mauritius",
-                                "addressCountry": "MU"
-                            }
                         },
                         "sameAs": [
                             "https://github.com/LinleyB75"
@@ -1379,7 +1375,7 @@
                                 "name": "What time zone are you in?",
                                 "acceptedAnswer": {
                                     "@type": "Answer",
-                                    "text": "I am in Mauritius (GMT+4). That gives good overlap with Europe, the Middle East, Africa and Asia during the day, and with South America in my afternoon and evening."
+                                    "text": "My time zone is GMT+4. That gives good overlap with Europe, the Middle East, Africa and Asia during the day, and with South America in my afternoon and evening."
                                 }
                             }
                         ]
@@ -1402,7 +1398,7 @@
                     <div class="logo-text-group">
                         <span class="logo-name">Linley Bignoux</span>
                         <span class="pipe">|</span>
-                        <span class="job-title">English for Tech Professionals</span>
+                        <span class="job-title"><span>Business English</span><span>English for Tech Professionals</span></span>
                     </div>
                 </a>
                 <div class="theme-wrap">
@@ -1445,7 +1441,7 @@
 
                         <div class="hero-intro-text" style="margin: 0; padding: 0; max-width: none">
                             <p style="margin-top: 1.5rem">
-                                Hi, I'm <b>Linley</b>, an Australian English teacher based in Mauritius, teaching online.<br />
+                                Hi, I'm <b>Linley</b>, an Australian English teacher, teaching online.<br />
                                 I help developers, engineers and IT teams speak and write clearly at work, in the situations they face every week.
                             </p>
                             <p style="margin-top: 1rem">
@@ -1507,7 +1503,7 @@
                     <!-- RIGHT: photo, line and logo -->
                     <div class="hero-visual">
                         <div class="hero-arch">
-                            <img src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" alt="Linley Bignoux, English teacher" width="640" height="800" fetchpriority="high" />
+                            <img src="/images/linley-bignoux.jpg" alt="Linley Bignoux, English teacher" width="600" height="750" fetchpriority="high" />
                         </div>
                         <div class="hero-link" aria-hidden="true"></div>
                         <div class="hero-logo">
@@ -1780,6 +1776,7 @@
                                 <li>Client calls and small talk</li>
                                 <li>Job interviews</li>
                             </ul>
+                            <a class="card-link" href="/business-english.html">Business English for professionals &rarr;</a>
                         </div>
                     </div>
                     <p style="text-align: center; max-width: 800px; margin: 2.5rem auto 1.5rem; color: var(--text-light); padding: 0 20px">
@@ -2003,15 +2000,15 @@
                     <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
                     <div class="about-content">
                         <div class="about-image">
-                            <img loading="lazy" decoding="async" src="https://res.cloudinary.com/xrzqkwov/image/upload/f_auto,q_auto,c_limit,w_1000/v1794253386/edited-photo" alt="Linley Bignoux, English teacher" width="640" height="960" />
+                            <img loading="lazy" decoding="async" src="/images/linley-bignoux.jpg" alt="Linley Bignoux, English teacher" width="600" height="750" />
                         </div>
                         <div class="about-text">
                             <p>
-                                Hello, I'm <b>Linley Bignoux</b>, an English teacher from Melbourne, Australia, now living in Mauritius. I teach <b>Business English</b> and <b>English for tech professionals</b> online.
+                                Hello, I'm <b>Linley Bignoux</b>, an English teacher from Melbourne, Australia. I teach <b>Business English</b> and <b>English for tech professionals</b> online.
                             </p>
                             <br />
                             <p>
-                                I have taught English online for more than seven years, to adults and university students in Brazil, Japan, France, China and across Europe, including professionals in IT, business and project management. My lessons focus on meetings, presentations, negotiations, interviews and written communication. Today I work as a Business English teacher for learners in China, alongside my own students.
+                                I have taught English online for more than seven years, to adults and university students in Brazil, Japan, France, China and across Europe, including professionals in IT, business, project management, logistics, engineering and construction. My lessons focus on meetings, presentations, negotiations, interviews and written communication.
                             </p>
                             <br />
                             <p>
@@ -2098,7 +2095,7 @@
                         </details>
                         <details class="faq-item">
                             <summary>What time zone are you in?</summary>
-                            <p>I am in Mauritius (GMT+4). That gives good overlap with Europe, the Middle East, Africa and Asia during the day, and with South America in my afternoon and evening.</p>
+                            <p>My time zone is GMT+4. That gives good overlap with Europe, the Middle East, Africa and Asia during the day, and with South America in my afternoon and evening.</p>
                         </details>
                     </div>
                 </div>
@@ -2217,7 +2214,7 @@
                 </div>
                 <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
                 <p class="footer-copyright">
-                    &copy; 2026 <b>Linley Bignoux</b> | Business English &amp; English for Tech Professionals (Mauritius &amp; Global) |
+                    &copy; 2026 <b>Linley Bignoux</b> | Business English &amp; English for Tech Professionals |
                     <a href="/privacy.html" style="color: inherit; text-decoration: none">Privacy Policy</a>
                 </p>
             </div>

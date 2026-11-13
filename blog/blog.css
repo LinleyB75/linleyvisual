@@ -1,5 +1,5 @@
 /* blog.css - synchronized with index.html and the other pages of the English teaching site
-   Link it on every blog page as: /blog/blog.css?v=11   (bump the number when you change this file)
+   Link it on every blog page as: /blog/blog.css?v=12   (bump the number when you change this file)
    Brand colours: royal blue #014aae, bright yellow #ffff00, soft gold #fedd59 */
 * {
     margin: 0;
@@ -173,6 +173,12 @@ header.site-header {
 
 .job-title {
     color: var(--accent);
+}
+
+/* the job title is two short lines: Business English, then English for Tech Professionals */
+.job-title span {
+    display: block;
+    line-height: 1.25;
 }
 
 .theme-wrap {
