@@ -1,5 +1,6 @@
-/* blog.css - synchronized with index.html, certifications.html, and portfolio.html
-   Link it on every blog page as: /blog/blog.css?v=6   (bump the number when you change this file) */
+/* blog.css - synchronized with index.html and the other pages of the English teaching site
+   Link it on every blog page as: /blog/blog.css?v=11   (bump the number when you change this file)
+   Brand colours: royal blue #014aae, bright yellow #ffff00, soft gold #fedd59 */
 * {
     margin: 0;
     padding: 0;
@@ -9,54 +10,66 @@
 :root {
     color-scheme: light dark;
     -webkit-print-color-adjust: exact;
-    --primary: #0a0a0a;
-    --accent: #d10500;
-    --text: #1a1a1a;
-    --text-light: #55555a;
+    --primary: #014aae;
+    --accent: #014aae;
+    --on-accent: #ffffff;
+    --text: #0b1f3a;
+    --text-light: #4a5a72;
     --bg: #ffffff;
-    --bg-alt: #f2f2f2;
-    --border: #e0e0e0;
-    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --section-highlight: #f2f2f2;
+    --bg-alt: #f4f7fc;
+    --border: #d9e2f0;
+    --shadow: 0 1px 3px 0 rgb(1 30 70 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(1 30 70 / 0.12);
+    --section-highlight: #f4f7fc;
     --card-bg: #ffffff;
-    --input-bg: #f7f7f7;
+    --input-bg: #f7f9fd;
     --page-bg: var(--bg-alt);
+    --btn-bg: #ffff00;
+    --btn-text: #014aae;
+    --btn-border: #014aae;
 }
 
 [data-theme="dark"] {
     color-scheme: dark;
-    --primary: #f5f5f5;
-    --accent: #ff1a1a;
-    --text: #f2f2f2;
-    --text-light: #b0b0b0;
-    --bg: #0a0a0a;
-    --bg-alt: #141414;
-    --border: #2a2a2a;
+    --primary: #f5f8ff;
+    --accent: #fedd59;
+    --on-accent: #071a33;
+    --text: #eaf0fa;
+    --text-light: #b8c6dc;
+    --bg: #071a33;
+    --bg-alt: #0f2a50;
+    --border: #1f3d66;
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-    --section-highlight: #141414;
-    --card-bg: #141414;
-    --input-bg: #1c1c1c;
-    --page-bg: #000000;
+    --section-highlight: #0f2a50;
+    --card-bg: #0f2a50;
+    --input-bg: #12305a;
+    --page-bg: #041226;
+    --btn-bg: #ffff00;
+    --btn-text: #014aae;
+    --btn-border: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         color-scheme: dark;
-        --primary: #f5f5f5;
-        --accent: #ff1a1a;
-        --text: #f2f2f2;
-        --text-light: #b0b0b0;
-        --bg: #0a0a0a;
-        --bg-alt: #141414;
-        --border: #2a2a2a;
+        --primary: #f5f8ff;
+        --accent: #fedd59;
+        --on-accent: #071a33;
+        --text: #eaf0fa;
+        --text-light: #b8c6dc;
+        --bg: #071a33;
+        --bg-alt: #0f2a50;
+        --border: #1f3d66;
         --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
         --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-        --section-highlight: #141414;
-        --card-bg: #141414;
-        --input-bg: #1c1c1c;
-        --page-bg: #000000;
+        --section-highlight: #0f2a50;
+        --card-bg: #0f2a50;
+        --input-bg: #12305a;
+        --page-bg: #041226;
+        --btn-bg: #ffff00;
+        --btn-text: #014aae;
+        --btn-border: #ffffff;
     }
 }
 
@@ -235,7 +248,7 @@ header.site-header {
 
 .nav-links .nav-fix-btn:hover {
     background-color: var(--accent) !important;
-    color: #ffffff !important;
+    color: var(--on-accent) !important;
     border-color: var(--accent) !important;
 }
 
@@ -259,7 +272,7 @@ header.site-header {
 .nav-links .nav-for-you:hover {
     border-bottom: none !important;
     background-color: var(--accent) !important;
-    color: #ffffff !important;
+    color: var(--on-accent) !important;
 }
 
 .nav-for-you::after {
@@ -270,7 +283,8 @@ header.site-header {
     display: none;
 }
 
-@media (max-width: 1100px) {
+/* the full menu needs about 1440px, so smaller laptops get the menu button (the same as the homepage) */
+@media (max-width: 1440px) {
     section[id] {
         scroll-margin-top: 90px;
     }
@@ -388,13 +402,13 @@ header.site-header {
 .cta-button {
     display: inline-block;
     padding: 1.2rem 2.5rem;
-    background: #d10500;
-    color: #ffffff;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     text-decoration: none;
     border-radius: 10px;
     font-weight: 800;
     cursor: pointer;
-    border: none;
+    border: 2px solid var(--btn-border);
     font-size: clamp(1.1rem, 2vw, 1.35rem);
     transition: 0.3s;
     text-align: center;
@@ -402,9 +416,14 @@ header.site-header {
 }
 
 .cta-button:hover {
-    background: #b30000;
+    background: #fedd59;
     transform: translateY(-3px);
     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.cta-button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
 }
 
 /* ===== FOOTER & SOCIAL ICONS ===== */
@@ -427,7 +446,7 @@ footer {
 
 .social-icon {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: var(--on-accent);
     background: var(--accent);
     width: 60px;
     height: 60px;
@@ -443,31 +462,14 @@ footer {
 .social-icon:hover {
     transform: scale(1.1) rotate(360deg);
     background: var(--primary);
-    color: #ffffff;
+    color: var(--bg);
 }
 
 /* Coloured footer icons (same as the homepage) */
-.social-icon.social-contra {
-    background: #ffffff;
-    box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
-}
-
 .social-icon.social-github {
     background: #24292f;
+    color: #ffffff;
     box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
-}
-
-.social-icon.social-upwork {
-    background: #14a800;
-}
-
-.social-icon.social-fiverr {
-    background: #1dbf73;
-}
-
-.social-icon.social-contra:hover {
-    background: #ffffff;
-    filter: brightness(0.92);
 }
 
 .social-icon.social-github:hover {
@@ -475,18 +477,19 @@ footer {
     filter: brightness(1.3);
 }
 
-.social-icon.social-upwork:hover {
-    background: #14a800;
+.social-icon.social-linkedin {
+    background: #0a66c2;
+    color: #ffffff;
+}
+
+.social-icon.social-linkedin:hover {
+    background: #0a66c2;
     filter: brightness(1.12);
 }
 
-.social-icon.social-fiverr:hover {
-    background: #1dbf73;
-    filter: brightness(1.08);
-}
-
 .social-icon.social-email:hover {
-    background: #b30000;
+    background: var(--primary);
+    color: var(--bg);
 }
 
 .custom-social-icon {
@@ -618,10 +621,14 @@ footer {
 
 /* ===== BLOG SECTION & CARDS ===== */
 .blog-hero {
-    background: linear-gradient(135deg, #050505 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #014aae 0%, #013d91 100%);
     color: #fff;
     padding: clamp(3rem, 8vh, 5rem) 0;
     text-align: center;
+    /* yellow highlights on the blue band */
+    --accent: #ffff00;
+    --on-accent: #014aae;
+    --btn-border: #ffffff;
 }
 
 .blog-hero h1 {
@@ -706,7 +713,7 @@ footer {
     font-size: 0.8rem;
     color: #ffffff;
     font-weight: 800;
-    background: #d10500;
+    background: #014aae;
     padding: 4px 10px;
     border-radius: 4px;
     display: inline-block;
@@ -799,6 +806,18 @@ footer {
 
 .post-content a {
     color: var(--accent);
+}
+
+/* example sentences and dialogues in a post: a quiet box with a gold edge */
+.post-content blockquote {
+    background: var(--bg-alt);
+    border-left: 5px solid #fedd59;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 0.5rem 0 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text);
 }
 
 .post-content img {
