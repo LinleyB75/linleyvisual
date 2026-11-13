@@ -11,27 +11,27 @@
             })();
         </script>
 
-        <script src="/consent.js?v=1" defer></script>
+        <script src="/consent.js?v=2" defer></script>
         <script src="/mail-link.js?v=1" defer></script>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="color-scheme" content="light dark" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
-        <title>Message Sent | Email Developer - Mauritius | Linley Bignoux</title>
-        <meta name="description" content="Thank you for your message. I will be in touch soon regarding your custom email project." />
+        <meta name="theme-color" content="#071a33" media="(prefers-color-scheme: dark)" />
+        <title>Message Sent | Linley Bignoux</title>
+        <meta name="description" content="Thank you for your message. I will reply by email soon about your English lessons." />
         <meta name="robots" content="noindex, follow" />
         <link rel="icon" type="image/jpeg" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
         <link rel="apple-touch-icon" href="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg" />
-        <meta property="og:title" content="Message Sent | Linley Bignoux - Freelance Email Developer" />
-        <meta property="og:description" content="Thank you for your message. I will be in touch soon regarding your custom email project." />
+        <meta property="og:title" content="Message Sent | Linley Bignoux - English for Tech Professionals" />
+        <meta property="og:description" content="Thank you for your message. I will reply by email soon about your English lessons." />
         <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg" />
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:image:alt" content="Linley Bignoux, freelance email developer">
+        <meta property="og:image:alt" content="Linley Bignoux, English teacher for tech professionals">
         <meta property="og:url" content="https://linleyb.com/thanks.html" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Linley Bignoux | Email Developer" />
+        <meta property="og:site_name" content="Linley Bignoux | English for Tech Professionals" />
         <meta property="og:locale" content="en_AU" />
         <link rel="canonical" href="https://linleyb.com/thanks.html" />
 
@@ -52,52 +52,65 @@
                 padding: 0;
                 box-sizing: border-box;
             }
+            /* Brand colours: royal blue #014aae, bright yellow #ffff00, soft gold #fedd59 */
             :root {
                 color-scheme: light dark;
                 -webkit-print-color-adjust: exact;
-                --primary: #0a0a0a;
-                --accent: #d10500;
-                --text: #1a1a1a;
-                --text-light: #55555a;
+                --primary: #014aae;
+                --accent: #014aae;
+                --on-accent: #ffffff;
+                --text: #0b1f3a;
+                --text-light: #4a5a72;
                 --bg: #ffffff;
-                --bg-alt: #f2f2f2;
-                --border: #e0e0e0;
-                --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-                --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-                --section-highlight: #f2f2f2;
+                --bg-alt: #f4f7fc;
+                --border: #d9e2f0;
+                --shadow: 0 1px 3px 0 rgb(1 30 70 / 0.1);
+                --shadow-lg: 0 10px 15px -3px rgb(1 30 70 / 0.12);
+                --section-highlight: #f4f7fc;
                 --card-bg: #ffffff;
-                --input-bg: #f7f7f7;
+                --input-bg: #f7f9fd;
+                --btn-bg: #ffff00;
+                --btn-text: #014aae;
+                --btn-border: #014aae;
             }
             [data-theme="dark"] {
                 color-scheme: dark;
-                --primary: #f5f5f5;
-                --accent: #ff1a1a;
-                --text: #f2f2f2;
-                --text-light: #b0b0b0;
-                --bg: #0a0a0a;
-                --bg-alt: #141414;
-                --border: #2a2a2a;
+                --primary: #f5f8ff;
+                --accent: #fedd59;
+                --on-accent: #071a33;
+                --text: #eaf0fa;
+                --text-light: #b8c6dc;
+                --bg: #071a33;
+                --bg-alt: #0f2a50;
+                --border: #1f3d66;
                 --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
                 --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-                --section-highlight: #141414;
-                --card-bg: #141414;
-                --input-bg: #1c1c1c;
+                --section-highlight: #0f2a50;
+                --card-bg: #0f2a50;
+                --input-bg: #12305a;
+                --btn-bg: #ffff00;
+                --btn-text: #014aae;
+                --btn-border: #ffffff;
             }
             @media (prefers-color-scheme: dark) {
                 :root:not([data-theme="light"]) {
                     color-scheme: dark;
-                    --primary: #f5f5f5;
-                    --accent: #ff1a1a;
-                    --text: #f2f2f2;
-                    --text-light: #b0b0b0;
-                    --bg: #0a0a0a;
-                    --bg-alt: #141414;
-                    --border: #2a2a2a;
+                    --primary: #f5f8ff;
+                    --accent: #fedd59;
+                    --on-accent: #071a33;
+                    --text: #eaf0fa;
+                    --text-light: #b8c6dc;
+                    --bg: #071a33;
+                    --bg-alt: #0f2a50;
+                    --border: #1f3d66;
                     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
                     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-                    --section-highlight: #141414;
-                    --card-bg: #141414;
-                    --input-bg: #1c1c1c;
+                    --section-highlight: #0f2a50;
+                    --card-bg: #0f2a50;
+                    --input-bg: #12305a;
+                    --btn-bg: #ffff00;
+                    --btn-text: #014aae;
+                    --btn-border: #ffffff;
                 }
             }
             html {
@@ -222,7 +235,7 @@
             }
             .nav-links .nav-fix-btn:hover {
                 background-color: var(--accent) !important;
-                color: #fff !important;
+                color: var(--on-accent) !important;
                 border-color: var(--accent) !important;
                 border-bottom: 2px solid var(--accent) !important;
             }
@@ -245,7 +258,7 @@
             .nav-links .nav-for-you:hover {
                 border-bottom: none !important;
                 background-color: var(--accent) !important;
-                color: #fff !important;
+                color: var(--on-accent) !important;
             }
             .nav-for-you::after {
                 content: "";
@@ -273,22 +286,26 @@
             .cta-button {
                 display: inline-block;
                 padding: 1.2rem 2.5rem;
-                background: #d10500;
-                color: #fff;
+                background: var(--btn-bg);
+                color: var(--btn-text);
                 text-decoration: none;
                 border-radius: 10px;
                 font-weight: 800;
                 cursor: pointer;
-                border: none;
+                border: 2px solid var(--btn-border);
                 font-size: clamp(1.1rem, 2vw, 1.35rem);
                 transition: 0.3s;
                 text-align: center;
                 max-width: 100%;
             }
             .cta-button:hover {
-                background: #b30000;
+                background: #fedd59;
                 transform: translateY(-3px);
                 box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            }
+            .cta-button:focus-visible {
+                outline: 3px solid var(--accent);
+                outline-offset: 3px;
             }
             footer {
                 padding: 4rem 0;
@@ -306,7 +323,7 @@
             }
             .social-icon {
                 font-size: 1.5rem;
-                color: #fff;
+                color: var(--on-accent);
                 background: var(--accent);
                 width: 60px;
                 height: 60px;
@@ -321,40 +338,28 @@
             .social-icon:hover {
                 transform: scale(1.1) rotate(360deg);
                 background: var(--primary);
-                color: #fff;
-            }
-            .social-icon.social-contra {
-                background: #ffffff;
-                box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
+                color: var(--bg);
             }
             .social-icon.social-github {
                 background: #24292f;
+                color: #fff;
                 box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45);
-            }
-            .social-icon.social-upwork {
-                background: #14a800;
-            }
-            .social-icon.social-fiverr {
-                background: #1dbf73;
-            }
-            .social-icon.social-contra:hover {
-                background: #ffffff;
-                filter: brightness(0.92);
             }
             .social-icon.social-github:hover {
                 background: #24292f;
                 filter: brightness(1.3);
             }
-            .social-icon.social-upwork:hover {
-                background: #14a800;
+            .social-icon.social-linkedin {
+                background: #0a66c2;
+                color: #fff;
+            }
+            .social-icon.social-linkedin:hover {
+                background: #0a66c2;
                 filter: brightness(1.12);
             }
-            .social-icon.social-fiverr:hover {
-                background: #1dbf73;
-                filter: brightness(1.08);
-            }
             .social-icon.social-email:hover {
-                background: #b30000;
+                background: var(--primary);
+                color: var(--bg);
             }
             .footer-credit {
                 margin-bottom: 10px;
@@ -492,7 +497,8 @@
             .site-header .menu-toggle {
                 display: none;
             }
-            @media (max-width: 1100px) {
+            /* the full menu needs about 1440px, so smaller laptops get the menu button (the same as the homepage) */
+            @media (max-width: 1440px) {
                 section[id] {
                     scroll-margin-top: 90px;
                 }
@@ -613,9 +619,9 @@
 
             /* ---------- Thanks page specifics ---------- */
             :root { --page-bg: var(--bg-alt); }
-            [data-theme="dark"] { --page-bg: #000000; }
+            [data-theme="dark"] { --page-bg: #041226; }
             @media (prefers-color-scheme: dark) {
-                :root:not([data-theme="light"]) { --page-bg: #000000; }
+                :root:not([data-theme="light"]) { --page-bg: #041226; }
             }
             html, body { background: var(--page-bg); }
             body { display: flex; flex-direction: column; min-height: 100vh; }
@@ -625,7 +631,9 @@
             .thanks-card { background: var(--card-bg); padding: 4rem 3rem; border-radius: 15px; border: 1px solid var(--border); border-bottom: 8px solid var(--accent); box-shadow: var(--shadow-lg); max-width: 600px; width: 100%; margin: 0 auto; }
             .thanks-card h1 { color: var(--primary); font-size: clamp(2rem, 4vw, 2.5rem); margin-bottom: 1rem; font-weight: 900; }
             .thanks-card p { margin-bottom: 2rem; font-size: 1.2rem; color: var(--text); }
-            .icon-success { font-size: 5rem; color: #22c55e; margin-bottom: 1.5rem; display: block; }
+            .thanks-card .thanks-links { margin-top: 1.5rem; margin-bottom: 0; font-size: 1rem; color: var(--text-light); }
+            .thanks-card .thanks-links a { color: var(--accent); font-weight: 700; }
+            .icon-success { font-size: 5rem; color: var(--accent); margin-bottom: 1.5rem; display: block; }
             @media (max-width: 767px) {
                 .thanks-card { padding: 3rem 1.5rem; margin: 2rem auto; }
             }
@@ -646,7 +654,7 @@
                     <div class="logo-text-group">
                         <span class="logo-name">Linley Bignoux</span>
                         <span class="pipe">|</span>
-                        <span class="job-title">Freelance Email Developer</span>
+                        <span class="job-title">English for Tech Professionals</span>
                     </div>
                 </a>
                 <div class="theme-wrap">
@@ -654,15 +662,14 @@
                 </div>
                 <div class="nav-right">
                     <ul class="nav-links" id="navLinks">
-                        <li><a href="/#home">Home</a></li>
-                        <li><a href="/portfolio.html" class="nav-fix-btn">Portfolio</a></li>
+                        <li><a href="/#portfolio" class="nav-fix-btn">Lessons</a></li>
                         <li><a href="/#about">About</a></li>
-                        <li><a href="/transactional-email-development.html">Services</a></li>
+                        <li><a href="/certifications.html">Qualifications</a></li>
                         <li><a href="/blog/">Blog</a></li>
                         <li><a href="/#contact">Contact</a></li>
                         <li><a href="/#what-i-fix" class="nav-fix-btn">What I Fix</a></li>
                         <li>
-                            <a href="/#what-i-do" class="nav-for-you"><i class="fas fa-user-check"></i> What I do</a>
+                            <a href="https://www.classgap.com/me/linley" class="nav-for-you" target="_blank" rel="noopener"><i class="fas fa-calendar-check"></i> Book a lesson</a>
                         </li>
                     </ul>
                     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -676,20 +683,31 @@
             <div class="thanks-card">
                 <i class="fas fa-check-circle icon-success" aria-hidden="true"></i>
                 <h1>Message Sent!</h1>
-                <p>Thank you for reaching out. I have received your message and will be in touch with you shortly to discuss your custom email project.</p>
+                <p>Thank you for getting in touch. I have received your message and will reply by email soon to talk about your English lessons.</p>
                 <a href="/" class="cta-button">Return to Homepage</a>
+                <p class="thanks-links">While you wait, you can see my <a href="/#prices">prices</a> or <a href="https://www.classgap.com/me/linley" target="_blank" rel="noopener">book a free 20-minute trial</a>.</p>
             </div>
         </main>
 
         <footer role="contentinfo">
             <div class="container">
                 <div class="social-links">
+                    <!-- LinkedIn: paste your profile address into href, then remove the comment marks around this link
                     <a
-                        href="https://github.com/LinleyB75/Email-Dev"
+                        href="https://www.linkedin.com/in/YOUR-PROFILE/"
+                        class="social-icon social-linkedin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Visit my LinkedIn profile"
+                        ><i class="fab fa-linkedin-in"></i
+                    ></a>
+                    -->
+                    <a
+                        href="https://github.com/LinleyB75"
                         class="social-icon social-github"
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Visit my GitHub Profile"
+                        aria-label="See my developer work on GitHub"
                         ><i class="fab fa-github"></i
                     ></a>
                     <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"
@@ -709,7 +727,7 @@
                 </div>
                 <div class="footer-credit-text">Site designed &amp; developed by Linley Bignoux</div>
                 <p class="footer-copyright">
-                    &copy; 2026 <b>Linley Bignoux</b> | Email Developer (Mauritius &amp; Global) |
+                    &copy; 2026 <b>Linley Bignoux</b> | Business English &amp; English for Tech Professionals (Mauritius &amp; Global) |
                     <a href="/privacy.html" style="color: inherit; text-decoration: none">Privacy Policy</a>
                 </p>
             </div>
