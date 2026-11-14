@@ -1105,6 +1105,28 @@
         /* hero: your photo in the arched frame, a short line, then a small square logo */
         .hero-arch { position: relative; width: min(64vw, 320px); aspect-ratio: 4 / 5; overflow: hidden; border-radius: 999px 999px 28px 28px; box-shadow: 14px 14px 0 var(--accent); background: #1a1a1a; border: 3px solid #f2f2f2; box-sizing: border-box; z-index: 1; }
         .hero-arch img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 50% 30%; }
+        .hero-arch-art { background: #071a33; }
+        .hero-arch-art svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+        .hero-arch-art text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        /* hero: the two lines from your logo, the same length. The white one runs above the heading and ends over the "h" of
+           "Business English"; the gold one starts level with the centre of your round photo and runs down beside the illustration.
+           A small script below measures the heading and sets the length and position; these are the fallbacks */
+        .hero { --brand-line: clamp(130px, 11vw, 210px); }
+        .brand-line { position: relative; display: block; flex: 0 0 auto; }
+        .brand-line::after { content: ""; position: absolute; width: 22px; height: 22px; border-radius: 50%; }
+        .brand-line-h { width: var(--brand-line); height: 4px; border-radius: 2px; background: linear-gradient(90deg, rgba(255, 255, 255, 0.18), #ffffff); margin: 0 0 1rem; }
+        .brand-line-h::after { right: -11px; top: 50%; transform: translateY(-50%); background: #ffffff; }
+        .hero-arch-wrap { position: relative; }
+        .brand-line-v { position: absolute; top: 0; left: calc(100% + 16px + clamp(26px, 2.6vw, 44px)); width: 4px; height: var(--brand-line); border-radius: 2px; background: linear-gradient(0deg, rgba(254, 221, 89, 0.18), #fedd59); }
+        .brand-line-v::after { top: -11px; left: 50%; transform: translateX(-50%); background: #fedd59; }
+        /* tablets: the illustration sits close to the edge of the screen, so the side line is left out there */
+        @media (min-width: 768px) and (max-width: 1199px) { .brand-line-v { display: none; } }
+        @media (max-width: 767px) { .hero { --brand-line: 110px; } .brand-line-v { left: auto; right: calc(100% + 22px); } .brand-line-h { margin-bottom: 0.5rem; } }
+        /* hero: your round photo above the illustration, a little bigger than the one in the header */
+        .hero-avatar { position: relative; width: 132px; height: 132px; border-radius: 50%; overflow: hidden; border: 4px solid #ffffff; box-shadow: 0 0 0 4px var(--accent); box-sizing: border-box; background: #fff; z-index: 1; }
+        .hero-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        @media (max-width: 767px) { .hero-avatar { width: 112px; height: 112px; box-shadow: 0 0 0 3px var(--accent); } }
+        @media (min-width: 1100px) { .hero-avatar { width: clamp(132px, 9vw, 168px); height: clamp(132px, 9vw, 168px); } }
         .hero-logo { position: relative; width: 210px; aspect-ratio: 1 / 1; background: #ffffff; border: 3px solid #f2f2f2; box-shadow: 10px 10px 0 var(--accent); box-sizing: border-box; z-index: 1; }
         .hero-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
         @media (max-width: 767px) { .hero-logo { width: 170px; box-shadow: 8px 8px 0 var(--accent); } }
@@ -1492,6 +1514,7 @@
                     <!-- LEFT: text, buttons, lesson focus and lesson icons -->
                     <div class="hero-left" style="flex: 1 1 440px; min-width: 0; text-align: left">
                         <div class="hero-head" style="display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; text-align: left; margin-bottom: 1.5rem">
+                            <span class="brand-line brand-line-h" aria-hidden="true"></span>
                             <h1 style="flex: 1 1 100%; min-width: 372px; font-size: clamp(2rem, 4vw, 54px); line-height: 1.2">
                                 <span style="color: var(--accent)">Business English</span> <span>&amp; English for Tech Professionals</span>
                             </h1>
@@ -1562,10 +1585,83 @@
                     </div>
                     <!-- Closes Left Column -->
 
-                    <!-- RIGHT: photo, line and logo -->
+                    <!-- RIGHT: round photo, the teaching illustration in the arch, then the logo, joined by short lines -->
                     <div class="hero-visual">
-                        <div class="hero-arch">
-                            <img src="/images/linley-bignoux-portrait.jpg" alt="Linley Bignoux, Business English teacher" width="536" height="670" fetchpriority="high" />
+                        <div class="hero-avatar">
+                            <img src="/images/linley-bignoux-avatar.jpg" alt="Linley Bignoux, Business English teacher" width="400" height="400" fetchpriority="high" />
+                        </div>
+                        <div class="hero-link" aria-hidden="true"></div>
+                        <div class="hero-arch-wrap">
+                        <div class="hero-arch hero-arch-art">
+                            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="hero-art-title">
+                                <title id="hero-art-title">One-on-one online English lessons: speech bubbles, a globe and a video call on a laptop</title>
+                                <defs>
+                                    <linearGradient id="artBg" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0" stop-color="#0d3f8f" />
+                                        <stop offset="1" stop-color="#071a33" />
+                                    </linearGradient>
+                                    <pattern id="artDots" width="20" height="20" patternUnits="userSpaceOnUse">
+                                        <circle cx="2" cy="2" r="1.4" fill="#ffffff" opacity="0.14" />
+                                    </pattern>
+                                    <clipPath id="artGlobe"><circle cx="200" cy="148" r="78" /></clipPath>
+                                    <clipPath id="tileA"><rect x="94" y="314" width="102" height="92" rx="6" /></clipPath>
+                                    <clipPath id="tileB"><rect x="204" y="314" width="102" height="92" rx="6" /></clipPath>
+                                </defs>
+                                <rect width="400" height="500" fill="url(#artBg)" />
+                                <rect width="400" height="500" fill="url(#artDots)" />
+
+                                <!-- globe: students from many countries -->
+                                <circle cx="200" cy="148" r="78" fill="#ffffff" fill-opacity="0.06" />
+                                <g clip-path="url(#artGlobe)" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2">
+                                    <ellipse cx="200" cy="148" rx="34" ry="78" />
+                                    <ellipse cx="200" cy="148" rx="64" ry="78" />
+                                    <line x1="200" y1="60" x2="200" y2="236" />
+                                    <line x1="110" y1="148" x2="290" y2="148" />
+                                    <line x1="110" y1="110" x2="290" y2="110" />
+                                    <line x1="110" y1="186" x2="290" y2="186" />
+                                </g>
+                                <circle cx="200" cy="148" r="78" fill="none" stroke="#ffff00" stroke-width="4" />
+
+                                <!-- system lines from the speech bubbles to the call -->
+                                <g fill="none" stroke="#ffff00" stroke-width="3" stroke-linejoin="round">
+                                    <path d="M52 250 V352 L60 360 H94" />
+                                    <path d="M348 288 V352 L340 360 H306" />
+                                </g>
+                                <g fill="#ffff00">
+                                    <circle cx="52" cy="250" r="5" />
+                                    <circle cx="94" cy="360" r="5" />
+                                    <circle cx="348" cy="288" r="5" />
+                                    <circle cx="306" cy="360" r="5" />
+                                </g>
+
+                                <!-- speech bubbles -->
+                                <path d="M34 190 H172 Q184 190 184 202 V236 Q184 248 172 248 H92 L74 264 L76 248 H34 Q22 248 22 236 V202 Q22 190 34 190 Z" fill="#ffffff" />
+                                <text x="103" y="227" text-anchor="middle" font-size="22" font-weight="800" fill="#014aae">One-on-one</text>
+                                <path d="M206 226 H364 Q376 226 376 238 V272 Q376 284 364 284 H330 L326 300 L310 284 H206 Q194 284 194 272 V238 Q194 226 206 226 Z" fill="#ffff00" />
+                                <text x="285" y="264" text-anchor="middle" font-size="22" font-weight="800" fill="#0b1f3a">Online lessons</text>
+
+                                <!-- laptop with a one-to-one video lesson -->
+                                <rect x="82" y="302" width="236" height="142" rx="10" fill="#0f2a50" stroke="#ffffff" stroke-width="4" />
+                                <rect x="94" y="314" width="102" height="92" rx="6" fill="#014aae" />
+                                <g clip-path="url(#tileA)" fill="#fedd59">
+                                    <circle cx="145" cy="348" r="17" />
+                                    <ellipse cx="145" cy="402" rx="34" ry="26" />
+                                </g>
+                                <rect x="204" y="314" width="102" height="92" rx="6" fill="#fedd59" />
+                                <g clip-path="url(#tileB)" fill="#014aae">
+                                    <circle cx="255" cy="348" r="17" />
+                                    <ellipse cx="255" cy="402" rx="34" ry="26" />
+                                </g>
+                                <g fill="#ffffff">
+                                    <circle cx="184" cy="425" r="5" />
+                                    <circle cx="200" cy="425" r="5" />
+                                    <circle cx="216" cy="425" r="5" fill="#ffff00" />
+                                </g>
+                                <path d="M62 444 H338 L356 462 Q358 466 352 466 H48 Q42 466 44 462 Z" fill="#e8eef8" />
+                                <rect x="176" y="444" width="48" height="6" rx="3" fill="#b9c6dc" />
+                            </svg>
+                        </div>
+                        <span class="brand-line brand-line-v" aria-hidden="true"></span>
                         </div>
                         <div class="hero-link" aria-hidden="true"></div>
                         <div class="hero-logo">
@@ -2479,12 +2575,21 @@
                 var B1 = R(btns[0].getBoundingClientRect()), B2 = R(btns[1].getBoundingClientRect());
                 var yP1 = p1.b + 12;
                 var A = R(logo.parentNode.getBoundingClientRect()); A.r2 = A.r + 10;
+                var av = hero.querySelector(".hero-avatar"), P = av ? R(av.getBoundingClientRect()) : null;
                 var dots = [], kk = c;
                 function path(pts) { add("path", { d: chamfer(pts, c), "stroke-width": sw }); }
                 // line 1: from the heading, down the right edge, under the last paragraph, into Book a lesson
                 path([[S.x, S.y], [xR, S.y], [xR, yP1], [B1.cx, yP1], [B1.cx, B1.t]]);
                 // a corner is cut at 45 degrees, so a node on a corner sits in the middle of the cut
                 dots.push([S.x, S.y], [xR - kk / 2, yP1 - kk / 2], [B1.cx, B1.t]);
+                // branch: from the heading line across to your round photo (only when the photo sits to the right of the text)
+                var rings = [];
+                if (P && P.l > xR + 24) {
+                    var yA = P.cy;
+                    if (Math.abs(yA - S.y) < 2 * c) { path([[xR, S.y], [P.l, S.y]]); rings.push([P.l, S.y]); }
+                    else { path([[xR, S.y], [xR + 2 * c, S.y], [xR + 2 * c, yA], [P.l, yA]]); rings.push([P.l, yA]); }
+                    dots.push([xR, S.y]);
+                }
                 // line 2: Book a lesson to See lessons. Side by side, it runs across the gap; stacked (very narrow screens), it drops straight down
                 if (Math.abs(B1.cy - B2.cy) > Math.min(B1.b - B1.t, B2.b - B2.t) * 0.5) {
                     path([[B1.cx, B1.b], [B1.cx, B2.t]]);
@@ -2500,7 +2605,7 @@
                 path(pts);
                 dots.push([B2.r, B2.cy], [xR - kk / 2, B2.cy + kk / 2]);
                 dots.forEach(function (d) { add("circle", { cx: d[0], cy: d[1], r: dr, class: "dot" }); });
-                add("circle", { cx: end[0], cy: end[1], r: dr + 1, class: "ring", "stroke-width": sw });
+                rings.concat([end]).forEach(function (e) { add("circle", { cx: e[0], cy: e[1], r: dr + 1, class: "ring", "stroke-width": sw }); });
             }
             var timer;
             function later() { clearTimeout(timer); timer = setTimeout(draw, 60); }
@@ -2512,6 +2617,36 @@
         })();
         </script>
     
+    <script>
+        // HERO BRAND LINES: both lines take the length from the left of the heading to the "h" of "Business English",
+        // and the gold line starts level with the centre of the round photo. Redrawn whenever the layout changes.
+        (function () {
+            var hero = document.getElementById("home");
+            if (!hero) return;
+            var word = hero.querySelector("h1 span:first-child"), lineH = hero.querySelector(".brand-line-h"),
+                lineV = hero.querySelector(".brand-line-v"), wrap = hero.querySelector(".hero-arch-wrap"), photo = hero.querySelector(".hero-avatar");
+            if (!word || !lineH || !lineV || !wrap || !photo || !word.firstChild) return;
+            function place() {
+                var text = word.firstChild, n = text.textContent.replace(/\s+$/, "").length;
+                if (n < 1) return;
+                var r = document.createRange();
+                r.setStart(text, n - 1); r.setEnd(text, n);
+                var h = r.getBoundingClientRect(), start = lineH.getBoundingClientRect().left;
+                var len = Math.round(h.left + h.width / 2 - start);
+                if (len > 60) hero.style.setProperty("--brand-line", len + "px");
+                var P = photo.getBoundingClientRect(), W = wrap.getBoundingClientRect();
+                lineV.style.top = Math.round(P.top + P.height / 2 - W.top) + "px";
+            }
+            var timer;
+            function later() { clearTimeout(timer); timer = setTimeout(place, 60); }
+            window.addEventListener("resize", later);
+            window.addEventListener("load", place);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+            if (window.ResizeObserver) new ResizeObserver(later).observe(hero);
+            place();
+        })();
+    </script>
+
     <script>
         // HERO LESSON FOCUS: the links above rotate every 7 seconds and keep going round.
         // A pause button and the dots give the visitor control. It also pauses on hover and keyboard focus,
