@@ -28,16 +28,16 @@
         <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg" />
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:image:alt" content="Linley Bignoux, English teacher for tech professionals" />
+        <meta property="og:image:alt" content="Linley Bignoux, Business English teacher" />
         <meta property="og:url" content="https://linleyb.com/english-for-developers.html" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Linley Bignoux | English for Tech Professionals" />
+        <meta property="og:site_name" content="Linley Bignoux | Business English &amp; English for Tech Professionals" />
         <meta property="og:locale" content="en_AU" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="English for Software Developers | Linley Bignoux" />
         <meta name="twitter:description" content="Online English lessons for software developers, QA and DevOps engineers: stand-ups, code reviews, sprint meetings, demos and tech interviews. Free 20-minute trial." />
         <meta name="twitter:image" content="https://linleyb.com/images/linley-bignoux-share.jpg" />
-        <meta name="twitter:image:alt" content="Linley Bignoux, English teacher for tech professionals" />
+        <meta name="twitter:image:alt" content="Linley Bignoux, Business English teacher" />
         <link rel="canonical" href="https://linleyb.com/english-for-developers.html" />
 
         <link rel="preconnect" href="https://i.ibb.co" />
@@ -1151,6 +1151,8 @@
       .cta-outline:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
       .svc-hero-lead { font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.65; max-width: 820px; opacity: 0.95; }
       .svc-actions { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 2rem; }
+      .svc-actions { gap: 1rem; }
+      .svc-actions .cta-button { padding: 1rem 1.5rem; font-size: clamp(1rem, 1.6vw, 1.15rem); }
       .svc-lead { text-align: center; max-width: 840px; margin: -2rem auto 2.5rem; color: var(--text-light); font-size: 1.15rem; line-height: 1.65; padding: 0 20px; }
       .svc-sub { text-align: center; color: var(--primary); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-weight: 800; margin: 3rem 0 1.5rem; }
       .svc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1100px; margin: 2rem auto 0; padding: 0 20px; }
@@ -1173,6 +1175,18 @@
       @media (max-width: 560px) { .svc-stats { grid-template-columns: 1fr; } }
       @media (prefers-reduced-motion: reduce) { .svc-stat:hover { transform: none; } }
 
+        
+            /* row of small outline buttons (homepage "see what we work on" links) */
+            .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 1.25rem; }
+            .btn-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid var(--primary); border-radius: 999px; background: var(--card-bg); color: var(--primary); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.2s; }
+            .btn-pill:hover, .btn-pill:focus-visible { background: var(--primary); color: var(--bg); transform: translateY(-2px); }
+            .btn-pill:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+            /* footer page links */
+            .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; margin: 0 auto 2rem; padding: 0 20px; max-width: 900px; }
+            .footer-nav a { color: var(--primary); font-weight: 700; text-decoration: none; }
+            .footer-nav a:hover, .footer-nav a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+            .social-icon.social-booking { background: #ffff00; color: #014aae; box-shadow: inset 0 0 0 2px #014aae; }
+            .social-icon.social-booking:hover { background: #fedd59; color: #014aae; }
         </style>
 
         <script type="application/ld+json">
@@ -1184,10 +1198,39 @@
             "@id": "https://linleyb.com/#person",
             "name": "Linley Bignoux",
             "jobTitle": "Business English Teacher",
+            "description": "Australian Business English teacher, teaching one-to-one online lessons since 2019 to professionals from all industries, and English for tech professionals.",
             "url": "https://linleyb.com/",
+            "image": "https://linleyb.com/images/linley-bignoux-portrait.jpg",
+            "nationality": {
+                "@type": "Country",
+                "name": "Australia"
+            },
+            "knowsLanguage": "en",
+            "knowsAbout": [
+                "Business English",
+                "English for tech professionals",
+                "Teaching English as a foreign language",
+                "Workplace communication",
+                "Conversation practice",
+                "Vocabulary, listening and comprehension",
+                "Pronunciation",
+                "IELTS teacher training",
+                "Logistics and inventory management",
+                "Web development"
+            ],
             "sameAs": [
                 "https://github.com/LinleyB75"
             ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Business English & English for Tech Professionals",
+            "inLanguage": "en-AU",
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
         },
         {
             "@type": "WebPage",
@@ -1204,6 +1247,12 @@
             },
             "breadcrumb": {
                 "@id": "https://linleyb.com/english-for-developers.html#breadcrumb"
+            },
+            "primaryImageOfPage": {
+                "@type": "ImageObject",
+                "url": "https://linleyb.com/images/linley-bignoux-share.jpg",
+                "width": 1200,
+                "height": 630
             }
         },
         {
@@ -1353,7 +1402,7 @@
         }
     ]
 }
-        </script>
+    </script>
     </head>
     <body>
         <header class="site-header" role="banner">
@@ -1404,6 +1453,7 @@
                     <div class="svc-actions">
                         <a href="https://www.classgap.com/me/linley" class="cta-button" target="_blank" rel="noopener">Book a free trial</a>
                         <a href="#problems" class="cta-button cta-outline">See what we practise</a>
+                        <a href="/business-english.html" class="cta-button cta-outline">Business English for other professions</a>
                     </div>
                 </div>
             </section>
@@ -1507,7 +1557,7 @@
                     <h2 class="section-title"><i class="fas fa-award"></i> Why learn with me</h2>
                     <p class="svc-lead">Most English teachers have never sat in a stand-up or written a pull request. I have taught professionals for years, and I have worked as a developer myself.</p>
                     <div class="svc-stats">
-                        <div class="svc-stat"><b>7+ years</b><span>teaching English online to adults and university students</span></div>
+                        <div class="svc-stat"><b>7+ years</b><span>teaching English online since 2019, to students from many countries</span></div>
                         <div class="svc-stat"><b>IT teams</b><span>taught alongside business and project management professionals</span></div>
                         <div class="svc-stat"><b>160 hours</b><span>Advanced TEFL certificate, plus a 70-hour Teaching Business English certificate</span></div>
                         <div class="svc-stat"><b>Real code</b><span>my own developer work in HTML, CSS, JavaScript and Node.js, public on GitHub</span></div>
@@ -1699,11 +1749,23 @@
                         aria-label="See my developer work on GitHub"
                         ><i class="fab fa-github"></i
                     ></a>
+                    <a href="https://www.classgap.com/me/linley" class="social-icon social-booking" target="_blank" rel="noopener" aria-label="Book a lesson on my Classgap profile"><i class="fas fa-calendar-check"></i></a>
                     <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"
                         ><i class="fas fa-envelope"></i
                     ></a>
 
                 </div>
+
+                <nav class="footer-nav" aria-label="Site pages">
+                    <a href="/">Home</a>
+                    <a href="/business-english.html">Business English</a>
+                    <a href="/english-for-developers.html">English for Developers</a>
+                    <a href="/certifications.html">Qualifications</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/#prices">Prices</a>
+                    <a href="/#contact">Contact</a>
+                    <a href="https://www.classgap.com/me/linley" target="_blank" rel="noopener">My Classgap profile</a>
+                </nav>
 
                 <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
                     <a href="https://linleyb.com/">

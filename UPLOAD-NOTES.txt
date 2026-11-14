@@ -24,8 +24,10 @@ repository, blog/ goes in blog/, and images/certificates/ goes in images/certifi
      blog/footer-text-macos-dark-mode.html              -> asking-clarifying-questions-in-english.html
      blog/mj-group-padding.html                         -> writing-clear-work-emails-in-english.html
 
-3. IMAGES: upload the images folder from this zip. It adds images/linley-bignoux.jpg (your photo for the
-   homepage hero and About section) and images/certificates/ (11 certificate JPGs). Keep the file names
+3. IMAGES: upload the images folder from this zip. It adds images/linley-bignoux-portrait.jpg (your glasses
+   portrait for the homepage hero), images/linley-bignoux.jpg (your cap photo for the About section),
+   images/linley-bignoux-share.jpg (the picture shown when a page is
+   shared on LinkedIn, WhatsApp and so on) and images/certificates/ (11 certificate JPGs). Keep the file names
    exactly as they are. Your existing images stay where they are.
 
 4. DELETE from the repository:

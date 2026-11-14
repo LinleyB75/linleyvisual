@@ -1,5 +1,5 @@
 /* blog.css - synchronized with index.html and the other pages of the English teaching site
-   Link it on every blog page as: /blog/blog.css?v=12   (bump the number when you change this file)
+   Link it on every blog page as: /blog/blog.css?v=13   (bump the number when you change this file)
    Brand colours: royal blue #014aae, bright yellow #ffff00, soft gold #fedd59 */
 * {
     margin: 0;
@@ -969,3 +969,10 @@ footer {
 
 /* a wide table that scrolls sideways gets a visible outline when a keyboard user reaches it */
 .post-content table:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* footer page links */
+.footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; margin: 0 auto 2rem; padding: 0 20px; max-width: 900px; }
+.footer-nav a { color: var(--primary); font-weight: 700; text-decoration: none; }
+.footer-nav a:hover, .footer-nav a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.social-icon.social-booking { background: #ffff00; color: #014aae; box-shadow: inset 0 0 0 2px #014aae; }
+.social-icon.social-booking:hover { background: #fedd59; color: #014aae; }

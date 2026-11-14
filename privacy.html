@@ -28,10 +28,10 @@
         <meta property="og:image" content="https://linleyb.com/images/linley-bignoux-share.jpg" />
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
-        <meta property="og:image:alt" content="Linley Bignoux, English teacher for tech professionals">
+        <meta property="og:image:alt" content="Linley Bignoux, Business English teacher">
         <meta property="og:url" content="https://linleyb.com/privacy.html" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Linley Bignoux | English for Tech Professionals" />
+        <meta property="og:site_name" content="Linley Bignoux | Business English &amp; English for Tech Professionals" />
         <meta property="og:locale" content="en_AU" />
         <link rel="canonical" href="https://linleyb.com/privacy.html" />
 
@@ -647,7 +647,82 @@
                 .policy-card { padding: 2rem 1.5rem; }
             }
 
+        
+            /* row of small outline buttons (homepage "see what we work on" links) */
+            .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 1.25rem; }
+            .btn-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid var(--primary); border-radius: 999px; background: var(--card-bg); color: var(--primary); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.2s; }
+            .btn-pill:hover, .btn-pill:focus-visible { background: var(--primary); color: var(--bg); transform: translateY(-2px); }
+            .btn-pill:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+            /* footer page links */
+            .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; margin: 0 auto 2rem; padding: 0 20px; max-width: 900px; }
+            .footer-nav a { color: var(--primary); font-weight: 700; text-decoration: none; }
+            .footer-nav a:hover, .footer-nav a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+            .social-icon.social-booking { background: #ffff00; color: #014aae; box-shadow: inset 0 0 0 2px #014aae; }
+            .social-icon.social-booking:hover { background: #fedd59; color: #014aae; }
         </style>
+            <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Person",
+            "@id": "https://linleyb.com/#person",
+            "name": "Linley Bignoux",
+            "jobTitle": "Business English Teacher",
+            "url": "https://linleyb.com/",
+            "image": "https://linleyb.com/images/linley-bignoux-portrait.jpg",
+            "sameAs": [
+                "https://github.com/LinleyB75"
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://linleyb.com/#website",
+            "url": "https://linleyb.com/",
+            "name": "Linley Bignoux | Business English & English for Tech Professionals",
+            "inLanguage": "en-AU",
+            "publisher": {
+                "@id": "https://linleyb.com/#person"
+            }
+        },
+        {
+            "@type": "WebPage",
+            "@id": "https://linleyb.com/privacy.html#webpage",
+            "url": "https://linleyb.com/privacy.html",
+            "name": "Privacy Policy | Linley Bignoux",
+            "description": "Privacy Policy for LinleyB.com. Learn how your data is collected, used, and protected.",
+            "inLanguage": "en-AU",
+            "isPartOf": {
+                "@id": "https://linleyb.com/#website"
+            },
+            "about": {
+                "@id": "https://linleyb.com/#person"
+            },
+            "breadcrumb": {
+                "@id": "https://linleyb.com/privacy.html#breadcrumb"
+            }
+        },
+        {
+            "@type": "BreadcrumbList",
+            "@id": "https://linleyb.com/privacy.html#breadcrumb",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://linleyb.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Privacy Policy",
+                    "item": "https://linleyb.com/privacy.html"
+                }
+            ]
+        }
+    ]
+}
+        </script>
     </head>
     <body>
         <header class="site-header" role="banner">
@@ -758,11 +833,23 @@
                         aria-label="See my developer work on GitHub"
                         ><i class="fab fa-github"></i
                     ></a>
+                    <a href="https://www.classgap.com/me/linley" class="social-icon social-booking" target="_blank" rel="noopener" aria-label="Book a lesson on my Classgap profile"><i class="fas fa-calendar-check"></i></a>
                     <a href="/#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"
                         ><i class="fas fa-envelope"></i
                     ></a>
 
                 </div>
+
+                <nav class="footer-nav" aria-label="Site pages">
+                    <a href="/">Home</a>
+                    <a href="/business-english.html">Business English</a>
+                    <a href="/english-for-developers.html">English for Developers</a>
+                    <a href="/certifications.html">Qualifications</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/#prices">Prices</a>
+                    <a href="/#contact">Contact</a>
+                    <a href="https://www.classgap.com/me/linley" target="_blank" rel="noopener">My Classgap profile</a>
+                </nav>
 
                 <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
                     <a href="https://linleyb.com/">

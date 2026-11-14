@@ -1231,7 +1231,34 @@
       @media (max-width: 767px) { #prices .grid-cards { grid-template-columns: 1fr; } }
 
 
-    </style>
+    
+            /* row of small outline buttons (homepage "see what we work on" links) */
+            .btn-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 1.25rem; }
+            .btn-pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border: 2px solid var(--primary); border-radius: 999px; background: var(--card-bg); color: var(--primary); font-weight: 700; text-decoration: none; transition: background 0.2s, color 0.2s, transform 0.2s; }
+            .btn-pill:hover, .btn-pill:focus-visible { background: var(--primary); color: var(--bg); transform: translateY(-2px); }
+            .btn-pill:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+            /* footer page links */
+            .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.4rem; margin: 0 auto 2rem; padding: 0 20px; max-width: 900px; }
+            .footer-nav a { color: var(--primary); font-weight: 700; text-decoration: none; }
+            .footer-nav a:hover, .footer-nav a:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+            .social-icon.social-booking { background: #ffff00; color: #014aae; box-shadow: inset 0 0 0 2px #014aae; }
+            .social-icon.social-booking:hover { background: #fedd59; color: #014aae; }
+        
+            /* closing brand band: the logo, large, beside the final call to action */
+            .brand-band { display: grid; grid-template-columns: minmax(220px, 340px) 1fr; align-items: center; gap: clamp(2rem, 6vw, 5rem); max-width: 1100px; text-align: left; margin-bottom: 3.5rem; }
+            .brand-logo { background: #ffffff; border: 3px solid #f2f2f2; box-shadow: 14px 14px 0 #ffff00; aspect-ratio: 1 / 1; }
+            .brand-logo img { display: block; width: 100%; height: 100%; object-fit: contain; }
+            .brand-text h2 { color: #ffffff; font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+            .brand-text p { color: #ffffff; opacity: 0.95; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.65; max-width: 620px; }
+            .brand-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.75rem; }
+            .final-cta .cta-outline { background: transparent; border-color: transparent; box-shadow: inset 0 0 0 2px #ffffff; color: #ffffff; }
+            .final-cta .cta-outline:hover, .final-cta .cta-outline:focus-visible { background: rgba(255, 255, 0, 0.14); box-shadow: inset 0 0 0 2px #ffff00; color: #ffffff; }
+            @media (max-width: 767px) {
+                .brand-band { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+                .brand-logo { width: min(70vw, 260px); }
+                .brand-actions { justify-content: center; }
+            }
+        </style>
 
         <script type="application/ld+json">
 {
@@ -1241,7 +1268,7 @@
             "@type": "WebSite",
             "@id": "https://linleyb.com/#website",
             "url": "https://linleyb.com/",
-            "name": "Linley Bignoux | English for Tech Professionals",
+            "name": "Linley Bignoux | Business English & English for Tech Professionals",
             "inLanguage": "en-AU",
             "publisher": {
                 "@id": "https://linleyb.com/#person"
@@ -1252,30 +1279,28 @@
             "@id": "https://linleyb.com/#person",
             "name": "Linley Bignoux",
             "jobTitle": "Business English Teacher",
-            "description": "Australian English teacher, teaching Business English and English for tech professionals online.",
+            "description": "Australian Business English teacher, teaching one-to-one online lessons since 2019 to professionals from all industries, and English for tech professionals.",
             "url": "https://linleyb.com/",
-            "image": "https://linleyb.com/images/linley-bignoux.jpg",
+            "image": "https://linleyb.com/images/linley-bignoux-portrait.jpg",
             "nationality": {
                 "@type": "Country",
                 "name": "Australia"
             },
-            "sameAs": [
-                "https://github.com/LinleyB75"
-            ],
+            "knowsLanguage": "en",
             "knowsAbout": [
                 "Business English",
-                "English for Software Developers",
-                "English for IT Professionals",
-                "English for Meetings",
-                "Presentation Skills in English",
-                "Code Review Communication",
-                "Workplace Conversation Practice",
-                "Job Interview Preparation",
+                "English for tech professionals",
+                "Teaching English as a foreign language",
+                "Workplace communication",
+                "Conversation practice",
+                "Vocabulary, listening and comprehension",
                 "Pronunciation",
-                "Communicative Language Teaching",
-                "IELTS",
-                "Software Development",
-                "Inventory Management"
+                "IELTS teacher training",
+                "Logistics and inventory management",
+                "Web development"
+            ],
+            "sameAs": [
+                "https://github.com/LinleyB75"
             ]
         },
         {
@@ -1339,7 +1364,7 @@
                     "name": "Who are your lessons for?",
                     "acceptedAnswer": {
                         "@type": "Answer",
-                        "text": "Adults who use English at work, especially software developers, engineers, IT support teams and project managers in international teams. I also teach Business English to professionals in other fields, including operations, logistics and management, and to university students preparing for work."
+                        "text": "Adults who use English at work, from all industries: business, logistics, finance, sales, engineering, construction, management and more, as well as software developers and IT teams. I also teach university students preparing for work."
                     }
                 },
                 {
@@ -1418,7 +1443,7 @@
         }
     ]
 }
-        </script>
+    </script>
     </head>
     <body>
         <header class="site-header" role="banner">
@@ -1540,7 +1565,7 @@
                     <!-- RIGHT: photo, line and logo -->
                     <div class="hero-visual">
                         <div class="hero-arch">
-                            <img src="/images/linley-bignoux.jpg" alt="Linley Bignoux, English teacher" width="600" height="750" fetchpriority="high" />
+                            <img src="/images/linley-bignoux-portrait.jpg" alt="Linley Bignoux, Business English teacher" width="536" height="670" fetchpriority="high" />
                         </div>
                         <div class="hero-link" aria-hidden="true"></div>
                         <div class="hero-logo">
@@ -1565,15 +1590,19 @@
           </li>
           <li class="pipeline-step">
             <h3><span class="pipeline-num" aria-hidden="true">3</span> Practise real situations</h3>
-            <p>We rehearse your actual stand-ups, review comments and presentations, with feedback on clarity, vocabulary and pronunciation.</p>
+            <p>We practise your real meetings, calls and presentations, with feedback on fluency, vocabulary and pronunciation.</p>
           </li>
         </ol>
         <p class="pipeline-note">
-          You bring the situations. I bring the language, the practice and the feedback.<br />
-          <a href="#portfolio">See what we work on&nbsp;→</a><br />
-          <a href="#prices">See prices&nbsp;→</a><br />
-          <a href="/blog/">Read the blog for examples&nbsp;→</a>
+          You bring the situations. I bring the language, the practice and the feedback.
         </p>
+        <div class="btn-row">
+          <a class="btn-pill" href="#portfolio"><i class="fas fa-layer-group" aria-hidden="true"></i> See what we work on</a>
+          <a class="btn-pill" href="#prices"><i class="fas fa-tag" aria-hidden="true"></i> See prices</a>
+          <a class="btn-pill" href="/business-english.html"><i class="fas fa-briefcase" aria-hidden="true"></i> Business English</a>
+          <a class="btn-pill" href="/english-for-developers.html"><i class="fas fa-laptop-code" aria-hidden="true"></i> English for developers</a>
+          <a class="btn-pill" href="/blog/"><i class="fas fa-book-open" aria-hidden="true"></i> Read the blog</a>
+        </div>
       </div>
     </section>
 
@@ -2045,7 +2074,7 @@
                             </p>
                             <br />
                             <p>
-                                I have taught English online for more than seven years, to adults and university students in Brazil, Japan, France, China and across Europe, including professionals in IT, business, project management, logistics, engineering and construction. My lessons focus on conversation and communication in the workplace: meetings, presentations, negotiations and interviews, with vocabulary, speaking, listening and comprehension. Correcting and guiding my students is a crucial part of every lesson, and so is enjoying it.
+                                I have taught English online since 2019, more than seven years, to adults and university students from many countries around the world, including Brazil, Japan, France, China and across Europe. I teach professionals from all industries, and my students have included people in IT, business, project management, logistics, engineering and construction. My lessons focus on conversation and communication in the workplace: meetings, presentations, negotiations and interviews, with vocabulary, speaking, listening and comprehension. Correcting and guiding my students is a crucial part of every lesson, and so is enjoying it.
                             </p>
                             <br />
                             <p>
@@ -2104,7 +2133,7 @@
                     <div class="faq-list">
                         <details class="faq-item">
                             <summary>Who are your lessons for?</summary>
-                            <p>Adults who use English at work, especially software developers, engineers, IT support teams and project managers in international teams. I also teach Business English to professionals in other fields, including operations, logistics and management, and to university students preparing for work.</p>
+                            <p>Adults who use English at work, from all industries: business, logistics, finance, sales, engineering, construction, management and more, as well as software developers and IT teams. I also teach university students preparing for work.</p>
                         </details>
                         <details class="faq-item">
                             <summary>What do we practise in a lesson?</summary>
@@ -2194,17 +2223,19 @@
                 </div>
             </section>
 
-            <section class="final-cta">
-                <div class="container">
-                    <img
-                        src="https://i.ibb.co/TD8P4tx2/IRw-Qy-FCDJgx7s-Ovm-DHk0-Kr-QPZdh-Il-Cnl2-DUi2-BML.jpg"
-                        alt=""
-                        class="cta-profile-img"
-                        width="125"
-                        height="125"
-                        loading="lazy"
-                        decoding="async"
-                    />
+            <section class="final-cta" aria-labelledby="brand-title">
+                <div class="container brand-band">
+                    <div class="brand-logo">
+                        <img src="https://res.cloudinary.com/xrzqkwov/image/upload/v1794557846/linley-bignoux-english-teacher-logo.webp" alt="Linley Bignoux, English Teacher logo" width="1000" height="1000" loading="lazy" decoding="async" />
+                    </div>
+                    <div class="brand-text">
+                        <h2 id="brand-title">Speak English with confidence at work</h2>
+                        <p>Fun, interactive one-to-one lessons in Business English and English for tech professionals, for professionals from all industries. Start with a free 20-minute trial.</p>
+                        <div class="brand-actions">
+                            <a href="https://www.classgap.com/me/linley" class="cta-button" target="_blank" rel="noopener">Book a free trial</a>
+                            <a href="#contact" class="cta-button cta-outline">Ask a question</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="tech-stack-icons">
                     <div class="tech-item"><i class="fas fa-handshake"></i><span>Meetings</span></div>
@@ -2242,11 +2273,23 @@
                         aria-label="See my developer work on GitHub"
                         ><i class="fab fa-github"></i
                     ></a>
+                    <a href="https://www.classgap.com/me/linley" class="social-icon social-booking" target="_blank" rel="noopener" aria-label="Book a lesson on my Classgap profile"><i class="fas fa-calendar-check"></i></a>
                     <a href="#contact" data-u="contact" data-d="linleyb.com" class="social-icon social-email" aria-label="Send me an email"
                         ><i class="fas fa-envelope"></i
                     ></a>
 
                 </div>
+
+                <nav class="footer-nav" aria-label="Site pages">
+                    <a href="/">Home</a>
+                    <a href="/business-english.html">Business English</a>
+                    <a href="/english-for-developers.html">English for Developers</a>
+                    <a href="/certifications.html">Qualifications</a>
+                    <a href="/blog/">Blog</a>
+                    <a href="/#prices">Prices</a>
+                    <a href="/#contact">Contact</a>
+                    <a href="https://www.classgap.com/me/linley" target="_blank" rel="noopener">My Classgap profile</a>
+                </nav>
 
                 <div class="footer-logo" style="text-align: center; margin-bottom: 1rem">
                     <a href="https://linleyb.com/">
