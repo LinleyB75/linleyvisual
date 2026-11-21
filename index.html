@@ -45,7 +45,7 @@
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload = null; this.rel = 'stylesheet';" />
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
-        <link rel="stylesheet" href="/site.css?v=8" />
+        <link rel="stylesheet" href="/site.css?v=9" />
         <script src="/consent.js?v=1" defer></script>
         <script src="/site.js?v=7" defer></script>
         <script type="application/ld+json">
@@ -168,6 +168,17 @@
                             <img src="/images/linley-bignoux-hero.jpg" alt="Linley Bignoux taking a self-portrait with his Nikon D700, in black and white" width="1600" height="1065" style="object-position: 52% 40%" fetchpriority="high" />
                         </div>
                     </div>
+                    <!--
+                        IMAGES (the three round photos joined by a red line, under the big hero photo):
+                        images/hero-linley-dive-boat.jpg, images/hero-linley-underwater-selfie.jpg and images/hero-underwater-photographer.jpg
+                        Best: square, 500 x 500 pixels, JPG. The circle cuts off the corners, so keep the face in the middle.
+                        To change one: upload a new square photo with the same name, or upload a new file and change src and alt below.
+                    -->
+                    <ul class="hero-trio">
+                        <li><img src="/images/hero-linley-dive-boat.jpg" alt="Linley Bignoux on a dive boat in his wetsuit and hood, with blue sea and white clouds behind" width="500" height="500" loading="lazy" decoding="async" /></li>
+                        <li><img src="/images/hero-linley-underwater-selfie.jpg" alt="Linley Bignoux taking an underwater selfie in his mask and regulator, with bubbles rising" width="500" height="500" loading="lazy" decoding="async" /></li>
+                        <li><img src="/images/hero-underwater-photographer.jpg" alt="Black and white photo of an underwater photographer over the reef with a camera housing and two lights" width="500" height="500" loading="lazy" decoding="async" /></li>
+                    </ul>
                 </div>
             </section>
 
