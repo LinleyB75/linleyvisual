@@ -1,0 +1,45 @@
+UPLOAD NOTES FOR LINLEYB.COM (GitHub repository: linleyvisual, served by GitHub Pages)
+Photography site, 21 November 2026 (final version: 30 photos, cameras in About me, square hero photo)
+
+This zip is the whole site. Its folders match the repository.
+
+1. IN THE REPOSITORY, DELETE
+     mail-link.js            (site.js does this job now)
+     the images folder        (the zip has a fresh one with everything the site uses)
+   Keep CNAME: it is in the zip too, unchanged, so uploading it again does no harm.
+
+2. UPLOAD EVERYTHING IN THE ZIP, replacing files with the same names:
+     index.html, gallery.html, privacy.html, 404.html
+     site.css, site.js, consent.js
+     sitemap.xml, robots.txt, CNAME, README.md
+     images/ (all of it, including images/photos/)
+
+   On GitHub: Add file > Upload files, then drag in the files and the images folder
+   from the unzipped folder, and commit.
+
+3. AFTER UPLOADING
+   Open linleyb.com and press Ctrl + F5 to load the new version.
+   Old addresses (the blog and the teaching pages) now show the 404 page, which points
+   people to the gallery; Google drops them over the next few weeks.
+
+4. YOUR PHOTOS
+   They are in images/photos/ with names that say what they are.
+   Each photo's title is its caption in the HTML: add the place after it, e.g.
+   "Scorpionfish, Blue Bay". Some photos are small (500 to 650 pixels wide); if you have
+   bigger versions, upload them with the same names and change width and height in the HTML.
+   Best size: about 1600 to 2000 pixels on the long side, JPG at about 80% quality.
+
+5. CHANGING ANY IMAGE YOURSELF
+   Every image in index.html and gallery.html has a comment just above it (<!-- IMAGE ... -->
+   or <!-- PHOTO ... -->) that says which file it uses, the best size, and what to change.
+   The easy way for any image: upload a new file with exactly the same name, then change
+   width and height if the size is different.
+   No longer used, so you can delete them from the repository:
+   images/linley-bignoux.jpg and images/linley-bignoux-avatar.webp
+   (the round header photo is now images/header-photo.jpg).
+
+6. ADD MORE PHOTOS
+   In gallery.html, copy one <figure class="photo"> block (instructions are in the comment
+   above the photos). data-cat is landscape, street, nature or underwater: that is what the
+   category buttons filter on. A photo can have two, e.g. data-cat="underwater nature".
+   To show it on the homepage too, copy the same block into the featured photos in index.html.
