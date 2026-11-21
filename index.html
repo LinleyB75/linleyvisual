@@ -45,7 +45,7 @@
         <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
         <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload = null; this.rel = 'stylesheet';" />
         <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" /></noscript>
-        <link rel="stylesheet" href="/site.css?v=9" />
+        <link rel="stylesheet" href="/site.css?v=10" />
         <script src="/consent.js?v=1" defer></script>
         <script src="/site.js?v=7" defer></script>
         <script type="application/ld+json">
@@ -167,18 +167,15 @@
                         <div class="hero-arch">
                             <img src="/images/linley-bignoux-hero.jpg" alt="Linley Bignoux taking a self-portrait with his Nikon D700, in black and white" width="1600" height="1065" style="object-position: 52% 40%" fetchpriority="high" />
                         </div>
+                        <!--
+                            IMAGE (the round photo under the hero photo, joined to it by a red line): images/hero-linley-dive-boat.jpg
+                            Best: square, 500 x 500 pixels, JPG. The circle cuts off the corners, so keep the face in the middle.
+                            To change it: upload a new square photo with the same name, or upload a new file and change src and alt below.
+                        -->
+                        <div class="hero-dot">
+                            <img src="/images/hero-linley-dive-boat.jpg" alt="Linley Bignoux on a dive boat in his wetsuit and hood, with blue sea and white clouds behind" width="500" height="500" loading="lazy" decoding="async" />
+                        </div>
                     </div>
-                    <!--
-                        IMAGES (the three round photos joined by a red line, under the big hero photo):
-                        images/hero-linley-dive-boat.jpg, images/hero-linley-underwater-selfie.jpg and images/hero-underwater-photographer.jpg
-                        Best: square, 500 x 500 pixels, JPG. The circle cuts off the corners, so keep the face in the middle.
-                        To change one: upload a new square photo with the same name, or upload a new file and change src and alt below.
-                    -->
-                    <ul class="hero-trio">
-                        <li><img src="/images/hero-linley-dive-boat.jpg" alt="Linley Bignoux on a dive boat in his wetsuit and hood, with blue sea and white clouds behind" width="500" height="500" loading="lazy" decoding="async" /></li>
-                        <li><img src="/images/hero-linley-underwater-selfie.jpg" alt="Linley Bignoux taking an underwater selfie in his mask and regulator, with bubbles rising" width="500" height="500" loading="lazy" decoding="async" /></li>
-                        <li><img src="/images/hero-underwater-photographer.jpg" alt="Black and white photo of an underwater photographer over the reef with a camera housing and two lights" width="500" height="500" loading="lazy" decoding="async" /></li>
-                    </ul>
                 </div>
             </section>
 
@@ -383,6 +380,278 @@
                                 <img src="/images/photos/underwater-thorny-oyster.jpg" alt="Close-up of a thorny oyster with its shell open, showing a patterned orange, white and dark mantle" width="1600" height="1027" loading="lazy" decoding="async" />
                             </button>
                             <figcaption><span class="photo-cat">Underwater</span> Thorny oyster</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-coast-road-boats.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-coast-road-boats.jpg" alt="Two small boats on calm water beside a coast road, with clouds reflected in the sea" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Boats by the coast road</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-woman-sitting.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-woman-sitting.jpg" alt="Black and white photo of a woman sitting by a dirt road under a big sky with clouds" width="400" height="600" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> Sitting in the sun</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/travel-temple-umbrellas.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/travel-temple-umbrellas.jpg" alt="A Chinese temple with red and yellow umbrellas over flower and incense stalls in front, and tall buildings behind" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Temple and umbrellas</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-scorpionfish.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater nature">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-scorpionfish.jpg" alt="A small red scorpionfish resting on dark green coral" width="960" height="720" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Scorpionfish</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-wreck-in-the-blue.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-wreck-in-the-blue.jpg" alt="The deck and mast of a shipwreck tilted in deep blue water, with red growth in front" width="720" height="480" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Wreck in the blue</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-one-man-protest.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-one-man-protest.jpg" alt="Black and white photo of a man sitting by a wall next to a handwritten sign about UNESCO, the Creole language and Mauritian sega" width="900" height="619" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> One-man protest</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-reef-pinnacle.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-reef-pinnacle.jpg" alt="A coral-covered rock rising towards the bright surface in deep blue water" width="480" height="720" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Reef pinnacle</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-diver-on-the-wreck.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-diver-on-the-wreck.jpg" alt="A diver swimming past the dark wheelhouse of a shipwreck, with sunlight above" width="720" height="480" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Diver on the wreck</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/travel-marina-city.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/travel-marina-city.jpg" alt="Boats moored at a marina in front of city towers under a deep blue sky" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Marina and city towers</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-busker.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-busker.jpg" alt="A man in a blue jacket and beanie singing into a microphone on a city footpath, with a tips box in front" width="1063" height="1600" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> The busker</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-the-bow.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-the-bow.jpg" alt="Black and white photo of divers swimming towards the tall bow of a shipwreck on the sand" width="720" height="480" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> The bow</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-back-to-the-boat.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-back-to-the-boat.jpg" alt="Divers silhouetted against the bright surface as they climb the ladder of the dive boat" width="650" height="433" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Back to the boat</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-peak-in-late-light.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-peak-in-late-light.jpg" alt="A rocky mountain peak above a green valley, lit by warm late sun under a clear blue sky" width="1080" height="763" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Peak in the late light</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-at-the-bar.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-at-the-bar.jpg" alt="Black and white photo of people at a bar with beer taps, the barman pouring a drink" width="700" height="465" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> At the bar</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-fish-over-the-deck.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-fish-over-the-deck.jpg" alt="Black and white photo of small fish swimming over the coral-covered deck of a shipwreck" width="720" height="480" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Fish over the deck</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/travel-marina-bay-skyline.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/travel-marina-bay-skyline.jpg" alt="The Marina Bay skyline in Singapore across green water, under a blue sky with white clouds" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Marina Bay skyline, Singapore</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-snappers-wreck-2.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater nature">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-snappers-wreck-2.jpg" alt="A school of yellow snappers gathered on a shipwreck in blue water" width="720" height="480" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Snappers on the wreck</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-sitting-on-the-boat.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-sitting-on-the-boat.jpg" alt="A man in sunglasses sitting on the edge of a wooden boat on land, with another man standing behind him" width="1000" height="667" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> Sitting on the boat</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/travel-helmets-on-the-boat.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/travel-helmets-on-the-boat.jpg" alt="Rows of glass-domed underwater walking helmets with orange air hoses on the deck of a boat, with a crew member at the back" width="1280" height="850" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Helmets ready on the boat, Mauritius</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-two-divers-reef.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-two-divers-reef.jpg" alt="Black and white photo of two divers swimming side by side above a rocky reef and sandy bottom" width="900" height="542" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Two divers over the reef</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-lagoon-sunset.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-lagoon-sunset.jpg" alt="An orange sunset over a calm lagoon, with a tree silhouetted in front and boats on the water" width="500" height="333" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Sunset over the lagoon</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-soft-coral.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater nature">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-soft-coral.jpg" alt="A white and pink soft coral growing out from a reef wall above deep blue water" width="500" height="732" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Soft coral</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-peak-behind-the-trees.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-peak-behind-the-trees.jpg" alt="A mountain peak rising behind casuarina trees and a sandy creek bed, under white clouds" width="1080" height="716" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Peak behind the trees</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-cardboard-sign.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-cardboard-sign.jpg" alt="A bearded man in a beanie sitting on a bench holding a handwritten cardboard sign" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> His story on cardboard</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-air-sharing.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-air-sharing.jpg" alt="Two divers sharing air, one breathing from the other's yellow spare regulator" width="900" height="600" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Air sharing</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-under-the-surface.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-under-the-surface.jpg" alt="A diver hanging in deep blue water below the bright rippled surface, with bubbles rising" width="1055" height="1600" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Under the surface</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-low-tide-mountains.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-low-tide-mountains.jpg" alt="Sand flats at low tide in front of mangroves and a long green mountain ridge" width="1280" height="886" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Low tide below the mountains</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-hello-people.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-hello-people.jpg" alt="A man in a grey cap sitting on the footpath holding a handwritten cardboard sign" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> Hello people</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/street-asking-for-help.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="street">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/street-asking-for-help.jpg" alt="A man kneeling on the footpath holding out a paper cup, next to a backpack with a cardboard sign" width="1600" height="1063" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Street &amp; everyday life</span> Asking for help</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/landscape-blue-hour.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="landscape">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/landscape-blue-hour.jpg" alt="A deep blue evening sky with a soft orange glow over a mountain and trees in silhouette" width="1080" height="716" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Landscape &amp; travel</span> Blue hour</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-under-the-dive-boat.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-under-the-dive-boat.jpg" alt="The hull of a dive boat from below, with sunbeams bursting past divers at the ladder" width="400" height="600" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Under the dive boat</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-divers-deep-blue.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-divers-deep-blue.jpg" alt="Two divers far apart in deep blue water, with trails of bubbles rising above them" width="858" height="655" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Into the deep blue</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-diver-on-the-line.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-diver-on-the-line.jpg" alt="A diver holding a rope line in deep blue water, with bubbles streaming to the side" width="600" height="400" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> On the line</figcaption>
+                        </figure>
+
+                        <!-- PHOTO: images/photos/underwater-dive-computer-check.jpg. To replace it, upload a new file with the same name and change width and height; or upload a new file and change src, width, height, alt and the caption. -->
+                        <figure class="photo" data-cat="underwater">
+                            <button class="photo-open" type="button">
+                                <img src="/images/photos/underwater-dive-computer-check.jpg" alt="A diver's wrist with a dive computer in front, and another diver in the blue behind" width="500" height="333" loading="lazy" decoding="async" />
+                            </button>
+                            <figcaption><span class="photo-cat">Underwater</span> Checking the dive computer</figcaption>
                         </figure>
                     </div>
                     <p class="more-link"><a class="cta-button" href="/gallery.html">See the full gallery</a></p>

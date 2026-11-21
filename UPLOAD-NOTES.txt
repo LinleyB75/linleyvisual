@@ -1,5 +1,5 @@
 UPLOAD NOTES FOR LINLEYB.COM (GitHub repository: linleyvisual, served by GitHub Pages)
-Photography site, 21 November 2026 (61 photos, 24 on the homepage)
+Photography site, 21 November 2026 (61 photos, 58 on the homepage)
 
 This zip is the whole site. Its folders match the repository.
 
