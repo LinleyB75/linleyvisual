@@ -184,6 +184,38 @@ header.site-header {
 .logo-text-group .job-title {
     color: var(--accent);
 }
+.logo-text-group .job-pipe {
+    color: #888;
+    margin: 0 4px;
+}
+.logo-text-group .job {
+    white-space: nowrap;
+}
+/* between the phone layout and wide screens: the job titles go under the name, so the menu still fits */
+@media (min-width: 1101px) and (max-width: 1439px) {
+    .logo-text-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        line-height: 1.2;
+    }
+    .logo-text-group .pipe {
+        display: none;
+    }
+    .logo-text-group .job-title {
+        font-size: 1.05rem;
+    }
+}
+/* small phones: each job title on its own line */
+@media (max-width: 600px) {
+    .logo-text-group .job-title {
+        display: flex;
+        flex-direction: column;
+    }
+    .logo-text-group .job-pipe {
+        display: none;
+    }
+}
 .theme-toggle {
     display: flex;
     align-items: center;
